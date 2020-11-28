@@ -1,0 +1,29 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_ceil_sqrt,sst::ceil_sqrt]]
+= The `sst::ceil_sqrt` function
+
+.{cpp}
+[source,cpp]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/ceil_sqrt.hpp[sst/catalog/ceil_sqrt.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/algorithm.h[sst/algorithm.h]>
+namespace sst {
+
+template<{cl_std_integral} T>
+{cl_SST_CPP14_CONSTEXPR} T ceil_sqrt(T x) noexcept;
+
+template<BigInteger T>
+T ceil_sqrt(T const & x);
+
+}
+----
+
+The `sst::ceil_sqrt` function returns
+stem:[\lceil\sqrt{\mathtt{x}}\rceil].
+If `x` is negative, the behavior is undefined.
+
+//

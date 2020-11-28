@@ -1,0 +1,44 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_remove_cvref,sst::remove_cvref]]
+= The `sst::remove_cvref` class
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/remove_cvref.hpp[sst/catalog/remove_cvref.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/type.h[sst/type.h]>
+namespace sst {
+
+template<class T>
+struct remove_cvref {
+  using type = /*...*/;
+};
+
+}
+----
+
+If `T` is a {cl_reference_type}, the `sst::remove_cvref` class declares
+`type` to be the referenced type.
+Otherwise, it declares `type` to be `T` with any top-level
+{cr_cv_qualifiers} removed.
+
+This class was added to the library because `{ce_std_remove_cvref}` is
+not available before {cpp}20.
+
+.{empty}
+[example]
+====
+[source,cpp,subs="normal"]
+----
+sst::remove_cvref<int>::type          // int
+sst::remove_cvref<int &>::type        // int
+sst::remove_cvref<int const>::type    // int
+sst::remove_cvref<int const &>::type  // int const
+----
+====
+
+//

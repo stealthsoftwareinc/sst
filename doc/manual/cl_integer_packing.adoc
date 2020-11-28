@@ -1,0 +1,16 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_integer_packing]]
+= Integer packing
+
+:leveloffset: +1
+
+include::cl_sst_from_bits.adoc[]
+include::cl_sst_to_bits.adoc[]
+
+:leveloffset: -1
+
+//

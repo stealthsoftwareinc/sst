@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unsigned_eq,sst::unsigned_eq]]
+= The `sst::unsigned_eq` function
+
+:f: unsigned_eq
+:r: equal to
+:o: ==
+include::cl_unsigned_comparison_blurb.adoc[]
+
+//

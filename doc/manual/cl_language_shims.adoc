@@ -1,0 +1,19 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+[[cl_language_shims]]
+= Language shims
+
+:leveloffset: +1
+
+include::cl_SST_C_VALUE.adoc[]
+include::cl_SST_C_OR_LATER.adoc[]
+include::cl_SST_CPP_VALUE.adoc[]
+include::cl_SST_CPP_OR_LATER.adoc[]
+include::cl_SST_STATIC_ASSERT.adoc[]
+include::cl_SST_CPP_CONSTEXPR.adoc[]
+include::cl_SST_CPP_INLINE.adoc[]
+include::cl_SST_CONSTEXPR_ASSERT.adoc[]
+
+:leveloffset: -1

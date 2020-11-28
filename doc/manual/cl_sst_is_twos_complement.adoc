@@ -1,0 +1,35 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_is_twos_complement,sst::is_twos_complement]]
+= The `sst::is_twos_complement` trait
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+++#include <sst/type.h>++
+++namespace sst {++
+
+++template<class T>++
+++struct is_twos_complement++
+++  :++ {ce_std_integral_constant}<++bool, /*...*/> {};++
+
+++}++
+----
+
+The `sst::is_twos_complement` class determines whether `T` is an
+{cr_integer_type} that uses two's complement representation.
+
+include::cl_twos_complement_blurb.adoc[]
+
+Unsigned integer types are always considered to use two's complement
+representation.
+
+:W: sst::is_twos_complement
+:T: T
+:V: bool
+include::cl_integral_constant_extraction_blurb.adoc[]
+
+//

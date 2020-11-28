@@ -1,0 +1,27 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_max,sst::max]]
+= The `sst::max` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/max.hpp[sst/catalog/max.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/algorithm.h[sst/algorithm.h]>
+namespace sst {
+
+template<class T>
+constexpr T const & max(T const & a, T const & b);
+
+}
+----
+
+The `sst::max` function returns `a < b ? b : a`.
+
+This function was added to the library because `{ce_std_max}` is not
+`constexpr` before {cpp}14.
+
+//

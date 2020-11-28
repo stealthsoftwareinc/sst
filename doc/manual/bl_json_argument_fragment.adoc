@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+`<{fp_argument_name}>` should be a JSON object or a path to a file
+containing a JSON object.
+These are distinguished by checking whether the first character of
+`<{fp_argument_name}>` is a "```{```" character.
+If it is, `<{fp_argument_name}>` is assumed to be a JSON object.
+Otherwise, `<{fp_argument_name}>` is assumed to be a path to a file
+containing a JSON object.
+
+//

@@ -1,0 +1,40 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_csf,sst_csf]]
+= The `sst_csf` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_csf ++**[**++<var>++**...]**
+----
+
+If no arguments are given, the `sst_csf` function writes the content of
+standard input to standard output followed by a single '```x```'
+character and a single newline character.
+Otherwise, for each ``__var__`` argument, the function removes the last
+character from the variable named ``__var__`` and removes the second
+last character if it exists and is a newline character.
+
+The purpose of the `sst_csf` function is to allow command substitutions
+to be used that only remove a single trailing newline character instead
+of as many trailing newline characters as possible.
+To be more specific, instead of writing ``__var__=$(__foo__)`` for some
+command ``__foo__``, one can write
+``__var__=$(__foo__ | sst_csf); sst_csf __var__``.
+The "```csf```" abbreviation in the function name is short for
+"`**c**ommand **s**ubstitution **f**ix`".
+
+indexterm:["sst_csf form, read in"]
+When input is said to be __read in `sst_csf` form__, it means that the
+input is taken to be all characters up to but not including a possible
+single trailing newline character.
+
+indexterm:["sst_csf form, written in"]
+When output is said to be __written in `sst_csf` form__, it means that
+the output is followed by a single trailing newline character.
+
+//

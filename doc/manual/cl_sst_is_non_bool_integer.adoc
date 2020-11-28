@@ -1,0 +1,27 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_is_non_bool_integer,sst::is_non_bool_integer]]
+= The `sst::is_non_bool_integer` trait
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/type.h>
+namespace sst {
+
+template<class T>
+struct is_non_bool_integer {
+  constexpr bool value = /* ... */;
+};
+
+}
+----
+
+The `sst::is_non_bool_integer` class defines `value` to be `true` if `T`
+is a possibly cv-qualified integer type other than `bool`, or `false` if
+not.
+
+//

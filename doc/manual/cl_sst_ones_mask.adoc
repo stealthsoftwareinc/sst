@@ -1,0 +1,38 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_ones_mask,sst::ones_mask]]
+= The `sst::ones_mask` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+++#include <sst/catalog/ones_mask.hpp>++
+++// or:   <sst/bit.h>++
+++namespace sst {++
+
+++// (1)++
+++template<class IntType1, class IntType2>++
+++constexpr IntType1 ones_mask(IntType2 n) noexcept;
+
+++// (2)++
+++template<class IntType1, class IntType2, class IntType3>++
+++constexpr IntType1 ones_mask(IntType2 n, IntType3 k) noexcept;
+
+++}++
+----
+
+The `sst::ones_mask` function returns
+stem:[(2^\mathtt{n} - 1) \cdot 2^\mathtt{k}], where `k` is taken to be
+zero if it is omitted.
+This is the bit mask consisting of `n` one bits followed by `k` zero
+bits.
+
+If `n` is negative or `k` is negative, the {cr_behavior_is_undefined}.
+
+For (1) and (2), if stem:[\mathtt{n} + \mathtt{k}] is greater than the
+number of {cr_value_bits} in `IntType1`, the behavior is undefined.
+
+//

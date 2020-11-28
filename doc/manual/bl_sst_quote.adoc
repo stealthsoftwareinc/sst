@@ -1,0 +1,34 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_quote,sst_quote]]
+= The `sst_quote` function
+
+.Bash
+[source,subs="normal"]
+----
+set -e
+. link:{repo_browser_url}/src/bash/preludes/standard.bash[<root>/preludes/standard.bash]
+<<bl_sst_import_function>> link:{repo_browser_url}/src/bash/functions/sst_quote.bash[sst_quote]
+
+sst_quote **[**<arg>**...]**
+----
+
+The `sst_quote` function converts the input to a portably quoted shell
+word.
+
+include::bl_arg_joined_csf_function_io_fragment.adoc[]
+
+The algorithm is as follows:
+
+1. Replace every `'` character in the input with `'\''`.
+
+2. Prepend a `'` character to the entire result.
+
+3. Append a `'` character to the entire result.
+
+include::bl_csf_not_necessary_fragment.adoc[]
+
+//

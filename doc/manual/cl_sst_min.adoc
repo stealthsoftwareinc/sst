@@ -1,0 +1,27 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_min,sst::min]]
+= The `sst::min` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/min.hpp[sst/catalog/min.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/algorithm.h[sst/algorithm.h]>
+namespace sst {
+
+template<class T>
+constexpr T const & min(T const & a, T const & b);
+
+}
+----
+
+The `sst::min` function returns `a < b ? a : b`.
+
+This function was added to the library because `{ce_std_min}` is not
+`constexpr` before {cpp}14.
+
+//

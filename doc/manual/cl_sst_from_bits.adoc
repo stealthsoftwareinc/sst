@@ -1,0 +1,65 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_from_bits,sst::from_bits]]
+= The `sst::from_bits` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/from_bits.hpp[sst/catalog/from_bits.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/representation.h[sst/representation.h]>
+namespace sst {
+
+// (1)
+template<class Y, bool SignExtend = std::is_signed<Y>::value,
+         class Q, class R, class N>
+Y from_bits(void const * x, Q q, R r, N n) noexcept;
+
+// (2)
+template<class Y, bool SignExtend = std::is_signed<Y>::value,
+         class R, class N>
+Y from_bits(void const * x, R r, N n) noexcept;
+
+}
+----
+
+The `sst::from_bits` function loads an integer from a sequence of bits
+of memory.
+First, the `n` bits of memory starting at bit index
+stem:[\mathtt{q} \cdot \mathtt{CHAR\_BIT} + \mathtt{r}]
+of the region of bytes pointed to by `x` are interpreted as a two`'s
+complement integer if `SignExtend` is `true`, or as an unsigned integer
+if `SignExtend` is `false`.
+The first bit is taken to be the least significant bit of the integer,
+and the last bit is taken to be the most significant bit of the integer
+(which is the sign bit if `SignExtend` is `true`).
+The bits of the region of bytes pointed to by `x` are zero indexed
+starting with the least significant bit of the first byte.
+Next, the least significant stem:[w] bits of the infinite two`'s
+complement representation of this integer are considered, where stem:[w]
+is the number of nonpadding bits in `Y`.
+If `Y` is signed, these bits are interpreted as a two`'s complement
+integer (with the most significant bit being the sign bit) and the
+resulting value is returned.
+If `Y` is unsigned, these bits are interpreted as an unsigned integer
+and the resulting value is returned.
+
+`Y`, `Q`, `R`, and `N` may be any
+{ce_std_is_integral_url}[integer types].
+If `x` is a null pointer, `q` is negative, `r` is negative, `n` is not
+positive, or
+stem:[\mathtt{q} \cdot \mathtt{CHAR\_BIT} + \mathtt{r} + \mathtt{n}]
+is greater than the number of bits in the region of bytes pointed to by
+`x`, the behavior is undefined.
+For (2), `q` is omitted and taken to be zero.
+
+Prior to {cpp}20, signed integers are permitted to use ones`' complement
+or sign-magnitude representation instead of two`'s complement.
+This does not affect the behavior of this function, except that if the
+resulting value cannot be represented by `Y` (i.e., if `Y` is signed and
+the resulting value is stem:[-2^{1-w}]), the behavior is undefined.
+
+//

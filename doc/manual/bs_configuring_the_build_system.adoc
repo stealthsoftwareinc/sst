@@ -1,0 +1,19 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bs_configuring_the_build_system]]
+= Configuring the build system
+
+Configuring the build system
+((("build system, configuring")))
+is performed with the `./configure` command.
+
+:leveloffset: +1
+
+include::bs_build_groups.adoc[]
+
+:leveloffset: -1
+
+//

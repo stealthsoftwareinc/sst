@@ -1,0 +1,13 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bs_overview]]
+= Overview
+
+:fp_package_name: SST
+:fp_package_tarname: sst
+include::bs_main_overview_fragment.adoc[]
+
+//

@@ -1,0 +1,29 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_is_unsigned_integer,sst::is_unsigned_integer]]
+= The `sst::is_unsigned_integer` trait
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/type.h>
+namespace sst {
+
+template<class T>
+struct is_unsigned_integer {
+  constexpr bool value = /* ... */;
+};
+
+}
+----
+
+The `sst::is_unsigned_integer` class defines `value` to be `true` if `T`
+is a possibly cv-qualified unsigned integer type, or `false` if not.
+
+For more information, see `{ce_std_is_unsigned}` and
+`{ce_std_is_integral}`.
+
+//

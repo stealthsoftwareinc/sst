@@ -1,0 +1,25 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_SST_CPP_INLINE,SST_CPP_INLINE]]
+= The `SST_CPP_INLINE` macros
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/SST_CPP_INLINE.hpp[sst/catalog/SST_CPP_INLINE.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/language.h[sst/language.h]>
+
+#if <<cl_SST_CPP_OR_LATER,SST_CPP17_OR_LATER>>
+  #define SST_CPP17_INLINE inline
+#else
+  #define SST_CPP17_INLINE
+#endif
+----
+
+The `SST_CPP17_INLINE` macro expands to the `{ce_inline}` keyword if
+{cpp}17 or later is being used, or to nothing if not.
+
+//

@@ -1,0 +1,43 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_boxed,sst::boxed]]
+= The `sst::boxed` class
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/boxed.hpp[sst/catalog/boxed.hpp]>
+namespace sst {
+
+template<class T, class Tag>
+class boxed {
+public:
+
+  using value_type = T;
+
+  // Construction is forwarded to T.
+  template<class++...++ Args>
+  explicit boxed(Args &&++...++ args);
+
+  // Copy construction and assignment are intentionally implicit.
+  // Move construction and assignment are intentionally implicit.
+  // Destruction is intentionally implicit.
+
+  // Value retrieval.
+  explicit <<cl_SST_CPP_CONSTEXPR,SST_CPP14_CONSTEXPR>> operator T &() noexcept;
+  explicit constexpr operator T const &() const noexcept;
+  <<cl_SST_CPP_CONSTEXPR,SST_CPP14_CONSTEXPR>> T & value() noexcept;
+  constexpr T const & value() const noexcept;
+
+};
+
+}
+----
+
+The `sst::boxed` class holds a value of type `T` as a distinct type,
+allowing certain values of type `T` to be distinguished from others.
+
+//

@@ -1,0 +1,83 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Pointer Aliasing
+@chapter Pointer Aliasing
+
+@idindex @w{@t{SST_RESTRICT}}
+@noindent
+If the
+@w{@t{SST_RESTRICT}}
+macro is not defined when the
+@w{@t{sst/SST_RESTRICT.@:h}}
+header is first included, then the header defines it to either nothing
+or a qualifier that is equivalent to the
+@w{@t{restrict}}
+qualifier@.
+The SST headers are otherwise unaffected by the macro@.
+You may freely define and undefine the macro as desired@.
+
+@idindex @w{@t{sst_overlap}}
+@include indent.texi
+The following function determines whether two objects overlap:
+
+@example
+sst_bool sst_overlap(
+  void const * p,
+  size_t pn,
+  void const * q,
+  size_t qn
+);
+@end example
+
+@noindent
+If
+@w{@t{p}}
+does not point to an object nor one past the end of an object, then the
+behavior is undefined@.
+Otherwise, if
+@w{@t{p}}
+points to an object and the object does not contain at least
+@w{@t{pn}}
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{p}}
+points one past the end of a maximal object and
+@w{@t{pn}}
+is not zero, then the behavior is undefined@.
+Otherwise, if
+@w{@t{q}}
+does not point to an object nor one past the end of an object, then the
+behavior is undefined@.
+Otherwise, if
+@w{@t{q}}
+points to an object and the object does not contain at least
+@w{@t{qn}}
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{q}}
+points one past the end of a maximal object and
+@w{@t{qn}}
+is not zero, then the behavior is undefined@.
+Otherwise, the function returns
+@w{@t{SST_TRUE}}
+if
+@w{@t{pn}}
+and
+@w{@t{qn}}
+are not zero and the first
+@w{@t{pn}}
+bytes of the object pointed to by
+@w{@t{p}}
+overlap the first
+@w{@t{qn}}
+bytes of the object pointed to by
+@w{@t{q}},
+or
+@w{@t{SST_FALSE}}
+if not@.

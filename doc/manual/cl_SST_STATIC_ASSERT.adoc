@@ -1,0 +1,17 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_SST_STATIC_ASSERT,SST_STATIC_ASSERT]]
+= The `SST_STATIC_ASSERT` macro
+
+.C and {cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/language.h[sst/language.h]>
+
+#define SST_STATIC_ASSERT(_constant_expression_) ...
+----
+
+//

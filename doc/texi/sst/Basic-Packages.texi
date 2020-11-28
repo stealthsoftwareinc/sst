@@ -1,0 +1,25 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Basic Packages
+@chapter Basic Packages
+
+@cindex basic packages
+@cindex packages, basic
+@noindent
+SST provides three
+@i{basic packages}
+that form the foundation of building and installation@.
+
+@menu
+* Makefile Target Reference::
+@end menu
+
+@lowersections
+@include sst/Makefile-Target-Reference.texi
+@raisesections

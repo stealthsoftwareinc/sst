@@ -1,0 +1,13 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_uchar_msb,sst::uchar_msb]]
+= The `sst::uchar_msb` trait
+
+:x: uchar_msb
+:T: unsigned char
+include::cl_type_msb_blurb.adoc[]
+
+//

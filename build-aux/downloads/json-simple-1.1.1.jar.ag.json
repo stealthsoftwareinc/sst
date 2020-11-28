@@ -1,0 +1,18 @@
+{
+  "handler": "sst_ajh_download",
+
+  "hashes": {
+    "md5": "5cc2c478d73e8454b4c369cee66c5bc7",
+    "sha1": "c9ad4a0850ab676c5c64461a05ca524cdfff59f1",
+    "sha224": "87d203ae8cc77126b4ca95e372ef48aad8e5a87dd1888ab97cabc71a",
+    "sha256": "4e69696892b88b41c55d49ab2fdcc21eead92bf54acc588c0050596c3b75199c",
+    "sha384": "cec0c65bc033bf449a9214c37f4a4f1b8e6d90120cc613b677cfbe92f2b7bb68285d1d910146f1fd7ea7c622f898dcb5",
+    "sha512": "f8798bfbcc8ab8001baf90ce47ec2264234dc1da2d4aa97fdcdc0990472a6b5a5a32f828e776140777d598a99d8a0c0f51c6d0767ae1a829690ab9200ae35742"
+  },
+  "urls": [
+    "https://repo1.maven.org/maven2/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
+    "https://repo.maven.apache.org/maven2/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
+    "https://repo.jfrog.org/artifactory/repo1/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
+    "https://repo.jenkins-ci.org/repo1/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar"
+  ]
+}

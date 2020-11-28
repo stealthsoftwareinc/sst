@@ -1,0 +1,25 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_type_utilities]]
+= Type utilities
+
+:leveloffset: +1
+
+include::cl_sst_remove_cvref.adoc[]
+include::cl_sst_is_signed_integer.adoc[]
+include::cl_sst_is_unsigned_integer.adoc[]
+include::cl_sst_is_twos_complement.adoc[]
+include::cl_sst_is_ones_complement.adoc[]
+include::cl_sst_is_sign_magnitude.adoc[]
+include::cl_sst_is_bool.adoc[]
+include::cl_sst_is_non_bool_integer.adoc[]
+include::cl_sst_is_exact_width_integer.adoc[]
+include::cl_sst_is_little_endian.adoc[]
+include::cl_sst_is_big_endian.adoc[]
+
+:leveloffset: -1
+
+//

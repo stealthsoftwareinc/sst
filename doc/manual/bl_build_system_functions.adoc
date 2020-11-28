@@ -1,0 +1,16 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+[[bl_build_system_functions]]
+= Build system functions
+
+:leveloffset: +1
+
+include::bl_sst_am_distribute.adoc[]
+include::bl_sst_ajh_build_tree_program_wrapper.adoc[]
+include::bl_sst_ajh_asciidoctor_document.adoc[]
+
+:leveloffset: -1
+
+//

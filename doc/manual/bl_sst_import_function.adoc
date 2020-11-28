@@ -1,0 +1,15 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_import_function,sst_import_function]]
+= The `sst_import_function` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_import_function **[**<name>**...]**
+----
+
+//

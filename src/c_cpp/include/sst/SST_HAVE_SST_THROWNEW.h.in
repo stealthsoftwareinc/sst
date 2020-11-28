@@ -1,0 +1,36 @@
+/*
+ * For the copyright information for this file, please search up the
+ * directory tree for the first COPYING file.
+ */
+
+/**
+ * @AT@file
+ *
+ * Defines the
+ * <code>::SST_HAVE_SST_THROWNEW</code>
+ * macro.
+ *
+ * @AT@since SST&nbsp;X.X.X (XXXX-XX-XX)
+ */
+
+#ifndef SST_SST_HAVE_SST_THROWNEW_H
+#define SST_SST_HAVE_SST_THROWNEW_H
+
+/**
+ *
+ * @AT@since SST&nbsp;X.X.X (XXXX-XX-XX)
+ *
+ * @AT@showinitializer
+ */
+
+#ifndef SST_DOXYGEN
+
+#define SST_HAVE_SST_THROWNEW @SST_HAVE_SST_THROWNEW@
+
+#else
+
+#define SST_HAVE_SST_THROWNEW ...
+
+#endif
+
+#endif

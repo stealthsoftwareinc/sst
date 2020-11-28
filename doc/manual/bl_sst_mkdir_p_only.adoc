@@ -1,0 +1,19 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_mkdir_p_only,sst_mkdir_p_only]]
+= The `sst_mkdir_p_only` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_mkdir_p_only ++**[**<file>**...]**
+----
+
+The `sst_mkdir_p_only` function creates any missing parent directories
+of each `<file>`.
+If no `<file>` arguments are given, no action is taken.
+
+//

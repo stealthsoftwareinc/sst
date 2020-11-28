@@ -1,0 +1,68 @@
+##
+## For the copyright information for this file, please search up the
+## directory tree for the first COPYING file.
+##
+
+## begin_includes
+
+include $(srcdir)/../include/src/sst_status_map.inc.am
+
+## end_includes
+
+## begin_rules
+
+all-local: include/src/sst_status_map.inc
+
+include/src/sst_status_map.inc: ../include/src/sst_status_map.inc.ac
+include/src/sst_status_map.inc: ../include/src/sst_status_map.inc.am
+	$(AM_V_GEN)$(GATBPS_RECIPE_MARKER_TOP)
+	$(AM_V_at)'rm' \
+  '-f' \
+  'include/src/sst_status_map.inc' \
+  'include/src/sst_status_map.inc.tmp' \
+;
+	$(AM_V_at)$(MKDIR_P) \
+  'include/src' \
+;
+	$(AM_V_at){ \
+  ( \
+    generator='bin/sst_status_map_generator'$(EXEEXT); \
+    $(GATBPS_VPATH_SEARCH_TOP) \
+      "$${generator}" \
+    $(GATBPS_VPATH_SEARCH_BOT); \
+    d=$(GATBPS_VPATH_SEARCH_RESULT); \
+    generator="$${d}"'/'"$${generator}"; \
+    'readonly' 'generator'; \
+    "$${generator}" \
+      1>'include/src/sst_status_map.inc.tmp' \
+    || 'exit' "$${?}"; \
+    'mv' \
+      'include/src/sst_status_map.inc.tmp' \
+      'include/src/sst_status_map.inc' \
+    || 'exit' "$${?}"; \
+    'exit' '0'; \
+  :;); \
+  s="$${?}"; \
+  'readonly' 's'; \
+  case "$${s}" in \
+    '0') \
+    ;; \
+    *) \
+      'rm' \
+        '-f' \
+        'include/src/sst_status_map.inc' \
+        'include/src/sst_status_map.inc.tmp' \
+      ; \
+    ;; \
+  esac; \
+  'exit' "$${s}"; \
+:;}
+	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+
+## end_rules
+
+## begin_variables
+
+MOSTLYCLEANFILES += include/src/sst_status_map.inc
+
+## end_variables

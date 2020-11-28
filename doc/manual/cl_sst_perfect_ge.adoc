@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_perfect_ge,sst::perfect_ge]]
+= The `sst::perfect_ge` function
+
+:f: perfect_ge
+:r: greater than or equal to
+:o: >=
+include::cl_perfect_comparison_blurb.adoc[]
+
+//

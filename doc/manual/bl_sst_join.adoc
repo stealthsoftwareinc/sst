@@ -1,0 +1,19 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_join,sst_join]]
+= The `sst_join` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_join ++**[**++<arg>++**...]**
+----
+
+The `sst_join` function writes the space-separated concatenation of the
+arguments to standard output in `<<bl_sst_csf>>` form.
+If no arguments are given, the concatenation is the empty string.
+
+//

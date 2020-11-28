@@ -1,0 +1,24 @@
+##
+## For the copyright information for this file, please search up the
+## directory tree for the first COPYING file.
+##
+
+## begin_variables
+
+bin_sst_status_map_generator_CFLAGS = \
+  $(AM_CFLAGS) \
+  $(EXE_CFLAGS) \
+$(prevent_an_empty_line)
+
+bin_sst_status_map_generator_LDFLAGS = \
+  $(AM_LDFLAGS) \
+  $(EXE_LDFLAGS) \
+$(prevent_an_empty_line)
+
+bin_sst_status_map_generator_SOURCES =
+bin_sst_status_map_generator_SOURCES += src/c_cpp/lib/sst_status_list.c
+bin_sst_status_map_generator_SOURCES += src/sst_status_map_generator.c
+
+noinst_PROGRAMS += bin/sst_status_map_generator
+
+## end_variables

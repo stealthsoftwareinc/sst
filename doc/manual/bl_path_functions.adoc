@@ -1,0 +1,16 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_path_functions]]
+= Path functions
+
+:leveloffset: +1
+
+include::bl_sst_dot_slash.adoc[]
+include::bl_sst_get_prefix.adoc[]
+
+:leveloffset: -1
+
+//

@@ -1,0 +1,29 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_is_signed_integer,sst::is_signed_integer]]
+= The `sst::is_signed_integer` trait
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/type.h>
+namespace sst {
+
+template<class T>
+struct is_signed_integer {
+  constexpr bool value = /* ... */;
+};
+
+}
+----
+
+The `sst::is_signed_integer` class defines `value` to be `true` if `T`
+is a possibly cv-qualified signed integer type, or `false` if not.
+
+For more information, see `{ce_std_is_signed}` and
+`{ce_std_is_integral}`.
+
+//

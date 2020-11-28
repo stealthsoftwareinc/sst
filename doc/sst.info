@@ -1,0 +1,1703 @@
+This is sst.info, produced by makeinfo version 6.5 from sst.texi.
+
+This manual is from the SST package.
+
+The following copyright notice is generally applicable:
+
+     Copyright © Stealth Software Technologies, Inc.
+
+The full copyright information depends on the distribution of the
+package.  For more information, see the introductory Copyright
+Information section.
+INFO-DIR-SECTION Stealth Software Technologies
+START-INFO-DIR-ENTRY
+* SST: (sst).                   SST.
+END-INFO-DIR-ENTRY
+
+
+File: sst.info,  Node: Top,  Next: Copyright Information,  Up: (dir)
+
+SST 0.11.0 Manual
+*****************
+
+This manual is for SST 0.11.0, which was released on 2020-11-28.
+
+* Menu:
+
+* Copyright Information::
+* Introduction::
+* Building and Installation::
+* Bit Values::
+* Boolean Values::
+* Status Codes::
+* Pointer Aliasing::
+* Bit Operations::
+* Concurrency Primitives::
+* OpenSSL Tools::
+* Release Notes::
+* Concept Index::
+* Identifier Index::
+
+
+File: sst.info,  Node: Copyright Information,  Next: Introduction,  Prev: Top,  Up: Top
+
+Copyright Information
+*********************
+
+Unless otherwise stated, all content of the SST package is copyright of
+Stealth Software Technologies, Inc.  All rights reserved.
+
+
+File: sst.info,  Node: Introduction,  Next: Building and Installation,  Prev: Copyright Information,  Up: Top
+
+1 Introduction
+**************
+
+SST is a software package that provides basic utilities for other
+software packages developed by Stealth Software Technologies, Inc.
+
+
+File: sst.info,  Node: Building and Installation,  Next: Bit Values,  Prev: Introduction,  Up: Top
+
+2 Building and Installation
+***************************
+
+* Menu:
+
+* Basic Packages::
+* Managed Packages::
+
+
+File: sst.info,  Node: Basic Packages,  Next: Managed Packages,  Up: Building and Installation
+
+2.1 Basic Packages
+==================
+
+SST provides three basic packages that form the foundation of building
+and installation.
+
+* Menu:
+
+* Makefile Target Reference::
+
+
+File: sst.info,  Node: Makefile Target Reference,  Up: Basic Packages
+
+2.1.1 Makefile Target Reference
+-------------------------------
+
+
+File: sst.info,  Node: Managed Packages,  Prev: Basic Packages,  Up: Building and Installation
+
+2.2 Managed Packages
+====================
+
+There are no managed packages yet.
+
+
+File: sst.info,  Node: Bit Values,  Next: Boolean Values,  Prev: Building and Installation,  Up: Top
+
+3 Bit Values
+************
+
+The sst_bit type is a synonym for the int type that represents a bit
+value.  Any nonzero value represents the one bit, and zero represents
+the zero bit.  This type is only intended to be a hint to the reader,
+not to be a fundamentally new type.  When the reader sees “sst_bit”,
+they should think “int holding a bit value”.
+
+   If a bit value is known to only possibly have value one or zero, then
+it is called a clean bit value.  Otherwise, it is called a dirty bit
+value.  It is conventional for functions to accept dirty bit values and
+to only produce clean bit values.
+
+
+File: sst.info,  Node: Boolean Values,  Next: Status Codes,  Prev: Bit Values,  Up: Top
+
+4 Boolean Values
+****************
+
+The sst_bool type is a synonym for the int type that represents a
+boolean value.  Any nonzero value represents the true value, and zero
+represents the false value.  This type is only intended to be a hint to
+the reader, not to be a fundamentally new type.  When the reader sees
+“sst_bool”, they should think “int holding a boolean value”.
+
+   The SST_TRUE macro expands to the integer constant 1, and the
+SST_FALSE macro expands to the integer constant 0.  If a boolean value
+is known to only possibly have value one or zero, then it is called a
+clean boolean value.  Otherwise, it is called a dirty boolean value.  It
+is conventional for functions to accept dirty boolean values and to only
+produce clean boolean values.
+
+
+File: sst.info,  Node: Status Codes,  Next: Pointer Aliasing,  Prev: Boolean Values,  Up: Top
+
+5 Status Codes
+**************
+
+SST provides a set of status codes that can be used for function return
+values.
+
+* Menu:
+
+* Status Code Names and Values::
+* Status Code Meanings::
+* Custom Status Codes::
+* Using Status Codes in Strings::
+* Status Code Reference::
+
+
+File: sst.info,  Node: Status Code Names and Values,  Next: Status Code Meanings,  Up: Status Codes
+
+5.1 Status Code Names and Values
+================================
+
+Each status code has a name and a value.  Each name is at most 63
+characters long and is defined as a macro that expands to a decimal
+integer constant with a UL suffix and the corresponding value.  There
+are n status codes in total, where 1 ≤ n ≤ 2^31, and their values are 0
+to n − 1.  The values are conventionally held with the sst_status type,
+which is a synonym for the unsigned long int type.  The
+SST_STATUS_MAXVAL macro expands to a decimal integer constant with a UL
+suffix and value n − 1, and the SST_STATUS_MAXVAL_MAXVAL macro expands
+to a decimal integer constant with a UL suffix and value 2^31 − 1.
+
+   The following function maps the value of a status code to the name of
+the status code:
+
+     char const * sst_status_name(
+       sst_status s
+     );
+
+If s is larger than SST_STATUS_MAXVAL, then the function restarts and
+behaves as if s were SST_UNKNOWN.  Otherwise, the function returns a
+pointer to a string with static storage duration that holds the name of
+the status code.  If the program attempts to modify the string, then the
+behavior is undefined.
+
+   The following function maps the name of a status code to the value of
+the status code:
+
+     sst_status sst_status_value(
+       char const * s
+     );
+
+If s is a null pointer, then the function returns SST_UNKNOWN.
+Otherwise, if s does not point to a string, then the behavior is
+undefined.  Otherwise, if the string does not hold the name of a status
+code, then the function returns SST_UNKNOWN.  Otherwise, the function
+returns the value of the status code.
+
+
+File: sst.info,  Node: Status Code Meanings,  Next: Custom Status Codes,  Prev: Status Code Names and Values,  Up: Status Codes
+
+5.2 Status Code Meanings
+========================
+
+Each status code has a conventional meaning, but each function
+ultimately defines its own meaning for the status codes that it returns.
+The conventional meanings organize the status codes into a disconnected
+directed graph where there is an edge from s1 to s2 if the conventional
+meaning of s1 implies the conventional meaning of s2.  In this case, s1
+is said to imply s2.  The graph is acyclic except that every vertex has
+a loop.
+
+   The following function determines whether one status code implies
+another:
+
+     sst_bool sst_status_implies(
+       sst_status s1,
+       sst_status s2
+     );
+
+If s1 or s2 is larger than SST_STATUS_MAXVAL, then the function returns
+SST_FALSE.  Otherwise, the function returns SST_TRUE if s1 implies s2,
+or SST_FALSE if not.
+
+
+File: sst.info,  Node: Custom Status Codes,  Next: Using Status Codes in Strings,  Prev: Status Code Meanings,  Up: Status Codes
+
+5.3 Custom Status Codes
+=======================
+
+Values larger than SST_STATUS_MAXVAL_MAXVAL can be used for custom
+status codes.
+
+
+File: sst.info,  Node: Using Status Codes in Strings,  Next: Status Code Reference,  Prev: Custom Status Codes,  Up: Status Codes
+
+5.4 Using Status Codes in Strings
+=================================
+
+The SST_STATUS_NAME_MAXLEN macro expands to the integer constant 63, and
+the SST_STATUS_NAME_MAXSTR macro expands to a character string literal
+with length 63.  These macros can be used when computing the maximum
+possible length of a string that contains a status code name.
+
+   The SST_STATUS_VALUE_MAXLEN macro expands to the integer constant 10,
+and the SST_STATUS_VALUE_MAXSTR macro expands to a character string
+literal with length 10.  These macros can be used when computing the
+maximum possible length of a string that contains a status code value.
+Note that 10 is the number of decimal digits in the minimum value of
+ULONG_MAX.
+
+
+File: sst.info,  Node: Status Code Reference,  Prev: Using Status Codes in Strings,  Up: Status Codes
+
+5.5 Status Code Reference
+=========================
+
+This section lists the status codes and their conventional meanings.
+The list follows.
+
+0 = SST_SUCCESS
+     The SST_SUCCESS status code is returned when a function succeeds.
+
+1 = SST_UNKNOWN
+     The SST_UNKNOWN status code is returned by the sst_status_name and
+     sst_status_value functions when they are given invalid arguments.
+
+2 = SST_FAILURE
+     The SST_FAILURE status code is returned when a function fails.
+
+3 = SST_INVALID_ARGUMENT
+     The SST_INVALID_ARGUMENT status code is returned when a function is
+     called incorrectly.  The notion of arguments includes all objects
+     accessed by the function regardless of whether they are accessed
+     through the formal arguments.  The notion of arguments may also
+     include values that are computed from other arguments.  For
+     example, an array of pointers that is terminated with a null
+     pointer may be considered to introduce a computed argument that
+     specifies the number of elements in the array.
+
+4 = SST_INVALID_OPERATION
+     The SST_INVALID_OPERATION status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     informal argument had a different value.
+
+5 = SST_NOT_IMPLEMENTED
+     The SST_NOT_IMPLEMENTED status code is returned when part of a
+     function is not yet implemented.
+
+6 = SST_NOT_SUPPORTED
+     The SST_NOT_SUPPORTED status code is returned when part of a
+     function is not supported because of system limitations or package
+     configuration options.
+
+7 = SST_OUT_OF_MEMORY
+     The SST_OUT_OF_MEMORY status code is returned when a memory
+     allocation fails.
+
+8 = SST_WILD_POINTER
+     The SST_WILD_POINTER status code is returned when a nonnull pointer
+     argument does not appear to be pointing to an object of an
+     appropriate type.
+
+9 = SST_NULL_POINTER
+     The SST_NULL_POINTER status code is returned when a function is
+     called incorrectly and the call could be more correct if a null
+     pointer argument had a different value.
+
+10 = SST_INTERNAL_ERROR
+     The SST_INTERNAL_ERROR status code is returned when a function
+     detects a bug.
+
+11 = SST_MISSING_CASE
+     The SST_MISSING_CASE status code is returned when a function
+     detects a missing case in a switch statement or any similar
+     construction.
+
+12 = SST_INVALID_ALIASING
+     The SST_INVALID_ALIASING status code is returned when a function is
+     called incorrectly and the call could be more correct if a nonnull
+     pointer argument whose pointed object incorrectly overlaps or
+     incorrectly does not overlap another argument had a different
+     value.
+
+13 = SST_OUT_OF_RANGE
+     The SST_OUT_OF_RANGE status code is returned when an integer output
+     value is too large in magnitude for the output type.
+
+14 = SST_INVALID_POINTER
+     The SST_INVALID_POINTER status code is returned when a function is
+     called incorrectly and the call could be more correct if a pointer
+     argument had a different value.
+
+15 = SST_NONNULL_POINTER
+     The SST_NONNULL_POINTER status code is returned when a function is
+     called incorrectly and the call could be more correct if a nonnull
+     pointer argument had a different value.
+
+16 = SST_INTEGER_OVERFLOW
+     The SST_INTEGER_OVERFLOW status code is returned when a function
+     fails because an integer value was too large in magnitude.
+
+17 = SST_INVALID_ARRAY_SIZE
+     The SST_INVALID_ARRAY_SIZE status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that specifies the number of elements in an array had a
+     different value.
+
+18 = SST_INVALID_LIST_SIZE
+     The SST_INVALID_LIST_SIZE status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that specifies the number of elements in an ordered
+     collection had a different value.
+
+19 = SST_INVALID_LIST_INDEX
+     The SST_INVALID_LIST_INDEX status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that indexes an ordered collection had a different value.
+
+20 = SST_INVALID_ARRAY_INDEX
+     The SST_INVALID_ARRAY_INDEX status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that indexes an array had a different value.
+
+21 = SST_NEGATIVE_LIST_SIZE
+     The SST_NEGATIVE_LIST_SIZE status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that specifies the number of elements in an ordered
+     collection were not negative.
+
+22 = SST_ZERO_LIST_SIZE
+     The SST_ZERO_LIST_SIZE status code is returned when a function is
+     called incorrectly and the call could be more correct if an
+     argument that specifies the number of elements in an ordered
+     collection were not zero.
+
+23 = SST_NEGATIVE_ARRAY_SIZE
+     The SST_NEGATIVE_ARRAY_SIZE status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that specifies the number of elements in an array were not
+     negative.
+
+24 = SST_ZERO_ARRAY_SIZE
+     The SST_ZERO_ARRAY_SIZE status code is returned when a function is
+     called incorrectly and the call could be more correct if an
+     argument that specifies the number of elements in an array were not
+     zero.
+
+25 = SST_NEGATIVE_LIST_INDEX
+     The SST_NEGATIVE_LIST_INDEX status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that indexes an ordered collection were not negative.
+
+26 = SST_NEGATIVE_ARRAY_INDEX
+     The SST_NEGATIVE_ARRAY_INDEX status code is returned when a
+     function is called incorrectly and the call could be more correct
+     if an argument that indexes an array were not negative.
+
+27 = SST_OVERSIZE_LIST_INDEX
+     The SST_OVERSIZE_LIST_INDEX status code is returned when a function
+     is called incorrectly and the call could be more correct if an
+     argument that indexes an ordered collection were smaller in
+     magnitude.
+
+28 = SST_OVERSIZE_ARRAY_INDEX
+     The SST_OVERSIZE_ARRAY_INDEX status code is returned when a
+     function is called incorrectly and the call could be more correct
+     if an argument that indexes an array were smaller in magnitude.
+
+29 = SST_MISSING_LIST_SENTINEL
+     The SST_MISSING_LIST_SENTINEL status code is returned when a
+     function is called incorrectly and the call could be more correct
+     if an ordered collection argument contained a sentinel value.
+
+30 = SST_MISSING_ARRAY_SENTINEL
+     The SST_MISSING_ARRAY_SENTINEL status code is returned when a
+     function is called incorrectly and the call could be more correct
+     if an array argument contained a sentinel value.
+
+31 = SST_ZERO_LIST_INDEX
+     The SST_ZERO_LIST_INDEX status code is returned when a function is
+     called incorrectly and the call could be more correct if an
+     argument that indexes an ordered collection were not zero.
+
+32 = SST_ZERO_ARRAY_INDEX
+     The SST_ZERO_ARRAY_INDEX status code is returned when a function is
+     called incorrectly and the call could be more correct if an
+     argument that indexes an array were not zero.
+
+33 = SST_PARSE_FAILURE
+     The SST_PARSE_FAILURE status code is returned when a parser is
+     given invalid input.
+
+     Note that this status code does not imply the SST_INVALID_ARGUMENT
+     status code.
+
+34 = SST_ALWAYS_FAILS
+     The SST_ALWAYS_FAILS status code is returned by functions that
+     always fail.
+
+35 = SST_LONGPTR_NOT_SUPPORTED
+     The SST_LONGPTR_NOT_SUPPORTED status code is returned when a
+     function is not supported because native pointers cannot be
+     represented by the long Java type.
+
+36 = SST_INVALID_OPTION
+     The SST_INVALID_OPTION status code is returned when a main-like
+     function is given an invalid command-line option.
+
+37 = SST_INVALID_OPTION_NAME
+     The SST_INVALID_OPTION_NAME status code is returned when a
+     main-like function is given a command-line option with an invalid
+     name.
+
+38 = SST_INVALID_OPTION_VALUE
+     The SST_INVALID_OPTION_VALUE status code is returned when a
+     main-like function is given a command-line option with an invalid
+     value.
+
+39 = SST_ALLOCATION_FAILED
+     The SST_ALLOCATION_FAILED status code is returned when a memory
+     allocation fails because the underlying allocation request failed.
+
+40 = SST_ALLOCATION_IMPOSSIBLE
+     The SST_ALLOCATION_IMPOSSIBLE status code is returned when a memory
+     allocation fails because the size is too large to make the
+     underlying allocation request.
+
+41 = SST_MISSING_OPTION_VALUE
+     The SST_MISSING_OPTION_VALUE status code is returned when a
+     main-like function is given a command-line option that requires but
+     is missing a value.
+
+42 = SST_LIMIT_EXCEEDED
+     The SST_LIMIT_EXCEEDED status code is returned when a function
+     fails because an implementation limit was exceeded.
+
+     This status code is similar to the SST_NOT_IMPLEMENTED status code.
+     The rule of thumb is that SST_NOT_IMPLEMENTED means that the
+     unimplemented feature is planned to be implemented, while
+     SST_LIMIT_EXCEEDED means that the feature is not necessarily
+     planned to be implemented.
+
+43 = SST_INVALID_OPERAND
+     The SST_INVALID_OPERAND status code is returned when a main-like
+     function is given an invalid command-line operand.
+
+
+File: sst.info,  Node: Pointer Aliasing,  Next: Bit Operations,  Prev: Status Codes,  Up: Top
+
+6 Pointer Aliasing
+******************
+
+If the SST_RESTRICT macro is not defined when the sst/SST_RESTRICT.h
+header is first included, then the header defines it to either nothing
+or a qualifier that is equivalent to the restrict qualifier.  The SST
+headers are otherwise unaffected by the macro.  You may freely define
+and undefine the macro as desired.
+
+   The following function determines whether two objects overlap:
+
+     sst_bool sst_overlap(
+       void const * p,
+       size_t pn,
+       void const * q,
+       size_t qn
+     );
+
+If p does not point to an object nor one past the end of an object, then
+the behavior is undefined.  Otherwise, if p points to an object and the
+object does not contain at least pn bytes, then the behavior is
+undefined.  Otherwise, if p points one past the end of a maximal object
+and pn is not zero, then the behavior is undefined.  Otherwise, if q
+does not point to an object nor one past the end of an object, then the
+behavior is undefined.  Otherwise, if q points to an object and the
+object does not contain at least qn bytes, then the behavior is
+undefined.  Otherwise, if q points one past the end of a maximal object
+and qn is not zero, then the behavior is undefined.  Otherwise, the
+function returns SST_TRUE if pn and qn are not zero and the first pn
+bytes of the object pointed to by p overlap the first qn bytes of the
+object pointed to by q, or SST_FALSE if not.
+
+
+File: sst.info,  Node: Bit Operations,  Next: Concurrency Primitives,  Prev: Pointer Aliasing,  Up: Top
+
+7 Bit Operations
+****************
+
+* Menu:
+
+* Basic Bit Operations::
+* Arbitrarily Packed Bit Operations::
+* Fully Packed Bit Operations::
+* Portably Packed Bit Operations::
+* Unpacked Bit Operations::
+
+
+File: sst.info,  Node: Basic Bit Operations,  Next: Arbitrarily Packed Bit Operations,  Up: Bit Operations
+
+7.1 Basic Bit Operations
+========================
+
+Let C : {0} → {0, 1} be one of the following functions:
+
+     C      C(0)
+     --------------
+     clr0   0
+     one0   1
+
+   The following function computes C(0):
+
+     sst_bit sst_bitC1(
+       void
+     );
+
+The function returns C(0).
+
+   Let G : {0, 1} → {0, 1} be one of the following functions:
+
+     G     G(0)   G(1)
+     --------------------
+     clr   0      0
+     cpy   0      1
+     not   1      0
+     one   1      1
+
+   The following function computes G(x):
+
+     sst_bit sst_bitG1(
+       sst_bit s1
+     );
+
+The function returns G(x) where x is 0 if s1 is zero or 1 if not.
+
+   Let H : {0, 1}^2 → {0, 1} be one of the following functions:
+
+     H      H(0, 0)   H(0, 1)   H(1, 0)   H(1, 1)
+     -----------------------------------------------
+     clr2   0         0         0         0
+     and    0         0         0         1
+     xgty   0         0         1         0
+     cpyx   0         0         1         1
+     xlty   0         1         0         0
+     cpyy   0         1         0         1
+     xor    0         1         1         0
+     or     0         1         1         1
+     nor    1         0         0         0
+     xnor   1         0         0         1
+     noty   1         0         1         0
+     xgey   1         0         1         1
+     notx   1         1         0         0
+     xley   1         1         0         1
+     nand   1         1         1         0
+     one2   1         1         1         1
+
+   The following function computes H(x, y):
+
+     sst_bit sst_bitH1(
+       sst_bit s1,
+       sst_bit s2
+     );
+
+The function returns H(x, y) where x is 0 if s1 is zero or 1 if not and
+y is 0 if s2 is zero or 1 if not.
+
+
+File: sst.info,  Node: Arbitrarily Packed Bit Operations,  Next: Fully Packed Bit Operations,  Prev: Basic Bit Operations,  Up: Bit Operations
+
+7.2 Arbitrarily Packed Bit Operations
+=====================================
+
+Let k be an integer between 1 and CHAR_BIT.  A byte whose most
+significant CHAR_BIT − k bits are ignored and whose remaining k bits are
+considered to be ordered from most to least significant is called a byte
+with packing width k or a k-packed byte.  Note that a k-packed byte
+holds k bits and that an n-element array of k-packed bytes holds n ⋅ k
+bits.  A k-packed byte may also be called an arbitrarily packed byte
+when the intent is clear from context.
+
+   The following function retrieves one bit of an arbitrarily packed
+byte:
+
+     sst_bit sst_getapb1(
+       unsigned char s1,
+       size_t k1,
+       size_t r1
+     );
+
+If k1 is zero, k1 > CHAR_BIT, or r1 ≥ k1, then the behavior is
+undefined.  Otherwise, the function returns the first bit past the first
+r1 bits of the k1-packed byte s1.
+
+   The following function sets one bit of an arbitrarily packed byte:
+
+     unsigned char sst_setapb1(
+       unsigned char s1,
+       size_t k1,
+       size_t r1,
+       sst_bit s2
+     );
+
+If k1 is zero, k1 > CHAR_BIT, or r1 ≥ k1, then the behavior is
+undefined.  Otherwise, the function sets the first bit past the first r1
+bits of the k1-packed byte s1 to s2 and returns the result.
+
+
+File: sst.info,  Node: Fully Packed Bit Operations,  Next: Portably Packed Bit Operations,  Prev: Arbitrarily Packed Bit Operations,  Up: Bit Operations
+
+7.3 Fully Packed Bit Operations
+===============================
+
+The following function retrieves one bit of a byte:
+
+     sst_bit sst_getbit1(
+       unsigned char s1,
+       size_t r1
+     );
+
+If r1 ≥ CHAR_BIT, then the behavior is undefined.  Otherwise, the
+function returns the first bit past the first r1 bits of s1.  The bits
+are ordered from most to least significant.
+
+   The following function sets one bit of a byte:
+
+     unsigned char sst_setbit1(
+       unsigned char s1,
+       size_t r1,
+       sst_bit s2
+     );
+
+If r1 ≥ CHAR_BIT, then the behavior is undefined.  Otherwise, the
+function sets the first bit past the first r1 bits of s1 to 0 if s2 is
+zero or 1 if not and returns the result.  The bits are ordered from most
+to least significant.
+
+   The following function retrieves one bit of an object:
+
+     sst_bit sst_getbit(
+       void const * s1,
+       size_t n1,
+       size_t r1
+     );
+
+If s1 does not point to an object or the object does not contain at
+least the following number of bytes, then the behavior is undefined:
+
+     ⌈(n1 ⋅ CHAR_BIT + r1 + 1) ∕ CHAR_BIT⌉
+
+Otherwise, the function returns the first bit past the first
+n1 ⋅ CHAR_BIT + r1 bits of the object.  The bits within each byte are
+ordered from most to least significant.
+
+   The following function sets one bit of an object:
+
+     void sst_setbit(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       sst_bit s2
+     );
+
+If s1 does not point to an object or the object does not contain at
+least the following number of bytes, then the behavior is undefined:
+
+     ⌈(n1 ⋅ CHAR_BIT + r1 + 1) ∕ CHAR_BIT⌉
+
+Otherwise, the function sets the first bit past the first
+n1 ⋅ CHAR_BIT + r1 bits of the object to 0 if s2 is zero or 1 if not.
+The bits within each byte are ordered from most to least significant.
+
+   The following function applies C to the bits of a byte:
+
+     unsigned char sst_memC1(
+       void
+     );
+
+The function returns a byte with each bit set to C(0).
+
+   The following function applies C to the bits of an object with byte
+granularity:
+
+     void sst_memC(
+       void * s1,
+       size_t n1,
+       size_t n
+     );
+
+If s1 does not point to an object or the object does not contain at
+least n1 + n bytes, then the behavior is undefined.  Otherwise, if n is
+zero, then the function returns.  Otherwise, the function sets each bit
+of the first n bytes past the first n1 bytes of the object pointed to by
+s1 to C(0).
+
+   The following function applies C to the bits of an object with bit
+granularity:
+
+     void sst_bitC(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       size_t n,
+       size_t r
+     );
+
+If s1 does not point to an object or the object does not contain at
+least the following number of bytes, then the behavior is undefined:
+
+     ⌈(n1 ⋅ CHAR_BIT + r1 + n ⋅ CHAR_BIT + r) ∕ CHAR_BIT⌉
+
+Otherwise, if n is zero and r is zero, then the function returns.
+Otherwise, the function sets each of the first n ⋅ CHAR_BIT + r bits
+past the first n1 ⋅ CHAR_BIT + r1 bits of the object pointed to by s1 to
+C(0).  The bits within each byte are ordered from most to least
+significant.
+
+   The following function applies G to the bits of a byte:
+
+     unsigned char sst_memG1(
+       unsigned char s1
+     );
+
+The function returns a byte with each bit set to G(x) where x is the
+corresponding bit of s1.
+
+   The following three functions apply G to the bits of an object with
+byte granularity:
+
+     void sst_memG(
+       void * s1,
+       size_t n1,
+       void const * s2,
+       size_t n2,
+       size_t n
+     );
+
+     void sst_memGf(
+       void * s1,
+       size_t n1,
+       void const * s2,
+       size_t n2,
+       size_t n
+     );
+
+     void sst_memGb(
+       void * s1,
+       size_t n1,
+       void const * s2,
+       size_t n2,
+       size_t n
+     );
+
+If s1 does not point to an object or the object does not contain at
+least n1 + n bytes, then the behavior is undefined.  Otherwise, if s2
+does not point to an object or the object does not contain at least
+n2 + n bytes, then the behavior is undefined.  Otherwise, if n is zero,
+then each function returns.  Otherwise, each function sets each bit of
+the first n bytes past the first n1 bytes of the object pointed to by s1
+to G(x) where x is the corresponding bit past the first n2 bytes of the
+object pointed to by s2.  For the sst_memG function, if the affected
+bytes of the objects overlap, then the behavior is undefined.  For the
+sst_memGf function, if the affected bytes of the objects overlap and the
+intersection excludes the first affected byte of the object pointed to
+by s2, then the behavior is undefined.  For the sst_memGb function, if
+the affected bytes of the objects overlap and the intersection excludes
+the first affected byte of the object pointed to by s1, then the
+behavior is undefined.
+
+   The following three functions apply G to the bits of an object with
+bit granularity:
+
+     void sst_bitG(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       void const * s2,
+       size_t n2,
+       size_t r2,
+       size_t n,
+       size_t r
+     );
+
+     void sst_bitGf(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       void const * s2,
+       size_t n2,
+       size_t r2,
+       size_t n,
+       size_t r
+     );
+
+     void sst_bitGb(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       void const * s2,
+       size_t n2,
+       size_t r2,
+       size_t n,
+       size_t r
+     );
+
+If s1 does not point to an object or the object does not contain at
+least the following number of bytes, then the behavior is undefined:
+
+     ⌈(n1 ⋅ CHAR_BIT + r1 + n ⋅ CHAR_BIT + r) ∕ CHAR_BIT⌉
+
+Otherwise, if s2 does not point to an object or the object does not
+contain at least the following number of bytes, then the behavior is
+undefined:
+
+     ⌈(n2 ⋅ CHAR_BIT + r2 + n ⋅ CHAR_BIT + r) ∕ CHAR_BIT⌉
+
+Otherwise, if n is zero and r is zero, then each function returns.
+Otherwise, each function sets each of the first n ⋅ CHAR_BIT + r bits
+past the first n1 ⋅ CHAR_BIT + r1 bits of the object pointed to by s1 to
+G(x) where x is the corresponding bit past the first n2 ⋅ CHAR_BIT + r2
+bits of the object pointed to by s2.  The bits within each byte are
+ordered from most to least significant.  For the sst_bitG function, if
+the affected bytes of the objects overlap, then the behavior is
+undefined.  For the sst_bitGf function, if the affected bits of the
+objects overlap and the intersection excludes the first affected bit of
+the object pointed to by s2, then the behavior is undefined.  For the
+sst_bitGb function, if the affected bits of the objects overlap and the
+intersection excludes the first affected bit of the object pointed to by
+s1, then the behavior is undefined.
+
+   The following function applies H to the bits of two bytes:
+
+     unsigned char sst_memH1(
+       unsigned char s1,
+       unsigned char s2
+     );
+
+The function returns a byte with each bit set to H(x, y) where x is the
+corresponding bit of s1 and y is the corresponding bit of s2.
+
+   The following three functions apply H to the bits of two objects with
+byte granularity:
+
+     void sst_memH(
+       void * s1,
+       size_t n1,
+       void const * s2,
+       size_t n2,
+       void const * s3,
+       size_t n3,
+       size_t n
+     );
+
+     void sst_memHf(
+       void * s1,
+       size_t n1,
+       void const * s2,
+       size_t n2,
+       void const * s3,
+       size_t n3,
+       size_t n
+     );
+
+     void sst_memHb(
+       void * s1,
+       size_t n1,
+       void const * s2,
+       size_t n2,
+       void const * s3,
+       size_t n3,
+       size_t n
+     );
+
+If s1 does not point to an object or the object does not contain at
+least n1 + n bytes, then the behavior is undefined.  Otherwise, if s2
+does not point to an object or the object does not contain at least
+n2 + n bytes, then the behavior is undefined.  Otherwise, if s3 does not
+point to an object or the object does not contain at least n3 + n bytes,
+then the behavior is undefined.  Otherwise, if n is zero, then each
+function returns.  Otherwise, each function sets each bit of the first n
+bytes past the first n1 bytes of the object pointed to by s1 to H(x, y)
+where x is the corresponding bit past the first n2 bytes of the object
+pointed to by s2 and y is the corresponding bit past the first n3 bytes
+of the object pointed to by s3.  For the sst_memH function, if the
+affected bytes of the object pointed to by s1 overlap the affected bytes
+of either of the other two objects, then the behavior is undefined.  For
+the sst_memHf function, if the affected bytes of the object pointed to
+by s1 overlap the affected bytes of either of the other two objects and
+either intersection excludes the first affected byte of the other
+object, then the behavior is undefined.  For the sst_memHb function, if
+the affected bytes of the object pointed to by s1 overlap the affected
+bytes of either of the other two objects and either intersection
+excludes the first affected byte of the object pointed to by s1, then
+the behavior is undefined.
+
+   The following three functions apply H to the bits of two objects with
+bit granularity:
+
+     void sst_bitH(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       void const * s2,
+       size_t n2,
+       size_t r2,
+       void const * s3,
+       size_t n3,
+       size_t r3,
+       size_t n,
+       size_t r
+     );
+
+     void sst_bitHf(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       void const * s2,
+       size_t n2,
+       size_t r2,
+       void const * s3,
+       size_t n3,
+       size_t r3,
+       size_t n,
+       size_t r
+     );
+
+     void sst_bitHb(
+       void * s1,
+       size_t n1,
+       size_t r1,
+       void const * s2,
+       size_t n2,
+       size_t r2,
+       void const * s3,
+       size_t n3,
+       size_t r3,
+       size_t n,
+       size_t r
+     );
+
+If s1 does not point to an object or the object does not contain at
+least the following number of bytes, then the behavior is undefined:
+
+     ⌈(n1 ⋅ CHAR_BIT + r1 + n ⋅ CHAR_BIT + r) ∕ CHAR_BIT⌉
+
+Otherwise, if s2 does not point to an object or the object does not
+contain at least the following number of bytes, then the behavior is
+undefined:
+
+     ⌈(n2 ⋅ CHAR_BIT + r2 + n ⋅ CHAR_BIT + r) ∕ CHAR_BIT⌉
+
+Otherwise, if s3 does not point to an object or the object does not
+contain at least the following number of bytes, then the behavior is
+undefined:
+
+     ⌈(n3 ⋅ CHAR_BIT + r3 + n ⋅ CHAR_BIT + r) ∕ CHAR_BIT⌉
+
+Otherwise, if n is zero and r is zero, then each function returns.
+Otherwise, each function sets each of the first n ⋅ CHAR_BIT + r bits
+past the first n1 ⋅ CHAR_BIT + r1 bits of the object pointed to by s1 to
+H(x, y) where x is the corresponding bit past the first
+n2 ⋅ CHAR_BIT + r2 bits of the object pointed to by s2 and y is the
+corresponding bit past the first n3 ⋅ CHAR_BIT + r3 bits of the object
+pointed to by s3.  The bits within each byte are ordered from most to
+least significant.  For the sst_bitH function, if the affected bytes of
+the object pointed to by s1 overlap the affected bytes of either of the
+other two objects, then the behavior is undefined.  For the sst_bitHf
+function, if the affected bits of the object pointed to by s1 overlap
+the affected bits of either of the other two objects and either
+intersection excludes the first affected bit of the other object, then
+the behavior is undefined.  For the sst_bitHb function, if the affected
+bits of the object pointed to by s1 overlap the affected bits of either
+of the other two objects and either intersection excludes the first
+affected bit of the object pointed to by s1, then the behavior is
+undefined.
+
+
+File: sst.info,  Node: Portably Packed Bit Operations,  Next: Unpacked Bit Operations,  Prev: Fully Packed Bit Operations,  Up: Bit Operations
+
+7.4 Portably Packed Bit Operations
+==================================
+
+The following function determines the number of fully packed bytes
+required to hold n2 ⋅ 8 + r2 bits:
+
+     size_t sst_bocsize(
+       size_t n2,
+       size_t r2
+     );
+
+The required number of bytes is as follows:
+
+     ⌈(n2 ⋅ 8 + r2) ∕ CHAR_BIT⌉
+
+If this number cannot be represented by size_t, then the function
+returns zero.  Otherwise, the function returns the number.
+
+   The following function determines the number of portably packed bytes
+required to hold n2 ⋅ CHAR_BIT + r2 bits:
+
+     size_t sst_ocbsize(
+       size_t n2,
+       size_t r2
+     );
+
+The required number of bytes is as follows:
+
+     ⌈(n2 ⋅ CHAR_BIT + r2) ∕ 8⌉
+
+If this number cannot be represented by size_t, then the function
+returns zero.  Otherwise, the function returns the number.
+
+
+File: sst.info,  Node: Unpacked Bit Operations,  Prev: Portably Packed Bit Operations,  Up: Bit Operations
+
+7.5 Unpacked Bit Operations
+===========================
+
+
+File: sst.info,  Node: Concurrency Primitives,  Next: OpenSSL Tools,  Prev: Bit Operations,  Up: Top
+
+8 Concurrency Primitives
+************************
+
+* Menu:
+
+* Mutexes::
+
+
+File: sst.info,  Node: Mutexes,  Up: Concurrency Primitives
+
+8.1 Mutexes
+===========
+
+     sst_status sst_mutex_attr_create(
+       struct sst_mutex_attr * * attr
+     );
+
+     sst_status sst_mutex_attr_destroy(
+       struct sst_mutex_attr * attr
+     );
+
+     sst_status sst_mutex_create(
+       struct sst_mutex * * mtx,
+       struct sst_mutex_attr * attr
+     );
+
+     sst_status sst_mutex_destroy(
+       struct sst_mutex * mtx
+     );
+
+     sst_status sst_mutex_lock(
+       struct sst_mutex * mtx
+     );
+
+     sst_status sst_mutex_unlock(
+       struct sst_mutex * mtx
+     );
+
+
+File: sst.info,  Node: OpenSSL Tools,  Next: Release Notes,  Prev: Concurrency Primitives,  Up: Top
+
+9 OpenSSL Tools
+***************
+
+* Menu:
+
+* Basic OpenSSL Initialization::
+* Custom OpenSSL Initialization::
+
+
+File: sst.info,  Node: Basic OpenSSL Initialization,  Next: Custom OpenSSL Initialization,  Up: OpenSSL Tools
+
+9.1 Basic OpenSSL Initialization
+================================
+
+     sst_status sst_init_crypto(
+       void
+     );
+
+     sst_status sst_dnit_crypto(
+       void
+     );
+
+     sst_status sst_init_crypto_and_ssl(
+       void
+     );
+
+     sst_status sst_dnit_crypto_and_ssl(
+       void
+     );
+
+
+File: sst.info,  Node: Custom OpenSSL Initialization,  Prev: Basic OpenSSL Initialization,  Up: OpenSSL Tools
+
+9.2 Custom OpenSSL Initialization
+=================================
+
+OpenSSL allows the caller to provide a callback function to ensure that
+certain operations are safe to run concurrently from multiple threads.
+This callback function must provide lock and unlock operations on a
+fixed number of mutexes that exist throughout the use of the library.
+SST provides an implementation of this callback function along with two
+functions for creating and destroying the mutexes.
+
+   The caller may use these functions as follows.  First, the caller
+must ask OpenSSL how many mutexes it needs by calling the
+CRYPTO_num_locks function.  Let n be the value returned by this
+function.  The caller must then tell SST to create the mutexes by
+calling the sst_fixlock_create function with n as the argument.  This
+function returns SST_SUCCESS upon success or another status code upon
+failure.  If the call succeeds, the caller must then provide the
+callback function to OpenSSL by calling the CRYPTO_set_locking_callback
+function with &sst_fixlock_lock as the argument.  OpenSSL will then be
+ready for concurrent operations.  The following code demonstrates these
+steps:
+
+     int const n = CRYPTO_num_locks();
+     sst_status const s = sst_fixlock_create(n);
+     if (s == SST_SUCCESS) {
+       CRYPTO_set_locking_callback(&sst_fixlock_lock);
+       /* OpenSSL is ready for concurrent operations. */
+     } else {
+       /* The mutexes could not be created. */
+       /* OpenSSL is not ready for concurrent operations. */
+     }
+
+   The caller may also tell SST to destroy the mutexes by calling the
+sst_fixlock_destroy function after the last call to OpenSSL.  This
+function takes no arguments and returns SST_SUCCESS upon success or
+another status code upon failure.  However, on most systems, calling
+this function is not strictly necessary, as the mutexes will be cleaned
+up automatically when the program terminates.
+
+   The exact rules for using these functions are as follows:
+
+  1. The sst_fixlock_create function must be called at most once.
+
+  2. If the sst_fixlock_create function is called, then the call must
+     use the value returned by the CRYPTO_num_locks function as the
+     argument.
+
+  3. If the CRYPTO_set_locking_callback function is called with
+     &sst_fixlock_lock as the argument, then the call must be made after
+     a successful call to the sst_fixlock_create function.
+
+  4. The sst_fixlock_lock function must not be called except by OpenSSL.
+
+  5. The sst_fixlock_destroy function must be called at most once.
+
+  6. The sst_fixlock_destroy function may only be called after a
+     successful call to the sst_fixlock_create function.
+
+  7. If the CRYPTO_set_locking_callback function is called with
+     &sst_fixlock_lock as the argument, then the sst_fixlock_destroy
+     function may only be called after the last call to OpenSSL.
+
+   OpenSSL also allows the caller to provide a group of callback
+functions for creating, locking, unlocking, and destroying mutexes on
+the fly.  Providing these callback functions may improve performance,
+but the previous callback function must still be provided to ensure that
+concurrent operations are safe.  SST provides an implementation of these
+callback functions, which the caller can provide to OpenSSL by making
+the following calls after providing the previous callback function:
+
+     CRYPTO_set_dynlock_create_callback(&sst_dynlock_create);
+     CRYPTO_set_dynlock_lock_callback(&sst_dynlock_lock);
+     CRYPTO_set_dynlock_destroy_callback(&sst_dynlock_destroy);
+
+
+File: sst.info,  Node: Release Notes,  Next: Concept Index,  Prev: OpenSSL Tools,  Up: Top
+
+Release Notes
+*************
+
+* Menu:
+
+* XXXX-XX-XX --- SST X-X-X::
+* 2016-05-11 --- SST 0-1-0::
+
+
+File: sst.info,  Node: XXXX-XX-XX --- SST X-X-X,  Next: 2016-05-11 --- SST 0-1-0,  Up: Release Notes
+
+XXXX-XX-XX — SST X.X.X
+======================
+
+Build System
+------------
+
+   • Changed the build system to put the sst.jar file into the lib
+     directory instead of the java directory.
+
+   • Moved the Java source code into the src directory.
+
+   • Added the EXE_CFLAGS variable to the build system, which allows
+     extra flags to be used with the C compiler when compiling object
+     files that will be linked into executable files.
+
+   • Added the EXE_LDFLAGS variable to the build system, which allows
+     extra flags to be used with the linker when linking executable
+     files.
+
+   • Updated the SST_FUN and SST_OBJ macros to use __declspec(dllexport)
+     and __declspec(dllimport) when the _WIN32 and DLL_EXPORT macros are
+     defined.  This provides proper shared library compilation with
+     Libtool and establishes a default user convention of defining the
+     DLL_EXPORT macro to indicate that the shared library is being
+     linked to.
+
+   • Updated the SST_FUN and SST_OBJ macros to be redefinable.  This can
+     be used when forgoing the default user convention of defining the
+     DLL_EXPORT macro to indicate that the shared library is being
+     linked to.
+
+   • Updated the SST_FUN and SST_OBJ macros to use extern "C" when the
+     __cplusplus macro is defined, which allows the C headers to be used
+     in C++.
+
+Status Codes
+------------
+
+   • Added the SST_STATUS_MAXVAL_MAXVAL macro, which limits
+     SST_STATUS_MAXVAL to a value that is smaller than the minimum
+     possible value of ULONG_MAX.  This allows custom status codes to be
+     used.
+
+   • Added the InternalErrorStatus Java exception class, which
+     corresponds to the already existing SST_INTERNAL_ERROR status code.
+     These can be used when functions detect bugs.
+
+   • Added the MissingCaseStatus Java exception class, which corresponds
+     to the already existing SST_MISSING_CASE status code.  These can be
+     used when functions detect missing cases in switch statements or
+     any similar constructions.
+
+   • Added the NotImplementedStatus Java exception class, which
+     corresponds to the already existing SST_NOT_IMPLEMENTED status
+     code.  These can be used when parts of functions are not yet
+     implemented.
+
+   • Added the NotSupportedStatus Java exception class, which
+     corresponds to the already existing SST_NOT_SUPPORTED status code.
+     These can be used when parts of functions are not supported because
+     of system limitations or package configuration options.
+
+   • Added the OutOfMemoryStatus Java exception class, which corresponds
+     to the already existing SST_OUT_OF_MEMORY status code.  These can
+     be used when memory allocations fail.
+
+   • Added the WildPointerStatus Java exception class, which corresponds
+     to the already existing SST_WILD_POINTER status code.  These can be
+     used when nonnull pointer arguments do not appear to be pointing to
+     objects of appropriate types.
+
+   • Added the SST_ALLOCATION_FAILED status code and the corresponding
+     Java exception class (AllocationFailedStatus).  These can be used
+     when memory allocations fail because the underlying allocation
+     requests failed.
+
+   • Added the SST_ALLOCATION_IMPOSSIBLE status code and the
+     corresponding Java exception class (AllocationImpossibleStatus).
+     These can be used when memory allocations fail because the sizes
+     are too large to make the underlying allocation requests.
+
+   • Added the SST_ALWAYS_FAILS status code and the corresponding Java
+     exception class (AlwaysFailsStatus).  These can be used by
+     functions that always fail.
+
+   • Added the SST_INVALID_OPERAND status code and the corresponding
+     Java exception class (InvalidOperandStatus).  These can be used
+     when main-like functions are given invalid command-line operands.
+
+   • Added the SST_INVALID_OPTION status code and the corresponding Java
+     exception class (InvalidOptionStatus).  These can be used when
+     main-like functions are given invalid command-line options.
+
+   • Added the SST_INVALID_OPTION_NAME status code and the corresponding
+     Java exception class (InvalidOptionNameStatus).  These can be used
+     when main-like functions are given command-line options with
+     invalid names.
+
+   • Added the SST_INVALID_OPTION_VALUE status code and the
+     corresponding Java exception class (InvalidOptionValueStatus).
+     These can be used when main-like functions are given command-line
+     options with invalid values.
+
+   • Added the SST_LIMIT_EXCEEDED status code and the corresponding Java
+     exception class (LimitExceededStatus).  These can be used when
+     functions fail because implementation limits were exceeded.
+
+   • Added the SST_LONGPTR_NOT_SUPPORTED status code and the
+     corresponding Java exception class (LongptrNotSupportedStatus).
+     These can be used when functions are not supported because native
+     pointers cannot be represented by the long Java type.
+
+   • Added the SST_MISSING_OPTION_VALUE status code and the
+     corresponding Java exception class (MissingOptionValueStatus).
+     These can be used when main-like functions are given command-line
+     options that require but are missing values.
+
+   • Added the SST_PARSE_FAILURE status code and the corresponding Java
+     exception class (ParseFailureStatus).  These can be used when
+     parsers are given invalid input.
+
+   • Added the SST_ZERO_ARRAY_INDEX status code and the corresponding
+     Java exception class (ZeroArrayIndexStatus).  These can be used
+     when working with arrays that use one-based indexing.
+
+   • Added the SST_ZERO_LIST_INDEX status code and the corresponding
+     Java exception class (ZeroListIndexStatus).  These can be used when
+     working with ordered collections that use one-based indexing.
+
+Miscellaneous
+-------------
+
+   • Updated the documentation for all Java exception constructors to
+     specify that the causes are uninitialized.
+
+   • Initialized the causes of all thrown Java exceptions.
+
+   • Added the sst_InitCause function, which can be used by native code
+     to initialize the cause of a Java object of class Throwable or any
+     subclass thereof.
+
+   • Added the sst_ThrowNew function, which can be used by native code
+     to create, initialize the cause of, and throw a Java object of
+     class Throwable or any subclass thereof.
+
+   • Added the sst_FillByteArrayRegion function, which can be used by
+     native code to fill a region of a Java byte array with a given
+     value.
+
+   • Updated the sst_status_value function to use binary search instead
+     of linear search.
+
+   • Updated the sst_status_ec function to actually return the
+     appropriate Java exception class names.  Prior to this version,
+     this function would simply return "java/lang/RuntimeException" as a
+     placeholder.
+
+   • Continued working on the documentation.  This includes a large
+     number of changes that are not detailed here, as the documentation
+     is still stabilizing and will continue to undergo a large number of
+     changes during this process.
+
+   • Started using Doxygen.
+
+   • Split the SST_EC.h header into individual headers.
+
+   • Split the sst_bool.h header into individual headers.
+
+   • Split the sst_status.h header into individual headers.
+
+   • Added the sst_wall_time_null type and its associated functions.
+
+   • Added the sst_wall_time_CLOCK_MONOTONIC type and its associated
+     functions.
+
+   • Added the Longptr Java class, which provides information about
+     using the long Java type to represent native pointers.
+
+   • Started using the WFICMP package for unavoidable comparisons
+     between nonnegative integers whose types differ in signedness.
+
+   • Added the sst_strchr function.
+
+   • Changed the sst_tchar type into a type-selecting macro to make it
+     more consistent with the corresponding function-selecting macros.
+
+   • Updated the C code to use the individual SST headers instead of the
+     collective sst.h header.
+
+   • Fixed a bug in the sst_pull_option_a function where the memmove
+     function was sometimes being called to copy zero bytes to one past
+     the end of a maximal object, which arguably causes undefined
+     behavior.
+
+   • Fixed several bugs in the sst_pull_option_a function where the
+     behavior was sometimes undefined if an array was so large that it
+     could not be accomodated by the size_t type, which is arguably
+     permitted by the C language.
+
+   • Fixed a bug in the pullOption method of the Args Java class where
+     the null sentinel and any subsequent elements of the otrv array
+     were being considered.
+
+   • Updated the pullOption method of the Args Java class to permit the
+     otrv and otp arrays to not have null sentinels.
+
+   • Added several convenience overloads to the Args Java class.
+
+   • Changed the addNull method of the Args Java class to implicitly
+     adjust a null reference to an empty array instead of throwing a
+     NullPointerStatus exception.
+
+   • Added the wchar_t variants of the options parsing functions.
+
+   • Added variants to the sst_pull_option function family and the
+     pullOption method family of the Args Java class for long and short
+     options.
+
+   • Added the needNull method to the Args Java class, which is useful
+     alongside the addNull method of the same class.
+
+   • Added the NullInputStream and NullOutputStream Java classes.
+
+   • Added the Memory Java class, which provides various static methods
+     for working with memory.
+
+   • Added the Rand Java class, which provides various static methods
+     for random number generation.
+
+   • Added the Uris Java class, which provides various static methods
+     for working with URIs.
+
+   • Added the Json Java class, which provides various static methods
+     for working with JSON.
+
+
+File: sst.info,  Node: 2016-05-11 --- SST 0-1-0,  Prev: XXXX-XX-XX --- SST X-X-X,  Up: Release Notes
+
+2016-05-11 — SST 0.1.0
+======================
+
+This is the first release of the SST package.  The package includes a C
+library and a Java library.  The libraries are closely related, and the
+Java library will use the C library in the future.  Some features are
+not yet implemented or will be redesigned, but other features are mostly
+stable, including:
+
+   • Status codes that can be used for function return values.
+
+   • Exception classes that correspond to the failure status codes.
+
+   • Functions for performing bitwise operations with bit granularity.
+
+   • Functions for parsing GNU-style command-line options.
+
+   • Wrappers to smooth out various features of other libraries.
+
+
+File: sst.info,  Node: Concept Index,  Next: Identifier Index,  Prev: Release Notes,  Up: Top
+
+Concept Index
+*************
+
+ [index ]
+* Menu:
+
+* basic packages:                        Basic Packages.       (line  6)
+* bit value, clean:                      Bit Values.           (line 13)
+* bit value, dirty:                      Bit Values.           (line 13)
+* boolean value, clean:                  Boolean Values.       (line 12)
+* boolean value, dirty:                  Boolean Values.       (line 12)
+* clean bit value:                       Bit Values.           (line 13)
+* clean boolean value:                   Boolean Values.       (line 12)
+* dirty bit value:                       Bit Values.           (line 13)
+* dirty boolean value:                   Boolean Values.       (line 12)
+* managed packages:                      Managed Packages.     (line  6)
+* packages, basic:                       Basic Packages.       (line  6)
+* packages, managed:                     Managed Packages.     (line  6)
+
+
+File: sst.info,  Node: Identifier Index,  Prev: Concept Index,  Up: Top
+
+Identifier Index
+****************
+
+ [index ]
+* Menu:
+
+* SST_ALLOCATION_FAILED:                 Status Code Reference.
+                                                              (line 210)
+* SST_ALLOCATION_IMPOSSIBLE:             Status Code Reference.
+                                                              (line 214)
+* SST_ALWAYS_FAILS:                      Status Code Reference.
+                                                              (line 186)
+* sst_bit:                               Bit Values.          (line   6)
+* sst_bitand1:                           Basic Bit Operations.
+                                                              (line  61)
+* sst_bitclr01:                          Basic Bit Operations.
+                                                              (line  13)
+* sst_bitclr1:                           Basic Bit Operations.
+                                                              (line  31)
+* sst_bitclr21:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitcpy1:                           Basic Bit Operations.
+                                                              (line  31)
+* sst_bitcpyx1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitcpyy1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitnand1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitnor1:                           Basic Bit Operations.
+                                                              (line  61)
+* sst_bitnot1:                           Basic Bit Operations.
+                                                              (line  31)
+* sst_bitnotx1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitnoty1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitone01:                          Basic Bit Operations.
+                                                              (line  13)
+* sst_bitone1:                           Basic Bit Operations.
+                                                              (line  31)
+* sst_bitone21:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitor1:                            Basic Bit Operations.
+                                                              (line  61)
+* sst_bitxgey1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitxgty1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitxley1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitxlty1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitxnor1:                          Basic Bit Operations.
+                                                              (line  61)
+* sst_bitxor1:                           Basic Bit Operations.
+                                                              (line  61)
+* sst_bocsize:                           Portably Packed Bit Operations.
+                                                              (line   6)
+* sst_bool:                              Boolean Values.      (line   6)
+* SST_FAILURE:                           Status Code Reference.
+                                                              (line  17)
+* sst_getapb1:                           Arbitrarily Packed Bit Operations.
+                                                              (line  17)
+* sst_getbit1:                           Fully Packed Bit Operations.
+                                                              (line   6)
+* SST_INTEGER_OVERFLOW:                  Status Code Reference.
+                                                              (line  88)
+* SST_INTERNAL_ERROR:                    Status Code Reference.
+                                                              (line  58)
+* SST_INVALID_ALIASING:                  Status Code Reference.
+                                                              (line  67)
+* SST_INVALID_ARGUMENT:                  Status Code Reference.
+                                                              (line  20)
+* SST_INVALID_ARRAY_INDEX:               Status Code Reference.
+                                                              (line 109)
+* SST_INVALID_ARRAY_SIZE:                Status Code Reference.
+                                                              (line  92)
+* SST_INVALID_LIST_INDEX:                Status Code Reference.
+                                                              (line 104)
+* SST_INVALID_LIST_SIZE:                 Status Code Reference.
+                                                              (line  98)
+* SST_INVALID_OPERAND:                   Status Code Reference.
+                                                              (line 236)
+* SST_INVALID_OPERATION:                 Status Code Reference.
+                                                              (line  30)
+* SST_INVALID_OPTION:                    Status Code Reference.
+                                                              (line 196)
+* SST_INVALID_OPTION_NAME:               Status Code Reference.
+                                                              (line 200)
+* SST_INVALID_OPTION_VALUE:              Status Code Reference.
+                                                              (line 205)
+* SST_INVALID_POINTER:                   Status Code Reference.
+                                                              (line  78)
+* SST_LIMIT_EXCEEDED:                    Status Code Reference.
+                                                              (line 224)
+* SST_LONGPTR_NOT_SUPPORTED:             Status Code Reference.
+                                                              (line 190)
+* SST_MISSING_ARRAY_SENTINEL:            Status Code Reference.
+                                                              (line 164)
+* SST_MISSING_CASE:                      Status Code Reference.
+                                                              (line  62)
+* SST_MISSING_LIST_SENTINEL:             Status Code Reference.
+                                                              (line 159)
+* SST_MISSING_OPTION_VALUE:              Status Code Reference.
+                                                              (line 219)
+* SST_NEGATIVE_ARRAY_INDEX:              Status Code Reference.
+                                                              (line 143)
+* SST_NEGATIVE_ARRAY_SIZE:               Status Code Reference.
+                                                              (line 126)
+* SST_NEGATIVE_LIST_INDEX:               Status Code Reference.
+                                                              (line 138)
+* SST_NEGATIVE_LIST_SIZE:                Status Code Reference.
+                                                              (line 114)
+* SST_NONNULL_POINTER:                   Status Code Reference.
+                                                              (line  83)
+* SST_NOT_IMPLEMENTED:                   Status Code Reference.
+                                                              (line  35)
+* SST_NOT_SUPPORTED:                     Status Code Reference.
+                                                              (line  39)
+* SST_NULL_POINTER:                      Status Code Reference.
+                                                              (line  53)
+* sst_ocbsize:                           Portably Packed Bit Operations.
+                                                              (line  24)
+* SST_OUT_OF_MEMORY:                     Status Code Reference.
+                                                              (line  44)
+* SST_OUT_OF_RANGE:                      Status Code Reference.
+                                                              (line  74)
+* sst_overlap:                           Pointer Aliasing.    (line  13)
+* SST_OVERSIZE_ARRAY_INDEX:              Status Code Reference.
+                                                              (line 154)
+* SST_OVERSIZE_LIST_INDEX:               Status Code Reference.
+                                                              (line 148)
+* SST_PARSE_FAILURE:                     Status Code Reference.
+                                                              (line 179)
+* SST_RESTRICT:                          Pointer Aliasing.    (line   6)
+* sst_setapb1:                           Arbitrarily Packed Bit Operations.
+                                                              (line  34)
+* sst_setbit1:                           Fully Packed Bit Operations.
+                                                              (line  19)
+* sst_status:                            Status Code Names and Values.
+                                                              (line   6)
+* SST_STATUS_MAXVAL:                     Status Code Names and Values.
+                                                              (line   6)
+* SST_STATUS_MAXVAL_MAXVAL:              Status Code Names and Values.
+                                                              (line   6)
+* sst_status_name:                       Status Code Names and Values.
+                                                              (line  23)
+* sst_status_value:                      Status Code Names and Values.
+                                                              (line  37)
+* SST_SUCCESS:                           Status Code Reference.
+                                                              (line   9)
+* SST_UNKNOWN:                           Status Code Reference.
+                                                              (line  12)
+* SST_WILD_POINTER:                      Status Code Reference.
+                                                              (line  48)
+* SST_ZERO_ARRAY_INDEX:                  Status Code Reference.
+                                                              (line 174)
+* SST_ZERO_ARRAY_SIZE:                   Status Code Reference.
+                                                              (line 132)
+* SST_ZERO_LIST_INDEX:                   Status Code Reference.
+                                                              (line 169)
+* SST_ZERO_LIST_SIZE:                    Status Code Reference.
+                                                              (line 120)
+
+
+
+Tag Table:
+Node: Top492
+Node: Copyright Information943
+Node: Introduction1210
+Node: Building and Installation1488
+Node: Basic Packages1697
+Node: Makefile Target Reference1964
+Node: Managed Packages2102
+Node: Bit Values2279
+Node: Boolean Values2991
+Node: Status Codes3848
+Node: Status Code Names and Values4209
+Node: Status Code Meanings5932
+Node: Custom Status Codes6877
+Node: Using Status Codes in Strings7140
+Node: Status Code Reference7980
+Node: Pointer Aliasing17584
+Node: Bit Operations19099
+Node: Basic Bit Operations19409
+Node: Arbitrarily Packed Bit Operations21262
+Node: Fully Packed Bit Operations22680
+Node: Portably Packed Bit Operations34558
+Node: Unpacked Bit Operations35560
+Node: Concurrency Primitives35727
+Node: Mutexes35904
+Node: OpenSSL Tools36493
+Node: Basic OpenSSL Initialization36706
+Node: Custom OpenSSL Initialization37118
+Node: Release Notes40761
+Node: XXXX-XX-XX --- SST X-X-X40952
+Node: 2016-05-11 --- SST 0-1-050993
+Node: Concept Index51794
+Node: Identifier Index52818
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

@@ -1,0 +1,18 @@
+{
+  "handler": "sst_ajh_download",
+
+  "hashes": {
+    "md5": "ce5a55c3d8349ba00d97634b7a29bd1b",
+    "sha1": "b35d3ac90852d7cab9f179f3b9212d5b903db772",
+    "sha224": "64192e76aa132acbc200ca54cc7567f8f0f0143554ba9d5c5014a760",
+    "sha256": "6874127cdb5d8faa1861e3b3465f62acab8b09a42fff38b0151c21a3296f967d",
+    "sha384": "59d6ddf78ca93f9eca3dda025a110d08c7ca086671d4d675741721c76b39c8616249dc107c6d3fe54956ab0a02b984b2",
+    "sha512": "10dc23a6705d33d8a71dd9ff2f215ccf15d43542205268d01f52bd5faca0d47fefd5d6c7345914298d1a8f3307b73679d4aa9fc7cc727f31c2674b0fc66a5f37"
+  },
+  "urls": [
+    "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.5.1/junit-platform-console-standalone-1.5.1.jar",
+    "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/1.5.1/junit-platform-console-standalone-1.5.1.jar",
+    "https://repo.jfrog.org/artifactory/repo1/org/junit/platform/junit-platform-console-standalone/1.5.1/junit-platform-console-standalone-1.5.1.jar",
+    "https://repo.jenkins-ci.org/repo1/org/junit/platform/junit-platform-console-standalone/1.5.1/junit-platform-console-standalone-1.5.1.jar"
+  ]
+}

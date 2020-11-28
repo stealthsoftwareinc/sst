@@ -1,0 +1,42 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Bit Values
+@chapter Bit Values
+
+@idindex @w{@t{sst_bit}}
+The
+@w{@t{sst_bit}}
+type is a synonym for the
+@w{@t{int}}
+type that represents a bit value@.
+Any nonzero value
+represents the one bit,
+and zero represents the zero bit@.
+This type is only intended
+to be a hint to the reader,
+not to be a fundamentally new type@.
+When the reader sees
+@w{``@t{sst_bit}''},
+they should think
+@w{``@t{int}}
+holding a bit value''@.
+
+@cindex bit value, clean
+@cindex bit value, dirty
+@cindex clean bit value
+@cindex dirty bit value
+If a
+bit value is known to only
+possibly have value one or zero,
+then it is called a clean bit value@.
+Otherwise, it is called a dirty bit value@.
+It is
+conventional for functions
+to accept dirty bit values and
+to only produce clean bit values@.

@@ -1,0 +1,141 @@
+#! /bin/sh -
+#
+# For the copyright information for this file, please search up the
+# directory tree for the first COPYING file.
+#
+
+# Bootstrap into the PATH-resolved bash.
+case ${SST_BASH_BOOTSTRAP+x}y$# in
+  y0) SST_BASH_BOOTSTRAP=x bash - "$0"     ; exit $? ;;
+  y*) SST_BASH_BOOTSTRAP=x bash - "$0" "$@"; exit $? ;;
+esac
+
+# Load the prelude.
+set -e || exit $?
+. src/bash/preludes/standard.bash
+
+autogen_ac_start build-aux/autogen.ac
+autogen_am_start build-aux/autogen.am
+
+#-----------------------------------------------------------------------
+
+autogen_ac_append <<<''
+autogen_ac_append <<<"]AC_DEFUN_ONCE([DEFINE_ALL], [[{ :"
+for x in m4/DEFINE_*.m4; do
+  x=${x#m4/}
+  x=${x%.m4}
+  autogen_ac_append <<<"  ]AC_REQUIRE([$x])["
+done
+autogen_ac_append <<<'}]])['
+
+for x in CFLAG CXXFLAG LIB; do
+  autogen_ac_append <<<''
+  autogen_ac_append <<<"]AC_DEFUN_ONCE([DEFINE_${x}S], [[{ :"
+  for y in m4/DEFINE_HAVE_${x}_*.m4; do
+    y=${y#m4/}
+    y=${y%.m4}
+    autogen_ac_append <<<"  ]AC_REQUIRE([$y])["
+  done
+  autogen_ac_append <<<'}]])['
+done
+
+autogen_ac_append <<<''
+autogen_ac_append <<<']DEFINE_ALL['
+
+#-----------------------------------------------------------------------
+# Root .ag includes
+#-----------------------------------------------------------------------
+#
+# If an .ag file needs to be included and there's no more specific .ag
+# file in which to do it, then do it here.
+#
+
+autogen_ag_include \
+  doc/dox/dox.ag \
+  doc/pages/pages.ag \
+  doc/readme/in_source_repo.adoc.ag \
+  src/bash/tests/ag \
+  src/c_cpp/ag \
+;
+
+#-----------------------------------------------------------------------
+# Miscellaneous distributed files
+#-----------------------------------------------------------------------
+#
+# If a file needs to be distributed (i.e., included in the distribution
+# archive) and there's no more specific .ag, .ac, or .am file in which
+# to do it, then do it here.
+#
+
+sst_am_distribute \
+  .clang-format \
+  COPYING \
+  README.adoc \
+  build-aux/DATE \
+  build-aux/DATE.sh \
+  build-aux/LTCURRENT \
+  build-aux/LTCURRENT.sh \
+  build-aux/VERSION \
+  build-aux/VERSION.sh \
+  build-aux/adock \
+  build-aux/echo.sh \
+  build-aux/gen-configure.sh \
+  build-aux/sh-form.sh \
+  doc/readme/*.adoc \
+  install/**/* \
+  src/bash/**/* \
+  src/install/**/* \
+  src/sh/**/* \
+  src/sst_status_map_generator.c \
+;
+
+#-----------------------------------------------------------------------
+
+sst_ajh_asciidoctor_document \
+  doc/manual/sst.html.ag.json \
+;
+
+sst_ajh_download build-aux/downloads
+sst_ajh_gitbundle build-aux/gitbundles
+
+autogen_java_jars \
+  lib/sst.jar.ag.json \
+;
+
+autogen_java_tests \
+  lib/sst-tests.jar.ag.json \
+;
+
+autogen_c_cpp_tests \
+  src/c_cpp/test \
+  src/c_cpp/libsst.la \
+;
+autogen_am_var_append noinst_HEADERS \
+  src/c_cpp/test/**/*.h \
+;
+
+autogen_texinfo doc/sst.texi doc/texi doc/texi/sst
+
+#
+# Generate noinst_HEADERS.
+#
+
+for x in \
+  include/**/*.h \
+; do
+  case $x in
+    include/sst.h | \
+    include/sst/* | \
+  "") continue ;; esac
+  if [ -f $x.ac ]; then continue; fi
+  if [ -f $x.am ]; then continue; fi
+  autogen_am_var_append noinst_HEADERS $x
+done
+
+#
+#
+
+autogen_ac_finish
+autogen_am_finish
+
+autoreconf -f -i -v -W all

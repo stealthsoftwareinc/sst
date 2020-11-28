@@ -1,0 +1,32 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_type_msb,sst::type_msb]]
+= The `sst::type_msb` trait
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/type_msb.hpp[sst/catalog/type_msb.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/bit.h[sst/bit.h]>
+namespace sst {
+
+template<class IntType>
+struct type_msb
+  : {ce_std_integral_constant}<IntType, +/*...*/+> {};
+
+}
+----
+
+The `sst::type_msb` trait provides the value of {cr_integer_type}
+`IntType` whose {cr_value_bits} are all set to 0 except for the most
+significant value bit, which is set to 1.
+
+:W: sst::type_msb
+:T: IntType
+:V: IntType
+include::cl_integral_constant_extraction_blurb.adoc[]
+
+//

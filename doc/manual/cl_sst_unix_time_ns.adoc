@@ -1,0 +1,26 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unix_time_ns,sst::unix_time_ns]]
+= The `sst::unix_time_ns` function
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/time.h>
+namespace sst {
+
+inline std::chrono::nanoseconds::rep unix_time_ns();
+
+}
+----
+
+The `sst::unix_time_ns` function returns the current tick count of the
+`<<cl_sst_unix_time>>` clock in nanoseconds.
+Note that the return type is an unspecified signed integer type whose
+width is at least 64 bits (see `{ce_std_chrono_duration}` or
+{cpp11sec}20.11.2).
+
+//

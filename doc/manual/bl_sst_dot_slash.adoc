@@ -1,0 +1,54 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_dot_slash,sst_dot_slash]]
+= The `sst_dot_slash` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_dot_slash **[**<path>**]**
+----
+
+The `sst_dot_slash` function prepends `./` to `<path>` if it does not
+begin with a `/` character.
+
+:fp_argument_name: path
+include::bl_single_argument_csf_function_io_fragment.adoc[]
+
+This function is primarily used to adjust an arbitrary path to be safe
+to use as a program argument.
+Without adjustment, an unusual path like `--foo` is liable to be
+mistakenly interpreted as a program option.
+For example, `rm --foo` will fail, but `rm ./--foo` will work.
+
+.Adjusting an arbitrary path
+[example]
+====
+[source,subs="normal"]
+----
+path=$(sst_dot_slash "$path" | <<bl_sst_csf>>)
+<<bl_sst_csf>> path
+----
+====
+
+.Output examples
+[example]
+====
+[source,subs="normal"]
+----
+sst_dot_slash /                      # /\n
+sst_dot_slash /foo                   # /foo\n
+sst_dot_slash ''                     # ./\n
+sst_dot_slash foo                    # ./foo\n
+sst_dot_slash -foo                   # ./-foo\n
+sst_dot_slash --foo                  # ./--foo\n
+{bl_printf} 'foo\n:' | sst_dot_slash      # ./foo\n:\n
+{bl_printf} 'foo\n:\n' | sst_dot_slash    # ./foo\n:\n
+{bl_printf} 'foo\n:\n\n' | sst_dot_slash  # ./foo\n:\n\n
+----
+====
+
+//

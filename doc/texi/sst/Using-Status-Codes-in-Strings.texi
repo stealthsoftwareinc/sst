@@ -1,0 +1,34 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Using Status Codes in Strings
+@chapter Using Status Codes in Strings
+
+@noindent
+The
+@w{@t{SST_STATUS_NAME_MAXLEN}}
+macro expands to the integer constant
+@w{@t{63}},
+and the
+@w{@t{SST_STATUS_NAME_MAXSTR}}
+macro expands to a character string literal with length 63@.
+These macros can be used when computing the maximum possible length of a
+string that contains a status code name@.
+
+@include indent.texi
+The
+@w{@t{SST_STATUS_VALUE_MAXLEN}}
+macro expands to the integer constant
+@w{@t{10}},
+and the
+@w{@t{SST_STATUS_VALUE_MAXSTR}}
+macro expands to a character string literal with length 10@.
+These macros can be used when computing the maximum possible length of a
+string that contains a status code value@.
+Note that 10 is the number of decimal digits in the minimum value of
+@w{@t{ULONG_MAX}}@.

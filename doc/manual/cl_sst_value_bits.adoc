@@ -1,0 +1,93 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_value_bits,sst::value_bits]]
+= The `sst::value_bits` trait
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/value_bits.hpp[sst/catalog/value_bits.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/limits.h[sst/limits.h]>
+namespace sst {
+
+template<class IntType>
+struct value_bits
+  : {ce_std_integral_constant}<int, +/*...*/+> {};
+
+}
+----
+
+The `sst::value_bits` class provides the number of {cr_value_bits} in
+the {cr_integer_type} `IntType`.
+
+:W: sst::value_bits
+:T: IntType
+:V: int
+include::cl_integral_constant_extraction_blurb.adoc[]
+
+.{empty}
+[example]
+====
+.Program
+[source,cpp]
+----
+#include <iomanip>
+#include <ios>
+#include <iostream>
+#include <sst/limits.h>
+#include <string>
+
+namespace {
+
+template<class T>
+void info(std::string const & T_name) {
+  int const v = sst::value_bits<T>::value;
+  std::cout << "sst::value_bits<";
+  std::cout << std::left << std::setw(18) << T_name;
+  std::cout << ">::value == ";
+  std::cout << std::right << std::setw(2) << std::to_string(v);
+  std::cout << "\n";
+}
+
+#define INFO(T) info<T>(#T)
+
+} // namespace
+
+int main() {
+  INFO(bool);
+  INFO(char);
+  INFO(signed char);
+  INFO(unsigned char);
+  INFO(short);
+  INFO(unsigned short);
+  INFO(int);
+  INFO(unsigned int);
+  INFO(long);
+  INFO(unsigned long);
+  INFO(long long);
+  INFO(unsigned long long);
+}
+----
+
+.Possible output
+[source]
+----
+sst::value_bits<bool              >::value ==  1
+sst::value_bits<char              >::value ==  7
+sst::value_bits<signed char       >::value ==  7
+sst::value_bits<unsigned char     >::value ==  8
+sst::value_bits<short             >::value == 15
+sst::value_bits<unsigned short    >::value == 16
+sst::value_bits<int               >::value == 31
+sst::value_bits<unsigned int      >::value == 32
+sst::value_bits<long              >::value == 63
+sst::value_bits<unsigned long     >::value == 64
+sst::value_bits<long long         >::value == 63
+sst::value_bits<unsigned long long>::value == 64
+----
+====
+
+//

@@ -1,0 +1,58 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_checked,sst::checked]]
+= The `sst::checked` class
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+++#include <sst/checked.h>++
+++namespace sst {++
+
+++template<class T>++
+++class checked {++
+
+++  // Underlying value retrieval++
+++  constexpr T v() const noexcept;++
+
+++};++
+
+++}++
+----
+
+The `sst::checked` class provides range-checked integer arithmetic.
+
+Any value `x` of any {cr_integer_type} can be converted to an
+`sst::checked<T>` value via the {cr_converting_constructor}
+`sst::checked<T>(x)`, where `T` is also any integer type.
+If `x` cannot be represented by `T`, the constructor will throw an
+`<<cl_sst_checked_error>>` exception.
+Arbitrary integer arithmetic can then be performed on the
+`sst::checked<T>` value, which will cause the arithmetic to be
+range-checked: an `<<cl_sst_checked_error>>` will be thrown if there is
+any attempt to hold a value in a type that cannot represent the value,
+and every result that would have had type `R` will instead have type
+`sst::checked<R>`.
+After the arithmetic is complete, the underlying value can be retrieved
+with the `v()` function.
+
+Unlike in normal integer arithmetic, unsigned integer types are not
+considered to be modular.
+If a value cannot be represented by an unsigned integer type, an
+`<<cl_sst_checked_error>>` will be thrown instead of reducing it
+modularly in that type.
+
+.{empty}
+[example]
+====
+[source,cpp,subs="normal"]
+----
+<<cl_sst_make_checked>>(++INT_MIN) - 1; // throws++
+<<cl_sst_make_checked>>(++0U) - 1U;     // throws++
+----
+====
+
+//

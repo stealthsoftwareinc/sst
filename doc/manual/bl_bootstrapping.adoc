@@ -1,0 +1,50 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_bootstrapping]]
+= Bootstrapping
+
+All preludes in the SST Bash library run the following bootstrap code
+before executing any Bash-specific code that may not be portable to
+other shells:
+
+[source,bash]
+----
+# Bootstrap into the PATH-resolved bash.
+case ${SST_BASH_BOOTSTRAP+x}y$# in
+  y0) SST_BASH_BOOTSTRAP=x bash - "$0"     ; exit $? ;;
+  y*) SST_BASH_BOOTSTRAP=x bash - "$0" "$@"; exit $? ;;
+esac
+----
+
+This re-executes the current script with the ``PATH``-resolved `bash`.
+There are two reasons for doing this.
+First, if the script uses a `/bin/bash` shebang on a system where the
+``PATH``-resolved `bash` is newer than `/bin/bash` (e.g., on macOS),
+then this re-executes the script with the newer version.
+Second, since this code is portable enough to run in any shell, a script
+can actually use a `/bin/sh` shebang, which is the most portable shell
+shebang, and still get bootstrapped into the ``PATH``-resolved `bash`.
+
+All scripts in the SST Bash library run the following prelude loading
+code (adjusting `../preludes/standard.bash` as needed) before doing
+anything else:
+
+[source,bash]
+----
+# Load the prelude.
+case $0 in /*) x=$0 ;; *) x=./$0 ;; esac
+x=`dirname "$x"` || exit $?
+set -e || exit $?
+. "$x"/../preludes/standard.bash
+----
+
+Note that this code is portable enough to run in any shell as well.
+Furthermore, since this code uses a relative path to find the prelude,
+and since all post-bootstrapping code in the library also uses relative
+paths to find other files in the library, the SST Bash library can be
+safely relocated to and used from any directory.
+
+//

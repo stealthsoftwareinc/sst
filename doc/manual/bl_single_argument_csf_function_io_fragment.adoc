@@ -1,0 +1,11 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+If `<{fp_argument_name}>` is not given, the input is read from standard
+input in `<<bl_sst_csf>>` form.
+The output is always written to standard output in `<<bl_sst_csf>>`
+form.
+
+//

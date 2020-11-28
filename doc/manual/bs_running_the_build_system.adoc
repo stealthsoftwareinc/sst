@@ -1,0 +1,13 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bs_running_the_build_system]]
+= Running the build system
+
+Running the build system
+((("build system, running")))
+is performed with the `make` command.
+
+//

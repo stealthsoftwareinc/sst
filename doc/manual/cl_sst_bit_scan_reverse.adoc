@@ -1,0 +1,30 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_bit_scan_reverse,sst::bit_scan_reverse]]
+= The `sst::bit_scan_reverse` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/bit_scan_reverse.hpp[sst/catalog/bit_scan_reverse.hpp]>
+namespace sst {
+
+template<{cl_std_integral} T>
+int bit_scan_reverse(T x) noexcept;
+
+}
+----
+
+The `sst::bit_scan_reverse` function returns the index of the most
+significant bit set in `x`.
+If `x` is negative, `<<cl_sst_width_bits>><T>::value - 1` is returned.
+If `x` is zero, the behavior is undefined.
+
+On x86, this function uses the BSR instruction.
+If `T` is `int`, it is guaranteed that this function simply calls the
+BSR instruction and performs no additional work.
+
+//

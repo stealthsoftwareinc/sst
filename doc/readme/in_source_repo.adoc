@@ -1,0 +1,12 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+//
+// See the in_source_repo.adoc.ag file for an explanation of this file.
+//
+
+// :in_source_repo:
+
+//

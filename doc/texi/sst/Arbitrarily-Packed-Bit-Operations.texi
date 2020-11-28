@@ -1,0 +1,180 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Arbitrarily Packed Bit Operations
+@chapter Arbitrarily Packed Bit Operations
+
+Let
+@tex
+$k$
+@end tex
+@ifnottex
+@w{@i{k}}
+@end ifnottex
+be an integer between 1 and
+@w{@t{CHAR_BIT}}@.
+A byte whose most significant
+@tex
+${\tt CHAR\_BIT} - k$
+@end tex
+@ifnottex
+@w{@t{CHAR_BIT}@w{ }@msign{}@w{ }@i{k}}
+@end ifnottex
+bits are ignored and whose remaining
+@tex
+$k$
+@end tex
+@ifnottex
+@w{@i{k}}
+@end ifnottex
+bits are
+considered to be ordered
+from most to least significant
+is called a byte with packing width
+@tex
+$k$
+@end tex
+@ifnottex
+@w{@i{k}}
+@end ifnottex
+or a
+@tex
+$k$-packed
+@end tex
+@ifnottex
+@w{@i{k}-packed}
+@end ifnottex
+byte@.
+Note that a
+@tex
+$k$-packed
+@end tex
+@ifnottex
+@w{@i{k}-packed}
+@end ifnottex
+byte holds
+@tex
+$k$
+@end tex
+@ifnottex
+@w{@i{k}}
+@end ifnottex
+bits and that an
+@tex
+$n$-element
+@end tex
+@ifnottex
+@w{@i{n}-element}
+@end ifnottex
+array of
+@tex
+$k$-packed
+@end tex
+@ifnottex
+@w{@i{k}-packed}
+@end ifnottex
+bytes holds
+@tex
+$n \cdot k$
+@end tex
+@ifnottex
+@w{@i{n}@w{ }@mdot{}@w{ }@i{k}}
+@end ifnottex
+bits@.
+A
+@tex
+$k$-packed
+@end tex
+@ifnottex
+@w{@i{k}-packed}
+@end ifnottex
+byte may also be called an
+arbitrarily packed byte when
+the intent is clear from context@.
+
+@idindex @w{@t{sst_getapb1}}
+The following function
+retrieves one bit of an arbitrarily packed byte:
+
+@example
+sst_bit@w{ }sst_getapb1(
+@w{ }@w{ }unsigned@w{ }char@w{ }s1,
+@w{ }@w{ }size_t@w{ }k1,
+@w{ }@w{ }size_t@w{ }r1
+);
+@end example
+
+@noindent
+If
+@w{@t{k1}}
+is zero,
+@tex
+${\tt k1} > {\tt CHAR\_BIT}$,
+@end tex
+@ifnottex
+@w{@t{k1}@w{ }>@w{ }@t{CHAR_BIT}},
+@end ifnottex
+or
+@tex
+${\tt r1} \ge {\tt k1}$,
+@end tex
+@ifnottex
+@w{@t{r1}@w{ }@gequ{}@w{ }@t{k1}},
+@end ifnottex
+then the behavior is undefined@.
+Otherwise,
+the function returns the
+first bit past the first
+@w{@t{r1}}
+bits of the
+@w{@t{k1}-packed}
+byte
+@w{@t{s1}}@.
+
+@idindex @w{@t{sst_setapb1}}
+The following function
+sets one bit of an arbitrarily packed byte:
+
+@example
+unsigned@w{ }char@w{ }sst_setapb1(
+@w{ }@w{ }unsigned@w{ }char@w{ }s1,
+@w{ }@w{ }size_t@w{ }k1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }sst_bit@w{ }s2
+);
+@end example
+
+@noindent
+If
+@w{@t{k1}}
+is zero,
+@tex
+${\tt k1} > {\tt CHAR\_BIT}$,
+@end tex
+@ifnottex
+@w{@t{k1}@w{ }>@w{ }@t{CHAR_BIT}},
+@end ifnottex
+or
+@tex
+${\tt r1} \ge {\tt k1}$,
+@end tex
+@ifnottex
+@w{@t{r1}@w{ }@gequ{}@w{ }@t{k1}},
+@end ifnottex
+then the behavior is undefined@.
+Otherwise,
+the function sets the
+first bit past the first
+@w{@t{r1}}
+bits of the
+@w{@t{k1}-packed}
+byte
+@w{@t{s1}}
+to
+@w{@t{s2}}
+and returns the result@.

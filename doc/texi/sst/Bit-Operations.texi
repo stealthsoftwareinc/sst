@@ -1,0 +1,30 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Bit Operations
+@chapter Bit Operations
+
+@menu
+* Basic Bit Operations::
+* Arbitrarily Packed Bit Operations::
+* Fully Packed Bit Operations::
+* Portably Packed Bit Operations::
+* Unpacked Bit Operations::
+@end menu
+
+@lowersections
+@include sst/Basic-Bit-Operations.texi
+
+@include sst/Arbitrarily-Packed-Bit-Operations.texi
+
+@include sst/Fully-Packed-Bit-Operations.texi
+
+@include sst/Portably-Packed-Bit-Operations.texi
+
+@include sst/Unpacked-Bit-Operations.texi
+@raisesections

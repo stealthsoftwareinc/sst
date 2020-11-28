@@ -1,0 +1,61 @@
+#! /bin/sh -
+#
+# For the copyright information for this file, please search up the
+# directory tree for the first COPYING file.
+#
+
+# Load the prelude.
+set -e || exit $?
+. src/bash/preludes/standard.bash
+
+sst_import_function \
+  sst_centos_install_raw \
+  sst_install_utility \
+;
+
+sst_centos_install_raw \
+  diffutils \
+  gcc \
+  gcc-c++ \
+  git \
+  java-11-openjdk-devel \
+  java-11-openjdk-headless \
+  make \
+  maven \
+  openssl \
+  openssl-devel \
+  sshpass \
+  texinfo \
+  wget \
+;
+
+sst_install_utility \
+  jq \
+;
+
+eval "$with_build_groups_values"
+
+./configure \
+  "$with_build_groups_option" \
+;
+
+if ((WITH_BUILD_GROUP_JAVA_GATBPS)); then
+  make install-java-jardeps-targets
+  echo "Installing Java libraries..."
+  sudo make install-java-jardeps
+fi
+
+make_j \
+  V=1 \
+  VERBOSE=1 \
+;
+
+echo "Installing SST..."
+sudo make install
+
+if ((WITH_BUILD_GROUP_JAVA_MAVEN)); then
+  mvn install
+fi
+
+echo "Running ldconfig..."
+sudo ldconfig

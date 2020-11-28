@@ -1,0 +1,50 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Boolean Values
+@chapter Boolean Values
+
+@idindex @w{@t{sst_bool}}
+The
+@w{@t{sst_bool}}
+type is a synonym for the
+@w{@t{int}}
+type that represents a boolean value@.
+Any nonzero value
+represents the true value,
+and zero represents the false value@.
+This type is only intended
+to be a hint to the reader,
+not to be a fundamentally new type@.
+When the reader sees
+@w{``@t{sst_bool}''},
+they should think
+@w{``@t{int}}
+holding a boolean value''@.
+
+@cindex boolean value, clean
+@cindex boolean value, dirty
+@cindex clean boolean value
+@cindex dirty boolean value
+The
+@w{@t{SST_TRUE}}
+macro expands to the integer constant
+@w{@t{1}},
+and the
+@w{@t{SST_FALSE}}
+macro expands to the integer constant
+@w{@t{0}}@.
+If a
+boolean value is known to only
+possibly have value one or zero,
+then it is called a clean boolean value@.
+Otherwise, it is called a dirty boolean value@.
+It is
+conventional for functions
+to accept dirty boolean values and
+to only produce clean boolean values@.

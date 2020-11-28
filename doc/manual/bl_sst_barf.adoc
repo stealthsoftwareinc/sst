@@ -1,0 +1,25 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_barf,sst_barf]]
+= The `sst_barf` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_barf ++**[**++<format> ++**[**++<arg>++**...]]**
+----
+
+The `sst_barf` function prints a message and a stack trace to standard
+error and terminates the program with exit status 1.
+
+If no arguments are given, the message will be `"unknown error"`.
+Otherwise, the arguments will be used with the {bl_printf} builtin to
+print the message.
+
+The message will be prefixed with the program name.
+The exact prefix will be `"$0: "`.
+
+//

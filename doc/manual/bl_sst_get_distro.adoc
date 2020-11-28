@@ -1,0 +1,32 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_get_distro,sst_get_distro]]
+= The `sst_get_distro` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_get_distro
+----
+
+The `sst_get_distro` function identifies the system type and writes it
+to standard output in `<<bl_sst_csf>>` form.
+
+The following results are possible:
+`alpine`,
+`arch`,
+`centos`,
+`cygwin`,
+`debian`,
+`fedora`,
+`rhel`,
+`ubuntu`,
+and `unknown`.
+
+The result is guaranteed to be an identifier that matches the regular
+expression `[a-zA-Z_][a-zA-Z_0-9]*`.
+
+//

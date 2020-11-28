@@ -1,0 +1,10 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+In {cpp}20 and later, signed integer types are required to use two`'s
+complement representation{cr_cpp20_requires_2c_fno}.
+Before {cpp}20, signed integer types are permitted to use ones`'
+complement or sign-magnitude representation instead, in which case
+negative zero may be a trap representation{cr_negative_zero_trap_fno}.
+//

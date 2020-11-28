@@ -1,0 +1,19 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_find_dist_version,sst_find_dist_version]]
+= The `sst_find_dist_version` function
+
+.Bash
+[source,subs="normal"]
+----
+set -e
+. link:{repo_browser_url}/src/bash/preludes/standard.bash[<root>/preludes/standard.bash]
+<<bl_sst_import_function>> link:{repo_browser_url}/src/bash/functions/sst_find_dist_version.bash[sst_find_dist_version]
+
+sst_find_dist_version
+----
+
+//

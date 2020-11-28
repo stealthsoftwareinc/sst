@@ -1,0 +1,29 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_type_min,sst::type_min]]
+= The `sst::type_min` trait
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+++#include <sst/limits.h>++
+++namespace sst {++
+
+++template<class T>++
+++struct type_min :++ {ce_std_integral_constant}<++T, ++__v__++> {};++
+
+++}++
+----
+
+The `sst::type_min` class provides the minimum value of the
+{cr_integer_type} `T`.
+
+:W: sst::type_min
+:T: T
+:V: T
+include::cl_integral_constant_extraction_blurb.adoc[]
+
+//

@@ -1,0 +1,22 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_checked_error,sst::checked_error]]
+= The `sst::checked_error` exception
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+++#include <sst/checked.h>++
+++namespace sst {++
+
+++struct checked_error :++ {ce_std_range_error} ++{++
+++  using std::range_error::range_error;++
+++};++
+
+++}++
+----
+
+//

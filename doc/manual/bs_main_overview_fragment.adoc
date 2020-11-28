@@ -1,0 +1,57 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+The {fp_package_name} build system is based on the {bs_gnu_autotools}.
+Before you can start using the build system, you need to identify which
+__((package format))__ of {fp_package_name} you're working with.
+{fp_package_name} is available in three different package formats:
+
+1. The __((source repository))__.
+2. A __((distribution archive))__.
+3. [[bs_distribution_repository]]
+A __((distribution repository))__.
+
+To identify which package format you're working with, use the following
+algorithm:
+
+1. If you didn't start with a version control repository, i.e., you
+started with an archive file named something like
+`{fp_package_tarname}-<version>.tar.gz` or
+`{fp_package_tarname}-<version>.zip` that extracts to a directory that
+includes a file named `Makefile.in`, then you're working with a
+distribution archive.
+2. Otherwise, if the version control repository includes a file named
+`Makefile.in` in the root directory, then you're working with a
+distribution repository.
+3. Otherwise, you're working with the source repository.
+
+IMPORTANT: If you started with an archive file that does not extract to
+a directory that includes a file named `Makefile.in`, then you may have
+mistakenly downloaded a __((source archive))__.
+This is what you will typically get if you use a download button when
+viewing the source repository in a repository manager like GitLab or
+GitHub.
+{fp_package_name} does not support being built from a source archive.
+
+Once you know which package format you're working with, using the build
+system consists of three main steps:
+
+1. _Initializing_ the build system.
+((("build system, initializing")))
+2. _Configuring_ the build system.
+((("build system, configuring")))
+3. _Running_ the build system.
+((("build system, running")))
+
+If you're working with the source repository, you need to perform steps
+1, 2, and 3.
+Otherwise, you only need to perform steps 2 and 3.
+Step 1 is only designed to work on modern Linux systems with a variety
+of tools installed, but steps 2 and 3 are designed to work on a variety
+of Unix-like systems with minimal tools installed.
+The idea is that developers work with the source repository and produce
+distribution archives and distribution repositories for general use.
+
+//

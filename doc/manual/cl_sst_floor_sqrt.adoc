@@ -1,0 +1,29 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_floor_sqrt,sst::floor_sqrt]]
+= The `sst::floor_sqrt` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/floor_sqrt.hpp[sst/catalog/floor_sqrt.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/algorithm.h[sst/algorithm.h]>
+namespace sst {
+
+template<{cl_std_integral} T>
+{cl_SST_CPP14_CONSTEXPR} T floor_sqrt(T x) noexcept;
+
+template<BigInteger T>
+T floor_sqrt(T const & x);
+
+}
+----
+
+The `sst::floor_sqrt` function returns
+stem:[\lfloor\sqrt{\mathtt{x}}\rfloor].
+If `x` is negative, the behavior is undefined.
+
+//

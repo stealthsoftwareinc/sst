@@ -1,0 +1,31 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_array_cmp,sst_array_cmp]]
+= The `sst_array_cmp` function
+
+.Bash
+[source,subs="normal"]
+----
+set -e
+. link:{repo_browser_url}/src/bash/preludes/standard.bash[<root>/preludes/standard.bash]
+<<bl_sst_import_function>> link:{repo_browser_url}/src/bash/functions/sst_array_cmp.bash[sst_array_cmp]
+
+sst_array_cmp <array1> <array2>
+----
+
+The `sst_array_cmp` function compares two arrays.
+The arrays are compared in lexical order first on their keys, and then
+on their values.
+The result is `-1`, `0`, or `1`.
+The result is printed to standard output in <<bl_sst_csf>> form.
+
+WARNING: This function currently does not work properly when either of
+the arrays is an associative array.
+This is planned to be fixed in the future.
+// TODO: Fix this. The difficulty is that ${!xs[@]} is not necessarily
+// sorted.
+
+//

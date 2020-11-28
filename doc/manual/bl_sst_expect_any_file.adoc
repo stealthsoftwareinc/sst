@@ -1,0 +1,18 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_expect_any_file,sst_expect_any_file]]
+= The `sst_expect_any_file` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_expect_any_file ++**[**++<path>++**...]**
+----
+
+The `sst_expect_any_file` function verifies that at least one `<path>`
+is a file.
+
+//

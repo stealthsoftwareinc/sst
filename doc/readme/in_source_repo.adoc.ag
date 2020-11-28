@@ -1,0 +1,29 @@
+#
+# For the copyright information for this file, please search up the
+# directory tree for the first COPYING file.
+#
+
+sst_expect_source_path "$BASH_SOURCE"
+d=$(sst_get_prefix $BASH_SOURCE)
+
+#
+# Distribute the in_source_repo.adoc file and remove the in_source_repo
+# attribute from it when we do so. This attribute can be used with the
+# ifdef directive to change the content of README.adoc files based on
+# whether they're being rendered from the source repository versus a
+# distribution archive or a distribution repository.
+#
+
+autogen_am_append <<EOF
+
+EXTRA_DIST += ${d}in_source_repo.adoc
+
+.PHONY: \$(distdir)/${d}in_source_repo.adoc/dist-hook
+\$(distdir)/${d}in_source_repo.adoc/dist-hook: FORCE
+	\$(AM_V_GEN)chmod u+w \$(@D) \$(distdir)/doc
+	\$(AM_V_at)sed '/^:/s|^|// |' \$(@D) >\$(@D)\$(TMPEXT).tmp
+	\$(AM_V_at)mv -f \$(@D)\$(TMPEXT).tmp \$(@D)
+
+dist-hook: \$(distdir)/${d}in_source_repo.adoc/dist-hook
+
+EOF

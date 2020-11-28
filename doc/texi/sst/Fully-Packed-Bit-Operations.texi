@@ -1,0 +1,1020 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Fully Packed Bit Operations
+@chapter Fully Packed Bit Operations
+
+@idindex @w{@t{sst_getbit1}}
+The following function
+retrieves one bit of a byte:
+
+@example
+sst_bit@w{ }sst_getbit1(
+@w{ }@w{ }unsigned@w{ }char@w{ }s1,
+@w{ }@w{ }size_t@w{ }r1
+);
+@end example
+
+@noindent
+If
+@tex
+${\tt r1} \ge {\tt CHAR\_BIT}$,
+@end tex
+@ifnottex
+@w{@t{r1}@w{ }@gequ{}@w{ }@t{CHAR_BIT}},
+@end ifnottex
+then the behavior is undefined@.
+Otherwise,
+the function returns the
+first bit past the first
+@w{@t{r1}}
+bits of
+@w{@t{s1}}@.
+The bits are ordered from
+most to least significant@.
+
+@idindex @w{@t{sst_setbit1}}
+The following function
+sets one bit of a byte:
+
+@example
+unsigned@w{ }char@w{ }sst_setbit1(
+@w{ }@w{ }unsigned@w{ }char@w{ }s1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }sst_bit@w{ }s2
+);
+@end example
+
+@noindent
+If
+@tex
+${\tt r1} \ge {\tt CHAR\_BIT}$,
+@end tex
+@ifnottex
+@w{@t{r1}@w{ }@gequ{}@w{ }@t{CHAR_BIT}},
+@end ifnottex
+then the behavior is undefined@.
+Otherwise,
+the function sets the
+first bit past the first
+@w{@t{r1}}
+bits of
+@w{@t{s1}}
+to 0 if
+@w{@t{s2}}
+is zero or 1 if not
+and returns the result@.
+The bits are ordered from
+most to least significant@.
+
+The following function
+retrieves one bit of an object:
+
+@example
+sst_bit@w{ }sst_getbit(
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1} + 1 \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}@w{ }+@w{ }1)@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise,
+the function returns the
+first bit past the first
+@tex
+${\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}}
+@end ifnottex
+bits of the object@.
+The bits within each
+byte are ordered from
+most to least significant@.
+
+The following function
+sets one bit of an object:
+
+@example
+void@w{ }sst_setbit(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }sst_bit@w{ }s2
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1} + 1 \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}@w{ }+@w{ }1)@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise,
+the function sets the
+first bit past the first
+@tex
+${\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}}
+@end ifnottex
+bits of the object to 0 if
+@w{@t{s2}}
+is zero or 1 if not@.
+The bits within each
+byte are ordered from
+most to least significant@.
+
+The following function applies
+@tex
+$C$
+@end tex
+@ifnottex
+@w{@i{C}}
+@end ifnottex
+to the bits of a byte:
+
+@example
+unsigned@w{ }char@w{ }sst_mem@r{@i{C}}1(
+@w{ }@w{ }void
+);
+@end example
+
+@noindent
+The function returns a
+byte with each bit set to
+@tex
+$C(0)$.
+@end tex
+@ifnottex
+@w{@i{C}(0)}@.
+@end ifnottex
+
+The following function applies
+@tex
+$C$
+@end tex
+@ifnottex
+@w{@i{C}}
+@end ifnottex
+to the bits of an object with byte granularity:
+
+@example
+void@w{ }sst_mem@r{@i{C}}(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+@tex
+${\tt n1} + {\tt n}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }+@w{ }@t{n}}
+@end ifnottex
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{n}}
+is zero, then the function returns@.
+Otherwise,
+the function sets each bit of the first
+@w{@t{n}}
+bytes past the first
+@w{@t{n1}}
+bytes of the object pointed to by
+@w{@t{s1}}
+to
+@tex
+$C(0)$.
+@end tex
+@ifnottex
+@w{@i{C}(0)}@.
+@end ifnottex
+
+The following function applies
+@tex
+$C$
+@end tex
+@ifnottex
+@w{@i{C}}
+@end ifnottex
+to the bits of an object with bit granularity:
+
+@example
+void@w{ }sst_bit@r{@i{C}}(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1} + {\tt n} \cdot {\tt CHAR\_BIT} + {\tt r} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}@w{ }+@w{ }@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise, if
+@w{@t{n}}
+is zero and
+@w{@t{r}}
+is zero, then the function returns@.
+Otherwise,
+the function sets each of the first
+@tex
+${\tt n} \cdot {\tt CHAR\_BIT} + {\tt r}$
+@end tex
+@ifnottex
+@w{@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r}}
+@end ifnottex
+bits past the first
+@tex
+${\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}}
+@end ifnottex
+bits of the object pointed to by
+@w{@t{s1}}
+to
+@tex
+$C(0)$.
+@end tex
+@ifnottex
+@w{@i{C}(0)}@.
+@end ifnottex
+The bits within each
+byte are ordered from
+most to least significant@.
+
+The following function applies
+@tex
+$G$
+@end tex
+@ifnottex
+@w{@i{G}}
+@end ifnottex
+to the bits of a byte:
+
+@example
+unsigned@w{ }char@w{ }sst_mem@r{@i{G}}1(
+@w{ }@w{ }unsigned@w{ }char@w{ }s1
+);
+@end example
+
+@noindent
+The function returns a
+byte with each bit set to
+@tex
+$G(x)$
+@end tex
+@ifnottex
+@w{@i{G}(@i{x})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is the corresponding bit of
+@w{@t{s1}}@.
+
+The following three functions apply
+@tex
+$G$
+@end tex
+@ifnottex
+@w{@i{G}}
+@end ifnottex
+to the bits of an object with byte granularity:
+
+@example
+void@w{ }sst_mem@r{@i{G}}(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@example
+void@w{ }sst_mem@r{@i{G}}f(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@example
+void@w{ }sst_mem@r{@i{G}}b(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+@tex
+${\tt n1} + {\tt n}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }+@w{ }@t{n}}
+@end ifnottex
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{s2}}
+does not point to an
+object or the object
+does not contain at least
+@tex
+${\tt n2} + {\tt n}$
+@end tex
+@ifnottex
+@w{@t{n2}@w{ }+@w{ }@t{n}}
+@end ifnottex
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{n}}
+is zero, then each function returns@.
+Otherwise,
+each function sets each bit of the first
+@w{@t{n}}
+bytes past the first
+@w{@t{n1}}
+bytes of the object pointed to by
+@w{@t{s1}}
+to
+@tex
+$G(x)$
+@end tex
+@ifnottex
+@w{@i{G}(@i{x})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is the corresponding bit past the first
+@w{@t{n2}}
+bytes of the object pointed to by
+@w{@t{s2}}@.
+For the
+@w{@t{sst_mem}@i{G}}
+function, if the affected
+bytes of the objects overlap,
+then the behavior is undefined@.
+For the
+@w{@t{sst_mem}@i{G}@t{f}}
+function, if the
+affected bytes of
+the objects overlap
+and the intersection
+excludes the first affected
+byte of the object pointed to by
+@w{@t{s2}},
+then the behavior is undefined@.
+For the
+@w{@t{sst_mem}@i{G}@t{b}}
+function, if the
+affected bytes of
+the objects overlap
+and the intersection
+excludes the first affected
+byte of the object pointed to by
+@w{@t{s1}},
+then the behavior is undefined@.
+
+The following three functions apply
+@tex
+$G$
+@end tex
+@ifnottex
+@w{@i{G}}
+@end ifnottex
+to the bits of an object with bit granularity:
+
+@example
+void@w{ }sst_bit@r{@i{G}}(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@example
+void@w{ }sst_bit@r{@i{G}}f(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@example
+void@w{ }sst_bit@r{@i{G}}b(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1} + {\tt n} \cdot {\tt CHAR\_BIT} + {\tt r} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}@w{ }+@w{ }@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise, if
+@w{@t{s2}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n2} \cdot {\tt CHAR\_BIT} + {\tt r2} + {\tt n} \cdot {\tt CHAR\_BIT} + {\tt r} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n2}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r2}@w{ }+@w{ }@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise, if
+@w{@t{n}}
+is zero and
+@w{@t{r}}
+is zero, then each function returns@.
+Otherwise,
+each function sets each of the first
+@tex
+${\tt n} \cdot {\tt CHAR\_BIT} + {\tt r}$
+@end tex
+@ifnottex
+@w{@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r}}
+@end ifnottex
+bits past the first
+@tex
+${\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}}
+@end ifnottex
+bits of the object pointed to by
+@w{@t{s1}}
+to
+@tex
+$G(x)$
+@end tex
+@ifnottex
+@w{@i{G}(@i{x})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is the corresponding bit past the first
+@tex
+${\tt n2} \cdot {\tt CHAR\_BIT} + {\tt r2}$
+@end tex
+@ifnottex
+@w{@t{n2}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r2}}
+@end ifnottex
+bits of the object pointed to by
+@w{@t{s2}}@.
+The bits within each
+byte are ordered from
+most to least significant@.
+For the
+@w{@t{sst_bit}@i{G}}
+function, if the affected
+bytes of the objects overlap,
+then the behavior is undefined@.
+For the
+@w{@t{sst_bit}@i{G}@t{f}}
+function, if the
+affected bits of
+the objects overlap
+and the intersection
+excludes the first affected
+bit of the object pointed to by
+@w{@t{s2}},
+then the behavior is undefined@.
+For the
+@w{@t{sst_bit}@i{G}@t{b}}
+function, if the
+affected bits of
+the objects overlap
+and the intersection
+excludes the first affected
+bit of the object pointed to by
+@w{@t{s1}},
+then the behavior is undefined@.
+
+The following function applies
+@tex
+$H$
+@end tex
+@ifnottex
+@w{@i{H}}
+@end ifnottex
+to the bits of two bytes:
+
+@example
+unsigned@w{ }char@w{ }sst_mem@r{@i{H}}1(
+@w{ }@w{ }unsigned@w{ }char@w{ }s1,
+@w{ }@w{ }unsigned@w{ }char@w{ }s2
+);
+@end example
+
+@noindent
+The function returns a
+byte with each bit set to
+@tex
+$H(x, y)$
+@end tex
+@ifnottex
+@w{@i{H}(@i{x}@comma{}@w{ }@i{y})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is the corresponding bit of
+@w{@t{s1}}
+and
+@tex
+$y$
+@end tex
+@ifnottex
+@w{@i{y}}
+@end ifnottex
+is the corresponding bit of
+@w{@t{s2}}@.
+
+The following three functions apply
+@tex
+$H$
+@end tex
+@ifnottex
+@w{@i{H}}
+@end ifnottex
+to the bits of two objects with byte granularity:
+
+@example
+void@w{ }sst_mem@r{@i{H}}(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s3,
+@w{ }@w{ }size_t@w{ }n3,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@example
+void@w{ }sst_mem@r{@i{H}}f(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s3,
+@w{ }@w{ }size_t@w{ }n3,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@example
+void@w{ }sst_mem@r{@i{H}}b(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s3,
+@w{ }@w{ }size_t@w{ }n3,
+@w{ }@w{ }size_t@w{ }n
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+@tex
+${\tt n1} + {\tt n}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }+@w{ }@t{n}}
+@end ifnottex
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{s2}}
+does not point to an
+object or the object
+does not contain at least
+@tex
+${\tt n2} + {\tt n}$
+@end tex
+@ifnottex
+@w{@t{n2}@w{ }+@w{ }@t{n}}
+@end ifnottex
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{s3}}
+does not point to an
+object or the object
+does not contain at least
+@tex
+${\tt n3} + {\tt n}$
+@end tex
+@ifnottex
+@w{@t{n3}@w{ }+@w{ }@t{n}}
+@end ifnottex
+bytes, then the behavior is undefined@.
+Otherwise, if
+@w{@t{n}}
+is zero, then each function returns@.
+Otherwise,
+each function sets each bit of the first
+@w{@t{n}}
+bytes past the first
+@w{@t{n1}}
+bytes of the object pointed to by
+@w{@t{s1}}
+to
+@tex
+$H(x, y)$
+@end tex
+@ifnottex
+@w{@i{H}(@i{x}@comma{}@w{ }@i{y})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is the corresponding bit past the first
+@w{@t{n2}}
+bytes of the object pointed to by
+@w{@t{s2}}
+and
+@tex
+$y$
+@end tex
+@ifnottex
+@w{@i{y}}
+@end ifnottex
+is the corresponding bit past the first
+@w{@t{n3}}
+bytes of the object pointed to by
+@w{@t{s3}}@.
+For the
+@w{@t{sst_mem}@i{H}}
+function, if the affected
+bytes of the object pointed to by
+@w{@t{s1}}
+overlap the affected bytes of
+either of the other two objects,
+then the behavior is undefined@.
+For the
+@w{@t{sst_mem}@i{H}@t{f}}
+function, if the affected
+bytes of the object pointed to by
+@w{@t{s1}}
+overlap the affected bytes of
+either of the other two objects
+and either intersection excludes the
+first affected byte of the other object,
+then the behavior is undefined@.
+For the
+@w{@t{sst_mem}@i{H}@t{b}}
+function, if the affected
+bytes of the object pointed to by
+@w{@t{s1}}
+overlap the affected bytes of
+either of the other two objects
+and either intersection excludes the
+first affected byte of the object pointed to by
+@w{@t{s1}},
+then the behavior is undefined@.
+
+The following three functions apply
+@tex
+$H$
+@end tex
+@ifnottex
+@w{@i{H}}
+@end ifnottex
+to the bits of two objects with bit granularity:
+
+@example
+void@w{ }sst_bit@r{@i{H}}(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s3,
+@w{ }@w{ }size_t@w{ }n3,
+@w{ }@w{ }size_t@w{ }r3,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@example
+void@w{ }sst_bit@r{@i{H}}f(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s3,
+@w{ }@w{ }size_t@w{ }n3,
+@w{ }@w{ }size_t@w{ }r3,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@example
+void@w{ }sst_bit@r{@i{H}}b(
+@w{ }@w{ }void@w{ }*@w{ }s1,
+@w{ }@w{ }size_t@w{ }n1,
+@w{ }@w{ }size_t@w{ }r1,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s2,
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2,
+@w{ }@w{ }void@w{ }const@w{ }*@w{ }s3,
+@w{ }@w{ }size_t@w{ }n3,
+@w{ }@w{ }size_t@w{ }r3,
+@w{ }@w{ }size_t@w{ }n,
+@w{ }@w{ }size_t@w{ }r
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1} + {\tt n} \cdot {\tt CHAR\_BIT} + {\tt r} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}@w{ }+@w{ }@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise, if
+@w{@t{s2}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n2} \cdot {\tt CHAR\_BIT} + {\tt r2} + {\tt n} \cdot {\tt CHAR\_BIT} + {\tt r} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n2}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r2}@w{ }+@w{ }@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise, if
+@w{@t{s3}}
+does not point to an
+object or the object
+does not contain at least
+the following number of bytes,
+then the behavior is undefined:
+
+@tex
+$$\left\lceil{{\tt n3} \cdot {\tt CHAR\_BIT} + {\tt r3} + {\tt n} \cdot {\tt CHAR\_BIT} + {\tt r} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n3}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r3}@w{ }+@w{ }@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+Otherwise, if
+@w{@t{n}}
+is zero and
+@w{@t{r}}
+is zero, then each function returns@.
+Otherwise,
+each function sets each of the first
+@tex
+${\tt n} \cdot {\tt CHAR\_BIT} + {\tt r}$
+@end tex
+@ifnottex
+@w{@t{n}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r}}
+@end ifnottex
+bits past the first
+@tex
+${\tt n1} \cdot {\tt CHAR\_BIT} + {\tt r1}$
+@end tex
+@ifnottex
+@w{@t{n1}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r1}}
+@end ifnottex
+bits of the object pointed to by
+@w{@t{s1}}
+to
+@tex
+$H(x, y)$
+@end tex
+@ifnottex
+@w{@i{H}(@i{x}@comma{}@w{ }@i{y})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is the corresponding bit past the first
+@tex
+${\tt n2} \cdot {\tt CHAR\_BIT} + {\tt r2}$
+@end tex
+@ifnottex
+@w{@t{n2}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r2}}
+@end ifnottex
+bits of the object pointed to by
+@w{@t{s2}}
+and
+@tex
+$y$
+@end tex
+@ifnottex
+@w{@i{y}}
+@end ifnottex
+is the corresponding bit past the first
+@tex
+${\tt n3} \cdot {\tt CHAR\_BIT} + {\tt r3}$
+@end tex
+@ifnottex
+@w{@t{n3}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r3}}
+@end ifnottex
+bits of the object pointed to by
+@w{@t{s3}}@.
+The bits within each
+byte are ordered from
+most to least significant@.
+For the
+@w{@t{sst_bit}@i{H}}
+function, if the affected
+bytes of the object pointed to by
+@w{@t{s1}}
+overlap the affected bytes of
+either of the other two objects,
+then the behavior is undefined@.
+For the
+@w{@t{sst_bit}@i{H}@t{f}}
+function, if the affected
+bits of the object pointed to by
+@w{@t{s1}}
+overlap the affected bits of
+either of the other two objects
+and either intersection excludes the
+first affected bit of the other object,
+then the behavior is undefined@.
+For the
+@w{@t{sst_bit}@i{H}@t{b}}
+function, if the affected
+bits of the object pointed to by
+@w{@t{s1}}
+overlap the affected bits of
+either of the other two objects
+and either intersection excludes the
+first affected bit of the object pointed to by
+@w{@t{s1}},
+then the behavior is undefined@.

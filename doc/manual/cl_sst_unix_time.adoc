@@ -1,0 +1,30 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unix_time,sst::unix_time]]
+= The `sst::unix_time` function
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/time.h>
+namespace sst {
+
+template<class Duration = std::chrono::seconds>
+typename Duration::rep unix_time();
+
+}
+----
+
+The `sst::unix_time` function returns the current tick count of the Unix
+clock with respect to `Duration`, which should be an instantiation of
+`{ce_std_chrono_duration}`.
+
+Prior to {cpp}20, this function may use a clock other than the Unix
+clock, but there are no known implementations that do so.
+For more information, see `{ce_std_chrono_system_clock}` or compare
+{cpp17sec}23.17.7.1 with {cpp20sec}27.7.1.1.
+
+//

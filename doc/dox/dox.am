@@ -1,0 +1,70 @@
+##
+## For the copyright information for this file, please search up the
+## directory tree for the first COPYING file.
+##
+
+## begin_variables
+
+EXTRA_DIST += $(dox_src)
+EXTRA_DIST += doc/dox/dox.df
+EXTRA_DIST += lib/sst.jar.gitignorable.am_df_INPUT
+EXTRA_DIST += src/c_cpp/libsst_la_HEADERS.am_df_INPUT
+
+doxygen_dep =
+doxygen_dep += $(dox_src)
+doxygen_dep += $(dox_src_nodist)
+doxygen_dep += $(include_HEADERS)
+doxygen_dep += $(include_sst_HEADERS)
+doxygen_dep += $(javadoc_src)
+doxygen_dep += build-aux/INPUT_FILTER.sh
+doxygen_dep += build-aux/PACKAGE_STRING.df
+
+doxygen_dfv =
+doxygen_dfv += lib/sst.jar.gitignorable.dfv
+doxygen_dfv += src/c_cpp/libsst_la_HEADERS.dfv
+
+doxygen_dst = doc/$(PACKAGE_TARNAME)-$(PACKAGE_VERSION)-doxygen
+
+doxygen_src = doc/dox/dox.dfv
+
+## end_variables
+
+## begin_rules
+
+$(doxygen_dst).html: $(doxygen_dst)
+	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
+	$(AM_V_GEN)$(GATBPS_V_NOP)
+	$(AM_V_at)rm -fr $@ $@$(TMPEXT)
+	$(AM_V_at)cp -R $(doxygen_dst)/html $@$(TMPEXT)
+	$(AM_V_at)mv $@$(TMPEXT) $@
+	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+
+$(doxygen_dst).html/clean: FORCE
+	-rm -fr $(@D) $(@D)$(TMPEXT)
+
+$(doxygen_dst).pdf: $(doxygen_dst)
+	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
+	$(AM_V_GEN)$(GATBPS_V_NOP)
+	$(AM_V_at)rm -fr $@ $@$(TMPEXT)
+	$(AM_V_at)cp -R $(doxygen_dst)/latex $@$(TMPEXT)
+	$(AM_V_at)cd $@$(TMPEXT) && $(MAKE) $(AM_MAKEFLAGS) pdf
+	$(AM_V_at)mv $@$(TMPEXT)/refman.pdf $@
+	$(AM_V_at)-rm -fr $@$(TMPEXT)
+	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+
+$(doxygen_dst).pdf/clean: FORCE
+	-rm -fr $(@D) $(@D)$(TMPEXT)
+
+.PHONY: $(doxygen_dst).html/clean
+.PHONY: $(doxygen_dst).pdf/clean
+
+clean-doxygen: $(doxygen_dst).html/clean
+clean-doxygen: $(doxygen_dst).pdf/clean
+
+clean-local: $(doxygen_dst).html/clean
+clean-local: $(doxygen_dst).pdf/clean
+
+doxygen: $(doxygen_dst).html
+doxygen: $(doxygen_dst).pdf
+
+## end_rules

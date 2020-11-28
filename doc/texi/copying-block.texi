@@ -1,0 +1,110 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@ifdocbook
+@copying
+This manual is from the SST package.
+
+@noindent
+The following copyright notice is generally applicable:
+
+@quotation
+Copyright @copyright{} Stealth Software Technologies, Inc.
+@end quotation
+
+@noindent
+The full copyright information depends on the distribution
+of the package. For more information, see the introductory
+Copyright Information section.
+@end copying
+@end ifdocbook
+@ifhtml
+@copying
+@*
+This manual is from the SST package.
+
+The following copyright notice is generally applicable:
+
+@w{     }Copyright (C) Stealth Software Technologies, Inc.
+
+The full copyright information depends on the distribution
+of the package. For more information, see the introductory
+Copyright Information section.
+@*
+@end copying
+@end ifhtml
+@ifinfo
+@ifnotplaintext
+@copying
+This manual is from the SST package.
+
+@noindent
+The following copyright notice is generally applicable:
+
+@quotation
+Copyright @copyright{} Stealth Software Technologies, Inc.
+@end quotation
+
+@noindent
+The full copyright information depends on the distribution
+of the package. For more information, see the introductory
+Copyright Information section.
+@end copying
+@end ifnotplaintext
+@end ifinfo
+@ifplaintext
+@copying
+This manual is from the SST package.
+
+@noindent
+The following copyright notice is generally applicable:
+
+@quotation
+Copyright @copyright{} Stealth Software Technologies, Inc.
+@end quotation
+
+@noindent
+The full copyright information depends on the distribution
+of the package. For more information,
+@pxref{Copyright Information}.
+@end copying
+@end ifplaintext
+@iftex
+@copying
+This manual is from the SST package.
+
+@noindent
+The following copyright notice is generally applicable:
+
+@quotation
+Copyright @copyright{} Stealth Software Technologies, Inc.
+@end quotation
+
+@noindent
+The full copyright information depends on the distribution
+of the package. For more information,
+@pxref{Copyright Information}.
+@end copying
+@end iftex
+@ifxml
+@copying
+This manual is from the SST package.
+
+@noindent
+The following copyright notice is generally applicable:
+
+@quotation
+Copyright @copyright{} Stealth Software Technologies, Inc.
+@end quotation
+
+@noindent
+The full copyright information depends on the distribution
+of the package. For more information, see the introductory
+Copyright Information section.
+@end copying
+@end ifxml

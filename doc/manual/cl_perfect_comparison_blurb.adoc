@@ -1,0 +1,33 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/{f}.hpp[sst/catalog/{f}.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/integer.h[sst/integer.h]>
+namespace sst {
+
+template<class IntType1, class IntType2>
+constexpr bool {f}(IntType1 a, IntType2 b) noexcept;
+
+}
+----
+
+The `sst::{f}` function determines whether `a` is {r} `b` for any two
+values `a` and `b` of any two {cr_integer_types} `IntType1` and
+`IntType2`.
+
+[subs="-replacements"]
+The {cr_usual_arithmetic_conversions_cpp} can cause the plain `{o}`
+operator to yield an unexpected result when `IntType1` and `IntType2`
+have different signedness and the signed value is negative.
+Using the `sst::{f}` function instead of the plain `{o}` operator will
+avoid this possibility.
+
+The `sst::{f}` function may have a small amount of overhead compared to
+the plain `{o}` operator, so it should be used judiciously.
+
+//

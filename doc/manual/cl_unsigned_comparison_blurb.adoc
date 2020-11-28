@@ -1,0 +1,40 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/{f}.hpp[sst/catalog/{f}.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/integer.h[sst/integer.h]>
+namespace sst {
+
+template<class IntType1, class IntType2>
+constexpr bool {f}(IntType1 a, IntType2 b) noexcept;
+
+}
+----
+
+The `sst::{f}` function determines whether `a` is {r} `b` for any two
+nonnegative values `a` and `b` of any two {cr_integer_types} `IntType1`
+and `IntType2` without generating any compiler warnings.
+
+[subs="-replacements"]
+The {cr_usual_arithmetic_conversions_cpp} guarantee that comparing `a`
+to `b` with the plain `{o}` operator always yields the expected result
+if `a` and `b` are nonnegative, but it is common for compilers to
+generate warnings when `IntType1` and `IntType2` have different
+signedness.
+This can be annoying when writing template functions for arbitrary
+integer types, as certain type combinations can generate useless
+warnings.
+Using the `sst::{f}` function instead of the plain `{o}` operator will
+avoid these warnings.
+
+The `sst::{f}` function does not have any overhead compared to the plain
+`{o}` operator.
+
+If `a` is negative or `b` is negative, the {cr_behavior_is_undefined}.
+
+//

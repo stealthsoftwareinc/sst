@@ -1,0 +1,20 @@
+##
+## For the copyright information for this file, please search up the
+## directory tree for the first COPYING file.
+##
+
+## begin_variables
+
+EXTRA_DIST += include/src/sst_status_map.inc
+
+gen_targets += include/src/sst_status_map.inc
+
+## end_variables
+
+## begin_rules
+
+include/src/sst_status_map.inc: bin/sst_status_map_generator$(EXEEXT)
+include/src/sst_status_map.inc: include/src/sst_status_map.inc.ac
+include/src/sst_status_map.inc: include/src/sst_status_map.inc.am
+
+## end_rules

@@ -1,0 +1,14 @@
+##
+## For the copyright information for this file, please search up the
+## directory tree for the first COPYING file.
+##
+
+## begin_variables
+
+pages_src =
+pages_src += doc/pages/index.html
+
+pages_src_nodist =
+pages_src_nodist += doc/pages/manual/index.html
+
+## end_variables

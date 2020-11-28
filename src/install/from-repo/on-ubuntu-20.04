@@ -1,0 +1,22 @@
+#! /bin/sh -
+#
+# For the copyright information for this file, please search up the
+# directory tree for the first COPYING file.
+#
+
+# Load the prelude.
+set -e || exit $?
+. src/bash/preludes/standard.bash
+
+sst_ubuntu_install_raw \
+  autoconf \
+  automake \
+  git \
+  jq \
+  libtool \
+  m4 \
+;
+
+./autogen
+
+src/install/from-dist/$on_x

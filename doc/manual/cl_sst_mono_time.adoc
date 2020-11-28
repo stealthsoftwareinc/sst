@@ -1,0 +1,28 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_mono_time,sst::mono_time]]
+= The `sst::mono_time` function
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/time.h>
+namespace sst {
+
+template<class Duration>
+typename Duration::rep mono_time();
+
+}
+----
+
+The `sst::mono_time` function returns the current tick count of a
+monotonic clock with respect to `Duration`, which should be an
+instantiation of `{ce_std_chrono_duration}`.
+The monotonic clock is unspecified except that the epoch is chosen at
+run time such that performing arithmetic on values returned by
+`<<cl_sst_mono_time_d>>` produces meaningful results.
+
+//

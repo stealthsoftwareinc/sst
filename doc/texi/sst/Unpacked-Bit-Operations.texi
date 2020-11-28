@@ -1,0 +1,10 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Unpacked Bit Operations
+@chapter Unpacked Bit Operations

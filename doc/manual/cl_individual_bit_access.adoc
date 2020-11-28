@@ -1,0 +1,16 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_individual_bit_access]]
+= Individual bit access
+
+:leveloffset: +1
+
+include::cl_sst_get_bit.adoc[]
+include::cl_sst_set_bit.adoc[]
+
+:leveloffset: -1
+
+//

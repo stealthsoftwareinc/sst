@@ -1,0 +1,15 @@
+dnl
+dnl For the copyright information for this file, please search up the
+dnl directory tree for the first COPYING file.
+dnl
+[
+
+]dnl begin_includes
+[
+
+]m4_include([../include/src/sst_status_map.inc.ac])[
+
+]dnl end_includes
+[
+
+]

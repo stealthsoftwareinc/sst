@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unsigned_ne,sst::unsigned_ne]]
+= The `sst::unsigned_ne` function
+
+:f: unsigned_ne
+:r: unequal to
+:o: !=
+include::cl_unsigned_comparison_blurb.adoc[]
+
+//

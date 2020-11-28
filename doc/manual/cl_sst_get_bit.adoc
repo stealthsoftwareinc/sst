@@ -1,0 +1,56 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_get_bit,sst::get_bit]]
+= The `sst::get_bit` function
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/bit.h>
+namespace sst {
+
+// (1)
+template<class X, class Q, class R>
+constexpr bool get_bit(X x, Q q, R r) noexcept;
+
+// (2)
+template<class X, class R>
+constexpr bool get_bit(X x, R r) noexcept;
+
+// (3)
+template<class Q, class R>
+bool get_bit(void const * x, Q q, R r) noexcept;
+
+// (4)
+template<class R>
+bool get_bit(void const * x, R r) noexcept;
+
+}
+----
+
+The `sst::get_bit` function returns the bit at index
+stem:[\mathtt{q} \cdot \mathtt{CHAR\_BIT} + \mathtt{r}]
+of the two`'s complement representation of `x` +(for (1) and (2))+ or
+the region of bytes pointed to by `x` +(for (3) and (4))+.
+For (1) and (2), the bits of `x` are zero indexed starting with the
+least significant bit (and the most significant bit is the sign bit if
+`X` is signed).
+For (3) and (4), the bits of the region of bytes pointed to by `x` are
+zero indexed starting with the least significant bit of the first byte.
+
+`X`, `Q`, and `R` may be any {ce_std_is_integral_url}[integer types].
+If `x` is a null pointer, `q` is negative, `r` is negative, or
+stem:[\mathtt{q} \cdot \mathtt{CHAR\_BIT} + \mathtt{r}]
+is greater than or equal to the number of nonpadding bits in `X` or the
+number of bits in the region of bytes pointed to by `x`, the behavior is
+undefined.
+For (2) and (4), `q` is omitted and taken to be zero.
+
+Prior to {cpp}20, signed integers are permitted to use ones`' complement
+or sign-magnitude representation instead of two`'s complement.
+This does not affect the behavior of (1) or (2).
+
+//

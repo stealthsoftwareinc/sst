@@ -1,0 +1,56 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_to_bits,sst::to_bits]]
+= The `sst::to_bits` function
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/to_bits.hpp[sst/catalog/to_bits.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/representation.h[sst/representation.h]>
+namespace sst {
+
+// (1)
+template<class Y, bool SignExtend = std::is_signed<Y>::value,
+         class Q, class R, class N>
+void * to_bits(void * x, Q q, R r, Y y, N n) noexcept;
+
+// (2)
+template<class Y, bool SignExtend = std::is_signed<Y>::value,
+         class R, class N>
+void * to_bits(void * x, R r, Y y, N n) noexcept;
+
+}
+----
+
+The `sst::to_bits` function stores an integer to a sequence of bits of
+memory.
+First, the two`'s complement representation of `y` is considered,
+extending it with infinitely many copies of its most significant bit
+(which is the sign bit if `Y` is signed) if `SignExtend` is `true`, or
+with infinitely many 0`'s if `SignExtend` is `false`.
+Next, the least significant `n` bits of this infinite representation are
+stored to the `n` bits of memory starting at bit index
+stem:[\mathtt{q} \cdot \mathtt{CHAR\_BIT} + \mathtt{r}]
+of the region of bytes pointed to by `x`.
+The bits of the region of bytes pointed to by `x` are zero indexed
+starting with the least significant bit of the first byte.
+Finally, the function returns `x`.
+
+`Y`, `Q`, `R`, and `N` may be any
+{ce_std_is_integral_url}[integer types].
+If `x` is a null pointer, `q` is negative, `r` is negative, `n` is not
+positive, or
+stem:[\mathtt{q} \cdot \mathtt{CHAR\_BIT} + \mathtt{r} + \mathtt{n}]
+is greater than the number of bits in the region of bytes pointed to by
+`x`, the behavior is undefined.
+For (2), `q` is omitted and taken to be zero.
+
+Prior to {cpp}20, signed integers are permitted to use ones`' complement
+or sign-magnitude representation instead of two`'s complement.
+This does not affect the behavior of this function.
+
+//

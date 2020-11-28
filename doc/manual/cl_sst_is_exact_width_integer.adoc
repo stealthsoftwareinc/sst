@@ -1,0 +1,40 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_is_exact_width_integer,sst::is_exact_width_integer]]
+= The `sst::is_exact_width_integer` trait
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/is_exact_width_integer.hpp[sst/catalog/is_exact_width_integer.hpp]>
+namespace sst {
+
+template<class T>
+struct is_exact_width_integer
+  : {ce_std_integral_constant}<bool, /*...*/> {};
+
+}
+----
+
+The `sst::is_exact_width_integer` trait determines whether `T` is one of
+the exact-width integer types, i.e., one of
+`int8_t`,
+`uint8_t`,
+`int16_t`,
+`uint16_t`,
+`int32_t`,
+`uint32_t`,
+`int64_t`,
+or
+`uint64_t`,
+ignoring any {cr_cv_qualifiers}.
+
+:W: sst::is_exact_width_integer
+:T: T
+:V: bool
+include::cl_integral_constant_extraction_blurb.adoc[]
+
+//

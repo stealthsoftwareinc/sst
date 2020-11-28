@@ -1,0 +1,26 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_get_distro_version,sst_get_distro_version]]
+= The `sst_get_distro_version` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_get_distro_version
+----
+
+The `sst_get_distro_version` function identifies the system version and
+writes it to standard output in `<<bl_sst_csf>>` form.
+If the system version cannot be identified, a fatal error occurs.
+
+The following results are possible for the various
+`<<bl_sst_get_distro>>` values:
+
+`centos`:: `6`, `7`, or `8`.
+`ubuntu`:: `16.04`, `18.04`, or `20.04`.
+`unknown`:: None.
+
+//

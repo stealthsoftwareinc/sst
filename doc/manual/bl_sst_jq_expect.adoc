@@ -1,0 +1,31 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_jq_expect,sst_jq_expect]]
+= The `sst_jq_expect` function
+
+.Bash
+[source,subs="normal"]
+----
+set -e
+. link:{repo_browser_url}/src/bash/preludes/standard.bash[<root>/preludes/standard.bash]
+<<bl_sst_import_function>> link:{repo_browser_url}/src/bash/functions/sst_jq_expect.bash[sst_jq_expect]
+
+sst_jq_expect <condition> **[**<format> **[**<arg>**...]]**
+----
+
+The `sst_jq_expect` function checks a condition on JSON input using the
+`jq` utility and terminates the script if the condition is false.
+
+The JSON input is read from standard input.
+
+The `<condition>` argument specifies the condition to check.
+It should be a `jq` filter that outputs `true` or `false`.
+
+If the condition is true, no action is taken.
+Otherwise, the script is terminated by calling
+`<<bl_sst_barf>> **[**<format> **[**<arg>**...]]**`.
+
+//

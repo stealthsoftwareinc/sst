@@ -1,0 +1,26 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_mono_time_s,sst::mono_time_s]]
+= The `sst::mono_time_s` function
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/time.h>
+namespace sst {
+
+inline std::chrono::seconds::rep mono_time_s();
+
+}
+----
+
+The `sst::mono_time_s` function returns the current tick count of the
+`<<cl_sst_mono_time>>` clock in seconds.
+Note that the return type is an unspecified signed integer type whose
+width is at least 35 bits (see `{ce_std_chrono_duration}` or
+{cpp11sec}20.11.2).
+
+//

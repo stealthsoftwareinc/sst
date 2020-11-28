@@ -1,0 +1,33 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+= SST
+:attribute-missing: warn
+:gindent: {nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}
+:sectanchors:
+:sectlinks:
+:sectnumlevels: 5
+:sectnums:
+:stem: latexmath
+:toc: auto
+:toclevels: 5
+
+include::bl_attributes.adoc[]
+include::bs_attributes.adoc[]
+include::cl_attributes.adoc[]
+include::repo_browser_url.adoc[]
+
+:leveloffset: +1
+
+include::build_system.adoc[]
+include::c_cpp_library.adoc[]
+include::bash_library.adoc[]
+
+:leveloffset: -1
+
+[index]
+== Index
+
+//

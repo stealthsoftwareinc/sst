@@ -1,0 +1,18 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[build_system]]
+= Build system
+
+:leveloffset: +1
+
+include::bs_overview.adoc[]
+include::bs_initializing_the_build_system.adoc[]
+include::bs_configuring_the_build_system.adoc[]
+include::bs_running_the_build_system.adoc[]
+
+:leveloffset: -1
+
+//

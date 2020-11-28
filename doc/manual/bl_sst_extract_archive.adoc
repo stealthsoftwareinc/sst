@@ -1,0 +1,20 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_extract_archive,sst_extract_archive]]
+= The `sst_extract_archive` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_extract_archive <file>
+----
+
+The `sst_extract_archive` function extracts the archive `<file>` into
+the current directory.
+The supported file extensions are `.tar`, `.tar.gz`, `.tar.xz`, and
+`.zip`.
+
+//

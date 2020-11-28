@@ -1,0 +1,22 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bash_library]]
+= Bash library
+
+:leveloffset: +1
+
+include::bl_bootstrapping.adoc[]
+include::bl_core_functions.adoc[]
+include::bl_array_functions.adoc[]
+include::bl_path_functions.adoc[]
+include::bl_json_functions.adoc[]
+include::bl_build_system_functions.adoc[]
+include::bl_miscellaneous.adoc[]
+include::bl_filesystem_tools.adoc[]
+
+:leveloffset: -1
+
+//

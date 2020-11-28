@@ -1,0 +1,29 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_type_max,sst::type_max]]
+= The `sst::type_max` trait
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+++#include <sst/limits.h>++
+++namespace sst {++
+
+++template<class T>++
+++struct type_max :++ {ce_std_integral_constant}<++T, ++__v__++> {};++
+
+++}++
+----
+
+The `sst::type_max` class provides the maximum value of the
+{cr_integer_type} `T`.
+
+:W: sst::type_max
+:T: T
+:V: T
+include::cl_integral_constant_extraction_blurb.adoc[]
+
+//

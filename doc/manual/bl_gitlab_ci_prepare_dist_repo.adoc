@@ -1,0 +1,64 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_gitlab_ci_prepare_dist_repo,prepare-dist-repo]]
+= The `prepare-dist-repo` script
+
+.Bash
+[source,subs="normal"]
+----
+prepare-dist-repo <json>
+----
+
+The `prepare-dist-repo` script makes a commit to a private
+<<bs_distribution_repository>> for preview purposes before the
+`<<bl_gitlab_ci_publish_dist_repo>>` script is used to publish the
+preview commit to a corresponding public distribution repository.
+
+:fp_argument_name: json
+include::bl_json_argument_fragment.adoc[]
+
+The following arguments may be specified in `<json>`:
+
+`pull_repo`::
+The URL to the repository on top of which to make the preview commit.
+The preview commit will be made on top of the default branch of this
+repository.
+This argument is required.
+
+`push_repo`::
+A repository URL or an array of repository URLs to which to push the
+preview commit.
+The preview commit will always be pushed to a new branch `preview-<x>`,
+where `<x>` is derived from the source of the CI job.
+This argument is optional and defaults to `pull_repo`.
+
+`update_script`::
+A path to an update script to run instead of the default update script.
+This argument is optional.
+
+`post_update_script`::
+A path to an update script to run instead of the default post-update
+script.
+This argument is optional.
+
+`commit_script`::
+A path to a commit script to run instead of the default commit script.
+This argument is optional.
+
+`gitbundle`::
+The name of the `.gitbundle` file to produce as an artifact to use as
+input to the `<<bl_gitlab_ci_publish_dist_repo>>` script.
+This argument is optional and defaults to `preview.gitbundle`.
+
+`dist_archive`::
+A path to an archive to use instead of the default distribution archive,
+which is located using the `<<bl_sst_find_dist_archive>>` function.
+This argument may also be set to "```git-archive```" to create an
+ephemeral distribution archive that contains the content of `HEAD`
+inside a container directory with an unspecified name.
+This argument is optional.
+
+//

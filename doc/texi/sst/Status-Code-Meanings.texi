@@ -1,0 +1,59 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Status Code Meanings
+@chapter Status Code Meanings
+
+@noindent
+Each status code has a conventional meaning, but each function
+ultimately defines its own meaning for the status codes that it
+returns@.
+The conventional meanings organize the status codes into a disconnected
+directed graph where there is an edge from
+@w{@t{s1}}
+to
+@w{@t{s2}}
+if the conventional meaning of
+@w{@t{s1}}
+implies the conventional meaning of
+@w{@t{s2}}@.
+In this case,
+@w{@t{s1}}
+is said to imply
+@w{@t{s2}}@.
+The graph is acyclic except that every vertex has a loop@.
+
+@include indent.texi
+The following function determines whether one status code implies
+another:
+
+@example
+sst_bool sst_status_implies(
+  sst_status s1,
+  sst_status s2
+);
+@end example
+
+@noindent
+If
+@w{@t{s1}}
+or
+@w{@t{s2}}
+is larger than
+@w{@t{SST_STATUS_MAXVAL}},
+then the function returns
+@w{@t{SST_FALSE}}@.
+Otherwise, the function returns
+@w{@t{SST_TRUE}}
+if
+@w{@t{s1}}
+implies
+@w{@t{s2}},
+or
+@w{@t{SST_FALSE}}
+if not@.

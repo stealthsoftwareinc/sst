@@ -1,0 +1,35 @@
+#! /bin/sh -
+#
+# For the copyright information for this file, please search up the
+# directory tree for the first COPYING file.
+#
+# This script bootstraps into Bash. The shebang is only for portability.
+# For more information, see the Bash library > Bootstrapping section of
+# the SST manual.
+#
+
+# Load the prelude.
+case $0 in /*) x=$0 ;; *) x=./$0 ;; esac
+x=`dirname "$x"` || exit $?
+set -e || exit $?
+. "$x"/../../preludes/gitlab-ci.bash
+
+apt-get -qy update
+
+apt-get -qy install \
+  git \
+  gnupg1 \
+  sshpass \
+;
+
+sh build-aux/save-artifacts.sh \
+  --copy-ssh-secret-key-file \
+  --git-committer-email archivist@stealthsoftwareinc.com \
+  --git-committer-name "Stealth Archivist" \
+  --gpg-passphrase-file /archivist.gpg-passphrase \
+  --gpg-secret-key-file /archivist.gpg-secret-key \
+  --repository git@gitlab.stealthsoftwareinc.com:stealth/sst-artifacts.git \
+  --ssh-passphrase-file /archivist.ssh-passphrase \
+  --ssh-secret-key-file /archivist.ssh-secret-key \
+  sst-*.tar.* \
+;

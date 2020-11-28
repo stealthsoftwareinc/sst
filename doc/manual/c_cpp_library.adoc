@@ -1,0 +1,22 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[c_cpp_library]]
+= C/{cpp} library
+
+:leveloffset: +1
+
+include::cl_language_shims.adoc[]
+include::cl_type_utilities.adoc[]
+include::cl_nlohmann_json_tools.adoc[]
+include::cl_individual_bit_access.adoc[]
+include::cl_integer_packing.adoc[]
+include::cl_basic_algorithms.adoc[]
+include::cl_time_utilities.adoc[]
+include::cl_miscellaneous.adoc[]
+
+:leveloffset: -1
+
+//

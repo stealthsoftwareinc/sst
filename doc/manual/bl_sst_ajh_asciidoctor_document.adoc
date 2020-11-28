@@ -1,0 +1,15 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_ajh_asciidoctor_document,sst_ajh_asciidoctor_document]]
+= The `sst_ajh_asciidoctor_document` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_ajh_asciidoctor_document ++**[**++<ag_json>++**...]**
+----
+
+//

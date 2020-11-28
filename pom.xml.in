@@ -1,0 +1,12 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.stealthsoftwareinc.sst</groupId>
+  <artifactId>sst-modules</artifactId>
+  <version>@PACKAGE_VERSION@</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>sst-maven-parent</module>
+    <module>sst-java</module>
+  </modules>
+</project>

@@ -1,0 +1,36 @@
+/*
+ * For the copyright information for this file, please search up the
+ * directory tree for the first COPYING file.
+ */
+
+/**
+ * @AT@file
+ *
+ * Defines the
+ * <code>::SST_HAVE_SST_CTR_CRYPT_STEP</code>
+ * macro.
+ *
+ * @AT@since SST&nbsp;0.1.0 (2016-05-11)
+ */
+
+#ifndef SST_SST_HAVE_SST_CTR_CRYPT_STEP_H
+#define SST_SST_HAVE_SST_CTR_CRYPT_STEP_H
+
+/**
+ *
+ * @AT@since SST&nbsp;0.1.0 (2016-05-11)
+ *
+ * @AT@showinitializer
+ */
+
+#ifndef SST_DOXYGEN
+
+#define SST_HAVE_SST_CTR_CRYPT_STEP @SST_HAVE_SST_CTR_CRYPT_STEP@
+
+#else
+
+#define SST_HAVE_SST_CTR_CRYPT_STEP ...
+
+#endif
+
+#endif

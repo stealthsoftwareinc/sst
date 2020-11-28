@@ -1,0 +1,24 @@
+dnl
+dnl For the copyright information for this file, please search up the
+dnl directory tree for the first COPYING file.
+dnl
+[
+
+]dnl begin_targets
+[
+
+]GATBPS_CP(
+  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BuildConfig.java],
+  [src/com/stealthsoftwareinc/sst/BuildConfig.java])[
+]GATBPS_CONFIG_LATER(
+  [src/com/stealthsoftwareinc/sst/BuildConfig.java],
+  [src/com/stealthsoftwareinc/sst/BuildConfig.java.im],
+  [mostlyclean],
+  [
+    [src/com/stealthsoftwareinc/sst/BuildConfig.java.im.in],
+  ])[
+
+]dnl end_targets
+[
+
+]

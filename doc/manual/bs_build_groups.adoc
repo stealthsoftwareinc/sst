@@ -1,0 +1,69 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+[[bs_build_groups]]
+= Build groups
+
+It is common to only be interested in building certain portions of SST,
+not all of it.
+For example, if you're using SST in a C project, you're probably only
+interested in building the C library.
+To provide control over this, both the `./configure` script and the
+`install/*` scripts support the `--with-build-groups` option, whose
+syntax is as follows:
+
+[source,subs="normal"]
+----
+--with-build-groups=**[**pass:[+]**|**-**]**__group__**[**,**[**pass:[+]**|**-**]**__group__**]**...
+----
+
+Each `__group__` in the comma-separated list specifies some portion of
+the build system that should be enabled or disabled.
+The group will be enabled if the '```+```' prefix or no prefix is given,
+or disabled if the '```-```' prefix is given.
+All groups begin as disabled, and the entries of the list will be
+applied in order.
+However, if the `--with-build-groups` option is omitted, then the
+default set of build groups will be enabled.
+Enabling or disabling certain build groups may implicitly enable or
+disable other build groups depending on how they are related.
+
+The build groups are as follows:
+
+* `default`
++
+The default set of build groups: `c`, `cpp`, and `java`.
+
+* `c`
++
+An alias for the `c-autotools` build group.
+
+* `c-autotools`
++
+The C library as built and installed by Autotools.
+When disabled, also disables the `cpp-autotools` build group.
+
+* `cpp`
++
+An alias for the `cpp-autotools` build group.
+
+* `cpp-autotools`
++
+The C++ library as built and installed by Autotools.
+When enabled, also enables the `c-autotools` build group.
+
+* `java`
++
+An alias for the `java-gatbps` build group.
+When disabled, also disables the `java-maven` build group.
+
+* `java-gatbps`
++
+The Java library as built and installed by GATBPS.
+
+* `java-maven`
++
+The Java library as built and installed by Maven.
+
+//

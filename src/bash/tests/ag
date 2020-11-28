@@ -1,0 +1,13 @@
+#
+# For the copyright information for this file, please search up the
+# directory tree for the first COPYING file.
+#
+
+for x in src/bash/tests/**/*.bash; do
+  autogen_am_append <<EOF
+
+TESTS += $x
+EXTRA_DIST += $x
+
+EOF
+done

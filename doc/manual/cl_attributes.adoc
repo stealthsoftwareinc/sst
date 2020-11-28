@@ -1,0 +1,158 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+//----------------------------------------------------------------------
+// C/C++ standards
+//----------------------------------------------------------------------
+
+:c99url: http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf
+:c99sec: {c99url}[C99 (N1256)] &sect;
+
+:c11url: http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1570.pdf
+:c11sec: {c11url}[C11 (N1570)] &sect;
+
+:c18url: https://web.archive.org/web/20181230041359/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf
+:c18sec: {c18url}[C18 (N2176)] &sect;
+
+:cpp11url: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf
+:cpp11sec: {cpp11url}[{cpp}11 (N3337)] &sect;
+
+:cpp14url: https://github.com/cplusplus/draft/blob/master/papers/n4140.pdf?raw=true
+:cpp14sec: {cpp14url}[{cpp}14 (N4140)] &sect;
+
+:cpp17url: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf
+:cpp17sec: {cpp17url}[{cpp}17 (N4659)] &sect;
+
+:cpp20url: https://isocpp.org/files/papers/N4860.pdf
+:cpp20sec: {cpp20url}[{cpp}20 (N4860)] &sect;
+
+//----------------------------------------------------------------------
+// C/C++ standard entities
+//----------------------------------------------------------------------
+
+:ce_CHAR_BIT_url: https://en.cppreference.com/w/c/types/limits
+:ce_CHAR_BIT: {ce_CHAR_BIT_url}[CHAR_BIT]
+
+:ce_constexpr_url: https://en.cppreference.com/w/cpp/keyword/constexpr
+:ce_constexpr: {ce_constexpr_url}[constexpr]
+
+:ce_inline_url: https://en.cppreference.com/w/cpp/keyword/inline
+:ce_inline: {ce_inline_url}[inline]
+
+:ce_std_chrono_duration_url: https://en.cppreference.com/w/cpp/chrono/duration
+:ce_std_chrono_duration: {ce_std_chrono_duration_url}[std::chrono::duration]
+
+:ce_std_chrono_system_clock_url: https://en.cppreference.com/w/cpp/chrono/system_clock
+:ce_std_chrono_system_clock: {ce_std_chrono_system_clock_url}[std::chrono::system_clock]
+
+:ce_std_integral_constant_url: https://en.cppreference.com/w/cpp/types/integral_constant
+:ce_std_integral_constant: {ce_std_integral_constant_url}[std::integral_constant]
+
+:ce_std_is_integral_url: https://en.cppreference.com/w/cpp/types/is_integral
+:ce_std_is_integral: {ce_std_is_integral_url}[std::is_integral]
+
+:ce_std_is_signed_url: https://en.cppreference.com/w/cpp/types/is_signed
+:ce_std_is_signed: {ce_std_is_signed_url}[std::is_signed]
+
+:ce_std_is_unsigned_url: https://en.cppreference.com/w/cpp/types/is_unsigned
+:ce_std_is_unsigned: {ce_std_is_unsigned_url}[std::is_unsigned]
+
+:ce_std_max_url: https://en.cppreference.com/w/cpp/algorithm/max
+:ce_std_max: {ce_std_max_url}[std::max]
+
+:ce_std_min_url: https://en.cppreference.com/w/cpp/algorithm/min
+:ce_std_min: {ce_std_min_url}[std::min]
+
+:ce_std_nano_url: https://en.cppreference.com/w/cpp/numeric/ratio/ratio
+:ce_std_nano: {ce_std_nano_url}[std::nano]
+
+:ce_std_range_error_url: https://en.cppreference.com/w/cpp/error/range_error
+:ce_std_range_error: {ce_std_range_error_url}[std::range_error]
+
+:ce_std_remove_cvref_url: https://en.cppreference.com/w/cpp/types/remove_cvref
+:ce_std_remove_cvref: {ce_std_remove_cvref_url}[std::remove_cvref]
+
+:ce_UCHAR_MAX_url: https://en.cppreference.com/w/c/types/limits
+:ce_UCHAR_MAX: {ce_UCHAR_MAX_url}[UCHAR_MAX]
+
+//----------------------------------------------------------------------
+// C/C++ general references
+//----------------------------------------------------------------------
+
+:cl_SST_CPP14_CONSTEXPR: <<cl_SST_CPP_CONSTEXPR,SST_CPP14_CONSTEXPR>>
+
+:cl_SST_CPP17_CONSTEXPR: <<cl_SST_CPP_CONSTEXPR,SST_CPP17_CONSTEXPR>>
+
+:cl_SST_CPP20_CONSTEXPR: <<cl_SST_CPP_CONSTEXPR,SST_CPP20_CONSTEXPR>>
+
+:cr_converting_constructor_url: https://en.cppreference.com/w/cpp/language/converting_constructor
+:cr_converting_constructor: {cr_converting_constructor_url}[converting constructor]
+
+:cr_cpp20_requires_2c_fno: footnote:cr_cpp20_requires_2c_fno_id[For \
+more information about {cpp}20 requiring two`'s complement \
+representation for signed integers, compare \
+{cpp17sec}6.9.1 with \
+{cpp20sec}6.8.1.]
+
+:cr_cv_qualifiers_url: https://en.cppreference.com/w/cpp/language/cv
+:cr_cv_qualifiers: {cr_cv_qualifiers_url}[cv-qualifiers]
+
+:cl_fundamental_integer_type: fundamental integer type
+
+:cr_integer_promotions_url: https://en.cppreference.com/w/c/language/conversion
+:cr_integer_promotions: {cr_integer_promotions_url}[integer promotions]
+
+:cr_integer_types_fno: footnote:cr_integer_types_fno_id[For \
+more information about integer types in C/{cpp}, see \
+{c99sec}6.2.5, \
+{c11sec}6.2.5, \
+{c18sec}6.2.5, \
+{cpp11sec}3.9.1, \
+{cpp14sec}3.9.1, \
+{cpp17sec}6.9.1, and \
+{cpp20sec}6.8.1.]
+:cr_integer_types_url: {ce_std_is_integral_url}
+:cr_integer_types: {cr_integer_types_url}[integer types]{cr_integer_types_fno}
+:cr_integer_type: {cr_integer_types_url}[integer type]{cr_integer_types_fno}
+
+:cr_negative_zero_trap_fno: footnote:cr_negative_zero_trap_fno_id[For \
+more information about negative zero trap representations in C/{cpp}, \
+see \
+{c99sec}6.2.6.2p{2,3,4}, \
+{c11sec}6.2.6.2p{2,3,4}, and \
+{c18sec}6.2.6.2p{2,3,4}.]
+
+:cl_reference_type_url: https://en.cppreference.com/w/cpp/language/reference
+:cl_reference_type: {cl_reference_type_url}[reference type]
+
+:cl_std_integral_url: https://en.cppreference.com/w/cpp/concepts/integral
+:cl_std_integral: {cl_std_integral_url}[std::integral]
+
+:cr_undefined_behavior_url: https://en.cppreference.com/w/cpp/language/ub
+:cr_undefined_behavior: {cr_undefined_behavior_url}[undefined behavior]
+:cr_behavior_is_undefined: behavior is {cr_undefined_behavior_url}[undefined]
+
+:cr_usual_arithmetic_conversions_cpp_url: https://en.cppreference.com/w/cpp/language/operator_arithmetic
+:cr_usual_arithmetic_conversions_cpp: {cr_usual_arithmetic_conversions_cpp_url}[usual arithmetic conversions]
+
+:cr_value_bits_fno: footnote:cr_value_bits_fno_id[For \
+more information about value bits in C/{cpp}, see \
+{c99sec}6.2.6.2p{1,2}, \
+{c11sec}6.2.6.2p{1,2}, and \
+{c18sec}6.2.6.2p{1,2}.]
+:cr_value_bits: value bits{cr_value_bits_fno}
+:cr_value_bit: value bit{cr_value_bits_fno}
+
+:cr_width_bits_fno: footnote:cr_width_bits_fno_id[For \
+more information about width bits in C/{cpp}, see \
+{c99sec}6.2.6.2p6, \
+{c11sec}6.2.6.2p6 and \
+{c18sec}6.2.6.2p6]
+:cr_width_bits: width bits{cr_width_bits_fno}
+:cr_width_bit: width bit{cr_width_bits_fno}
+
+//----------------------------------------------------------------------
+
+//

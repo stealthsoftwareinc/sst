@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_perfect_gt,sst::perfect_gt]]
+= The `sst::perfect_gt` function
+
+:f: perfect_gt
+:r: greater than
+:o: >
+include::cl_perfect_comparison_blurb.adoc[]
+
+//

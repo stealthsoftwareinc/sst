@@ -1,0 +1,21 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_SST_C_OR_LATER,SST_C_OR_LATER]]
+= The `SST_C_OR_LATER` macros
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/SST_C_OR_LATER.h[sst/catalog/SST_C_OR_LATER.h]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/language.h[sst/language.h]>
+
+#define SST_C99_OR_LATER (+__STDC_VERSION__+ >= <<cl_SST_C_VALUE,SST_C99_VALUE>>)
+#define SST_C11_OR_LATER (+__STDC_VERSION__+ >= <<cl_SST_C_VALUE,SST_C11_VALUE>>)
+#define SST_C17_OR_LATER (+__STDC_VERSION__+ >= <<cl_SST_C_VALUE,SST_C17_VALUE>>)
+#define SST_C18_OR_LATER (+__STDC_VERSION__+ >= <<cl_SST_C_VALUE,SST_C18_VALUE>>)
+----
+
+//

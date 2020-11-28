@@ -1,0 +1,21 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_SST_C_VALUE,SST_C_VALUE]]
+= The `SST_C_VALUE` macros
+
+.C only
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/SST_C_VALUE.h[sst/catalog/SST_C_VALUE.h]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/language.h[sst/language.h]>
+
+#define SST_C99_VALUE 199901L
+#define SST_C11_VALUE 201112L
+#define SST_C17_VALUE 201710L
+#define SST_C18_VALUE SST_C17_VALUE
+----
+
+//

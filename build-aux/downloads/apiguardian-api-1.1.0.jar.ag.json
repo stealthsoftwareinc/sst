@@ -1,0 +1,19 @@
+{
+  "handler": "sst_ajh_download",
+
+  "hashes": {
+    "md5": "944805817b648e558ed6be6fc7f054f3",
+    "sha1": "fc9dff4bb36d627bdc553de77e1f17efd790876c",
+    "sha224": "0e9c107dc44268c6808ebaca56e805eadbb7901a4e4c288bd40df067",
+    "sha256": "a9aae9ff8ae3e17a2a18f79175e82b16267c246fbbd3ca9dfbbb290b08dcfdd4",
+    "sha384": "f454c66833bd270ec9b1c11fee9c3670241172933f545975db298a0708f65753d2cf738aa928fd1f91c6a13d5872b5ff",
+    "sha512": "eb05878cf282e971a7fff0ff4a1b7b90d61e6405ea368b19832177269b21f66ad4de211f6abdd762165a72e1c19781a6df1187e6c1cce1ae2cbf0e913fc5f504"
+  },
+  "urls": [
+    "https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar",
+    "https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar",
+    "https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar",
+    "https://repo.jfrog.org/artifactory/repo1/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar",
+    "https://repo.jenkins-ci.org/repo1/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar"
+  ]
+}

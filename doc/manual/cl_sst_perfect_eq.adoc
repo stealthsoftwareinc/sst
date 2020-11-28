@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_perfect_eq,sst::perfect_eq]]
+= The `sst::perfect_eq` function
+
+:f: perfect_eq
+:r: equal to
+:o: ==
+include::cl_perfect_comparison_blurb.adoc[]
+
+//

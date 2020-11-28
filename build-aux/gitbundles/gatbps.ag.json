@@ -1,0 +1,11 @@
+{
+  "handler": "sst_ajh_gitbundle",
+
+  "commit": "61e3c65fd2ba2827b1c0fdff35dca4594daacea6",
+  "urls": [
+    "https://gitlab.com/quinngrier/gatbps.git",
+    "https://github.com/quinngrier/gatbps.git",
+    "https://bitbucket.org/quinngrier/gatbps.git",
+    "https://git.code.sf.net/p/quinngrier/gatbps"
+  ]
+}

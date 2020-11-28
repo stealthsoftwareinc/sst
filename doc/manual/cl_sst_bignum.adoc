@@ -1,0 +1,31 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_bignum,sst::bignum]]
+= The `sst::bignum` class
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/bignum.hpp[sst/catalog/bignum.hpp]>
+namespace sst {
+
+class bignum {
+
+  template<{cl_std_integral} T>
+  <<cl_sst_bignum_convert_to_fundamental_integer,explicit operator T() const>>;
+
+};
+
+}
+----
+
+:leveloffset: +1
+
+include::cl_sst_bignum_convert_to_fundamental_integer.adoc[]
+
+:leveloffset: -1
+
+//

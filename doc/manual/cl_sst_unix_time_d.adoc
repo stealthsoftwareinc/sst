@@ -1,0 +1,25 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unix_time_d,sst::unix_time_d]]
+= The `sst::unix_time_d` function
+
+.{cpp}
+[source,cpp]
+----
+#include <sst/time.h>
+namespace sst {
+
+inline double unix_time_d();
+
+}
+----
+
+The `sst::unix_time_d` function returns the current tick count of the
+`<<cl_sst_unix_time>>` clock in seconds, including a fractional part.
+The value is computed using a `{ce_std_chrono_duration}` whose period
+is less than or equal to `{ce_std_nano}`.
+
+//

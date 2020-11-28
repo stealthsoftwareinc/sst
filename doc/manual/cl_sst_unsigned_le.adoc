@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unsigned_le,sst::unsigned_le]]
+= The `sst::unsigned_le` function
+
+:f: unsigned_le
+:r: less than or equal to
+:o: <=
+include::cl_unsigned_comparison_blurb.adoc[]
+
+//

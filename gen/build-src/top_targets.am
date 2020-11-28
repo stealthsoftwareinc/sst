@@ -1,0 +1,24 @@
+##
+## For the copyright information for this file, please search up the
+## directory tree for the first COPYING file.
+##
+
+## begin_variables
+
+top_targets =
+
+## end_variables
+
+## begin_rules
+
+$(top_targets) top_targets_dummy:
+	$(AM_V_at)'cd' '..' && { \
+  $(MAKE) \
+    $(AM_MAKEFLAGS) \
+    $@ \
+  ; \
+}
+
+.PRECIOUS: $(top_targets)
+
+## end_rules

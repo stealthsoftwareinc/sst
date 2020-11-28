@@ -1,0 +1,20 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_underscore_slug,sst_underscore_slug]]
+= The `sst_underscore_slug` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_underscore_slug **[**<argument>**...]**
+----
+
+The `sst_underscore_slug` function replaces each non-alphanumeric
+character of the input with an underscore character.
+
+include::bl_arg_joined_csf_function_io_fragment.adoc[]
+
+//

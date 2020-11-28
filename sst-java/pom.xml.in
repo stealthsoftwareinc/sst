@@ -1,0 +1,19 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.stealthsoftwareinc.sst</groupId>
+    <artifactId>sst-parent-pom</artifactId>
+    <version>0.1.0</version>
+    <relativePath>../sst-maven-parent</relativePath>
+  </parent>
+
+  <artifactId>sst-java</artifactId>
+  <version>@PACKAGE_VERSION@</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+  </dependencies>
+</project>

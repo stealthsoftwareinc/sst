@@ -1,0 +1,32 @@
+/*
+ * For the copyright information for this file, please search up the
+ * directory tree for the first COPYING file.
+ */
+
+/**
+ * @file
+ *
+ * Defines the
+ * <code>::SST_HAVE_POSIX</code>
+ * macro.
+ */
+
+#ifndef SST_SST_HAVE_POSIX_H
+#define SST_SST_HAVE_POSIX_H
+
+/**
+ *
+ * @showinitializer
+ */
+
+#ifdef SST_DOXYGEN
+
+#define SST_HAVE_POSIX 0 or 1
+
+#else
+
+#define SST_HAVE_POSIX @HAVE_POSIX@
+
+#endif // SST_DOXYGEN
+
+#endif // SST_SST_HAVE_POSIX_H

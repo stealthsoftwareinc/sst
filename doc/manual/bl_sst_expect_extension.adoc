@@ -1,0 +1,22 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_expect_extension,sst_expect_extension]]
+= The `sst_expect_extension` function
+
+.Bash
+[source,subs="normal"]
+----
+++sst_expect_extension <path> <extension>++
+----
+
+The `sst_expect_extension` function verifies that the final component of
+`<path>` ends with `<extension>`, but is not solely `<extension>`.
+
+Technically speaking, this function verifies that `<extension>` is a
+trailing substring of `<path>` that is preceded by at least one
+non-slash character.
+
+//

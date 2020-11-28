@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unsigned_lt,sst::unsigned_lt]]
+= The `sst::unsigned_lt` function
+
+:f: unsigned_lt
+:r: less than
+:o: <
+include::cl_unsigned_comparison_blurb.adoc[]
+
+//

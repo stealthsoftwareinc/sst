@@ -1,0 +1,84 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Portably Packed Bit Operations
+@chapter Portably Packed Bit Operations
+
+@idindex @w{@t{sst_bocsize}}
+The following function
+determines the number of
+fully packed bytes required to hold
+@tex
+${\tt n2} \cdot 8 + {\tt r2}$
+@end tex
+@ifnottex
+@w{@t{n2}@w{ }@mdot{}@w{ }8@w{ }+@w{ }@t{r2}}
+@end ifnottex
+bits:
+
+@example
+size_t@w{ }sst_bocsize(
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2
+);
+@end example
+
+@noindent
+The required number of bytes is as follows:
+
+@tex
+$$\left\lceil{{\tt n2} \cdot 8 + {\tt r2} \over {\tt CHAR\_BIT}}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n2}@w{ }@mdot{}@w{ }8@w{ }+@w{ }@t{r2})@w{ }@dslash{}@w{ }@t{CHAR_BIT}@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+If this number cannot be represented by
+@w{@t{size_t}},
+then the function returns zero@.
+Otherwise, the function returns the number@.
+
+@idindex @w{@t{sst_ocbsize}}
+The following function
+determines the number of
+portably packed bytes required to hold
+@tex
+${\tt n2} \cdot {\tt CHAR\_BIT} + {\tt r2}$
+@end tex
+@ifnottex
+@w{@t{n2}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r2}}
+@end ifnottex
+bits:
+
+@example
+size_t@w{ }sst_ocbsize(
+@w{ }@w{ }size_t@w{ }n2,
+@w{ }@w{ }size_t@w{ }r2
+);
+@end example
+
+@noindent
+The required number of bytes is as follows:
+
+@tex
+$$\left\lceil{{\tt n2} \cdot {\tt CHAR\_BIT} + {\tt r2} \over 8}\right\rceil$$
+@end tex
+@ifnottex
+@quotation
+@w{@lcei{}(@t{n2}@w{ }@mdot{}@w{ }@t{CHAR_BIT}@w{ }+@w{ }@t{r2})@w{ }@dslash{}@w{ }8@rcei{}}
+@end quotation
+@end ifnottex
+
+@noindent
+If this number cannot be represented by
+@w{@t{size_t}},
+then the function returns zero@.
+Otherwise, the function returns the number@.

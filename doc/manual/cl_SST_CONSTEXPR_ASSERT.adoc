@@ -1,0 +1,25 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_SST_CONSTEXPR_ASSERT,SST_CONSTEXPR_ASSERT]]
+= The `SST_CONSTEXPR_ASSERT` macro
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/SST_CONSTEXPR_ASSERT.hpp[sst/catalog/SST_CONSTEXPR_ASSERT.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/language.h[sst/language.h]>
+
+#if <<cl_SST_CPP_OR_LATER,SST_CPP14_OR_LATER>>
+  #define SST_CONSTEXPR_ASSERT(x) assert(x)
+#else
+  #define SST_CONSTEXPR_ASSERT(x)
+#endif
+----
+
+The `SST_CONSTEXPR_ASSERT` macro can be used to run dynamic assertions
+in `constexpr` functions.
+
+//

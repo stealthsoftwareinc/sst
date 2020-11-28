@@ -1,0 +1,15 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_ajh_build_tree_program_wrapper,sst_ajh_build_tree_program_wrapper]]
+[discrete]
+= The `sst_ajh_build_tree_program_wrapper` function
+
+[source,subs="normal"]
+----
+sst_ajh_build_tree_program_wrapper **[**__ag_json__**...]**
+----
+
+//

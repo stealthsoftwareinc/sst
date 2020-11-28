@@ -1,0 +1,24 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+.{cpp}
+[source,cpp,subs="normal"]
+----
+#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/{x}.hpp[sst/catalog/{x}.hpp]>
+// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/bit.h[sst/bit.h]>
+namespace sst {
+
+using {x} = <<cl_sst_type_msb>><{T}>;
+
+<<cl_SST_CPP_INLINE,SST_CPP17_INLINE>> constexpr {T} {x}_v = sst::{x}::value;
+
+}
+----
+
+The `sst::{x}` trait provides the value of type `{T}` whose
+{cr_value_bits} are all set to 0 except for the most significant value
+bit, which is set to 1.
+
+//

@@ -1,0 +1,36 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_get_prefix,sst_get_prefix]]
+= The `sst_get_prefix` function
+
+.Bash
+[source,subs="normal"]
+----
+sst_get_prefix **[**<path>**]**
+----
+
+The `sst_get_prefix` function gets the longest initial substring of
+`<path>` that ends in a `/` character.
+If `<path>` does not contain a `/` character, the result is the empty
+string.
+
+:fp_argument_name: path
+include::bl_single_argument_csf_function_io_fragment.adoc[]
+
+.Output examples
+[example]
+====
+[source,subs="normal"]
+----
+sst_get_prefix foo                    # \n
+sst_get_prefix foo/                   # foo/\n
+sst_get_prefix foo/bar                # foo/\n
+sst_get_prefix foo/bar/               # foo/bar/\n
+sst_get_prefix foo/bar/baz            # foo/bar/\n
+----
+====
+
+//

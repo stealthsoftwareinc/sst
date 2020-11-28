@@ -1,0 +1,177 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Custom OpenSSL Initialization
+@chapter Custom OpenSSL Initialization
+
+OpenSSL allows
+the caller to provide a
+callback function to ensure
+that certain operations are safe to
+run concurrently from multiple threads@.
+This callback function
+must provide lock and unlock
+operations on a fixed number of mutexes
+that exist throughout the use of the library@.
+SST provides an
+implementation of
+this callback function
+along with two functions for
+creating and destroying the mutexes@.
+
+The caller may use
+these functions as follows@.
+First, the caller
+must ask OpenSSL how many
+mutexes it needs by calling the
+@t{CRYPTO_num_locks}
+function@.
+Let
+@tex
+$n$
+@end tex
+@ifnottex
+@i{n}
+@end ifnottex
+be the value returned by this function@.
+The caller must then
+tell SST to create the
+mutexes by calling the
+@t{sst_fixlock_create}
+function with
+@tex
+$n$
+@end tex
+@ifnottex
+@i{n}
+@end ifnottex
+as the argument@.
+This function returns
+@t{SST_SUCCESS}
+upon success or another
+status code upon failure@.
+If the call succeeds,
+the caller must then
+provide the callback
+function to OpenSSL by calling the
+@t{CRYPTO_set_locking_callback}
+function with
+@t{&sst_fixlock_lock}
+as the argument@.
+OpenSSL will then be
+ready for concurrent operations@.
+The following code
+demonstrates these steps:
+
+@example
+int const n = CRYPTO_num_locks();
+sst_status const s = sst_fixlock_create(n);
+if (s == SST_SUCCESS) @{
+  CRYPTO_set_locking_callback(&sst_fixlock_lock);
+  /* OpenSSL is ready for concurrent operations. */
+@} else @{
+  /* The mutexes could not be created. */
+  /* OpenSSL is not ready for concurrent operations. */
+@}
+@end example
+
+The caller may also tell SST to
+destroy the mutexes by calling the
+@t{sst_fixlock_destroy}
+function after the last call to OpenSSL@.
+This function takes no arguments and returns
+@t{SST_SUCCESS}
+upon success or another
+status code upon failure@.
+However,
+on most systems,
+calling this function
+is not strictly necessary,
+as the mutexes will be cleaned up
+automatically when the program terminates@.
+
+The exact rules for using
+these functions are as follows:
+
+@enumerate
+@item
+The
+@t{sst_fixlock_create}
+function must be called at most once@.
+
+@item
+If the
+@t{sst_fixlock_create}
+function is called, then the call
+must use the value returned by the
+@t{CRYPTO_num_locks}
+function as the argument@.
+
+@item
+If the
+@t{CRYPTO_set_locking_callback}
+function is called with
+@t{&sst_fixlock_lock}
+as the argument,
+then the call must be made
+after a successful call to the
+@t{sst_fixlock_create}
+function@.
+
+@item
+The
+@t{sst_fixlock_lock}
+function must not be
+called except by OpenSSL@.
+
+@item
+The
+@t{sst_fixlock_destroy}
+function must be called at most once@.
+
+@item
+The
+@t{sst_fixlock_destroy}
+function may only be called
+after a successful call to the
+@t{sst_fixlock_create}
+function@.
+
+@item
+If the
+@t{CRYPTO_set_locking_callback}
+function is called with
+@t{&sst_fixlock_lock}
+as the argument, then the
+@t{sst_fixlock_destroy}
+function may only be called
+after the last call to OpenSSL@.
+@end enumerate
+
+OpenSSL also allows the
+caller to provide a group of
+callback functions for creating, locking,
+unlocking, and destroying mutexes on the fly@.
+Providing these
+callback functions
+may improve performance,
+but the previous callback
+function must still be provided to
+ensure that concurrent operations are safe@.
+SST provides
+an implementation of
+these callback functions,
+which the caller can provide to
+OpenSSL by making the following calls
+after providing the previous callback function:
+
+@example
+CRYPTO_set_dynlock_create_callback(&sst_dynlock_create);
+CRYPTO_set_dynlock_lock_callback(&sst_dynlock_lock);
+CRYPTO_set_dynlock_destroy_callback(&sst_dynlock_destroy);
+@end example

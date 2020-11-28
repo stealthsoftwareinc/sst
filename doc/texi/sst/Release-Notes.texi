@@ -1,0 +1,28 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@ifset fullmanual
+@node Release Notes
+@unnumbered Release Notes
+@end ifset
+@ifclear fullmanual
+@unnumbered Release Notes
+@end ifclear
+
+@ifset fullmanual
+@menu
+* @w{XXXX-XX-XX}@tie{}--- SST@tie{}@w{X-X-X}::
+* @w{2016-05-11}@tie{}--- SST@tie{}@w{0-1-0}::
+@end menu
+
+@end ifset
+@lowersections
+@include sst/XXXX-XX-XX-SST-X-X-X.texi
+
+@include sst/2016-05-11-SST-0-1-0.texi
+@raisesections

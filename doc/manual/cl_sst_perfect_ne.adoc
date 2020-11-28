@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_perfect_ne,sst::perfect_ne]]
+= The `sst::perfect_ne` function
+
+:f: perfect_ne
+:r: unequal to
+:o: !=
+include::cl_perfect_comparison_blurb.adoc[]
+
+//

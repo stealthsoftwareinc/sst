@@ -1,0 +1,23 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_miscellaneous]]
+= Miscellaneous
+
+:leveloffset: +1
+
+include::bl_sst_underscore_slug.adoc[]
+include::bl_sst_extract_archive.adoc[]
+include::bl_sst_get_distro.adoc[]
+include::bl_sst_get_distro_version.adoc[]
+include::bl_gitlab_ci_prepare_dist_repo.adoc[]
+include::bl_gitlab_ci_publish_dist_repo.adoc[]
+include::bl_sst_find_dist_archive.adoc[]
+include::bl_sst_find_dist_date.adoc[]
+include::bl_sst_find_dist_version.adoc[]
+
+:leveloffset: -1
+
+//

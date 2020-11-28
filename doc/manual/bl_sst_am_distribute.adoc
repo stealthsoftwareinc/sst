@@ -1,0 +1,15 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[bl_sst_am_distribute,sst_am_distribute]]
+[discrete]
+= The `sst_am_distribute` function
+
+[source,subs="normal"]
+----
+sst_am_distribute **[**__file__**...]**
+----
+
+//

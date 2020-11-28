@@ -1,0 +1,43 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_miscellaneous]]
+= Miscellaneous
+
+:leveloffset: +1
+
+include::cl_sst_value_bits.adoc[]
+include::cl_sst_width_bits.adoc[]
+include::cl_sst_type_min.adoc[]
+include::cl_sst_type_max.adoc[]
+include::cl_sst_type_msb.adoc[]
+include::cl_sst_char_bit.adoc[]
+include::cl_sst_uchar_max.adoc[]
+include::cl_sst_integer_promote.adoc[]
+include::cl_sst_integer_promotes.adoc[]
+include::cl_sst_checked.adoc[]
+include::cl_sst_make_checked.adoc[]
+include::cl_sst_checked_cast.adoc[]
+include::cl_sst_checked_error.adoc[]
+include::cl_sst_perfect_lt.adoc[]
+include::cl_sst_perfect_gt.adoc[]
+include::cl_sst_perfect_le.adoc[]
+include::cl_sst_perfect_ge.adoc[]
+include::cl_sst_perfect_eq.adoc[]
+include::cl_sst_perfect_ne.adoc[]
+include::cl_sst_unsigned_lt.adoc[]
+include::cl_sst_unsigned_gt.adoc[]
+include::cl_sst_unsigned_le.adoc[]
+include::cl_sst_unsigned_ge.adoc[]
+include::cl_sst_unsigned_eq.adoc[]
+include::cl_sst_unsigned_ne.adoc[]
+include::cl_sst_ones_mask.adoc[]
+include::cl_sst_uchar_msb.adoc[]
+include::cl_sst_boxed.adoc[]
+include::cl_sst_bignum.adoc[]
+
+:leveloffset: -1
+
+//

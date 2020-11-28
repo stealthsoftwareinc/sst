@@ -1,0 +1,19 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+[[bl_core_functions]]
+= Core functions
+
+:leveloffset: +1
+
+include::bl_sst_import_function.adoc[]
+include::bl_sst_csf.adoc[]
+include::bl_sst_join.adoc[]
+include::bl_sst_quote.adoc[]
+include::bl_sst_warn.adoc[]
+include::bl_sst_barf.adoc[]
+
+:leveloffset: -1
+
+//

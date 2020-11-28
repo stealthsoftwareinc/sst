@@ -1,0 +1,271 @@
+@ifxml
+@ifnotxml
+@c
+@c For the copyright information for this file, please search up the
+@c directory tree for the first COPYING file.
+@c
+@end ifnotxml
+@end ifxml
+@node Basic Bit Operations
+@chapter Basic Bit Operations
+
+Let
+@tex
+$C : \{0\} \rightarrow \{0, 1\}$
+@end tex
+@ifnottex
+@w{@i{C}@w{ }:@w{ }@{0@}@w{ }@rarrow{}@w{ }@{0@comma{}@w{ }1@}}
+@end ifnottex
+be one of the following functions:
+
+@quotation
+@include mtvskiptop.texi
+@multitable {@t{clr0}} {@i{C}(0)}
+@headitem
+@tex
+$C$
+@end tex
+@ifnottex
+@w{@i{C}}
+@end ifnottex
+@tab
+@tex
+$C(0)$
+@end tex
+@ifnottex
+@w{@i{C}(0)}
+@end ifnottex
+@item @w{@t{clr0}} @tab 0
+@item @w{@t{one0}} @tab 1
+@end multitable
+@include mtvskipbot.texi
+@end quotation
+
+@idindex @w{@t{sst_bitclr01}}
+@idindex @w{@t{sst_bitone01}}
+The following function computes
+@tex
+$C(0)$:
+@end tex
+@ifnottex
+@w{@i{C}(0):}
+@end ifnottex
+
+@example
+sst_bit@w{ }sst_bit@r{@i{C}}1(
+@w{ }@w{ }void
+);
+@end example
+
+@noindent
+The function returns
+@tex
+$C(0)$.
+@end tex
+@ifnottex
+@w{@i{C}(0)}@.
+@end ifnottex
+
+Let
+@tex
+$G : \{0, 1\} \rightarrow \{0, 1\}$
+@end tex
+@ifnottex
+@w{@i{G}@w{ }:@w{ }@{0@comma{}@w{ }1@}@w{ }@rarrow{}@w{ }@{0@comma{}@w{ }1@}}
+@end ifnottex
+be one of the following functions:
+
+@quotation
+@include mtvskiptop.texi
+@multitable {@t{clr}} {@i{G}(0)} {@i{G}(1)}
+@headitem
+@tex
+$G$
+@end tex
+@ifnottex
+@w{@i{G}}
+@end ifnottex
+@tab
+@tex
+$G(0)$
+@end tex
+@ifnottex
+@w{@i{G}(0)}
+@end ifnottex
+@tab
+@tex
+$G(1)$
+@end tex
+@ifnottex
+@w{@i{G}(1)}
+@end ifnottex
+@item @w{@t{clr}} @tab 0 @tab 0
+@item @w{@t{cpy}} @tab 0 @tab 1
+@item @w{@t{not}} @tab 1 @tab 0
+@item @w{@t{one}} @tab 1 @tab 1
+@end multitable
+@include mtvskipbot.texi
+@end quotation
+
+@idindex @w{@t{sst_bitclr1}}
+@idindex @w{@t{sst_bitcpy1}}
+@idindex @w{@t{sst_bitnot1}}
+@idindex @w{@t{sst_bitone1}}
+The following function computes
+@tex
+$G(x)$:
+@end tex
+@ifnottex
+@w{@i{G}(@i{x}):}
+@end ifnottex
+
+@example
+sst_bit@w{ }sst_bit@r{@i{G}}1(
+@w{ }@w{ }sst_bit@w{ }s1
+);
+@end example
+
+@noindent
+The function returns
+@tex
+$G(x)$
+@end tex
+@ifnottex
+@w{@i{G}(@i{x})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is 0 if
+@w{@t{s1}}
+is zero or 1 if not@.
+
+Let
+@tex
+$H : \{0, 1\}^2 \rightarrow \{0, 1\}$
+@end tex
+@ifnottex
+@w{@i{H}@w{ }:@w{ }@{0@comma{}@w{ }1@}@sps{,2,}@w{ }@rarrow{}@w{ }@{0@comma{}@w{ }1@}}
+@end ifnottex
+be one of the following functions:
+
+@quotation
+@include mtvskiptop.texi
+@multitable {@t{clr2}} {@i{H}(0, 0)} {@i{H}(0, 1)} {@i{H}(1, 0)} {@i{H}(1, 1)}
+@headitem
+@tex
+$H$
+@end tex
+@ifnottex
+@w{@i{H}}
+@end ifnottex
+@tab
+@tex
+$H(0, 0)$
+@end tex
+@ifnottex
+@w{@i{H}(0@comma{}@w{ }0)}
+@end ifnottex
+@tab
+@tex
+$H(0, 1)$
+@end tex
+@ifnottex
+@w{@i{H}(0@comma{}@w{ }1)}
+@end ifnottex
+@tab
+@tex
+$H(1, 0)$
+@end tex
+@ifnottex
+@w{@i{H}(1@comma{}@w{ }0)}
+@end ifnottex
+@tab
+@tex
+$H(1, 1)$
+@end tex
+@ifnottex
+@w{@i{H}(1@comma{}@w{ }1)}
+@end ifnottex
+@item @w{@t{clr2}} @tab 0 @tab 0 @tab 0 @tab 0
+@item @w{@t{and}}  @tab 0 @tab 0 @tab 0 @tab 1
+@item @w{@t{xgty}} @tab 0 @tab 0 @tab 1 @tab 0
+@item @w{@t{cpyx}} @tab 0 @tab 0 @tab 1 @tab 1
+@item @w{@t{xlty}} @tab 0 @tab 1 @tab 0 @tab 0
+@item @w{@t{cpyy}} @tab 0 @tab 1 @tab 0 @tab 1
+@item @w{@t{xor}}  @tab 0 @tab 1 @tab 1 @tab 0
+@item @w{@t{or}}   @tab 0 @tab 1 @tab 1 @tab 1
+@item @w{@t{nor}}  @tab 1 @tab 0 @tab 0 @tab 0
+@item @w{@t{xnor}} @tab 1 @tab 0 @tab 0 @tab 1
+@item @w{@t{noty}} @tab 1 @tab 0 @tab 1 @tab 0
+@item @w{@t{xgey}} @tab 1 @tab 0 @tab 1 @tab 1
+@item @w{@t{notx}} @tab 1 @tab 1 @tab 0 @tab 0
+@item @w{@t{xley}} @tab 1 @tab 1 @tab 0 @tab 1
+@item @w{@t{nand}} @tab 1 @tab 1 @tab 1 @tab 0
+@item @w{@t{one2}} @tab 1 @tab 1 @tab 1 @tab 1
+@end multitable
+@include mtvskipbot.texi
+@end quotation
+
+@idindex @w{@t{sst_bitand1}}
+@idindex @w{@t{sst_bitclr21}}
+@idindex @w{@t{sst_bitcpyx1}}
+@idindex @w{@t{sst_bitcpyy1}}
+@idindex @w{@t{sst_bitnand1}}
+@idindex @w{@t{sst_bitnor1}}
+@idindex @w{@t{sst_bitnotx1}}
+@idindex @w{@t{sst_bitnoty1}}
+@idindex @w{@t{sst_bitone21}}
+@idindex @w{@t{sst_bitor1}}
+@idindex @w{@t{sst_bitxgey1}}
+@idindex @w{@t{sst_bitxgty1}}
+@idindex @w{@t{sst_bitxley1}}
+@idindex @w{@t{sst_bitxlty1}}
+@idindex @w{@t{sst_bitxnor1}}
+@idindex @w{@t{sst_bitxor1}}
+The following function computes
+@tex
+$H(x, y)$:
+@end tex
+@ifnottex
+@w{@i{H}(@i{x}@comma{}@w{ }@i{y}):}
+@end ifnottex
+
+@example
+sst_bit@w{ }sst_bit@r{@i{H}}1(
+@w{ }@w{ }sst_bit@w{ }s1,
+@w{ }@w{ }sst_bit@w{ }s2
+);
+@end example
+
+@noindent
+The function returns
+@tex
+$H(x, y)$
+@end tex
+@ifnottex
+@w{@i{H}(@i{x}@comma{}@w{ }@i{y})}
+@end ifnottex
+where
+@tex
+$x$
+@end tex
+@ifnottex
+@w{@i{x}}
+@end ifnottex
+is 0 if
+@w{@t{s1}}
+is zero or 1 if not and
+@tex
+$y$
+@end tex
+@ifnottex
+@w{@i{y}}
+@end ifnottex
+is 0 if
+@w{@t{s2}}
+is zero or 1 if not@.

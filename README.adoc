@@ -1,0 +1,109 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+= SST
+
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+//
+// See the in_source_repo.adoc.ag file for an explanation of this file.
+//
+
+// :in_source_repo:
+
+//
+
+SST provides several libraries (Bash, C/{cpp}, and Java) and other
+modular utilities serving various general purposes.
+
+== Manual
+
+:fp_package_name: SST
+ifdef::in_source_repo[]
+:fp_download_path:
+:fp_download_path_type:
+:fp_view_path: doc/manual/sst.adoc
+:fp_view_url: https://www.stealthsoftwareinc.io/sst/manual
+endif::[]
+ifndef::in_source_repo[]
+:fp_download_path: doc/manual/sst.html
+:fp_download_path_type: html
+:fp_view_path: doc/manual/sst.adoc
+:fp_view_url:
+endif::[]
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+ifeval::["{fp_view_url}" != ""]
+To view the {fp_package_name} manual, go to link:{fp_view_url}[].
+endif::[]
+
+ifeval::["{fp_download_path}" != ""]
+To download the {fp_package_name} manual, go to
+link:{fp_download_path}[] and
+ifdef::env-gitlab[]
+click the "Download" button at the top right.
+endif::[]
+ifdef::env-github[]
+right click save as the "Raw" button at the top right.
+endif::[]
+ifndef::env-gitlab[]
+ifndef::env-github[]
+download the file.
+endif::[]
+endif::[]
+endif::[]
+
+ifeval::["{fp_view_path}" != ""]
+You can also view the {fp_package_name} manual directly in
+ifdef::env-gitlab[]
+GitLab
+endif::[]
+ifdef::env-github[]
+GitHub
+endif::[]
+ifndef::env-gitlab[]
+ifndef::env-github[]
+the repository browser
+endif::[]
+endif::[]
+by going to link:{fp_view_path}[], but it may not be displayed properly
+because of limitations in
+ifdef::env-gitlab[]
+GitLab.
+endif::[]
+ifdef::env-github[]
+GitHub.
+endif::[]
+ifndef::env-gitlab[]
+ifndef::env-github[]
+the repository browser.
+endif::[]
+endif::[]
+You can also view the individual `.adoc` files of the manual this way,
+but they will almost certainly not be displayed properly because they
+are not designed to be viewed individually.
+endif::[]
+
+//
+
+== License
+
+SST is developed by Stealth Software Technologies, Inc. as part of our
+independent development efforts.
+Please see the link:COPYING[`COPYING`] file for license information.
+
+ifdef::in_source_repo[]
+== Knowledge base
+
+Click link:doc/kb/README.md[here] to go to the knowledge base.
+endif::[]
+
+//

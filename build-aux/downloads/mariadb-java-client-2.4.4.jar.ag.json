@@ -1,0 +1,19 @@
+{
+  "handler": "sst_ajh_download",
+
+  "hashes": {
+    "md5": "22330c5b473ac23ba71285c6451da4cc",
+    "sha1": "f71fbfbb478a861f9554fa206d0fd51869be3630",
+    "sha224": "ae6d1cedf2c7365942387a31804f51fb6dfab847baa731043898fba5",
+    "sha256": "70792d7a1d2e3e9ca6f0313431572afd1b86c04ed39830de67bda4d23a6f865d",
+    "sha384": "a557e26da7887ebc8f1bb8ec6f3a7cc05927e250e7a2bb87175a3c55cdebe6527c5a47760794693f4cd17f189a9670f8",
+    "sha512": "f44dc6f074e316c3cc0a0e6be9f719f6d293c645314e13f8eac1fa8ab2de9ae1109a7335bd53cc0e5a7c2f4049b84e6072d8a143b3490545b12942b97f98c314"
+  },
+  "urls": [
+    "https://downloads.mariadb.com/Connectors/java/connector-java-2.4.4/mariadb-java-client-2.4.4.jar",
+    "https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.4.4/mariadb-java-client-2.4.4.jar",
+    "https://repo.maven.apache.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.4.4/mariadb-java-client-2.4.4.jar",
+    "https://repo.jfrog.org/artifactory/repo1/org/mariadb/jdbc/mariadb-java-client/2.4.4/mariadb-java-client-2.4.4.jar",
+    "https://repo.jenkins-ci.org/repo1/org/mariadb/jdbc/mariadb-java-client/2.4.4/mariadb-java-client-2.4.4.jar"
+  ]
+}

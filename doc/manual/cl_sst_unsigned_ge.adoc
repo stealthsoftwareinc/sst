@@ -1,0 +1,14 @@
+//
+// For the copyright information for this file, please search up the
+// directory tree for the first COPYING file.
+//
+
+[[cl_sst_unsigned_ge,sst::unsigned_ge]]
+= The `sst::unsigned_ge` function
+
+:f: unsigned_ge
+:r: greater than or equal to
+:o: >=
+include::cl_unsigned_comparison_blurb.adoc[]
+
+//
