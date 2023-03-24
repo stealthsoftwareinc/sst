@@ -1,0 +1,125 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#jl-sst-Modulus]
+= The `Modulus` class
+
+.Java
+[source,java,subs="{sst_subs_source}"]
+----
+package com.stealthsoftwareinc.sst;
+
+public final class Modulus {
+
+  // Constructors
+  public Modulus(long m);
+  public Modulus({jl_java_BigInteger} m);
+
+  // Value sizing
+  public boolean valuesFit({jl_java_Byte} T);
+  public boolean valuesFit({jl_java_Short} T);
+  public boolean valuesFit({jl_java_Integer} T);
+  public boolean valuesFit({jl_java_Long} T);
+  public boolean valuesFit({jl_java_BigInteger} T);
+
+  // Modulus retrieval
+  public byte get({jl_java_Byte} T);
+  public short get({jl_java_Short} T);
+  public int get({jl_java_Integer} T);
+  public long get({jl_java_Long} T);
+  public BigInteger get({jl_java_BigInteger} T);
+
+}
+----
+
+The `{jl_sst_Modulus}` class represents a modulus that can be used for
+modular arithmetic.
+
+[#jl-sst-Modulus-Modulus]
+== Constructors
+
+[source,java,subs="{sst_subs_source}"]
+----
+public Modulus(long m);
+public Modulus({jl_java_BigInteger} m);
+----
+
+[#jl-sst-Modulus-valuesFit]
+== Value sizing
+
+[source,java,subs="{sst_subs_source}"]
+----
+public boolean valuesFit({jl_java_Byte} T);
+public boolean valuesFit({jl_java_Short} T);
+public boolean valuesFit({jl_java_Integer} T);
+public boolean valuesFit({jl_java_Long} T);
+public boolean valuesFit({jl_java_BigInteger} T);
+----
+
+The `valuesFit` method determines whether type `T` can represent all
+modular values of stem:[m].
+The `{jl_java_BigInteger}` overload always returns `true`.
+Every other overload returns `true` if and only if
+stem:[m \le 2^\mathtt{T.SIZE}].
+
+Note that Java uses {twos_complement_representation} for `byte`,
+`short`, `int`, and `long`, and `T.SIZE` is the number of {width_bits}
+in type `T`.
+See `{jl_java_Integer_SIZE}`, for example.
+Because these types are signed, certain modular values are sometimes
+stored as negative values.
+For example,
+stem:[2^{31} \pmod{2^{32}}] and stem:[2^{32} - 1 \pmod{2^{32}}]
+are stored in type `int` as stem:[-2^{31}] and stem:[-1], respectively.
+
+[#jl-sst-Modulus-get]
+== Modulus retrieval
+
+[source,java,subs="{sst_subs_source}"]
+----
+public byte get({jl_java_Byte} T);
+public short get({jl_java_Short} T);
+public int get({jl_java_Integer} T);
+public long get({jl_java_Long} T);
+public BigInteger get({jl_java_BigInteger} T);
+----
+
+The `get` method returns the value of stem:[m] in type `T`.
+
+Since `{jl_java_BigInteger}` can represent any integer,
+`get(({jl_java_BigInteger})null)` always returns the exact value of
+stem:[m].
+
+For `byte`, `short`, `int`, and `long`, if
+stem:[m > 2^{\mathtt{T.SIZE}}], i.e., if `valuesFit(T)` returns `false`,
+the behavior of `get(T)` is undefined.
+Otherwise, if stem:[m \ge 2^{\mathtt{T.SIZE} - 1}], `get(T)` returns
+stem:[-(2^\mathtt{T.SIZE} - m)].
+Otherwise, `get(T)` returns the exact value of stem:[m].
+
+//

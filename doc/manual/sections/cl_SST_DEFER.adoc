@@ -1,0 +1,68 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_DEFER_ADOC[]
+:SECTIONS_CL_SST_DEFER_ADOC:
+//----------------------------------------------------------------------
+
+:cl_SST_DEFER_name0: SST_DEFER
+
+:cl_SST_DEFER_id: cl-SST-DEFER
+:cl_SST_DEFER_url: sections/cl_SST_DEFER.adoc#{cl_SST_DEFER_id}
+
+:cl_SST_DEFER: xref:{cl_SST_DEFER_url}[{cl_SST_DEFER_name0}]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_SST_DEFER_id}]
+= `{cl_SST_DEFER_name0}`
+
+.C or {cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_DEFER.h[sst/catalog/SST_DEFER.h,window=_blank]>
+
+#define {cl_SST_DEFER} ++/*...*/++
+----
+
+The `{cl_SST_DEFER}` macro defers the expansion of a function-like macro
+call until the expansion of the nearest enclosing call to the
+`{cl_SST_EXPAND}` macro.
+To defer a function-like macro call `F(x)`, write the call as
+`{cl_SST_DEFER}(F)(x)` instead.
+You must also define an auxiliary object-like macro named `F_DEFER` that
+simply expands to `F` (i.e., `#define F_DEFER F`).
+
+//----------------------------------------------------------------------
+endif::[]

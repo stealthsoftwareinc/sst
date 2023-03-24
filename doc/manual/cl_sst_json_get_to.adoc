@@ -1,0 +1,207 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-json-get-to]
+= The `sst::json::get_to` function
+
+:!i:
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/json/get_to.hpp[sst/catalog/json/get_to.hpp,window=_blank]>
+namespace sst::json {
+
+//
+// Integer destinations
+//
+
+// ({counter:i})
+template<class ValueType,
+         class {cl_nlohmann_json_Json},
+         typename {cl_sst_enable_if}<
+             {cl_std_is_integral}<ValueType>::value>::type = 0>
+ValueType & get_to({cl_nlohmann_json_Json} const & src, ValueType & dst);
+
+// ({counter:i})
+template<class ValueType,
+         class {cl_nlohmann_json_Json},
+         typename {cl_sst_enable_if}<
+             {cl_std_is_same}<ValueType, {cl_libcrypto_BIGNUM}>::value>::type = 0>
+ValueType & get_to({cl_nlohmann_json_Json} const & src, ValueType & dst);
+
+// ({counter:i})
+template<class ValueType,
+         class {cl_nlohmann_json_Json},
+         typename {cl_sst_enable_if}<
+             {cl_std_is_same}<ValueType, {cl_sst_bignum}>::value>::type = 0>
+ValueType & get_to({cl_nlohmann_json_Json} const & src, ValueType & dst);
+
+}
+----
+
+The `sst::json::get_to` function parses an `{cl_nlohmann_json}` value
+into `dst` based on the type of `dst` and returns `dst`.
+
+:!i:
+
+Integer destinations: ({counter:i}) ({counter:i}) ({counter:i})::
+Parses `src` into `dst`.
++
+If the {cl_nlohmann_json_internal_type} of `src` is not
+`{cl_nlohmann_json_integer_t}`, `{cl_nlohmann_json_unsigned_t}`,
+`{cl_nlohmann_json_boolean_t}`, or `{cl_nlohmann_json_string_t}`, an
+`{cl_sst_json_exception}` exception is thrown.
++
+For `{cl_nlohmann_json_integer_t}` and `{cl_nlohmann_json_unsigned_t}`,
+the parsed value is simply the {cl_nlohmann_json_internal_value}.
+For `{cl_nlohmann_json_boolean_t}`, the parsed values of `true` and
+`false` are 1 and 0, respectively.
+For `{cl_nlohmann_json_string_t}`, the accepted syntax and parsed value
+is defined by the following grammar:
++
+====
+_value_: +
+{gindent} _sign_~_opt_~ _magnitude_ +
+{gindent} _boolean_
+
+_sign_: one of +
+{gindent} `+` `-`
+
+_magnitude_: +
+{gindent} `0` +
+{gindent} _binary-magnitude_ +
+{gindent} _octal-magnitude_ +
+{gindent} _decimal-magnitude_ +
+{gindent} _hexadecimal-magnitude_
+
+_binary-magnitude_: +
+{gindent} `0b` _binary-digit_ +
+{gindent} `0B` _binary-digit_ +
+{gindent} _binary-magnitude_ `'`~_opt_~ _binary-digit_
+
+_octal-magnitude_: +
+{gindent} `0o` _octal-digit_ +
+{gindent} `0O` _octal-digit_ +
+{gindent} _octal-magnitude_ `'`~_opt_~ _octal-digit_
+
+_decimal-magnitude_: +
+{gindent} _nonzero-decimal-digit_ +
+{gindent} _decimal-magnitude_ `'`~_opt_~ _decimal-digit_
+
+_hexadecimal-magnitude_: +
+{gindent} `0x` _hexadecimal-digit_ +
+{gindent} `0X` _hexadecimal-digit_ +
+{gindent} _hexadecimal-magnitude_ `'`~_opt_~ _hexadecimal-digit_
+
+_binary-digit_: one of +
+{gindent} `0` `1`
+
+_octal-digit_: one of +
+{gindent} `0` `1` `2` `3` `4` `5` `6` `7`
+
+_nonzero-decimal-digit_: one of +
+{gindent} `1` `2` `3` `4` `5` `6` `7` `8` `9`
+
+_decimal-digit_: one of +
+{gindent} `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`
+
+_hexadecimal-digit_: one of +
+{gindent} `0` `1` `2` `3` `4` `5` `6` `7` `8` `9` +
+{gindent} `a` `b` `c` `d` `e` `f` +
+{gindent} `A` `B` `C` `D` `E` `F`
+
+_boolean_: one of +
+{gindent} `true` `false`
+====
++
+If the parsed value cannot be represented by `ValueType`, an
+`{cl_sst_json_exception}` exception is thrown.
+
+If `ValueType` is a ``std::vector``-like type, then the internal type of
+`src` must be `array_t`.
+`dst` will first be cleared, and then each element of the array will be
+appended to `dst` after being parsed by calling `sst::json::get_to`
+recursively.
+
+If `ValueType` is a ``std::map``-like type, then the internal type of
+`src` must be `object_t`.
+`dst` will first be cleared, and then each member of the object will be
+inserted into `dst` after being parsed by calling `sst::json::get_to`
+recursively.
+
+If `ValueType` is any other type, then the parsing will be forwarded to
+``nlohmann::json``{blank}`'s built-in parsing logic by calling
+`src.get_to(dst)`.
+In particular, this means that ``nlohmann::json``{blank}`'s arbitrary
+type parsing feature (i.e., user-provided `from_json` functions) will
+work when calling `sst::json::get_to`.
+
+Except perhaps when parsing is forwarded to ``nlohmann::json``{blank}`'s
+built-in parsing logic, this function will reliably throw an exception
+if any kind of error occurs.
+In particular, it will throw an exception if `ValueType` is an integer
+type that cannot represent a parsed integer value.
+
+The following functions are provided for parsing JSON object members:
+
+.{cpp}
+[source,cpp]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/json/get_to.hpp[sst/catalog/json/get_to.hpp,window=_blank]>
+namespace sst::json {
+
+// (1)
+template<class ValueType, class Json>
+ValueType & get_to(Json const & src,
+    typename Json::object_t::key_type const & key,
+    ValueType & dst) { ... }
+
+// (2)
+template<class T, class {cl_nlohmann_json_Json}>
+T & get_to({cl_nlohmann_json_Json} const & src,
+           typename {cl_nlohmann_json_Json}::object_t::key_type const & key,
+           T & dst,
+           {cl_sst_undeduced_t}<T> const & default_value);
+
+template<class T, class {cl_nlohmann_json_Json}>
+T & get_to({cl_nlohmann_json_Json} const & src,
+           typename {cl_nlohmann_json_Json}::object_t::key_type const & key,
+           T & dst,
+           {cl_sst_undeduced_t}<T> && default_value);
+
+}
+----
+
+The internal type of `src` must be `object_t`.
+For (1), `src` must contain a member named `key`, whose value will be
+parsed by calling `sst::json::get_to` recursively.
+For (2), the behavior is the same as (1) except that if `src` does not
+contain a member named `key`, then `dst` will be set to `default_value`.
+
+//

@@ -1,0 +1,93 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+:fl_view_source_text: &#91;View source&#93;
+:fl_download_source_text: &#91;Download source&#93;
+:fl_view_manual_text: &#91;View manual&#93;
+:fl_download_manual_text: &#91;Download manual&#93;
+
+:!fl_no_github:
+ifeval::["{fp_github_view_source_url}" == ""]
+ifeval::["{fp_github_download_source_url}" == ""]
+ifeval::["{fp_github_view_manual_url}" == ""]
+ifeval::["{fp_github_download_manual_url}" == ""]
+:fl_no_github:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+:!fl_no_gitlab:
+ifeval::["{fp_gitlab_view_source_url}" == ""]
+ifeval::["{fp_gitlab_download_source_url}" == ""]
+ifeval::["{fp_gitlab_view_manual_url}" == ""]
+ifeval::["{fp_gitlab_download_manual_url}" == ""]
+:fl_no_gitlab:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+{fp_package_name} {fp_package_version}::
+ifndef::fl_no_github[]
+* GitHub:
+ifeval::["{fp_github_view_source_url}" != ""]
+link:{fp_github_view_source_url}[{fl_view_source_text}]
+endif::[]
+ifeval::["{fp_github_download_source_url}" != ""]
+link:{fp_github_download_source_url}[{fl_download_source_text}]
+endif::[]
+ifeval::["{fp_github_view_manual_url}" != ""]
+link:{fp_github_view_manual_url}[{fl_view_manual_text}]
+endif::[]
+ifeval::["{fp_github_download_manual_url}" != ""]
+link:{fp_github_download_manual_url}[{fl_download_manual_text}]
+endif::[]
+endif::[]
+ifndef::fl_no_gitlab[]
+* GitHub:
+ifeval::["{fp_gitlab_view_source_url}" != ""]
+link:{fp_gitlab_view_source_url}[{fl_view_source_text}]
+endif::[]
+ifeval::["{fp_gitlab_download_source_url}" != ""]
+link:{fp_gitlab_download_source_url}[{fl_download_source_text}]
+endif::[]
+ifeval::["{fp_gitlab_view_manual_url}" != ""]
+link:{fp_gitlab_view_manual_url}[{fl_view_manual_text}]
+endif::[]
+ifeval::["{fp_gitlab_download_manual_url}" != ""]
+link:{fp_gitlab_download_manual_url}[{fl_download_manual_text}]
+endif::[]
+endif::[]
+ifdef::fl_no_github[]
+ifdef::fl_no_gitlab[]
+* No links available
+endif::[]
+endif::[]
+
+//

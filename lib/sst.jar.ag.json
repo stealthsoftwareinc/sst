@@ -1,0 +1,14 @@
+{
+
+  "handler": "sst_ajh_java_library",
+
+  "dst": "lib/sst.jar",
+  "sourcepath": "src/java",
+  "maven_sourcepath": "sst-java/src/main/java",
+  "package": "com.stealthsoftwareinc.sst",
+
+  "jardeps": [
+    "{@}PATH_NETTY{@}:build-aux/downloads/netty-all-4.1.65.Final.jar"
+  ]
+
+}

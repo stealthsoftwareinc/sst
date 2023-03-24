@@ -1,0 +1,310 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_CL_SST_ENTITIES_ADOC[]
+:ATTRIBUTES_CL_SST_ENTITIES_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_count_it_url: cl_sst_count_it.adoc#cl-sst-count-it
+:cl_sst_count_it: xref:{cl_sst_count_it_url}[sst::count_it]
+
+:cl_SST_CPP11_OR_LATER: SST_CPP11_OR_LATER
+
+:cl_SST_CPP14_OR_LATER: SST_CPP14_OR_LATER
+
+:cl_SST_CPP17_OR_LATER: SST_CPP17_OR_LATER
+
+:cl_SST_CPP20_OR_LATER: SST_CPP20_OR_LATER
+
+:cl_sst_w32_accept_url: cl_sst_w32_accept.adoc#cl-sst-w32-accept
+:cl_sst_w32_accept: xref:{cl_sst_w32_accept_url}[sst_w32_accept]
+
+:cl_sst_w32_ADDRESS_FAMILY_url: cl_sst_w32_ADDRESS_FAMILY.adoc#cl-sst-w32-ADDRESS-FAMILY
+:cl_sst_w32_ADDRESS_FAMILY: xref:{cl_sst_w32_ADDRESS_FAMILY_url}[sst_w32_ADDRESS_FAMILY]
+
+:cl_sst_w32_ADDRINFOA_unwrap_url: cl_sst_w32_ADDRINFOA_unwrap.adoc#cl-sst-w32-ADDRINFOA-unwrap
+:cl_sst_w32_ADDRINFOA_unwrap: xref:{cl_sst_w32_ADDRINFOA_unwrap_url}[sst_w32_ADDRINFOA_unwrap]
+
+:cl_sst_w32_ADDRINFOA_url: cl_sst_w32_ADDRINFOA.adoc#cl-sst-w32-ADDRINFOA
+:cl_sst_w32_ADDRINFOA: xref:{cl_sst_w32_ADDRINFOA_url}[sst_w32_ADDRINFOA]
+
+:cl_sst_w32_ADDRINFOA_wrap_url: cl_sst_w32_ADDRINFOA_wrap.adoc#cl-sst-w32-ADDRINFOA-wrap
+:cl_sst_w32_ADDRINFOA_wrap: xref:{cl_sst_w32_ADDRINFOA_wrap_url}[sst_w32_ADDRINFOA_wrap]
+
+:cl_sst_w32_ADDRINFOA_wrapper_url: cl_sst_w32_ADDRINFOA_wrapper.adoc#cl-sst-w32-ADDRINFOA-wrapper
+:cl_sst_w32_ADDRINFOA_wrapper: xref:{cl_sst_w32_ADDRINFOA_wrapper_url}[sst_w32_ADDRINFOA_wrapper]
+
+:cl_SST_W32_AF_INET_url: cl_SST_W32_AF_INET.adoc#cl-SST-W32-AF-INET
+:cl_SST_W32_AF_INET: xref:{cl_SST_W32_AF_INET_url}[SST_W32_AF_INET]
+
+:cl_SST_W32_AF_INET6_url: cl_SST_W32_AF_INET6.adoc#cl-SST-W32-AF-INET6
+:cl_SST_W32_AF_INET6: xref:{cl_SST_W32_AF_INET6_url}[SST_W32_AF_INET6]
+
+:cl_SST_W32_AF_UNSPEC_url: cl_SST_W32_AF_UNSPEC.adoc#cl-SST-W32-AF-UNSPEC
+:cl_SST_W32_AF_UNSPEC: xref:{cl_SST_W32_AF_UNSPEC_url}[SST_W32_AF_UNSPEC]
+
+:cl_SST_W32_AI_PASSIVE_url: cl_SST_W32_AI_PASSIVE.adoc#cl-SST-W32-AI-PASSIVE
+:cl_SST_W32_AI_PASSIVE: xref:{cl_SST_W32_AI_PASSIVE_url}[SST_W32_AI_PASSIVE]
+
+:cl_sst_w32_bind_url: cl_sst_w32_bind.adoc#cl-sst-w32-bind
+:cl_sst_w32_bind: xref:{cl_sst_w32_bind_url}[sst_w32_bind]
+
+:cl_sst_w32_CHAR_url: cl_sst_w32_CHAR.adoc#cl-sst-w32-CHAR
+:cl_sst_w32_CHAR: xref:{cl_sst_w32_CHAR_url}[sst_w32_CHAR]
+
+:cl_sst_w32_closesocket_url: cl_sst_w32_closesocket.adoc#cl-sst-w32-closesocket
+:cl_sst_w32_closesocket: xref:{cl_sst_w32_closesocket_url}[sst_w32_closesocket]
+
+:cl_sst_w32_connect_url: cl_sst_w32_connect.adoc#cl-sst-w32-connect
+:cl_sst_w32_connect: xref:{cl_sst_w32_connect_url}[sst_w32_connect]
+
+:cl_sst_w32_DWORD_url: cl_sst_w32_DWORD.adoc#cl-sst-w32-DWORD
+:cl_sst_w32_DWORD: xref:{cl_sst_w32_DWORD_url}[sst_w32_DWORD]
+
+:cl_SST_W32_FIONBIO_url: cl_SST_W32_FIONBIO.adoc#cl-SST-W32-FIONBIO
+:cl_SST_W32_FIONBIO: xref:{cl_SST_W32_FIONBIO_url}[SST_W32_FIONBIO]
+
+:cl_sst_w32_freeaddrinfo_url: cl_sst_w32_freeaddrinfo.adoc#cl-sst-w32-freeaddrinfo
+:cl_sst_w32_freeaddrinfo: xref:{cl_sst_w32_freeaddrinfo_url}[sst_w32_freeaddrinfo]
+
+:cl_sst_w32_getaddrinfo_url: cl_sst_w32_getaddrinfo.adoc#cl-sst-w32-getaddrinfo
+:cl_sst_w32_getaddrinfo: xref:{cl_sst_w32_getaddrinfo_url}[sst_w32_getaddrinfo]
+
+:cl_sst_w32_getsockname_url: cl_sst_w32_getsockname.adoc#cl-sst-w32-getsockname
+:cl_sst_w32_getsockname: xref:{cl_sst_w32_getsockname_url}[sst_w32_getsockname]
+
+:cl_sst_w32_getsockopt_url: cl_sst_w32_getsockopt.adoc#cl-sst-w32-getsockopt
+:cl_sst_w32_getsockopt: xref:{cl_sst_w32_getsockopt_url}[sst_w32_getsockopt]
+
+:cl_SST_W32_INET_ADDRSTRLEN_url: cl_SST_W32_INET_ADDRSTRLEN.adoc#cl-SST-W32-INET-ADDRSTRLEN
+:cl_SST_W32_INET_ADDRSTRLEN: xref:{cl_SST_W32_INET_ADDRSTRLEN_url}[SST_W32_INET_ADDRSTRLEN]
+
+:cl_sst_w32_inet_ntop_url: cl_sst_w32_inet_ntop.adoc#cl-sst-w32-inet-ntop
+:cl_sst_w32_inet_ntop: xref:{cl_sst_w32_inet_ntop_url}[sst_w32_inet_ntop]
+
+:cl_SST_W32_INET6_ADDRSTRLEN_url: cl_SST_W32_INET6_ADDRSTRLEN.adoc#cl-SST-W32-INET6-ADDRSTRLEN
+:cl_SST_W32_INET6_ADDRSTRLEN: xref:{cl_SST_W32_INET6_ADDRSTRLEN_url}[SST_W32_INET6_ADDRSTRLEN]
+
+:cl_sst_w32_INT_url: cl_sst_w32_INT.adoc#cl-sst-w32-INT
+:cl_sst_w32_INT: xref:{cl_sst_w32_INT_url}[sst_w32_INT]
+
+:cl_SST_W32_INVALID_SOCKET_url: cl_SST_W32_INVALID_SOCKET.adoc#cl-SST-W32-INVALID-SOCKET
+:cl_SST_W32_INVALID_SOCKET: xref:{cl_SST_W32_INVALID_SOCKET_url}[SST_W32_INVALID_SOCKET]
+
+:cl_sst_w32_ioctlsocket_url: cl_sst_w32_ioctlsocket.adoc#cl-sst-w32-ioctlsocket
+:cl_sst_w32_ioctlsocket: xref:{cl_sst_w32_ioctlsocket_url}[sst_w32_ioctlsocket]
+
+:cl_SST_W32_IPPROTO_TCP_url: cl_SST_W32_IPPROTO_TCP.adoc#cl-SST-W32-IPPROTO-TCP
+:cl_SST_W32_IPPROTO_TCP: xref:{cl_SST_W32_IPPROTO_TCP_url}[SST_W32_IPPROTO_TCP]
+
+:cl_SST_W32_IPPROTO_UDP_url: cl_SST_W32_IPPROTO_UDP.adoc#cl-SST-W32-IPPROTO-UDP
+:cl_SST_W32_IPPROTO_UDP: xref:{cl_SST_W32_IPPROTO_UDP_url}[SST_W32_IPPROTO_UDP]
+
+:cl_sst_w32_LANGID_url: cl_sst_w32_LANGID.adoc#cl-sst-w32-LANGID
+:cl_sst_w32_LANGID: xref:{cl_sst_w32_LANGID_url}[sst_w32_LANGID]
+
+:cl_sst_w32_listen_url: cl_sst_w32_listen.adoc#cl-sst-w32-listen
+:cl_sst_w32_listen: xref:{cl_sst_w32_listen_url}[sst_w32_listen]
+
+:cl_sst_w32_ntohl_url: cl_sst_w32_ntohl.adoc#cl-sst-w32-ntohl
+:cl_sst_w32_ntohl: xref:{cl_sst_w32_ntohl_url}[sst_w32_ntohl]
+
+:cl_sst_w32_ntohs_url: cl_sst_w32_ntohs.adoc#cl-sst-w32-ntohs
+:cl_sst_w32_ntohs: xref:{cl_sst_w32_ntohs_url}[sst_w32_ntohs]
+
+:cl_sst_w32_offsetof_SOCKADDR_STORAGE_ss_family_url: cl_sst_w32_offsetof_SOCKADDR_STORAGE_ss_family.adoc#cl-sst-w32-offsetof-SOCKADDR-STORAGE-ss-family
+:cl_sst_w32_offsetof_SOCKADDR_STORAGE_ss_family: xref:{cl_sst_w32_offsetof_SOCKADDR_STORAGE_ss_family_url}[sst_w32_offsetof_SOCKADDR_STORAGE_ss_family]
+
+:cl_sst_w32_PCSTR_url: cl_sst_w32_PCSTR.adoc#cl-sst-w32-PCSTR
+:cl_sst_w32_PCSTR: xref:{cl_sst_w32_PCSTR_url}[sst_w32_PCSTR]
+
+:cl_sst_w32_PSTR_url: cl_sst_w32_PSTR.adoc#cl-sst-w32-PSTR
+:cl_sst_w32_PSTR: xref:{cl_sst_w32_PSTR_url}[sst_w32_PSTR]
+
+:cl_sst_w32_recv_url: cl_sst_w32_recv.adoc#cl-sst-w32-recv
+:cl_sst_w32_recv: xref:{cl_sst_w32_recv_url}[sst_w32_recv]
+
+:cl_SST_W32_SD_BOTH_url: cl_SST_W32_SD_BOTH.adoc#cl-SST-W32-SD-BOTH
+:cl_SST_W32_SD_BOTH: xref:{cl_SST_W32_SD_BOTH_url}[SST_W32_SD_BOTH]
+
+:cl_SST_W32_SD_RECEIVE_url: cl_SST_W32_SD_RECEIVE.adoc#cl-SST-W32-SD-RECEIVE
+:cl_SST_W32_SD_RECEIVE: xref:{cl_SST_W32_SD_RECEIVE_url}[SST_W32_SD_RECEIVE]
+
+:cl_SST_W32_SD_SEND_url: cl_SST_W32_SD_SEND.adoc#cl-SST-W32-SD-SEND
+:cl_SST_W32_SD_SEND: xref:{cl_SST_W32_SD_SEND_url}[SST_W32_SD_SEND]
+
+:cl_sst_w32_send_url: cl_sst_w32_send.adoc#cl-sst-w32-send
+:cl_sst_w32_send: xref:{cl_sst_w32_send_url}[sst_w32_send]
+
+:cl_sst_w32_setsockopt_url: cl_sst_w32_setsockopt.adoc#cl-sst-w32-setsockopt
+:cl_sst_w32_setsockopt: xref:{cl_sst_w32_setsockopt_url}[sst_w32_setsockopt]
+
+:cl_sst_w32_SHORT_url: cl_sst_w32_SHORT.adoc#cl-sst-w32-SHORT
+:cl_sst_w32_SHORT: xref:{cl_sst_w32_SHORT_url}[sst_w32_SHORT]
+
+:cl_sst_w32_shutdown_url: cl_sst_w32_shutdown.adoc#cl-sst-w32-shutdown
+:cl_sst_w32_shutdown: xref:{cl_sst_w32_shutdown_url}[sst_w32_shutdown]
+
+:cl_sst_w32_sizeof_SOCKADDR_IN_url: cl_sst_w32_sizeof_SOCKADDR_IN.adoc#cl-sst-w32-sizeof-SOCKADDR-IN
+:cl_sst_w32_sizeof_SOCKADDR_IN: xref:{cl_sst_w32_sizeof_SOCKADDR_IN_url}[sst_w32_sizeof_SOCKADDR_IN]
+
+:cl_sst_w32_sizeof_SOCKADDR_IN6_url: cl_sst_w32_sizeof_SOCKADDR_IN6.adoc#cl-sst-w32-sizeof-SOCKADDR-IN6
+:cl_sst_w32_sizeof_SOCKADDR_IN6: xref:{cl_sst_w32_sizeof_SOCKADDR_IN6_url}[sst_w32_sizeof_SOCKADDR_IN6]
+
+:cl_sst_w32_sizeof_SOCKADDR_STORAGE_url: cl_sst_w32_sizeof_SOCKADDR_STORAGE.adoc#cl-sst-w32-sizeof-SOCKADDR-STORAGE
+:cl_sst_w32_sizeof_SOCKADDR_STORAGE: xref:{cl_sst_w32_sizeof_SOCKADDR_STORAGE_url}[sst_w32_sizeof_SOCKADDR_STORAGE]
+
+:cl_sst_w32_sizeof_WIN32_FILE_ATTRIBUTE_DATA_url: cl_sst_w32_sizeof_WIN32_FILE_ATTRIBUTE_DATA.adoc#cl-sst-w32-sizeof-WIN32-FILE-ATTRIBUTE-DATA
+:cl_sst_w32_sizeof_WIN32_FILE_ATTRIBUTE_DATA: xref:{cl_sst_w32_sizeof_WIN32_FILE_ATTRIBUTE_DATA_url}[sst_w32_sizeof_WIN32_FILE_ATTRIBUTE_DATA]
+
+:cl_sst_w32_sizeof_WIN32_FIND_DATAA_url: cl_sst_w32_sizeof_WIN32_FIND_DATAA.adoc#cl-sst-w32-sizeof-WIN32-FIND-DATAA
+:cl_sst_w32_sizeof_WIN32_FIND_DATAA: xref:{cl_sst_w32_sizeof_WIN32_FIND_DATAA_url}[sst_w32_sizeof_WIN32_FIND_DATAA]
+
+:cl_sst_w32_sizeof_WIN32_FIND_DATAW_url: cl_sst_w32_sizeof_WIN32_FIND_DATAW.adoc#cl-sst-w32-sizeof-WIN32-FIND-DATAW
+:cl_sst_w32_sizeof_WIN32_FIND_DATAW: xref:{cl_sst_w32_sizeof_WIN32_FIND_DATAW_url}[sst_w32_sizeof_WIN32_FIND_DATAW]
+
+:cl_sst_w32_sizeof_WSADATA_url: cl_sst_w32_sizeof_WSADATA.adoc#cl-sst-w32-sizeof-WSADATA
+:cl_sst_w32_sizeof_WSADATA: xref:{cl_sst_w32_sizeof_WSADATA_url}[sst_w32_sizeof_WSADATA]
+
+:cl_SST_W32_SO_REUSEADDR_url: cl_SST_W32_SO_REUSEADDR.adoc#cl-SST-W32-SO-REUSEADDR
+:cl_SST_W32_SO_REUSEADDR: xref:{cl_SST_W32_SO_REUSEADDR_url}[SST_W32_SO_REUSEADDR]
+
+:cl_SST_W32_SOCK_DGRAM_url: cl_SST_W32_SOCK_DGRAM.adoc#cl-SST-W32-SOCK-DGRAM
+:cl_SST_W32_SOCK_DGRAM: xref:{cl_SST_W32_SOCK_DGRAM_url}[SST_W32_SOCK_DGRAM]
+
+:cl_SST_W32_SOCK_STREAM_url: cl_SST_W32_SOCK_STREAM.adoc#cl-SST-W32-SOCK-STREAM
+:cl_SST_W32_SOCK_STREAM: xref:{cl_SST_W32_SOCK_STREAM_url}[SST_W32_SOCK_STREAM]
+
+:cl_sst_w32_SOCKADDR_IN6_unwrap_url: cl_sst_w32_SOCKADDR_IN6_unwrap.adoc#cl-sst-w32-SOCKADDR-IN6-unwrap
+:cl_sst_w32_SOCKADDR_IN6_unwrap: xref:{cl_sst_w32_SOCKADDR_IN6_unwrap_url}[sst_w32_SOCKADDR_IN6_unwrap]
+
+:cl_sst_w32_SOCKADDR_IN6_url: cl_sst_w32_SOCKADDR_IN6.adoc#cl-sst-w32-SOCKADDR-IN6
+:cl_sst_w32_SOCKADDR_IN6: xref:{cl_sst_w32_SOCKADDR_IN6_url}[sst_w32_SOCKADDR_IN6]
+
+:cl_sst_w32_SOCKADDR_IN6_wrap_url: cl_sst_w32_SOCKADDR_IN6_wrap.adoc#cl-sst-w32-SOCKADDR-IN6-wrap
+:cl_sst_w32_SOCKADDR_IN6_wrap: xref:{cl_sst_w32_SOCKADDR_IN6_wrap_url}[sst_w32_SOCKADDR_IN6_wrap]
+
+:cl_sst_w32_SOCKADDR_IN6_wrapper_url: cl_sst_w32_SOCKADDR_IN6_wrapper.adoc#cl-sst-w32-SOCKADDR-IN6-wrapper
+:cl_sst_w32_SOCKADDR_IN6_wrapper: xref:{cl_sst_w32_SOCKADDR_IN6_wrapper_url}[sst_w32_SOCKADDR_IN6_wrapper]
+
+:cl_sst_w32_SOCKADDR_IN_unwrap_url: cl_sst_w32_SOCKADDR_IN_unwrap.adoc#cl-sst-w32-SOCKADDR-IN-unwrap
+:cl_sst_w32_SOCKADDR_IN_unwrap: xref:{cl_sst_w32_SOCKADDR_IN_unwrap_url}[sst_w32_SOCKADDR_IN_unwrap]
+
+:cl_sst_w32_SOCKADDR_IN_url: cl_sst_w32_SOCKADDR_IN.adoc#cl-sst-w32-SOCKADDR-IN
+:cl_sst_w32_SOCKADDR_IN: xref:{cl_sst_w32_SOCKADDR_IN_url}[sst_w32_SOCKADDR_IN]
+
+:cl_sst_w32_SOCKADDR_IN_wrap_url: cl_sst_w32_SOCKADDR_IN_wrap.adoc#cl-sst-w32-SOCKADDR-IN-wrap
+:cl_sst_w32_SOCKADDR_IN_wrap: xref:{cl_sst_w32_SOCKADDR_IN_wrap_url}[sst_w32_SOCKADDR_IN_wrap]
+
+:cl_sst_w32_SOCKADDR_IN_wrapper_url: cl_sst_w32_SOCKADDR_IN_wrapper.adoc#cl-sst-w32-SOCKADDR-IN-wrapper
+:cl_sst_w32_SOCKADDR_IN_wrapper: xref:{cl_sst_w32_SOCKADDR_IN_wrapper_url}[sst_w32_SOCKADDR_IN_wrapper]
+
+:cl_sst_w32_SOCKADDR_url: cl_sst_w32_SOCKADDR.adoc#cl-sst-w32-SOCKADDR
+:cl_sst_w32_SOCKADDR: xref:{cl_sst_w32_SOCKADDR_url}[sst_w32_SOCKADDR]
+
+:cl_sst_w32_SOCKADDR_STORAGE_url: cl_sst_w32_SOCKADDR_STORAGE.adoc#cl-sst-w32-SOCKADDR-STORAGE
+:cl_sst_w32_SOCKADDR_STORAGE: xref:{cl_sst_w32_SOCKADDR_STORAGE_url}[sst_w32_SOCKADDR_STORAGE]
+
+:cl_sst_w32_socket_f_url: cl_sst_w32_socket_f.adoc#cl-sst-w32-socket-f
+:cl_sst_w32_socket_f: xref:{cl_sst_w32_socket_f_url}[sst_w32_socket_f]
+
+:cl_sst_w32_SOCKET_url: cl_sst_w32_SOCKET.adoc#cl-sst-w32-SOCKET
+:cl_sst_w32_SOCKET: xref:{cl_sst_w32_SOCKET_url}[sst_w32_SOCKET]
+
+:cl_SST_W32_SOL_SOCKET_url: cl_SST_W32_SOL_SOCKET.adoc#cl-SST-W32-SOL-SOCKET
+:cl_SST_W32_SOL_SOCKET: xref:{cl_SST_W32_SOL_SOCKET_url}[SST_W32_SOL_SOCKET]
+
+:cl_SST_W32_SOMAXCONN_url: cl_SST_W32_SOMAXCONN.adoc#cl-SST-W32-SOMAXCONN
+:cl_SST_W32_SOMAXCONN: xref:{cl_SST_W32_SOMAXCONN_url}[SST_W32_SOMAXCONN]
+
+:cl_SST_W32_TCP_NODELAY_url: cl_SST_W32_TCP_NODELAY.adoc#cl-SST-W32-TCP-NODELAY
+:cl_SST_W32_TCP_NODELAY: xref:{cl_SST_W32_TCP_NODELAY_url}[SST_W32_TCP_NODELAY]
+
+:cl_sst_w32_u_long_url: cl_sst_w32_u_long.adoc#cl-sst-w32-u-long
+:cl_sst_w32_u_long: xref:{cl_sst_w32_u_long_url}[sst_w32_u_long]
+
+:cl_sst_w32_u_short_url: cl_sst_w32_u_short.adoc#cl-sst-w32-u-short
+:cl_sst_w32_u_short: xref:{cl_sst_w32_u_short_url}[sst_w32_u_short]
+
+:cl_sst_w32_UINT_PTR_url: cl_sst_w32_UINT_PTR.adoc#cl-sst-w32-UINT-PTR
+:cl_sst_w32_UINT_PTR: xref:{cl_sst_w32_UINT_PTR_url}[sst_w32_UINT_PTR]
+
+:cl_sst_w32_ULONG_url: cl_sst_w32_ULONG.adoc#cl-sst-w32-ULONG
+:cl_sst_w32_ULONG: xref:{cl_sst_w32_ULONG_url}[sst_w32_ULONG]
+
+:cl_sst_w32_USHORT_url: cl_sst_w32_USHORT.adoc#cl-sst-w32-USHORT
+:cl_sst_w32_USHORT: xref:{cl_sst_w32_USHORT_url}[sst_w32_USHORT]
+
+:cl_sst_w32_VOID_url: cl_sst_w32_VOID.adoc#cl-sst-w32-VOID
+:cl_sst_w32_VOID: xref:{cl_sst_w32_VOID_url}[sst_w32_VOID]
+
+:cl_sst_w32_WORD_url: cl_sst_w32_WORD.adoc#cl-sst-w32-WORD
+:cl_sst_w32_WORD: xref:{cl_sst_w32_WORD_url}[sst_w32_WORD]
+
+:cl_sst_w32_WSACleanup_url: cl_sst_w32_WSACleanup.adoc#cl-sst-w32-WSACleanup
+:cl_sst_w32_WSACleanup: xref:{cl_sst_w32_WSACleanup_url}[sst_w32_WSACleanup]
+
+:cl_sst_w32_WSADATA_unwrap_url: cl_sst_w32_WSADATA_unwrap.adoc#cl-sst-w32-WSADATA-unwrap
+:cl_sst_w32_WSADATA_unwrap: xref:{cl_sst_w32_WSADATA_unwrap_url}[sst_w32_WSADATA_unwrap]
+
+:cl_sst_w32_WSADATA_url: cl_sst_w32_WSADATA.adoc#cl-sst-w32-WSADATA
+:cl_sst_w32_WSADATA: xref:{cl_sst_w32_WSADATA_url}[sst_w32_WSADATA]
+
+:cl_sst_w32_WSADATA_wrap_url: cl_sst_w32_WSADATA_wrap.adoc#cl-sst-w32-WSADATA-wrap
+:cl_sst_w32_WSADATA_wrap: xref:{cl_sst_w32_WSADATA_wrap_url}[sst_w32_WSADATA_wrap]
+
+:cl_sst_w32_WSADATA_wrapper_url: cl_sst_w32_WSADATA_wrapper.adoc#cl-sst-w32-WSADATA-wrapper
+:cl_sst_w32_WSADATA_wrapper: xref:{cl_sst_w32_WSADATA_wrapper_url}[sst_w32_WSADATA_wrapper]
+
+:cl_SST_W32_WSADESCRIPTION_LEN_url: cl_SST_W32_WSADESCRIPTION_LEN.adoc#cl-SST-W32-WSADESCRIPTION-LEN
+:cl_SST_W32_WSADESCRIPTION_LEN: xref:{cl_SST_W32_WSADESCRIPTION_LEN_url}[SST_W32_WSADESCRIPTION_LEN]
+
+:cl_SST_W32_WSAEALREADY_url: cl_SST_W32_WSAEALREADY.adoc#cl-SST-W32-WSAEALREADY
+:cl_SST_W32_WSAEALREADY: xref:{cl_SST_W32_WSAEALREADY_url}[SST_W32_WSAEALREADY]
+
+:cl_SST_W32_WSAEISCONN_url: cl_SST_W32_WSAEISCONN.adoc#cl-SST-W32-WSAEISCONN
+:cl_SST_W32_WSAEISCONN: xref:{cl_SST_W32_WSAEISCONN_url}[SST_W32_WSAEISCONN]
+
+:cl_SST_W32_WSAEWOULDBLOCK_url: cl_SST_W32_WSAEWOULDBLOCK.adoc#cl-SST-W32-WSAEWOULDBLOCK
+:cl_SST_W32_WSAEWOULDBLOCK: xref:{cl_SST_W32_WSAEWOULDBLOCK_url}[SST_W32_WSAEWOULDBLOCK]
+
+:cl_sst_w32_WSAGetLastError_url: cl_sst_w32_WSAGetLastError.adoc#cl-sst-w32-WSAGetLastError
+:cl_sst_w32_WSAGetLastError: xref:{cl_sst_w32_WSAGetLastError_url}[sst_w32_WSAGetLastError]
+
+:cl_sst_w32_WSAStartup_url: cl_sst_w32_WSAStartup.adoc#cl-sst-w32-WSAStartup
+:cl_sst_w32_WSAStartup: xref:{cl_sst_w32_WSAStartup_url}[sst_w32_WSAStartup]
+
+:cl_SST_W32_WSASYS_STATUS_LEN_url: cl_SST_W32_WSASYS_STATUS_LEN.adoc#cl-SST-W32-WSASYS-STATUS-LEN
+:cl_SST_W32_WSASYS_STATUS_LEN: xref:{cl_SST_W32_WSASYS_STATUS_LEN_url}[SST_W32_WSASYS_STATUS_LEN]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

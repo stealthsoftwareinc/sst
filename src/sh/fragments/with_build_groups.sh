@@ -1,13 +1,36 @@
 #
-# For the copyright information for this file, please search up the
-# directory tree for the first COPYING file.
+# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
 #
 
 #
 # This portable shell fragment parses $with_build_groups into
 # $WITH_BUILD_GROUP_*. $with_build_groups should usually already be set
 # to the user-provided --with-build-groups value. If $with_build_groups
-# is unset, it will be implicitly taken to be "yes".
+# is unset, it will be implicitly taken to be "default".
 #
 # $with_build_groups_values will be set and exported such that it can be
 # given to the eval command to restore the resulting $WITH_BUILD_GROUP_*
@@ -15,8 +38,8 @@
 # --with-build-groups option that will parse to the same result.
 #
 # If the fragment succeeds, then $with_build_groups_error will be set to
-# the empty value. Otherwise, $with_build_groups_error will be set to a
-# nonempty value indicating the type of error.
+# the empty string. Otherwise, $with_build_groups_error will be set to a
+# nonempty string indicating the type of error.
 #
 # If $with_build_groups_error is sed_failed, then the fragment failed
 # because a sed command failed, and the exit status of the failed sed
@@ -26,15 +49,15 @@
 # because the user provided an invalid --with-build-groups entry, which
 # is stored in $with_build_groups_error_invalid_entry.
 #
-# Other errors may be possible, so you should always check that
-# $with_build_groups_error is empty to check for success.
+# Other errors may be possible, so you should always check for success
+# by checking that $with_build_groups_error is empty.
 #
 
 with_build_groups_error=
 with_build_groups_option=
 
 with_build_groups_entries=`sed "s/,/ /g" <<EOF
-${with_build_groups-yes}
+${with_build_groups-default}
 EOF
 ` || {
   with_build_groups_error_sed_status=$?
@@ -48,6 +71,7 @@ case $with_build_groups_error in
       case $with_build_groups_entry in
 
         no)
+          WITH_BUILD_GROUP_BASH=0
           WITH_BUILD_GROUP_C_AUTOTOOLS=0
           WITH_BUILD_GROUP_CPP_AUTOTOOLS=0
           WITH_BUILD_GROUP_JAVA_GATBPS=0
@@ -55,15 +79,24 @@ case $with_build_groups_error in
         ;;
 
         +default | default | yes)
+          WITH_BUILD_GROUP_BASH=1
           WITH_BUILD_GROUP_C_AUTOTOOLS=1
           WITH_BUILD_GROUP_CPP_AUTOTOOLS=1
           WITH_BUILD_GROUP_JAVA_GATBPS=1
         ;;
         -default)
+          WITH_BUILD_GROUP_BASH=0
           WITH_BUILD_GROUP_C_AUTOTOOLS=0
           WITH_BUILD_GROUP_CPP_AUTOTOOLS=0
           WITH_BUILD_GROUP_JAVA_GATBPS=0
           WITH_BUILD_GROUP_JAVA_MAVEN=0
+        ;;
+
+        +bash | bash)
+          WITH_BUILD_GROUP_BASH=1
+        ;;
+        -bash)
+          WITH_BUILD_GROUP_BASH=0
         ;;
 
         +c | c)
@@ -143,6 +176,7 @@ esac
 
 export with_build_groups_values="
 
+WITH_BUILD_GROUP_BASH=$WITH_BUILD_GROUP_BASH
 WITH_BUILD_GROUP_C_AUTOTOOLS=$WITH_BUILD_GROUP_C_AUTOTOOLS
 WITH_BUILD_GROUP_CPP_AUTOTOOLS=$WITH_BUILD_GROUP_CPP_AUTOTOOLS
 WITH_BUILD_GROUP_JAVA_GATBPS=$WITH_BUILD_GROUP_JAVA_GATBPS

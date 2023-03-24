@@ -1,0 +1,64 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-count-it]
+= The `sst::count_it` function
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/count_it.hpp[sst/catalog/count_it.hpp,window=_blank]>
+namespace sst {
+
+template<{cl_req_Iterator} T, {cl_std_integral} N>
+_R_ count_it(T x, N n);
+
+}
+----
+
+The `{cl_sst_count_it}` function returns an iterator that compares equal
+to the iterator that would be produced by `{cl_std_advance}(x, n)`.
+
+The type `_R_` of the returned iterator is unspecified.
+However, the following guarantees are made:
+
+. {empty}
+The return types of
+`{cl_sst_count_it}(x, n)`
+and
+`{cl_sst_wrap_it}(x, n)`
+are the same.
+
+. {empty}
+The return types of
+`{cl_sst_count_it}(x, n)`
+and
+`{cl_sst_wrap_it}(x, n)`
+are the same.
+
+//

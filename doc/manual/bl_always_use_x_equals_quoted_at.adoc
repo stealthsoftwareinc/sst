@@ -1,0 +1,87 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#bl-always-use-x-equals-quoted-at]
+= Always use `x="$@"` to collect the positional parameters separated by spaces
+
+Some versions of Bash sometimes have incorrect behavior for `x=$*` and
+`x=$@`, while `x="$@"` always works:
+
+----
+$ cat a.bash
+set -e -u -o pipefail
+for v in 4.{1,2,3,4} 5.{0,1}; do
+  docker run -i -t --rm bash:$v bash --version | awk 'NR == 1'
+  for rhs in '$*' '$@' '"$*"' '"$@"'; do
+    printf '  %7s ' "x=$rhs:"
+    docker run -i -t --rm bash:$v bash -c '
+      set " "
+      unset IFS
+      x='"$rhs"'
+      printf "[%s]\\n" "$x"
+    '
+  done
+done
+
+$ bash a.bash
+GNU bash, version 4.1.17(2)-release (x86_64-pc-linux-musl)
+    x=$*: [ ]
+    x=$@: []
+  x="$*": [ ]
+  x="$@": [ ]
+GNU bash, version 4.2.53(2)-release (x86_64-pc-linux-musl)
+    x=$*: [ ]
+    x=$@: []
+  x="$*": [ ]
+  x="$@": [ ]
+GNU bash, version 4.3.48(1)-release (x86_64-pc-linux-musl)
+    x=$*: []
+    x=$@: [ ]
+  x="$*": [ ]
+  x="$@": [ ]
+GNU bash, version 4.4.23(1)-release (x86_64-pc-linux-musl)
+    x=$*: []
+    x=$@: [ ]
+  x="$*": [ ]
+  x="$@": [ ]
+GNU bash, version 5.0.18(1)-release (x86_64-pc-linux-musl)
+    x=$*: [ ]
+    x=$@: [ ]
+  x="$*": [ ]
+  x="$@": [ ]
+GNU bash, version 5.1.8(1)-release (x86_64-pc-linux-musl)
+    x=$*: [ ]
+    x=$@: [ ]
+  x="$*": [ ]
+  x="$@": [ ]
+----
+
+Note that `x="$*"` also always works, but `x="$@"` is still preferred
+when space separation is desired, as it is not affected by `{bl_IFS}`.
+
+//

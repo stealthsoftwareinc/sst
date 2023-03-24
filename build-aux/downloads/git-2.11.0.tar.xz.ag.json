@@ -1,4 +1,5 @@
 {
+
   "handler": "sst_ajh_download",
 
   "hashes": {
@@ -9,8 +10,10 @@
     "sha384": "41e4f94b1fb400f45b98b178e52c172cfebcd8108a308978b5d38949e1c98d44bd831407c9f67bbcbb39bc47313029ac",
     "sha512": "f9588dfcb4ae38adc46300b8ef65ee51343fc4685f9e43bffff10839a492e6a54c7f7a774687fef3ebb8a30108775aa472cda2378aa202905f8555bfb9d4ede2"
   },
+
   "urls": [
     "https://www.kernel.org/pub/software/scm/git/git-2.11.0.tar.xz",
     "https://www.mirrorservice.org/sites/ftp.kernel.org/pub/software/scm/git/git-2.11.0.tar.xz"
   ]
+
 }

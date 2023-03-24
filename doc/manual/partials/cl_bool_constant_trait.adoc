@@ -1,0 +1,78 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#{d4xj4scf_id}]
+= The `sst::{d4xj4scf_name}` trait
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{d4xj4scf_name}.hpp[sst/catalog/{d4xj4scf_name}.hpp,window=_blank]>
+namespace sst {
+
+ifeval::["{d4xj4scf_params2}" == ""]
+template<{d4xj4scf_params}>
+endif::[]
+ifeval::["{d4xj4scf_params2}" != ""]
+ifeval::["{d4xj4scf_params3}" == ""]
+template<{d4xj4scf_params}
+         {d4xj4scf_params2}>
+endif::[]
+ifeval::["{d4xj4scf_params3}" != ""]
+ifeval::["{d4xj4scf_params4}" == ""]
+template<{d4xj4scf_params}
+         {d4xj4scf_params2}
+         {d4xj4scf_params3}>
+endif::[]
+ifeval::["{d4xj4scf_params4}" != ""]
+ifeval::["{d4xj4scf_params5}" == ""]
+template<{d4xj4scf_params}
+         {d4xj4scf_params2}
+         {d4xj4scf_params3}
+         {d4xj4scf_params4}>
+endif::[]
+ifeval::["{d4xj4scf_params5}" != ""]
+ifeval::["{d4xj4scf_params6}" == ""]
+template<{d4xj4scf_params}
+         {d4xj4scf_params2}
+         {d4xj4scf_params3}
+         {d4xj4scf_params4}
+         {d4xj4scf_params5}>
+endif::[]
+ifeval::["{d4xj4scf_params6}" != ""]
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+struct xref:{d4xj4scf_url}[{d4xj4scf_name}]
+    : {cl_sst_bool_constant}<__{d4xj4scf_value}__> {};
+
+}
+----
+
+//

@@ -1,0 +1,1085 @@
+/* src/c-cpp/lib/sst/config_private_raw.h.in.  Generated from configure.ac by autoheader.  */
+
+/* asciidoctor command */
+#undef ASCIIDOCTOR
+
+/* awk command */
+#undef AWK
+
+/* Define to a character string literal that contains the suffix that the C
+   compiler adds to executable files. For example, on Unix-like systems this
+   should usually be "", and on Windows systems this should usually be ".exe".
+   */
+#undef CEXEEXT
+
+/* curl command */
+#undef CURL
+
+/* docker command */
+#undef DOCKER
+
+/* git command */
+#undef GIT
+
+/* grep command */
+#undef GREP
+
+/* gunzip command */
+#undef GUNZIP
+
+/* gzip command */
+#undef GZIP
+
+/* Result of checking for Android. */
+#undef HAVE_ANDROID
+
+/* asciidoctor command availability */
+#undef HAVE_ASCIIDOCTOR
+
+/* awk command availability */
+#undef HAVE_AWK
+
+/* Result of checking whether bignum_st is fully defined. */
+#undef HAVE_BIGNUM_ST_DEFINITION
+
+/* curl command availability */
+#undef HAVE_CURL
+
+/* Result of checking whether Cygwin is present. */
+#undef HAVE_CYGWIN
+
+/* Result of checking for Cygwin (C++ compile). */
+#undef HAVE_CYGWIN_CPP_COMPILE
+
+/* Result of checking for Cygwin (C compile). */
+#undef HAVE_CYGWIN_C_COMPILE
+
+/* Result of checking for /dev/urandom. */
+#undef HAVE_DEV_URANDOM
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* docker command availability */
+#undef HAVE_DOCKER
+
+/* git command availability */
+#undef HAVE_GIT
+
+/* grep command availability */
+#undef HAVE_GREP
+
+/* gunzip command availability */
+#undef HAVE_GUNZIP
+
+/* gzip command availability */
+#undef HAVE_GZIP
+
+/* Result of checking for int16_t. */
+#undef HAVE_INT16_T
+
+/* Result of checking for int32_t. */
+#undef HAVE_INT32_T
+
+/* Result of checking for int64_t. */
+#undef HAVE_INT64_T
+
+/* Result of checking for int8_t. */
+#undef HAVE_INT8_T
+
+/* Result of checking for intptr_t. */
+#undef HAVE_INTPTR_T
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* jar command availability */
+#undef HAVE_JAR
+
+/* java command availability */
+#undef HAVE_JAVA
+
+/* javac command availability */
+#undef HAVE_JAVAC
+
+/* javadoc command availability */
+#undef HAVE_JAVADOC
+
+/* jdeps command availability */
+#undef HAVE_JDEPS
+
+/* ln -s command availability */
+#undef HAVE_LN_S
+
+/* m4 command availability */
+#undef HAVE_M4
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Result of checking for MinGW (all). */
+#undef HAVE_MINGW
+
+/* Result of checking for MinGW (C++ compile). */
+#undef HAVE_MINGW_CPP_COMPILE
+
+/* Result of checking for MinGW (C compile). */
+#undef HAVE_MINGW_C_COMPILE
+
+/* mkdir -p command availability */
+#undef HAVE_MKDIR_P
+
+/* openssl command availability */
+#undef HAVE_OPENSSL
+
+/* Define to 1 if you have the <pthread.h> header file. */
+#undef HAVE_PTHREAD_H
+
+/* sed command availability */
+#undef HAVE_SED
+
+/* Result of checking for soft makefile include support. */
+#undef HAVE_SOFT_INCLUDE
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* tar command availability */
+#undef HAVE_TAR
+
+/* Result of checking for uint16_t. */
+#undef HAVE_UINT16_T
+
+/* Result of checking for uint32_t. */
+#undef HAVE_UINT32_T
+
+/* Result of checking for uint64_t. */
+#undef HAVE_UINT64_T
+
+/* Result of checking for uint8_t. */
+#undef HAVE_UINT8_T
+
+/* Result of checking for uintptr_t. */
+#undef HAVE_UINTPTR_T
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* wget command availability */
+#undef HAVE_WGET
+
+/* Define to 1 if you have the <windows.h> header file. */
+#undef HAVE_WINDOWS_H
+
+/* Result of checking for the x86-32 instruction set (all). */
+#undef HAVE_X86_32
+
+/* Result of checking for the x86-32 instruction set (C++ link). */
+#undef HAVE_X86_32_CPP_LINK
+
+/* Result of checking for the x86-32 instruction set (C link). */
+#undef HAVE_X86_32_C_LINK
+
+/* Result of checking for the x86-64 instruction set (all). */
+#undef HAVE_X86_64
+
+/* Result of checking for the x86-64 instruction set (C++ link). */
+#undef HAVE_X86_64_CPP_LINK
+
+/* Result of checking for the x86-64 instruction set (C link). */
+#undef HAVE_X86_64_C_LINK
+
+/* xz command availability */
+#undef HAVE_XZ
+
+/* zip command availability */
+#undef HAVE_ZIP
+
+/* jar command */
+#undef JAR
+
+/* java command */
+#undef JAVA
+
+/* javac command */
+#undef JAVAC
+
+/* javadoc command */
+#undef JAVADOC
+
+/* jdeps command */
+#undef JDEPS
+
+/* ln -s command */
+#undef LN_S
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#undef LT_OBJDIR
+
+/* m4 command */
+#undef M4
+
+/* mkdir -p command */
+#undef MKDIR_P
+
+/* openssl command */
+#undef OPENSSL
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to a character string literal that contains the appropriate
+   proleptic Gregorian date in YYYY-MM-DD form, where the year may be preceded
+   by a "+" character and may have any number of digits, including leading
+   zeros. */
+#undef PACKAGE_DATE
+
+/* Define to the day of PACKAGE_DATE as an unsuffixed decimal integer
+   constant. */
+#undef PACKAGE_DATE_DAY
+
+/* Define to a character string literal that contains the DD component of
+   PACKAGE_DATE. */
+#undef PACKAGE_DATE_DAY_ZPAD
+
+/* Define to the integer constant 1 if PACKAGE_DATE_YEAR is a leap year, or
+   the integer constant 0 if not. */
+#undef PACKAGE_DATE_IS_LEAP_YEAR
+
+/* Define to the month of PACKAGE_DATE as an unsuffixed decimal integer
+   constant. */
+#undef PACKAGE_DATE_MONTH
+
+/* Define to the same character string literal as PACKAGE_DATE_MONTH_NAME but
+   limited to three characters in length. */
+#undef PACKAGE_DATE_MONTH_ABBR
+
+/* Define to a character string literal that contains the capitalized full
+   month name of PACKAGE_DATE. */
+#undef PACKAGE_DATE_MONTH_NAME
+
+/* Define to a character string literal that contains the MM component of
+   PACKAGE_DATE. */
+#undef PACKAGE_DATE_MONTH_ZPAD
+
+/* Define to the same character string literal as PACKAGE_DATE but with each
+   "-" character preceded by a "\" character. */
+#undef PACKAGE_DATE_TROFF
+
+/* Define to the year of PACKAGE_DATE as an unsuffixed decimal integer
+   constant. */
+#undef PACKAGE_DATE_YEAR
+
+/* Define to a character string literal that contains PACKAGE_DATE_YEAR
+   preceded by as many zeros as necessary to make it at least four characters
+   long. Note that none are necessary if PACKAGE_DATE_YEAR is larger than 999.
+   */
+#undef PACKAGE_DATE_YEAR_ZPAD
+
+/* The lowercase identifier prefix to use for the package's C API, not
+   including the trailing underscore character. */
+#undef PACKAGE_LOWER_C_PREFIX
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* The package name with every non-alphanumeric non-underscore character
+   replaced with an underscore character and every uppercase letter converted
+   to lowercase. */
+#undef PACKAGE_NAME_LOWER_UNDERSCORE_SLUG
+
+/* The package name with every non-alphanumeric non-underscore character
+   replaced with an underscore character. */
+#undef PACKAGE_NAME_UNDERSCORE_SLUG
+
+/* The package name with every non-alphanumeric non-underscore character
+   replaced with an underscore character and every lowercase letter converted
+   to uppercase. */
+#undef PACKAGE_NAME_UPPER_UNDERSCORE_SLUG
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* The uppercase identifier prefix to use for the package's C API, not
+   including the trailing underscore character. */
+#undef PACKAGE_UPPER_C_PREFIX
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to a character string literal that contains the Debian version
+   number of PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-"
+   character, then this should be PACKAGE_VERSION. Otherwise, this should be
+   PACKAGE_VERSION with the "-" character replaced with a "~" character. For
+   example, if PACKAGE_VERSION were "0.1.0", then this should be "0.1.0", and
+   if PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this should be
+   "0.1.0~4927+g88a52bb". */
+#undef PACKAGE_VERSION_DEB
+
+/* Define to the same character string literal as PACKAGE_VERSION_DEB but with
+   each "." character replaced with ".@:". For example, if PACKAGE_VERSION_DEB
+   were "0.1.0", then this should be "0.@:1.@:0". */
+#undef PACKAGE_VERSION_DEB_TEXI
+
+/* Define to a character string literal that contains the Docker version
+   number of PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-"
+   character, then this should be PACKAGE_VERSION. Otherwise, this should be
+   the text up to but not including the "+" character. For example, if
+   PACKAGE_VERSION were "0.1.0", then this should be "0.1.0", and if
+   PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this should be
+   "0.1.0-4927". */
+#undef PACKAGE_VERSION_DOCKER
+
+/* Define to the same character string literal as PACKAGE_VERSION_DOCKER but
+   with each "." character replaced with ".@:". For example, if
+   PACKAGE_VERSION_DOCKER were "0.1.0", then this should be "0.@:1.@:0", and
+   if PACKAGE_VERSION_DOCKER were "0.1.0-4927", then this should be
+   "0.@:1.@:0-4927". */
+#undef PACKAGE_VERSION_DOCKER_TEXI
+
+/* Define to a character string literal that contains the Git description of
+   PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-" character, then
+   this should be a "v" character followed by PACKAGE_VERSION. Otherwise, this
+   should be a "u" character followed by PACKAGE_VERSION, and the "+"
+   character should be replaced with a "-" character. For example, if
+   PACKAGE_VERSION were "0.1.0", then this should be "v0.1.0", and if
+   PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this should be
+   "u0.1.0-4927-g88a52bb". */
+#undef PACKAGE_VERSION_GIT
+
+/* Define to the same character string literal as PACKAGE_VERSION_GIT but with
+   each "." character replaced with ".@:". For example, if PACKAGE_VERSION_GIT
+   were "v0.1.0", then this should be "v0.@:1.@:0", and if PACKAGE_VERSION_GIT
+   were "u0.1.0-4927-g88a52bb", then this should be
+   "u0.@:1.@:0-4927-g88a52bb". */
+#undef PACKAGE_VERSION_GIT_TEXI
+
+/* */
+#undef PACKAGE_VERSION_LIBTOOL_A
+
+/* */
+#undef PACKAGE_VERSION_LIBTOOL_C
+
+/* */
+#undef PACKAGE_VERSION_LIBTOOL_R
+
+/* */
+#undef PACKAGE_VERSION_MAJOR
+
+/* */
+#undef PACKAGE_VERSION_MINOR
+
+/* */
+#undef PACKAGE_VERSION_PATCH
+
+/* Define to a character string literal that contains the RPM release number
+   of PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-" character,
+   then this should be "1". Otherwise, this should be "0." followed by the
+   text after the "-" character, and the "+" character should be replaced with
+   a "." character. For example, if PACKAGE_VERSION were "0.1.0", then this
+   should be "1", and if PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this
+   should be "0.4927.g88a52bb". */
+#undef PACKAGE_VERSION_RPM_R
+
+/* Define to the same character string literal as PACKAGE_VERSION_RPM_R but
+   with each "." character replaced with ".@:". For example, if
+   PACKAGE_VERSION_RPM_R were "1", then this should be "1", and if
+   PACKAGE_VERSION_RPM_R were "0.4927.g88a52bb", then this should be
+   "0.@:4927.@:g88a52bb". */
+#undef PACKAGE_VERSION_RPM_R_TEXI
+
+/* Define to a character string literal that contains the RPM version number
+   of PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-" character,
+   then this should be PACKAGE_VERSION. Otherwise, this should be the text up
+   to but not including the "-" character. For example, if PACKAGE_VERSION
+   were "0.1.0" or "0.1.0-4927+g88a52bb", then this should be "0.1.0". */
+#undef PACKAGE_VERSION_RPM_V
+
+/* Define to a character string literal that contains PACKAGE_VERSION_RPM_V
+   followed by a "-" character followed by PACKAGE_VERSION_RPM_R. For example,
+   if PACKAGE_VERSION_RPM_V were "0.1.0" and PACKAGE_VERSION_RPM_R were
+   "0.4927.g88a52bb", then this should be "0.1.0-0.4927.g88a52bb". */
+#undef PACKAGE_VERSION_RPM_VR
+
+/* Define to the same character string literal as PACKAGE_VERSION_RPM_VR but
+   with each "." character replaced with ".@:". For example, if
+   PACKAGE_VERSION_RPM_VR were "0.1.0-0.4927.g88a52bb", then this should be
+   "0.@:1.@:0-0.@:4927.@:g88a52bb". */
+#undef PACKAGE_VERSION_RPM_VR_TEXI
+
+/* Define to the same character string literal as PACKAGE_VERSION_RPM_V but
+   with each "." character replaced with ".@:". For example, if
+   PACKAGE_VERSION_RPM_V were "0.1.0", then this should be "0.@:1.@:0". */
+#undef PACKAGE_VERSION_RPM_V_TEXI
+
+/* Define to the same character string literal as PACKAGE_VERSION but with
+   each "." character replaced with ".@:". For example, if PACKAGE_VERSION
+   were "0.1.0", then this should be "0.@:1.@:0", and if PACKAGE_VERSION were
+   "0.1.0-4927+g88a52bb", then this should be "0.@:1.@:0-4927+g88a52bb". */
+#undef PACKAGE_VERSION_TEXI
+
+/* sed command */
+#undef SED
+
+/* Result of checking for permission to enable dead memory filling. */
+#undef SST_ENABLE_DEAD_MEMORY_FILLING
+
+/* Result of checking for permission to enable internal error checks. */
+#undef SST_ENABLE_INTERNAL_ERROR_CHECKS
+
+/* Result of checking for permission to enable invalid argument checks. */
+#undef SST_ENABLE_INVALID_ARGUMENT_CHECKS
+
+/* Result of checking for permission to enable live memory filling. */
+#undef SST_ENABLE_LIVE_MEMORY_FILLING
+
+/* Result of checking for permission to enable undefined behavior checks. */
+#undef SST_ENABLE_UNDEFINED_BEHAVIOR_CHECKS
+
+/* Result of checking sst_aes_encrypt_cf. */
+#undef SST_WITH_SST_AES_ENCRYPT_CF
+
+/* Result of checking sst_BN_bin2bn. */
+#undef SST_WITH_SST_BN_BIN2BN
+
+/* Result of checking sst_BN_bin2bn_step. */
+#undef SST_WITH_SST_BN_BIN2BN_STEP
+
+/* Result of checking sst_CryptGenRandom. */
+#undef SST_WITH_SST_CRYPTGENRANDOM
+
+/* Result of checking sst_CryptGenRandom_step. */
+#undef SST_WITH_SST_CRYPTGENRANDOM_STEP
+
+/* Result of checking sst_ctr_crypt. */
+#undef SST_WITH_SST_CTR_CRYPT
+
+/* Result of checking sst_ctr_crypt_step. */
+#undef SST_WITH_SST_CTR_CRYPT_STEP
+
+/* Result of checking sst_FillByteArrayRegion. */
+#undef SST_WITH_SST_FILLBYTEARRAYREGION
+
+/* Result of checking sst_InitCause. */
+#undef SST_WITH_SST_INITCAUSE
+
+/* Result of checking SST_JINT_MAXVAL. */
+#undef SST_WITH_SST_JINT_MAXVAL
+
+/* Result of checking SST_JINT_MINVAL. */
+#undef SST_WITH_SST_JINT_MINVAL
+
+/* Result of checking sst_jlongptr. */
+#undef SST_WITH_SST_JLONGPTR
+
+/* Result of checking sst_jlongptrArray. */
+#undef SST_WITH_SST_JLONGPTRARRAY
+
+/* Result of checking sst_jlongptr_to_ptr. */
+#undef SST_WITH_SST_JLONGPTR_TO_PTR
+
+/* Result of checking SST_JLONG_MAXVAL. */
+#undef SST_WITH_SST_JLONG_MAXVAL
+
+/* Result of checking SST_JLONG_MINVAL. */
+#undef SST_WITH_SST_JLONG_MINVAL
+
+/* Result of checking sst_jmemset. */
+#undef SST_WITH_SST_JMEMSET
+
+/* Result of checking SST_JSIZE_MAXVAL. */
+#undef SST_WITH_SST_JSIZE_MAXVAL
+
+/* Result of checking SST_JSIZE_MINVAL. */
+#undef SST_WITH_SST_JSIZE_MINVAL
+
+/* Result of checking sst_nettle_cipher_ctx. */
+#undef SST_WITH_SST_NETTLE_CIPHER_CTX
+
+/* Result of checking sst_nettle_cipher_func. */
+#undef SST_WITH_SST_NETTLE_CIPHER_FUNC
+
+/* Result of checking sst_nettle_size. */
+#undef SST_WITH_SST_NETTLE_SIZE
+
+/* Result of checking sst_ptr_to_jlongptr. */
+#undef SST_WITH_SST_PTR_TO_JLONGPTR
+
+/* Result of checking sst_RAND_bytes. */
+#undef SST_WITH_SST_RAND_BYTES
+
+/* Result of checking sst_RAND_bytes_step. */
+#undef SST_WITH_SST_RAND_BYTES_STEP
+
+/* Result of checking sst_ThrowNew. */
+#undef SST_WITH_SST_THROWNEW
+
+/* Result of checking sst_ThrowNewByName. */
+#undef SST_WITH_SST_THROWNEWBYNAME
+
+/* Result of checking sst_wall_time_CLOCK_MONOTONIC. */
+#undef SST_WITH_SST_WALL_CLOCK_CLOCK_MONOTONIC
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* tar command */
+#undef TAR
+
+/* Version number of package */
+#undef VERSION
+
+/* wget command */
+#undef WGET
+
+/* Result of checking aes128_ctx. */
+#undef WITH_AES128_CTX
+
+/* Result of checking AES128_KEY_SIZE. */
+#undef WITH_AES128_KEY_SIZE
+
+/* Result of checking AES_BLOCK_SIZE. */
+#undef WITH_AES_BLOCK_SIZE
+
+/* Result of checking aes_ctx. */
+#undef WITH_AES_CTX
+
+/* Result of checking aes_encrypt. */
+#undef WITH_AES_ENCRYPT
+
+/* Result of checking for the AES-NI instruction set (all). */
+#undef WITH_AES_NI
+
+/* Result of checking for the AES-NI instruction set (C++ link). */
+#undef WITH_AES_NI_CPP_LINK
+
+/* Result of checking for the AES-NI instruction set (C++ run). */
+#undef WITH_AES_NI_CPP_RUN
+
+/* Result of checking for the AES-NI instruction set (C link). */
+#undef WITH_AES_NI_C_LINK
+
+/* Result of checking for the AES-NI instruction set (C run). */
+#undef WITH_AES_NI_C_RUN
+
+/* Result of checking aes_set_encrypt_key. */
+#undef WITH_AES_SET_ENCRYPT_KEY
+
+/* Result of checking for the ARM Crypto instruction set (all). */
+#undef WITH_ARM_CRYPTO
+
+/* Result of checking for the ARM Crypto instruction set (C++ link). */
+#undef WITH_ARM_CRYPTO_CPP_LINK
+
+/* Result of checking for the ARM Crypto instruction set (C++ run). */
+#undef WITH_ARM_CRYPTO_CPP_RUN
+
+/* Result of checking for the ARM Crypto instruction set (C link). */
+#undef WITH_ARM_CRYPTO_C_LINK
+
+/* Result of checking for the ARM Crypto instruction set (C run). */
+#undef WITH_ARM_CRYPTO_C_RUN
+
+/* Result of checking for the AVX-512 BW instruction set (all). */
+#undef WITH_AVX_512_BW
+
+/* Result of checking for the AVX-512 BW instruction set (C++ link). */
+#undef WITH_AVX_512_BW_CPP_LINK
+
+/* Result of checking for the AVX-512 BW instruction set (C++ run). */
+#undef WITH_AVX_512_BW_CPP_RUN
+
+/* Result of checking for the AVX-512 BW instruction set (C link). */
+#undef WITH_AVX_512_BW_C_LINK
+
+/* Result of checking for the AVX-512 BW instruction set (C run). */
+#undef WITH_AVX_512_BW_C_RUN
+
+/* Result of checking for the AVX-512 F instruction set (all). */
+#undef WITH_AVX_512_F
+
+/* Result of checking for the AVX-512 F instruction set (C++ link). */
+#undef WITH_AVX_512_F_CPP_LINK
+
+/* Result of checking for the AVX-512 F instruction set (C++ run). */
+#undef WITH_AVX_512_F_CPP_RUN
+
+/* Result of checking for the AVX-512 F instruction set (C link). */
+#undef WITH_AVX_512_F_C_LINK
+
+/* Result of checking for the AVX-512 F instruction set (C run). */
+#undef WITH_AVX_512_F_C_RUN
+
+/* Result of checking for the AVX-512 VL instruction set (all). */
+#undef WITH_AVX_512_VL
+
+/* Result of checking for the AVX-512 VL instruction set (C++ link). */
+#undef WITH_AVX_512_VL_CPP_LINK
+
+/* Result of checking for the AVX-512 VL instruction set (C++ run). */
+#undef WITH_AVX_512_VL_CPP_RUN
+
+/* Result of checking for the AVX-512 VL instruction set (C link). */
+#undef WITH_AVX_512_VL_C_LINK
+
+/* Result of checking for the AVX-512 VL instruction set (C run). */
+#undef WITH_AVX_512_VL_C_RUN
+
+/* Result of checking BIGNUM. */
+#undef WITH_BIGNUM
+
+/* Result of checking BN_add. */
+#undef WITH_BN_ADD
+
+/* Result of checking BN_bin2bn. */
+#undef WITH_BN_BIN2BN
+
+/* Result of checking BN_CTX. */
+#undef WITH_BN_CTX
+
+/* Result of checking BN_CTX_end. */
+#undef WITH_BN_CTX_END
+
+/* Result of checking BN_CTX_get. */
+#undef WITH_BN_CTX_GET
+
+/* Result of checking BN_CTX_start. */
+#undef WITH_BN_CTX_START
+
+/* Result of checking BN_free. */
+#undef WITH_BN_FREE
+
+/* Result of checking BN_lshift. */
+#undef WITH_BN_LSHIFT
+
+/* Result of checking BOOL. */
+#undef WITH_BOOL
+
+/* Result of checking --with-build-groups += bash. */
+#undef WITH_BUILD_GROUP_BASH
+
+/* Result of checking --with-build-groups += cpp-autotools. */
+#undef WITH_BUILD_GROUP_CPP_AUTOTOOLS
+
+/* Result of checking --with-build-groups += c-autotools. */
+#undef WITH_BUILD_GROUP_C_AUTOTOOLS
+
+/* Result of checking --with-build-groups += java-gatbps. */
+#undef WITH_BUILD_GROUP_JAVA_GATBPS
+
+/* Result of checking --with-build-groups += java-maven. */
+#undef WITH_BUILD_GROUP_JAVA_MAVEN
+
+/* Result of checking BYTE. */
+#undef WITH_BYTE
+
+/* Result of checking CFLAGS += -Wall. */
+#undef WITH_CFLAG_WALL
+
+/* Result of checking CFLAGS += -Wextra. */
+#undef WITH_CFLAG_WEXTRA
+
+/* Result of checking clockid_t in time.h. */
+#undef WITH_CLOCKID_T_IN_TIME_H
+
+/* Result of checking clock_gettime. */
+#undef WITH_CLOCK_GETTIME_IN_TIME_H
+
+/* Result of checking CLOCK_MONOTONIC. */
+#undef WITH_CLOCK_MONOTONIC
+
+/* Result of checking CryptGenRandom. */
+#undef WITH_CRYPTGENRANDOM
+
+/* Result of checking ctr_crypt. */
+#undef WITH_CTR_CRYPT
+
+/* Result of checking whether C++11 is enabled (3). */
+#undef WITH_CXXFLAG_CPP11
+
+/* Result of checking whether C++11 is enabled (1). */
+#undef WITH_CXXFLAG_CPP11_1
+
+/* Result of checking whether C++11 is enabled (2). */
+#undef WITH_CXXFLAG_CPP11_2
+
+/* Result of checking CXXFLAGS += -Wall. */
+#undef WITH_CXXFLAG_WALL
+
+/* Result of checking CXXFLAGS += -Wextra. */
+#undef WITH_CXXFLAG_WEXTRA
+
+/* Result of checking whether to use Cygwin. */
+#undef WITH_CYGWIN
+
+/* Result of checking whether to use /dev/urandom. */
+#undef WITH_DEV_URANDOM
+
+/* Result of checking DWORD. */
+#undef WITH_DWORD
+
+/* Result of checking whether to use the GMP library. */
+#undef WITH_GMP
+
+/* Result of checking for the GMP library (C++ link). */
+#undef WITH_GMP_CPP_LINK
+
+/* Result of checking for the GMP library (C++ run). */
+#undef WITH_GMP_CPP_RUN
+
+/* Result of checking for the GMP library (C link). */
+#undef WITH_GMP_C_LINK
+
+/* Result of checking for the GMP library (C run). */
+#undef WITH_GMP_C_RUN
+
+/* Result of checking HCRYPTPROV. */
+#undef WITH_HCRYPTPROV
+
+/* Result of checking jlong. */
+#undef WITH_JLONG
+
+/* Result of checking jlong. */
+#undef WITH_JLONG_COMPILE
+
+/* Result of checking for the Java Native Interface (all). */
+#undef WITH_JNI
+
+/* Result of checking for the Java Native Interface (C++ compile). */
+#undef WITH_JNI_CPP_COMPILE
+
+/* Result of checking for the Java Native Interface (C compile). */
+#undef WITH_JNI_C_COMPILE
+
+/* Result of checking for -ldl. */
+#undef WITH_LIBDL
+
+/* Result of checking for -lm. */
+#undef WITH_LIBM
+
+/* Result of checking for -lrt. */
+#undef WITH_LIBRT
+
+/* Result of checking -lhogweed. */
+#undef WITH_LIB_HOGWEED
+
+/* Result of checking whether to use the macOS API. */
+#undef WITH_MACOS
+
+/* Result of checking for the macOS API (C++ link). */
+#undef WITH_MACOS_CPP_LINK
+
+/* Result of checking for the macOS API (C++ run). */
+#undef WITH_MACOS_CPP_RUN
+
+/* Result of checking for the macOS API (C link). */
+#undef WITH_MACOS_C_LINK
+
+/* Result of checking for the macOS API (C run). */
+#undef WITH_MACOS_C_RUN
+
+/* Result of checking whether to use MinGW (result). */
+#undef WITH_MINGW
+
+/* Result of checking for the Nettle nettle library (all). */
+#undef WITH_NETTLE
+
+/* Result of checking nettle/aes.h. */
+#undef WITH_NETTLE_AES_H
+
+/* Result of checking nettle_cipher_func. */
+#undef WITH_NETTLE_CIPHER_FUNC
+
+/* Result of checking nettle_cipher_func or nettle_crypt_func. */
+#undef WITH_NETTLE_CIPHER_OR_CRYPT_FUNC
+
+/* Result of checking for the Nettle nettle library (C++ link). */
+#undef WITH_NETTLE_CPP_LINK
+
+/* Result of checking for the Nettle nettle library (C++ run). */
+#undef WITH_NETTLE_CPP_RUN
+
+/* Result of checking nettle_crypt_func. */
+#undef WITH_NETTLE_CRYPT_FUNC
+
+/* Result of checking nettle_crypt_func (size_t). */
+#undef WITH_NETTLE_CRYPT_FUNC_SIZE_T
+
+/* Result of checking nettle_crypt_func (unsigned int). */
+#undef WITH_NETTLE_CRYPT_FUNC_UNSIGNED_INT
+
+/* Result of checking nettle/ctr.h. */
+#undef WITH_NETTLE_CTR_H
+
+/* Result of checking for the Nettle nettle library (C link). */
+#undef WITH_NETTLE_C_LINK
+
+/* Result of checking for the Nettle nettle library (C run). */
+#undef WITH_NETTLE_C_RUN
+
+/* Result of checking nettle/nettle-types.h. */
+#undef WITH_NETTLE_NETTLE_TYPES_H
+
+/* Result of checking whether to use the Netty library (have). */
+#undef WITH_NETTY
+
+/* Result of checking whether to use the JSON for Modern C++ library. */
+#undef WITH_NLOHMANN_JSON
+
+/* Result of checking for the JSON for Modern C++ library (C++ compile). */
+#undef WITH_NLOHMANN_JSON_CPP_COMPILE
+
+/* Result of checking whether to use the NTL library. */
+#undef WITH_NTL
+
+/* Result of checking for the NTL library (C++ link). */
+#undef WITH_NTL_CPP_LINK
+
+/* Result of checking for the NTL library (C++ run). */
+#undef WITH_NTL_CPP_RUN
+
+/* Result of checking obstack.h. */
+#undef WITH_OBSTACK_H
+
+/* Result of checking openssl/bn.h. */
+#undef WITH_OPENSSL_BN_H
+
+/* Result of checking whether to use the OpenSSL crypto library. */
+#undef WITH_OPENSSL_CRYPTO
+
+/* Result of checking for the OpenSSL crypto library (C++ link). */
+#undef WITH_OPENSSL_CRYPTO_CPP_LINK
+
+/* Result of checking for the OpenSSL crypto library (C++ run). */
+#undef WITH_OPENSSL_CRYPTO_CPP_RUN
+
+/* Result of checking for the OpenSSL crypto library (C link). */
+#undef WITH_OPENSSL_CRYPTO_C_LINK
+
+/* Result of checking for the OpenSSL crypto library (C run). */
+#undef WITH_OPENSSL_CRYPTO_C_RUN
+
+/* Result of checking openssl/rand.h. */
+#undef WITH_OPENSSL_RAND_H
+
+/* Result of checking whether to use the OpenSSL ssl library. */
+#undef WITH_OPENSSL_SSL
+
+/* Result of checking for the OpenSSL ssl library (C++ link). */
+#undef WITH_OPENSSL_SSL_CPP_LINK
+
+/* Result of checking for the OpenSSL ssl library (C++ run). */
+#undef WITH_OPENSSL_SSL_CPP_RUN
+
+/* Result of checking for the OpenSSL ssl library (C link). */
+#undef WITH_OPENSSL_SSL_C_LINK
+
+/* Result of checking for the OpenSSL ssl library (C run). */
+#undef WITH_OPENSSL_SSL_C_RUN
+
+/* Result of checking whether to use the POSIX API. */
+#undef WITH_POSIX
+
+/* Result of checking for the POSIX API (C++ link). */
+#undef WITH_POSIX_CPP_LINK
+
+/* Result of checking for the POSIX API (C++ run). */
+#undef WITH_POSIX_CPP_RUN
+
+/* Result of checking for the POSIX API (C link). */
+#undef WITH_POSIX_C_LINK
+
+/* Result of checking for the POSIX API (C run). */
+#undef WITH_POSIX_C_RUN
+
+/* Result of checking whether to use POSIX threads. */
+#undef WITH_PTHREADS
+
+/* Result of checking for POSIX threads (C++ link). */
+#undef WITH_PTHREADS_CPP_LINK
+
+/* Result of checking for POSIX threads (C++ run). */
+#undef WITH_PTHREADS_CPP_RUN
+
+/* Result of checking for POSIX threads (C link). */
+#undef WITH_PTHREADS_C_LINK
+
+/* Result of checking for POSIX threads (C run). */
+#undef WITH_PTHREADS_C_RUN
+
+/* Result of checking whether to use the RabbitMQ-C library. */
+#undef WITH_RABBITMQ_C
+
+/* Result of checking for the RabbitMQ-C library (C++ link). */
+#undef WITH_RABBITMQ_C_CPP_LINK
+
+/* Result of checking for the RabbitMQ-C library (C++ run). */
+#undef WITH_RABBITMQ_C_CPP_RUN
+
+/* Result of checking for the RabbitMQ-C library (C link). */
+#undef WITH_RABBITMQ_C_C_LINK
+
+/* Result of checking for the RabbitMQ-C library (C run). */
+#undef WITH_RABBITMQ_C_C_RUN
+
+/* Result of checking RAND_bytes. */
+#undef WITH_RAND_BYTES
+
+/* Result of checking whether to use SQLite. */
+#undef WITH_SQLITE
+
+/* Result of checking for SQLite (C++ link). */
+#undef WITH_SQLITE_CPP_LINK
+
+/* Result of checking for SQLite (C++ run). */
+#undef WITH_SQLITE_CPP_RUN
+
+/* Result of checking for SQLite (C link). */
+#undef WITH_SQLITE_C_LINK
+
+/* Result of checking for SQLite (C run). */
+#undef WITH_SQLITE_C_RUN
+
+/* Result of checking for SQLite serialization. */
+#undef WITH_SQLITE_SERIALIZATION
+
+/* Result of checking for the SSE instruction set (all). */
+#undef WITH_SSE
+
+/* Result of checking for the SSE2 instruction set (all). */
+#undef WITH_SSE2
+
+/* Result of checking for the SSE2 instruction set (C++ link). */
+#undef WITH_SSE2_CPP_LINK
+
+/* Result of checking for the SSE2 instruction set (C++ run). */
+#undef WITH_SSE2_CPP_RUN
+
+/* Result of checking for the SSE2 instruction set (C link). */
+#undef WITH_SSE2_C_LINK
+
+/* Result of checking for the SSE2 instruction set (C run). */
+#undef WITH_SSE2_C_RUN
+
+/* Result of checking for the SSE instruction set (C++ link). */
+#undef WITH_SSE_CPP_LINK
+
+/* Result of checking for the SSE instruction set (C++ run). */
+#undef WITH_SSE_CPP_RUN
+
+/* Result of checking for the SSE instruction set (C link). */
+#undef WITH_SSE_C_LINK
+
+/* Result of checking for the SSE instruction set (C run). */
+#undef WITH_SSE_C_RUN
+
+/* Result of checking stdint.h. */
+#undef WITH_STDINT_H
+
+/* Result of checking struct timespec in time.h. */
+#undef WITH_STRUCT_TIMESPEC_IN_TIME_H
+
+/* Result of checking uint8_t in nettle/nettle-types.h. */
+#undef WITH_UINT8_T_IN_NETTLE_NETTLE_TYPES_H
+
+/* Result of checking wincrypt.h. */
+#undef WITH_WINCRYPT_H
+
+/* Result of checking whether to use the Windows API. */
+#undef WITH_WINDOWS
+
+/* Result of checking for the Windows bcrypt API (all). */
+#undef WITH_WINDOWS_BCRYPT
+
+/* Result of checking for the Windows bcrypt API (C++ link). */
+#undef WITH_WINDOWS_BCRYPT_CPP_LINK
+
+/* Result of checking for the Windows bcrypt API (C++ run). */
+#undef WITH_WINDOWS_BCRYPT_CPP_RUN
+
+/* Result of checking for the Windows bcrypt API (C link). */
+#undef WITH_WINDOWS_BCRYPT_C_LINK
+
+/* Result of checking for the Windows bcrypt API (C run). */
+#undef WITH_WINDOWS_BCRYPT_C_RUN
+
+/* Result of checking for the Windows API (C++ link). */
+#undef WITH_WINDOWS_CPP_LINK
+
+/* Result of checking for the Windows API (C++ run). */
+#undef WITH_WINDOWS_CPP_RUN
+
+/* Result of checking for the Windows API (C link). */
+#undef WITH_WINDOWS_C_LINK
+
+/* Result of checking for the Windows API (C run). */
+#undef WITH_WINDOWS_C_RUN
+
+/* Result of checking whether to use the Windows kernel32 API. */
+#undef WITH_WINDOWS_KERNEL32
+
+/* Result of checking for the Windows kernel32 API (C++ link). */
+#undef WITH_WINDOWS_KERNEL32_CPP_LINK
+
+/* Result of checking for the Windows kernel32 API (C++ run). */
+#undef WITH_WINDOWS_KERNEL32_CPP_RUN
+
+/* Result of checking for the Windows kernel32 API (C link). */
+#undef WITH_WINDOWS_KERNEL32_C_LINK
+
+/* Result of checking for the Windows kernel32 API (C run). */
+#undef WITH_WINDOWS_KERNEL32_C_RUN
+
+/* Result of checking whether to use the Windows ws2_32 API. */
+#undef WITH_WINDOWS_WS2_32
+
+/* Result of checking for the Windows ws2_32 API (C++ link). */
+#undef WITH_WINDOWS_WS2_32_CPP_LINK
+
+/* Result of checking for the Windows ws2_32 API (C++ run). */
+#undef WITH_WINDOWS_WS2_32_CPP_RUN
+
+/* Result of checking for the Windows ws2_32 API (C link). */
+#undef WITH_WINDOWS_WS2_32_C_LINK
+
+/* Result of checking for the Windows ws2_32 API (C run). */
+#undef WITH_WINDOWS_WS2_32_C_RUN
+
+/* Result of checking whether an x86 instruction set is being used. */
+#undef WITH_X86
+
+/* Result of checking whether to use the x86-32 instruction set (result). */
+#undef WITH_X86_32
+
+/* Result of checking whether to use the x86-64 instruction set (result). */
+#undef WITH_X86_64
+
+/* xz command */
+#undef XZ
+
+/* zip command */
+#undef ZIP

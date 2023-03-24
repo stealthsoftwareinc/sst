@@ -1,0 +1,48 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[IMPORTANT]
+====
+[subs="{sst_subs_normal}"]
+Since `{fp_namespace}::{fp_wrapper}` is publicly derived from
+`{cl_std_integral_constant}<{fp_wrapper_value_type}, {fp_wrapper_value_name}>`,
+there are two ways to extract the underlying value
+`{fp_wrapper_value_name}`.
+The first way is to write
+`{fp_namespace}::{fp_wrapper}<{fp_wrapper_template_type}>::value`.
+This directly accesses the underlying value and always works as
+expected.
+The second way is to write
+`{fp_namespace}::{fp_wrapper}<{fp_wrapper_template_type}>()`.
+This constructs an instance of `{fp_namespace}::{fp_wrapper}`, which
+will be implicitly converted to the underlying value in most contexts,
+but not all.
+It is recommended to always use the first way.
+====
+
+//

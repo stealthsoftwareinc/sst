@@ -1,0 +1,138 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-windows-utilities]
+= Windows utilities
+
+:leveloffset: +1
+
+include::cl_sst_gle_error_string.adoc[]
+include::cl_sst_gle_exception.adoc[]
+include::cl_sst_w32_accept.adoc[]
+include::cl_sst_w32_ADDRESS_FAMILY.adoc[]
+include::cl_sst_w32_ADDRINFOA.adoc[]
+include::cl_sst_w32_ADDRINFOA_unwrap.adoc[]
+include::cl_sst_w32_ADDRINFOA_wrap.adoc[]
+include::cl_sst_w32_ADDRINFOA_wrapper.adoc[]
+include::cl_SST_W32_AF_INET.adoc[]
+include::cl_SST_W32_AF_INET6.adoc[]
+include::cl_SST_W32_AF_UNSPEC.adoc[]
+include::cl_SST_W32_AI_PASSIVE.adoc[]
+include::cl_sst_w32_bind.adoc[]
+include::cl_sst_w32_CHAR.adoc[]
+include::cl_sst_w32_closesocket.adoc[]
+include::cl_sst_w32_connect.adoc[]
+include::cl_sst_w32_DWORD.adoc[]
+include::cl_SST_W32_FIONBIO.adoc[]
+include::cl_sst_w32_freeaddrinfo.adoc[]
+include::cl_sst_w32_getaddrinfo.adoc[]
+include::cl_sst_w32_getsockname.adoc[]
+include::cl_sst_w32_getsockopt.adoc[]
+include::cl_SST_W32_INET_ADDRSTRLEN.adoc[]
+include::cl_sst_w32_inet_ntop.adoc[]
+include::cl_SST_W32_INET6_ADDRSTRLEN.adoc[]
+include::cl_sst_w32_INT.adoc[]
+include::cl_SST_W32_INVALID_SOCKET.adoc[]
+include::cl_sst_w32_ioctlsocket.adoc[]
+include::cl_SST_W32_IPPROTO_TCP.adoc[]
+include::cl_SST_W32_IPPROTO_UDP.adoc[]
+include::cl_sst_w32_LANGID.adoc[]
+include::cl_sst_w32_listen.adoc[]
+include::cl_sst_w32_ntohl.adoc[]
+include::cl_sst_w32_ntohs.adoc[]
+include::cl_sst_w32_offsetof_SOCKADDR_STORAGE_ss_family.adoc[]
+include::cl_sst_w32_PCSTR.adoc[]
+include::sections/cl_SST_W32_POLLRDBAND.adoc[]
+include::sections/cl_SST_W32_POLLRDNORM.adoc[]
+include::sections/cl_SST_W32_POLLWRNORM.adoc[]
+include::cl_sst_w32_PSTR.adoc[]
+include::cl_sst_w32_recv.adoc[]
+include::cl_SST_W32_SD_BOTH.adoc[]
+include::cl_SST_W32_SD_RECEIVE.adoc[]
+include::cl_SST_W32_SD_SEND.adoc[]
+include::cl_sst_w32_send.adoc[]
+include::cl_sst_w32_setsockopt.adoc[]
+include::cl_sst_w32_SHORT.adoc[]
+include::cl_sst_w32_shutdown.adoc[]
+include::sections/cl_SST_W32_SIZEOF_ADDRINFOA.adoc[]
+include::cl_sst_w32_sizeof_SOCKADDR_IN.adoc[]
+include::cl_sst_w32_sizeof_SOCKADDR_IN6.adoc[]
+include::cl_sst_w32_sizeof_SOCKADDR_STORAGE.adoc[]
+include::sections/cl_SST_W32_SOCKET_ERROR.adoc[]
+include::cl_sst_w32_sizeof_WIN32_FILE_ATTRIBUTE_DATA.adoc[]
+include::cl_sst_w32_sizeof_WIN32_FIND_DATAA.adoc[]
+include::cl_sst_w32_sizeof_WIN32_FIND_DATAW.adoc[]
+include::cl_sst_w32_sizeof_WSADATA.adoc[]
+include::sections/cl_SST_W32_SIZEOF_WSAPOLLFD.adoc[]
+include::cl_SST_W32_SO_REUSEADDR.adoc[]
+include::cl_SST_W32_SOCK_DGRAM.adoc[]
+include::cl_SST_W32_SOCK_STREAM.adoc[]
+include::cl_sst_w32_SOCKADDR.adoc[]
+include::cl_sst_w32_SOCKADDR_IN.adoc[]
+include::cl_sst_w32_SOCKADDR_IN_unwrap.adoc[]
+include::cl_sst_w32_SOCKADDR_IN_wrap.adoc[]
+include::cl_sst_w32_SOCKADDR_IN_wrapper.adoc[]
+include::cl_sst_w32_SOCKADDR_IN6.adoc[]
+include::cl_sst_w32_SOCKADDR_IN6_unwrap.adoc[]
+include::cl_sst_w32_SOCKADDR_IN6_wrap.adoc[]
+include::cl_sst_w32_SOCKADDR_IN6_wrapper.adoc[]
+include::cl_sst_w32_SOCKADDR_STORAGE.adoc[]
+include::cl_sst_w32_SOCKET.adoc[]
+include::cl_sst_w32_socket_f.adoc[]
+include::cl_SST_W32_SOL_SOCKET.adoc[]
+include::cl_SST_W32_SOMAXCONN.adoc[]
+include::cl_SST_W32_TCP_NODELAY.adoc[]
+include::cl_sst_w32_u_long.adoc[]
+include::cl_sst_w32_u_short.adoc[]
+include::cl_sst_w32_UINT_PTR.adoc[]
+include::cl_sst_w32_ULONG.adoc[]
+include::cl_sst_w32_USHORT.adoc[]
+include::cl_sst_w32_VOID.adoc[]
+include::cl_sst_w32_WORD.adoc[]
+include::cl_sst_w32_WSACleanup.adoc[]
+include::cl_sst_w32_WSADATA.adoc[]
+include::cl_sst_w32_WSADATA_unwrap.adoc[]
+include::cl_sst_w32_WSADATA_wrap.adoc[]
+include::cl_sst_w32_WSADATA_wrapper.adoc[]
+include::cl_SST_W32_WSADESCRIPTION_LEN.adoc[]
+include::cl_SST_W32_WSAEALREADY.adoc[]
+include::cl_SST_W32_WSAEISCONN.adoc[]
+include::cl_SST_W32_WSAEWOULDBLOCK.adoc[]
+include::cl_sst_w32_WSAGetLastError.adoc[]
+include::sections/cl_sst_w32_WSAPoll.adoc[]
+include::sections/cl_sst_w32_WSAPOLLFD.adoc[]
+include::sections/cl_sst_w32_WSAPOLLFD_unwrap.adoc[]
+include::sections/cl_sst_w32_WSAPOLLFD_wrap.adoc[]
+include::sections/cl_sst_w32_WSAPOLLFD_wrapper.adoc[]
+include::cl_sst_w32_WSAStartup.adoc[]
+include::cl_SST_W32_WSASYS_STATUS_LEN.adoc[]
+include::cl_sst_windows_langid.adoc[]
+include::cl_sst_wsa_error_string.adoc[]
+include::cl_sst_windows_socket_library_scope.adoc[]
+
+:leveloffset: -1

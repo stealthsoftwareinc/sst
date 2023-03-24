@@ -1,7 +1,0 @@
-//
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
-//
-The output of this function cannot end in a newline character, so it is
-not necessary to use <<bl_sst_csf>> on it.
-//

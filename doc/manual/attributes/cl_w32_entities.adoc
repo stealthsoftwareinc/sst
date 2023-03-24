@@ -1,0 +1,269 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_CL_W32_ENTITIES_ADOC[]
+:ATTRIBUTES_CL_W32_ENTITIES_ADOC:
+//----------------------------------------------------------------------
+
+:cl_w32_accept_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-accept
+:cl_w32_accept: link:{cl_w32_accept_url}[accept,window=_blank]
+
+:cl_w32_ADDRESS_FAMILY_url:
+:cl_w32_ADDRESS_FAMILY: ADDRESS_FAMILY
+
+:cl_w32_ADDRINFOA_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2def/ns-ws2def-addrinfoa
+:cl_w32_ADDRINFOA: link:{cl_w32_ADDRINFOA_url}[ADDRINFOA,window=_blank]
+
+:cl_w32_AF_INET_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_AF_INET: link:{cl_w32_AF_INET_url}[AF_INET,window=_blank]
+
+:cl_w32_AF_INET6_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_AF_INET6: link:{cl_w32_AF_INET6_url}[AF_INET6,window=_blank]
+
+:cl_w32_AF_UNSPEC_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_AF_UNSPEC: link:{cl_w32_AF_UNSPEC_url}[AF_UNSPEC,window=_blank]
+
+:cl_w32_AI_PASSIVE_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2def/ns-ws2def-addrinfoa
+:cl_w32_AI_PASSIVE: link:{cl_w32_AI_PASSIVE_url}[AI_PASSIVE,window=_blank]
+
+:cl_w32_bind_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-bind
+:cl_w32_bind: link:{cl_w32_bind_url}[bind,window=_blank]
+
+:cl_w32_CHAR_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_CHAR: link:{cl_w32_CHAR_url}[CHAR,window=_blank]
+
+:cl_w32_closesocket_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-closesocket
+:cl_w32_closesocket: link:{cl_w32_closesocket_url}[closesocket,window=_blank]
+
+:cl_w32_connect_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-connect
+:cl_w32_connect: link:{cl_w32_connect_url}[connect,window=_blank]
+
+:cl_w32_DWORD_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_DWORD: link:{cl_w32_DWORD_url}[DWORD,window=_blank]
+
+:cl_w32_FIONBIO_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-ioctlsocket
+:cl_w32_FIONBIO: link:{cl_w32_FIONBIO_url}[FIONBIO,window=_blank]
+
+:cl_w32_freeaddrinfo_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo
+:cl_w32_freeaddrinfo: link:{cl_w32_freeaddrinfo_url}[freeaddrinfo,window=_blank]
+
+:cl_w32_getaddrinfo_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
+:cl_w32_getaddrinfo: link:{cl_w32_getaddrinfo_url}[getaddrinfo,window=_blank]
+
+:cl_w32_GetLastError_url: https://docs.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror
+:cl_w32_GetLastError: link:{cl_w32_GetLastError_url}[GetLastError,window=_blank]
+
+:cl_w32_getsockname_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-getsockname
+:cl_w32_getsockname: link:{cl_w32_getsockname_url}[getsockname,window=_blank]
+
+:cl_w32_getsockopt_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-getsockopt
+:cl_w32_getsockopt: link:{cl_w32_getsockopt_url}[getsockopt,window=_blank]
+
+:cl_w32_INET_ADDRSTRLEN_url:
+:cl_w32_INET_ADDRSTRLEN: INET_ADDRSTRLEN
+
+:cl_w32_inet_ntop_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-inet_ntop
+:cl_w32_inet_ntop: link:{cl_w32_inet_ntop_url}[inet_ntop,window=_blank]
+
+:cl_w32_INET6_ADDRSTRLEN_url:
+:cl_w32_INET6_ADDRSTRLEN: INET6_ADDRSTRLEN
+
+:cl_w32_INT_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_INT: link:{cl_w32_INT_url}[INT,window=_blank]
+
+:cl_w32_INVALID_SOCKET_url: https://docs.microsoft.com/en-us/windows/win32/winsock/socket-data-type-2
+:cl_w32_INVALID_SOCKET: link:{cl_w32_INVALID_SOCKET_url}[INVALID_SOCKET,window=_blank]
+
+:cl_w32_ioctlsocket_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-ioctlsocket
+:cl_w32_ioctlsocket: link:{cl_w32_ioctlsocket_url}[ioctlsocket,window=_blank]
+
+:cl_w32_IPPROTO_TCP_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_IPPROTO_TCP: link:{cl_w32_IPPROTO_TCP_url}[IPPROTO_TCP,window=_blank]
+
+:cl_w32_IPPROTO_UDP_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_IPPROTO_UDP: link:{cl_w32_IPPROTO_UDP_url}[IPPROTO_UDP,window=_blank]
+
+:cl_w32_LANGID_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_LANGID: link:{cl_w32_LANGID_url}[LANGID,window=_blank]
+
+:cl_w32_listen_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-listen
+:cl_w32_listen: link:{cl_w32_listen_url}[listen,window=_blank]
+
+:cl_w32_ntohl_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-ntohl
+:cl_w32_ntohl: link:{cl_w32_ntohl_url}[ntohl,window=_blank]
+
+:cl_w32_ntohs_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-ntohs
+:cl_w32_ntohs: link:{cl_w32_ntohs_url}[ntohs,window=_blank]
+
+:cl_w32_PCSTR_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_PCSTR: link:{cl_w32_PCSTR_url}[PCSTR,window=_blank]
+
+:cl_w32_POLLRDBAND_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/ns-winsock2-wsapollfd
+:cl_w32_POLLRDBAND: link:{cl_w32_POLLRDBAND_url}[POLLRDBAND,window=_blank]
+
+:cl_w32_POLLRDNORM_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/ns-winsock2-wsapollfd
+:cl_w32_POLLRDNORM: link:{cl_w32_POLLRDNORM_url}[POLLRDNORM,window=_blank]
+
+:cl_w32_POLLWRNORM_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/ns-winsock2-wsapollfd
+:cl_w32_POLLWRNORM: link:{cl_w32_POLLWRNORM_url}[POLLWRNORM,window=_blank]
+
+:cl_w32_PSTR_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_PSTR: link:{cl_w32_PSTR_url}[PSTR,window=_blank]
+
+:cl_w32_recv_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-recv
+:cl_w32_recv: link:{cl_w32_recv_url}[recv,window=_blank]
+
+:cl_w32_SD_BOTH_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-shutdown
+:cl_w32_SD_BOTH: link:{cl_w32_SD_BOTH_url}[SD_BOTH,window=_blank]
+
+:cl_w32_SD_RECEIVE_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-shutdown
+:cl_w32_SD_RECEIVE: link:{cl_w32_SD_RECEIVE_url}[SD_RECEIVE,window=_blank]
+
+:cl_w32_SD_SEND_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-shutdown
+:cl_w32_SD_SEND: link:{cl_w32_SD_SEND_url}[SD_SEND,window=_blank]
+
+:cl_w32_send_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-send
+:cl_w32_send: link:{cl_w32_send_url}[send,window=_blank]
+
+:cl_w32_setsockopt_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-setsockopt
+:cl_w32_setsockopt: link:{cl_w32_setsockopt_url}[setsockopt,window=_blank]
+
+:cl_w32_SHORT_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_SHORT: link:{cl_w32_SHORT_url}[SHORT,window=_blank]
+
+:cl_w32_shutdown_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-shutdown
+:cl_w32_shutdown: link:{cl_w32_shutdown_url}[shutdown,window=_blank]
+
+:cl_w32_SO_REUSEADDR_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
+:cl_w32_SO_REUSEADDR: link:{cl_w32_SO_REUSEADDR_url}[SO_REUSEADDR,window=_blank]
+
+:cl_w32_SOCK_DGRAM_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_SOCK_DGRAM: link:{cl_w32_SOCK_DGRAM_url}[SOCK_DGRAM,window=_blank]
+
+:cl_w32_SOCK_STREAM_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_SOCK_STREAM: link:{cl_w32_SOCK_STREAM_url}[SOCK_STREAM,window=_blank]
+
+:cl_w32_SOCKADDR_IN6_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2ipdef/ns-ws2ipdef-sockaddr_in6_lh
+:cl_w32_SOCKADDR_IN6: link:{cl_w32_SOCKADDR_IN6_url}[sockaddr_in6,window=_blank]
+
+:cl_w32_SOCKADDR_IN_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2def/ns-ws2def-sockaddr_in
+:cl_w32_SOCKADDR_IN: link:{cl_w32_SOCKADDR_IN_url}[sockaddr_in,window=_blank]
+
+:cl_w32_SOCKADDR_url: https://docs.microsoft.com/en-us/windows/win32/winsock/sockaddr-2
+:cl_w32_SOCKADDR: link:{cl_w32_SOCKADDR_url}[sockaddr,window=_blank]
+
+:cl_w32_SOCKADDR_STORAGE_url: https://docs.microsoft.com/en-us/windows/win32/api/ws2def/ns-ws2def-sockaddr_storage_lh
+:cl_w32_SOCKADDR_STORAGE: link:{cl_w32_SOCKADDR_STORAGE_url}[SOCKADDR_STORAGE,window=_blank]
+
+:cl_w32_socket_f_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+:cl_w32_socket_f: link:{cl_w32_socket_f_url}[socket,window=_blank]
+
+:cl_w32_SOCKET_url: https://docs.microsoft.com/en-us/windows/win32/winsock/socket-data-type-2
+:cl_w32_SOCKET: link:{cl_w32_SOCKET_url}[SOCKET,window=_blank]
+
+:cl_w32_SOCKET_ERROR_url: https://docs.microsoft.com/en-us/windows/win32/winsock/return-values-on-function-failure-2
+:cl_w32_SOCKET_ERROR: link:{cl_w32_SOCKET_ERROR_url}[SOCKET_ERROR,window=_blank]
+
+:cl_w32_SOL_SOCKET_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
+:cl_w32_SOL_SOCKET: link:{cl_w32_SOL_SOCKET_url}[SOL_SOCKET,window=_blank]
+
+:cl_w32_SOMAXCONN_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-listen
+:cl_w32_SOMAXCONN: link:{cl_w32_SOMAXCONN_url}[SOMAXCONN,window=_blank]
+
+:cl_w32_TCP_NODELAY_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
+:cl_w32_TCP_NODELAY: link:{cl_w32_TCP_NODELAY_url}[TCP_NODELAY,window=_blank]
+
+:cl_w32_u_long_url:
+:cl_w32_u_long: u_long
+
+:cl_w32_u_short_url:
+:cl_w32_u_short: u_short
+
+:cl_w32_UINT_PTR_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_UINT_PTR: link:{cl_w32_UINT_PTR_url}[UINT_PTR,window=_blank]
+
+:cl_w32_ULONG_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_ULONG: link:{cl_w32_ULONG_url}[ULONG,window=_blank]
+
+:cl_w32_USHORT_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_USHORT: link:{cl_w32_USHORT_url}[USHORT,window=_blank]
+
+:cl_w32_VOID_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_VOID: link:{cl_w32_VOID_url}[VOID,window=_blank]
+
+:cl_w32_WIN32_FILE_ATTRIBUTE_DATA_url: https://docs.microsoft.com/en-us/windows/win32/api/fileapi/ns-fileapi-win32_file_attribute_data
+:cl_w32_WIN32_FILE_ATTRIBUTE_DATA: link:{cl_w32_WIN32_FILE_ATTRIBUTE_DATA_url}[WIN32_FILE_ATTRIBUTE_DATA,window=_blank]
+
+:cl_w32_WIN32_FIND_DATAA_url: https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
+:cl_w32_WIN32_FIND_DATAA: link:{cl_w32_WIN32_FIND_DATAA_url}[WIN32_FIND_DATAA,window=_blank]
+
+:cl_w32_WIN32_FIND_DATAW_url: https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataw
+:cl_w32_WIN32_FIND_DATAW: link:{cl_w32_WIN32_FIND_DATAW_url}[WIN32_FIND_DATAW,window=_blank]
+
+:cl_w32_WORD_url: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types
+:cl_w32_WORD: link:{cl_w32_WORD_url}[WORD,window=_blank]
+
+:cl_w32_WSACleanup_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsacleanup
+:cl_w32_WSACleanup: link:{cl_w32_WSACleanup_url}[WSACleanup,window=_blank]
+
+:cl_w32_WSADATA_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-wsadata
+:cl_w32_WSADATA: link:{cl_w32_WSADATA_url}[WSADATA,window=_blank]
+
+:cl_w32_WSADESCRIPTION_LEN_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-wsadata
+:cl_w32_WSADESCRIPTION_LEN: link:{cl_w32_WSADESCRIPTION_LEN_url}[WSADESCRIPTION_LEN,window=_blank]
+
+:cl_w32_WSAEALREADY_url: https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2
+:cl_w32_WSAEALREADY: link:{cl_w32_WSAEALREADY_url}[WSAEALREADY,window=_blank]
+
+:cl_w32_WSAEISCONN_url: https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2
+:cl_w32_WSAEISCONN: link:{cl_w32_WSAEISCONN_url}[WSAEISCONN,window=_blank]
+
+:cl_w32_WSAEWOULDBLOCK_url: https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2
+:cl_w32_WSAEWOULDBLOCK: link:{cl_w32_WSAEWOULDBLOCK_url}[WSAEWOULDBLOCK,window=_blank]
+
+:cl_w32_WSAGetLastError_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsagetlasterror
+:cl_w32_WSAGetLastError: link:{cl_w32_WSAGetLastError_url}[WSAGetLastError,window=_blank]
+
+:cl_w32_WSAPoll_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-wsapoll
+:cl_w32_WSAPoll: link:{cl_w32_WSAPoll_url}[WSAPoll,window=_blank]
+
+:cl_w32_WSAPOLLFD_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock2/ns-winsock2-wsapollfd
+:cl_w32_WSAPOLLFD: link:{cl_w32_WSAPOLLFD_url}[WSAPOLLFD,window=_blank]
+
+:cl_w32_WSAStartup_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsastartup
+:cl_w32_WSAStartup: link:{cl_w32_WSAStartup_url}[WSAStartup,window=_blank]
+
+:cl_w32_WSASYS_STATUS_LEN_url: https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-wsadata
+:cl_w32_WSASYS_STATUS_LEN: link:{cl_w32_WSASYS_STATUS_LEN_url}[WSASYS_STATUS_LEN,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

@@ -1,0 +1,70 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#bl-sst-expect-not-subshell]
+= The `sst_expect_not_subshell` function
+
+.Bash
+[source,subs="{sst_subs_source}"]
+----
+include::partials/bl_include_prelude.adoc[]
+
+sst_expect_not_subshell [<function>]
+----
+
+The `{bl_sst_expect_not_subshell}` function verifies that the current
+code is not running in a {bl_subshell}.
+include::partials/bl_if_the_verification_fails.adoc[]
+
+The error message will state that `<function>` must not be called in a
+subshell.
+If `<function>` is omitted, it is inferred as the name of the calling
+function.
+If `<function>` is a single "```-```" character, the error message will
+instead generically state that the current code must not be run in a
+subshell.
+
+.{empty}
+[example]
+====
+[source,subs="{sst_subs_source}"]
+----
+include::partials/bl_include_prelude.adoc[]
+
+function foo {
+  {bl_sst_expect_not_subshell} "$@"
+}
+
+foo       # ok
+(foo)     # error stating that foo must not be called in a subshell
+(foo bar) # error stating that bar must not be called in a subshell
+(foo -)   # error stating that no subshell was expected
+----
+====
+
+//

@@ -1,0 +1,81 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_JSON_UNKNOWN_KEY_K3W9KUN5_ADOC[]
+:SECTIONS_CL_SST_JSON_UNKNOWN_KEY_K3W9KUN5_ADOC:
+//----------------------------------------------------------------------
+
+:k3w9kun5_overload: {counter:cl_sst_json_unknown_key_overload}
+
+:cl_sst_json_unknown_key_k3w9kun5_id: cl-sst-json-unknown-key-k3w9kun5
+:cl_sst_json_unknown_key_k3w9kun5_url: sections/cl_sst_json_unknown_key/k3w9kun5.adoc#{cl_sst_json_unknown_key_k3w9kun5_id}
+:cl_sst_json_unknown_key_k3w9kun5: xref:{cl_sst_json_unknown_key_k3w9kun5_url}[sst::json::unknown_key]
+
+:cl_sst_json_unknown_key_k3w9kun5_p1: pass:a,q[`{cl_sst_json_unknown_key_k3w9kun5}` (overload {k3w9kun5_overload})]
+:cl_sst_json_unknown_key_k3w9kun5_p2: pass:a,q[`{cl_sst_json_unknown_key_k3w9kun5}` function (overload {k3w9kun5_overload})]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_json_unknown_key_k3w9kun5_id}]
+= The `sst::json::unknown_key` function (overload {k3w9kun5_overload})
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/json/unknown_key.hpp[sst/catalog/json/unknown_key.hpp,window=_blank]>
+namespace sst::json {
+
+template<class {cl_nlohmann_json_Json}>
+void xref:{cl_sst_json_unknown_key_k3w9kun5_url}[unknown_key]({cl_nlohmann_json_Json} const & src);
+
+}
+----
+
+The {cl_sst_json_unknown_key_k3w9kun5_p2} checks for an unknown key in a
+JSON object.
+
+If `src` is a JSON value other than an object, the function throws an
+`{cl_sst_json_exception}`.
+Otherwise, if `src` does not contain any keys, the function takes no
+action.
+Otherwise, the function throws an `{cl_sst_json_exception}` with a
+message that includes at least one of the keys.
+
+This function is intended to be combined with the convention of deleting
+keys from a JSON object as they are parsed.
+After all known keys are parsed, any remaining keys are unknown, and
+calling this function will reject them.
+
+//----------------------------------------------------------------------
+endif::[]

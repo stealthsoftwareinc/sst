@@ -1,0 +1,96 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_ASSERT_CPP_2_ADOC[]
+:SECTIONS_CL_SST_ASSERT_CPP_2_ADOC:
+//----------------------------------------------------------------------
+
+:m7pxx2p9_overload: {counter:cl_SST_ASSERT_cpp_overload}
+
+:cl_SST_ASSERT_cpp_2_id: cl-SST-ASSERT-cpp-2
+:cl_SST_ASSERT_cpp_2_url: sections/cl_SST_ASSERT_cpp/2.adoc#{cl_SST_ASSERT_cpp_2_id}
+
+:cl_SST_ASSERT_cpp_2: xref:{cl_SST_ASSERT_cpp_2_url}[SST_ASSERT]
+
+:cl_SST_ASSERT_cpp_2_prose1: pass:a,q[`{cl_SST_ASSERT_cpp_2}` ({cpp}) ({m7pxx2p9_overload})]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_SST_ASSERT_cpp_2_id}]
+= `SST_ASSERT` ({cpp}) ({m7pxx2p9_overload})
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_ASSERT.h[sst/catalog/SST_ASSERT.h,window=_blank]>
+
+#define {cl_SST_ASSERT_cpp_2}(CONDITION, MESSAGE) (x)
+----
+
+If `{cl_SST_DEBUG}` is nonzero, the {cl_SST_ASSERT_cpp_2_prose1}
+macro expands to a parenthesized expression `(x)` of type `void` that
+evaluates the expression `CONDITION` exactly once.
+The following actions are then taken:
+
+. {empty}
+If `CONDITION` throws an exception `e`, the expression `MESSAGE` is not
+evaluated, a message that indicates the assertion was interrupted by an
+exception and includes `e.{cl_std_exception_what_c2}()` is written to
+{cl_standard_error_cpp}, and `{cl_std_abort}` is called.
+
+. {empty}
+Otherwise, the result of `CONDITION` is {cl_explicitly_converted_cpp} to
+`bool`.
+If the result is `false`, the expression `MESSAGE` is evaluated exactly
+once, a message that indicates the assertion failed and includes
+`MESSAGE` is written to {cl_standard_error_cpp}, and `{cl_std_abort}` is
+called.
+The result of `MESSAGE` must be {cl_implicitly_convertible_cpp} to
+either `char const *` or `{cl_std_string} const &`.
+If the result of `MESSAGE` is a null pointer, it is adjusted to be the
+{cl_stringification_cpp} of `CONDITION` instead.
+
+. {empty}
+Otherwise, `MESSAGE` is not evaluated and no action is taken.
+
+Any message written to {cl_standard_error_cpp} will also include the
+values of `{cl_FILE_macro_cpp}` and `{cl_LINE_macro_cpp}` from the
+location of the {cl_SST_ASSERT_cpp_2_prose1} call.
+
+If `{cl_SST_DEBUG}` is zero, the {cl_SST_ASSERT_cpp_2_prose1}
+macro expands to a parenthesized expression `(x)` of type `void` that
+takes no action.
+It does not evaluate `CONDITION`, and it does not evaluate `MESSAGE`.
+
+//----------------------------------------------------------------------
+endif::[]

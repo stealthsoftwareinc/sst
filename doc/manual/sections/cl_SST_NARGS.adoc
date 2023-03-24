@@ -1,0 +1,117 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_NARGS_ADOC[]
+:SECTIONS_CL_SST_NARGS_ADOC:
+//----------------------------------------------------------------------
+
+:cl_SST_NARGS_name0: SST_NARGS
+
+:cl_SST_NARGS_id: cl-SST-NARGS
+:cl_SST_NARGS_url: sections/cl_SST_NARGS.adoc#{cl_SST_NARGS_id}
+
+:cl_SST_NARGS: xref:{cl_SST_NARGS_url}[{cl_SST_NARGS_name0}]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_SST_NARGS_id}]
+= `{cl_SST_NARGS_name0}`
+
+.C or {cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_NARGS.h[sst/catalog/SST_NARGS.h,window=_blank]>
+
+#define {cl_SST_NARGS}(...) __n__
+----
+
+The `{cl_SST_NARGS}` macro expands to the number of arguments that were
+passed to it, formatted as an unsuffixed decimal integer constant.
+
+If no arguments are given and the language version is below C23 or
+{cpp}20, the behavior is undefined.
+
+.{empty}
+[example]
+====
+.`sst-example-{example-number}.c` or `sst-example-{example-number}.cpp`
+[source,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_C23_OR_LATER.h[sst/catalog/SST_C23_OR_LATER.h,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_CPP20_OR_LATER.h[sst/catalog/SST_CPP20_OR_LATER.h,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_NARGS.h[sst/catalog/SST_NARGS.h,window=_blank]>
+
+#if link:{cl_cplusplus_url}[++__cplusplus++,window=_blank]
+#include <cstdio>
+using std::puts;
+#else
+#include <stdio.h>
+#endif
+
+#define STR2(X) #X
+#define STR1(X) STR2(X)
+#define F(...) \
+  puts("{cl_SST_NARGS}(" #++__VA_ARGS__++ ") = " STR1({cl_SST_NARGS}(++__VA_ARGS__++)))
+
+int main() {
+#if SST_C23_OR_LATER || SST_CPP20_OR_LATER
+  F();
+#endif
+  F(a);
+  F(a, b);
+  F(a, b, c);
+  return 0;
+}
+----
+
+.Output (below C23 or {cpp}20)
+[listing,subs="{sst_subs_source}"]
+----
+{cl_SST_NARGS}(a) = 1
+{cl_SST_NARGS}(a, b) = 2
+{cl_SST_NARGS}(a, b, c) = 3
+----
+
+.Output (C23 or {cpp}20 or later)
+[listing,subs="{sst_subs_source}"]
+----
+{cl_SST_NARGS}() = 0
+{cl_SST_NARGS}(a) = 1
+{cl_SST_NARGS}(a, b) = 2
+{cl_SST_NARGS}(a, b, c) = 3
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]

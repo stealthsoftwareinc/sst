@@ -1,0 +1,9 @@
+{
+  "handler": "sst_ajh_gitbundle",
+
+  "commit": "7146ffa47956e7dae05739cfe905d8aaf1e4780a",
+
+  "urls": [
+    "https://github.com/mathjax/MathJax.git"
+  ]
+}

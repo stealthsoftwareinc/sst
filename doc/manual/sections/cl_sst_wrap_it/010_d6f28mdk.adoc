@@ -1,0 +1,98 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_WRAP_IT_010_D6F28MDK_ADOC[]
+:SECTIONS_CL_SST_WRAP_IT_010_D6F28MDK_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_wrap_it_d6f28mdk_id: cl-sst-wrap-it-d6f28mdk
+:cl_sst_wrap_it_d6f28mdk_url: sections/cl_sst_wrap_it_d6f28mdk.adoc#{cl_sst_wrap_it_d6f28mdk_id}
+:cl_sst_wrap_it_d6f28mdk: xref:{cl_sst_wrap_it_d6f28mdk_url}[sst::wrap_it]
+
+:cl_sst_wrap_it_d6f28mdk_overload: overload {counter:cl_sst_wrap_it_overload_counter}
+
+:cl_sst_wrap_it_d6f28mdk_c1: xref:{cl_sst_wrap_it_d6f28mdk_url}[wrap_it]
+
+:cl_sst_wrap_it_d6f28mdk_p1: pass:a,q[`{cl_sst_wrap_it_d6f28mdk}` ({cl_sst_wrap_it_d6f28mdk_overload})]
+:cl_sst_wrap_it_d6f28mdk_p2: pass:a,q[`{cl_sst_wrap_it_d6f28mdk}` function ({cl_sst_wrap_it_d6f28mdk_overload})]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_wrap_it_d6f28mdk_id}]
+= The `sst::wrap_it` function ({cl_sst_wrap_it_d6f28mdk_overload})
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/wrap_it.hpp[sst/catalog/wrap_it.hpp,window=_blank]>
+namespace sst {
+
+template<
+  class Count = {cl_cpp_int},
+  class Iterator,
+  {cl_sst_enable_if_t}<
+    {cl_sst_is_integer}<Count>::value
+  > = 0>
+_W_ wrap_it(Iterator i);
+
+}
+----
+
+The {cl_sst_wrap_it_d6f28mdk_p2} returns an iterator that behaves like
+`i`.
+
+The returned iterator may only be used in a {cl_unique_pass} algorithm.
+
+The type `_W_` of the returned iterator is unspecified.
+However, the return types of all `{cl_sst_count_it}`,
+`{cl_sst_track_it}`, and `{cl_sst_wrap_it}` overloads are the same
+provided they are called with the same `Count` and `Iterator` types.
+
+// TODO: Link to the proper sst::count_it overload.
+The main purpose of this overload is to achieve type equality in cases
+where `i` is associated with another `{cl_sst_count_it}`,
+`{cl_sst_track_it}`, or `{cl_sst_wrap_it}` iterator and the iterators
+are being passed to an algorithm that requires them to have the same
+type.
+For example, `{cl_std_copy}` requires its first two arguments to have
+the same type, so passing `i` and `{cl_sst_count_it}(i, 10)` will fail
+to compile, but passing `{cl_sst_wrap_it_d6f28mdk}(i)` and
+`{cl_sst_count_it}(i, 10)` will work.
+In this case, you must also be careful to ensure that both iterators
+have the same `Count` type.
+Continuing the example, if we were copying `n` elements instead of `10`,
+we could pass `{cl_sst_wrap_it_d6f28mdk}<{cl_decltype}(n)>(i)` and
+`{cl_sst_count_it}(i, n)`.
+
+//----------------------------------------------------------------------
+endif::[]

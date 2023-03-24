@@ -1,4 +1,5 @@
 {
+
   "handler": "sst_ajh_download",
 
   "hashes": {
@@ -9,6 +10,7 @@
     "sha384": "59ab04f8afcda904efa037738f15c1da848e546192f8e59775a17fe6946c1d111f87b7fd82c1b8cb50cd91f009d5b810",
     "sha512": "c746d483a6b686f0b6c532264af4c0f1ce28cb654ec0102dc91b997d7ae55b7d5c0cdc4aaac7344ac22b29df41dbf1ca92e0d69a809053aa80c6e0f29d7db749"
   },
+
   "urls": [
     "https://jdbc.postgresql.org/download/postgresql-42.2.6.jar",
     "https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.6/postgresql-42.2.6.jar",
@@ -16,4 +18,5 @@
     "https://repo.jfrog.org/artifactory/repo1/org/postgresql/postgresql/42.2.6/postgresql-42.2.6.jar",
     "https://repo.jenkins-ci.org/repo1/org/postgresql/postgresql/42.2.6/postgresql-42.2.6.jar"
   ]
+
 }

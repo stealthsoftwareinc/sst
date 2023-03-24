@@ -1,0 +1,108 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+.{empty}
+[example]
+====
+This example implements an echo server.
+
+.`sst-example-{example-number}.cpp`
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <utility>
+#include <vector>
+
+#include <sst/catalog/socket.hpp>
+#include <sst/catalog/socket_library_scope.hpp>
+#include <sst/catalog/socket_poll_set.hpp>
+#include <sst/catalog/socket_shutdown.hpp>
+
+// TODO: Handle socket exceptions better.
+int main() {
+  sst::socket_library_scope socket_library_scope;
+  sst::socket listener;
+  listener.listen(12345);
+  sst::socket_poll_set poll_set;
+  poll_set.insert(&listener);
+  struct context_t {
+    sst::socket socket;
+    std::vector<unsigned char> buf;
+    std::vector<unsigned char>::size_type len = 0;
+    context_t() : buf(1024) {
+    }
+  };
+  std::map<sst::socket *, std::unique_ptr<context_t>> ctxs;
+  while (true) {
+    poll_set.poll();
+    for (auto const & entry : poll_set) {
+      if (&entry.socket() == &listener) {
+        if (entry.can_recv()) {
+          std::unique_ptr<context_t> ctx;
+          {
+            sst::socket s = entry.socket().accept();
+            ctx.reset(new context_t);
+            ctx->socket = std::move(s);
+          }
+          sst::socket & s = ctx->socket;
+          s.blocking(false);
+          ctxs.emplace(&s, std::move(ctx));
+          poll_set.insert(&s);
+        }
+        continue;
+      }
+      context_t & ctx = *ctxs[&entry.socket()];
+      if (entry.can_recv()) {
+        ctx.len += ctx.socket.recv_some(&ctx.buf[ctx.len],
+                                        ctx.buf.size() - ctx.len);
+      }
+      if (entry.can_send()) {
+        auto const n = ctx.socket.send_some(&ctx.buf[0], ctx.len);
+        std::memmove(&ctx.buf[0], &ctx.buf[n], ctx.len - n);
+        ctx.len -= n;
+        if (ctx.len == 0) {
+          ctx.len += ctx.socket.recv_some(&ctx.buf[ctx.len],
+                                          ctx.buf.size() - ctx.len);
+          if (ctx.socket.eof()) {
+            poll_set.erase(&ctx.socket);
+            ctx.socket.shutdown(sst::socket_shutdown::both());
+            ctx.socket.close();
+            ctxs.erase(&ctx.socket);
+          }
+        }
+      }
+    }
+  }
+}
+----
+
+include::../../partials/cl_cpp_compilation_command.adoc[]
+====

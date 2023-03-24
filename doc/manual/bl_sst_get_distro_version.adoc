@@ -1,26 +1,68 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[bl_sst_get_distro_version,sst_get_distro_version]]
+[#bl-sst-get-distro-version]
 = The `sst_get_distro_version` function
 
 .Bash
-[source,subs="normal"]
+[source,subs="{sst_subs_source}"]
 ----
-sst_get_distro_version
+include::partials/bl_include_prelude.adoc[]
+
+link:{repo_browser_url}/src/bash/include/sst_get_distro_version.bash[sst_get_distro_version,window=_blank]
 ----
 
 The `sst_get_distro_version` function identifies the system version and
-writes it to standard output in `<<bl_sst_csf>>` form.
-If the system version cannot be identified, a fatal error occurs.
+stores it in the `sst_distro_version` variable.
 
 The following results are possible for the various
-`<<bl_sst_get_distro>>` values:
+xref:bl_sst_get_distro.adoc#bl-sst-get-distro[`sst_get_distro`]
+values:
 
-`centos`:: `6`, `7`, or `8`.
-`ubuntu`:: `16.04`, `18.04`, or `20.04`.
-`unknown`:: None.
+`centos`::
+`6`,
+`7`,
+`8`,
+or `unknown`.
+
+`ubuntu`::
+`16.04`,
+`18.04`,
+`20.04`,
+or `unknown`.
+
+`unknown`:: `unknown`.
+
+:fp_cache_variable: sst_distro_version
+include::bl_function_result_cache_variable_fragment.adoc[]
+
+All possible results, including those added in the future, are
+guaranteed to be spelled such that `$sst_distro_version` is unaffected
+by word splitting and pathname expansion.
 
 //

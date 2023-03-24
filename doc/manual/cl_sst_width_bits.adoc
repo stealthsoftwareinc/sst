@@ -1,54 +1,84 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[cl_sst_width_bits,sst::width_bits]]
+:cl_sst_width_bits_id: cl-sst-width-bits
+:cl_sst_width_bits_url: cl_sst_width_bits.adoc#{cl_sst_width_bits_id}
+:cl_sst_width_bits: xref:{cl_sst_width_bits_url}[sst::width_bits]
+
+[#{cl_sst_width_bits_id}]
 = The `sst::width_bits` trait
 
 .{cpp}
-[source,cpp,subs="normal"]
+[source,cpp,subs="{sst_subs_source}"]
 ----
-#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/width_bits.hpp[sst/catalog/width_bits.hpp]>
-// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/limits.h[sst/limits.h]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/width_bits.hpp[sst/catalog/width_bits.hpp,window=_blank]>
+// or:   <sst/limits.h>
 namespace sst {
 
-template<class IntType>
-struct width_bits
-  : {ce_std_integral_constant}<int, +/*...*/+> {};
+template<class T>
+class width_bits
+  : public {cl_std_integral_constant}<{cl_sst_remove_cvref_t}<T>, +/*...*/+> {};
 
 }
 ----
 
 The `sst::width_bits` class provides the number of {cr_width_bits} in
-the {cr_integer_type} `IntType`.
+the {cr_integer_type} `T`.
 
-:W: sst::width_bits
-:T: IntType
-:V: int
-include::cl_integral_constant_extraction_blurb.adoc[]
+:fp_namespace: sst
+:fp_wrapper: width_bits
+:fp_wrapper_template_type: T
+:fp_wrapper_value_type: {cl_sst_remove_cvref_t}<T>
+:fp_wrapper_value_name: v
+include::cl_integral_constant_extraction_fragment.adoc[]
 
 .{empty}
 [example]
 ====
-.Program
-[source,cpp]
+.`sst-example-{example-number}.cpp`
+[source,cpp,subs="{sst_subs_source}"]
 ----
 #include <iomanip>
 #include <ios>
 #include <iostream>
 #include <sst/limits.h>
+#include <sst/catalog/to_string.hpp>
 #include <string>
 
 namespace {
 
 template<class T>
 void info(std::string const & T_name) {
-  int const v = sst::width_bits<T>::value;
-  std::cout << "sst::width_bits<";
+  T const v = {cl_sst_width_bits}<T>::value;
+  std::cout << "{cl_sst_width_bits}<";
   std::cout << std::left << std::setw(18) << T_name;
   std::cout << ">::value == ";
-  std::cout << std::right << std::setw(2) << std::to_string(v);
+  std::cout << std::right << std::setw(2) << sst::to_string(v);
   std::cout << "\n";
 }
 
@@ -72,21 +102,23 @@ int main() {
 }
 ----
 
+include::partials/cl_cpp_compilation_command.adoc[]
+
 .Possible output
-[source]
+[listing,subs="{sst_subs_source}"]
 ----
-sst::width_bits<bool              >::value ==  1
-sst::width_bits<char              >::value ==  8
-sst::width_bits<signed char       >::value ==  8
-sst::width_bits<unsigned char     >::value ==  8
-sst::width_bits<short             >::value == 16
-sst::width_bits<unsigned short    >::value == 16
-sst::width_bits<int               >::value == 32
-sst::width_bits<unsigned int      >::value == 32
-sst::width_bits<long              >::value == 64
-sst::width_bits<unsigned long     >::value == 64
-sst::width_bits<long long         >::value == 64
-sst::width_bits<unsigned long long>::value == 64
+{cl_sst_width_bits}<bool              >::value ==  1
+{cl_sst_width_bits}<char              >::value ==  8
+{cl_sst_width_bits}<signed char       >::value ==  8
+{cl_sst_width_bits}<unsigned char     >::value ==  8
+{cl_sst_width_bits}<short             >::value == 16
+{cl_sst_width_bits}<unsigned short    >::value == 16
+{cl_sst_width_bits}<int               >::value == 32
+{cl_sst_width_bits}<unsigned int      >::value == 32
+{cl_sst_width_bits}<long              >::value == 64
+{cl_sst_width_bits}<unsigned long     >::value == 64
+{cl_sst_width_bits}<long long         >::value == 64
+{cl_sst_width_bits}<unsigned long long>::value == 64
 ----
 ====
 

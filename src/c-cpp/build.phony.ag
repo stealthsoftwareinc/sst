@@ -1,0 +1,245 @@
+#
+# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
+#
+
+f() {
+
+  declare    child
+  declare    cpp
+  declare    d
+  declare    hpp
+  declare    hpp_cpp
+  declare    leaf_suffixes
+  declare    pfx
+  declare    pfx_slug
+  declare    slug
+  declare    v
+  declare    x
+  declare    y
+  declare    ys
+
+  sst_expect_source_path "$BASH_SOURCE"
+  pfx=$(sst_get_prefix $BASH_SOURCE)
+
+  pfx_slug=$(sst_underscore_slug $pfx)
+  readonly pfx_slug
+
+  #---------------------------------------------------------------------
+  # Loose distributed files
+  #---------------------------------------------------------------------
+
+  sst_am_distribute \
+    ${pfx}subset.bash \
+  ;
+
+  #---------------------------------------------------------------------
+
+  slug=$(sst_underscore_slug $pfx)libsst_la
+
+  d=$(dirname $BASH_SOURCE)
+
+  OBJECTS=${d//[^a-zA-Z0-9_]/_}_libsst_la_OBJECTS
+
+  gi=$d/.gitignore
+  >$gi
+
+  sst_ihs <<<"
+    ${pfx}all_sources: FORCE
+    ${pfx}all_sources: \$(${slug}_SOURCES)
+    ${pfx}all_sources: \$(nodist_${slug}_SOURCES)
+  " | sst_am_append
+
+  #
+  # Include `libsst_la.am`.
+  #
+
+  sst_am_include $d/libsst_la.am
+
+  #---------------------------------------------------------------------
+
+  #
+  # Generate sst.h.
+  #
+
+  sst_h=$d/include/sst.h
+  printf '/include/sst.h\n' >>$gi
+
+  cat >$sst_h <<EOF
+  /*
+   * For the copyright information for this file, please see the COPYING
+   * file in the sst subdirectory.
+   */
+
+  #ifndef SST_H
+  #define SST_H
+
+EOF
+
+  ys=
+  for x in $d/include/sst/**/*.{h,hpp}{,.ag,.ac,.am,.im,.in,.im.in}; do
+    if [[ "$x" == $d/include/sst/private/* ]]; then
+      continue
+    fi
+    y=${x%%.[ai]*}
+    if [[ $y == *.h && " $ys " != *" $y "* ]]; then
+      printf '#include <%s>\n' ${y#$d/include/} >>$sst_h
+      ys="$ys $y"
+    fi
+  done
+
+  cat >>$sst_h <<EOF
+
+  #endif /* SST_H */
+EOF
+
+  #---------------------------------------------------------------------
+
+  sst_pushd ${pfx}.
+  for x in include/**/; do
+    x=${x%/}
+    sst_expect_source_path "$x"
+    y=${x//[^0-9A-Z_a-z]/_}
+    if [[ $x != include ]]; then
+      sst_am_var_set ${y}dir ${x/include/'$(includedir)'}
+    fi
+    sst_am_var_set ${y}_HEADERS
+    sst_am_var_set nodist_${y}_HEADERS
+    sst_ihs <<<"
+      ${pfx}all_sources: \$(${y}_HEADERS)
+      ${pfx}all_sources: \$(nodist_${y}_HEADERS)
+    " | sst_am_append
+  done
+  sst_popd
+
+  leaf_suffixes='@(.ag|.ac|.am|.im.in|.in|.im|.m4|)'
+  readonly leaf_suffixes
+
+  sst_am_var_set ${pfx_slug}headers
+  sst_am_var_set ${pfx_slug}headers_children
+  sst_am_var_set ${pfx_slug}headers_children_nodist
+  sst_am_var_set ${pfx_slug}headers_leaves
+
+  for hpp_cpp in \
+    'hpp=h; cpp=c' \
+    'hpp=hpp; cpp=cpp' \
+  ; do
+    eval "$hpp_cpp"
+    sst_am_if WITH_BUILD_GROUP_${cpp^^}_AUTOTOOLS
+    for x in ${pfx}include/**/*.$hpp$leaf_suffixes; do
+      sst_expect_source_path "$x"
+      sst_ag_process_leaf ${pfx_slug}headers $x child
+      sst_am_var_add ${pfx_slug}headers $child
+      v=${x#$pfx}
+      v=${v%/*}
+      v=nodist_${v//[^0-9A-Z_a-z]/_}_HEADERS
+      sst_am_var_add $v $child
+      if [[ $x == *.im || $x == *.im.in ]]; then
+        printf '%s\n' "\$($OBJECTS): $child" | sst_am_append
+      fi
+      if [[ "$child" != *.$hpp ]]; then
+        printf '%s\n' /$child >>$gi
+        if [[ "$child" == *.im.in ]]; then
+          printf '%s\n' /$child.im >>$gi
+        fi
+      fi
+    done
+    sst_am_endif WITH_BUILD_GROUP_${cpp^^}_AUTOTOOLS
+  done
+
+  #---------------------------------------------------------------------
+  # Generate libsst_la_SOURCES.{ac,am}
+  #---------------------------------------------------------------------
+
+  # TODO: Use sst_ag_process_leaf
+
+  ac=$d/libsst_la_SOURCES.ac
+  am=$d/libsst_la_SOURCES.am
+  printf '/libsst_la_SOURCES.ac\n' >>$gi
+  printf '/libsst_la_SOURCES.am\n' >>$gi
+  printf '/lib/sst/config_private_raw.h\n' >>$gi
+  printf '/lib/sst/config_private_raw.h.in\n' >>$gi
+
+  autogen_print_ac_header >$ac
+  autogen_print_am_header >$am
+
+  v=${slug}_SOURCES
+
+  printf '%s =\n' $v >>$am
+  printf 'nodist_%s =\n' $v >>$am
+
+  ys=()
+  for x in $d/lib/**/*.{c,cpp,h,hpp}{,.ag,.ac,.am,.im,.in,.im.in}; do
+    case $x in
+      $d/lib/sst/config_private_raw.h) continue ;;
+      $d/lib/sst/config_private_raw.h.in) continue ;;
+    esac
+    y=${x%%.[ai]*}
+    array_contains seen ys $y
+    nodist=nodist_
+    e=${y##*.}
+    case $x in
+      *.$e) nodist= ;;
+      *.$e.ac) sst_ac_include $x ;;
+      *.$e.ag) sst_ag_include $x ;;
+      *.$e.am) sst_am_include $x ;;
+      *.$e.im) printf 'GATBPS_CONFIG_LATER([%s])\n' $y >>$ac ;;
+      *.$e.in) printf 'GATBPS_CONFIG_FILE([%s])\n' $y >>$ac ;;
+      *.$e.im.in)
+        ((seen)) || printf 'GATBPS_CONFIG_LATER([%s])\n' $y >>$ac
+        printf 'GATBPS_CONFIG_FILE([%s])\n' $y.im >>$ac
+        printf '%s.im\n' ${y#$d} >>$gi
+      ;;
+    esac
+    if ((!seen)); then
+      if [[ $y == *.c || $y == *.h ]]; then
+        printf 'if WITH_BUILD_GROUP_C_AUTOTOOLS\n' >>$am
+      else
+        printf 'if WITH_BUILD_GROUP_CPP_AUTOTOOLS\n' >>$am
+      fi
+      printf '%s += %s\n' $nodist$v $y >>$am
+      if [[ $x == *.im || $x == *.im.in ]]; then
+        printf '$(%s): %s\n' $OBJECTS $y >>$am
+      fi
+      printf 'endif\n' >>$am
+      [[ "$nodist" == "" ]] || printf '%s\n' ${y#$d} >>$gi
+      ys+=($y)
+    fi
+  done
+
+  sst_ac_include $ac
+  sst_am_include $am
+
+  #---------------------------------------------------------------------
+
+  # TODO: This needs to be split into C and C++ tests.
+  sst_am_if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+  sst_ajh_c_cpp_test ${pfx}test ${pfx}libsst.la
+  sst_am_endif WITH_BUILD_GROUP_CPP_AUTOTOOLS
+
+}
+
+f

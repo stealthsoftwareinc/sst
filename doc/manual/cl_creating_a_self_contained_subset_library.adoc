@@ -1,0 +1,126 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-creating-a-self-contained-subset-library]
+= Creating a self-contained subset library
+
+indexterm:["subset library, self-contained, C/{cpp}"]
+SST includes a script that can create a _self-contained subset library_
+of the C/{cpp} library.
+
+.Synopsis
+----
+src/c-cpp/subset.bash [<option>]... [<entity>]...
+----
+
+`subset.bash` will produce an archive file `sst.tar.gz` that contains
+all the necessary code for the given list of entities.
+Each `<entity>` should be the name of a C/{cpp} entity, such as
+`sst_getbit` or `{cl_sst_bignum}`.
+
+`subset.bash` must be run from the root of the SST project, i.e., the
+same way as written in the above synopsis.
+It will refuse to run if this is not the case.
+
+For convenience, if the build system is not already
+xref:bs_initializing_the_build_system.adoc#bs-initializing-the-build-system[initialized]
+and
+xref:bs_configuring_the_build_system.adoc#bs-configuring-the-build-system[configured],
+`subset.bash` will automatically run `./autogen` and `./configure` as
+needed.
+
+The output archive file will contain a directory named `sst` that
+contains two subdirectories named `include` and `lib`.
+`sst/include` contains all the necessary public header files, and
+`sst/lib` contains all the necessary private implementation files.
+
+The `sst/include/sst/config.h` file usually needs to be edited, as it
+will be populated with values deduced from the current system, which may
+not be correct for the ultimate destination of the subset library.
+You'll also need to remember to compile with `-lfoo` for the libraries
+you choose to enable in `config.h`.
+
+SST freely makes use of the standard threading utilities of C/{cpp}, so
+it's reasonably likely you'll also need to compile with `-pthread` (or
+equivalent for your compiler).
+If you fail to do so, the compilation can unfortunately sometimes still
+succeed and result in strange errors at run time, such as calls to
+`std::call_once` throwing exceptions.
+
+`--namespace=<namespace>`::
++
+Renames the `sst` {cpp} namespace to `<namespace>`.
+The `SST_` and `sst_` prefixes used for macros and C functions, the
+output archive file name, and all other names will also be renamed
+accordingly.
+It is permitted for `<namespace>` to have multiple components.
++
+As an example, `--namespace=foo` will rename the {cpp} namespace to
+`foo`, the `SST_` and `sst_` prefixes to `FOO_` and `foo_`, and the
+output archive file to `foo.tar.gz`.
+As another example, `--namespace=foo::bar` will rename the {cpp}
+namespace to `foo::bar`, the `SST_` and `sst_` prefixes to `FOO_BAR_`
+and `foo_bar_`, and the output archive file to `foo_bar.tar.gz`.
+
+.{empty}
+[example]
+====
+The following commands will clone the SST {bs_distribution_repository}
+and produce a self-contained subset library of the C/{cpp} library that
+contains `{cl_sst_bignum}`:
+
+[listing,subs="{sst_subs_source}"]
+----
+git clone https://github.com/stealthsoftwareinc/sst.git
+cd sst
+src/c-cpp/subset.bash sst::bignum
+----
+
+This will produce `sst.tar.gz`, which can be used in any other project.
+Here's how it could be used to compile a simple test program:
+
+[listing,subs="{sst_subs_source}"]
+----
+**$ tar xzf sst.tar.gz**
+
+**$ cat <<'EOF' >a.cpp**
+#include <iostream>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/bignum.hpp[sst/catalog/bignum.hpp,window=_blank]>
+int main() {
+  std::cout << (sst::bignum(1) << 128).to_string() << "\n";
+}
+EOF
+
+**$ g++ -Isst/include -Isst/lib a.cpp $(find sst/lib -name '*.cpp') -lcrypto**
+
+**$ ./a.out**
+340282366920938463463374607431768211456
+----
+====
+
+//

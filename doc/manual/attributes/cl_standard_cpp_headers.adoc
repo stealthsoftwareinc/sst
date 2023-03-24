@@ -1,0 +1,356 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_CL_STANDARD_CPP_HEADERS_ADOC[]
+:ATTRIBUTES_CL_STANDARD_CPP_HEADERS_ADOC:
+//----------------------------------------------------------------------
+
+:cl_include_algorithm_url: https://en.cppreference.com/w/cpp/header/algorithm
+:cl_include_algorithm: link:{cl_include_algorithm_url}[algorithm,window=_blank]
+
+:cl_include_any_url: https://en.cppreference.com/w/cpp/header/any
+:cl_include_any: link:{cl_include_any_url}[any,window=_blank]
+
+:cl_include_array_url: https://en.cppreference.com/w/cpp/header/array
+:cl_include_array: link:{cl_include_array_url}[array,window=_blank]
+
+:cl_include_atomic_url: https://en.cppreference.com/w/cpp/header/atomic
+:cl_include_atomic: link:{cl_include_atomic_url}[atomic,window=_blank]
+
+:cl_include_barrier_url: https://en.cppreference.com/w/cpp/header/barrier
+:cl_include_barrier: link:{cl_include_barrier_url}[barrier,window=_blank]
+
+:cl_include_bit_url: https://en.cppreference.com/w/cpp/header/bit
+:cl_include_bit: link:{cl_include_bit_url}[bit,window=_blank]
+
+:cl_include_bitset_url: https://en.cppreference.com/w/cpp/header/bitset
+:cl_include_bitset: link:{cl_include_bitset_url}[bitset,window=_blank]
+
+:cl_include_cassert_url: https://en.cppreference.com/w/cpp/header/cassert
+:cl_include_cassert: link:{cl_include_cassert_url}[cassert,window=_blank]
+
+:cl_include_ccomplex_url: https://en.cppreference.com/w/cpp/header/ccomplex
+:cl_include_ccomplex: link:{cl_include_ccomplex_url}[ccomplex,window=_blank]
+
+:cl_include_cctype_url: https://en.cppreference.com/w/cpp/header/cctype
+:cl_include_cctype: link:{cl_include_cctype_url}[cctype,window=_blank]
+
+:cl_include_cerrno_url: https://en.cppreference.com/w/cpp/header/cerrno
+:cl_include_cerrno: link:{cl_include_cerrno_url}[cerrno,window=_blank]
+
+:cl_include_cfenv_url: https://en.cppreference.com/w/cpp/header/cfenv
+:cl_include_cfenv: link:{cl_include_cfenv_url}[cfenv,window=_blank]
+
+:cl_include_cfloat_url: https://en.cppreference.com/w/cpp/header/cfloat
+:cl_include_cfloat: link:{cl_include_cfloat_url}[cfloat,window=_blank]
+
+:cl_include_charconv_url: https://en.cppreference.com/w/cpp/header/charconv
+:cl_include_charconv: link:{cl_include_charconv_url}[charconv,window=_blank]
+
+:cl_include_chrono_url: https://en.cppreference.com/w/cpp/header/chrono
+:cl_include_chrono: link:{cl_include_chrono_url}[chrono,window=_blank]
+
+:cl_include_cinttypes_url: https://en.cppreference.com/w/cpp/header/cinttypes
+:cl_include_cinttypes: link:{cl_include_cinttypes_url}[cinttypes,window=_blank]
+
+:cl_include_ciso646_url: https://en.cppreference.com/w/cpp/header/ciso646
+:cl_include_ciso646: link:{cl_include_ciso646_url}[ciso646,window=_blank]
+
+:cl_include_climits_url: https://en.cppreference.com/w/cpp/header/climits
+:cl_include_climits: link:{cl_include_climits_url}[climits,window=_blank]
+
+:cl_include_clocale_url: https://en.cppreference.com/w/cpp/header/clocale
+:cl_include_clocale: link:{cl_include_clocale_url}[clocale,window=_blank]
+
+:cl_include_cmath_url: https://en.cppreference.com/w/cpp/header/cmath
+:cl_include_cmath: link:{cl_include_cmath_url}[cmath,window=_blank]
+
+:cl_include_codecvt_url: https://en.cppreference.com/w/cpp/header/codecvt
+:cl_include_codecvt: link:{cl_include_codecvt_url}[codecvt,window=_blank]
+
+:cl_include_compare_url: https://en.cppreference.com/w/cpp/header/compare
+:cl_include_compare: link:{cl_include_compare_url}[compare,window=_blank]
+
+:cl_include_complex_url: https://en.cppreference.com/w/cpp/header/complex
+:cl_include_complex: link:{cl_include_complex_url}[complex,window=_blank]
+
+:cl_include_concepts_url: https://en.cppreference.com/w/cpp/header/concepts
+:cl_include_concepts: link:{cl_include_concepts_url}[concepts,window=_blank]
+
+:cl_include_condition_variable_url: https://en.cppreference.com/w/cpp/header/condition_variable
+:cl_include_condition_variable: link:{cl_include_condition_variable_url}[condition_variable,window=_blank]
+
+:cl_include_coroutine_url: https://en.cppreference.com/w/cpp/header/coroutine
+:cl_include_coroutine: link:{cl_include_coroutine_url}[coroutine,window=_blank]
+
+:cl_include_csetjmp_url: https://en.cppreference.com/w/cpp/header/csetjmp
+:cl_include_csetjmp: link:{cl_include_csetjmp_url}[csetjmp,window=_blank]
+
+:cl_include_csignal_url: https://en.cppreference.com/w/cpp/header/csignal
+:cl_include_csignal: link:{cl_include_csignal_url}[csignal,window=_blank]
+
+:cl_include_cstdalign_url: https://en.cppreference.com/w/cpp/header/cstdalign
+:cl_include_cstdalign: link:{cl_include_cstdalign_url}[cstdalign,window=_blank]
+
+:cl_include_cstdarg_url: https://en.cppreference.com/w/cpp/header/cstdarg
+:cl_include_cstdarg: link:{cl_include_cstdarg_url}[cstdarg,window=_blank]
+
+:cl_include_cstdbool_url: https://en.cppreference.com/w/cpp/header/cstdbool
+:cl_include_cstdbool: link:{cl_include_cstdbool_url}[cstdbool,window=_blank]
+
+:cl_include_cstddef_url: https://en.cppreference.com/w/cpp/header/cstddef
+:cl_include_cstddef: link:{cl_include_cstddef_url}[cstddef,window=_blank]
+
+:cl_include_cstdint_url: https://en.cppreference.com/w/cpp/header/cstdint
+:cl_include_cstdint: link:{cl_include_cstdint_url}[cstdint,window=_blank]
+
+:cl_include_cstdio_url: https://en.cppreference.com/w/cpp/header/cstdio
+:cl_include_cstdio: link:{cl_include_cstdio_url}[cstdio,window=_blank]
+
+:cl_include_cstdlib_url: https://en.cppreference.com/w/cpp/header/cstdlib
+:cl_include_cstdlib: link:{cl_include_cstdlib_url}[cstdlib,window=_blank]
+
+:cl_include_cstring_url: https://en.cppreference.com/w/cpp/header/cstring
+:cl_include_cstring: link:{cl_include_cstring_url}[cstring,window=_blank]
+
+:cl_include_ctgmath_url: https://en.cppreference.com/w/cpp/header/ctgmath
+:cl_include_ctgmath: link:{cl_include_ctgmath_url}[ctgmath,window=_blank]
+
+:cl_include_ctime_url: https://en.cppreference.com/w/cpp/header/ctime
+:cl_include_ctime: link:{cl_include_ctime_url}[ctime,window=_blank]
+
+:cl_include_cuchar_url: https://en.cppreference.com/w/cpp/header/cuchar
+:cl_include_cuchar: link:{cl_include_cuchar_url}[cuchar,window=_blank]
+
+:cl_include_cwchar_url: https://en.cppreference.com/w/cpp/header/cwchar
+:cl_include_cwchar: link:{cl_include_cwchar_url}[cwchar,window=_blank]
+
+:cl_include_cwctype_url: https://en.cppreference.com/w/cpp/header/cwctype
+:cl_include_cwctype: link:{cl_include_cwctype_url}[cwctype,window=_blank]
+
+:cl_include_deque_url: https://en.cppreference.com/w/cpp/header/deque
+:cl_include_deque: link:{cl_include_deque_url}[deque,window=_blank]
+
+:cl_include_exception_url: https://en.cppreference.com/w/cpp/header/exception
+:cl_include_exception: link:{cl_include_exception_url}[exception,window=_blank]
+
+:cl_include_execution_url: https://en.cppreference.com/w/cpp/header/execution
+:cl_include_execution: link:{cl_include_execution_url}[execution,window=_blank]
+
+:cl_include_expected_url: https://en.cppreference.com/w/cpp/header/expected
+:cl_include_expected: link:{cl_include_expected_url}[expected,window=_blank]
+
+:cl_include_filesystem_url: https://en.cppreference.com/w/cpp/header/filesystem
+:cl_include_filesystem: link:{cl_include_filesystem_url}[filesystem,window=_blank]
+
+:cl_include_format_url: https://en.cppreference.com/w/cpp/header/format
+:cl_include_format: link:{cl_include_format_url}[format,window=_blank]
+
+:cl_include_forward_list_url: https://en.cppreference.com/w/cpp/header/forward_list
+:cl_include_forward_list: link:{cl_include_forward_list_url}[forward_list,window=_blank]
+
+:cl_include_fstream_url: https://en.cppreference.com/w/cpp/header/fstream
+:cl_include_fstream: link:{cl_include_fstream_url}[fstream,window=_blank]
+
+:cl_include_functional_url: https://en.cppreference.com/w/cpp/header/functional
+:cl_include_functional: link:{cl_include_functional_url}[functional,window=_blank]
+
+:cl_include_future_url: https://en.cppreference.com/w/cpp/header/future
+:cl_include_future: link:{cl_include_future_url}[future,window=_blank]
+
+:cl_include_initializer_list_url: https://en.cppreference.com/w/cpp/header/initializer_list
+:cl_include_initializer_list: link:{cl_include_initializer_list_url}[initializer_list,window=_blank]
+
+:cl_include_iomanip_url: https://en.cppreference.com/w/cpp/header/iomanip
+:cl_include_iomanip: link:{cl_include_iomanip_url}[iomanip,window=_blank]
+
+:cl_include_ios_url: https://en.cppreference.com/w/cpp/header/ios
+:cl_include_ios: link:{cl_include_ios_url}[ios,window=_blank]
+
+:cl_include_iosfwd_url: https://en.cppreference.com/w/cpp/header/iosfwd
+:cl_include_iosfwd: link:{cl_include_iosfwd_url}[iosfwd,window=_blank]
+
+:cl_include_iostream_url: https://en.cppreference.com/w/cpp/header/iostream
+:cl_include_iostream: link:{cl_include_iostream_url}[iostream,window=_blank]
+
+:cl_include_istream_url: https://en.cppreference.com/w/cpp/header/istream
+:cl_include_istream: link:{cl_include_istream_url}[istream,window=_blank]
+
+:cl_include_iterator_url: https://en.cppreference.com/w/cpp/header/iterator
+:cl_include_iterator: link:{cl_include_iterator_url}[iterator,window=_blank]
+
+:cl_include_latch_url: https://en.cppreference.com/w/cpp/header/latch
+:cl_include_latch: link:{cl_include_latch_url}[latch,window=_blank]
+
+:cl_include_limits_url: https://en.cppreference.com/w/cpp/header/limits
+:cl_include_limits: link:{cl_include_limits_url}[limits,window=_blank]
+
+:cl_include_list_url: https://en.cppreference.com/w/cpp/header/list
+:cl_include_list: link:{cl_include_list_url}[list,window=_blank]
+
+:cl_include_locale_url: https://en.cppreference.com/w/cpp/header/locale
+:cl_include_locale: link:{cl_include_locale_url}[locale,window=_blank]
+
+:cl_include_map_url: https://en.cppreference.com/w/cpp/header/map
+:cl_include_map: link:{cl_include_map_url}[map,window=_blank]
+
+:cl_include_memory_url: https://en.cppreference.com/w/cpp/header/memory
+:cl_include_memory: link:{cl_include_memory_url}[memory,window=_blank]
+
+:cl_include_memory_resource_url: https://en.cppreference.com/w/cpp/header/memory_resource
+:cl_include_memory_resource: link:{cl_include_memory_resource_url}[memory_resource,window=_blank]
+
+:cl_include_mutex_url: https://en.cppreference.com/w/cpp/header/mutex
+:cl_include_mutex: link:{cl_include_mutex_url}[mutex,window=_blank]
+
+:cl_include_new_url: https://en.cppreference.com/w/cpp/header/new
+:cl_include_new: link:{cl_include_new_url}[new,window=_blank]
+
+:cl_include_numbers_url: https://en.cppreference.com/w/cpp/header/numbers
+:cl_include_numbers: link:{cl_include_numbers_url}[numbers,window=_blank]
+
+:cl_include_numeric_url: https://en.cppreference.com/w/cpp/header/numeric
+:cl_include_numeric: link:{cl_include_numeric_url}[numeric,window=_blank]
+
+:cl_include_optional_url: https://en.cppreference.com/w/cpp/header/optional
+:cl_include_optional: link:{cl_include_optional_url}[optional,window=_blank]
+
+:cl_include_ostream_url: https://en.cppreference.com/w/cpp/header/ostream
+:cl_include_ostream: link:{cl_include_ostream_url}[ostream,window=_blank]
+
+:cl_include_queue_url: https://en.cppreference.com/w/cpp/header/queue
+:cl_include_queue: link:{cl_include_queue_url}[queue,window=_blank]
+
+:cl_include_random_url: https://en.cppreference.com/w/cpp/header/random
+:cl_include_random: link:{cl_include_random_url}[random,window=_blank]
+
+:cl_include_ranges_url: https://en.cppreference.com/w/cpp/header/ranges
+:cl_include_ranges: link:{cl_include_ranges_url}[ranges,window=_blank]
+
+:cl_include_ratio_url: https://en.cppreference.com/w/cpp/header/ratio
+:cl_include_ratio: link:{cl_include_ratio_url}[ratio,window=_blank]
+
+:cl_include_regex_url: https://en.cppreference.com/w/cpp/header/regex
+:cl_include_regex: link:{cl_include_regex_url}[regex,window=_blank]
+
+:cl_include_scoped_allocator_url: https://en.cppreference.com/w/cpp/header/scoped_allocator
+:cl_include_scoped_allocator: link:{cl_include_scoped_allocator_url}[scoped_allocator,window=_blank]
+
+:cl_include_semaphore_url: https://en.cppreference.com/w/cpp/header/semaphore
+:cl_include_semaphore: link:{cl_include_semaphore_url}[semaphore,window=_blank]
+
+:cl_include_set_url: https://en.cppreference.com/w/cpp/header/set
+:cl_include_set: link:{cl_include_set_url}[set,window=_blank]
+
+:cl_include_shared_mutex_url: https://en.cppreference.com/w/cpp/header/shared_mutex
+:cl_include_shared_mutex: link:{cl_include_shared_mutex_url}[shared_mutex,window=_blank]
+
+:cl_include_source_location_url: https://en.cppreference.com/w/cpp/header/source_location
+:cl_include_source_location: link:{cl_include_source_location_url}[source_location,window=_blank]
+
+:cl_include_span_url: https://en.cppreference.com/w/cpp/header/span
+:cl_include_span: link:{cl_include_span_url}[span,window=_blank]
+
+:cl_include_spanstream_url: https://en.cppreference.com/w/cpp/header/spanstream
+:cl_include_spanstream: link:{cl_include_spanstream_url}[spanstream,window=_blank]
+
+:cl_include_sstream_url: https://en.cppreference.com/w/cpp/header/sstream
+:cl_include_sstream: link:{cl_include_sstream_url}[sstream,window=_blank]
+
+:cl_include_stack_url: https://en.cppreference.com/w/cpp/header/stack
+:cl_include_stack: link:{cl_include_stack_url}[stack,window=_blank]
+
+:cl_include_stacktrace_url: https://en.cppreference.com/w/cpp/header/stacktrace
+:cl_include_stacktrace: link:{cl_include_stacktrace_url}[stacktrace,window=_blank]
+
+:cl_include_stdexcept_url: https://en.cppreference.com/w/cpp/header/stdexcept
+:cl_include_stdexcept: link:{cl_include_stdexcept_url}[stdexcept,window=_blank]
+
+:cl_include_stop_token_url: https://en.cppreference.com/w/cpp/header/stop_token
+:cl_include_stop_token: link:{cl_include_stop_token_url}[stop_token,window=_blank]
+
+:cl_include_streambuf_url: https://en.cppreference.com/w/cpp/header/streambuf
+:cl_include_streambuf: link:{cl_include_streambuf_url}[streambuf,window=_blank]
+
+:cl_include_string_url: https://en.cppreference.com/w/cpp/header/string
+:cl_include_string: link:{cl_include_string_url}[string,window=_blank]
+
+:cl_include_string_view_url: https://en.cppreference.com/w/cpp/header/string_view
+:cl_include_string_view: link:{cl_include_string_view_url}[string_view,window=_blank]
+
+:cl_include_strstream_url: https://en.cppreference.com/w/cpp/header/strstream
+:cl_include_strstream: link:{cl_include_strstream_url}[strstream,window=_blank]
+
+:cl_include_syncstream_url: https://en.cppreference.com/w/cpp/header/syncstream
+:cl_include_syncstream: link:{cl_include_syncstream_url}[syncstream,window=_blank]
+
+:cl_include_system_error_url: https://en.cppreference.com/w/cpp/header/system_error
+:cl_include_system_error: link:{cl_include_system_error_url}[system_error,window=_blank]
+
+:cl_include_thread_url: https://en.cppreference.com/w/cpp/header/thread
+:cl_include_thread: link:{cl_include_thread_url}[thread,window=_blank]
+
+:cl_include_tuple_url: https://en.cppreference.com/w/cpp/header/tuple
+:cl_include_tuple: link:{cl_include_tuple_url}[tuple,window=_blank]
+
+:cl_include_type_traits_url: https://en.cppreference.com/w/cpp/header/type_traits
+:cl_include_type_traits: link:{cl_include_type_traits_url}[type_traits,window=_blank]
+
+:cl_include_typeindex_url: https://en.cppreference.com/w/cpp/header/typeindex
+:cl_include_typeindex: link:{cl_include_typeindex_url}[typeindex,window=_blank]
+
+:cl_include_typeinfo_url: https://en.cppreference.com/w/cpp/header/typeinfo
+:cl_include_typeinfo: link:{cl_include_typeinfo_url}[typeinfo,window=_blank]
+
+:cl_include_unordered_map_url: https://en.cppreference.com/w/cpp/header/unordered_map
+:cl_include_unordered_map: link:{cl_include_unordered_map_url}[unordered_map,window=_blank]
+
+:cl_include_unordered_set_url: https://en.cppreference.com/w/cpp/header/unordered_set
+:cl_include_unordered_set: link:{cl_include_unordered_set_url}[unordered_set,window=_blank]
+
+:cl_include_utility_url: https://en.cppreference.com/w/cpp/header/utility
+:cl_include_utility: link:{cl_include_utility_url}[utility,window=_blank]
+
+:cl_include_valarray_url: https://en.cppreference.com/w/cpp/header/valarray
+:cl_include_valarray: link:{cl_include_valarray_url}[valarray,window=_blank]
+
+:cl_include_variant_url: https://en.cppreference.com/w/cpp/header/variant
+:cl_include_variant: link:{cl_include_variant_url}[variant,window=_blank]
+
+:cl_include_vector_url: https://en.cppreference.com/w/cpp/header/vector
+:cl_include_vector: link:{cl_include_vector_url}[vector,window=_blank]
+
+:cl_include_version_url: https://en.cppreference.com/w/cpp/header/version
+:cl_include_version: link:{cl_include_version_url}[version,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

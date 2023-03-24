@@ -1,4 +1,5 @@
 {
+
   "handler": "sst_ajh_download",
 
   "hashes": {
@@ -9,10 +10,12 @@
     "sha384": "55d8422ed1ca4ace40109d1c61e7b782e501058b13ae877894c5aa0f0ec4fd4561bf2e1cda57545721cab6c961642649",
     "sha512": "ef6c5878d9db497d7963bd9138418b30c39a5605c215bf2f4e8f1f083d93c3c99f8c459aa675f7da3b78da6189cb6bbf3cf19a2ee1d52e569de2f6ce82762bf4"
   },
+
   "urls": [
     "https://ftp.gnu.org/gnu/texinfo/texinfo-6.3.tar.xz",
     "https://mirrors.kernel.org/gnu/texinfo/texinfo-6.3.tar.xz",
     "https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/texinfo/texinfo-6.3.tar.xz",
     "https://mirrors.ocf.berkeley.edu/gnu/texinfo/texinfo-6.3.tar.xz"
   ]
+
 }

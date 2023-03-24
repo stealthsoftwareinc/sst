@@ -1,0 +1,139 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-first-t]
+= The `sst::first_t` alias template
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/first_t.hpp[sst/catalog/first_t.hpp,window=_blank]>
+namespace sst {
+
+template<class T, class...>
+using first_t = T;
+
+}
+----
+
+The `{cl_sst_first_t}` alias template yields its first template
+parameter.
+
+.{empty}
+[example]
+====
+The `{cl_sst_first_t}` alias template should not be used to attempt to
+partially specialize a class that only has a single template parameter,
+such as `{cl_std_hash}`.
+
+For example, consider the following program, which attempts to partially
+specialize `{cl_std_hash}` for derived classes of class `foo`:
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <cstddef>
+#include <functional>
+#include <iostream>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/enable_if_t.hpp[sst/catalog/enable_if_t.hpp,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/first_t.hpp[sst/catalog/first_t.hpp,window=_blank]>
+#include <type_traits>
+
+struct foo {};
+
+struct foo1 : foo {
+  static constexpr std::size_t hash = 1;
+};
+
+struct foo2 : foo {
+  static constexpr std::size_t hash = 2;
+};
+
+namespace std {
+
+template<class T>
+struct hash<
+    sst::first_t<T, sst::enable_if_t<std::is_base_of<foo, T>::value>>> {
+  std::size_t operator()(T const &) const {
+    return T::hash;
+  }
+};
+
+} // namespace std
+
+int main() {
+  std::cout << std::hash<foo1>()({}) << "\n";
+  std::cout << std::hash<foo2>()({}) << "\n";
+}
+----
+
+Attempting to compile and run this program with a few different
+compilers yields the following:
+
+[listing,subs="{sst_subs_source}"]
+----
+**pass:[$ g++ --version]**
+pass:[g++ (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0]
+pass:[Copyright (C) 2019 Free Software Foundation, Inc.]
+pass:[This is free software; see the source for copying conditions.  There is NO]
+pass:[warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.]
+
+**pass:[$ g++ a.cpp -lsst && ./a.out]**
+pass:[1]
+pass:[2]
+
+**pass:[$ clang++ --version]**
+pass:[clang version 10.0.0-4ubuntu1]
+pass:[Target: x86_64-pc-linux-gnu]
+pass:[Thread model: posix]
+pass:[InstalledDir: /usr/bin]
+
+**pass:[$ clang++ a.cpp -lsst && ./a.out]**
+pass:[a.cpp:21:8: error: class template partial specialization does not specialize any template argument; to define the primary template, remove the template argument list]
+pass:[struct hash<]
+pass:[       ^   ~]
+pass:[a.cpp:21:8: error: redefinition of 'hash']
+pass:[/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/functional_hash.h:101:12: note: previous definition is here]
+pass:[    struct hash : __hash_enum<_Tp>]
+pass:[           ^]
+pass:[a.cpp:31:16: error: call to implicitly-deleted default constructor of 'std::hash<foo1>']
+pass:[  std::cout << std::hash<foo1>()({}) << "\n";]
+pass:[               ^]
+pass:[/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/functional_hash.h:101:19: note: default constructor of 'hash<foo1>' is implicitly deleted because base class '__hash_enum<foo1>' has no default constructor]
+pass:[    struct hash : __hash_enum<_Tp>]
+pass:[                  ^]
+pass:[a.cpp:32:16: error: call to implicitly-deleted default constructor of 'std::hash<foo2>']
+pass:[  std::cout << std::hash<foo2>()({}) << "\n";]
+pass:[               ^]
+pass:[/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/functional_hash.h:101:19: note: default constructor of 'hash<foo2>' is implicitly deleted because base class '__hash_enum<foo2>' has no default constructor]
+pass:[    struct hash : __hash_enum<_Tp>]
+pass:[                  ^]
+pass:[4 errors generated.]
+----
+====
+
+//

@@ -1,0 +1,84 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-unix-time-{fv80pjp0_suffix}]
+= The `sst::unix_time_{fv80pjp0_suffix}` function
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/unix_time_{fv80pjp0_suffix}.hpp[sst/catalog/unix_time_{fv80pjp0_suffix}.hpp,window=_blank]>
+// or:   <link:{repo_browser_url}/src/c-cpp/include/sst/time.h[sst/time.h,window=_blank]>
+namespace sst {
+
+inline {fv80pjp0_return_type} unix_time_{fv80pjp0_suffix}();
+
+}
+----
+
+The `{fv80pjp0_self}` function returns the current time of the
+{Unix_clock} in
+ifeval::["{fv80pjp0_bits}" != "floating"]
+{fv80pjp0_unit}s.
+endif::[]
+ifeval::["{fv80pjp0_bits}" == "floating"]
+{fv80pjp0_unit}s with as much precision as possible.
+endif::[]
+
+ifeval::["{fv80pjp0_bits}" != "floating"]
+Note that the return type, `{fv80pjp0_return_type}`, is an unspecified
+signed integer type with at least {fv80pjp0_bits} {cr_width_bits}.
+For more information, see `{ce_std_chrono_duration}`, {cpp11sec}20.11.2,
+{cpp14sec}20.12.2, {cpp17sec}23.17.2, or {cpp20sec}27.2.
+endif::[]
+
+.{empty}
+[example]
+====
+
+.Program: `a.cpp`
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <iostream>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/asctime.hpp[sst/catalog/asctime.hpp,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/gmtime.hpp[sst/catalog/gmtime.hpp,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/unix_time_{fv80pjp0_suffix}.hpp[sst/catalog/unix_time_{fv80pjp0_suffix}.hpp,window=_blank]>
+
+int main() {
+  {cl_std_cout} << {cl_sst_asctime}({cl_sst_gmtime}());
+  {cl_std_cout} << {fv80pjp0_self}() << "\n";
+}
+----
+
+include::cl_compile_a_cpp.adoc[]
+
+include::cl_sst_unix_time_{fv80pjp0_suffix}_output.adoc[]
+
+====
+
+//

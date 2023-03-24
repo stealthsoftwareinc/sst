@@ -1,0 +1,98 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#{h9gskk03_alias_slug}]
+= `sst::{h9gskk03_alias_n1}`
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{h9gskk03_alias_n1}.hpp[sst/catalog/{h9gskk03_alias_n1}.hpp,window=_blank]>
+namespace sst {
+
+template<{h9gskk03_template_decl}>
+using xref:{h9gskk03_alias_url}[{h9gskk03_alias_n1}] =
+    {cl_typename} {h9gskk03_aliasee}<{h9gskk03_template_args}>::type;
+
+}
+----
+
+The
+`{h9gskk03_alias}`
+alias provides a convenient way to write
+`pass:a,c,q,m[{h9gskk03_aliasee}<{h9gskk03_template_args}>::type]`
+that never requires the
+`{cl_typename}`
+keyword to be used to disambiguate a dependent type.
+
+ifeval::["{h9gskk03_std_entity}" != ""]
+:qd8fi25k_entity: {h9gskk03_alias}
+:qd8fi25k_entity_type: alias
+:qd8fi25k_std_entity: {h9gskk03_std_entity}
+:qd8fi25k_std_version: {h9gskk03_std_version}
+include::cl_polyfill.adoc[]
+endif::[]
+
+.{empty}
+[example]
+====
+.`sst-example-{example-number}.cpp`
+[source,cpp,subs="{sst_subs_source}"]
+----
+ifeval::["{h9gskk03_std_entity}" == ""]
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{h9gskk03_aliasee_name}.hpp[sst/catalog/{h9gskk03_aliasee_name}.hpp,window=_blank]>
+endif::[]
+ifeval::["{h9gskk03_std_entity}" != ""]
+#include <{h9gskk03_std_header}>
+
+endif::[]
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{h9gskk03_alias_n1}.hpp[sst/catalog/{h9gskk03_alias_n1}.hpp,window=_blank]>
+
+template<{h9gskk03_template_decl}>
+class foo {
+
+  // OK.
+  using type1 = {cl_typename} {h9gskk03_aliasee}<{h9gskk03_template_args}>::type;
+
+  // Compilation error in C++11: the {cl_typename} keyword is required.
+  using type2 = {h9gskk03_aliasee}<{h9gskk03_template_args}>::type;
+
+  // OK.
+  using type3 = {h9gskk03_alias}<{h9gskk03_template_args}>;
+
+};
+
+int main() {
+  return 0;
+}
+----
+
+include::cl_cpp_compilation_command.adoc[]
+====
+
+//

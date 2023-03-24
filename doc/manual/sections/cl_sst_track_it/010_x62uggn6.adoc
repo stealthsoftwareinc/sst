@@ -1,0 +1,90 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_TRACK_IT_010_X62UGGN6_ADOC[]
+:SECTIONS_CL_SST_TRACK_IT_010_X62UGGN6_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_track_it_x62uggn6_id: cl-sst-track-it-x62uggn6
+:cl_sst_track_it_x62uggn6_url: sections/cl_sst_track_it_x62uggn6.adoc#{cl_sst_track_it_x62uggn6_id}
+:cl_sst_track_it_x62uggn6: xref:{cl_sst_track_it_x62uggn6_url}[sst::track_it]
+
+:cl_sst_track_it_x62uggn6_overload: overload {counter:cl_sst_track_it_overload_counter}
+
+:cl_sst_track_it_x62uggn6_c1: xref:{cl_sst_track_it_x62uggn6_url}[track_it]
+
+:cl_sst_track_it_x62uggn6_p1: pass:a,q[`{cl_sst_track_it_x62uggn6}` ({cl_sst_track_it_x62uggn6_overload})]
+:cl_sst_track_it_x62uggn6_p2: pass:a,q[`{cl_sst_track_it_x62uggn6}` function ({cl_sst_track_it_x62uggn6_overload})]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_track_it_x62uggn6_id}]
+= The `sst::track_it` function ({cl_sst_track_it_x62uggn6_overload})
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/track_it.hpp[sst/catalog/track_it.hpp,window=_blank]>
+namespace sst {
+
+template<
+  class Count = {cl_cpp_int},
+  class Iterator,
+  {cl_sst_enable_if_t}<
+    {cl_sst_is_integer}<Count>::value
+  > = 0>
+_W_ track_it(Iterator & i);
+
+}
+----
+
+The {cl_sst_track_it_x62uggn6_p2} returns an iterator that behaves like
+`i`, except it stores a pointer to `i` and updates `i` as it moves.
+
+The returned iterator may only be used in a {cl_unique_pass} algorithm.
+
+The type `_W_` of the returned iterator is unspecified.
+However, the following guarantees are made:
+
+. {empty}
+Provided they are called with the same `Count` and `Iterator` types, the
+return types of {cl_sst_track_it_x62uggn6_p1} and any
+`{cl_sst_count_it}` overload are the same.
+
+. {empty}
+Provided they are called with the same `Count` and `Iterator` types, the
+return types of {cl_sst_track_it_x62uggn6_p1} and any `{cl_sst_wrap_it}`
+overload are the same.
+
+//----------------------------------------------------------------------
+endif::[]

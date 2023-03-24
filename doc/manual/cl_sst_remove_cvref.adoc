@@ -1,38 +1,61 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[cl_sst_remove_cvref,sst::remove_cvref]]
-= The `sst::remove_cvref` class
+:tkgg3ae4_name: remove_cvref
+:tkgg3ae4_params: class T
+:tkgg3ae4_result: R
+:tkgg3ae4_slug: remove-cvref
+:tkgg3ae4_url: {cl_sst_remove_cvref_url}
+include::partials/cl_type_identity_trait.adoc[]
 
-.{cpp}
-[source,cpp,subs="normal"]
-----
-#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/remove_cvref.hpp[sst/catalog/remove_cvref.hpp]>
-// or:   <link:{repo_browser_url}/src/c_cpp/include/sst/type.h[sst/type.h]>
-namespace sst {
+The `{cl_sst_remove_cvref}` trait defines `_R_` to be `T` with any
+reference and {cl_cv_qualifiers} removed.
+In other words, the following steps take place:
 
-template<class T>
-struct remove_cvref {
-  using type = /*...*/;
-};
+. {empty}
+Begin with `_R_ = T`.
 
-}
-----
+. {empty}
+If `_R_` is a reference type, update `_R_` to be the referenced type.
 
-If `T` is a {cl_reference_type}, the `sst::remove_cvref` class declares
-`type` to be the referenced type.
-Otherwise, it declares `type` to be `T` with any top-level
-{cr_cv_qualifiers} removed.
+. {empty}
+Update `R` by removing any topmost {cl_cv_qualifiers}.
 
-This class was added to the library because `{ce_std_remove_cvref}` is
-not available before {cpp}20.
+:qd8fi25k_entity: {cl_sst_remove_cvref}
+:qd8fi25k_entity_type: trait
+:qd8fi25k_std_entity: {cl_std_remove_cvref}
+:qd8fi25k_std_version: {cpp}20
+include::partials/cl_polyfill.adoc[]
 
 .{empty}
 [example]
 ====
-[source,cpp,subs="normal"]
+[source,cpp,subs="{sst_subs_source}"]
 ----
 sst::remove_cvref<int>::type          // int
 sst::remove_cvref<int &>::type        // int

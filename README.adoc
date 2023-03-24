@@ -1,109 +1,635 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-= SST
-
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// This file should roughly mirror the doc/pages/index.md file. If you
+// edit this file, you might need to edit that file as well.
 //
 
 //
-// See the in_source_repo.adoc.ag file for an explanation of this file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-// :in_source_repo:
-
+//
+// The following files are similar:
+//
+//       doc/readme/common.adoc
+//       doc/pages/_includes/common.liquid
+//
+// If you edit one of these files, you may need to edit the other(s) as
+// well.
 //
 
-SST provides several libraries (Bash, C/{cpp}, and Java) and other
-modular utilities serving various general purposes.
-
-== Manual
-
-:fp_package_name: SST
-ifdef::in_source_repo[]
-:fp_download_path:
-:fp_download_path_type:
-:fp_view_path: doc/manual/sst.adoc
-:fp_view_url: https://www.stealthsoftwareinc.io/sst/manual
-endif::[]
-ifndef::in_source_repo[]
-:fp_download_path: doc/manual/sst.html
-:fp_download_path_type: html
-:fp_view_path: doc/manual/sst.adoc
-:fp_view_url:
-endif::[]
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// The readme_diagrams attribute can be either unset, set to the empty
+// string, or set to any nonempty string. Unset means diagrams are not
+// being generated, the empty string means diagrams are being generated
+// for the distribution archive, and any nonempty string means diagrams
+// are being generated for the source repository.
 //
 
-ifeval::["{fp_view_url}" != ""]
-To view the {fp_package_name} manual, go to link:{fp_view_url}[].
-endif::[]
-
-ifeval::["{fp_download_path}" != ""]
-To download the {fp_package_name} manual, go to
-link:{fp_download_path}[] and
-ifdef::env-gitlab[]
-click the "Download" button at the top right.
-endif::[]
-ifdef::env-github[]
-right click save as the "Raw" button at the top right.
-endif::[]
-ifndef::env-gitlab[]
-ifndef::env-github[]
-download the file.
+ifdef::readme_diagrams[]
+ifeval::["{readme_diagrams}" != ""]
 endif::[]
 endif::[]
-endif::[]
-
-ifeval::["{fp_view_path}" != ""]
-You can also view the {fp_package_name} manual directly in
-ifdef::env-gitlab[]
-GitLab
-endif::[]
-ifdef::env-github[]
-GitHub
-endif::[]
-ifndef::env-gitlab[]
-ifndef::env-github[]
-the repository browser
-endif::[]
-endif::[]
-by going to link:{fp_view_path}[], but it may not be displayed properly
-because of limitations in
-ifdef::env-gitlab[]
-GitLab.
-endif::[]
-ifdef::env-github[]
-GitHub.
-endif::[]
-ifndef::env-gitlab[]
-ifndef::env-github[]
-the repository browser.
-endif::[]
-endif::[]
-You can also view the individual `.adoc` files of the manual this way,
-but they will almost certainly not be displayed properly because they
-are not designed to be viewed individually.
+ifndef::readme_diagrams[]
 endif::[]
 
 //
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//
+// This file should roughly mirror the
+// doc/pages/_includes/config.liquid.in file. If you edit this file, you
+// might need to edit that file as well.
+//
+
+:PACKAGE_NAME: SST
+:PACKAGE_TARNAME: sst
+:PACKAGE_VERSION: 0.35.2
+
+//
+
+//
+
+= {PACKAGE_NAME} {PACKAGE_VERSION}
+
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//
+// This file should roughly mirror the doc/pages/_includes/main.md file.
+// If you edit this file, you might need to edit that file as well.
+//
+
+SST is a set of core libraries and tools developed by Stealth Software
+Technologies,{nbsp}Inc.{nbsp}(Stealth).
+
+//
+
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//
+// This file should roughly mirror the
+// doc/pages/_includes/source_code.md file. If you edit this file, you
+// might need to edit that file as well.
+//
+
+== Source code
+
+:fp_package_name: {PACKAGE_NAME}
+:fp_package_tarname: {PACKAGE_TARNAME}
+:fp_artifact: source
+:fp_builtin_view_latest_url:
+:fp_builtin_view_pinned_url:
+:fp_builtin_download_latest_url:
+:fp_builtin_download_pinned_url:
+:fp_github_view_latest_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/tree/master
+:fp_github_view_pinned_url:
+:fp_github_download_latest_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/archive/refs/heads/master.tar.gz
+:fp_github_download_pinned_url:
+:fp_gitlab_view_latest_url:
+:fp_gitlab_view_pinned_url:
+:fp_gitlab_download_latest_url:
+:fp_gitlab_download_pinned_url:
+:fp_devel_view_latest_url: https://gitlab.stealthsoftwareinc.com/stealth/{PACKAGE_TARNAME}/-/tree/master
+:fp_devel_view_pinned_url:
+:fp_devel_download_latest_url:
+:fp_devel_download_pinned_url:
+:fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/archive/refs/tags/v{PACKAGE_VERSION}.tar.gz
+
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//
+// This file should roughly mirror the
+// doc/pages/_includes/artifact_links_fragment.md file. If you edit this
+// file, you might need to edit that file as well.
+//
+
+:fl_view_latest_text: &#91;View latest&#93;
+:fl_view_pinned_text: &#91;View pinned&#93;
+:fl_download_latest_text: &#91;Download latest&#93;
+:fl_download_pinned_text: &#91;Download pinned&#93;
+
+You can access
+the {fp_package_name} {fp_artifact}
+at any of the following links:
+
+
+//----------------------------------------------------------------------
+// Builtin (public)
+//----------------------------------------------------------------------
+//
+// This section should be the same as the Development section except
+// with "Stealth GitLab" replaced by "This repository" and "_devel"
+// replaced by "_builtin" everywhere.
+//
+
+:!fl_no_builtin:
+ifeval::["{fp_builtin_view_latest_url}" == ""]
+ifeval::["{fp_builtin_view_pinned_url}" == ""]
+ifeval::["{fp_builtin_download_latest_url}" == ""]
+ifeval::["{fp_builtin_download_pinned_url}" == ""]
+:fl_no_builtin:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+ifndef::fl_no_builtin[]
+* This repository:
+ifeval::["{fp_builtin_view_latest_url}" != ""]
+link:{fp_builtin_view_latest_url}[{fl_view_latest_text}]
+endif::[]
+ifeval::["{fp_builtin_view_pinned_url}" != ""]
+link:{fp_builtin_view_pinned_url}[{fl_view_pinned_text}]
+endif::[]
+ifeval::["{fp_builtin_download_latest_url}" != ""]
+link:{fp_builtin_download_latest_url}[{fl_download_latest_text}]
+endif::[]
+ifeval::["{fp_builtin_download_pinned_url}" != ""]
+link:{fp_builtin_download_pinned_url}[{fl_download_pinned_text}]
+endif::[]
+endif::[]
+
+//----------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------
+// GitHub
+//----------------------------------------------------------------------
+//
+// This section should be the same as the Development section except
+// with "Stealth GitLab" replaced by "GitHub" and "_devel" replaced by
+// "_github" everywhere.
+//
+
+:!fl_no_github:
+ifeval::["{fp_github_view_latest_url}" == ""]
+ifeval::["{fp_github_view_pinned_url}" == ""]
+ifeval::["{fp_github_download_latest_url}" == ""]
+ifeval::["{fp_github_download_pinned_url}" == ""]
+:fl_no_github:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+ifndef::fl_no_github[]
+* GitHub:
+ifeval::["{fp_github_view_latest_url}" != ""]
+link:{fp_github_view_latest_url}[{fl_view_latest_text}]
+endif::[]
+ifeval::["{fp_github_view_pinned_url}" != ""]
+link:{fp_github_view_pinned_url}[{fl_view_pinned_text}]
+endif::[]
+ifeval::["{fp_github_download_latest_url}" != ""]
+link:{fp_github_download_latest_url}[{fl_download_latest_text}]
+endif::[]
+ifeval::["{fp_github_download_pinned_url}" != ""]
+link:{fp_github_download_pinned_url}[{fl_download_pinned_text}]
+endif::[]
+endif::[]
+
+//----------------------------------------------------------------------
+// GitLab
+//----------------------------------------------------------------------
+//
+// This section should be the same as the Development section except
+// with "Stealth GitLab" replaced by "GitLab" and "_devel" replaced by
+// "_gitlab" everywhere.
+//
+
+:!fl_no_gitlab:
+ifeval::["{fp_gitlab_view_latest_url}" == ""]
+ifeval::["{fp_gitlab_view_pinned_url}" == ""]
+ifeval::["{fp_gitlab_download_latest_url}" == ""]
+ifeval::["{fp_gitlab_download_pinned_url}" == ""]
+:fl_no_gitlab:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+ifndef::fl_no_gitlab[]
+* GitLab:
+ifeval::["{fp_gitlab_view_latest_url}" != ""]
+link:{fp_gitlab_view_latest_url}[{fl_view_latest_text}]
+endif::[]
+ifeval::["{fp_gitlab_view_pinned_url}" != ""]
+link:{fp_gitlab_view_pinned_url}[{fl_view_pinned_text}]
+endif::[]
+ifeval::["{fp_gitlab_download_latest_url}" != ""]
+link:{fp_gitlab_download_latest_url}[{fl_download_latest_text}]
+endif::[]
+ifeval::["{fp_gitlab_download_pinned_url}" != ""]
+link:{fp_gitlab_download_pinned_url}[{fl_download_pinned_text}]
+endif::[]
+endif::[]
+
+//----------------------------------------------------------------------
+
+ifdef::fl_no_builtin[]
+ifdef::fl_no_github[]
+ifdef::fl_no_gitlab[]
+* No links available
+endif::[]
+endif::[]
+endif::[]
+
+
+//
+
+//
+
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//
+// This file should roughly mirror the
+// doc/pages/_includes/documentation.md file. If you edit this file, you
+// might need to edit that file as well.
+//
+
+== Documentation
+
+:fp_package_name: {PACKAGE_NAME}
+:fp_package_tarname: {PACKAGE_TARNAME}
+:fp_artifact: manual
+:fp_builtin_view_latest_url:
+:fp_builtin_view_pinned_url:
+:fp_builtin_download_latest_url: doc/{PACKAGE_TARNAME}-manual.tar.xz
+:fp_builtin_download_pinned_url:
+:fp_github_view_latest_url: https://stealthsoftwareinc.github.io/{PACKAGE_TARNAME}/manual
+:fp_github_view_pinned_url:
+:fp_github_download_latest_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/raw/master/doc/{PACKAGE_TARNAME}-manual.tar.xz
+:fp_github_download_pinned_url:
+:fp_gitlab_view_latest_url:
+:fp_gitlab_view_pinned_url:
+:fp_gitlab_download_latest_url:
+:fp_gitlab_download_pinned_url:
+:fp_devel_view_latest_url: https://www.stealthsoftwareinc.io/{PACKAGE_TARNAME}/manual
+:fp_devel_view_pinned_url:
+:fp_devel_download_latest_url: https://www.stealthsoftwareinc.io/{PACKAGE_TARNAME}/{PACKAGE_TARNAME}-manual.tar.xz
+:fp_devel_download_pinned_url:
+:fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/raw/v{PACKAGE_VERSION}/doc/{PACKAGE_TARNAME}-{PACKAGE_VERSION}-manual.tar.xz
+
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//
+// This file should roughly mirror the
+// doc/pages/_includes/artifact_links_fragment.md file. If you edit this
+// file, you might need to edit that file as well.
+//
+
+:fl_view_latest_text: &#91;View latest&#93;
+:fl_view_pinned_text: &#91;View pinned&#93;
+:fl_download_latest_text: &#91;Download latest&#93;
+:fl_download_pinned_text: &#91;Download pinned&#93;
+
+You can access
+the {fp_package_name} {fp_artifact}
+at any of the following links:
+
+
+//----------------------------------------------------------------------
+// Builtin (public)
+//----------------------------------------------------------------------
+//
+// This section should be the same as the Development section except
+// with "Stealth GitLab" replaced by "This repository" and "_devel"
+// replaced by "_builtin" everywhere.
+//
+
+:!fl_no_builtin:
+ifeval::["{fp_builtin_view_latest_url}" == ""]
+ifeval::["{fp_builtin_view_pinned_url}" == ""]
+ifeval::["{fp_builtin_download_latest_url}" == ""]
+ifeval::["{fp_builtin_download_pinned_url}" == ""]
+:fl_no_builtin:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+ifndef::fl_no_builtin[]
+* This repository:
+ifeval::["{fp_builtin_view_latest_url}" != ""]
+link:{fp_builtin_view_latest_url}[{fl_view_latest_text}]
+endif::[]
+ifeval::["{fp_builtin_view_pinned_url}" != ""]
+link:{fp_builtin_view_pinned_url}[{fl_view_pinned_text}]
+endif::[]
+ifeval::["{fp_builtin_download_latest_url}" != ""]
+link:{fp_builtin_download_latest_url}[{fl_download_latest_text}]
+endif::[]
+ifeval::["{fp_builtin_download_pinned_url}" != ""]
+link:{fp_builtin_download_pinned_url}[{fl_download_pinned_text}]
+endif::[]
+endif::[]
+
+//----------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------
+// GitHub
+//----------------------------------------------------------------------
+//
+// This section should be the same as the Development section except
+// with "Stealth GitLab" replaced by "GitHub" and "_devel" replaced by
+// "_github" everywhere.
+//
+
+:!fl_no_github:
+ifeval::["{fp_github_view_latest_url}" == ""]
+ifeval::["{fp_github_view_pinned_url}" == ""]
+ifeval::["{fp_github_download_latest_url}" == ""]
+ifeval::["{fp_github_download_pinned_url}" == ""]
+:fl_no_github:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+ifndef::fl_no_github[]
+* GitHub:
+ifeval::["{fp_github_view_latest_url}" != ""]
+link:{fp_github_view_latest_url}[{fl_view_latest_text}]
+endif::[]
+ifeval::["{fp_github_view_pinned_url}" != ""]
+link:{fp_github_view_pinned_url}[{fl_view_pinned_text}]
+endif::[]
+ifeval::["{fp_github_download_latest_url}" != ""]
+link:{fp_github_download_latest_url}[{fl_download_latest_text}]
+endif::[]
+ifeval::["{fp_github_download_pinned_url}" != ""]
+link:{fp_github_download_pinned_url}[{fl_download_pinned_text}]
+endif::[]
+endif::[]
+
+//----------------------------------------------------------------------
+// GitLab
+//----------------------------------------------------------------------
+//
+// This section should be the same as the Development section except
+// with "Stealth GitLab" replaced by "GitLab" and "_devel" replaced by
+// "_gitlab" everywhere.
+//
+
+:!fl_no_gitlab:
+ifeval::["{fp_gitlab_view_latest_url}" == ""]
+ifeval::["{fp_gitlab_view_pinned_url}" == ""]
+ifeval::["{fp_gitlab_download_latest_url}" == ""]
+ifeval::["{fp_gitlab_download_pinned_url}" == ""]
+:fl_no_gitlab:
+endif::[]
+endif::[]
+endif::[]
+endif::[]
+
+ifndef::fl_no_gitlab[]
+* GitLab:
+ifeval::["{fp_gitlab_view_latest_url}" != ""]
+link:{fp_gitlab_view_latest_url}[{fl_view_latest_text}]
+endif::[]
+ifeval::["{fp_gitlab_view_pinned_url}" != ""]
+link:{fp_gitlab_view_pinned_url}[{fl_view_pinned_text}]
+endif::[]
+ifeval::["{fp_gitlab_download_latest_url}" != ""]
+link:{fp_gitlab_download_latest_url}[{fl_download_latest_text}]
+endif::[]
+ifeval::["{fp_gitlab_download_pinned_url}" != ""]
+link:{fp_gitlab_download_pinned_url}[{fl_download_pinned_text}]
+endif::[]
+endif::[]
+
+//----------------------------------------------------------------------
+
+ifdef::fl_no_builtin[]
+ifdef::fl_no_github[]
+ifdef::fl_no_gitlab[]
+* No links available
+endif::[]
+endif::[]
+endif::[]
+
+
+//
+
+//
+
+
+== Archive
+
+See the link:ARCHIVE.adoc[`ARCHIVE.adoc`] file for a collection of links
+to previous versions of {PACKAGE_NAME}.
 
 == License
 
 SST is developed by Stealth Software Technologies, Inc. as part of our
 independent development efforts.
-Please see the link:COPYING[`COPYING`] file for license information.
-
-ifdef::in_source_repo[]
-== Knowledge base
-
-Click link:doc/kb/README.md[here] to go to the knowledge base.
-endif::[]
+See the link:LICENSE[`LICENSE`] file for license information.
 
 //

@@ -1,29 +1,52 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[cl_sst_unix_time,sst::unix_time]]
+[#cl-sst-unix-time]
 = The `sst::unix_time` function
 
 .{cpp}
-[source,cpp]
+[source,cpp,subs="{sst_subs_source}"]
 ----
-#include <sst/time.h>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/unix_time.hpp[sst/catalog/unix_time.hpp,window=_blank]>
+// or:   <link:{repo_browser_url}/src/c-cpp/include/sst/time.h[sst/time.h,window=_blank]>
 namespace sst {
 
-template<class Duration = std::chrono::seconds>
-typename Duration::rep unix_time();
+template<class {cl_Duration}>
+{cl_Duration} unix_time();
 
 }
 ----
 
-The `sst::unix_time` function returns the current tick count of the Unix
-clock with respect to `Duration`, which should be an instantiation of
-`{ce_std_chrono_duration}`.
+The `{cl_sst_unix_time}` function returns the current time of the
+{Unix_clock} with respect to `{cl_Duration}`.
 
-Prior to {cpp}20, this function may use a clock other than the Unix
-clock, but there are no known implementations that do so.
+Prior to {cpp}20, this function may use a clock other than the
+{Unix_clock}, although there are no known implementations that do so.
 For more information, see `{ce_std_chrono_system_clock}` or compare
 {cpp17sec}23.17.7.1 with {cpp20sec}27.7.1.1.
 

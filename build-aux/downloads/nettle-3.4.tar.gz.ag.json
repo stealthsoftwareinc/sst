@@ -1,4 +1,5 @@
 {
+
   "handler": "sst_ajh_download",
 
   "hashes": {
@@ -9,10 +10,12 @@
     "sha384": "524d6caef8609b7b4fd0638c9d9b7950c9748c08c86f23f46f57c7614070eeb03d3020d26554dc8c74e49f4f5c96ddcb",
     "sha512": "3bea3aabd2c99cc42d084a94fd6b0b5dbdb24cd6c7020271a6ee87a81a904b21b21756f590cb1afdf2e85fd1cb59e5c3651c5c4032e30204e7ea6f8801d1ea3b"
   },
+
   "urls": [
     "https://ftp.gnu.org/gnu/nettle/nettle-3.4.tar.gz",
     "https://mirrors.kernel.org/gnu/nettle/nettle-3.4.tar.gz",
     "https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/nettle/nettle-3.4.tar.gz",
     "https://mirrors.ocf.berkeley.edu/gnu/nettle/nettle-3.4.tar.gz"
   ]
+
 }

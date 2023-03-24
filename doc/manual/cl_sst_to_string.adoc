@@ -1,0 +1,80 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-to-string]
+= The `sst::to_string` function
+
+:!i:
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/to_string.hpp[sst/catalog/to_string.hpp,window=_blank]>
+namespace sst {
+
+// ({counter:i})
+template<class CharT, class OutputIt, class... Args>
+OutputIt to_string({cl_std_basic_string}<CharT, Args...> const & src,
+                   OutputIt dst,
+                   bool replace_unrepresentable = false);
+
+// ({counter:i})
+template<class CharT, class... Args>
+{cl_std_string} to_string({cl_std_basic_string}<CharT, Args...> const & src,
+                      bool replace_unrepresentable = false);
+
+// ({counter:i})
+template<{cl_std_integral} T, class OutputIt>
+OutputIt to_string(T const & src, OutputIt dst);
+
+// ({counter:i})
+template<{cl_std_integral} T>
+{cl_std_string} to_string(T const & src);
+
+}
+----
+
+The `sst::to_string` function converts an object to a string.
+
+:!i:
+
+== String sources
+
+:ia: {counter:i}
+:ib: {counter:i}
+
+Converts one type of string to another.
+
+== Integer sources
+
+:ia: {counter:i}
+:ib: {counter:i}
+
+Converts an integer to a string.
+
+//

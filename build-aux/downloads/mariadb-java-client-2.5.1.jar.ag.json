@@ -1,4 +1,5 @@
 {
+
   "handler": "sst_ajh_download",
 
   "hashes": {
@@ -9,6 +10,7 @@
     "sha384": "9f9888a329309e710aca1cedcba148237c2b5250cd325e841953607cc31cc40623342f8f808b5f67aa7c726205a350bc",
     "sha512": "cec8628e7be8e44db716068b854cfdb94ccbccb14c65d52de3b98110dee98946405abdaae043ae45504b9a0a9ae7e09772036eaab0488dfe916468270797d0b9"
   },
+
   "urls": [
     "https://downloads.mariadb.com/Connectors/java/connector-java-2.5.1/mariadb-java-client-2.5.1.jar",
     "https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.5.1/mariadb-java-client-2.5.1.jar",
@@ -16,4 +18,5 @@
     "https://repo.jfrog.org/artifactory/repo1/org/mariadb/jdbc/mariadb-java-client/2.5.1/mariadb-java-client-2.5.1.jar",
     "https://repo.jenkins-ci.org/repo1/org/mariadb/jdbc/mariadb-java-client/2.5.1/mariadb-java-client-2.5.1.jar"
   ]
+
 }

@@ -1,0 +1,86 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-mono-time-{rzgq6itg_suffix}]
+= The `sst::mono_time_{rzgq6itg_suffix}` function
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/mono_time_{rzgq6itg_suffix}.hpp[sst/catalog/mono_time_{rzgq6itg_suffix}.hpp,window=_blank]>
+// or:   <link:{repo_browser_url}/src/c-cpp/include/sst/time.h[sst/time.h,window=_blank]>
+namespace sst {
+
+inline {rzgq6itg_return_type} mono_time_{rzgq6itg_suffix}();
+
+}
+----
+
+The `{rzgq6itg_self}` function returns the current time of the
+`{cl_sst_mono_time}` clock in
+ifeval::["{rzgq6itg_bits}" != "floating"]
+{rzgq6itg_unit}s.
+endif::[]
+ifeval::["{rzgq6itg_bits}" == "floating"]
+{rzgq6itg_unit}s with as much precision as possible.
+endif::[]
+
+ifeval::["{rzgq6itg_bits}" != "floating"]
+Note that the return type, `{rzgq6itg_return_type}`, is an unspecified
+signed integer type with at least {rzgq6itg_bits} {cr_width_bits}.
+For more information, see `{ce_std_chrono_duration}`, {cpp11sec}20.11.2,
+{cpp14sec}20.12.2, {cpp17sec}23.17.2, or {cpp20sec}27.2.
+endif::[]
+
+.{empty}
+[example]
+====
+
+.Program: `a.cpp`
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <chrono>
+#include <iostream>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/mono_time_{rzgq6itg_suffix}.hpp[sst/catalog/mono_time_{rzgq6itg_suffix}.hpp,window=_blank]>
+#include <thread>
+
+int main() {
+  auto const t0 = {rzgq6itg_self}();
+  {cl_std_this_thread_sleep_for}({cl_std_chrono_seconds}(1));
+  auto const t1 = {rzgq6itg_self}();
+  {cl_std_cout} << (t1 - t0) << "\n";
+}
+----
+
+include::cl_compile_a_cpp.adoc[]
+
+include::cl_sst_mono_time_{rzgq6itg_suffix}_output.adoc[]
+
+====
+
+//

@@ -1,0 +1,75 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_BL_SST_ABS_DIR_ADOC[]
+:SECTIONS_BL_SST_ABS_DIR_ADOC:
+//----------------------------------------------------------------------
+
+:bl_sst_abs_dir_id: bl-sst-abs-dir
+:bl_sst_abs_dir_url: sections/bl_sst_abs_dir.adoc#{bl_sst_abs_dir_id}
+:bl_sst_abs_dir: xref:{bl_sst_abs_dir_url}[sst_abs_dir]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{bl_sst_abs_dir_id}]
+= The `sst_abs_dir` function
+
+[source,subs="{sst_subs_source}"]
+----
+include::../partials/bl_include_prelude.adoc[]
+
+{bl_sst_abs_dir} [<path>]
+----
+
+The `{bl_sst_abs_dir}` function outputs an absolute path to `<path>`
+that includes a trailing `/` character.
+`<path>` is not validated against the file system and need not exist.
+
+If `<path>` is empty, `{bl_sst_barf}` will be called.
+
+The output is guaranteed to begin and end with a `/` character.
+
+:f6qt3xwv_argument: <path>
+include::../partials/bl_one_argument_csf_io.adoc[]
+
+include::../partials/bl_csf_not_required.adoc[]
+
+include::../partials/bl_unaffected_by_errexit_suspension.adoc[]
+
+This function is equivalent to calling `{bl_sst_add_slash}` followed by
+`{bl_sst_abs_prefix}` followed by `{bl_sst_squish_slashes}`, except it
+may have improved performance.
+
+//----------------------------------------------------------------------
+endif::[]

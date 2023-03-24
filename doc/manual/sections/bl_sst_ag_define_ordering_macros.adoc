@@ -1,0 +1,69 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_BL_SST_AG_DEFINE_ORDERING_MACROS_ADOC[]
+:SECTIONS_BL_SST_AG_DEFINE_ORDERING_MACROS_ADOC:
+//----------------------------------------------------------------------
+
+:bl_sst_ag_define_ordering_macros_id: bl-sst-ag-define-ordering-macros
+:bl_sst_ag_define_ordering_macros_url: sections/bl_sst_ag_define_ordering_macros.adoc#{bl_sst_ag_define_ordering_macros_id}
+:bl_sst_ag_define_ordering_macros: xref:{bl_sst_ag_define_ordering_macros_url}[sst_ag_define_ordering_macros]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{bl_sst_ag_define_ordering_macros_id}]
+= The `sst_ag_define_ordering_macros` function
+
+[source,subs="{sst_subs_source}"]
+----
+include::../partials/bl_include_prelude.adoc[]
+
+{bl_sst_ag_define_ordering_macros}
+----
+
+The `{bl_sst_ag_define_ordering_macros}` function generates every
+nonexistent macro stem:[y] implied by the existence of a
+`GATBPS_BEFORE([$0], [stem:[y]])` call.
+Each stem:[y] is called an __ordering macro__.
+((("ordering macro")))
+
+Consider the set of all pairs stem:[(x, y)] implied by the existence of
+any `GATBPS_BEFORE([$0], [stem:[y]])` call in any macro stem:[x] defined
+in `m4/stem:[x].m4`.
+For each unique stem:[y] for which `m4/stem:[y].m4` does not exist,
+`m4/stem:[y].m4` will be generated, defining stem:[y] to call
+`GATBPS_REQUIRE([stem:[x]])` for every corresponding stem:[x].
+
+//----------------------------------------------------------------------
+endif::[]

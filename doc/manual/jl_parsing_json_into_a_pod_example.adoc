@@ -1,0 +1,91 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+.Parsing JSON into a {plain_old_data_structure}
+[example]
+====
+This example uses Gson as the underlying JSON parsing library, but
+almost any library could be used.
+The only requirement is that the library can parse a JSON value into a
+hierarchy of
+`{jl_java_lang_String}`,
+`{jl_java_lang_Boolean}`,
+`{jl_java_lang_Number}`,
+`{jl_java_util_List}`,
+and
+`{jl_java_util_Map}`
+objects.
+
+.`Data.java`
+[source,java,subs="{sst_subs_source}"]
+----
+import com.stealthsoftwareinc.sst.FromJson;
+import com.stealthsoftwareinc.sst.Json;
+import java.math.BigInteger;
+import java.util.ArrayList;
+
+public final class Data implements FromJson<Data> {
+  public int x = 0;
+  public BigInteger y = BigInteger.ZERO;
+
+  @Override
+  public final Data fromJson(final Object src) {
+    x = Json.getAs(src, "x", x);
+    y = Json.getAs(src, "y", y);
+    return this;
+  }
+}
+----
+
+.`Main.java`
+[source,java,subs="{sst_subs_source}"]
+----
+import com.google.gson.Gson;
+import com.stealthsoftwareinc.sst.Json;
+import com.stealthsoftwareinc.sst.ParseFailureStatus;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+
+public final class Main {
+  public static final void main(final String... args) throws Exception {
+    try (final InputStreamReader stdin =
+             new InputStreamReader(System.in, StandardCharsets.UTF_8)) {
+      final Data d = new Data();
+      try {
+        Json.getTo(new Gson().fromJson(stdin, Map.class), d);
+      } catch (final ParseFailureStatus e) {
+        throw new ParseFailureStatus("<stdin>" + e.getMessage(), e);
+      }
+    }
+  }
+}
+----
+====
+
+//

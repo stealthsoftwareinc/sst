@@ -1,8 +1,0 @@
-//
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
-//
-WARNING: Using the `{fp_function}` function in a pipeline is usually a
-mistake, as any shell is generally permitted to run any command of a
-pipeline in a subshell.{bl_posix_pipeline_subshell_fno}
-//

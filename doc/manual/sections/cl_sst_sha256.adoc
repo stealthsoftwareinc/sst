@@ -1,0 +1,174 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_SHA256_ADOC[]
+:SECTIONS_CL_SST_SHA256_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_sha256_name0: sst::sha256
+:cl_sst_sha256_name1: sha256
+
+:cl_sst_sha256_id: cl-sst-sha256
+:cl_sst_sha256_url: sections/cl_sst_sha256.adoc#{cl_sst_sha256_id}
+
+:cl_sst_sha256_chop0: xref:{cl_sst_sha256_url}[{cl_sst_sha256_name0}]
+:cl_sst_sha256_chop1: xref:{cl_sst_sha256_url}[{cl_sst_sha256_name1}]
+
+:cl_sst_sha256: {cl_sst_sha256_chop0}
+
+:cl_sst_catalog_sha256_hpp_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/sha256.hpp
+:cl_sst_catalog_sha256_hpp: link:{cl_sst_catalog_sha256_hpp_url}[sst/catalog/sha256.hpp,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_sha256_id}]
+= The `{cl_sst_sha256_name0}` function
+
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_sha256_hpp}>
+namespace sst {
+
+// 1
+template<
+  class Src,
+  sst::enable_if_t<
+    (
+         sst::is_iterable<Src, sst::is_byte>::value // a
+      || sst::is_input_iterator<Src, sst::is_byte>::value // b
+    )
+  > = 0>
+std::vector<unsigned char> sha256(Src && src);
+
+// 2
+template<
+  class Src,
+  sst::enable_if_t<
+    (
+         sst::is_iterable<Src, sst::is_byte>::value // a
+      || sst::is_input_iterator<Src, sst::is_byte>::value // b
+    ) && (
+         sst::is_integer_ish<End>::value                  // c
+      || sst::is_sentinel<End, Src>::value            // d
+      || sst::is_value_sentinel<End, Src>::value      // e
+    )
+  > = 0>
+std::vector<unsigned char> sha256(Src && src, End const & end);
+
+}
+----
+
+The `{cl_sst_sha256}` function computes and returns the SHA-256 hash of
+the byte sequence (a) stored by or (b) iterated by `src`.
+The byte sequence consists of:
+
+[none]
+* (1a)
+All bytes stored by `src`.
+
+* (1b)
+All bytes iterated by `src` up to but not including the first zero byte.
+
+* (c)
+The first `end` bytes (a) stored by or (b) iterated by `src`.
+
+* (d)
+All bytes (a) stored by or (b) iterated by `src` up to but not including
+the first iterator that compares equal to `end`.
+
+* (e)
+All bytes (a) stored by or (b) iterated by `src` up to but not including
+the first byte that compares equal to `end`.
+
+For (a), `src` will be treated as if it had type
+`{cl_sst_remove_cvref_t}<Src> const &` regardless of its actual type.
+For (b), an iterator will be constructed from `src` via
+`{cl_sst_remove_cvref_t}<Src>({cl_std_forward}<Src>(src))` and then
+iterated with no further copies or moves.
+
+.{empty}
+[example]
+====
+.`sst-example-{example-number}.cpp`
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_include_iostream}>
+
+#include <{cl_sst_catalog_sha256_hpp}>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/to_hex.hpp[sst/catalog/to_hex.hpp,window=_blank]>
+
+namespace {
+
+template<class Label, class Hash>
+void f(Label const & label, Hash const & hash) {
+  {cl_std_cout} {cl_std_basic_ostream_operator_lsh_chop2} label;
+  {cl_std_cout} {cl_std_basic_ostream_operator_lsh_chop2} {cl_sst_to_hex_cfm8voqg}(hash);
+  {cl_std_cout} {cl_std_basic_ostream_operator_lsh_chop2} "\n";
+}
+
+}
+
+int main() {
+  char const s[] = "Stealth";
+  auto const v = {cl_sst_value_sentinel}('h');
+  f("1a  (Stealth): ", {cl_sst_sha256}(s));
+  f("2ac (Ste):     ", {cl_sst_sha256}(s, 3));
+  f("2ad (Steal):   ", {cl_sst_sha256}(s, &s[5]));
+  f("2ae (Stealt):  ", {cl_sst_sha256}(s, v));
+  f("2b  (tealth):  ", {cl_sst_sha256}(&s[1]));
+  f("2bc (tea):     ", {cl_sst_sha256}(&s[1], 3));
+  f("2bd (teal):    ", {cl_sst_sha256}(&s[1], &s[5]));
+  f("2be (tealt):   ", {cl_sst_sha256}(&s[1], v));
+  return 0;
+}
+----
+
+include::../partials/cl_cpp_compilation_command.adoc[]
+
+.Example output
+[listing,subs="{sst_subs_source}"]
+----
+1a  (Stealth): 526A40A447DDD7AA52D34BB62DBF1DA04DC4ABA8403769D239ADE80893FFEF7A
+2ac (Ste):     25BD152797157817E497C23F90BA70D3D327F2F3721B030BFD9294CE10B61E85
+2ad (Steal):   E2380ED2FB11F5D22C72FF91103478BBC2329BF16FAE4243F68FC796904B936F
+2ae (Stealt):  D6973DF4D6C5CD8C3D368DD9CC8E1E8705215C2ED8D0353C697C3A0C3EF58CDE
+2b  (tealth):  BC73F662B72CCC96E8AFD6182411CA385A00CE0AB3C99F746824A16FDA451BF4
+2bc (tea):     A9F74D1EC36EBDEB2DA3F6E5868090CD2A2D20B3DCCA7B62F60304B1D3D9EF42
+2bd (teal):    2655399ACF997BC2AD5346ECA205A8B1945E74831D4AAC71CAFBCFE2A73F093E
+2be (tealt):   883B33A24036790D3DF3CC1900D5EB2B50EC20FA80DF803C8B4CE6DE132B6CCE
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]

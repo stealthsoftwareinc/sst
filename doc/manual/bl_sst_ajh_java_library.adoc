@@ -1,0 +1,111 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#bl-sst-ajh-java-library]
+= The `sst_ajh_java_library` function
+
+.Bash
+[source,subs="{sst_subs_source}"]
+----
+include::partials/bl_include_prelude.adoc[]
+
+sst_ajh_java_library [<json>]pass:r[...]
+----
+
+:l_example_jar: netty-all-4.1.65.Final.jar
+:l_example_mtv: pass:[{@}PATH_NETTY{@}]
+
+`jardeps`::
+An optional array of `.jar` files that `dst` depends on.
+The following types of entries are supported:
++
+--
+. {empty}
+A `.jar` file name.
+For example, you might list `{l_example_jar}`.
+The `.jar` file will be expected to already exist in `javadir`,
+`/usr/local/share/java`, or `/usr/share/java` at build time and after
+installation.
+If the `.jar` file exists in more than one of these directories, the
+first one will be preferred.
+. {empty}
+A makefile target for a `.jar` file.
+For example, you might list `build-aux/downloads/{l_example_jar}`.
+If an entry contains a `/` character, it is always assumed to be this
+type of entry.
+Otherwise, the entry is distinguished against a type 1 entry by the
+existence of a corresponding `.ag`, `.ag.json`, `.ac`, or `.am` file.
+This type of entry behaves the same as a type 1 entry containing only
+the `.jar` file name, except that additional code is generated for
+building and installing the `.jar` file to the system (see below).
+. {empty}
+An `.im` substitution that expands to a `.jar` file path (not merely a
+name).
+For example, you might list `{l_example_mtv}`.
+This type of entry behaves the same as a type 1 entry except the path is
+determined at configure time instead of being semi-hardcoded to the
+previously described preference list.
+. {empty}
+An `.im` substitution that expands to a `.jar` file path, followed by a
+`:` character, followed by a type 1 or type 2 entry.
+For example, you might list
+`{l_example_mtv}:build-aux/downloads/{l_example_jar}`.
+This combines the effects of a type 3 entry with a type 1 or 2 entry,
+with the type 3 entry being preferred.
+You'd want to use this if you want to detect an already-installed newer
+version of a library at configure time, falling back to a known-good
+version if a newer version isn't found.
+When followed by a type 2 entry, the generated installation code will
+only run if the `.jar` file path does not exist as a file, i.e., the
+installation of the fallback will not occur if a newer version is
+already installed.
+--
++
+Several installation targets are generated to install any makefile
+target `.jar` files from entry types 2 and 4:
++
+--
+`install-java-$(slug)-jardeps-targets`::
+Makes all makefile target `.jar` files for `dst`.
+`install-java-$(slug)-jardeps`::
+Installs all makefile target `.jar` files for `dst`.
+`install-java-jardeps-targets`::
+Makes all makefile target `.jar` files every `dst`.
+`install-java-jardeps`::
+Installs all makefile target `.jar` files for every `dst`.
+--
++
+Do not use `jardeps` to list `.jar` dependencies that are built by this
+project.
+Use `built_jardeps` instead.
+
+`built_jardeps`::
+An optional array of `.jar` makefile targets that `dst` depends on that
+are built by this project.
+
+//

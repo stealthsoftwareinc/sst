@@ -1,0 +1,856 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+
+include::define_attributes.adoc[]
+
+//----------------------------------------------------------------------
+// Counter zeroing
+//----------------------------------------------------------------------
+
+:!bnxybdrq_ctor_i:
+
+//----------------------------------------------------------------------
+// C/C++ standards
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+// Java documents
+//----------------------------------------------------------------------
+
+:jls7url: https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf
+:jls7sec: link:{jls7url}[JLS 7,window=_blank] &sect;
+
+//----------------------------------------------------------------------
+// POSIX standards
+//----------------------------------------------------------------------
+
+:posix_2004_url: https://pubs.opengroup.org/onlinepubs/009695399/
+:posix_2004: link:{posix_2004_url}[POSIX.1-2001 (2004 Edition),window=_blank]
+
+:posix_2008_url: https://pubs.opengroup.org/onlinepubs/9699919799.2008edition/
+:posix_2008: link:{posix_2008_url}[POSIX.1-2008 (2008 Edition),window=_blank]
+
+:posix_2013_url: https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/
+:posix_2013: link:{posix_2013_url}[POSIX.1-2008 (2013 Edition),window=_blank]
+
+:posix_2016_url: https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/
+:posix_2016: link:{posix_2016_url}[POSIX.1-2008 (2016 Edition),window=_blank]
+
+:posix_2018_url: https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/
+:posix_2018: link:{posix_2018_url}[POSIX.1-2017 (2018 Edition),window=_blank]
+
+//----------------------------------------------------------------------
+// General topics
+//----------------------------------------------------------------------
+//
+// These attributes are unsorted, as some of them may use each other,
+// and attributes must be defined in topological order.
+//
+
+:cryptographically_secure_url: https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator
+:cryptographically_secure_fno:
+:cryptographically_secure: link:{cryptographically_secure_url}[cryptographically secure,window=_blank]{cryptographically_secure_fno}
+
+:plain_old_data_structure_url: https://en.wikipedia.org/wiki/Passive_data_structure
+:plain_old_data_structure_fno:
+:plain_old_data_structure: link:{plain_old_data_structure_url}[plain old data structure,window=_blank]{plain_old_data_structure_fno}
+
+:Unix_clock_url: https://en.wikipedia.org/wiki/Unix_time
+:Unix_clock_fno:
+:Unix_clock: link:{Unix_clock_url}[Unix clock,window=_blank]{Unix_clock_fno}
+
+:Unix_time_url: https://en.wikipedia.org/wiki/Unix_time
+:Unix_time_fno:
+:Unix_time: link:{Unix_time_url}[Unix time,window=_blank]{Unix_time_fno}
+
+:twos_complement_url: https://en.wikipedia.org/wiki/Two%27s_complement
+:twos_complement_fno:
+:twos_complement: link:{twos_complement_url}[two's complement,window=_blank]{twos_complement_fno}
+
+:twos_complement_representation: link:{twos_complement_url}[two's complement representation,window=_blank]{twos_complement_fno}
+
+:width_bits: width bits
+
+:Newtons_method_url: https://en.wikipedia.org/wiki/Newton%27s_method
+:Newtons_method_fno:
+:Newtons_method: link:{Newtons_method_url}[Newton's method,window=_blank]{Newtons_method_fno}
+
+//----------------------------------------------------------------------
+
+:c_locale: C locale
+
+:bl_sst_am_var_set_xref: bl_sst_am_var_set.adoc#bl-sst-am-var-set
+:bl_sst_am_var_set: xref:{bl_sst_am_var_set_xref}[sst_am_var_set]
+
+:bl_sst_am_var_add_xref: bl_sst_am_var_add.adoc#bl-sst-am-var-add
+:bl_sst_am_var_add: xref:{bl_sst_am_var_add_xref}[sst_am_var_add]
+
+:bl_sst_am_var_set_const_xref: bl_sst_am_var_set_const.adoc#bl-sst-am-var-set-const
+:bl_sst_am_var_set_const: xref:{bl_sst_am_var_set_const_xref}[sst_am_var_set_const]
+
+:bl_sst_regex_escape_xref: bl_sst_regex_escape.adoc#bl-sst-regex-escape
+:bl_sst_regex_escape: xref:{bl_sst_regex_escape_xref}[sst_regex_escape]
+
+:bl_sst_regex_escape_list_xref: bl_sst_regex_escape_list.adoc#bl-sst-regex-escape-list
+:bl_sst_regex_escape_list: xref:{bl_sst_regex_escape_list_xref}[sst_regex_escape_list]
+
+:bl_sst_human_list_xref: bl_sst_human_list.adoc#bl-sst-human-list
+:bl_sst_human_list: xref:{bl_sst_human_list_xref}[sst_human_list]
+
+:bl_sst_quote_list_xref: bl_sst_quote_list.adoc#bl-sst-quote-list
+:bl_sst_quote_list: xref:{bl_sst_quote_list_xref}[sst_quote_list]
+
+:automake_if: if
+
+:automake_AM_CONDITIONAL: AM_CONDITIONAL
+
+:json_array_url: https://datatracker.ietf.org/doc/html/rfc8259#section-4
+:json_array: link:{json_array_url}[array,window=_blank]
+:json_arrays: link:{json_array_url}[arrays,window=_blank]
+
+:json_false_url: https://datatracker.ietf.org/doc/html/rfc8259#section-3
+:json_false: link:{json_false_url}[false,window=_blank]
+
+:json_null_url: https://datatracker.ietf.org/doc/html/rfc8259#section-3
+:json_null: link:{json_null_url}[null,window=_blank]
+
+:json_object_url: https://datatracker.ietf.org/doc/html/rfc8259#section-4
+:json_object: link:{json_object_url}[object,window=_blank]
+:json_objects: link:{json_object_url}[objects,window=_blank]
+
+:json_true_url: https://datatracker.ietf.org/doc/html/rfc8259#section-3
+:json_true: link:{json_true_url}[true,window=_blank]
+
+//----------------------------------------------------------------------
+// Minimum supported Bash version
+//----------------------------------------------------------------------
+
+:bl_minimum_bash_version: 4.1
+:bl_minimum_bash_version_value: 4001
+
+//----------------------------------------------------------------------
+// Standard terms
+//----------------------------------------------------------------------
+
+:bl_verifies: verifies
+
+:bl_arithmetic_evaluation_url: https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic
+:bl_arithmetic_evaluation_fno:
+:bl_arithmetic_evaluation: link:{bl_arithmetic_evaluation_url}[arithmetic evaluation,window=_blank]{bl_arithmetic_evaluation_fno}
+
+:bl_pipeline_subshell_fno: footnote:bl_pipeline_subshell_fno_id[See \
+{posix_2004} Shell & Utilities &sect;2.12, \
+{posix_2008} Shell & Utilities &sect;2.12, \
+{posix_2013} Shell & Utilities &sect;2.12, \
+{posix_2016} Shell & Utilities &sect;2.12, and \
+{posix_2018} Shell & Utilities &sect;2.12.]
+
+:bl_subshell_url: https://mywiki.wooledge.org/SubShell
+:bl_subshell_fno: footnote:bl_subshell_fno_id[For \
+more information on subshells, see \
+{posix_2004} Shell & Utilities &sect;2.12, \
+{posix_2008} Shell & Utilities &sect;2.12, \
+{posix_2013} Shell & Utilities &sect;2.12, \
+{posix_2016} Shell & Utilities &sect;2.12, and \
+{posix_2018} Shell & Utilities &sect;2.12.]
+:bl_subshell: link:{bl_subshell_url}[subshell,window=_blank]{bl_subshell_fno}
+
+//----------------------------------------------------------------------
+// Standard entities
+//----------------------------------------------------------------------
+
+:bl_IFS: IFS
+:bl_eval: eval
+:bl_local: local
+:bl_printf: link:https://manpages.debian.org/bash-builtins[printf,window=_blank]
+:bl_type: type
+
+//----------------------------------------------------------------------
+// SST manual prose sections
+//----------------------------------------------------------------------
+
+:bl_do_not_make_global_variables_readonly_title: pass:n[Do not make global variables `readonly`]
+:bl_do_not_make_global_variables_readonly: <<bl-do-not-make-global-variables-readonly>>
+
+:bl_do_not_make_IFS_readonly_title: pass:n[Do not make `IFS` `readonly`]
+:bl_do_not_make_IFS_readonly: <<bl-do-not-make-ifs-readonly>>
+
+//----------------------------------------------------------------------
+// SST terms
+//----------------------------------------------------------------------
+
+:bl_boolean_value: boolean value
+
+//----------------------------------------------------------------------
+// SST manual entity sections
+//----------------------------------------------------------------------
+
+:cl_SST_ASSERT_c: SST_ASSERT
+
+:cl_sst_preinit_url: cl_sst_preinit.adoc#cl-sst-preinit
+:cl_sst_preinit: xref:{cl_sst_preinit_url}[sst::preinit]
+
+:bl_SST_PUSH_PROTECTED_POSTMORTEM_JOB_CONTAINER: xref:bl_postmortem_job_containers.adoc#bl-SST-PUSH-PROTECTED-POSTMORTEM-JOB-CONTAINER[SST_PUSH_PROTECTED_POSTMORTEM_JOB_CONTAINER]
+:bl_SST_NO_PUSH_POSTMORTEM_JOB_CONTAINER: xref:bl_postmortem_job_containers.adoc#bl-SST-NO-PUSH-POSTMORTEM-JOB-CONTAINER[SST_NO_PUSH_POSTMORTEM_JOB_CONTAINER]
+:bl_SST_PUSH_POSTMORTEM_JOB_CONTAINER: xref:bl_postmortem_job_containers.adoc#bl-SST-PUSH-POSTMORTEM-JOB-CONTAINER[SST_PUSH_POSTMORTEM_JOB_CONTAINER]
+:bl_build_dist_archive_bash: xref:bl_build_dist_archive_bash.adoc#bl-build-dist-archive-bash[build-dist-archive.bash]
+:bl_sst_abs_prefix: xref:bl_sst_abs_prefix.adoc#bl-sst-abs-prefix[sst_abs_prefix]
+:bl_sst_am_distribute: xref:bl_sst_am_distribute.adoc#bl-sst-am-distribute[sst_am_distribute]
+:bl_sst_am_distribute_if_not_dir: xref:bl_sst_am_distribute_if_not_dir.adoc#bl-sst-am-distribute-if-not-dir[sst_am_distribute_if_not_dir]
+:bl_sst_am_elif: xref:bl_sst_am_elif.adoc#bl-sst-am-elif[sst_am_elif]
+:bl_sst_am_else: xref:bl_sst_am_else.adoc#bl-sst-am-else[sst_am_else]
+:bl_sst_am_endif: xref:bl_sst_am_endif.adoc#bl-sst-am-endif[sst_am_endif]
+:bl_sst_am_if: xref:bl_sst_am_if.adoc#bl-sst-am-if[sst_am_if]
+:bl_sst_array_from_zterm: xref:bl_sst_array_from_zterm.adoc#bl-sst-array-from-zterm[sst_array_from_zterm]
+:bl_sst_barf: xref:bl_sst_barf.adoc#bl-sst-barf[sst_barf]
+
+:bl_sst_csf_xref: bl_sst_csf.adoc#bl-sst-csf
+:bl_sst_csf: xref:{bl_sst_csf_xref}[sst_csf]
+
+:bl_sst_dot_slash: xref:bl_sst_dot_slash.adoc#bl-sst-dot-slash[sst_dot_slash]
+:bl_sst_expect_argument_count: xref:bl_sst_expect_argument_count.adoc#bl-sst-expect-argument-count[sst_expect_argument_count]
+:bl_sst_expect_not_subshell: xref:bl_sst_expect_not_subshell.adoc#bl-sst-expect-not-subshell[sst_expect_not_subshell]
+:bl_sst_expect_prefix: xref:bl_sst_expect_prefix.adoc#bl-sst-expect-prefix[sst_expect_prefix]
+:bl_sst_get_prefix: xref:bl_sst_get_prefix.adoc#bl-sst-get-prefix[sst_get_prefix]
+:bl_sst_ihd: xref:bl_sst_ihd.adoc#bl-sst-ihd[sst_ihd]
+:bl_sst_ihs: xref:bl_sst_ihs.adoc#bl-sst-ihs[sst_ihs]
+:bl_sst_info: xref:bl_sst_info.adoc#bl-sst-info[sst_info]
+:bl_sst_is0atty: xref:bl_sst_is0atty.adoc#bl-sst-is0atty[sst_is0atty]
+:bl_sst_nl: xref:bl_sst_nl.adoc#bl-sst-nl[sst_nl]
+:bl_sst_parse_opt: xref:bl_sst_parse_opt.adoc#bl-sst-parse-opt[sst_parse_opt]
+:bl_sst_pop_var: xref:bl_sst_pop_var.adoc#bl-sst-pop-var[sst_pop_var]
+:bl_sst_push_var: xref:bl_sst_push_var.adoc#bl-sst-push-var[sst_push_var]
+:bl_sst_smart_quote: xref:bl_sst_smart_quote.adoc#bl-sst-smart-quote[sst_smart_quote]
+:bl_sst_type: xref:bl_sst_type.adoc#bl-sst-type[sst_type]
+:bl_sst_underscore_slug: xref:bl_sst_underscore_slug.adoc#bl-sst-underscore-slug[sst_underscore_slug]
+:bl_sst_unknown_opt: xref:bl_sst_unknown_opt.adoc#bl-sst-unknown-opt[sst_unknown_opt]
+:bl_sst_warn: xref:bl_sst_warn.adoc#bl-sst-warn[sst_warn]
+
+:csf_form: xref:{bl_sst_csf_xref}[CSF form]
+
+:bl_command_substitution: command substitution
+
+:bl_sst_json_escape_xref: bl_sst_json_escape.adoc#bl-sst-json-escape
+:bl_sst_json_escape: xref:{bl_sst_json_escape_xref}[sst_json_escape]
+
+:bl_sst_json_quote_xref: bl_sst_json_quote.adoc#bl-sst-json-quote
+:bl_sst_json_quote: xref:{bl_sst_json_quote_xref}[sst_json_quote]
+
+:bl_sst_quote_xref: bl_sst_quote.adoc#bl-sst-quote
+:bl_sst_quote: xref:{bl_sst_quote_xref}[sst_quote]
+
+:bl_sst_expect_utf8_xref: bl_sst_expect_utf8.adoc#bl-sst-expect-utf8
+:bl_sst_expect_utf8: xref:{bl_sst_expect_utf8_xref}[sst_expect_utf8]
+
+// TODO: "Validates" generally means "failure calls sst_barf". We need
+//       to document this somewhere.
+:bl_validates: validates
+
+:bl_sst_set_exit_xref: bl_sst_set_exit.adoc#bl-sst-set-exit
+:bl_sst_set_exit: xref:{bl_sst_set_exit_xref}[sst_set_exit]
+
+:bl_sst_expect_exit_status_xref: bl_sst_expect_exit_status.adoc#bl-sst-expect-exit-status
+:bl_sst_expect_exit_status: xref:{bl_sst_expect_exit_status_xref}[sst_expect_exit_status]
+
+:bl_sst_get_environment_variables_xref: bl_sst_get_environment_variables.adoc#bl-sst-get-environment-variables
+:bl_sst_get_environment_variables: xref:{bl_sst_get_environment_variables_xref}[sst_get_environment_variables]
+
+:bash_regular_expression: Bash regular expression
+:bash_regular_expressions: Bash regular expressions
+
+:bs_gnu_autotools_url: https://manuals.quinngrier.com/automake/1.16.5/automake.html#Autotools-Introduction
+:bs_gnu_autotools: {bs_gnu_autotools_url}[GNU Autotools]
+:bs_autotools: {bs_gnu_autotools_url}[Autotools]
+
+:bs_distribution_archive: distribution archive
+
+:bs_distribution_repositories: <<bs_distribution_repository,distribution repositories>>
+
+:bs_distribution_repository: distribution repository
+
+//----------------------------------------------------------------------
+
+:ce_CHAR_BIT_url: https://en.cppreference.com/w/c/types/limits
+:ce_CHAR_BIT: {ce_CHAR_BIT_url}[CHAR_BIT]
+
+:ce_constexpr_url: https://en.cppreference.com/w/cpp/keyword/constexpr
+:ce_constexpr: {ce_constexpr_url}[constexpr]
+
+:ce_inline_url: https://en.cppreference.com/w/cpp/keyword/inline
+:ce_inline: {ce_inline_url}[inline]
+
+:cl_noexcept_oper_url: https://en.cppreference.com/w/cpp/language/noexcept
+:cl_noexcept_oper_fno:
+:cl_noexcept_oper: link:{cl_noexcept_oper_url}[noexcept,window=_blank]{cl_noexcept_oper_fno}
+
+:cl_noexcept_spec_url: https://en.cppreference.com/w/cpp/language/noexcept_spec
+:cl_noexcept_spec_fno:
+:cl_noexcept_spec: link:{cl_noexcept_spec_url}[noexcept,window=_blank]{cl_noexcept_spec_fno}
+
+:ce_std_chrono_duration_url: https://en.cppreference.com/w/cpp/chrono/duration
+:ce_std_chrono_duration: {ce_std_chrono_duration_url}[std::chrono::duration]
+
+:ce_std_chrono_system_clock_url: https://en.cppreference.com/w/cpp/chrono/system_clock
+:ce_std_chrono_system_clock: {ce_std_chrono_system_clock_url}[std::chrono::system_clock]
+
+:cl_std_enable_if_url: https://en.cppreference.com/w/cpp/types/enable_if
+:cl_std_enable_if_fno:
+:cl_std_enable_if: link:{cl_std_enable_if_url}[std::enable_if,window=_blank]{cl_std_enable_if_fno}
+
+:ce_std_is_integral_url: https://en.cppreference.com/w/cpp/types/is_integral
+:ce_std_is_integral: {ce_std_is_integral_url}[std::is_integral]
+
+:ce_std_is_signed_url: https://en.cppreference.com/w/cpp/types/is_signed
+:ce_std_is_signed: {ce_std_is_signed_url}[std::is_signed]
+
+:ce_std_is_unsigned_url: https://en.cppreference.com/w/cpp/types/is_unsigned
+:ce_std_is_unsigned: {ce_std_is_unsigned_url}[std::is_unsigned]
+
+:ce_std_max_url: https://en.cppreference.com/w/cpp/algorithm/max
+:ce_std_max: {ce_std_max_url}[std::max]
+
+:ce_std_min_url: https://en.cppreference.com/w/cpp/algorithm/min
+:ce_std_min: {ce_std_min_url}[std::min]
+
+:ce_std_nano_url: https://en.cppreference.com/w/cpp/numeric/ratio/ratio
+:ce_std_nano: {ce_std_nano_url}[std::nano]
+
+:ce_std_range_error_url: https://en.cppreference.com/w/cpp/error/range_error
+:ce_std_range_error: {ce_std_range_error_url}[std::range_error]
+
+:cl_std_remove_cvref_url: https://en.cppreference.com/w/cpp/types/remove_cvref
+:cl_std_remove_cvref: {cl_std_remove_cvref_url}[std::remove_cvref]
+
+:ce_UCHAR_MAX_url: https://en.cppreference.com/w/c/types/limits
+:ce_UCHAR_MAX: {ce_UCHAR_MAX_url}[UCHAR_MAX]
+
+//----------------------------------------------------------------------
+// Standard topics
+//----------------------------------------------------------------------
+//
+// These attributes are unsorted, as some of them may use each other,
+// and attributes must be defined in topological order.
+//
+
+:cl_include_guard: link:https://en.wikipedia.org/wiki/Include_guard[include guard,window=_blank]
+
+:cr_converting_constructor_url: https://en.cppreference.com/w/cpp/language/converting_constructor
+:cr_converting_constructor: {cr_converting_constructor_url}[converting constructor]
+
+:cr_cpp20_requires_2c_fno: footnote:cr_cpp20_requires_2c_fno_id[For \
+more information about {cpp}20 requiring two`'s complement \
+representation for signed integers, compare \
+{cpp17sec}6.9.1 with \
+{cpp20sec}6.8.1.]
+
+:cr_integer_promotions_url: https://en.cppreference.com/w/c/language/conversion
+:cr_integer_promotions: {cr_integer_promotions_url}[integer promotions]
+
+:cr_integer_types_url: {ce_std_is_integral_url}
+:cr_integer_types: {cr_integer_types_url}[integer types]
+:cr_integer_type: {cr_integer_types_url}[integer type]
+
+:cr_negative_zero_trap_fno: footnote:cr_negative_zero_trap_fno_id[For \
+more information about negative zero trap representations in C/{cpp}, \
+see \
+{c99sec}6.2.6.2p{2,3,4}, \
+{c11sec}6.2.6.2p{2,3,4}, and \
+{c18sec}6.2.6.2p{2,3,4}.]
+
+:cl_reference_type_url: https://en.cppreference.com/w/cpp/language/reference
+:cl_reference_type: {cl_reference_type_url}[reference type]
+
+:cr_undefined_behavior_url: https://en.cppreference.com/w/cpp/language/ub
+:cr_undefined_behavior: {cr_undefined_behavior_url}[undefined behavior]
+:cr_behavior_is_undefined: behavior is {cr_undefined_behavior_url}[undefined]
+
+:cr_usual_arithmetic_conversions_cpp_url: https://en.cppreference.com/w/cpp/language/operator_arithmetic
+:cr_usual_arithmetic_conversions_cpp: {cr_usual_arithmetic_conversions_cpp_url}[usual arithmetic conversions]
+
+:cr_value_bits_fno: footnote:cr_value_bits_fno_id[For \
+more information about value bits in C/{cpp}, see \
+{c99sec}6.2.6.2p{1,2}, \
+{c11sec}6.2.6.2p{1,2}, and \
+{c18sec}6.2.6.2p{1,2}.]
+:cr_value_bits: value bits{cr_value_bits_fno}
+:cr_value_bit: value bit{cr_value_bits_fno}
+
+:cr_width_bits_fno: footnote:cr_width_bits_fno_id[For \
+more information about width bits in C/{cpp}, see \
+{c99sec}6.2.6.2p6, \
+{c11sec}6.2.6.2p6 and \
+{c18sec}6.2.6.2p6]
+:cr_width_bits: width bits{cr_width_bits_fno}
+:cr_width_bit: width bit{cr_width_bits_fno}
+
+:cl_template_argument_deduction_url: https://en.cppreference.com/w/cpp/language/template_argument_deduction
+:cl_template_argument_deduction_fno:
+:cl_template_argument_deduction: link:{cl_template_argument_deduction_url}[template argument deduction,window=_blank]{cl_template_argument_deduction_fno}
+
+//----------------------------------------------------------------------
+// Standard C++ entities
+//----------------------------------------------------------------------
+
+:cl_Duration: link:https://en.cppreference.com/w/cpp/chrono/duration[Duration,window=_blank]
+:cl_UniformRandomBitGenerator: link:https://en.cppreference.com/w/cpp/named_req/UniformRandomBitGenerator[UniformRandomBitGenerator,window=_blank]
+:cl_include: link:https://en.cppreference.com/w/cpp/preprocessor/include[#include,window=_blank]
+:cl_std_atomic: link:https://en.cppreference.com/w/cpp/atomic/atomic[std::atomic,window=_blank]
+:cl_std_basic_string: link:https://en.cppreference.com/w/cpp/string/basic_string[std::basic_string,window=_blank]
+:cl_std_cerr: link:https://en.cppreference.com/w/cpp/io/cerr[std::cerr,window=_blank]
+:cl_std_chrono_microseconds: link:https://en.cppreference.com/w/cpp/chrono/duration[std::chrono::microseconds,window=_blank]
+:cl_std_chrono_milliseconds: link:https://en.cppreference.com/w/cpp/chrono/duration[std::chrono::milliseconds,window=_blank]
+:cl_std_chrono_nanoseconds: link:https://en.cppreference.com/w/cpp/chrono/duration[std::chrono::nanoseconds,window=_blank]
+:cl_std_chrono_seconds: link:https://en.cppreference.com/w/cpp/chrono/duration[std::chrono::seconds,window=_blank]
+:cl_std_chrono_steady_clock: link:https://en.cppreference.com/w/cpp/chrono/steady_clock[std::chrono::steady_clock,window=_blank]
+:cl_std_chrono_time_point: link:https://en.cppreference.com/w/cpp/chrono/time_point[std::chrono::time_point,window=_blank]
+:cl_std_exception: link:https://en.cppreference.com/w/cpp/error/exception[std::exception,window=_blank]
+:cl_std_false_type: link:https://en.cppreference.com/w/cpp/types/integral_constant[std::false_type,window=_blank]
+:cl_std_floating_point: link:https://en.cppreference.com/w/cpp/concepts/floating_point[std::floating_point,window=_blank]
+:cl_std_hash: link:https://en.cppreference.com/w/cpp/utility/hash[std::hash,window=_blank]
+:cl_std_integral: link:https://en.cppreference.com/w/cpp/concepts/integral[std::integral,window=_blank]
+:cl_std_is_integral: link:https://en.cppreference.com/w/cpp/types/is_integral[std::is_integral,window=_blank]
+:cl_std_is_same: link:https://en.cppreference.com/w/cpp/types/is_same[std::is_same,window=_blank]
+:cl_std_memory_order: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order,window=_blank]
+:cl_std_memory_order_acq_rel: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order_acq_rel,window=_blank]
+:cl_std_memory_order_acquire: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order_acquire,window=_blank]
+:cl_std_memory_order_consume: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order_consume,window=_blank]
+:cl_std_memory_order_relaxed: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order_relaxed,window=_blank]
+:cl_std_memory_order_release: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order_release,window=_blank]
+:cl_std_memory_order_seq_cst: link:https://en.cppreference.com/w/cpp/atomic/memory_order[std::memory_order_seq_cst,window=_blank]
+:cl_std_monostate: link:https://en.cppreference.com/w/cpp/utility/variant/monostate[std::monostate,window=_blank]
+:cl_std_overflow_error: link:https://en.cppreference.com/w/cpp/error/overflow_error[std::overflow_error,window=_blank]
+:cl_std_overflow_error_ctor: link:https://en.cppreference.com/w/cpp/error/overflow_error[overflow_error,window=_blank]
+:cl_std_range_error: link:https://en.cppreference.com/w/cpp/error/range_error[std::range_error,window=_blank]
+:cl_std_range_error_ctor: link:https://en.cppreference.com/w/cpp/error/range_error[range_error,window=_blank]
+:cl_std_runtime_error: link:https://en.cppreference.com/w/cpp/error/runtime_error[std::runtime_error,window=_blank]
+:cl_std_runtime_error_ctor: link:https://en.cppreference.com/w/cpp/error/runtime_error[runtime_error,window=_blank]
+:cl_std_shared_ptr: link:https://en.cppreference.com/w/cpp/memory/shared_ptr[std::shared_ptr,window=_blank]
+:cl_std_string: link:https://en.cppreference.com/w/cpp/string/basic_string[std::string,window=_blank]
+:cl_std_this_thread_sleep_for: link:https://en.cppreference.com/w/cpp/thread/sleep_for[std::this_thread::sleep_for,window=_blank]
+:cl_std_true_type: link:https://en.cppreference.com/w/cpp/types/integral_constant[std::true_type,window=_blank]
+:cl_std_uniform_random_bit_generator: link:https://en.cppreference.com/w/cpp/numeric/random/uniform_random_bit_generator[std::uniform_random_bit_generator,window=_blank]
+:cl_thread_local: link:https://en.cppreference.com/w/cpp/keyword/thread_local[thread_local,window=_blank]
+
+:cl_std_logic_error_url: https://en.cppreference.com/w/cpp/error/logic_error
+:cl_std_logic_error: link:{cl_std_logic_error_url}[std::logic_error,window=_blank]
+
+//----------------------------------------------------------------------
+// SST entities
+//----------------------------------------------------------------------
+
+:cl_SST_CPP14_CONSTEXPR: xref:cl_SST_CPP_CONSTEXPR.adoc#cl-SST-CPP-CONSTEXPR[SST_CPP14_CONSTEXPR]
+:cl_SST_CPP17_CONSTEXPR: xref:cl_SST_CPP_CONSTEXPR.adoc#cl-SST-CPP-CONSTEXPR[SST_CPP17_CONSTEXPR]
+:cl_SST_CPP17_INLINE: xref:cl_SST_CPP17_INLINE.adoc#cl-SST-CPP17-INLINE[SST_CPP17_INLINE]
+:cl_SST_CPP20_CONSTEXPR: xref:cl_SST_CPP_CONSTEXPR.adoc#cl-SST-CPP-CONSTEXPR[SST_CPP20_CONSTEXPR]
+:cl_SST_DEFINE_BOOLEAN_TRAIT_1: xref:cl_SST_DEFINE_BOOLEAN_TRAIT_1.adoc#cl-SST-DEFINE-BOOLEAN-TRAIT-1[SST_DEFINE_BOOLEAN_TRAIT_1]
+:cl_SST_WITH_OPENSSL_CRYPTO: SST_WITH_OPENSSL_CRYPTO
+:cl_sst_asctime: xref:cl_sst_asctime.adoc#cl-sst-asctime-q[sst::asctime]
+:cl_sst_atomic_shared_ptr: xref:cl_sst_atomic_shared_ptr.adoc#cl-sst-atomic-shared-ptr[sst::atomic_shared_ptr]
+:cl_sst_bignum: xref:cl_sst_bignum.adoc#cl-sst-bignum[sst::bignum]
+:cl_sst_ceil_lg: xref:cl_sst_ceil_lg.adoc#cl-sst-ceil-lg[sst::ceil_lg]
+:cl_sst_ceil_sqrt: xref:cl_sst_ceil_sqrt.adoc#cl-sst-ceil-sqrt[sst::ceil_sqrt]
+:cl_sst_checked_t: xref:cl_sst_checked_t.adoc#cl-sst-checked-t[sst::checked_t]
+:cl_sst_checked_reserve: xref:cl_sst_checked_reserve.adoc#cl-sst-checked-reserve[sst::checked_reserve]
+:cl_sst_checked_resize: xref:cl_sst_checked_resize.adoc#cl-sst-checked-resize[sst::checked_resize]
+:cl_sst_cooldown_mutex: xref:cl_sst_cooldown_mutex.adoc#cl-sst-cooldown-mutex[sst::cooldown_mutex]
+:cl_sst_ctime: xref:cl_sst_ctime.adoc#cl-sst-ctime-q[sst::ctime]
+:cl_sst_enable_if: xref:cl_sst_enable_if.adoc#cl-sst-enable-if[sst::enable_if]
+:cl_sst_enable_if_t: xref:cl_sst_enable_if_t.adoc#cl-sst-enable-if-t[sst::enable_if_t]
+:cl_sst_enable_t: xref:cl_sst_enable_t.adoc#cl-sst-enable-t[sst::enable_t]
+:cl_sst_first_t: xref:cl_sst_first_t.adoc#cl-sst-first-t[sst::first_t]
+:cl_sst_floor_lg: xref:cl_sst_floor_lg.adoc#cl-sst-floor-lg[sst::floor_lg]
+:cl_sst_floor_sqrt: xref:cl_sst_floor_sqrt.adoc#cl-sst-floor-sqrt[sst::floor_sqrt]
+:cl_sst_gmtime: xref:cl_sst_gmtime.adoc#cl-sst-gmtime-q[sst::gmtime]
+:cl_sst_indeterminate: xref:cl_sst_indeterminate.adoc#cl-sst-indeterminate[sst::indeterminate]
+:cl_sst_indeterminate_t: xref:cl_sst_indeterminate_t.adoc#cl-sst-indeterminate-t[sst::indeterminate_t]
+:cl_sst_is_signed_integer: xref:cl_sst_is_signed_integer.adoc#cl-sst-is-signed-integer[sst::is_signed_integer]
+:cl_sst_is_unsigned_integer: xref:cl_sst_is_unsigned_integer.adoc#cl-sst-is-unsigned-integer[sst::is_unsigned_integer]
+:cl_sst_json_exception: xref:cl_sst_json_exception.adoc#cl-sst-json-exception[sst::json::exception]
+:cl_sst_json_get_as: xref:cl_sst_json_get_as.adoc#cl-sst-json-get-as[sst::json::get_as]
+:cl_sst_json_get_to: xref:cl_sst_json_get_to.adoc#cl-sst-json-get-to[sst::json::get_to]
+:cl_sst_json_remove_as: xref:cl_sst_json_remove_as.adoc#cl-sst-json-remove-as[sst::json::remove_as]
+:cl_sst_json_remove_to: xref:cl_sst_json_remove_to.adoc#cl-sst-json-remove-to[sst::json::remove_to]
+:cl_sst_localtime: xref:cl_sst_localtime.adoc#cl-sst-localtime-q[sst::localtime]
+:cl_sst_mono_time: xref:cl_sst_mono_time.adoc#cl-sst-mono-time[sst::mono_time]
+:cl_sst_mono_time_d: xref:cl_sst_mono_time_d.adoc#cl-sst-mono-time-d[sst::mono_time_d]
+:cl_sst_mono_time_ms: xref:cl_sst_mono_time_ms.adoc#cl-sst-mono-time-ms[sst::mono_time_ms]
+:cl_sst_mono_time_ms_t: xref:cl_sst_mono_time_ms_t.adoc#cl-sst-mono-time-ms-t[sst::mono_time_ms_t]
+:cl_sst_mono_time_ns: xref:cl_sst_mono_time_ns.adoc#cl-sst-mono-time-ns[sst::mono_time_ns]
+:cl_sst_mono_time_ns_t: xref:cl_sst_mono_time_ns_t.adoc#cl-sst-mono-time-ns-t[sst::mono_time_ns_t]
+:cl_sst_mono_time_s: xref:cl_sst_mono_time_s.adoc#cl-sst-mono-time-s[sst::mono_time_s]
+:cl_sst_mono_time_s_t: xref:cl_sst_mono_time_s_t.adoc#cl-sst-mono-time-s-t[sst::mono_time_s_t]
+:cl_sst_mono_time_us: xref:cl_sst_mono_time_us.adoc#cl-sst-mono-time-us[sst::mono_time_us]
+:cl_sst_mono_time_us_t: xref:cl_sst_mono_time_us_t.adoc#cl-sst-mono-time-us-t[sst::mono_time_us_t]
+:cl_sst_monostate: xref:cl_sst_monostate.adoc#cl-sst-monostate[sst::monostate]
+:cl_sst_openssl_rand_bytes_rng: xref:cl_sst_openssl_rand_bytes_rng.adoc#cl-sst-openssl-rand-bytes-rng[sst::openssl_rand_bytes_rng]
+:cl_sst_opt_arg: xref:cl_sst_opt_arg.adoc#cl-sst-opt-arg[sst::opt_arg]
+:cl_sst_opt_exception: xref:cl_sst_opt_exception.adoc#cl-sst-opt-exception[sst::opt_exception]
+:cl_sst_parse_opt: xref:cl_sst_parse_opt.adoc#cl-sst-parse-opt[sst::parse_opt]
+:cl_sst_promote: xref:cl_sst_promote.adoc#cl-sst-promote[sst::promote]
+:cl_sst_promotes: xref:cl_sst_promotes.adoc#cl-sst-promotes[sst::promotes]
+:cl_sst_str_cmp: xref:cl_sst_str_cmp.adoc#cl-sst-str-cmp[sst::str_cmp]
+:cl_sst_time: xref:cl_sst_time.adoc#cl-sst-time-q[sst::time]
+:cl_sst_type_max: xref:cl_sst_type_max.adoc#cl-sst-type-max[sst::type_max]
+:cl_sst_type_min: xref:cl_sst_type_min.adoc#cl-sst-type-min[sst::type_min]
+:cl_sst_unix_time: xref:cl_sst_unix_time.adoc#cl-sst-unix-time[sst::unix_time]
+:cl_sst_unix_time_d: xref:cl_sst_unix_time_d.adoc#cl-sst-unix-time-d[sst::unix_time_d]
+:cl_sst_unix_time_ms: xref:cl_sst_unix_time_ms.adoc#cl-sst-unix-time-ms[sst::unix_time_ms]
+:cl_sst_unix_time_ms_t: xref:cl_sst_unix_time_ms_t.adoc#cl-sst-unix-time-ms-t[sst::unix_time_ms_t]
+:cl_sst_unix_time_ns: xref:cl_sst_unix_time_ns.adoc#cl-sst-unix-time-ns[sst::unix_time_ns]
+:cl_sst_unix_time_ns_t: xref:cl_sst_unix_time_ns_t.adoc#cl-sst-unix-time-ns-t[sst::unix_time_ns_t]
+:cl_sst_unix_time_s: xref:cl_sst_unix_time_s.adoc#cl-sst-unix-time-s[sst::unix_time_s]
+:cl_sst_unix_time_s_t: xref:cl_sst_unix_time_s_t.adoc#cl-sst-unix-time-s-t[sst::unix_time_s_t]
+:cl_sst_unix_time_us: xref:cl_sst_unix_time_us.adoc#cl-sst-unix-time-us[sst::unix_time_us]
+:cl_sst_unix_time_us_t: xref:cl_sst_unix_time_us_t.adoc#cl-sst-unix-time-us-t[sst::unix_time_us_t]
+:cl_sst_unknown_opt: xref:cl_sst_unknown_opt.adoc#cl-sst-unknown-opt[sst::unknown_opt]
+
+//----------------------------------------------------------------------
+// nlohmann::json terms
+//----------------------------------------------------------------------
+
+:cl_nlohmann_json: link:https://github.com/nlohmann/json[nlohmann::json,window=_blank]
+
+:cl_nlohmann_json_internal_type: internal type
+
+:cl_nlohmann_json_internal_value: internal value
+
+//----------------------------------------------------------------------
+// nlohmann::json entities
+//----------------------------------------------------------------------
+
+:cl_nlohmann_json_Json: link:https://json.nlohmann.me/api/basic_json[NlohmannJson,window=_blank]
+:cl_nlohmann_json_boolean_t: link:https://nlohmann.github.io/json/doxygen/classnlohmann_1_1basic\__json.html[boolean_t,window=_blank]
+:cl_nlohmann_json_integer_t: link:https://nlohmann.github.io/json/doxygen/classnlohmann_1_1basic\__json.html[integer_t,window=_blank]
+:cl_nlohmann_json_string_t: link:https://nlohmann.github.io/json/doxygen/classnlohmann_1_1basic\__json.html[string_t,window=_blank]
+:cl_nlohmann_json_unsigned_t: link:https://nlohmann.github.io/json/doxygen/classnlohmann_1_1basic\__json.html[unsigned_t,window=_blank]
+
+//----------------------------------------------------------------------
+// OpenSSL libcrypto entities
+//----------------------------------------------------------------------
+
+:cl_libcrypto_BIGNUM: link:https://www.openssl.org/docs/manmaster/man3/BN_new.html[BIGNUM,window=_blank]
+
+//----------------------------------------------------------------------
+// SST entities
+//----------------------------------------------------------------------
+
+:cmdl_sst_find_java: xref:cmdl_sst_find_java.adoc#cmdl-sst-find-java[sst_find_java]
+:cmdl_sst_find_java_home: xref:cmdl_sst_find_java_home.adoc#cmdl-sst-find-java-home[sst_find_java_home]
+
+//----------------------------------------------------------------------
+// Standard entities
+//----------------------------------------------------------------------
+
+:jl_java_BigDecimal: link:https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html[BigDecimal,window=_blank]
+:jl_java_BigInteger: link:https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html[BigInteger,window=_blank]
+:jl_java_Byte: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Byte.html[Byte,window=_blank]
+:jl_java_Integer: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html[Integer,window=_blank]
+:jl_java_Integer_SIZE: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html#SIZE[Integer.SIZE,window=_blank]
+:jl_java_Long: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Long.html[Long,window=_blank]
+:jl_java_Short: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Short.html[Short,window=_blank]
+:jl_java_lang_Boolean: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html[Boolean,window=_blank]
+:jl_java_lang_Number: link:https://docs.oracle.com/javase/7/docs/api/java/lang/Number.html[Number,window=_blank]
+:jl_java_lang_String: link:https://docs.oracle.com/javase/7/docs/api/java/lang/String.html[String,window=_blank]
+:jl_java_util_List: link:https://docs.oracle.com/javase/7/docs/api/java/util/List.html[List,window=_blank]
+:jl_java_util_Map: link:https://docs.oracle.com/javase/7/docs/api/java/util/Map.html[Map,window=_blank]
+
+//----------------------------------------------------------------------
+// SST entities
+//----------------------------------------------------------------------
+
+:jl_sst_Arith: xref:jl_sst_Arith.adoc#jl-sst-Arith[Arith]
+:jl_sst_Arith_newtonSqrt: xref:jl_sst_Arith_newtonSqrt.adoc#jl-sst-Arith-newtonSqrt[Arith.newtonSqrt]
+:jl_sst_FixedPointModContext: xref:jl_sst_FixedPointModContext.adoc#jl-sst-FixedPointModContext[FixedPointModContext]
+:jl_sst_Modulus: xref:jl_sst_Modulus.adoc#jl-sst-Modulus[Modulus]
+
+//----------------------------------------------------------------------
+// Standard entities
+//----------------------------------------------------------------------
+
+:jql_jq_error: error
+:jql_jq_floor: floor
+:jql_jq_length: length
+
+//----------------------------------------------------------------------
+// SST entities
+//----------------------------------------------------------------------
+
+:jql_sst_adjacent_pairs: xref:jql_sst_adjacent_pairs.adoc#jql-sst-adjacent-pairs[sst_adjacent_pairs]
+:jql_sst_assert: xref:jql_sst_assert.adoc#jql-sst-assert[sst_assert]
+:jql_sst_graphviz_escape: xref:jql_sst_graphviz_escape.adoc#jql-sst-graphviz-escape[sst_graphviz_escape]
+:jql_sst_graphviz_quote: xref:jql_sst_graphviz_quote.adoc#jql-sst-graphviz-quote[sst_graphviz_quote]
+:jql_sst_html_escape: xref:jql_sst_html_escape.adoc#jql-sst-html-escape[sst_html_escape]
+:jql_sst_nwise: xref:jql_sst_nwise.adoc#jql-sst-nwise[sst_nwise]
+
+//----------------------------------------------------------------------
+// Utilities
+//----------------------------------------------------------------------
+
+:strace_url: https://manpages.debian.org/strace
+:strace: link:{strace_url}[strace,window=_blank]
+
+:ut_sed_url: https://pubs.opengroup.org/onlinepubs/009695399/utilities/sed.html
+:ut_sed_fno:
+:ut_sed: link:{ut_sed_url}[sed,window=_blank]{ut_sed_fno}
+
+//----------------------------------------------------------------------
+
+:cl_sst_str_cmp_xref: cl_sst_str_cmp.adoc#cl-sst-str-cmp
+:cl_sst_str_cmp: xref:{cl_sst_str_cmp_xref}[sst::str_cmp]
+
+:cl_std_iterator_traits_link: https://en.cppreference.com/w/cpp/iterator/iterator_traits
+:cl_std_iterator_traits: link:{cl_std_iterator_traits_link}[std::iterator_traits,window=_blank]
+
+:cl_std_iterator_traits_value_type_link: https://en.cppreference.com/w/cpp/iterator/iterator_traits
+:cl_std_iterator_traits_value_type: link:{cl_std_iterator_traits_value_type_link}[value_type,window=_blank]
+
+:cl_std_vector_link: https://en.cppreference.com/w/cpp/container/vector
+:cl_std_vector: link:{cl_std_vector_link}[std::vector,window=_blank]
+
+:cl_std_vector_begin_link: https://en.cppreference.com/w/cpp/container/vector/begin
+:cl_std_vector_begin: link:{cl_std_vector_begin_link}[begin,window=_blank]
+
+:cl_sst_json_expect_object_xref: cl_sst_json_expect_object.adoc#cl-sst-json-expect-object
+:cl_sst_json_expect_object: xref:{cl_sst_json_expect_object_xref}[sst::json::expect_object]
+
+:cl_sst_json_expect_string_xref: cl_sst_json_expect_string.adoc#cl-sst-json-expect-string
+:cl_sst_json_expect_string: xref:{cl_sst_json_expect_string_xref}[sst::json::expect_string]
+
+:cl_sst_mktemp_d_xref: cl_sst_mktemp_d.adoc#cl-sst-mktemp-d
+:cl_sst_mktemp_d: xref:{cl_sst_mktemp_d_xref}[sst::mktemp_d]
+
+:bl_sst_get_variables_xref: bl_sst_get_variables.adoc#bl-sst-get-variables
+:bl_sst_get_variables: xref:{bl_sst_get_variables_xref}[sst_get_variables]
+
+:jsl_sst_fetchSlurp_xref: jsl_sst_fetchSlurp.adoc#jsl-sst-fetchSlurp
+:jsl_sst_fetchSlurp: xref:{jsl_sst_fetchSlurp_xref}[sst.fetchSlurp]
+
+:js_fetch_url: https://developer.mozilla.org/en-US/docs/Web/API/fetch
+:js_fetch: link:{js_fetch_url}[fetch,window=_blank]
+
+:http_link_header_url: https://datatracker.ietf.org/doc/html/rfc8288
+:http_link_header: link:{http_link_header_url}[Link,window=_blank]
+
+:jsl_sst_sankey_url: jsl_sst_sankey.adoc#jsl-sst-sankey
+:jsl_sst_sankey: xref:{jsl_sst_sankey_url}[sst.sankey]
+
+:Sankey_diagram_url: https://en.wikipedia.org/wiki/Sankey_diagram
+:Sankey_diagram: link:{Sankey_diagram_url}[Sankey diagram,window=_blank]
+
+:bl_sst_libdir_url: bl_sst_libdir.adoc#bl-sst-libdir
+:bl_sst_libdir: xref:{bl_sst_libdir_url}[sst_libdir]
+
+:js_document_body_url: https://developer.mozilla.org/en-US/docs/Web/API/Document/body
+:js_document_body: link:{js_document_body_url}[document.body,window=_blank]
+
+:js_appendChild_url: https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+:js_appendChild: link:{js_appendChild_url}[appendChild,window=_blank]
+
+:bl_sst_expect_not_exist_url: bl_sst_expect_not_exist.adoc#bl-sst-expect-not-exist
+:bl_sst_expect_not_exist: xref:{bl_sst_expect_not_exist_url}[sst_expect_not_exist]
+
+:cl_sst_errno_error_string_url: cl_sst_errno_error_string.adoc#cl-sst-errno-error-string
+:cl_sst_errno_error_string: xref:{cl_sst_errno_error_string_url}[sst::errno_error_string]
+
+:cl_errno: errno
+
+:cl_sst_posix_gai_error_string_url: cl_sst_posix_gai_error_string.adoc#cl-sst-posix-gai-error-string
+:cl_sst_posix_gai_error_string: xref:{cl_sst_posix_gai_error_string_url}[sst::posix_gai_error_string]
+
+:cl_getaddrinfo: getaddrinfo
+
+:cl_sst_gle_error_string_url: cl_sst_gle_error_string.adoc#cl-sst-gle-error-string
+:cl_sst_gle_error_string: xref:{cl_sst_gle_error_string_url}[sst::gle_error_string]
+
+:cl_sst_wsa_error_string_url: cl_sst_wsa_error_string.adoc#cl-sst-wsa-error-string
+:cl_sst_wsa_error_string: xref:{cl_sst_wsa_error_string_url}[sst::wsa_error_string]
+
+:Windows_Sockets_error_codes_url: https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2
+:Windows_Sockets_error_codes: link:{Windows_Sockets_error_codes_url}[Windows Sockets error codes,window=_blank]
+:Windows_Sockets_error_code: link:{Windows_Sockets_error_codes_url}[Windows Sockets error code,window=_blank]
+
+:cl_INT_MAX: INT_MAX
+
+:cl_UINT_MAX: UINT_MAX
+
+:cl_LONG_MAX: LONG_MAX
+
+:cl_ULONG_MAX: ULONG_MAX
+
+:cl_SST_WITH_WINDOWS_KERNEL32: SST_WITH_WINDOWS_KERNEL32
+
+:cl_SST_WITH_WINDOWS_WS2_32: SST_WITH_WINDOWS_WS2_32
+
+:bl_sst_grep_url: bl_sst_grep.adoc#bl-sst-grep
+:bl_sst_grep: xref:{bl_sst_grep_url}[sst_grep]
+
+:ut_grep: grep
+
+:cl_sst_call_at_exit_url: cl_sst_call_at_exit.adoc#cl-sst-call-at-exit
+:cl_sst_call_at_exit: xref:{cl_sst_call_at_exit_url}[sst::call_at_exit]
+
+:cl_std_call_once_url: https://en.cppreference.com/w/cpp/thread/call_once
+:cl_std_call_once: link:{cl_std_call_once_url}[std::call_once,window=_blank]
+
+:cl_std_atexit_url: https://en.cppreference.com/w/cpp/utility/program/atexit
+:cl_std_atexit: link:{cl_std_atexit_url}[std::atexit,window=_blank]
+
+:cl_sst_errno_exception_url: cl_sst_errno_exception.adoc#cl-sst-errno-exception
+:cl_sst_errno_exception: xref:{cl_sst_errno_exception_url}[sst::errno_exception]
+
+:cl_sst_gle_exception_url: cl_sst_gle_exception.adoc#cl-sst-gle-exception
+:cl_sst_gle_exception: xref:{cl_sst_gle_exception_url}[sst::gle_exception]
+
+:cl_sst_windows_langid_url: cl_sst_windows_langid.adoc#cl-sst-windows-langid
+:cl_sst_windows_langid: xref:{cl_sst_windows_langid_url}[sst::windows_langid]
+
+:cl_std_uint32_t: std::uint32_t
+
+:cl_creating_a_self_contained_subset_library_url: cl_creating_a_self_contained_subset_library.adoc#cl-creating-a-self-contained-subset-library
+
+:cl___cplusplus: __cplusplus
+
+:cl_pp_defined: defined
+
+:cl_sst_uchar_max_url: cl_sst_uchar_max.adoc#cl-sst-uchar-max
+:cl_sst_uchar_max: xref:{cl_sst_uchar_max_url}[sst::uchar_max]
+
+:cl_sst_uchar_max_v_url: cl_sst_uchar_max_v.adoc#cl-sst-uchar-max-v
+:cl_sst_uchar_max_v: xref:{cl_sst_uchar_max_v_url}[sst::uchar_max_v]
+
+:cl_sst_is_bool_url: cl_sst_is_bool.adoc#cl-sst-is-bool
+:cl_sst_is_bool: xref:{cl_sst_is_bool_url}[sst::is_bool]
+
+:cl_enumeration_type_url: https://en.cppreference.com/w/cpp/language/enum
+:cl_enumeration_type: link:{cl_enumeration_type_url}[enumeration type,window=_blank]
+
+:cl_sst_is_enum_url: cl_sst_is_enum.adoc#cl-sst-is-enum
+:cl_sst_is_enum: xref:{cl_sst_is_enum_url}[sst::is_enum]
+
+:cl_fundamental_floating_point_type: fundamental floating point type
+
+:cl_std_type_identity_url: https://en.cppreference.com/w/cpp/types/type_identity
+:cl_std_type_identity: link:{cl_std_type_identity_url}[std::type_identity,window=_blank]
+
+:cl_sst_type_identity_url: cl_sst_type_identity.adoc#cl-sst-type-identity
+:cl_sst_type_identity: xref:{cl_sst_type_identity_url}[sst::type_identity]
+
+:cl_sst_type_identity_t_url: cl_sst_type_identity_t.adoc#cl-sst-type-identity-t
+:cl_sst_type_identity_t: xref:{cl_sst_type_identity_t_url}[sst::type_identity_t]
+
+:cl_sst_undeduced_url: cl_sst_undeduced.adoc#cl-sst-undeduced
+:cl_sst_undeduced: xref:{cl_sst_undeduced_url}[sst::undeduced]
+
+:cl_sst_undeduced_t_url: cl_sst_undeduced_t.adoc#cl-sst-undeduced-t
+:cl_sst_undeduced_t: xref:{cl_sst_undeduced_t_url}[sst::undeduced_t]
+
+:cl_typename_url: https://en.cppreference.com/w/cpp/keyword/typename
+:cl_typename: link:{cl_typename_url}[typename,window=_blank]
+
+:cl_sst_copy_cv_url: cl_sst_copy_cv.adoc#cl-sst-copy-cv
+:cl_sst_copy_cv: xref:{cl_sst_copy_cv_url}[sst::copy_cv]
+
+:cl_sst_copy_cv_t_url: cl_sst_copy_cv_t.adoc#cl-sst-copy-cv-t
+:cl_sst_copy_cv_t: xref:{cl_sst_copy_cv_t_url}[sst::copy_cv_t]
+
+:cl_sst_remove_cvref_url: cl_sst_remove_cvref.adoc#cl-sst-remove-cvref
+:cl_sst_remove_cvref: xref:{cl_sst_remove_cvref_url}[sst::remove_cvref]
+
+:cl_sst_crypto_rng_t_url: cl_sst_crypto_rng_t.adoc#cl-sst-crypto-rng-t
+:cl_sst_crypto_rng_t: xref:{cl_sst_crypto_rng_t_url}[sst::crypto_rng_t]
+
+:cl_sstByteRng_url: cl_sstByteRng.adoc#cl-sstByteRng
+:cl_sstByteRng: xref:{cl_sstByteRng_url}[sstByteRng]
+
+:cl_sstCryptoRng_url: cl_sstCryptoRng.adoc#cl-sstCryptoRng
+:cl_sstCryptoRng: xref:{cl_sstCryptoRng_url}[sstCryptoRng]
+
+:cl_thread_storage_duration: thread storage duration
+
+:cl_std_random_device_url: https://en.cppreference.com/w/cpp/numeric/random/random_device
+:cl_std_random_device: link:{cl_std_random_device_url}[std::random_device,window=_blank]
+
+:cl_std_mt19937_url: https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine
+:cl_std_mt19937: link:{cl_std_mt19937_url}[std::mt19937,window=_blank]
+
+:cl_std_uniform_int_distribution_url: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution
+:cl_std_uniform_int_distribution: link:{cl_std_uniform_int_distribution_url}[std::uniform_int_distribution,window=_blank]
+
+:cl_std_uniform_int_distribution_min_url: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution/min
+:cl_std_uniform_int_distribution_min: link:{cl_std_uniform_int_distribution_min_url}[min,window=_blank]
+
+:cl_std_uniform_int_distribution_max_url: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution/max
+:cl_std_uniform_int_distribution_max: link:{cl_std_uniform_int_distribution_max_url}[max,window=_blank]
+
+:cl_std_cout_url: https://en.cppreference.com/w/cpp/io/cout
+:cl_std_cout: link:{cl_std_cout_url}[std::cout,window=_blank]
+
+:cl_sst_windows_socket_library_scope_url: cl_sst_windows_socket_library_scope.adoc#cl-sst-windows-socket-library-scope
+:cl_sst_windows_socket_library_scope: xref:{cl_sst_windows_socket_library_scope_url}[sst::windows_socket_library_scope]
+
+:cl_sst_windows_socket_library_scope_ctor_cvrqw5gc_url: cl_sst_windows_socket_library_scope_ctor_cvrqw5gc.adoc#cl-sst-windows-socket-library-scope-ctor-{counter:bnxybdrq_ctor_i}
+:cl_sst_windows_socket_library_scope_ctor_cvrqw5gc: xref:{cl_sst_windows_socket_library_scope_ctor_cvrqw5gc_url}[sst::windows_socket_library_scope]
+:cl_sst_windows_socket_library_scope_ctor_cvrqw5gc_n: pass:a,q[`{cl_sst_windows_socket_library_scope_ctor_cvrqw5gc}` (overload {bnxybdrq_ctor_i})]
+
+:cl_sst_windows_socket_library_scope_ctor_h35w32py_url: cl_sst_windows_socket_library_scope_ctor_h35w32py.adoc#cl-sst-windows-socket-library-scope-ctor-{counter:bnxybdrq_ctor_i}
+:cl_sst_windows_socket_library_scope_ctor_h35w32py: xref:{cl_sst_windows_socket_library_scope_ctor_h35w32py_url}[sst::windows_socket_library_scope]
+:cl_sst_windows_socket_library_scope_ctor_h35w32py_n: pass:a,q[`{cl_sst_windows_socket_library_scope_ctor_h35w32py}` (overload {bnxybdrq_ctor_i})]
+
+:cl_sst_windows_socket_library_scope_data_url: cl_sst_windows_socket_library_scope_data.adoc#cl-sst-windows-socket-library-scope-data
+:cl_sst_windows_socket_library_scope_data: xref:{cl_sst_windows_socket_library_scope_data_url}[sst::windows_socket_library_scope::data]
+:cl_sst_windows_socket_library_scope_data_n: pass:a,q[`{cl_sst_windows_socket_library_scope_data}`]
+
+:cl_sst_windows_socket_library_scope_dtor_url: cl_sst_windows_socket_library_scope_dtor.adoc#cl-sst-windows-socket-library-scope-dtor
+:cl_sst_windows_socket_library_scope_dtor: xref:{cl_sst_windows_socket_library_scope_dtor_url}[sst::~windows_socket_library_scope]
+
+:cl_SST_EXTERN_C_url: cl_SST_EXTERN_C.adoc#cl-SST-EXTERN-C
+:cl_SST_EXTERN_C: xref:{cl_SST_EXTERN_C_url}[SST_EXTERN_C]
+
+:cl_size_t_url: https://en.cppreference.com/w/c/types/size_t
+:cl_size_t: link:{cl_size_t_url}[size_t,window=_blank]
+
+:ABI_url: https://en.wikipedia.org/wiki/Application_binary_interface
+:ABI: link:{ABI_url}[ABI,window=_blank]
+
+:type_punned_url: https://en.wikipedia.org/wiki/Type_punning
+:type_punned: link:{type_punned_url}[type punned,window=_blank]
+
+:cl_std_back_insert_iterator_url: https://en.cppreference.com/w/cpp/iterator/back_insert_iterator
+:cl_std_back_insert_iterator: link:{cl_std_back_insert_iterator_url}[std::back_insert_iterator,window=_blank]
+
+:cl_req_Container_url: https://en.cppreference.com/w/cpp/container
+:cl_req_Container: link{cl_req_Container_url}[Container]
+
+:cl_std_integral_constant_url: https://en.cppreference.com/w/cpp/types/integral_constant
+:cl_std_integral_constant: link:{cl_std_integral_constant_url}[std::integral_constant,window=_blank]
+
+:cl_member_initializer_list: member initializer list
+
+//

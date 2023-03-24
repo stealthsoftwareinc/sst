@@ -1,69 +1,84 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
 //
-[[bs_build_groups]]
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+[#bs-build-groups]
 = Build groups
 
-It is common to only be interested in building certain portions of SST,
+Sometimes you might only be interested in building certain parts of SST,
 not all of it.
-For example, if you're using SST in a C project, you're probably only
+For example, if you're using SST in a C project, you might only be
 interested in building the C library.
-To provide control over this, both the `./configure` script and the
+To provide control over this, both the
+`<<bs_configuring_the_build_system,./configure>>` script and the
 `install/*` scripts support the `--with-build-groups` option, whose
 syntax is as follows:
 
-[source,subs="normal"]
+[source,subs="{sst_subs_source}"]
 ----
---with-build-groups=**[**pass:[+]**|**-**]**__group__**[**,**[**pass:[+]**|**-**]**__group__**]**...
+--with-build-groups=**[[**pass:[+]**|**-**]**<group>**[**,**[**pass:[+]**|**-**]**<group>**]...]**
 ----
 
-Each `__group__` in the comma-separated list specifies some portion of
-the build system that should be enabled or disabled.
-The group will be enabled if the '```+```' prefix or no prefix is given,
-or disabled if the '```-```' prefix is given.
+Each `<group>` in the comma-separated list specifies some part of the
+build system that should be enabled or disabled.
+The group will be enabled if the '```+```' prefix is given, or disabled
+if the '```-```' prefix is given.
+Omitting the prefix is the same as giving the '```+```' prefix.
 All groups begin as disabled, and the entries of the list will be
 applied in order.
-However, if the `--with-build-groups` option is omitted, then the
-default set of build groups will be enabled.
+If the `--with-build-groups` option is omitted, the behavior is as if it
+had been given as `--with-build-groups=default`, i.e., the default set
+of build groups will be enabled.
 Enabling or disabling certain build groups may implicitly enable or
 disable other build groups depending on how they are related.
 
 The build groups are as follows:
 
-* `default`
-+
-The default set of build groups: `c`, `cpp`, and `java`.
+`default`::
+The default set of build groups: `bash`, `c`, `cpp`, and `java`.
 
-* `c`
-+
-An alias for the `c-autotools` build group.
+`bash`::
+The Bash library.
 
-* `c-autotools`
-+
+`c`::
+`c-autotools`::
 The C library as built and installed by Autotools.
 When disabled, also disables the `cpp-autotools` build group.
 
-* `cpp`
-+
-An alias for the `cpp-autotools` build group.
-
-* `cpp-autotools`
-+
+`cpp`::
+`cpp-autotools`::
 The C++ library as built and installed by Autotools.
 When enabled, also enables the `c-autotools` build group.
 
-* `java`
-+
-An alias for the `java-gatbps` build group.
+`java`::
+`java-gatbps`::
+The Java library as built and installed by GATBPS.
 When disabled, also disables the `java-maven` build group.
 
-* `java-gatbps`
-+
-The Java library as built and installed by GATBPS.
-
-* `java-maven`
-+
+`java-maven`::
 The Java library as built and installed by Maven.
 
 //

@@ -1,0 +1,86 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-call-at-exit]
+= The `sst::call_at_exit` function
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/call_at_exit.hpp[sst/catalog/call_at_exit.hpp,window=_blank]>
+namespace sst {
+
+void call_at_exit(void (*func)());
+
+}
+----
+
+The `{cl_sst_call_at_exit}` function registers the function pointed to
+by `func` to be called when the `{cl_cpp_main}` function returns or the
+`{cl_std_exit}` function is called.
+If `func` is a null pointer, the behavior is undefined.
+
+The functions will be called in reverse order of registration.
+If the same function is registered multiple times, it will be called
+multiple times.
+The total number of registrations is only limited by the available
+memory.
+
+The behavior is undefined if any of the following occurs:
+
+. {empty}
+A function calls
+`{cl_std__Exit}`,
+`{cl_std_exit}`,
+`{cl_std_longjmp}`,
+`{cl_std_quick_exit}`,
+or
+`{cl_sst_call_at_exit}`.
+
+Any exceptions thrown by the functions will be caught and ignored.
+
+The `{cl_sst_call_at_exit}` function is thread-safe.
+If concurrent calls are made, the functions will be registered properly,
+but in an unspecified order.
+
+Although the calls to the registered functions are sequential with
+respect to each other, they are not necessarily sequential with respect
+to any calls to static object destructors or functions registered with
+the `{cl_std_atexit}` function.
+
+Because of this weak sequencing guarantee, if you need to access a
+static data structure in `func`, you should not make the data structure
+itself static, as this may cause a data race between the call to `func`
+and the call to the data structure's destructor.
+Instead, you should keep a static pointer `p` to the data structure,
+lazily allocating and constructing it under
+`if (p == nullptr) {}` (if `p` is `{cl_thread_local}`) or
+`{cl_std_call_once}` (if `p` is not `{cl_thread_local}`),
+and deallocating it in `func` under `if (p != nullptr) {}`.
+
+//

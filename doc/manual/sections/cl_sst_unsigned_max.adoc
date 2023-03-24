@@ -1,0 +1,84 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_UNSIGNED_MAX_ADOC[]
+:SECTIONS_CL_SST_UNSIGNED_MAX_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_unsigned_max_id: cl-sst-unsigned-max
+:cl_sst_unsigned_max_url: sections/cl_sst_unsigned_max.adoc#{cl_sst_unsigned_max_id}
+
+:cl_sst_unsigned_max: xref:{cl_sst_unsigned_max_url}[sst::unsigned_max]
+:cl_sst_unsigned_max_c1: xref:{cl_sst_unsigned_max_url}[unsigned_max]
+
+:cl_sst_unsigned_max_n0: sst::unsigned_max
+:cl_sst_unsigned_max_n1: unsigned_max
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_unsigned_max_id}]
+= The `sst::unsigned_max` function
+
+[source,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/unsigned_max.hpp[sst/catalog/unsigned_max.hpp,window=_blank]>
+namespace sst {
+
+template<
+  class X = __D__,
+  sst::is_arithmetic_ish Arg1,
+  sst::is_arithmetic_ish... Args>
+constexpr __R__ {cl_sst_unsigned_max_c1}(Arg1 && arg1, Args &&... args) noexcept(__E__);
+
+}
+----
+
+The `{cl_sst_unsigned_max}` function returns the maximum of its
+arguments.
+If any argument is negative, the behavior is undefined.
+
+`__D__` is an unspecified type that is internal to the library.
+If the template parameter `X` is left defaulted to `__D__`, the return
+type `__R__` will be
+`{cl_sst_common_type_t}<{cl_sst_remove_cvref_t}<Args>++...++>`.
+Note that the result can always be represented in this type.
+Otherwise, the return type `__R__` will be `{cl_sst_remove_cvref_t}<X>`,
+and if the result cannot be represented in this type, the
+{cr_behavior_is_undefined}.
+
+If all arguments are {cl_fundamental_integers}, `constexpr` will hold
+and `__E__` will be `true`.
+
+//----------------------------------------------------------------------
+endif::[]

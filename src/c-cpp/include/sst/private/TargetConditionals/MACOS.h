@@ -1,0 +1,136 @@
+/*
+ * Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice (including
+ * the next paragraph) shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/* clang-format off */
+
+#ifndef Q9Z5W4QVQDP7CNWA /* no_normalize */
+#define Q9Z5W4QVQDP7CNWA
+
+#include <TargetConditionals.h>
+
+#if defined(TARGET_OS_OSX)
+
+  #define Q9Z5W4QVQDP7CNWA (!!(TARGET_OS_OSX))
+
+#elif defined(TARGET_OS_MAC)
+
+  #define Q9Z5W4QVQDP7CNWA_010 1
+
+  #ifdef TARGET_IPHONE_SIMULATOR
+    #define Q9Z5W4QVQDP7CNWA_020 Q9Z5W4QVQDP7CNWA_010 && !(TARGET_IPHONE_SIMULATOR)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_020 Q9Z5W4QVQDP7CNWA_010
+  #endif
+
+  #ifdef TARGET_OS_BRIDGE
+    #define Q9Z5W4QVQDP7CNWA_030 Q9Z5W4QVQDP7CNWA_020 && !(TARGET_OS_BRIDGE)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_030 Q9Z5W4QVQDP7CNWA_020
+  #endif
+
+  #ifdef TARGET_OS_DRIVERKIT
+    #define Q9Z5W4QVQDP7CNWA_040 Q9Z5W4QVQDP7CNWA_030 && !(TARGET_OS_DRIVERKIT)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_040 Q9Z5W4QVQDP7CNWA_030
+  #endif
+
+  #ifdef TARGET_OS_EMBEDDED
+    #define Q9Z5W4QVQDP7CNWA_050 Q9Z5W4QVQDP7CNWA_040 && !(TARGET_OS_EMBEDDED)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_050 Q9Z5W4QVQDP7CNWA_040
+  #endif
+
+  #ifdef TARGET_OS_IOS
+    #define Q9Z5W4QVQDP7CNWA_060 Q9Z5W4QVQDP7CNWA_050 && !(TARGET_OS_IOS)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_060 Q9Z5W4QVQDP7CNWA_050
+  #endif
+
+  #ifdef TARGET_OS_IPHONE
+    #define Q9Z5W4QVQDP7CNWA_070 Q9Z5W4QVQDP7CNWA_060 && !(TARGET_OS_IPHONE)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_070 Q9Z5W4QVQDP7CNWA_060
+  #endif
+
+  #ifdef TARGET_OS_MACCATALYST
+    #define Q9Z5W4QVQDP7CNWA_080 Q9Z5W4QVQDP7CNWA_070 && !(TARGET_OS_MACCATALYST)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_080 Q9Z5W4QVQDP7CNWA_070
+  #endif
+
+  #ifdef TARGET_OS_NANO
+    #define Q9Z5W4QVQDP7CNWA_090 Q9Z5W4QVQDP7CNWA_080 && !(TARGET_OS_NANO)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_090 Q9Z5W4QVQDP7CNWA_080
+  #endif
+
+  #ifdef TARGET_OS_SIMULATOR
+    #define Q9Z5W4QVQDP7CNWA_100 Q9Z5W4QVQDP7CNWA_090 && !(TARGET_OS_SIMULATOR)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_100 Q9Z5W4QVQDP7CNWA_090
+  #endif
+
+  #ifdef TARGET_OS_TV
+    #define Q9Z5W4QVQDP7CNWA_110 Q9Z5W4QVQDP7CNWA_100 && !(TARGET_OS_TV)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_110 Q9Z5W4QVQDP7CNWA_100
+  #endif
+
+  #ifdef TARGET_OS_UIKITFORMAC
+    #define Q9Z5W4QVQDP7CNWA_120 Q9Z5W4QVQDP7CNWA_110 && !(TARGET_OS_UIKITFORMAC)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_120 Q9Z5W4QVQDP7CNWA_110
+  #endif
+
+  #ifdef TARGET_OS_UNIX
+    #define Q9Z5W4QVQDP7CNWA_130 Q9Z5W4QVQDP7CNWA_120 && !(TARGET_OS_UNIX)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_130 Q9Z5W4QVQDP7CNWA_120
+  #endif
+
+  #ifdef TARGET_OS_WATCH
+    #define Q9Z5W4QVQDP7CNWA_140 Q9Z5W4QVQDP7CNWA_130 && !(TARGET_OS_WATCH)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_140 Q9Z5W4QVQDP7CNWA_130
+  #endif
+
+  #ifdef TARGET_OS_WIN32
+    #define Q9Z5W4QVQDP7CNWA_150 Q9Z5W4QVQDP7CNWA_140 && !(TARGET_OS_WIN32)
+  #else
+    #define Q9Z5W4QVQDP7CNWA_150 Q9Z5W4QVQDP7CNWA_140
+  #endif
+
+  #define Q9Z5W4QVQDP7CNWA (Q9Z5W4QVQDP7CNWA_150)
+
+#else
+
+  #define Q9Z5W4QVQDP7CNWA (0)
+
+#endif
+
+#endif /* #ifndef Q9Z5W4QVQDP7CNWA */

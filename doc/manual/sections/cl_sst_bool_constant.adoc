@@ -1,0 +1,71 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_BOOL_CONSTANT_ADOC[]
+:SECTIONS_CL_SST_BOOL_CONSTANT_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_bool_constant_id: cl-sst-bool-constant
+:cl_sst_bool_constant_url: sections/cl_sst_bool_constant.adoc#{cl_sst_bool_constant_id}
+:cl_sst_bool_constant: xref:{cl_sst_bool_constant_url}[sst::bool_constant]
+
+:cl_sst_bool_constant_c1: xref:{cl_sst_bool_constant_url}[bool_constant]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_bool_constant_id}]
+= The `sst::bool_constant` alias
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/bool_constant.hpp[sst/catalog/bool_constant.hpp,window=_blank]>
+namespace sst {
+
+template<bool B>
+using {cl_sst_bool_constant_c1} = {cl_std_integral_constant}<bool, B>;
+
+}
+----
+
+The `{cl_sst_bool_constant}` alias provides a convenient way to write
+`{cl_std_integral_constant}<bool, B>`.
+
+:qd8fi25k_entity: {cl_sst_bool_constant}
+:qd8fi25k_entity_type: alias
+:qd8fi25k_std_entity: {cl_std_bool_constant}
+:qd8fi25k_std_version: {cpp}17
+include::../partials/cl_polyfill.adoc[]
+
+//----------------------------------------------------------------------
+endif::[]

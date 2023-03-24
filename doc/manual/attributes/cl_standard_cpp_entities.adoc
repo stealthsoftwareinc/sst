@@ -1,0 +1,498 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_CL_STANDARD_CPP_ENTITIES_ADOC[]
+:ATTRIBUTES_CL_STANDARD_CPP_ENTITIES_ADOC:
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+// __FILE__
+//----------------------------------------------------------------------
+
+:cl_FILE_macro_cpp_url: https://en.cppreference.com/w/cpp/preprocessor/replace#Predefined_macros
+:cl_FILE_macro_cpp: link:{cl_FILE_macro_cpp_url}[__FILE__,window=_blank]
+
+//----------------------------------------------------------------------
+// __LINE__
+//----------------------------------------------------------------------
+
+:cl_LINE_macro_cpp_url: https://en.cppreference.com/w/cpp/preprocessor/replace#Predefined_macros
+:cl_LINE_macro_cpp: link:{cl_LINE_macro_cpp_url}[__LINE__,window=_blank]
+
+//----------------------------------------------------------------------
+// __cplusplus
+//----------------------------------------------------------------------
+
+:cl_cplusplus_url: https://en.cppreference.com/w/cpp/preprocessor/replace#Predefined_macros
+:cl_cplusplus: link:{cl_cplusplus_url}[__cplusplus,window=_blank]
+
+//----------------------------------------------------------------------
+// constexpr
+//----------------------------------------------------------------------
+
+:cl_constexpr_url: https://en.cppreference.com/w/cpp/language/constexpr
+:cl_constexpr: link:{cl_constexpr_url}[constexpr,window=_blank]
+
+//----------------------------------------------------------------------
+// decltype
+//----------------------------------------------------------------------
+
+:cl_decltype_url: https://en.cppreference.com/w/cpp/language/decltype
+:cl_decltype: link:{cl_decltype_url}[decltype,window=_blank]
+
+//----------------------------------------------------------------------
+// enum
+//----------------------------------------------------------------------
+
+:cl_cpp_enum_url: https://en.cppreference.com/w/cpp/language/enum
+:cl_cpp_enum: link:{cl_cpp_enum_url}[enum,window=_blank]
+
+//----------------------------------------------------------------------
+// int
+//----------------------------------------------------------------------
+
+:cl_cpp_int_url: https://en.cppreference.com/w/cpp/language/types#Signed_and_unsigned_integer_types
+:cl_cpp_int: link:{cl_cpp_int_url}[int,window=_blank]
+
+//----------------------------------------------------------------------
+// main
+//----------------------------------------------------------------------
+
+:cl_cpp_main_url: https://en.cppreference.com/w/cpp/language/main_function
+:cl_cpp_main: link:{cl_cpp_main_url}[main,window=_blank]
+
+//----------------------------------------------------------------------
+// nodiscard
+//----------------------------------------------------------------------
+
+:cl_cpp_nodiscard_url: https://en.cppreference.com/w/cpp/language/attributes/nodiscard
+:cl_cpp_nodiscard: link:{cl_cpp_nodiscard_url}[nodiscard,window=_blank]
+
+//----------------------------------------------------------------------
+// noexcept operator
+//----------------------------------------------------------------------
+
+:cl_noexcept_op_url: https://en.cppreference.com/w/cpp/language/noexcept
+:cl_noexcept_op: link:{cl_noexcept_op_url}[noexcept,window=_blank]
+
+//----------------------------------------------------------------------
+// noexcept specifier
+//----------------------------------------------------------------------
+
+:cl_noexcept_spec_url: https://en.cppreference.com/w/cpp/language/noexcept_spec
+:cl_noexcept_spec: link:{cl_noexcept_spec_url}[noexcept,window=_blank]
+
+//----------------------------------------------------------------------
+// offsetof
+//----------------------------------------------------------------------
+
+:cl_cpp_offsetof_url: https://en.cppreference.com/w/cpp/types/offsetof
+:cl_cpp_offsetof: link:{cl_cpp_offsetof_url}[offsetof,window=_blank]
+
+//----------------------------------------------------------------------
+// sizeof
+//----------------------------------------------------------------------
+
+:cl_cpp_sizeof_url: https://en.cppreference.com/w/cpp/language/sizeof
+:cl_cpp_sizeof: link:{cl_cpp_sizeof_url}[sizeof,window=_blank]
+
+//----------------------------------------------------------------------
+// sizeof...
+//----------------------------------------------------------------------
+
+:cl_sizeof_ellipsis_url: pass:[https://en.cppreference.com/w/cpp/language/sizeof...]
+:cl_sizeof_ellipsis: link:{cl_sizeof_ellipsis_url}[sizeof{sst_ellipsis},window=_blank]
+
+//----------------------------------------------------------------------
+// std::_Exit
+//----------------------------------------------------------------------
+
+:cl_std__Exit_url: https://en.cppreference.com/w/cpp/utility/program/_Exit
+:cl_std__Exit: link:{cl_std__Exit_url}[std::_Exit,window=_blank]
+
+//----------------------------------------------------------------------
+// std::abort
+//----------------------------------------------------------------------
+
+:cl_std_abort_url: https://en.cppreference.com/w/cpp/utility/program/abort
+:cl_std_abort: link:{cl_std_abort_url}[std::abort,window=_blank]
+
+//----------------------------------------------------------------------
+// std::advance
+//----------------------------------------------------------------------
+
+:cl_std_advance_url: https://en.cppreference.com/w/cpp/iterator/advance
+:cl_std_advance: link:{cl_std_advance_url}[std::advance,window=_blank]
+
+//----------------------------------------------------------------------
+// std::basic_ostream
+//----------------------------------------------------------------------
+
+:cl_std_basic_ostream_url: https://en.cppreference.com/w/cpp/io/basic_ostream
+:cl_std_basic_ostream: link:{cl_std_basic_ostream_url}[std::basic_ostream,window=_blank]
+
+//----------------------------------------------------------------------
+// std::basic_ostream::operator<<
+//----------------------------------------------------------------------
+
+:cl_std_basic_ostream_operator_lsh_url: https://en.cppreference.com/w/cpp/io/basic_ostream/operator_ltlt
+:cl_std_basic_ostream_operator_lsh: link:{cl_std_basic_ostream_operator_lsh_url}[std::basic_ostream::operator<<,window=_blank]
+:cl_std_basic_ostream_operator_lsh_chop1: link:{cl_std_basic_ostream_operator_lsh_url}[basic_ostream::operator<<,window=_blank]
+:cl_std_basic_ostream_operator_lsh_chop2: link:{cl_std_basic_ostream_operator_lsh_url}[{sst_lt}{sst_lt},window=_blank]
+
+//----------------------------------------------------------------------
+// std::bool_constant
+//----------------------------------------------------------------------
+
+:cl_std_bool_constant_url: https://en.cppreference.com/w/cpp/types/integral_constant#Helper_templates
+:cl_std_bool_constant: link:{cl_std_bool_constant_url}[std::bool_constant,window=_blank]
+
+//----------------------------------------------------------------------
+// std::byte
+//----------------------------------------------------------------------
+
+:cl_std_byte_url: https://en.cppreference.com/w/cpp/types/byte
+:cl_std_byte: link:{cl_std_byte_url}[std::byte,window=_blank]
+
+//----------------------------------------------------------------------
+// std::common_type
+//----------------------------------------------------------------------
+
+:cl_std_common_type_url: https://en.cppreference.com/w/cpp/types/common_type
+:cl_std_common_type: link:{cl_std_common_type_url}[std::common_type,window=_blank]
+
+//----------------------------------------------------------------------
+// std::common_type_t
+//----------------------------------------------------------------------
+
+:cl_std_common_type_t_url: https://en.cppreference.com/w/cpp/types/common_type#Helper_types
+:cl_std_common_type_t: link:{cl_std_common_type_t_url}[std::common_type_t,window=_blank]
+
+//----------------------------------------------------------------------
+// std::conditional
+//----------------------------------------------------------------------
+
+:cl_std_conditional_url: https://en.cppreference.com/w/cpp/types/conditional
+:cl_std_conditional: link:{cl_std_conditional_url}[std::conditional,window=_blank]
+
+//----------------------------------------------------------------------
+// std::conditional_t
+//----------------------------------------------------------------------
+
+:cl_std_conditional_t_url: https://en.cppreference.com/w/cpp/types/conditional#Helper_types
+:cl_std_conditional_t: link:{cl_std_conditional_t_url}[std::conditional_t,window=_blank]
+
+//----------------------------------------------------------------------
+// std::copy
+//----------------------------------------------------------------------
+
+:cl_std_copy_url: https://en.cppreference.com/w/cpp/algorithm/copy
+:cl_std_copy: link:{cl_std_copy_url}[std::copy,window=_blank]
+
+//----------------------------------------------------------------------
+// std::cout
+//----------------------------------------------------------------------
+
+:cl_std_cout_url: https://en.cppreference.com/w/cpp/io/cout
+:cl_std_cout: link:{cl_std_cout_url}[std::cout,window=_blank]
+
+//----------------------------------------------------------------------
+// std::decay
+//----------------------------------------------------------------------
+
+:cl_std_decay_url: https://en.cppreference.com/w/cpp/types/decay
+:cl_std_decay: link:{cl_std_decay_url}[std::decay,window=_blank]
+
+//----------------------------------------------------------------------
+// std::decay_t
+//----------------------------------------------------------------------
+
+:cl_std_decay_t_url: https://en.cppreference.com/w/cpp/types/decay#Helper_types
+:cl_std_decay_t: link:{cl_std_decay_t_url}[std::decay_t,window=_blank]
+
+//----------------------------------------------------------------------
+// std::declval
+//----------------------------------------------------------------------
+
+:cl_std_declval_url: https://en.cppreference.com/w/cpp/utility/declval
+:cl_std_declval: link:{cl_std_declval_url}[std::declval,window=_blank]
+
+//----------------------------------------------------------------------
+// std::exception
+//----------------------------------------------------------------------
+
+:cl_std_exception_url: https://en.cppreference.com/w/cpp/error/exception
+:cl_std_exception: link:{cl_std_exception_url}[std::exception,window=_blank]
+
+//----------------------------------------------------------------------
+// std::exception::exception
+//----------------------------------------------------------------------
+
+:cl_std_exception_exception_url: https://en.cppreference.com/w/cpp/error/exception/exception
+:cl_std_exception_exception: link:{cl_std_exception_exception_url}[std::exception::exception,window=_blank]
+:cl_std_exception_exception_c1: link:{cl_std_exception_exception_url}[exception::exception,window=_blank]
+:cl_std_exception_exception_c2: link:{cl_std_exception_exception_url}[exception,window=_blank]
+
+//----------------------------------------------------------------------
+// std::exception::what
+//----------------------------------------------------------------------
+
+:cl_std_exception_what_url: https://en.cppreference.com/w/cpp/error/exception/what
+:cl_std_exception_what: link:{cl_std_exception_what_url}[std::exception::what,window=_blank]
+:cl_std_exception_what_c1: link:{cl_std_exception_what_url}[exception::what,window=_blank]
+:cl_std_exception_what_c2: link:{cl_std_exception_what_url}[what,window=_blank]
+
+//----------------------------------------------------------------------
+// std::exit
+//----------------------------------------------------------------------
+
+:cl_std_exit_url: https://en.cppreference.com/w/cpp/utility/program/exit
+:cl_std_exit: link:{cl_std_exit_url}[std::exit,window=_blank]
+
+//----------------------------------------------------------------------
+// std::forward
+//----------------------------------------------------------------------
+
+:cl_std_forward_url: https://en.cppreference.com/w/cpp/utility/forward
+:cl_std_forward: link:{cl_std_forward_url}[std::forward,window=_blank]
+
+//----------------------------------------------------------------------
+// std::integral_constant
+//----------------------------------------------------------------------
+
+:cl_std_integral_constant_url: https://en.cppreference.com/w/cpp/types/integral_constant
+:cl_std_integral_constant: link:{cl_std_integral_constant_url}[std::integral_constant,window=_blank]
+
+//----------------------------------------------------------------------
+// std::integral_constant::value
+//----------------------------------------------------------------------
+
+:cl_std_integral_constant_value_url: https://en.cppreference.com/w/cpp/types/integral_constant#Member_constants
+:cl_std_integral_constant_value: link:{cl_std_integral_constant_value_url}[value,window=_blank]
+
+//----------------------------------------------------------------------
+// std::is_convertible
+//----------------------------------------------------------------------
+
+:cl_std_is_convertible_url: https://en.cppreference.com/w/cpp/types/is_convertible
+:cl_std_is_convertible: link:{cl_std_is_convertible_url}[std::is_convertible,window=_blank]
+
+//----------------------------------------------------------------------
+// std::is_same
+//----------------------------------------------------------------------
+
+:cl_std_is_same_url: https://en.cppreference.com/w/cpp/types/is_same
+:cl_std_is_same: link:{cl_std_is_same_url}[std::is_same,window=_blank]
+
+//----------------------------------------------------------------------
+// std::logic_error
+//----------------------------------------------------------------------
+
+:cl_std_logic_error_url: https://en.cppreference.com/w/cpp/error/logic_error
+:cl_std_logic_error: link:{cl_std_logic_error_url}[std::logic_error,window=_blank]
+
+//----------------------------------------------------------------------
+// std::logic_error::logic_error
+//----------------------------------------------------------------------
+
+:cl_std_logic_error_logic_error_url: https://en.cppreference.com/w/cpp/error/logic_error#std::logic_error::logic_error
+:cl_std_logic_error_logic_error: link:{cl_std_logic_error_logic_error_url}[std::logic_error::logic_error,window=_blank]
+:cl_std_logic_error_logic_error_c1: link:{cl_std_logic_error_logic_error_url}[logic_error::logic_error,window=_blank]
+:cl_std_logic_error_logic_error_c2: link:{cl_std_logic_error_logic_error_url}[logic_error,window=_blank]
+
+//----------------------------------------------------------------------
+// std::longjmp
+//----------------------------------------------------------------------
+
+:cl_std_longjmp_url: https://en.cppreference.com/w/cpp/utility/program/longjmp
+:cl_std_longjmp: link:{cl_std_longjmp_url}[std::longjmp,window=_blank]
+
+//----------------------------------------------------------------------
+// std::make_unique
+//----------------------------------------------------------------------
+
+:cl_std_make_unique_n0: std::make_unique
+:cl_std_make_unique_n1: make_unique
+:cl_std_make_unique_url: https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique
+:cl_std_make_unique: link:{cl_std_make_unique_url}[{cl_std_make_unique_n0},window=_blank]
+:cl_std_make_unique_c1: link:{cl_std_make_unique_url}[{cl_std_make_unique_n1},window=_blank]
+
+//----------------------------------------------------------------------
+// std::map
+//----------------------------------------------------------------------
+
+:cl_std_map_url: https://en.cppreference.com/w/cpp/container/map
+:cl_std_map: link:{cl_std_map_url}[std::map,window=_blank]
+
+//----------------------------------------------------------------------
+// std::numeric_limits
+//----------------------------------------------------------------------
+
+:cl_std_numeric_limits_url: https://en.cppreference.com/w/cpp/types/numeric_limits
+:cl_std_numeric_limits: link:{cl_std_numeric_limits_url}[std::numeric_limits,window=_blank]
+:cl_std_numeric_limits_c1: link:{cl_std_numeric_limits_url}[numeric_limits,window=_blank]
+
+//----------------------------------------------------------------------
+// std::numeric_limits::is_specialized
+//----------------------------------------------------------------------
+
+:cl_std_numeric_limits_is_specialized_url: https://en.cppreference.com/w/cpp/types/numeric_limits/is_specialized
+:cl_std_numeric_limits_is_specialized: link:{cl_std_numeric_limits_is_specialized_url}[std::numeric_limits::is_specialized,window=_blank]
+:cl_std_numeric_limits_is_specialized_c1: link:{cl_std_numeric_limits_is_specialized_url}[numeric_limits::is_specialized,window=_blank]
+:cl_std_numeric_limits_is_specialized_c2: link:{cl_std_numeric_limits_is_specialized_url}[is_specialized,window=_blank]
+
+//----------------------------------------------------------------------
+// std::numeric_limits::max
+//----------------------------------------------------------------------
+
+:cl_std_numeric_limits_max_url: https://en.cppreference.com/w/cpp/types/numeric_limits/max
+:cl_std_numeric_limits_max: link:{cl_std_numeric_limits_max_url}[std::numeric_limits::max,window=_blank]
+:cl_std_numeric_limits_max_c1: link:{cl_std_numeric_limits_max_url}[numeric_limits::max,window=_blank]
+:cl_std_numeric_limits_max_c2: link:{cl_std_numeric_limits_max_url}[max,window=_blank]
+
+//----------------------------------------------------------------------
+// std::numeric_limits::min
+//----------------------------------------------------------------------
+
+:cl_std_numeric_limits_min_url: https://en.cppreference.com/w/cpp/types/numeric_limits/min
+:cl_std_numeric_limits_min: link:{cl_std_numeric_limits_min_url}[std::numeric_limits::min,window=_blank]
+:cl_std_numeric_limits_min_c1: link:{cl_std_numeric_limits_min_url}[numeric_limits::min,window=_blank]
+:cl_std_numeric_limits_min_c2: link:{cl_std_numeric_limits_min_url}[min,window=_blank]
+
+//----------------------------------------------------------------------
+// std::overflow_error::overflow_error
+//----------------------------------------------------------------------
+
+:cl_std_overflow_error_overflow_error_url: https://en.cppreference.com/w/cpp/error/overflow_error#std::overflow_error::overflow_error
+:cl_std_overflow_error_overflow_error: link:{cl_std_overflow_error_overflow_error_url}[std::overflow_error::overflow_error,window=_blank]
+:cl_std_overflow_error_overflow_error_c1: link:{cl_std_overflow_error_overflow_error_url}[overflow_error::overflow_error,window=_blank]
+:cl_std_overflow_error_overflow_error_c2: link:{cl_std_overflow_error_overflow_error_url}[overflow_error,window=_blank]
+
+//----------------------------------------------------------------------
+// std::quick_exit
+//----------------------------------------------------------------------
+
+:cl_std_quick_exit_url: https://en.cppreference.com/w/cpp/utility/program/quick_exit
+:cl_std_quick_exit: link:{cl_std_quick_exit_url}[std::quick_exit,window=_blank]
+
+//----------------------------------------------------------------------
+// std::remove_cv
+//----------------------------------------------------------------------
+
+:cl_std_remove_cv_url: https://en.cppreference.com/w/cpp/types/remove_cv
+:cl_std_remove_cv: link:{cl_std_remove_cv_url}[std::remove_cv,window=_blank]
+
+//----------------------------------------------------------------------
+// std::remove_cv_t
+//----------------------------------------------------------------------
+
+:cl_std_remove_cv_t_url: https://en.cppreference.com/w/cpp/types/remove_cv#Helper_types
+:cl_std_remove_cv_t: link:{cl_std_remove_cv_t_url}[std::remove_cv_t,window=_blank]
+
+//----------------------------------------------------------------------
+// std::remove_reference
+//----------------------------------------------------------------------
+
+:cl_std_remove_reference_url: https://en.cppreference.com/w/cpp/types/remove_reference
+:cl_std_remove_reference: link:{cl_std_remove_reference_url}[std::remove_reference,window=_blank]
+
+//----------------------------------------------------------------------
+// std::remove_reference_t
+//----------------------------------------------------------------------
+
+:cl_std_remove_reference_t_url: https://en.cppreference.com/w/cpp/types/remove_reference#Helper_types
+:cl_std_remove_reference_t: link:{cl_std_remove_reference_t_url}[std::remove_reference_t,window=_blank]
+
+//----------------------------------------------------------------------
+// std::runtime_error
+//----------------------------------------------------------------------
+
+:cl_std_runtime_error_url: https://en.cppreference.com/w/cpp/error/runtime_error
+:cl_std_runtime_error: link:{cl_std_runtime_error_url}[std::runtime_error,window=_blank]
+
+//----------------------------------------------------------------------
+// std::runtime_error::runtime_error
+//----------------------------------------------------------------------
+
+:cl_std_runtime_error_runtime_error_url: https://en.cppreference.com/w/cpp/error/runtime_error#std::runtime_error::runtime_error
+:cl_std_runtime_error_runtime_error: link:{cl_std_runtime_error_runtime_error_url}[std::runtime_error::runtime_error,window=_blank]
+:cl_std_runtime_error_runtime_error_c1: link:{cl_std_runtime_error_runtime_error_url}[runtime_error::runtime_error,window=_blank]
+:cl_std_runtime_error_runtime_error_c2: link:{cl_std_runtime_error_runtime_error_url}[runtime_error,window=_blank]
+
+//----------------------------------------------------------------------
+// std::size_t
+//----------------------------------------------------------------------
+
+:cl_std_size_t_url: https://en.cppreference.com/w/cpp/types/size_t
+:cl_std_size_t: link:{cl_std_size_t_url}[std::size_t,window=_blank]
+
+//----------------------------------------------------------------------
+// std::terminate
+//----------------------------------------------------------------------
+
+:cl_std_terminate_url: https://en.cppreference.com/w/cpp/error/terminate
+:cl_std_terminate: link:{cl_std_terminate_url}[std::terminate,window=_blank]
+
+//----------------------------------------------------------------------
+// std::vector
+//----------------------------------------------------------------------
+
+:cl_std_vector_url: https://en.cppreference.com/w/cpp/container/vector
+:cl_std_vector: link:{cl_std_vector_url}[std::vector,window=_blank]
+
+//----------------------------------------------------------------------
+// std::vector::data
+//----------------------------------------------------------------------
+
+:cl_std_vector_data_url: https://en.cppreference.com/w/cpp/container/vector/data
+:cl_std_vector_data: link:{cl_std_vector_data_url}[std::vector::data,window=_blank]
+:cl_std_vector_data_chop1: link:{cl_std_vector_data_url}[vector::data,window=_blank]
+:cl_std_vector_data_chop2: link:{cl_std_vector_data_url}[data,window=_blank]
+
+//----------------------------------------------------------------------
+// std::vector::size
+//----------------------------------------------------------------------
+
+:cl_std_vector_size_url: https://en.cppreference.com/w/cpp/container/vector/size
+:cl_std_vector_size: link:{cl_std_vector_size_url}[std::vector::size,window=_blank]
+:cl_std_vector_size_chop1: link:{cl_std_vector_size_url}[vector::size,window=_blank]
+:cl_std_vector_size_chop2: link:{cl_std_vector_size_url}[size,window=_blank]
+
+//----------------------------------------------------------------------
+// U suffix
+//----------------------------------------------------------------------
+
+:cl_U_suffix_cpp_url: https://en.cppreference.com/w/cpp/language/integer_literal#The_type_of_the_literal
+:cl_U_suffix_cpp: link:{cl_U_suffix_cpp_url}[U,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

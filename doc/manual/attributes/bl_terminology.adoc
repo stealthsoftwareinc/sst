@@ -1,0 +1,62 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_BL_TERMINOLOGY_ADOC[]
+:ATTRIBUTES_BL_TERMINOLOGY_ADOC:
+//----------------------------------------------------------------------
+
+include::bl_standard_entities.adoc[]
+
+//----------------------------------------------------------------------
+// errexit suspension
+// errexit is not suspended
+// errexit is suspended
+//----------------------------------------------------------------------
+
+:bl_errexit_suspension_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1117.3.8.11.0.8.29-1117.3.8.11.0.24.1
+:bl_errexit_suspension: pass:n[`{bl_errexit}` link:{bl_errexit_suspension_url}[suspension,window=_blank]]
+
+:bl_errexit_is_not_suspended: pass:n[`{bl_errexit}` is not link:{bl_errexit_suspension_url}[suspended,window=_blank]]
+:bl_errexit_is_suspended: pass:n[`{bl_errexit}` is link:{bl_errexit_suspension_url}[suspended,window=_blank]]
+
+//----------------------------------------------------------------------
+// exit status
+// exit statuses
+//----------------------------------------------------------------------
+
+:bl_exit_status_url: https://manuals.quinngrier.com/bash/4.1/bashref.html#Exit-Status
+:bl_exit_status: link:{bl_exit_status_url}[exit status,window=_blank]
+
+:bl_exit_statuses: link:{bl_exit_status_url}[exit statuses,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

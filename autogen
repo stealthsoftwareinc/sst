@@ -1,120 +1,311 @@
 #! /bin/sh -
+
 #
-# For the copyright information for this file, please search up the
-# directory tree for the first COPYING file.
+# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
 #
 
-# Bootstrap into the PATH-resolved bash.
-case ${SST_BASH_BOOTSTRAP+x}y$# in
-  y0) SST_BASH_BOOTSTRAP=x bash - "$0"     ; exit $? ;;
-  y*) SST_BASH_BOOTSTRAP=x bash - "$0" "$@"; exit $? ;;
+#
+# This script uses the SST Bash library to bootstrap from /bin/sh into
+# bash. See the Bash library > Bootstrapping section of the SST manual
+# for more information.
+#
+
+#-----------------------------------------------------------------------
+# Include the SST Bash library
+#-----------------------------------------------------------------------
+#
+# Include the first sst.bash file found by searching up the directory
+# tree starting from the location of this script file. If no such file
+# is found, fall back to including plain sst.bash with PATH resolution.
+#
+# This section is written in portable shell to ensure it works properly
+# in any shell.
+#
+
+case ${SST_SEARCH_UP_X-} in '')
+  case $0 in /*)
+    SST_SEARCH_UP_X=$0
+  ;; *)
+    SST_SEARCH_UP_X=./$0
+  esac
+  SST_SEARCH_UP_R='\(.*/\)'
+  SST_SEARCH_UP_X=`
+    expr "x${SST_SEARCH_UP_X?}" : "x${SST_SEARCH_UP_R?}"
+  `. || exit $?
+  unset SST_SEARCH_UP_R
+  SST_SEARCH_UP_X=`
+    cd "${SST_SEARCH_UP_X?}" || exit $?
+    while :; do
+      if test -f sst.bash; then
+        case ${PWD?} in *[!/]*)
+          printf '%s\n' "${PWD?}"/ || exit $?
+        ;; *)
+          printf '%s\n' "${PWD?}" || exit $?
+        esac
+        exit
+      fi
+      case ${PWD?} in *[!/]*)
+        cd ..
+      ;; *)
+        exit
+      esac
+    done
+  ` || exit $?
+  export SST_SEARCH_UP_X
 esac
-
-# Load the prelude.
 set -e || exit $?
-. src/bash/preludes/standard.bash
+. "${SST_SEARCH_UP_X?}"sst.bash
+unset SST_SEARCH_UP_X
 
-autogen_ac_start build-aux/autogen.ac
-autogen_am_start build-aux/autogen.am
+#-----------------------------------------------------------------------
+# The clean subcommand (part 1)
+#-----------------------------------------------------------------------
+
+autogen_clean_base=build-aux/autogen-clean
+readonly autogen_clean_base
+
+autogen_clean_keep=$autogen_clean_base.keep
+readonly autogen_clean_keep
+
+autogen_clean_init=$autogen_clean_base.init
+readonly autogen_clean_init
+
+if [[ $# == 1 && "$1" == clean ]]; then
+
+  f1() {
+    declare i
+    declare j
+    declare x
+    j=$2
+    readonly j
+    for x in "$1"/*; do
+      if [[ "${keep[$x]+x}" ]]; then
+        for ((i = 0; i < j; ++i)); do
+          omit[i]=0
+        done
+      elif [[ -d "$x" ]]; then
+        omit[j]=1
+        f1 "$x" $((j + 1))
+        if ((omit[j])); then
+          rmdir "$x"
+        fi
+      else
+        rm "$x"
+      fi
+    done
+  }
+
+  f2() {
+    declare -A keep
+    declare -a omit
+    keep=$(
+      sed '
+        s/^/["/
+        s/$/"]=/
+      ' $autogen_clean_keep
+    )
+    eval "keep=($keep)"
+
+    # Paths to always keep.
+    keep[./$autogen_clean_keep]=
+    keep[./.git]=
+
+    # Paths to never keep.
+    unset 'keep[./build-aux/autogen.started]'
+
+    readonly keep
+    omit=(1)
+    f1 . 1
+  }
+
+  f2
+
+  exit
+
+fi
 
 #-----------------------------------------------------------------------
 
-autogen_ac_append <<<''
-autogen_ac_append <<<"]AC_DEFUN_ONCE([DEFINE_ALL], [[{ :"
-for x in m4/DEFINE_*.m4; do
-  x=${x#m4/}
-  x=${x%.m4}
-  autogen_ac_append <<<"  ]AC_REQUIRE([$x])["
-done
-autogen_ac_append <<<'}]])['
+f() {
 
-for x in CFLAG CXXFLAG LIB; do
-  autogen_ac_append <<<''
-  autogen_ac_append <<<"]AC_DEFUN_ONCE([DEFINE_${x}S], [[{ :"
-  for y in m4/DEFINE_HAVE_${x}_*.m4; do
-    y=${y#m4/}
-    y=${y%.m4}
-    autogen_ac_append <<<"  ]AC_REQUIRE([$y])["
-  done
-  autogen_ac_append <<<'}]])['
-done
+  local -r x=build-aux/autogen.started
+  local -r y=build-aux/autogen.success
 
-autogen_ac_append <<<''
-autogen_ac_append <<<']DEFINE_ALL['
+  if [[ -f $x ]]; then
+    sst_barf "Refusing to run because $x exists."
+  fi
+
+  rm -f $y
+  mkdir -p build-aux
+  >$x
+
+}; f
 
 #-----------------------------------------------------------------------
-# Root .ag includes
+
+sst_ac_start build-aux/autogen.ac
+sst_am_start build-aux/autogen.am
+
+#-----------------------------------------------------------------------
+# The clean subcommand (part 2)
+#-----------------------------------------------------------------------
+
+find . >$autogen_clean_init
+
+x='
+  {
+    gsub(/\/+/, "/", $0);
+    while ($0 ~ /\/\.\//) {
+      sub(/\/\.\//, "/", $0);
+    }
+    sub(/^\.\//, "", $0);
+    sub(/\/\.$/, "", $0);
+    while ($0 ~ /\/[^\/]+\/\.\.\//) {
+      sub(/\/[^\/]+\/\.\.\//, "/", $0);
+    }
+    $0 = "./" $0;
+    print $0;
+  }
+'
+x=${x//$'\n'/}
+x=${x//'$'/'$$'}
+x=$(sst_quote <<<"$x")
+
+sst_ihs <<<'
+  '$autogen_clean_keep': Makefile.in
+  	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
+  	$(AM_V_GEN)$(GATBPS_V_NOP)
+  	$(AM_V_at)rm -f -r $@ $@$(TSUF)*
+  	$(AM_V_at)$(MAKE) list-distfiles >$@$(TSUF)1
+  	$(AM_V_at)LC_ALL=C $(AWK) '"$x"' $@$(TSUF)1 >$@$(TSUF)2
+  	$(AM_V_at)LC_ALL=C sort $@$(TSUF)2 >$@$(TSUF)3
+  	$(AM_V_at)LC_ALL=C uniq $@$(TSUF)3 >$@$(TSUF)4
+  	$(AM_V_at)cat '$autogen_clean_init' $@$(TSUF)4 >$@$(TSUF)5
+  	$(AM_V_at)LC_ALL=C sort $@$(TSUF)5 >$@$(TSUF)6
+  	$(AM_V_at)LC_ALL=C uniq -d $@$(TSUF)6 >$@$(TSUF)7
+  	$(AM_V_at)mv -f $@$(TSUF)7 $@
+  	$(AM_V_at)-rm -f -r $@$(TSUF)*
+  	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+' | sst_am_append
+
+sst_am_distribute $autogen_clean_keep
+
+#-----------------------------------------------------------------------
+
+sst_ag_define_ordering_macros
+
+sst_ag_call_defun_once_macros
+
+#-----------------------------------------------------------------------
+# Root .ag files
 #-----------------------------------------------------------------------
 #
-# If an .ag file needs to be included and there's no more specific .ag
-# file in which to do it, then do it here.
-#
-
-autogen_ag_include \
-  doc/dox/dox.ag \
-  doc/pages/pages.ag \
-  doc/readme/in_source_repo.adoc.ag \
-  src/bash/tests/ag \
-  src/c_cpp/ag \
-;
-
-#-----------------------------------------------------------------------
-# Miscellaneous distributed files
-#-----------------------------------------------------------------------
-#
-# If a file needs to be distributed (i.e., included in the distribution
-# archive) and there's no more specific .ag, .ac, or .am file in which
+# If an .ag file needs to be included and there's no more specific place
 # to do it, then do it here.
 #
 
-sst_am_distribute \
-  .clang-format \
-  COPYING \
-  README.adoc \
-  build-aux/DATE \
-  build-aux/DATE.sh \
-  build-aux/LTCURRENT \
-  build-aux/LTCURRENT.sh \
-  build-aux/VERSION \
-  build-aux/VERSION.sh \
-  build-aux/adock \
-  build-aux/echo.sh \
-  build-aux/gen-configure.sh \
-  build-aux/sh-form.sh \
-  doc/readme/*.adoc \
-  install/**/* \
-  src/bash/**/* \
-  src/install/**/* \
-  src/sh/**/* \
-  src/sst_status_map_generator.c \
+sst_ag_include \
+  doc/manual/build.phony.ag \
+  doc/pages/build.phony.ag \
+  doc/readme/build.phony.ag \
+  src/bash/build.phony.ag \
+  src/c-cpp/build.phony.ag \
+  src/rpm/build.phony.ag \
+  src/status_codes/build.phony.ag \
 ;
 
 #-----------------------------------------------------------------------
+# Root .im/in files
+#-----------------------------------------------------------------------
+#
+# If an .im/in file needs to be expanded and there's no more specific
+# place to do it, then do it here.
+#
 
-sst_ajh_asciidoctor_document \
-  doc/manual/sst.html.ag.json \
+sst_ac_config_file \
+  src/m4/config.m4 \
 ;
+
+#-----------------------------------------------------------------------
+# Root distributed files
+#-----------------------------------------------------------------------
+#
+# If a file needs to be distributed and there's no more specific place
+# to do it, then do it here.
+#
+
+sst_am_distribute_if_not_dir \
+  .clang-format \
+  ARCHIVE.adoc \
+  LICENSE \
+  README.adoc \
+  build-aux/adock \
+  build-aux/autogen.started \
+  build-aux/autogen.success \
+  build-aux/gatbps-echo.sh \
+  build-aux/gatbps-gen-date.sh \
+  build-aux/gatbps-gen-date.sh.cache \
+  build-aux/gatbps-gen-libtool-c.sh \
+  build-aux/gatbps-gen-libtool-c.sh.cache \
+  build-aux/gatbps-gen-version.sh \
+  build-aux/gatbps-gen-version.sh.cache \
+  build-aux/gen-configure.sh \
+  build-aux/sst.srcdir \
+  install/**/* \
+  src/install/**/* \
+  src/sh/**/* \
+  sst.bash \
+;
+
+#-----------------------------------------------------------------------
+# Root cleanable files
+#-----------------------------------------------------------------------
+#
+# If a file needs to be cleanable and there's no more specific place to
+# do it, then do it here.
+#
+
+sst_ihs <<<'
+  GATBPS_MOSTLYCLEANFILES += build-aux/configure.started/clean
+  GATBPS_MOSTLYCLEANFILES += build-aux/configure.success/clean
+' | sst_am_append
+
+#-----------------------------------------------------------------------
 
 sst_ajh_download build-aux/downloads
 sst_ajh_gitbundle build-aux/gitbundles
 
-autogen_java_jars \
+sst_ajh_java_library \
   lib/sst.jar.ag.json \
 ;
 
-autogen_java_tests \
-  lib/sst-tests.jar.ag.json \
+sst_ajh_java_test_suite \
+  lib/sst-test.jar.ag.json \
 ;
-
-autogen_c_cpp_tests \
-  src/c_cpp/test \
-  src/c_cpp/libsst.la \
-;
-autogen_am_var_append noinst_HEADERS \
-  src/c_cpp/test/**/*.h \
-;
-
-autogen_texinfo doc/sst.texi doc/texi doc/texi/sst
 
 #
 # Generate noinst_HEADERS.
@@ -135,7 +326,15 @@ done
 #
 #
 
-autogen_ac_finish
-autogen_am_finish
+sst_ac_finish
+sst_am_finish
 
-autoreconf -f -i -v -W all
+#-----------------------------------------------------------------------
+
+x='autoreconf -f -i -v -W all'
+sst_info "Running: $x"
+$x
+
+#-----------------------------------------------------------------------
+
+>build-aux/autogen.success

@@ -1,39 +1,90 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-The {fp_package_name} build system is based on the {bs_gnu_autotools}.
+The {exkb46kh_package_name} build system is built on top of the
+{bs_gnu_autotools}.
 Before you can start using the build system, you need to identify which
-__((package format))__ of {fp_package_name} you're working with.
-{fp_package_name} is available in three different package formats:
+__((package format))__ of {exkb46kh_package_name} you're working with.
+{exkb46kh_package_name} is generally available in three slightly
+different package formats:
 
-1. The __((source repository))__.
-2. A __((distribution archive))__.
-3. [[bs_distribution_repository]]
+1. {empty}
+The __((source repository))__.
+This repository is only available internally within Stealth.
+The other package formats are generally derived from this one.
+
+2. [[bs_distribution_repository]]
 A __((distribution repository))__.
+ifdef::exkb46kh_public_distribution_repository_url[]
+The primary public distribution repository for {exkb46kh_package_name}
+is available at link:{exkb46kh_public_distribution_repository_url}[,window=_blank].
+You may also have access to other distribution repositories that Stealth
+has created for private distribution purposes.
+endif::[]
+ifndef::exkb46kh_public_distribution_repository_url[]
+There is no public distribution repository for {exkb46kh_package_name}.
+However, you may have access to other distribution repositories that
+Stealth has created for private distribution purposes.
+endif::[]
+
+3. {empty}
+A __((distribution archive))__.
 
 To identify which package format you're working with, use the following
 algorithm:
 
-1. If you didn't start with a version control repository, i.e., you
-started with an archive file named something like
-`{fp_package_tarname}-<version>.tar.gz` or
-`{fp_package_tarname}-<version>.zip` that extracts to a directory that
-includes a file named `Makefile.in`, then you're working with a
-distribution archive.
+1. {empty}
+If you started with an archive file like
+`{exkb46kh_package_tarname}-<version>.tar.gz` and it extracts to a
+directory that includes a file named `Makefile.in`, then you're working
+with a distribution archive.
++
+[IMPORTANT]
+====
+If the extracted directory does not include a file named `Makefile.in`,
+then you may have mistakenly downloaded a __((source archive))__.
+This is what you will typically get if you use a download button when
+viewing the source repository in a repository manager like GitHub or
+GitLab.
+{exkb46kh_package_name} does not support being built from a source
+archive.
+
+Note that this only applies to download buttons for the source
+repository, not for a distribution repository.
+Using a download button on a distribution repository will generally
+yield a valid distribution archive.
+====
+
 2. Otherwise, if the version control repository includes a file named
 `Makefile.in` in the root directory, then you're working with a
 distribution repository.
-3. Otherwise, you're working with the source repository.
 
-IMPORTANT: If you started with an archive file that does not extract to
-a directory that includes a file named `Makefile.in`, then you may have
-mistakenly downloaded a __((source archive))__.
-This is what you will typically get if you use a download button when
-viewing the source repository in a repository manager like GitLab or
-GitHub.
-{fp_package_name} does not support being built from a source archive.
+3. Otherwise, you're working with the source repository.
 
 Once you know which package format you're working with, using the build
 system consists of three main steps:

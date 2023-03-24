@@ -1,0 +1,73 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+:tkgg3ae4_name: undeduced
+:tkgg3ae4_params: class T
+:tkgg3ae4_result: R
+:tkgg3ae4_slug: undeduced
+:tkgg3ae4_url: {cl_sst_undeduced_url}
+include::partials/cl_type_identity_trait.adoc[]
+
+The `{cl_sst_undeduced}` trait defines `_R_` to `T` itself, making it
+functionally equivalent to the `{cl_sst_type_identity}` trait.
+The difference is only of style: both of these traits can be used to
+prevent {cl_template_argument_deduction} from occurring, in which case
+using `{cl_sst_undeduced}` is a better indication of intent than using
+`{cl_sst_type_identity}`.
+
+.{empty}
+[example]
+====
+.`sst-example-{example-number}.cpp`
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/undeduced_t.hpp[sst/catalog/undeduced_t.hpp,window=_blank]>
+
+template<class T>
+void f(T, T) {}
+
+template<class T>
+void g(T, {cl_sst_undeduced_t}<T>) {}
+
+int main() {
+
+  long x = 0;
+  int y = 0;
+
+  // Compilation error: it is ambiguous whether T should be deduced from
+  // x as long or from y as int.
+  f(x, y);
+
+  // OK: T is deduced from x as long.
+  g(x, y);
+
+}
+----
+====
+
+//

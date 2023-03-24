@@ -1,0 +1,107 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_CRYPTO_RNG_001_MC29WUDN_ADOC[]
+:SECTIONS_CL_SST_CRYPTO_RNG_001_MC29WUDN_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_crypto_rng_mc29wudn_overload: {counter:cl_sst_crypto_rng_counter}
+:cl_sst_crypto_rng_mc29wudn_id: cl-sst-crypto-rng-overload-{cl_sst_crypto_rng_mc29wudn_overload}
+:cl_sst_crypto_rng_mc29wudn_url: sections/cl_sst_crypto_rng_001_mc29wudn.adoc#{cl_sst_crypto_rng_mc29wudn_id}
+:cl_sst_crypto_rng_mc29wudn: xref:{cl_sst_crypto_rng_mc29wudn_url}[sst::crypto_rng]
+
+:cl_sst_crypto_rng_mc29wudn_c1: xref:{cl_sst_crypto_rng_mc29wudn_url}[crypto_rng]
+
+:cl_sst_crypto_rng_mc29wudn_p1: pass:a,q[`{cl_sst_crypto_rng_mc29wudn}` (overload {cl_sst_crypto_rng_mc29wudn_overload})]
+:cl_sst_crypto_rng_mc29wudn_p2: pass:a,q[`{cl_sst_crypto_rng_mc29wudn}` function (overload {cl_sst_crypto_rng_mc29wudn_overload})]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_crypto_rng_mc29wudn_id}]
+= Overload {cl_sst_crypto_rng_mc29wudn_overload}
+
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_crypto_rng_hpp}>
+namespace sst {
+
+template<
+  class... Args,
+  {cl_sst_enable_if_t}<
+    ({cl_sizeof_ellipsis}(Args) > 0{cl_U_suffix_cpp})
+  > = 0>
+auto {cl_sst_crypto_rng_mc29wudn_c1}(Args &&... args)
+    -> {cl_decltype}({cl_sst_crypto_rng_uto8d8vg}()({cl_std_forward}<Args>(args){sst_ellipsis}));
+
+}
+----
+
+The {cl_sst_crypto_rng_mc29wudn_p2} is a convenience overload that is
+equivalent to
+`{cl_sst_crypto_rng_uto8d8vg}()({cl_std_forward}<Args>(args){sst_ellipsis})`.
+
+.{empty}
+[example]
+====
+The following program uses {cl_sst_crypto_rng_mc29wudn_p1} to generate
+16 random bytes.
+
+.`sst-example-{example-number}.cpp`
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_include_iostream}>
+#include <{cl_include_vector}>
+
+#include <{cl_sst_catalog_crypto_rng_hpp}>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/to_hex.hpp[sst/catalog/to_hex.hpp,window=_blank]>
+
+int main() {
+  {cl_std_vector}<unsigned char> v(16);
+  {cl_sst_crypto_rng_mc29wudn}(v.{cl_std_vector_data_chop2}(), v.{cl_std_vector_size_chop2}());
+  {cl_std_cout} {cl_std_basic_ostream_operator_lsh_chop2} {cl_sst_to_hex_cfm8voqg}(v) {cl_std_basic_ostream_operator_lsh_chop2} "\n";
+  return 0;
+}
+----
+
+include::../partials/cl_cpp_compilation_command.adoc[]
+
+.Example output
+[listing,subs="{sst_subs_source}"]
+----
+C4A3928E075C6536E9DA51DEC9B7F392
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]

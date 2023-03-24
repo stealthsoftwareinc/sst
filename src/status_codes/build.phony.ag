@@ -1,0 +1,179 @@
+#
+# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
+#
+
+f() {
+
+  local d
+
+  sst_expect_source_path "$BASH_SOURCE"
+  d=$(sst_get_prefix $BASH_SOURCE)
+  readonly d
+
+  sst_am_distribute \
+    ${d}dot_to_graph_edges.awk \
+    ${d}graph.awk \
+    ${d}graph.txt \
+    ${d}graph.txt.no_loops \
+    ${d}graph_edges.awk \
+    ${d}graph_nodes.awk \
+    ${d}graph_to_dot.awk \
+    ${d}graph_tred.txt \
+  ;
+
+  sst_ihs <<<"
+
+    ${d}graph.txt.no_loops: ${d}graph.awk
+    ${d}graph.txt.no_loops: ${d}graph.txt
+    ${d}graph.txt.no_loops: ${d}graph_edges.awk
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
+    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
+    	\$(AM_V_at)( \\
+    	  for ab in \\
+    	    '${d}graph.awk graph_awk' \\
+    	    '${d}graph.txt graph_txt' \\
+    	    '${d}graph_edges.awk graph_edges_awk' \\
+    	  ; do \\
+    	    set \$\$ab; \\
+    	    \$(GATBPS_VPATH_SEARCH_TOP) \\
+    	      \$\$1 \\
+    	    \$(GATBPS_VPATH_SEARCH_BOT); \\
+    	    eval \$\$2='\$(GATBPS_VPATH_SEARCH_RESULT)'/\$\$1; \\
+    	  done; \\
+    	  \$(AWK) \\
+    	    -f \"\$\$graph_awk\" \\
+    	    -f \"\$\$graph_edges_awk\" \\
+    	    -v ga_file=\"\$\$graph_txt\" \\
+    	    \"\$\$graph_txt\" \\
+    	    >\$@\$(TSUF) \\
+    	  || exit \$\$?; \\
+    	)
+    	\$(AM_V_at)tsort \$@\$(TSUF) >/dev/null
+    	\$(AM_V_at)touch \$@
+    	\$(AM_V_at)-rm -f -r \$@\$(TSUF)*
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+
+    ${d}graph_tred.txt: ${d}dot_to_graph_edges.awk
+    ${d}graph_tred.txt: ${d}graph.awk
+    ${d}graph_tred.txt: ${d}graph.txt
+    ${d}graph_tred.txt: ${d}graph.txt.no_loops
+    ${d}graph_tred.txt: ${d}graph_nodes.awk
+    ${d}graph_tred.txt: ${d}graph_to_dot.awk
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
+    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
+    	\$(AM_V_at)( \\
+    	  for ab in \\
+    	    '${d}dot_to_graph_edges.awk dot_to_graph_edges_awk' \\
+    	    '${d}graph.awk graph_awk' \\
+    	    '${d}graph.txt graph_txt' \\
+    	    '${d}graph_nodes.awk graph_nodes_awk' \\
+    	    '${d}graph_to_dot.awk graph_to_dot_awk' \\
+    	  ; do \\
+    	    set \$\$ab; \\
+    	    \$(GATBPS_VPATH_SEARCH_TOP) \\
+    	      \$\$1 \\
+    	    \$(GATBPS_VPATH_SEARCH_BOT); \\
+    	    eval \$\$2='\$(GATBPS_VPATH_SEARCH_RESULT)'/\$\$1; \\
+    	  done; \\
+    	  \$(AWK) \\
+    	    -f \"\$\$graph_awk\" \\
+    	    -f \"\$\$graph_nodes_awk\" \\
+    	    -v ga_file=\"\$\$graph_txt\" \\
+    	    \"\$\$graph_txt\" \\
+    	    >\$@\$(TSUF).1 \\
+    	  || exit \$\$?; \\
+    	  \$(AWK) \\
+    	    -f \"\$\$graph_awk\" \\
+    	    -f \"\$\$graph_to_dot_awk\" \\
+    	    -v ga_file=\"\$\$graph_txt\" \\
+    	    \"\$\$graph_txt\" \\
+    	    >\$@\$(TSUF).2 \\
+    	  || exit \$\$?; \\
+    	  tred \\
+    	    \$@\$(TSUF).2 \\
+    	    >\$@\$(TSUF).3 \\
+    	  || exit \$\$?; \\
+    	  \$(AWK) \\
+    	    -f \"\$\$dot_to_graph_edges_awk\" \\
+    	    \$@\$(TSUF).3 \\
+    	    >>\$@\$(TSUF).1 \\
+    	  || exit \$\$?; \\
+    	)
+    	\$(AM_V_at)mv -f \$@\$(TSUF).1 \$@
+    	\$(AM_V_at)-rm -f -r \$@\$(TSUF)*
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+
+    ${d}graph_tred.dot: ${d}graph.awk
+    ${d}graph_tred.dot: ${d}graph_to_dot.awk
+    ${d}graph_tred.dot: ${d}graph_tred.txt
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
+    	\$(GATBPS_V_AWK)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
+    	\$(AM_V_at)( \\
+    	  for ab in \\
+    	    '${d}graph.awk graph_awk' \\
+    	    '${d}graph_to_dot.awk graph_to_dot_awk' \\
+    	    '${d}graph_tred.txt graph_tred_txt' \\
+    	  ; do \\
+    	    set \$\$ab; \\
+    	    \$(GATBPS_VPATH_SEARCH_TOP) \\
+    	      \$\$1 \\
+    	    \$(GATBPS_VPATH_SEARCH_BOT); \\
+    	    eval \$\$2='\$(GATBPS_VPATH_SEARCH_RESULT)'/\$\$1; \\
+    	  done; \\
+    	  \$(AWK) \\
+    	    -f \"\$\$graph_awk\" \\
+    	    -f \"\$\$graph_to_dot_awk\" \\
+    	    -v ga_file=\"\$\$graph_tred_txt\" \\
+    	    \"\$\$graph_tred_txt\" \\
+    	    >\$@\$(TSUF) \\
+    	  || exit \$\$?; \\
+    	)
+    	\$(AM_V_at)mv -f \$@\$(TSUF) \$@
+    	\$(AM_V_at)-rm -f -r \$@\$(TSUF)*
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+
+    ${d}graph.txt.no_loops/clean: FORCE
+    	-rm -f -r \$(@D) \$(@D)\$(TSUF)*
+
+    ${d}graph_tred.txt/clean: FORCE
+    	-rm -f -r \$(@D) \$(@D)\$(TSUF)*
+
+    ${d}graph_tred.dot/clean: FORCE
+    	-rm -f -r \$(@D) \$(@D)\$(TSUF)*
+
+    maintainer-clean-local: ${d}graph.txt.no_loops/clean
+    maintainer-clean-local: ${d}graph_tred.txt/clean
+    mostlyclean-local: ${d}graph_tred.dot/clean
+
+  " | sst_am_append
+
+}
+
+f

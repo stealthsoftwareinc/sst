@@ -1,0 +1,81 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-checked-t]
+= The `sst::checked_t` class
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+++#include <sst/checked.h>++
+++namespace sst {++
+
+++template<class T>++
+++class checked_t {++
+
+++  // Underlying value retrieval++
+++  constexpr T value() const noexcept;++
+
+++};++
+
+++}++
+----
+
+The `sst::checked_t` class provides range-checked integer arithmetic.
+
+Any value `x` of any {cr_integer_type} can be converted to an
+`sst::checked_t<T>` value via the {cr_converting_constructor}
+`sst::checked_t<T>(x)`, where `T` is also any integer type.
+If `x` cannot be represented by `T`, the constructor will throw an
+exception.
+Arbitrary integer arithmetic can then be performed on the
+`sst::checked_t<T>` value, which will cause the arithmetic to be
+range-checked_t: an exception will be thrown if there is
+any attempt to hold a value in a type that cannot represent the value,
+and every result that would have had type `R` will instead have type
+`sst::checked_t<R>`.
+After the arithmetic is complete, the underlying value can be retrieved
+with the `value()` function.
+
+Unlike in normal integer arithmetic, unsigned integer types are not
+considered to be modular.
+If a value cannot be represented by an unsigned integer type, an
+exception will be thrown instead of reducing it
+modularly in that type.
+
+.{empty}
+[example]
+====
+[source,cpp,subs="{sst_subs_source}"]
+----
+<<cl_sst_checked>>(++INT_MIN) - 1; // throws++
+<<cl_sst_checked>>(++0U) - 1U;     // throws++
+----
+====
+
+//

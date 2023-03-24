@@ -1,26 +1,38 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[cl_sst_unix_time_ns,sst::unix_time_ns]]
-= The `sst::unix_time_ns` function
+:fv80pjp0_bits: 64
+:fv80pjp0_possible_output: 1000133270
+:fv80pjp0_return_type: {cl_sst_unix_time_ns_t}
+:fv80pjp0_self: {cl_sst_unix_time_ns}
+:fv80pjp0_suffix: ns
+:fv80pjp0_unit: nanosecond
 
-.{cpp}
-[source,cpp]
-----
-#include <sst/time.h>
-namespace sst {
-
-inline std::chrono::nanoseconds::rep unix_time_ns();
-
-}
-----
-
-The `sst::unix_time_ns` function returns the current tick count of the
-`<<cl_sst_unix_time>>` clock in nanoseconds.
-Note that the return type is an unspecified signed integer type whose
-width is at least 64 bits (see `{ce_std_chrono_duration}` or
-{cpp11sec}20.11.2).
+include::partials/cl_sst_unix_time_x.adoc[]
 
 //

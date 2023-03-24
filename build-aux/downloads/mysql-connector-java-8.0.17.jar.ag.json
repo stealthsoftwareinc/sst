@@ -1,4 +1,5 @@
 {
+
   "handler": "sst_ajh_download",
 
   "hashes": {
@@ -9,10 +10,12 @@
     "sha384": "50910e31c0775dc061287783d692949c8b923639ea6358732879b965ce272410dbce320b81c7ce53f54c5baf94f671ee",
     "sha512": "1270422b5d440c9dfa61d482ddbdf0e18c49173b063d4858533efd0df3e106dc28a36a1cb10f5243889d062cc77328de646fc261d7abf383d82254a298178b8d"
   },
+
   "urls": [
     "https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar",
     "https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar",
     "https://repo.jfrog.org/artifactory/repo1/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar",
     "https://repo.jenkins-ci.org/repo1/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar"
   ]
+
 }

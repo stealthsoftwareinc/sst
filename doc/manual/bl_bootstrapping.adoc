@@ -1,50 +1,55 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[bl_bootstrapping]]
+[#bl-bootstrapping]
 = Bootstrapping
 
-All preludes in the SST Bash library run the following bootstrap code
-before executing any Bash-specific code that may not be portable to
-other shells:
+The SST Bash library prelude runs the following bootstrap clause before
+running any Bash-specific code that may not be portable to other shells:
 
-[source,bash]
+[source,sh]
 ----
-# Bootstrap into the PATH-resolved bash.
 case ${SST_BASH_BOOTSTRAP+x}y$# in
-  y0) SST_BASH_BOOTSTRAP=x bash - "$0"     ; exit $? ;;
-  y*) SST_BASH_BOOTSTRAP=x bash - "$0" "$@"; exit $? ;;
+  y0) SST_BASH_BOOTSTRAP= exec bash - "$0" ;;
+  y*) SST_BASH_BOOTSTRAP= exec bash - "$0" "$@" ;;
 esac
+unset SST_BASH_BOOTSTRAP
 ----
 
-This re-executes the current script with the ``PATH``-resolved `bash`.
+This clause re-executes the script with the `PATH`-resolved `bash`.
 There are two reasons for doing this.
 First, if the script uses a `/bin/bash` shebang on a system where the
-``PATH``-resolved `bash` is newer than `/bin/bash` (e.g., on macOS),
-then this re-executes the script with the newer version.
+`PATH`-resolved `bash` is newer than `/bin/bash` (e.g., on macOS), then
+the script will be re-executed with the newer version.
 Second, since this code is portable enough to run in any shell, a script
 can actually use a `/bin/sh` shebang, which is the most portable shell
-shebang, and still get bootstrapped into the ``PATH``-resolved `bash`.
-
-All scripts in the SST Bash library run the following prelude loading
-code (adjusting `../preludes/standard.bash` as needed) before doing
-anything else:
-
-[source,bash]
-----
-# Load the prelude.
-case $0 in /*) x=$0 ;; *) x=./$0 ;; esac
-x=`dirname "$x"` || exit $?
-set -e || exit $?
-. "$x"/../preludes/standard.bash
-----
-
-Note that this code is portable enough to run in any shell as well.
-Furthermore, since this code uses a relative path to find the prelude,
-and since all post-bootstrapping code in the library also uses relative
-paths to find other files in the library, the SST Bash library can be
-safely relocated to and used from any directory.
+shebang, and still get bootstrapped into the `PATH`-resolved `bash`.
+The `unset` command prevents other scripts from being tricked into
+believing they've already bootstrapped.
 
 //

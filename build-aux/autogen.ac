@@ -1,6 +1,29 @@
 dnl
-dnl For the copyright information for this file, please search up the
-dnl directory tree for the first COPYING file.
+dnl Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+dnl
+dnl Permission is hereby granted, free of charge, to any person
+dnl obtaining a copy of this software and associated documentation
+dnl files (the "Software"), to deal in the Software without
+dnl restriction, including without limitation the rights to use,
+dnl copy, modify, merge, publish, distribute, sublicense, and/or
+dnl sell copies of the Software, and to permit persons to whom the
+dnl Software is furnished to do so, subject to the following
+dnl conditions:
+dnl
+dnl The above copyright notice and this permission notice (including
+dnl the next paragraph) shall be included in all copies or
+dnl substantial portions of the Software.
+dnl
+dnl THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+dnl EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+dnl OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+dnl NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+dnl HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+dnl WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+dnl FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+dnl OTHER DEALINGS IN THE SOFTWARE.
+dnl
+dnl SPDX-License-Identifier: MIT
 dnl
 
 dnl
@@ -9,254 +32,327 @@ dnl
 
 [
 
+]
+CALL_DEFUN_ONCE_MACROS
+[
+]
+GATBPS_CONFIG_FILE([doc/manual/config.adoc.im])
+[
+]
+GATBPS_CONFIG_LATER([doc/manual/config.adoc])
+[
+]
+GATBPS_CP([doc/manual/d3-sankey.js], [build-aux/downloads/d3-sankey-0.12.3.min.js])
+[
+]
+GATBPS_CP([doc/manual/d3.js], [build-aux/downloads/d3-7.2.1.min.js])
+[
+]
+GATBPS_CP(
+  [doc/manual/jquery-ui-base.css],
+  [build-aux/downloads/jquery-ui-1.12.1-base.css])
+[
+]
+GATBPS_CP(
+  [doc/manual/jquery-ui.js],
+  [build-aux/downloads/jquery-ui-1.12.1.min.js])
+[
+]
+GATBPS_CP(
+  [doc/manual/jquery.js],
+  [build-aux/downloads/jquery-3.6.0.min.js])
+[
+]
 
-]AC_DEFUN_ONCE([DEFINE_ALL], [[{ :
-  ]AC_REQUIRE([DEFINE_AR])[
-  ]AC_REQUIRE([DEFINE_AT])[
-  ]AC_REQUIRE([DEFINE_AWK])[
-  ]AC_REQUIRE([DEFINE_CC])[
-  ]AC_REQUIRE([DEFINE_CLASSPATH])[
-  ]AC_REQUIRE([DEFINE_CLASSPATH_SEPARATOR])[
-  ]AC_REQUIRE([DEFINE_CPPFLAGS])[
-  ]AC_REQUIRE([DEFINE_CXX])[
-  ]AC_REQUIRE([DEFINE_DOCKER])[
-  ]AC_REQUIRE([DEFINE_DOCKER_BUILD_FLAGS])[
-  ]AC_REQUIRE([DEFINE_DOXYGEN])[
-  ]AC_REQUIRE([DEFINE_EXEEXT])[
-  ]AC_REQUIRE([DEFINE_EXE_CFLAGS])[
-  ]AC_REQUIRE([DEFINE_EXE_CXXFLAGS])[
-  ]AC_REQUIRE([DEFINE_EXE_LDFLAGS])[
-  ]AC_REQUIRE([DEFINE_GIT])[
-  ]AC_REQUIRE([DEFINE_GREP])[
-  ]AC_REQUIRE([DEFINE_GZIP])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES128_CTX])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES128_KEY_SIZE])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES_BLOCK_SIZE])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES_CTX])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES_ENCRYPT])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES_NI])[
-  ]AC_REQUIRE([DEFINE_HAVE_AES_SET_ENCRYPT_KEY])[
-  ]AC_REQUIRE([DEFINE_HAVE_ARM_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_AVX_512_BW])[
-  ]AC_REQUIRE([DEFINE_HAVE_AVX_512_F])[
-  ]AC_REQUIRE([DEFINE_HAVE_AVX_512_VAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_AVX_512_VL])[
-  ]AC_REQUIRE([DEFINE_HAVE_BIGNUM])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_ADD])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_BIN2BN])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_CTX])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_CTX_END])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_CTX_GET])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_CTX_START])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_FREE])[
-  ]AC_REQUIRE([DEFINE_HAVE_BN_LSHIFT])[
-  ]AC_REQUIRE([DEFINE_HAVE_BOOL])[
-  ]AC_REQUIRE([DEFINE_HAVE_BYTE])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MARCH_ARM_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAVX512BW])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAVX512F])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAVX512VL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MSSE])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MSSE2])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MVAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_PTHREAD])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_WALL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_WEXTRA])[
-  ]AC_REQUIRE([DEFINE_HAVE_CLOCKID_T_IN_TIME_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_CLOCK_GETTIME_IN_TIME_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_CLOCK_MONOTONIC])[
-  ]AC_REQUIRE([DEFINE_HAVE_CPP_INCLUDE_JNI_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_CRYPTGENRANDOM])[
-  ]AC_REQUIRE([DEFINE_HAVE_CRYPTO_NUM_LOCKS])[
-  ]AC_REQUIRE([DEFINE_HAVE_CTR_CRYPT])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MARCH_ARM_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAVX512BW])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAVX512F])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAVX512VL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MSSE])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MSSE2])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MVAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_PTHREAD])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_STD_CPP11])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_WALL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_WEXTRA])[
-  ]AC_REQUIRE([DEFINE_HAVE_C_INCLUDE_JNI_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_DEV_URANDOM])[
-  ]AC_REQUIRE([DEFINE_HAVE_DWORD])[
-  ]AC_REQUIRE([DEFINE_HAVE_GMP_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_HCRYPTPROV])[
-  ]AC_REQUIRE([DEFINE_HAVE_INTPTR_MAXVAL])[
-  ]AC_REQUIRE([DEFINE_HAVE_INTPTR_MAXVAL_COMPILE])[
-  ]AC_REQUIRE([DEFINE_HAVE_INTPTR_MINVAL])[
-  ]AC_REQUIRE([DEFINE_HAVE_INTPTR_MINVAL_COMPILE])[
-  ]AC_REQUIRE([DEFINE_HAVE_INTPTR_T])[
-  ]AC_REQUIRE([DEFINE_HAVE_INTPTR_T_COMPILE])[
-  ]AC_REQUIRE([DEFINE_HAVE_JLONG])[
-  ]AC_REQUIRE([DEFINE_HAVE_JLONG_COMPILE])[
-  ]AC_REQUIRE([DEFINE_HAVE_JNI])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_GMP])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_HOGWEED])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_M])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_NETTLE])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_RT])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_SSL])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_AES_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_CIPHER_FUNC])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_CIPHER_OR_CRYPT_FUNC])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_CRYPT_FUNC])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_CRYPT_FUNC_SIZE_T])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_CRYPT_FUNC_UNSIGNED_INT])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_CTR_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_NETTLE_NETTLE_TYPES_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OBSTACK_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OPENSSL_BN_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OPENSSL_CONF_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OPENSSL_CRYPTO_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OPENSSL_ERR_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OPENSSL_EVP_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_OPENSSL_RAND_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_POSIX])[
-  ]AC_REQUIRE([DEFINE_HAVE_RAND_BYTES])[
-  ]AC_REQUIRE([DEFINE_HAVE_SSE])[
-  ]AC_REQUIRE([DEFINE_HAVE_SSE2])[
-  ]AC_REQUIRE([DEFINE_HAVE_STDINT_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_STRUCT_TIMESPEC_IN_TIME_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_UINT8_T_IN_NETTLE_NETTLE_TYPES_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_WINCRYPT_H])[
-  ]AC_REQUIRE([DEFINE_HAVE_WINDOWS])[
-  ]AC_REQUIRE([DEFINE_HAVE_X86])[
-  ]AC_REQUIRE([DEFINE_HAVE_X86_64])[
-  ]AC_REQUIRE([DEFINE_HAVE_X86_64_C])[
-  ]AC_REQUIRE([DEFINE_HAVE_X86_64_CPP])[
-  ]AC_REQUIRE([DEFINE_HAVE_X86_C])[
-  ]AC_REQUIRE([DEFINE_HAVE_X86_CPP])[
-  ]AC_REQUIRE([DEFINE_JAR])[
-  ]AC_REQUIRE([DEFINE_JAVA])[
-  ]AC_REQUIRE([DEFINE_JAVAC])[
-  ]AC_REQUIRE([DEFINE_JAVACFLAGS])[
-  ]AC_REQUIRE([DEFINE_JAVADOC])[
-  ]AC_REQUIRE([DEFINE_JDEPS])[
-  ]AC_REQUIRE([DEFINE_LIB_CFLAGS])[
-  ]AC_REQUIRE([DEFINE_LIB_CXXFLAGS])[
-  ]AC_REQUIRE([DEFINE_LIB_LDFLAGS])[
-  ]AC_REQUIRE([DEFINE_LN_S])[
-  ]AC_REQUIRE([DEFINE_M4])[
-  ]AC_REQUIRE([DEFINE_MAKEINFO])[
-  ]AC_REQUIRE([DEFINE_MKDIR_P])[
-  ]AC_REQUIRE([DEFINE_OPENSSL])[
-  ]AC_REQUIRE([DEFINE_RANLIB])[
-  ]AC_REQUIRE([DEFINE_SED])[
-  ]AC_REQUIRE([DEFINE_SOFT_INCLUDE])[
-  ]AC_REQUIRE([DEFINE_SST_ENABLE_DEAD_MEMORY_FILLING])[
-  ]AC_REQUIRE([DEFINE_SST_ENABLE_INTERNAL_ERROR_CHECKS])[
-  ]AC_REQUIRE([DEFINE_SST_ENABLE_INVALID_ARGUMENT_CHECKS])[
-  ]AC_REQUIRE([DEFINE_SST_ENABLE_LIVE_MEMORY_FILLING])[
-  ]AC_REQUIRE([DEFINE_SST_ENABLE_UNDEFINED_BEHAVIOR_CHECKS])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_AES_ENCRYPT_CF])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_BN_BIN2BN])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_BN_BIN2BN_STEP])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_CRYPTGENRANDOM])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_CRYPTGENRANDOM_STEP])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_CTR_CRYPT])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_CTR_CRYPT_STEP])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_FILLBYTEARRAYREGION])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_INITCAUSE])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JINT_MAXVAL])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JINT_MINVAL])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JLONGPTR])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JLONGPTRARRAY])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JLONGPTR_TO_PTR])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JLONG_MAXVAL])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JLONG_MINVAL])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JMEMSET])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JSIZE_MAXVAL])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_JSIZE_MINVAL])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_NETTLE_CIPHER_CTX])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_NETTLE_CIPHER_FUNC])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_NETTLE_SIZE])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_PTR_TO_JLONGPTR])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_RAND_BYTES])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_RAND_BYTES_STEP])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_THROWNEW])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_THROWNEWBYNAME])[
-  ]AC_REQUIRE([DEFINE_SST_HAVE_SST_WALL_CLOCK_CLOCK_MONOTONIC])[
-  ]AC_REQUIRE([DEFINE_TAR])[
-  ]AC_REQUIRE([DEFINE_TEXI2DVIFLAGS])[
-  ]AC_REQUIRE([DEFINE_WGET])[
-  ]AC_REQUIRE([DEFINE_WITH_AES_NI])[
-  ]AC_REQUIRE([DEFINE_WITH_ARM_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_WITH_AVX_512_BW])[
-  ]AC_REQUIRE([DEFINE_WITH_AVX_512_F])[
-  ]AC_REQUIRE([DEFINE_WITH_AVX_512_VAES])[
-  ]AC_REQUIRE([DEFINE_WITH_AVX_512_VL])[
-  ]AC_REQUIRE([DEFINE_WITH_BUILD_GROUPS])[
-  ]AC_REQUIRE([DEFINE_WITH_CROSS_DEV_URANDOM])[
-  ]AC_REQUIRE([DEFINE_WITH_GMP])[
-  ]AC_REQUIRE([DEFINE_WITH_JNI])[
-  ]AC_REQUIRE([DEFINE_WITH_NETTLE])[
-  ]AC_REQUIRE([DEFINE_WITH_OPENSSL_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_WITH_POSIX])[
-  ]AC_REQUIRE([DEFINE_WITH_POSIX_OR_DIE])[
-  ]AC_REQUIRE([DEFINE_WITH_SSE])[
-  ]AC_REQUIRE([DEFINE_WITH_SSE2])[
-  ]AC_REQUIRE([DEFINE_WITH_WINDOWS])[
-  ]AC_REQUIRE([DEFINE_WITH_WINDOWS_OR_DIE])[
-  ]AC_REQUIRE([DEFINE_WITH_X86])[
-  ]AC_REQUIRE([DEFINE_WITH_X86_64])[
-  ]AC_REQUIRE([DEFINE_XZ])[
-  ]AC_REQUIRE([DEFINE_javadir])[
-  ]AC_REQUIRE([DEFINE_javadocdir])[
-  ]AC_REQUIRE([DEFINE_plaintextdir])[
-  ]AC_REQUIRE([DEFINE_sst_git_urls])[
-}]])[
+GATBPS_TAR(
+  [$(manual_dst).tar],
+  [$(manual_dst)])
 
-]AC_DEFUN_ONCE([DEFINE_CFLAGS], [[{ :
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MARCH_ARM_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAVX512BW])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAVX512F])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MAVX512VL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MSSE])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MSSE2])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_MVAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_PTHREAD])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_WALL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CFLAG_WEXTRA])[
-}]])[
+GATBPS_XZ(
+  [$(manual_dst).tar.xz],
+  [$(manual_dst).tar],
+  [maintainer-clean],
+  [$(manual_dst_leaves)])
 
-]AC_DEFUN_ONCE([DEFINE_CXXFLAGS], [[{ :
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MARCH_ARM_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAVX512BW])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAVX512F])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MAVX512VL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MSSE])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MSSE2])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_MVAES])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_PTHREAD])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_STD_CPP11])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_WALL])[
-  ]AC_REQUIRE([DEFINE_HAVE_CXXFLAG_WEXTRA])[
-}]])[
+GATBPS_CP(
+  [doc/$(PACKAGE_TARNAME)-manual.tar.xz],
+  [$(manual_dst).tar.xz],
+  [file],
+  [maintainer-clean])
 
-]AC_DEFUN_ONCE([DEFINE_LIBS], [[{ :
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_CRYPTO])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_GMP])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_HOGWEED])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_M])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_NETTLE])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_RT])[
-  ]AC_REQUIRE([DEFINE_HAVE_LIB_SSL])[
-}]])[
+[
+]
+GATBPS_CONFIG_FILE([doc/pages/_includes/config.liquid])
+[
+]
 
-]DEFINE_ALL[
-]m4_include([doc/pages/manual/index.html.ac])[
-]m4_include([src/c_cpp/libsst_la_HEADERS.ac])[
-]m4_include([src/c_cpp/libsst_la_SOURCES.ac])[
+GATBPS_TAR(
+  [$(pages_dst).tar],
+  [$(pages_dst)])
+
+GATBPS_XZ(
+  [$(pages_dst).tar.xz],
+  [$(pages_dst).tar])
+
+GATBPS_CP(
+  [doc/pages/$(PACKAGE_TARNAME)-manual.tar.xz],
+  [$(manual_dst).tar.xz])
+
+[
+]
+GATBPS_CONFIG_FILE([doc/readme/config.adoc])
+[
+]
+GATBPS_CONFIG_FILE([src/bash/bin/sst.bash.im])
+[
+]
+GATBPS_CONFIG_LATER([src/bash/bin/sst.bash])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_ENABLE_DEAD_MEMORY_FILLING.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_ENABLE_INTERNAL_ERROR_CHECKS.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_ENABLE_INVALID_ARGUMENT_CHECKS.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_ENABLE_LIVE_MEMORY_FILLING.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_ENABLE_UNDEFINED_BEHAVIOR_CHECKS.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WALL_CLOCK_DEFAULT.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_NETTLE_CIPHER_FUNC.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_NETTLE_CRYPT_FUNC_SIZE_T.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_OBSTACK_H.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_AES_ENCRYPT_CF.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_BN_BIN2BN.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_BN_BIN2BN_STEP.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_CRYPTGENRANDOM.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_CRYPTGENRANDOM_STEP.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_CTR_CRYPT.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_CTR_CRYPT_STEP.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_FILLBYTEARRAYREGION.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_INITCAUSE.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JINT_MAXVAL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JINT_MINVAL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JLONGPTR.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JLONGPTRARRAY.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JLONGPTR_TO_PTR.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JLONG_MAXVAL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JLONG_MINVAL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JMEMSET.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JSIZE_MAXVAL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_JSIZE_MINVAL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_NETTLE_CIPHER_CTX.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_NETTLE_CIPHER_FUNC.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_NETTLE_SIZE.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_PTR_TO_JLONGPTR.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_RAND_BYTES.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_RAND_BYTES_STEP.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_THROWNEW.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_THROWNEWBYNAME.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/SST_WITH_SST_WALL_CLOCK_CLOCK_MONOTONIC.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_HAVE_CYGWIN.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_HAVE_DEV_URANDOM.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_SUBSET_LIBRARY.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_CYGWIN.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_DEV_URANDOM.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_MACOS.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_NLOHMANN_JSON.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_NOEXCEPT.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_OPENSSL_CRYPTO.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_OPENSSL_SSL.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_POSIX.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_RABBITMQ_C.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_SQLITE.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_SQLITE_SERIALIZATION.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_WINDOWS.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_WINDOWS_BCRYPT.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_WINDOWS_KERNEL32.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_WINDOWS_WS2_32.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/config.h.im])
+[
+]
+GATBPS_CONFIG_LATER([src/c-cpp/include/sst/config.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/private/SST_HAVE_BIGNUM_ST_DEFINITION.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/sst_mutex.h])
+[
+]
+m4_include([src/c-cpp/libsst_la_SOURCES.ac])
+[
+]
+GATBPS_CP([src/rpm/rhel-7/out$(TSUF).context/$(distdir).tar.gz], [$(distdir).tar.gz])
+[
+]
+GATBPS_CP([src/rpm/rhel-7/out$(TSUF).context/Dockerfile], [src/rpm/rhel-7/Dockerfile])
+[
+]
+GATBPS_CP([src/rpm/rhel-7/out$(TSUF).context/sst.spec], [src/rpm/rhel-7/sst.spec])
+[
+]
+GATBPS_CP([src/rpm/rhel-7/out$(TSUF).context/texinfo-6.3.tar.xz], [build-aux/downloads/texinfo-6.3.tar.xz])
+[
+]
+GATBPS_CP([src/rpm/centos-7/out$(TSUF).context/$(distdir).tar.gz], [$(distdir).tar.gz])
+[
+]
+GATBPS_CP([src/rpm/centos-7/out$(TSUF).context/Dockerfile], [src/rpm/centos-7/Dockerfile])
+[
+]
+GATBPS_CP([src/rpm/centos-7/out$(TSUF).context/sst.spec], [src/rpm/centos-7/sst.spec])
+[
+]
+GATBPS_CP([src/rpm/centos-7/out$(TSUF).context/texinfo-6.3.tar.xz], [build-aux/downloads/texinfo-6.3.tar.xz])
+[
+]
+GATBPS_CONFIG_FILE([src/m4/config.m4])
+[
+
+]m4_define(
+  [MIT_txt_urls_default],
+  [[ ]dnl
+[build-aux/downloads/local/MIT.txt ]dnl
+])[
+
+case $][{MIT_txt_urls+x} in
+  "")
+    MIT_txt_urls=']MIT_txt_urls_default['
+  ;;
+esac
+readonly MIT_txt_urls
+
+]AC_ARG_VAR(
+  [MIT_txt_urls],
+  [
+    the URLs from which to download the
+    MIT.txt
+    file (default:
+    MIT_txt_urls=']MIT_txt_urls_default[')
+  ])[
+
+]GATBPS_WGET(
+  [build-aux/downloads/MIT.txt],
+  [
+    [$(MIT_txt_urls)],
+  ],
+  [
+    [md5:a9e7d9b118c29c59209daf4dfafd9045],
+    [sha1:cf64f7ab58223d38a4d232b65f76cb0a4f0fe4b3],
+    [sha224:8443f968d0e7d3fb246240703619407264edb04c103e349b4ca36149],
+    [sha256:ff9d052513d9313e7e3304496eae2d6ec50acb06650ac0971a8f5c466bfd3861],
+    [sha384:4490d963c05cd0eb1965126cd3358d92ef862ae6440f807e7a8b3f5d704a9a019b436c5ce021c4e2d4b4da3693c1c53e],
+    [sha512:45d2c5e3fbeabf19e87084a1844c442610797125eebda28f4f708d1f1220b90b7e2ce8bf4ef83753ed34560b3bdacdb8cfb4e2f6204514121e3a8c48ffb9c669],
+  ],
+  [clean])[
+
 
 ]m4_define(
   [apiguardian_api_1_1_0_jar_urls_default],
@@ -297,6 +393,84 @@ readonly apiguardian_api_1_1_0_jar_urls
     [sha256:a9aae9ff8ae3e17a2a18f79175e82b16267c246fbbd3ca9dfbbb290b08dcfdd4],
     [sha384:f454c66833bd270ec9b1c11fee9c3670241172933f545975db298a0708f65753d2cf738aa928fd1f91c6a13d5872b5ff],
     [sha512:eb05878cf282e971a7fff0ff4a1b7b90d61e6405ea368b19832177269b21f66ad4de211f6abdd762165a72e1c19781a6df1187e6c1cce1ae2cbf0e913fc5f504],
+  ],
+  [clean])[
+
+
+]m4_define(
+  [d3_7_2_1_min_js_urls_default],
+  [[ ]dnl
+[build-aux/downloads/local/d3-7.2.1.min.js ]dnl
+['\''https://cdn.jsdelivr.net/npm/d3@7.2.1/dist/d3.min.js'\'' ]dnl
+])[
+
+case $][{d3_7_2_1_min_js_urls+x} in
+  "")
+    d3_7_2_1_min_js_urls=']d3_7_2_1_min_js_urls_default['
+  ;;
+esac
+readonly d3_7_2_1_min_js_urls
+
+]AC_ARG_VAR(
+  [d3_7_2_1_min_js_urls],
+  [
+    the URLs from which to download the
+    d3-7.2.1.min.js
+    file (default:
+    d3_7_2_1_min_js_urls=']d3_7_2_1_min_js_urls_default[')
+  ])[
+
+]GATBPS_WGET(
+  [build-aux/downloads/d3-7.2.1.min.js],
+  [
+    [$(d3_7_2_1_min_js_urls)],
+  ],
+  [
+    [md5:f4cb4837b8c16165ec452dc6cc5eb08a],
+    [sha1:56cdc64ac50cd45550ac9584c86b7cfb84f7efc9],
+    [sha224:e88a5eb11b59fab99b41d6e1f772354b97fec0e20424e4edadc88a32],
+    [sha256:cac5d97e485b3482d8327dbe5722c144fd27aac1e75be7abe56bb80dc0d3d3bc],
+    [sha384:75981d4a35dfd24514ca27142fc19ba624b0ae4f7b4d9a8b3b7dcbe1185af6c30d7ab4d091286de26437ddcb79b89807],
+    [sha512:c2476ebb8a101bbe324a8acf892452b42d1997cad07e3aff4f2e9d32f6139a3670e914b96df7ab771f1347bca7c5e87bf72484a7f6de9c81458ac2a87cc8cf6e],
+  ],
+  [clean])[
+
+
+]m4_define(
+  [d3_sankey_0_12_3_min_js_urls_default],
+  [[ ]dnl
+[build-aux/downloads/local/d3-sankey-0.12.3.min.js ]dnl
+['\''https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js'\'' ]dnl
+])[
+
+case $][{d3_sankey_0_12_3_min_js_urls+x} in
+  "")
+    d3_sankey_0_12_3_min_js_urls=']d3_sankey_0_12_3_min_js_urls_default['
+  ;;
+esac
+readonly d3_sankey_0_12_3_min_js_urls
+
+]AC_ARG_VAR(
+  [d3_sankey_0_12_3_min_js_urls],
+  [
+    the URLs from which to download the
+    d3-sankey-0.12.3.min.js
+    file (default:
+    d3_sankey_0_12_3_min_js_urls=']d3_sankey_0_12_3_min_js_urls_default[')
+  ])[
+
+]GATBPS_WGET(
+  [build-aux/downloads/d3-sankey-0.12.3.min.js],
+  [
+    [$(d3_sankey_0_12_3_min_js_urls)],
+  ],
+  [
+    [md5:737a0964b7aad6246e4be92c810bea4b],
+    [sha1:dad0e37da77cdf46ddf4bf012b10d14cbe4df3ed],
+    [sha224:c6dc2170670ffd37c0059beeb1da13834f321ffd191e9cb43b2f962a],
+    [sha256:8286db5d6aa049cc6e8a546708943b79dfb4daaefb0ccf42af674ec0ee4c86be],
+    [sha384:48ce78084e61faa743234e3a776639ca6ef0ab592ae2ec5c43572a1aae7ffb98eb139b4f2de0c94aaef5d50f2c22c91a],
+    [sha512:28ad79a0aa5a6cd0da2e95a29ccb4d7d3ab2fd5ee9ce57361511b5ef83df0127aced1471e9302cb9af0725d4532a8f3e04bbcf04a34890bee45d6733e47a2aa8],
   ],
   [clean])[
 
@@ -425,40 +599,122 @@ readonly gmp_6_1_2_tar_xz_urls
 
 
 ]m4_define(
-  [gpl_3_0_txt_urls_default],
+  [jquery_3_6_0_min_js_urls_default],
   [[ ]dnl
-[build-aux/downloads/local/gpl-3.0.txt ]dnl
-['\''https://www.gnu.org/licenses/gpl-3.0.txt'\'' ]dnl
+[build-aux/downloads/local/jquery-3.6.0.min.js ]dnl
+['\''https://code.jquery.com/jquery-3.6.0.min.js'\'' ]dnl
+['\''https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'\'' ]dnl
+['\''https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js'\'' ]dnl
+['\''https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'\'' ]dnl
+['\''https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js'\'' ]dnl
 ])[
 
-case $][{gpl_3_0_txt_urls+x} in
+case $][{jquery_3_6_0_min_js_urls+x} in
   "")
-    gpl_3_0_txt_urls=']gpl_3_0_txt_urls_default['
+    jquery_3_6_0_min_js_urls=']jquery_3_6_0_min_js_urls_default['
   ;;
 esac
-readonly gpl_3_0_txt_urls
+readonly jquery_3_6_0_min_js_urls
 
 ]AC_ARG_VAR(
-  [gpl_3_0_txt_urls],
+  [jquery_3_6_0_min_js_urls],
   [
     the URLs from which to download the
-    gpl-3.0.txt
+    jquery-3.6.0.min.js
     file (default:
-    gpl_3_0_txt_urls=']gpl_3_0_txt_urls_default[')
+    jquery_3_6_0_min_js_urls=']jquery_3_6_0_min_js_urls_default[')
   ])[
 
 ]GATBPS_WGET(
-  [build-aux/downloads/gpl-3.0.txt],
+  [build-aux/downloads/jquery-3.6.0.min.js],
   [
-    [$(gpl_3_0_txt_urls)],
+    [$(jquery_3_6_0_min_js_urls)],
   ],
   [
-    [md5:1ebbd3e34237af26da5dc08a4e440464],
-    [sha1:31a3d460bb3c7d98845187c716a30db81c44b615],
-    [sha224:96cc91845c85fd7c787ba00adb8ed231f4d30d4d03b4dd7c6fd6c021],
-    [sha256:3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986],
-    [sha384:cbd88145dc06c3001fce1e90150c511605835b2d7d53e2d88ade2591f035f4a616c1f6f171053fafa548dcbe7322fcf7],
-    [sha512:d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686],
+    [md5:8fb8fee4fcc3cc86ff6c724154c49c42],
+    [sha1:b82d238d4e31fdf618bae8ac11a6c812c03dd0d4],
+    [sha224:95319ad2ac026949d8571524611adf28fd6595b758571f97e4f306ab],
+    [sha256:ff1523fb7389539c84c65aba19260648793bb4f5e29329d2ee8804bc37a3fe6e],
+    [sha384:bed5d131ede61826ce798ee5df468883c1fda7719d7927b820594fe86f0931aee8ee55ef9f3dc614accfc7325d3df18a],
+    [sha512:f3de1813a4160f9239f4781938645e1589b876759cd50b7936dbd849a35c38ffaed53f6a61dbdd8a1cf43cf4a28aa9fffbfddeec9a3811a1bb4ee6df58652b31],
+  ],
+  [clean])[
+
+
+]m4_define(
+  [jquery_ui_1_12_1_base_css_urls_default],
+  [[ ]dnl
+[build-aux/downloads/local/jquery-ui-1.12.1-base.css ]dnl
+['\''https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'\'' ]dnl
+])[
+
+case $][{jquery_ui_1_12_1_base_css_urls+x} in
+  "")
+    jquery_ui_1_12_1_base_css_urls=']jquery_ui_1_12_1_base_css_urls_default['
+  ;;
+esac
+readonly jquery_ui_1_12_1_base_css_urls
+
+]AC_ARG_VAR(
+  [jquery_ui_1_12_1_base_css_urls],
+  [
+    the URLs from which to download the
+    jquery-ui-1.12.1-base.css
+    file (default:
+    jquery_ui_1_12_1_base_css_urls=']jquery_ui_1_12_1_base_css_urls_default[')
+  ])[
+
+]GATBPS_WGET(
+  [build-aux/downloads/jquery-ui-1.12.1-base.css],
+  [
+    [$(jquery_ui_1_12_1_base_css_urls)],
+  ],
+  [
+    [md5:c4a88ec0cb998929a670c0c58d7dc526],
+    [sha1:03135a88e8dbc36020dd453d1e7407ce9a3a2cc2],
+    [sha224:ce0a2cdf111acfe814b3016dd54d2c664d3c22a4186a2be27d2322af],
+    [sha256:44f8a56d427917b5fa0dd7933ba545679be5e6b3b93099e64a4e29c2159f57c0],
+    [sha384:c5ec2bea44a4ab77416c4b41e99ff7a056669275a7ee71ea84b54bad883310545b53f0c74b15bb2b7078e3259437ad03],
+    [sha512:fd0d6c06abcd661796db2bc071c2a2bbfc5cfe8d80b434b68cd068cc312a03ff0c93f21c1fce77c2bc03486a80765ee317239639c79f2edc03777918a36efa1f],
+  ],
+  [clean])[
+
+
+]m4_define(
+  [jquery_ui_1_12_1_min_js_urls_default],
+  [[ ]dnl
+[build-aux/downloads/local/jquery-ui-1.12.1.min.js ]dnl
+['\''https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'\'' ]dnl
+])[
+
+case $][{jquery_ui_1_12_1_min_js_urls+x} in
+  "")
+    jquery_ui_1_12_1_min_js_urls=']jquery_ui_1_12_1_min_js_urls_default['
+  ;;
+esac
+readonly jquery_ui_1_12_1_min_js_urls
+
+]AC_ARG_VAR(
+  [jquery_ui_1_12_1_min_js_urls],
+  [
+    the URLs from which to download the
+    jquery-ui-1.12.1.min.js
+    file (default:
+    jquery_ui_1_12_1_min_js_urls=']jquery_ui_1_12_1_min_js_urls_default[')
+  ])[
+
+]GATBPS_WGET(
+  [build-aux/downloads/jquery-ui-1.12.1.min.js],
+  [
+    [$(jquery_ui_1_12_1_min_js_urls)],
+  ],
+  [
+    [md5:0a497d4661df7b82feee14332ce0bdaf],
+    [sha1:f77d06b0c5dedef1f1db051a44a2b0d7f233ba3a],
+    [sha224:16b2d6f5577073d4e404efddc88f7fb20dd57ce845379030328d6b99],
+    [sha256:55accff7b642c2d7a402cbe03c1494c0f14a76bc03dee9d47d219562b6a152a5],
+    [sha384:0f38b2f05d9594940b312840e851d636e97fbde33d6c291151a2eaaf5f7d2bde27b4ee5052b2c90446d87a0752924a97],
+    [sha512:e036a2057f2bb203a805234b71e43f222c4317eb940d5d2126b417fcc27d470259083a9b129d048c8428746c6cccfb53a7095e9c9ce74768e48035aa8f81ecf8],
   ],
   [clean])[
 
@@ -627,6 +883,45 @@ readonly junit_platform_console_standalone_1_5_1_jar_urls
     [sha256:6874127cdb5d8faa1861e3b3465f62acab8b09a42fff38b0151c21a3296f967d],
     [sha384:59d6ddf78ca93f9eca3dda025a110d08c7ca086671d4d675741721c76b39c8616249dc107c6d3fe54956ab0a02b984b2],
     [sha512:10dc23a6705d33d8a71dd9ff2f215ccf15d43542205268d01f52bd5faca0d47fefd5d6c7345914298d1a8f3307b73679d4aa9fc7cc727f31c2674b0fc66a5f37],
+  ],
+  [clean])[
+
+
+]m4_define(
+  [katex_0_13_18_tar_gz_urls_default],
+  [[ ]dnl
+[build-aux/downloads/local/katex-0.13.18.tar.gz ]dnl
+['\''https://github.com/KaTeX/KaTeX/releases/download/v0.13.18/katex.tar.gz'\'' ]dnl
+])[
+
+case $][{katex_0_13_18_tar_gz_urls+x} in
+  "")
+    katex_0_13_18_tar_gz_urls=']katex_0_13_18_tar_gz_urls_default['
+  ;;
+esac
+readonly katex_0_13_18_tar_gz_urls
+
+]AC_ARG_VAR(
+  [katex_0_13_18_tar_gz_urls],
+  [
+    the URLs from which to download the
+    katex-0.13.18.tar.gz
+    file (default:
+    katex_0_13_18_tar_gz_urls=']katex_0_13_18_tar_gz_urls_default[')
+  ])[
+
+]GATBPS_WGET(
+  [build-aux/downloads/katex-0.13.18.tar.gz],
+  [
+    [$(katex_0_13_18_tar_gz_urls)],
+  ],
+  [
+    [md5:2d3d28697f7f4771e39b458d25d64321],
+    [sha1:e7334b87b81cd90b3344e4b5c536daea97483b1c],
+    [sha224:ae9af778910cffd0476e96cf9068e5737729f3827d0c24a55cf4e046],
+    [sha256:266800ecffb4bf338f58126fd82bb7c0e5ab44d841caa9f1141a1eab005aedb6],
+    [sha384:fb93a645ce31cdd82febc51f92ac85d76b9b979344a0aeac980cc14e627d6a1c579cb3263982656f8f72f51de874d1cf],
+    [sha512:710092e8a574915284b33de8954197603878e9d65fe4d09b820382b75f92e2777025ddd5cf3fd4d12b985480592974e7d96e69c6f074bc8ab52ab549937fca6f],
   ],
   [clean])[
 
@@ -802,85 +1097,43 @@ readonly nettle_3_4_tar_gz_urls
 
 
 ]m4_define(
-  [netty_all_4_1_39_Final_jar_urls_default],
+  [netty_all_4_1_65_Final_jar_urls_default],
   [[ ]dnl
-[build-aux/downloads/local/netty-all-4.1.39.Final.jar ]dnl
-['\''https://repo1.maven.org/maven2/io/netty/netty-all/4.1.39.Final/netty-all-4.1.39.Final.jar'\'' ]dnl
-['\''https://repo.maven.apache.org/maven2/io/netty/netty-all/4.1.39.Final/netty-all-4.1.39.Final.jar'\'' ]dnl
-['\''https://repo.jfrog.org/artifactory/repo1/io/netty/netty-all/4.1.39.Final/netty-all-4.1.39.Final.jar'\'' ]dnl
-['\''https://repo.jenkins-ci.org/repo1/io/netty/netty-all/4.1.39.Final/netty-all-4.1.39.Final.jar'\'' ]dnl
+[build-aux/downloads/local/netty-all-4.1.65.Final.jar ]dnl
+['\''https://repo1.maven.org/maven2/io/netty/netty-all/4.1.65.Final/netty-all-4.1.65.Final.jar'\'' ]dnl
+['\''https://repo.maven.apache.org/maven2/io/netty/netty-all/4.1.65.Final/netty-all-4.1.65.Final.jar'\'' ]dnl
+['\''https://repo.jfrog.org/artifactory/repo1/io/netty/netty-all/4.1.65.Final/netty-all-4.1.65.Final.jar'\'' ]dnl
+['\''https://repo.jenkins-ci.org/repo1/io/netty/netty-all/4.1.65.Final/netty-all-4.1.65.Final.jar'\'' ]dnl
 ])[
 
-case $][{netty_all_4_1_39_Final_jar_urls+x} in
+case $][{netty_all_4_1_65_Final_jar_urls+x} in
   "")
-    netty_all_4_1_39_Final_jar_urls=']netty_all_4_1_39_Final_jar_urls_default['
+    netty_all_4_1_65_Final_jar_urls=']netty_all_4_1_65_Final_jar_urls_default['
   ;;
 esac
-readonly netty_all_4_1_39_Final_jar_urls
+readonly netty_all_4_1_65_Final_jar_urls
 
 ]AC_ARG_VAR(
-  [netty_all_4_1_39_Final_jar_urls],
+  [netty_all_4_1_65_Final_jar_urls],
   [
     the URLs from which to download the
-    netty-all-4.1.39.Final.jar
+    netty-all-4.1.65.Final.jar
     file (default:
-    netty_all_4_1_39_Final_jar_urls=']netty_all_4_1_39_Final_jar_urls_default[')
+    netty_all_4_1_65_Final_jar_urls=']netty_all_4_1_65_Final_jar_urls_default[')
   ])[
 
 ]GATBPS_WGET(
-  [build-aux/downloads/netty-all-4.1.39.Final.jar],
+  [build-aux/downloads/netty-all-4.1.65.Final.jar],
   [
-    [$(netty_all_4_1_39_Final_jar_urls)],
+    [$(netty_all_4_1_65_Final_jar_urls)],
   ],
   [
-    [md5:71b8b317493a6cab519fcde2bf18ebc7],
-    [sha1:8de94e67d766103ac211e42f6cd9bb4b32e33e60],
-    [sha224:9a558ae68e2a3bb3eefbf0a55404000e90a1bb6af62e8ae6a37e9e9b],
-    [sha256:2f9636f9192d1572d4c734aced3511e0794d79749c6144a9ebdda1c7bb1de74f],
-    [sha384:9900f741ec2662c3e651ceb9cd03744a8c3c15185702d35c83890719ce43d2ce060b2a5609ec893bf2ceecd64df62e83],
-    [sha512:8c29faf98fbdc39dc4f674ae4bf60696b69538609cb34ae3e722775d3e4ee2324b67f2eece7794f99589439e30f9a6934d78f4a7da7f0d6bf74968aa4e36769f],
-  ],
-  [clean])[
-
-
-]m4_define(
-  [netty_all_4_1_9_Final_jar_urls_default],
-  [[ ]dnl
-[build-aux/downloads/local/netty-all-4.1.9.Final.jar ]dnl
-['\''https://repo1.maven.org/maven2/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar'\'' ]dnl
-['\''https://repo.maven.apache.org/maven2/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar'\'' ]dnl
-['\''https://repo.jfrog.org/artifactory/repo1/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar'\'' ]dnl
-['\''https://repo.jenkins-ci.org/repo1/io/netty/netty-all/4.1.9.Final/netty-all-4.1.9.Final.jar'\'' ]dnl
-])[
-
-case $][{netty_all_4_1_9_Final_jar_urls+x} in
-  "")
-    netty_all_4_1_9_Final_jar_urls=']netty_all_4_1_9_Final_jar_urls_default['
-  ;;
-esac
-readonly netty_all_4_1_9_Final_jar_urls
-
-]AC_ARG_VAR(
-  [netty_all_4_1_9_Final_jar_urls],
-  [
-    the URLs from which to download the
-    netty-all-4.1.9.Final.jar
-    file (default:
-    netty_all_4_1_9_Final_jar_urls=']netty_all_4_1_9_Final_jar_urls_default[')
-  ])[
-
-]GATBPS_WGET(
-  [build-aux/downloads/netty-all-4.1.9.Final.jar],
-  [
-    [$(netty_all_4_1_9_Final_jar_urls)],
-  ],
-  [
-    [md5:2f4a891dffdb1259e4b10f1f090224e2],
-    [sha1:0097860965d6a0a6b98e7f569f3f966727b8db75],
-    [sha224:ce883090acc377be8952c3222d8c12385c8dbab457f8328ab0908d7b],
-    [sha256:fd5ad66cdd0a496d281b26c699f4511da7c3f95083659ebb7bae22dab876581a],
-    [sha384:a58edc08e0c80a09d0bb55ab09ae3691c1202e2a158c2a7e3809f4196361bf3c2bb1f85b8e4a3e24a53a7dc38795f001],
-    [sha512:c9bd0b3b557d5c6eed54b71afaf043e6e6ed94000f3d7948f3977e951bd0eb222233935b760ff7b43a5ff1c75fe6c5fc37079c9606a66734f7d61bfd30ae7869],
+    [md5:6b1836a9748a74a68fb48e9151006c2f],
+    [sha1:d9b060190c20772eb05f6f98d30f5fdb7077f317],
+    [sha224:caa41b557ee4ec98cd6528fe9a074eb24856a2628e5caeead5391724],
+    [sha256:e6cdae2b23e410b35128dac651b954aedd583bc10959a1e702c7dba7ac850d0e],
+    [sha384:2ea03080b0f74e5caea2aa064c7bbd987af541e34f1928c97eab1a2632607080ec994e56573f647eeee776da8f6be020],
+    [sha512:9474a419922c482d03b3cf09058841db4503db45315d036d1e998cc1d0a5c2b5cce9d67a579b3dd2ec1b40f3fce2344fc2a499417b17af12a1950f27eecbf9db],
   ],
   [clean])[
 
@@ -967,8 +1220,8 @@ readonly ojdbc8_18_3_jar_urls
   [[ ]dnl
 [build-aux/downloads/local/openssl-1.1.1d.tar.gz ]dnl
 ['\''https://www.openssl.org/source/openssl-1.1.1d.tar.gz'\'' ]dnl
-['\''https://fossies.org/linux/misc/openssl-1.1.1d.tar.gz'\'' ]dnl
-['\''https://mirror.math.princeton.edu/pub/openssl/source/openssl-1.1.1d.tar.gz'\'' ]dnl
+['\''https://ftp.openssl.org/source/old/1.1.1/openssl-1.1.1d.tar.gz'\'' ]dnl
+['\''https://mirror.math.princeton.edu/pub/openssl/source/old/1.1.1/openssl-1.1.1d.tar.gz'\'' ]dnl
 ])[
 
 case $][{openssl_1_1_1d_tar_gz_urls+x} in
@@ -1232,6 +1485,124 @@ readonly gatbps_urls
 
 
 ]m4_define(
+  [mathjax_2_7_9_commit_default],
+  [[3b461438246adfcf67690795fcc0ae6dc4e335fe]])[
+
+case $][{mathjax_2_7_9_commit+x} in
+  "")
+    mathjax_2_7_9_commit=']mathjax_2_7_9_commit_default['
+  ;;
+esac
+readonly mathjax_2_7_9_commit
+
+]AC_ARG_VAR(
+  [mathjax_2_7_9_commit],
+  [
+    the commit of the mathjax-2.7.9 Git repository to use
+    (default: mathjax_2_7_9_commit=']mathjax_2_7_9_commit_default[')
+  ])[
+
+]m4_define(
+  [mathjax_2_7_9_urls_default],
+  [[ ]dnl
+[$][(abs_srcdir)/../mathjax-2.7.9 ]dnl
+['\''https://github.com/mathjax/MathJax.git'\'' ]dnl
+])[
+
+case $][{mathjax_2_7_9_urls+x} in
+  "")
+    mathjax_2_7_9_urls=']mathjax_2_7_9_urls_default['
+  ;;
+esac
+readonly mathjax_2_7_9_urls
+
+]AC_ARG_VAR(
+  [mathjax_2_7_9_urls],
+  [
+    the URLs from which to fetch the mathjax-2.7.9 Git repository
+    (default: mathjax_2_7_9_urls=']mathjax_2_7_9_urls_default[')
+  ])[
+
+]GATBPS_GIT_CLONE(
+  [build-aux/gitbundles-clones/mathjax-2.7.9-$(mathjax_2_7_9_commit)],
+  [
+    [$(mathjax_2_7_9_urls)],
+  ],
+  [clean])[
+
+]GATBPS_GIT_BUNDLE(
+  [build-aux/gitbundles/mathjax-2.7.9-$(mathjax_2_7_9_commit).gitbundle],
+  [build-aux/gitbundles-clones/mathjax-2.7.9-$(mathjax_2_7_9_commit)],
+  [$(mathjax_2_7_9_commit)],
+  [clean])[
+
+]GATBPS_CP(
+  [build-aux/gitbundles/mathjax-2.7.9.gitbundle],
+  [build-aux/gitbundles/mathjax-2.7.9-$(mathjax_2_7_9_commit).gitbundle],
+  [file],
+  [clean])[
+
+
+]m4_define(
+  [mathjax_3_2_0_commit_default],
+  [[7146ffa47956e7dae05739cfe905d8aaf1e4780a]])[
+
+case $][{mathjax_3_2_0_commit+x} in
+  "")
+    mathjax_3_2_0_commit=']mathjax_3_2_0_commit_default['
+  ;;
+esac
+readonly mathjax_3_2_0_commit
+
+]AC_ARG_VAR(
+  [mathjax_3_2_0_commit],
+  [
+    the commit of the mathjax-3.2.0 Git repository to use
+    (default: mathjax_3_2_0_commit=']mathjax_3_2_0_commit_default[')
+  ])[
+
+]m4_define(
+  [mathjax_3_2_0_urls_default],
+  [[ ]dnl
+[$][(abs_srcdir)/../mathjax-3.2.0 ]dnl
+['\''https://github.com/mathjax/MathJax.git'\'' ]dnl
+])[
+
+case $][{mathjax_3_2_0_urls+x} in
+  "")
+    mathjax_3_2_0_urls=']mathjax_3_2_0_urls_default['
+  ;;
+esac
+readonly mathjax_3_2_0_urls
+
+]AC_ARG_VAR(
+  [mathjax_3_2_0_urls],
+  [
+    the URLs from which to fetch the mathjax-3.2.0 Git repository
+    (default: mathjax_3_2_0_urls=']mathjax_3_2_0_urls_default[')
+  ])[
+
+]GATBPS_GIT_CLONE(
+  [build-aux/gitbundles-clones/mathjax-3.2.0-$(mathjax_3_2_0_commit)],
+  [
+    [$(mathjax_3_2_0_urls)],
+  ],
+  [clean])[
+
+]GATBPS_GIT_BUNDLE(
+  [build-aux/gitbundles/mathjax-3.2.0-$(mathjax_3_2_0_commit).gitbundle],
+  [build-aux/gitbundles-clones/mathjax-3.2.0-$(mathjax_3_2_0_commit)],
+  [$(mathjax_3_2_0_commit)],
+  [clean])[
+
+]GATBPS_CP(
+  [build-aux/gitbundles/mathjax-3.2.0.gitbundle],
+  [build-aux/gitbundles/mathjax-3.2.0-$(mathjax_3_2_0_commit).gitbundle],
+  [file],
+  [clean])[
+
+
+]m4_define(
   [sst_commit_default],
   [[$][(PACKAGE_VERSION_GIT)]])[
 
@@ -1421,464 +1792,1199 @@ readonly wficmp_urls
 ]GATBPS_CONFIG_FILE([lib/sst.jar.build_tree_classpath.im])[
 ]GATBPS_CONFIG_LATER([lib/sst.jar.build_tree_classpath])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/AllocationFailedStatus.java], [src/java/com/stealthsoftwareinc/sst/AllocationFailedStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BuildConfig.class],
+  [src/java/com/stealthsoftwareinc/sst/AllocationFailedStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/AllocationImpossibleStatus.java], [src/java/com/stealthsoftwareinc/sst/AllocationImpossibleStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/AllocationFailedStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/AllocationImpossibleStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/AlwaysFailsStatus.java], [src/java/com/stealthsoftwareinc/sst/AlwaysFailsStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/AllocationImpossibleStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/AlwaysFailsStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Args.java], [src/java/com/stealthsoftwareinc/sst/Args.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/AlwaysFailsStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Args.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Arith.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Arith.java], [src/java/com/stealthsoftwareinc/sst/Arith.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Args.class],
+  [src/java/com/stealthsoftwareinc/sst/Arith.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ArrayAcquisitionException.java], [src/java/com/stealthsoftwareinc/sst/ArrayAcquisitionException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ArrayAcquisitionException.class],
+  [src/java/com/stealthsoftwareinc/sst/ArrayAcquisitionException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Assert.java], [src/java/com/stealthsoftwareinc/sst/Assert.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BigBitArray.class],
+  [src/java/com/stealthsoftwareinc/sst/Assert.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BigBitArray.java], [src/java/com/stealthsoftwareinc/sst/BigBitArray.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BigByteArray.class],
+  [src/java/com/stealthsoftwareinc/sst/BigBitArray.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BigByteArray.java], [src/java/com/stealthsoftwareinc/sst/BigByteArray.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BigIntArray.class],
+  [src/java/com/stealthsoftwareinc/sst/BigByteArray.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BigIntArray.java], [src/java/com/stealthsoftwareinc/sst/BigIntArray.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BigLongArray.class],
+  [src/java/com/stealthsoftwareinc/sst/BigIntArray.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BigLongArray.java], [src/java/com/stealthsoftwareinc/sst/BigLongArray.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BigResidueArray.class],
+  [src/java/com/stealthsoftwareinc/sst/BigLongArray.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BigModArray.java], [src/java/com/stealthsoftwareinc/sst/BigModArray.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/BlobStore.class],
+  [src/java/com/stealthsoftwareinc/sst/BigModArray.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BlobStore.java], [src/java/com/stealthsoftwareinc/sst/BlobStore.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Buffers.class],
+  [src/java/com/stealthsoftwareinc/sst/BlobStore.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BufferOverrunException.java], [src/java/com/stealthsoftwareinc/sst/BufferOverrunException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConcurrentLruQueue.class],
+  [src/java/com/stealthsoftwareinc/sst/BufferOverrunException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/BufferUnderrunException.java], [src/java/com/stealthsoftwareinc/sst/BufferUnderrunException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConcurrentLruQueueEntry.class],
+  [src/java/com/stealthsoftwareinc/sst/BufferUnderrunException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Buffers.java], [src/java/com/stealthsoftwareinc/sst/Buffers.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConcurrentPool.class],
+  [src/java/com/stealthsoftwareinc/sst/Buffers.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConcurrentLruQueue.java], [src/java/com/stealthsoftwareinc/sst/ConcurrentLruQueue.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Config.class],
+  [src/java/com/stealthsoftwareinc/sst/ConcurrentLruQueue.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConcurrentLruQueueEntry.java], [src/java/com/stealthsoftwareinc/sst/ConcurrentLruQueueEntry.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigBase.class],
+  [src/java/com/stealthsoftwareinc/sst/ConcurrentLruQueueEntry.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConcurrentPool.java], [src/java/com/stealthsoftwareinc/sst/ConcurrentPool.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigMapper.class],
+  [src/java/com/stealthsoftwareinc/sst/ConcurrentPool.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Config.java], [src/java/com/stealthsoftwareinc/sst/Config.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigPartition.class],
+  [src/java/com/stealthsoftwareinc/sst/Config.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigBase.java], [src/java/com/stealthsoftwareinc/sst/ConfigBase.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigPattern.class],
+  [src/java/com/stealthsoftwareinc/sst/ConfigBase.class],
   [mostlyclean])[
 
+]
+GATBPS_CONFIG_FILE([src/java/com/stealthsoftwareinc/sst/ConfigH.java.im])
+[
+]
+GATBPS_CONFIG_LATER([src/java/com/stealthsoftwareinc/sst/ConfigH.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigH.java], [src/java/com/stealthsoftwareinc/sst/ConfigH.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigPredicate.class],
+  [src/java/com/stealthsoftwareinc/sst/ConfigH.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigMapper.java], [src/java/com/stealthsoftwareinc/sst/ConfigMapper.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/DefaultConstructorFactory.class],
+  [src/java/com/stealthsoftwareinc/sst/ConfigMapper.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigPartition.java], [src/java/com/stealthsoftwareinc/sst/ConfigPartition.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Factory.class],
+  [src/java/com/stealthsoftwareinc/sst/ConfigPartition.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigPattern.java], [src/java/com/stealthsoftwareinc/sst/ConfigPattern.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/FailureStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/ConfigPattern.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ConfigPredicate.java], [src/java/com/stealthsoftwareinc/sst/ConfigPredicate.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/FileOps.class],
+  [src/java/com/stealthsoftwareinc/sst/ConfigPredicate.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Consumer.java], [src/java/com/stealthsoftwareinc/sst/Consumer.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/HostNamePredicate.class],
+  [src/java/com/stealthsoftwareinc/sst/Consumer.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/CreateFromJson.java], [src/java/com/stealthsoftwareinc/sst/CreateFromJson.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/IntegerOverflowStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/CreateFromJson.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/DefaultConstructorSupplier.java], [src/java/com/stealthsoftwareinc/sst/DefaultConstructorSupplier.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/IntegerPredicate.class],
+  [src/java/com/stealthsoftwareinc/sst/DefaultConstructorSupplier.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Enums.java], [src/java/com/stealthsoftwareinc/sst/Enums.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InternalErrorStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Enums.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Exceptions.java], [src/java/com/stealthsoftwareinc/sst/Exceptions.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidAliasingStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Exceptions.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/FailureStatus.java], [src/java/com/stealthsoftwareinc/sst/FailureStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidArgumentStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/FailureStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/FileOps.java], [src/java/com/stealthsoftwareinc/sst/FileOps.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidArrayIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/FileOps.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/FixedPointModContext.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/FixedPointModContext.java], [src/java/com/stealthsoftwareinc/sst/FixedPointModContext.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidArraySizeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/FixedPointModContext.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/FromJson.java], [src/java/com/stealthsoftwareinc/sst/FromJson.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidListIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/FromJson.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Guid.java], [src/java/com/stealthsoftwareinc/sst/Guid.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidListSizeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Guid.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/HostAndPort.java], [src/java/com/stealthsoftwareinc/sst/HostAndPort.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOperandStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/HostAndPort.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/HostNamePredicate.java], [src/java/com/stealthsoftwareinc/sst/HostNamePredicate.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOperationStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/HostNamePredicate.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ImpossibleException.java], [src/java/com/stealthsoftwareinc/sst/ImpossibleException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOptionNameStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/ImpossibleException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/IntegerOverflowStatus.java], [src/java/com/stealthsoftwareinc/sst/IntegerOverflowStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOptionStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/IntegerOverflowStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/IntegerPredicate.java], [src/java/com/stealthsoftwareinc/sst/IntegerPredicate.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOptionValueStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/IntegerPredicate.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/IntegerRep.java], [src/java/com/stealthsoftwareinc/sst/IntegerRep.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidPointerStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/IntegerRep.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InternalErrorStatus.java], [src/java/com/stealthsoftwareinc/sst/InternalErrorStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/JavaFloatValuePredicate.class],
+  [src/java/com/stealthsoftwareinc/sst/InternalErrorStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidAliasingStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidAliasingStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/JavaLex.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidAliasingStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidArgumentStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidArgumentStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcSubprotocol.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidArgumentStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidArrayIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidArrayIndexStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Json.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidArrayIndexStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidArraySizeStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidArraySizeStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/LimitExceededStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidArraySizeStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidListIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidListIndexStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Longptr.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidListIndexStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidListSizeStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidListSizeStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/LongptrNotSupportedStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidListSizeStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOperandStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidOperandStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Memory.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidOperandStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOperationStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidOperationStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingArraySentinelStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidOperationStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOptionNameStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidOptionNameStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingCaseStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidOptionNameStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOptionStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidOptionStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingListSentinelStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidOptionStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidOptionValueStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidOptionValueStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingOptionValueStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidOptionValueStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/InvalidPointerStatus.java], [src/java/com/stealthsoftwareinc/sst/InvalidPointerStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NativeExceptionException.class],
+  [src/java/com/stealthsoftwareinc/sst/InvalidPointerStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JavaFloatValuePredicate.java], [src/java/com/stealthsoftwareinc/sst/JavaFloatValuePredicate.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NativeInterfaceException.class],
+  [src/java/com/stealthsoftwareinc/sst/JavaFloatValuePredicate.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JavaLex.java], [src/java/com/stealthsoftwareinc/sst/JavaLex.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeArrayIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/JavaLex.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Jdbc.java], [src/java/com/stealthsoftwareinc/sst/Jdbc.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeArraySizeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Jdbc.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcAddress.java], [src/java/com/stealthsoftwareinc/sst/JdbcAddress.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeListIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/JdbcAddress.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcConnection.java], [src/java/com/stealthsoftwareinc/sst/JdbcConnection.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeListSizeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/JdbcConnection.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcConnectionFactory.java], [src/java/com/stealthsoftwareinc/sst/JdbcConnectionFactory.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NetworkMessage.class],
+  [src/java/com/stealthsoftwareinc/sst/JdbcConnectionFactory.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcName.java], [src/java/com/stealthsoftwareinc/sst/JdbcName.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NonnullPointerStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/JdbcName.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcSubprotocol.java], [src/java/com/stealthsoftwareinc/sst/JdbcSubprotocol.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NotImplementedStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/JdbcSubprotocol.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JdbcType.java], [src/java/com/stealthsoftwareinc/sst/JdbcType.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NotSupportedStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/JdbcType.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Json.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Json.java], [src/java/com/stealthsoftwareinc/sst/Json.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NullInputStream.class],
+  [src/java/com/stealthsoftwareinc/sst/Json.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/JsonException.java], [src/java/com/stealthsoftwareinc/sst/JsonException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NullOutputStream.class],
+  [src/java/com/stealthsoftwareinc/sst/JsonException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/LimitExceededStatus.java], [src/java/com/stealthsoftwareinc/sst/LimitExceededStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/NullPointerStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/LimitExceededStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Longptr.java], [src/java/com/stealthsoftwareinc/sst/Longptr.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/OptionPair.class],
+  [src/java/com/stealthsoftwareinc/sst/Longptr.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/LongptrNotSupportedStatus.java], [src/java/com/stealthsoftwareinc/sst/LongptrNotSupportedStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/OutOfMemoryStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/LongptrNotSupportedStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Maps.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Maps.java], [src/java/com/stealthsoftwareinc/sst/Maps.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/OutOfRangeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Maps.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Memory.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Memory.java], [src/java/com/stealthsoftwareinc/sst/Memory.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/OversizeArrayIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/Memory.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingArraySentinelStatus.java], [src/java/com/stealthsoftwareinc/sst/MissingArraySentinelStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/OversizeListIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/MissingArraySentinelStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingCaseStatus.java], [src/java/com/stealthsoftwareinc/sst/MissingCaseStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ParseFailureStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/MissingCaseStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingListSentinelStatus.java], [src/java/com/stealthsoftwareinc/sst/MissingListSentinelStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Pool.class],
+  [src/java/com/stealthsoftwareinc/sst/MissingListSentinelStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/MissingOptionValueStatus.java], [src/java/com/stealthsoftwareinc/sst/MissingOptionValueStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/PoolEntry.class],
+  [src/java/com/stealthsoftwareinc/sst/MissingOptionValueStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Modulus.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Modulus.java], [src/java/com/stealthsoftwareinc/sst/Modulus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/PortNumberPredicate.class],
+  [src/java/com/stealthsoftwareinc/sst/Modulus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NativeExceptionException.java], [src/java/com/stealthsoftwareinc/sst/NativeExceptionException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Rand.class],
+  [src/java/com/stealthsoftwareinc/sst/NativeExceptionException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NativeInterfaceException.java], [src/java/com/stealthsoftwareinc/sst/NativeInterfaceException.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/RecursiveFileDeleter.class],
+  [src/java/com/stealthsoftwareinc/sst/NativeInterfaceException.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeArrayIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/NegativeArrayIndexStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/StringBuilderUtil.class],
+  [src/java/com/stealthsoftwareinc/sst/NegativeArrayIndexStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeArraySizeStatus.java], [src/java/com/stealthsoftwareinc/sst/NegativeArraySizeStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/TaskResultList.class],
+  [src/java/com/stealthsoftwareinc/sst/NegativeArraySizeStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeListIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/NegativeListIndexStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/Uris.class],
+  [src/java/com/stealthsoftwareinc/sst/NegativeListIndexStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NegativeListSizeStatus.java], [src/java/com/stealthsoftwareinc/sst/NegativeListSizeStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/WildPointerStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/NegativeListSizeStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NetworkMessage.java], [src/java/com/stealthsoftwareinc/sst/NetworkMessage.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/WrapperException.class],
+  [src/java/com/stealthsoftwareinc/sst/NetworkMessage.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NonnullPointerStatus.java], [src/java/com/stealthsoftwareinc/sst/NonnullPointerStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroArrayIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/NonnullPointerStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NotImplementedStatus.java], [src/java/com/stealthsoftwareinc/sst/NotImplementedStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroArraySizeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/NotImplementedStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NotSupportedStatus.java], [src/java/com/stealthsoftwareinc/sst/NotSupportedStatus.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroListIndexStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/NotSupportedStatus.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NullInputStream.java], [src/java/com/stealthsoftwareinc/sst/NullInputStream.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroListSizeStatus.class],
+  [src/java/com/stealthsoftwareinc/sst/NullInputStream.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NullOutputStream.java], [src/java/com/stealthsoftwareinc/sst/NullOutputStream.java])
+[
 
-]GATBPS_CONFIG_FILE([lib/sst-tests.jar.classpath.im])[
-]GATBPS_CONFIG_LATER([lib/sst-tests.jar.classpath])[
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/NullOutputStream.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/NullPointerStatus.java], [src/java/com/stealthsoftwareinc/sst/NullPointerStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/NullPointerStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OptArg.java], [src/java/com/stealthsoftwareinc/sst/OptArg.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OptArg.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OptException.java], [src/java/com/stealthsoftwareinc/sst/OptException.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OptException.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OptionPair.java], [src/java/com/stealthsoftwareinc/sst/OptionPair.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OptionPair.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OutOfMemoryStatus.java], [src/java/com/stealthsoftwareinc/sst/OutOfMemoryStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OutOfMemoryStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OutOfRangeStatus.java], [src/java/com/stealthsoftwareinc/sst/OutOfRangeStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OutOfRangeStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OversizeArrayIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/OversizeArrayIndexStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OversizeArrayIndexStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/OversizeListIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/OversizeListIndexStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/OversizeListIndexStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ParseFailureStatus.java], [src/java/com/stealthsoftwareinc/sst/ParseFailureStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ParseFailureStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Pool.java], [src/java/com/stealthsoftwareinc/sst/Pool.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Pool.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/PoolEntry.java], [src/java/com/stealthsoftwareinc/sst/PoolEntry.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/PoolEntry.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/PortNumberPredicate.java], [src/java/com/stealthsoftwareinc/sst/PortNumberPredicate.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/PortNumberPredicate.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/QueryStringException.java], [src/java/com/stealthsoftwareinc/sst/QueryStringException.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/QueryStringException.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Rand.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Rand.java], [src/java/com/stealthsoftwareinc/sst/Rand.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Rand.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/RandModContext.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/RandModContext.java], [src/java/com/stealthsoftwareinc/sst/RandModContext.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/RandModContext.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/RecursiveFileDeleter.java], [src/java/com/stealthsoftwareinc/sst/RecursiveFileDeleter.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/RecursiveFileDeleter.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/Rep.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Rep.java], [src/java/com/stealthsoftwareinc/sst/Rep.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Rep.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/RepException.java], [src/java/com/stealthsoftwareinc/sst/RepException.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/RepException.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/StringBuilderUtil.java], [src/java/com/stealthsoftwareinc/sst/StringBuilderUtil.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/StringBuilderUtil.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Strings.java], [src/java/com/stealthsoftwareinc/sst/Strings.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Strings.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Supplier.java], [src/java/com/stealthsoftwareinc/sst/Supplier.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Supplier.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/TaskResultList.java], [src/java/com/stealthsoftwareinc/sst/TaskResultList.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/TaskResultList.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ThreadedLogFile.java], [src/java/com/stealthsoftwareinc/sst/ThreadedLogFile.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ThreadedLogFile.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ThrowingRunnable.java], [src/java/com/stealthsoftwareinc/sst/ThrowingRunnable.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ThrowingRunnable.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ToBytes.java], [src/java/com/stealthsoftwareinc/sst/ToBytes.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ToBytes.class],
+  [mostlyclean])[
 
-]GATBPS_CONFIG_FILE([lib/sst-tests.jar.build_tree_classpath.im])[
-]GATBPS_CONFIG_LATER([lib/sst-tests.jar.build_tree_classpath])[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ToInt.java], [src/java/com/stealthsoftwareinc/sst/ToInt.java])
+[
 
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ToInt.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ToJson.java], [src/java/com/stealthsoftwareinc/sst/ToJson.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ToJson.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ToQueryString.java], [src/java/com/stealthsoftwareinc/sst/ToQueryString.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ToQueryString.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Types.java], [src/java/com/stealthsoftwareinc/sst/Types.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Types.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/UncheckedException.java], [src/java/com/stealthsoftwareinc/sst/UncheckedException.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/UncheckedException.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/UnimplementedException.java], [src/java/com/stealthsoftwareinc/sst/UnimplementedException.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/UnimplementedException.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/Uris.java], [src/java/com/stealthsoftwareinc/sst/Uris.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/Uris.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/WildPointerStatus.java], [src/java/com/stealthsoftwareinc/sst/WildPointerStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/WildPointerStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroArrayIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/ZeroArrayIndexStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ZeroArrayIndexStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroArraySizeStatus.java], [src/java/com/stealthsoftwareinc/sst/ZeroArraySizeStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ZeroArraySizeStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroListIndexStatus.java], [src/java/com/stealthsoftwareinc/sst/ZeroListIndexStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ZeroListIndexStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/ZeroListSizeStatus.java], [src/java/com/stealthsoftwareinc/sst/ZeroListSizeStatus.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/ZeroListSizeStatus.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/netty/HttpDirectoryServerCore.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/netty/HttpDirectoryServerCore.java], [src/java/com/stealthsoftwareinc/sst/netty/HttpDirectoryServerCore.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/netty/HttpDirectoryServerCore.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/netty/HttpResponseStatusException.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/netty/HttpResponseStatusException.java], [src/java/com/stealthsoftwareinc/sst/netty/HttpResponseStatusException.java])
+[
 
-]GATBPS_JAVA([tests])[
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/netty/HttpResponseStatusException.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/sst/netty/JdbcRunner.java])
+[
+]
+GATBPS_CP([sst-java/src/main/java/com/stealthsoftwareinc/sst/netty/JdbcRunner.java], [src/java/com/stealthsoftwareinc/sst/netty/JdbcRunner.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/sst/netty/JdbcRunner.class],
+  [mostlyclean])[
+
+
+]GATBPS_CONFIG_FILE([lib/sst-test.jar.classpath.im])[
+]GATBPS_CONFIG_LATER([lib/sst-test.jar.classpath])[
+
+]GATBPS_CONFIG_FILE([lib/sst-test.jar.build_tree_classpath.im])[
+]GATBPS_CONFIG_LATER([lib/sst-test.jar.build_tree_classpath])[
+
+
+]GATBPS_JAVA([test])[
+
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/ArgsTest.java], [src/java/com/stealthsoftwareinc/test/sst/ArgsTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/ArgsTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/test/sst/ArithTest.java])
+[
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/ArithTest.java], [src/java/com/stealthsoftwareinc/test/sst/ArithTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/ArithTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/EnumsTest.java], [src/java/com/stealthsoftwareinc/test/sst/EnumsTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/EnumsTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/test/sst/FixedPointModContextTest.java])
+[
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/FixedPointModContextTest.java], [src/java/com/stealthsoftwareinc/test/sst/FixedPointModContextTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/FixedPointModContextTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/HostNamePredicateTest.java], [src/java/com/stealthsoftwareinc/test/sst/HostNamePredicateTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/HostNamePredicateTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/JdbcNameTest.java], [src/java/com/stealthsoftwareinc/test/sst/JdbcNameTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/JdbcNameTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/JdbcSubprotocolTest.java], [src/java/com/stealthsoftwareinc/test/sst/JdbcSubprotocolTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/JdbcSubprotocolTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/JdbcTypeTest.java], [src/java/com/stealthsoftwareinc/test/sst/JdbcTypeTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/JdbcTypeTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/test/sst/JsonTest.java])
+[
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/JsonTest.java], [src/java/com/stealthsoftwareinc/test/sst/JsonTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/JsonTest.class],
+  [mostlyclean])[
+
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/test/sst/ModulusTest.java])
+[
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/ModulusTest.java], [src/java/com/stealthsoftwareinc/test/sst/ModulusTest.java])
+[
+
+]GATBPS_JAVA_CLASS(
+  [src/java/com/stealthsoftwareinc/test/sst/ModulusTest.class],
+  [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/RandModContextTest.java], [src/java/com/stealthsoftwareinc/test/sst/RandModContextTest.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/test/java/com/stealthsoftwareinc/tests/sst/ArgsTest.class],
+  [src/java/com/stealthsoftwareinc/test/sst/RandModContextTest.class],
   [mostlyclean])[
 
+]
+GATBPS_M4([src/java/com/stealthsoftwareinc/test/sst/RepTest.java])
+[
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/RepTest.java], [src/java/com/stealthsoftwareinc/test/sst/RepTest.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/test/java/com/stealthsoftwareinc/tests/sst/HostNamePredicateTest.class],
+  [src/java/com/stealthsoftwareinc/test/sst/RepTest.class],
   [mostlyclean])[
 
+]
+GATBPS_CP([sst-java/src/test/java/com/stealthsoftwareinc/test/sst/StringsTest.java], [src/java/com/stealthsoftwareinc/test/sst/StringsTest.java])
+[
 
 ]GATBPS_JAVA_CLASS(
-  [sst-java/src/test/java/com/stealthsoftwareinc/tests/sst/JdbcSubprotocolTest.class],
+  [src/java/com/stealthsoftwareinc/test/sst/StringsTest.class],
   [mostlyclean])[
 
 

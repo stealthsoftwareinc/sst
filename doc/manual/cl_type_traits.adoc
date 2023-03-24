@@ -1,0 +1,79 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-type-traits]
+= Type traits
+
+:leveloffset: +1
+
+include::sections/cl_sst_bool_constant.adoc[]
+include::sections/cl_sst_common_type_t.adoc[]
+include::sections/cl_sst_conditional_t.adoc[]
+include::cl_sst_copy_cv.adoc[]
+include::cl_sst_copy_cv_t.adoc[]
+include::sections/cl_sst_decay_t.adoc[]
+include::sections/cl_sst_is_arithmetic.adoc[]
+include::sections/cl_sst_is_arithmetic_ish.adoc[]
+include::sections/cl_sst_is_arithmetic_like.adoc[]
+include::cl_sst_is_big_endian.adoc[]
+include::cl_sst_is_bool.adoc[]
+include::sections/cl_sst_is_byte.adoc[]
+include::sections/cl_sst_is_byte_input_iterable.adoc[]
+include::sections/cl_sst_is_byte_input_iterator.adoc[]
+include::cl_sst_is_enum.adoc[]
+include::cl_sst_is_exact_width_integer.adoc[]
+include::sections/cl_sst_is_floating.adoc[]
+include::sections/cl_sst_is_floating_ish.adoc[]
+include::sections/cl_sst_is_floating_like.adoc[]
+include::sections/cl_sst_is_input_iterator.adoc[]
+include::sections/cl_sst_is_integer.adoc[]
+include::sections/cl_sst_is_integer_ish.adoc[]
+include::sections/cl_sst_is_integer_like.adoc[]
+include::sections/cl_sst_is_iterator.adoc[]
+include::cl_sst_is_little_endian.adoc[]
+include::cl_sst_is_non_bool_integer.adoc[]
+include::cl_sst_is_ones_complement.adoc[]
+include::sections/cl_sst_is_output_iterator.adoc[]
+include::sections/cl_sst_is_sentinel.adoc[]
+include::sections/cl_sst_is_value_sentinel.adoc[]
+include::cl_sst_is_sign_magnitude.adoc[]
+include::cl_sst_is_signed_integer.adoc[]
+include::cl_sst_is_twos_complement.adoc[]
+include::cl_sst_is_unsigned_integer.adoc[]
+include::sections/cl_sst_remove_cv_t.adoc[]
+include::cl_sst_remove_cvref.adoc[]
+include::sections/cl_sst_remove_cvref_t.adoc[]
+include::sections/cl_sst_remove_reference_t.adoc[]
+include::cl_sst_type_identity.adoc[]
+include::cl_sst_type_identity_t.adoc[]
+include::cl_sst_undeduced.adoc[]
+include::sections/cl_sst_undeduced_t.adoc[]
+
+:leveloffset: -1
+
+//

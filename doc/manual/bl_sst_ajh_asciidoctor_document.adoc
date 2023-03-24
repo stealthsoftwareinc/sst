@@ -1,15 +1,59 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[bl_sst_ajh_asciidoctor_document,sst_ajh_asciidoctor_document]]
+[#bl-sst-ajh-asciidoctor-document]
 = The `sst_ajh_asciidoctor_document` function
 
 .Bash
-[source,subs="normal"]
+[source,subs="{sst_subs_source}"]
 ----
-++sst_ajh_asciidoctor_document ++**[**++<ag_json>++**...]**
+sst_ajh_asciidoctor_document [<json>...]
 ----
+
+== Images
+
+`asciidoctor` will be called with `-a imagesdir=images`, meaning that
+`image::foo.png[]` will reference `images/foo.png`, not `foo.png`.
+So, to use images, create an `images` directory, put your images in it,
+and reference them accordingly.
+
+You can create subdirectories under the `images` directory to help
+organize your images.
+For example, if you create `images/foo/bar.png`, you can reference it
+with `image::foo/bar.png[]`.
+
+Asciidoctor Diagram will output images to the `images` directory using
+the name pattern
+link:https://github.com/asciidoctor/asciidoctor-diagram/blob/95c80b753441ce85a8541549b2fdfd085a21425c/lib/asciidoctor-diagram/diagram_source.rb#L172[`diag-*`,window=_blank].
+You should avoid this name pattern for your own images, as the build
+system sometimes deletes all such images.
+
+You can change the name of the `images` directory by setting `imagesdir`
+in `<json>`.
 
 //

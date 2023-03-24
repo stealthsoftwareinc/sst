@@ -1,0 +1,219 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SSTSEQHASHCORE_ADOC[]
+:SECTIONS_CL_SSTSEQHASHCORE_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sstSeqHashCore_name0: sstSeqHashCore
+
+:cl_sstSeqHashCore_id: cl-sstSeqHashCore
+:cl_sstSeqHashCore_url: sections/cl_sstSeqHashCore.adoc#{cl_sstSeqHashCore_id}
+
+:cl_sstSeqHashCore: xref:{cl_sstSeqHashCore_url}[{cl_sstSeqHashCore_name0}]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sstSeqHashCore_id}]
+= `{cl_sstSeqHashCore_name0}`
+
+A {cl_class} `H` satisfies the `{cl_sstSeqHashCore}` requirement if all
+of the following hold:
+
+. {empty}
+`H` satisfies the following class description:
++
+[source,subs="{sst_subs_source}"]
+----
+class H {
+
+public:
+
+  // {cl_Default_operations_sc}
+  H() {cl_noexcept_spec};                 // {cl_default_constructor}
+  H(H const &);                 // {cl_copy_constructor}
+  H & operator=(H const &);     // {cl_copy_assignment}
+  H(H &&) {cl_noexcept_spec};             // {cl_move_constructor}
+  H & operator=(H &&) {cl_noexcept_spec}; // {cl_move_assignment}
+  ~H() {cl_noexcept_spec};                // {cl_destructor}
+
+  template<class T> class is_input;
+  using output_t = ++/*...*/++;
+
+  // Mutators
+  H & clear() {cl_noexcept_spec};
+  H & init();
+  H & update({cl_sst_is_input_iterator}<is_input> src,
+             {cl_sst_is_integer_ish} const & len);
+  H & update({cl_sst_is_input_iterator}<is_input> src,
+             {cl_sst_is_sentinel}<src> const & end);
+  H & update({cl_sst_is_input_iterator}<is_input> src,
+             {cl_sst_is_value_sentinel}<src> const & end);
+  H & finish();
+
+  // Getters
+  output_t const & output() const & {cl_noexcept_spec};
+  output_t && output() && {cl_noexcept_spec};
+
+};
+----
+
+. {empty}
+All mutator functions return `*this`.
+
+The state of `H` changes according to the following diagram:
+
+[pikchr,svg-type="inline"]
+....
+
+down
+
+$rad = 5px
+$size = ellipsewid / 2
+$off = 5px
+
+X_ctor: arrow
+X_empty: ellipse "empty"
+move
+X_ready: ellipse "ready"
+move
+X_active: ellipse "active"
+move
+X_finished: ellipse "finished"
+
+X_empty_init: arrow from X_empty.s to X_ready.n
+
+line invis from X_empty_init.e right $off "\<tspan style=\"font-family: var(--sst_code_font) !important\"\>init\</tspan\>" ljust
+
+X_ready_init: arrow \
+  rad $rad \
+  from X_ready.nw \
+  go $size / 4 nw \
+  then up until even with X_empty_init \
+  then right until even with X_empty_init \
+  then to X_ready.n \
+;
+
+X_ready_update: arrow from X_ready.s to X_active.n
+
+line invis from X_ready_update.e right $off "\<tspan style=\"font-family: var(--sst_code_font) !important\"\>update\</tspan\>" ljust
+
+X_ready_finish: arrow \
+  rad $rad \
+  from X_ready.e \
+  right $size \
+  then down until even with X_finished \
+  then to X_finished.e \
+;
+
+line invis from X_ready_finish.se right $off "\<tspan style=\"font-family: var(--sst_code_font) !important\"\>finish\</tspan\>" ljust
+
+X_ready_clear: arrow \
+  rad $rad \
+  from X_ready.ne \
+  right $size * 2 up $size / 2 \
+  then up until even with X_empty \
+  then to X_empty.e \
+;
+
+X_active_init: arrow \
+  rad $rad \
+  from X_active.w \
+  left $size \
+  then up until even with X_ready_init.n \
+  then right until even with X_empty_init \
+  then to X_ready.n \
+;
+
+X_active_update: arrow \
+  rad $rad \
+  from X_active.nw \
+  go $size / 4 nw \
+  then up until even with X_ready_update \
+  then right until even with X_ready_update \
+  then to X_active.n \
+;
+
+X_active_finish: arrow \
+  rad $rad \
+  from X_active.e \
+  right $size \
+  then down until even with X_finished \
+  then to X_finished.e \
+;
+
+X_active_clear: arrow \
+  rad $rad \
+  from X_active.ne \
+  right $size * 2 up $size / 2 \
+  then up until even with X_empty \
+  then to X_empty.e \
+;
+
+X_finished_init: arrow \
+  rad $rad \
+  from X_finished.w \
+  left $size \
+  then up until even with X_ready_init.n \
+  then right until even with X_empty_init \
+  then to X_ready.n \
+;
+
+X_finished_clear: arrow \
+  rad $rad \
+  from X_finished.ne \
+  right $size * 2 up $size / 2 \
+  then up until even with X_empty \
+  then to X_empty.e \
+;
+
+line invis \
+  from 3rd vertex of X_finished_clear \
+  to 4th vertex of X_finished_clear \
+  "\<tspan style=\"font-family: var(--sst_code_font) !important\"\>clear\</tspan\>" above \
+;
+
+X_empty_clear: arrow \
+  rad $rad \
+  from X_empty.se \
+  go $size / 4 se \
+  then right until even with X_finished_clear \
+  then up until even with X_empty \
+  then to X_empty.e \
+;
+
+....
+
+//----------------------------------------------------------------------
+endif::[]

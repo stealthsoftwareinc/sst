@@ -1,21 +1,65 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[c_cpp_library]]
+[#c-cpp-library]
 = C/{cpp} library
 
 :leveloffset: +1
 
+include::cl_reserved_identifiers.adoc[]
+include::cl_general_development_guidelines.adoc[]
+include::cl_internal_development_guidelines.adoc[]
+include::cl_creating_a_self_contained_subset_library.adoc[]
+include::cl_algorithm_categories.adoc[]
+include::sections/cl_attributes.adoc[]
+include::sections/cl_debugging_utilities.adoc[]
+include::sections/cl_memory_utilities.adoc[]
 include::cl_language_shims.adoc[]
-include::cl_type_utilities.adoc[]
-include::cl_nlohmann_json_tools.adoc[]
+include::cl_type_traits.adoc[]
+include::cl_iterator_utilities.adoc[]
+include::sections/cl_json_utilities.adoc[]
 include::cl_individual_bit_access.adoc[]
 include::cl_integer_packing.adoc[]
 include::cl_basic_algorithms.adoc[]
+include::cl_string_utilities.adoc[]
+include::sections/cl_text_encoding_utilities.adoc[]
 include::cl_time_utilities.adoc[]
+include::cl_filesystem_tools.adoc[]
+include::cl_sfinae_tools.adoc[]
+include::cl_synchronization_utilities.adoc[]
+include::cl_random_number_utilities.adoc[]
+include::cl_container_utilities.adoc[]
+include::sections/cl_networking_utilities.adoc[]
+include::cl_windows_utilities.adoc[]
 include::cl_miscellaneous.adoc[]
+include::sections/cl_hash_functions.adoc[]
+include::sections/cl_sqlite_utilities.adoc[]
+include::sections/cl_tracing_utilities.adoc[]
 
 :leveloffset: -1
 

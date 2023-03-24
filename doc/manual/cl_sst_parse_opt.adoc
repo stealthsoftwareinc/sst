@@ -1,0 +1,130 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-parse-opt]
+= The `sst::parse_opt` function
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/parse_opt.hpp[sst/catalog/parse_opt.hpp,window=_blank]>
+namespace sst {
+
+template<class StringList, class String>
+auto parse_opt(StringList & args,
+               String const & opt,
+               opt_arg style = opt_arg::required,
+               bool * has_arg = nullptr) ->
+    typename std::enable_if<!std::is_pointer<String>::value,
+                            bool>::type;
+
+template<class StringList, class CharT>
+bool parse_opt(StringList & args,
+               CharT const * opt,
+               opt_arg style = opt_arg::required,
+               bool * has_arg = nullptr);
+
+template<class StringList, class String1, class String2>
+bool parse_opt(StringList & args,
+               std::initializer_list<String1> opts,
+               String2 * parsed_opt = nullptr,
+               opt_arg style = opt_arg::required,
+               bool * has_arg = nullptr);
+
+template<class StringList, class String>
+bool parse_opt(StringList & args,
+               std::initializer_list<String> opts,
+               opt_arg style = opt_arg::required,
+               bool * has_arg = nullptr);
+
+}
+----
+
+.{empty}
+[example]
+====
+The following program demonstrates how `sst::parse_opt` could be used to
+parse the command-line arguments similarly to the `git init` command of
+Git 2.31.0 (see
+link:https://github.com/git/git/blob/v2.31.0/Documentation/git-init.txt[,window=_blank]):
+
+.link:{repo_browser_url}/doc/manual/cl_sst_parse_opt_git_init_example.cpp[`cl_sst_parse_opt_git_init_example.cpp`,window=_blank]
+[source,cpp]
+----
+include::cl_sst_parse_opt_git_init_example.cpp[]
+----
+
+.Invocation examples
+[listing]
+----
+$ g++ cl_sst_parse_opt_git_init_example.cpp -lsst
+
+$ ./a.out
+ok
+
+$ ./a.out --quiet --initial-branch foo
+ok
+
+$ ./a.out --quiet --initial-branch=foo
+ok
+# "--initial-branch foo" and "--initial-branch=foo" are equivalent
+# because --initial-branch uses sst::opt_arg::required.
+
+$ ./a.out --quiet --initial-branch
+./a.out: option requires an argument: --initial-branch
+
+$ ./a.out -q -b foo
+ok
+
+$ ./a.out -qbfoo
+ok
+# "-q -b foo", "-q -bfoo", and "-qbfoo" are equivalent because -q uses
+# sst::opt_arg::forbidden and -b uses sst::opt_arg::required.
+
+$ ./a.out -qb
+./a.out: option requires an argument: -b
+
+$ ./a.out -qbfoo --bar=baz
+./a.out: unknown option: --bar
+
+$ ./a.out -qbfoo -- --bar=baz
+ok
+# "--" is conventionally the options terminator (no further arguments
+# are options, even if they begin with "-" or "--").
+
+$ ./a.out --shared=all .
+ok
+
+$ ./a.out --shared all .
+./a.out: directory given twice
+# "--shared all" and "--shared=all" are not equivalent because --shared
+# uses sst::opt_arg::permitted, not sst::opt_arg::required.
+----
+====
+
+//

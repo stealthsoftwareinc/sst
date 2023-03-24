@@ -1,0 +1,78 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-windows-socket-library-scope]
+= The `sst::windows_socket_library_scope` class
+
+:!bnxybdrq_ctor_i:
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/windows_socket_library_scope.hpp[sst/catalog/windows_socket_library_scope.hpp,window=_blank]>
+namespace sst {
+
+class xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] final {
+public:
+
+  explicit xref:{cl_sst_windows_socket_library_scope_ctor_cvrqw5gc_url}[windows_socket_library_scope](int major, int minor);
+
+  explicit xref:{cl_sst_windows_socket_library_scope_ctor_h35w32py_url}[windows_socket_library_scope]();
+
+  {cl_sst_w32_WSADATA_wrapper} const & xref:{cl_sst_windows_socket_library_scope_data_url}[data]() const;
+
+  xref:{cl_sst_windows_socket_library_scope_dtor_url}[~windows_socket_library_scope]() noexcept;
+
+  windows_socket_library_scope(xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] const &) = delete;
+  windows_socket_library_scope(xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] &&) = delete;
+  xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] & operator=(xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] const &) = delete;
+  xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] & operator=(xref:{cl_sst_windows_socket_library_scope_url}[windows_socket_library_scope] &&) = delete;
+};
+
+}
+----
+
+The `{cl_sst_windows_socket_library_scope}` class calls the `{cl_w32_WSAStartup}`
+function when it is constructed and the `{cl_w32_WSACleanup}` function
+when it is destructed.
+
+If Winsock is not available, i.e., if `{cl_SST_WITH_WINDOWS_WS2_32}` is
+`0`, this class does nothing.
+
+:!bnxybdrq_ctor_i:
+
+:leveloffset: +1
+
+include::cl_sst_windows_socket_library_scope_ctor_cvrqw5gc.adoc[]
+include::cl_sst_windows_socket_library_scope_ctor_h35w32py.adoc[]
+include::cl_sst_windows_socket_library_scope_data.adoc[]
+include::cl_sst_windows_socket_library_scope_dtor.adoc[]
+
+:leveloffset: -1
+
+//

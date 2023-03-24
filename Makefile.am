@@ -1,6 +1,29 @@
 ##
-## For the copyright information for this file, please search up the
-## directory tree for the first COPYING file.
+## Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+##
+## Permission is hereby granted, free of charge, to any person
+## obtaining a copy of this software and associated documentation
+## files (the "Software"), to deal in the Software without
+## restriction, including without limitation the rights to use,
+## copy, modify, merge, publish, distribute, sublicense, and/or
+## sell copies of the Software, and to permit persons to whom the
+## Software is furnished to do so, subject to the following
+## conditions:
+##
+## The above copyright notice and this permission notice (including
+## the next paragraph) shall be included in all copies or
+## substantial portions of the Software.
+##
+## THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+## EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+## OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+## NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+## HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+## WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+## FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+## OTHER DEALINGS IN THE SOFTWARE.
+##
+## SPDX-License-Identifier: MIT
 ##
 
 #
@@ -16,44 +39,24 @@
 # this file, the COPYING file may not be available.
 #
 
+##----------------------------------------------------------------------
+
+include $(srcdir)/build-aux/gatbps.am
+
+##----------------------------------------------------------------------
+
 ## begin_variables
 
 ACLOCAL_AMFLAGS = -I m4
 
-AM_CPPFLAGS = \
-  -I src/c_cpp/lib \
-  -I $(srcdir)/src/c_cpp/lib \
-  -I src/c_cpp/include \
-  -I $(srcdir)/src/c_cpp/include \
-  -I include \
-  -I $(srcdir)/include \
-$(prevent_an_empty_line)
+AM_CPPFLAGS =
 
 AM_CXXFLAGS = \
-$(prevent_an_empty_line)
-
-AM_MAKEINFOFLAGS = \
-  -I doc/texi \
-  -I $(srcdir)/doc/texi \
-$(prevent_an_empty_line)
-
-AM_MAKEINFOHTMLFLAGS = \
-  $(AM_MAKEINFOFLAGS) \
-  --css-include=texinfo.css \
-  --no-headers \
-  --no-split \
-  --set-customization-variable TOP_NODE_UP=Top \
-$(prevent_an_empty_line)
-
-AM_TEXI2DVIFLAGS = \
-  $(AM_MAKEINFOFLAGS) \
-$(prevent_an_empty_line)
+$(empty)
 
 BUILT_SOURCES =
 
 DISTCLEANFILES =
-
-EXTRA_DIST =
 
 GATBPS_JAVADOCFLAGS =
 GATBPS_JAVADOCFLAGS += \
@@ -69,7 +72,7 @@ GATBPS_JAVADOCFLAGS += \
   '-tag' 'inheritancenotes:a:Inheritance Notes:' \
   '-tag' 'examples:a:Examples:' \
   '-tag' 'notablechanges:a:Notable Changes:' \
-$(prevent_an_empty_line)
+$(empty)
 
 MAINTAINERCLEANFILES =
 
@@ -79,15 +82,7 @@ MOSTLYCLEANFILES += $(java_src)
 SUBDIRS =
 SUBDIRS += gen
 
-SUFFIXES =
-
 TESTS =
-
-TEXI2DVI = \
-  'texi2dvi' \
-  $(AM_TEXI2DVIFLAGS) \
-  $(TEXI2DVIFLAGS) \
-$(prevent_an_empty_line)
 
 TMPEXT = .gitignorable.tmp
 
@@ -102,31 +97,6 @@ check_PROGRAMS =
 dist_java_DATA =
 
 dist_pkgdata_DATA =
-
-dvi_dist_dep =
-dvi_dist_dep += $(doc_sst_TEXINFOS)
-dvi_dist_dep += doc/sst.texi
-
-dvi_dist_dst =
-dvi_dist_dst += doc/sst-$(PACKAGE_VERSION).dvi
-
-dvi_dist_src =
-dvi_dist_src += doc/sst.dvi
-
-html_dist_dep =
-html_dist_dep += $(doc_sst_TEXINFOS)
-html_dist_dep += doc/sst.texi
-
-html_dist_dst =
-html_dist_dst += doc/sst-$(PACKAGE_VERSION).html
-
-html_dist_src =
-html_dist_src += doc/sst.html
-
-include_HEADERS =
-
-info_TEXINFOS =
-info_TEXINFOS += doc/sst.texi
 
 jar_classpath_files =
 
@@ -162,18 +132,6 @@ noinst_LTLIBRARIES =
 
 noinst_PROGRAMS =
 
-noinst_SCRIPTS =
-
-pdf_dist_dep =
-pdf_dist_dep += $(doc_sst_TEXINFOS)
-pdf_dist_dep += doc/sst.texi
-
-pdf_dist_dst =
-pdf_dist_dst += doc/sst-$(PACKAGE_VERSION).pdf
-
-pdf_dist_src =
-pdf_dist_src += doc/sst.pdf
-
 pkgdata_DATA =
 
 pkglibexec_PROGRAMS =
@@ -182,46 +140,27 @@ pkglibexec_SCRIPTS =
 
 pkgsysconfdir = $(sysconfdir)/$(PACKAGE_TARNAME)
 
-plaintext_dep =
-plaintext_dep += $(doc_sst_TEXINFOS)
-
-plaintext_dist_dep =
-plaintext_dist_dep += $(doc_sst_TEXINFOS)
-plaintext_dist_dep += doc/sst.texi
-
-plaintext_dist_dst =
-plaintext_dist_dst += doc/sst-$(PACKAGE_VERSION).txt
-
-plaintext_dist_src =
-plaintext_dist_src += doc/sst.txt
-
-plaintext_dst =
-plaintext_dst += doc/sst.txt
-
-plaintext_src =
-plaintext_src += doc/sst.texi
-
-ps_dist_dep =
-ps_dist_dep += $(doc_sst_TEXINFOS)
-ps_dist_dep += doc/sst.texi
-
-ps_dist_dst =
-ps_dist_dst += doc/sst-$(PACKAGE_VERSION).ps
-
-ps_dist_src =
-ps_dist_src += doc/sst.ps
-
 ## end_variables
 
-## begin_variable_additions
+artifacts_dist_archive_src = $(distdir).tar.gz
+artifacts/$(distdir).tar.gz/src: FORCE
+	@echo artifacts_dist_archive_src
 
-## end_variable_additions
+#-----------------------------------------------------------------------
+# Uninstallation
+#-----------------------------------------------------------------------
+#
+# "make uninstall" should uninstall any version of the package from the
+# current set of installation directories.
+#
 
-$(distdir).tar.gz:
-	$(MAKE) $(AM_MAKEFLAGS) dist-gzip
+$(PACKAGE_TARNAME)-uninstall-hook: FORCE
+	-rm -f -r $(DESTDIR)$(datadir)/$(PACKAGE_TARNAME)
+	-rm -f -r $(DESTDIR)$(datarootdir)/$(PACKAGE_TARNAME)
+	-rm -f -r $(DESTDIR)$(includedir)/$(PACKAGE_TARNAME)
+	-rm -f -r $(DESTDIR)$(libexecdir)/$(PACKAGE_TARNAME)
 
-.PHONY: FORCE
-FORCE:
+uninstall-hook: $(PACKAGE_TARNAME)-uninstall-hook
 
 #-----------------------------------------------------------------------
 # Code generation
@@ -250,13 +189,13 @@ dist_java_DATA += $(jar_classpath_files)
 
 ## begin_rules
 
-all-local: java-main
+$(bug13940) all-local: java-main
 
-check-local: check-java
+$(bug13940) check-local: check-java
 
-install-data-local: install-java-main
+$(bug13940) install-data-local: install-java-main
 
-uninstall-local: uninstall-java-main
+$(bug13940) uninstall-local: uninstall-java-main
 
 ## end_rules
 
@@ -268,65 +207,31 @@ endif
 ## java-maven build group
 ##----------------------------------------------------------------------
 
-.PHONY: maven-prep
 maven-prep: FORCE
-maven-prep: sst-java/src/main/java/com/stealthsoftwareinc/sst/BuildConfig.java
 
 if WITH_BUILD_GROUP_JAVA_MAVEN
-all-local: maven-prep
+$(bug13940) all-local: maven-prep
 endif
 
 ##----------------------------------------------------------------------
 
-## begin_includes
-
 include $(srcdir)/bin/sst_status_map_generator.am
-include $(srcdir)/build-aux/autogen.am
 include $(srcdir)/include/src/sst_status_map.inc.am
-include $(srcdir)/rpm/centos-7/x86_64/rpm.am
-include $(srcdir)/rpm/rhel-7/x86_64/rpm.am
-include $(srcdir)/src/com/stealthsoftwareinc/sst/BuildConfig.java.am
-include $(srcdir)/src/com/stealthsoftwareinc/sst/BuildConfig.java.im.am_
-
-## end_includes
-
-## begin_includes
 
 include $(srcdir)/build-aux/GATBPS_CONFIG_FILE_RULES.am
 include $(srcdir)/build-aux/GATBPS_CONFIG_LATER_RULES.am
 include $(srcdir)/build-aux/GATBPS_CP_RULES.am
-include $(srcdir)/build-aux/GATBPS_DOCKER_BUILD_RULES.am
 include $(srcdir)/build-aux/GATBPS_GIT_ARCHIVE_RULES.am
 include $(srcdir)/build-aux/GATBPS_GIT_BUNDLE_RULES.am
 include $(srcdir)/build-aux/GATBPS_GIT_CLONE_RULES.am
-include $(srcdir)/build-aux/GATBPS_JAVA_CLASS_RULES.am
-include $(srcdir)/build-aux/GATBPS_JAVA_RULES.am
-include $(srcdir)/build-aux/GATBPS_M4_RULES.am
-include $(srcdir)/build-aux/GATBPS_RECIPE_MARKER.am
-include $(srcdir)/build-aux/GATBPS_TAR_RULES.am
 include $(srcdir)/build-aux/GATBPS_VPATH_SEARCH.am
-include $(srcdir)/build-aux/GATBPS_V_NOP.am
 include $(srcdir)/build-aux/GATBPS_V_PAD.am
 include $(srcdir)/build-aux/GATBPS_WGET_RULES.am
-include $(srcdir)/build-aux/GATBPS_XZ_RULES.am
 include $(srcdir)/build-aux/cp.am
 include $(srcdir)/build-aux/docker.am
-include $(srcdir)/build-aux/doxygen.am
-include $(srcdir)/build-aux/dvi-dist.am
-include $(srcdir)/build-aux/gatbps.am
 include $(srcdir)/build-aux/git.am
-include $(srcdir)/build-aux/gzip.am
-include $(srcdir)/build-aux/html-dist.am
-include $(srcdir)/build-aux/java.am
 include $(srcdir)/build-aux/javadoc-dist.am
 include $(srcdir)/build-aux/javadoc.am
-include $(srcdir)/build-aux/m4.am
-include $(srcdir)/build-aux/pdf-dist.am
-include $(srcdir)/build-aux/plaintext-dist.am
-include $(srcdir)/build-aux/plaintext.am
-include $(srcdir)/build-aux/ps-dist.am
-include $(srcdir)/build-aux/tar.am
 include $(srcdir)/build-aux/wget.am
-include $(srcdir)/build-aux/xz.am
 
-## end_includes
+include $(srcdir)/build-aux/autogen.am

@@ -1,0 +1,120 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_NORETURN_ADOC[]
+:SECTIONS_CL_SST_NORETURN_ADOC:
+//----------------------------------------------------------------------
+
+:cl_SST_NORETURN_name0: SST_NORETURN
+
+:cl_SST_NORETURN_id: cl-SST-NORETURN
+:cl_SST_NORETURN_url: sections/cl_SST_NORETURN.adoc#{cl_SST_NORETURN_id}
+
+:cl_SST_NORETURN_chop0: xref:{cl_SST_NORETURN_url}[{cl_SST_NORETURN_name0}]
+
+:cl_SST_NORETURN: {cl_SST_NORETURN_chop0}
+
+:cl_sst_catalog_SST_NORETURN_h_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/SST_NORETURN.h
+:cl_sst_catalog_SST_NORETURN_h: link:{cl_sst_catalog_SST_NORETURN_h_url}[sst/catalog/SST_NORETURN.h,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_SST_NORETURN_id}]
+= The `{cl_SST_NORETURN_name0}` attribute
+
+.C or {cpp}
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_SST_NORETURN_h}>
+
+#define {cl_SST_NORETURN}(...) pass:[/*...*/]
+----
+
+Depending on the language version being used, the `{cl_SST_NORETURN}`
+macro expands to either nothing or an attribute that specifies that a
+function never returns.
+
+Note that SST requires {cpp}11, which supports the standard
+`++[[noreturn]]++` attribute, so `{cl_SST_NORETURN}` is not necessary
+when using {cpp}.
+However, for consistency, it is provided anyway.
+
+.Using `{cl_SST_NORETURN}` in C
+[example]
+====
+.`sst-example-{example-number}.c`
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_include_stdlib_h}>
+
+#include <{cl_sst_catalog_SST_NORETURN_h}>
+
+{cl_SST_NORETURN}() static void f() {
+  {cl_abort}();
+}
+
+int {cl_c_main}(void) {
+  f();
+  return 0; /* unreachable */
+}
+----
+====
+
+.Using `{cl_SST_NORETURN}` in {cpp}
+[example]
+====
+.`sst-example-{example-number}.cpp`
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_include_cstdlib}>
+
+#include <{cl_sst_catalog_SST_NORETURN_h}>
+
+namespace {
+
+{cl_SST_NORETURN}() void f() {
+  {cl_std_abort}();
+}
+
+}
+
+int main() {
+  f();
+  return 0; // unreachable
+}
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]

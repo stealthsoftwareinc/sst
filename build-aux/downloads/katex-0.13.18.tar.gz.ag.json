@@ -1,0 +1,18 @@
+{
+
+  "handler": "sst_ajh_download",
+
+  "hashes": {
+    "md5": "2d3d28697f7f4771e39b458d25d64321",
+    "sha1": "e7334b87b81cd90b3344e4b5c536daea97483b1c",
+    "sha224": "ae9af778910cffd0476e96cf9068e5737729f3827d0c24a55cf4e046",
+    "sha256": "266800ecffb4bf338f58126fd82bb7c0e5ab44d841caa9f1141a1eab005aedb6",
+    "sha384": "fb93a645ce31cdd82febc51f92ac85d76b9b979344a0aeac980cc14e627d6a1c579cb3263982656f8f72f51de874d1cf",
+    "sha512": "710092e8a574915284b33de8954197603878e9d65fe4d09b820382b75f92e2777025ddd5cf3fd4d12b985480592974e7d96e69c6f074bc8ab52ab549937fca6f"
+  },
+
+  "urls": [
+    "https://github.com/KaTeX/KaTeX/releases/download/v0.13.18/katex.tar.gz"
+  ]
+
+}

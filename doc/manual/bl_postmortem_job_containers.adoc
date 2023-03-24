@@ -1,0 +1,86 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#bl-postmortem-job-containers]
+= Postmortem job containers
+
+indexterm:["postmortem job container"]
+As part of its EXIT trap, the prelude includes opt-in code that can
+detect whether the script is running in a CI job container, and if so,
+commit and push the container to a registry for later inspection.
+Such a container is called a _postmortem job container_.
+
+The code behaves as follows:
+
+. {empty}
+If the script is not running in a CI job, stop.
+
+. {empty}
+If the script is being called by another script that uses the SST Bash
+library, stop.
++
+This means that, in a call stack that includes multiple scripts that use
+the SST Bash library, only the outermost such script will possibly push
+the postmortem job container.
+
+. {empty}
+If the
+`{bl_SST_PUSH_POSTMORTEM_JOB_CONTAINER}`
+environment variable is unset or empty, stop.
++
+You must set the
+`{bl_SST_PUSH_POSTMORTEM_JOB_CONTAINER}`
+environment variable to a nonempty value to opt in.
+If you leave it unset or empty, postmortem job containers will never be
+pushed.
+
+. {empty}
+If the
+`{bl_SST_NO_PUSH_POSTMORTEM_JOB_CONTAINER}`
+environment variable is nonempty, stop.
++
+You can set the
+`{bl_SST_NO_PUSH_POSTMORTEM_JOB_CONTAINER}`
+environment variable to a nonempty value to opt out regardless of any
+opting in.
+
+. {empty}
+If the script is running in a GitLab CI job:
+
+.. {empty}
+If the job is protected and the
+`{bl_SST_PUSH_PROTECTED_POSTMORTEM_JOB_CONTAINER}`
+is unset or empty, stop.
++
+You must set the
+`{bl_SST_PUSH_PROTECTED_POSTMORTEM_JOB_CONTAINER}`
+environment variable to a nonempty value to opt in for protected jobs.
+If you leave it unset or empty, postmortem job containers will never be
+pushed for protected jobs.
+
+//

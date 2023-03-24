@@ -1,19 +1,44 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[bl_sst_get_distro,sst_get_distro]]
+[#bl-sst-get-distro]
 = The `sst_get_distro` function
 
 .Bash
-[source,subs="normal"]
+[source,subs="{sst_subs_source}"]
 ----
-sst_get_distro
+include::partials/bl_include_prelude.adoc[]
+
+link:{repo_browser_url}/src/bash/include/sst_get_distro.bash[sst_get_distro,window=_blank]
 ----
 
-The `sst_get_distro` function identifies the system type and writes it
-to standard output in `<<bl_sst_csf>>` form.
+The `sst_get_distro` function identifies the system type and stores it
+in the `sst_distro` variable.
 
 The following results are possible:
 `alpine`,
@@ -22,11 +47,18 @@ The following results are possible:
 `cygwin`,
 `debian`,
 `fedora`,
+`homebrew`,
+`macports`,
+`msys2`,
 `rhel`,
 `ubuntu`,
-and `unknown`.
+or `unknown`.
 
-The result is guaranteed to be an identifier that matches the regular
-expression `[a-zA-Z_][a-zA-Z_0-9]*`.
+:fp_cache_variable: sst_distro
+include::bl_function_result_cache_variable_fragment.adoc[]
+
+All possible results, including those added in the future, are
+guaranteed to be spelled such that `$sst_distro` is unaffected by word
+splitting and pathname expansion.
 
 //

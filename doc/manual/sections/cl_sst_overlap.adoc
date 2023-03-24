@@ -1,0 +1,97 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_OVERLAP_ADOC[]
+:SECTIONS_CL_SST_OVERLAP_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_overlap_id: cl-sst-overlap
+:cl_sst_overlap_url: sections/cl_sst_overlap.adoc#{cl_sst_overlap_id}
+:cl_sst_overlap: xref:{cl_sst_overlap_url}[sst::overlap]
+
+:cl_sst_overlap_c1: xref:{cl_sst_overlap_url}[overlap]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_overlap_id}]
+= The `sst::overlap` function
+
+[source,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/overlap.hpp[sst/catalog/overlap.hpp,window=_blank]>
+namespace sst {
+
+template<class T1, {cl_std_integral} N1, class T2, {cl_std_integral} N2>
+bool {cl_sst_overlap_c1}(T1 const * p1, N1 n1, T2 const * p2, N2 n2);
+
+template<class T1, {cl_std_integral} N1, class T2>
+bool {cl_sst_overlap_c1}(T1 const * p1, N1 n1, T2 const * p2);
+
+template<class T1, class T2, {cl_std_integral} N2>
+bool {cl_sst_overlap_c1}(T1 const * p1, T2 const * p2, N2 n2);
+
+template<class T1, class T2>
+bool {cl_sst_overlap_c1}(T1 const * p1, T2 const * p2);
+
+}
+----
+
+The `{cl_sst_overlap}` function attempts to determine whether two memory
+regions overlap.
+
+Each memory region consists of the `++n++stem:[i]` elements of type
+`++T++stem:[i]` beginning at `++p++stem:[i]`.
+`++n++stem:[i]` must be nonnegative and `++p++stem:[i]` must be a valid
+pointer, even if `++n++stem:[i]` is zero.
+If `++n++stem:[i]` is omitted, it is taken to be `1`.
+`++T++stem:[i]` must be an {cl_object_type_cpp} or `void`.
+If `++T++stem:[i]` is `void`, the behavior is as if it were
+`unsigned char`.
+
+If this function returns `true`, the two memory regions overlap.
+
+If this function returns `false`, the two memory regions may or may not
+overlap.
+False negatives are generally possible because some systems allow
+multiple memory regions to refer to the same underlying data.
+For example, a system may allow the same file to be mapped into two
+different memory regions at the same time, with any changes being
+reflected in both regions simultaneously.
+If no such functionality is being used, false negatives are not
+possible.
+
+If `n1` or `n2` is zero, this function always returns `false`.
+
+//----------------------------------------------------------------------
+endif::[]

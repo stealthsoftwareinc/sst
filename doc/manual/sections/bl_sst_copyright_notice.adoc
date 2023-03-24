@@ -1,0 +1,177 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_BL_SST_COPYRIGHT_NOTICE_ADOC[]
+:SECTIONS_BL_SST_COPYRIGHT_NOTICE_ADOC:
+//----------------------------------------------------------------------
+
+:bl_sst_copyright_notice_id: bl-sst-copyright-notice
+:bl_sst_copyright_notice_url: sections/bl_sst_copyright_notice.adoc#{bl_sst_copyright_notice_id}
+:bl_sst_copyright_notice: xref:{bl_sst_copyright_notice_url}[sst_copyright_notice]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{bl_sst_copyright_notice_id}]
+= The `sst_copyright_notice` function
+
+[source,subs="{sst_subs_source}"]
+----
+include::../partials/bl_include_prelude.adoc[]
+
+{bl_sst_copyright_notice} <comment1> [<comment2> <comment3>] [<prose>]
+----
+
+The `{bl_sst_copyright_notice}` function formats a copyright notice for
+use in source code.
+
+The prose of the copyright notice is specified by `<prose>` as follows:
+
+. {empty}
+If `<prose>` is omitted, it will be taken to be the prose of the SST
+copyright notice, which is as follows:
++
+----
+Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice (including
+the next paragraph) shall be included in all copies or
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+SPDX-License-Identifier: MIT
+----
+
+. {empty}
+Otherwise, if `<prose>` is `-`, it will be read from standard input in
+{csf_form}.
+
+. {empty}
+Otherwise, if `<prose>` begins with `/` or `./`, it will be read from
+the indicated file in {csf_form}.
+
+. {empty}
+Otherwise, `<prose>` will be taken directly in {csf_form}.
+
+The comment structure of the copyright notice is specified by
+`<comment1>`, `<comment2>`, and `<comment3>` as follows:
+
+. {empty}
+If `<comment2>` and `<comment3>` are omitted, they are taken to be the
+same as `<comment1>`.
+
+. {empty}
+Each line of `<prose>` will be prefixed with `<comment2>` followed by a
+space character.
+
+. {empty}
+`<comment1>` followed by a newline character will be prepended to the
+beginning of the copyright notice.
+
+. {empty}
+A newline character followed by `<comment3>` will be appended to the end
+of the copyright notice.
+
+.{empty}
+====
+.`sst-example-{example-number}.bash`
+[source,bash,subs="{sst_subs_source}"]
+----
+include::../partials/bl_include_prelude.adoc[]
+
+sst_copyright_notice "$@"
+----
+
+.Example terminal session
+[source,subs="{sst_subs_source}"]
+----
+**pass:[$ ./sst-example-]{example-number}pass:[.bash //]**
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+**pass:[$ ./sst-example-]{example-number}pass:[.bash // Example]**
+//
+// Example
+//
+
+**pass:[$ ./sst-example-]{example-number}pass:[.bash '/*' ' *' ' */' Example]**
+/*
+ * Example
+ */
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]

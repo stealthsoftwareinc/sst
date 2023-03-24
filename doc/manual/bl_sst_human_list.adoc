@@ -1,0 +1,107 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#bl-sst-human-list]
+= The `sst_human_list` function
+
+.Bash
+[source,subs="{sst_subs_source}"]
+----
+include::partials/bl_include_prelude.adoc[]
+
+{bl_sst_human_list} [<adjust>...] : [<item>...]
+----
+
+The `{bl_sst_human_list}` function adjusts and outputs a list of items
+in human-readable form.
+
+. {empty}
+If `<adjust>++...++` is given, each `<item>` is adjusted by running and
+collecting the output of `<adjust>++...++ <item>`.
+
+. {empty}
+If no ``<item>``s are given, the output is "```none```".
+
+. {empty}
+If exactly one `<item>` is given, the output is that `<item>`.
+
+. {empty}
+If exactly two ``<item>``s are given, the output is those two
+``<item>``s with "```{nbsp}and{nbsp}```" inbetween.
+
+. {empty}
+If three or more ``<item>``s are given, the output is all ``<item>``s
+separated by "```,{nbsp}```", and with "```and{nbsp}```" immediately
+preceding the last `<item>`.
+
+The output is designed to appear after a `:` character in normal prose.
+
+include::partials/csf_standard_output.adoc[]
+
+.{empty}
+[example]
+====
+[listing,subs="{sst_subs_source}"]
+----
+$ cat a.bash
+include::partials/bl_include_prelude.adoc[]
+{bl_sst_human_list} "$@"
+
+$ ./a.bash :
+none
+
+$ ./a.bash : foo
+foo
+
+$ ./a.bash : foo bar
+foo and bar
+
+$ ./a.bash : foo bar baz
+foo, bar, and baz
+
+$ ./a.bash : 'foo bar baz'
+foo bar baz
+
+$ ./a.bash {bl_sst_quote} :
+none
+
+$ ./a.bash {bl_sst_quote} : foo
+'foo'
+
+$ ./a.bash {bl_sst_quote} : foo bar
+'foo' and 'bar'
+
+$ ./a.bash {bl_sst_quote} : foo bar baz
+'foo', 'bar', and 'baz'
+
+$ ./a.bash {bl_sst_quote} : 'foo bar baz'
+'foo bar baz'
+----
+====
+
+//

@@ -1,0 +1,65 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_COMPILES_ADOC[]
+:SECTIONS_CL_SST_COMPILES_ADOC:
+//----------------------------------------------------------------------
+
+:cl_SST_COMPILES_n0: SST_COMPILES
+
+:cl_SST_COMPILES_id: cl-SST-COMPILES
+:cl_SST_COMPILES_url: sections/cl_SST_COMPILES.adoc#{cl_SST_COMPILES_id}
+
+:cl_SST_COMPILES: xref:{cl_SST_COMPILES_url}[{cl_SST_COMPILES_n0}]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_SST_COMPILES_id}]
+= `{cl_SST_COMPILES_n0}`
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_COMPILES.hpp[sst/catalog/SST_COMPILES.hpp,window=_blank]>
+
+#define {cl_SST_COMPILES}(...) (__x__)
+----
+
+The `{cl_SST_COMPILES}` macro expands to a parenthesized
+{cl_constant_expression_cpp} `(__x__)` that includes the expression
+`++__VA_ARGS__++` as an {cl_unevaluated_operand_cpp} and always has
+value `true`.
+
+//----------------------------------------------------------------------
+endif::[]

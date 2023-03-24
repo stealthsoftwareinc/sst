@@ -1,0 +1,55 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{f}.hpp[sst/catalog/{f}.hpp,window=_blank]>
+// or:   <sst/integer.h>
+namespace sst {
+
+template<{cl_std_integral} T1, {cl_std_integral} T2>
+constexpr bool {f}(T1 x, T2 y) noexcept;
+
+}
+----
+
+The `sst::{f}` function determines whether `x` is {r} `y` for any two
+values `x` and `y` of any two {cr_integer_types} `T1` and `T2`.
+
+[subs="-replacements"]
+The {cr_usual_arithmetic_conversions_cpp} can cause the plain `{o}`
+operator to yield an unexpected result when `T1` and `T2` have different
+signedness and the signed value is negative.
+Using the `sst::{f}` function instead of the plain `{o}` operator will
+avoid this possibility.
+
+The `sst::{f}` function may have a small amount of overhead compared to
+the plain `{o}` operator, so it should be used judiciously.
+
+//

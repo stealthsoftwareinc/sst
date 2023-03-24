@@ -1,15 +1,43 @@
 //
-// For the copyright information for this file, please search up the
-// directory tree for the first COPYING file.
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
 //
 
-[[cl_sst_boxed,sst::boxed]]
-= The `sst::boxed` class
+[#cl-sst-boxed]
+= The `sst::boxed` class template
+
+The `sst::boxed` class template describes a class that stores a value of
+type `T` as a distinct type identified by type `Tag` in addition to type
+`T`, allowing different kinds of values of type `T` to be distinguished
+from each other.
 
 .{cpp}
-[source,cpp,subs="normal"]
+[source,cpp,subs="{sst_subs_source}"]
 ----
-#include <link:{repo_browser_url}/src/c_cpp/include/sst/catalog/boxed.hpp[sst/catalog/boxed.hpp]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/boxed.hpp[sst/catalog/boxed.hpp,window=_blank]>
 namespace sst {
 
 template<class T, class Tag>
@@ -19,25 +47,48 @@ public:
   using value_type = T;
 
   // Construction is forwarded to T.
-  template<class++...++ Args>
-  explicit boxed(Args &&++...++ args);
+  template<class... Args> explicit constexpr boxed(Args &&... args);
 
-  // Copy construction and assignment are intentionally implicit.
-  // Move construction and assignment are intentionally implicit.
-  // Destruction is intentionally implicit.
+  // Copy construction, copy assignment, move construction, move
+  // assignment, and destruction are intentionally implicit.
 
-  // Value retrieval.
-  explicit <<cl_SST_CPP_CONSTEXPR,SST_CPP14_CONSTEXPR>> operator T &() noexcept;
+  // Value retrieval
+  explicit {cl_SST_CPP14_CONSTEXPR} operator T &() noexcept;
   explicit constexpr operator T const &() const noexcept;
-  <<cl_SST_CPP_CONSTEXPR,SST_CPP14_CONSTEXPR>> T & value() noexcept;
+  {cl_SST_CPP14_CONSTEXPR} T & value() noexcept;
   constexpr T const & value() const noexcept;
+
+  // Comparisons for aliases and publicly derived classes
+  constexpr bool operator<(boxed const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() < {cl_std_declval}<T>()));
+  constexpr bool operator>(boxed const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() > {cl_std_declval}<T>()));
+  constexpr bool operator<=(boxed const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() <= {cl_std_declval}<T>()));
+  constexpr bool operator>=(boxed const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() >= {cl_std_declval}<T>()));
+  constexpr bool operator==(boxed const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() == {cl_std_declval}<T>()));
+  constexpr bool operator!=(boxed const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() != {cl_std_declval}<T>()));
+
+  // Comparisons for privately derived classes
+  constexpr bool operator<(Tag const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() < {cl_std_declval}<T>()));
+  constexpr bool operator>(Tag const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() > {cl_std_declval}<T>()));
+  constexpr bool operator<=(Tag const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() <= {cl_std_declval}<T>()));
+  constexpr bool operator>=(Tag const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() >= {cl_std_declval}<T>()));
+  constexpr bool operator==(Tag const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() == {cl_std_declval}<T>()));
+  constexpr bool operator!=(Tag const & b) const
+      noexcept(noexcept({cl_std_declval}<T>() != {cl_std_declval}<T>()));
 
 };
 
 }
 ----
-
-The `sst::boxed` class holds a value of type `T` as a distinct type,
-allowing certain values of type `T` to be distinguished from others.
 
 //

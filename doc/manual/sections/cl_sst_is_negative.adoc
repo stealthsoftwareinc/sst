@@ -1,0 +1,77 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_IS_NEGATIVE_ADOC[]
+:SECTIONS_CL_SST_IS_NEGATIVE_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_is_negative_n0: sst::is_negative
+:cl_sst_is_negative_n1: is_negative
+
+:cl_sst_is_negative_id: cl-sst-is-negative
+:cl_sst_is_negative_url: sections/cl_sst_is_negative.adoc#{cl_sst_is_negative_id}
+
+:cl_sst_is_negative: xref:{cl_sst_is_negative_url}[{cl_sst_is_negative_n0}]
+:cl_sst_is_negative_c1: xref:{cl_sst_is_negative_url}[{cl_sst_is_negative_n1}]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_is_negative_id}]
+= `{cl_sst_is_negative_n0}`
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/is_negative.hpp[sst/catalog/is_negative.hpp,window=_blank]>
+namespace sst {
+
+template<{cl_sst_is_arithmetic_ish} T>
+constexpr bool is_negative(T const & x)
+    {cl_noexcept_spec}({cl_noexcept_op}(x < {cl_sst_zero}<T>()));
+
+}
+----
+
+The `{cl_sst_is_negative}` function returns `true` if `x` is negative.
+
+If `T` is an unsigned {cl_fundamental_integer_type}, no compiler
+warnings will be issued.
+This can be useful in generic code, where an expression such as `x < 0`
+can cause an "`expression is always true`" warning when the type of `x`
+happens to be unsigned.
+Writing `{cl_sst_is_negative}(x)` instead of `x < 0` will prevent such
+warnings.
+
+//----------------------------------------------------------------------
+endif::[]

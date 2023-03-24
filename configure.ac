@@ -1,19 +1,116 @@
 dnl
-dnl For the copyright information for this file, please search up the
-dnl directory tree for the first COPYING file.
+dnl Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
 dnl
+dnl Permission is hereby granted, free of charge, to any person
+dnl obtaining a copy of this software and associated documentation
+dnl files (the "Software"), to deal in the Software without
+dnl restriction, including without limitation the rights to use,
+dnl copy, modify, merge, publish, distribute, sublicense, and/or
+dnl sell copies of the Software, and to permit persons to whom the
+dnl Software is furnished to do so, subject to the following
+dnl conditions:
+dnl
+dnl The above copyright notice and this permission notice (including
+dnl the next paragraph) shall be included in all copies or
+dnl substantial portions of the Software.
+dnl
+dnl THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+dnl EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+dnl OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+dnl NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+dnl HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+dnl WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+dnl FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+dnl OTHER DEALINGS IN THE SOFTWARE.
+dnl
+dnl SPDX-License-Identifier: MIT
+dnl
+
+dnl---------------------------------------------------------------------
+
+AC_INIT(
+  [[SST]],
+  m4_esyscmd_s([
+    sh build-aux/gatbps-gen-version.sh
+  ])m4_if(m4_sysval, 0, [], [
+    m4_fatal([gatbps-gen-version.sh failed.])
+  ]),
+  [[sst@stealthsoftwareinc.com]],
+  [[sst]])
+
+dnl---------------------------------------------------------------------
+
+AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_SRCDIR([build-aux/sst.srcdir])
+
+AM_INIT_AUTOMAKE([
+  -Wall
+  foreign
+  nostdinc
+  subdir-objects
+  tar-ustar
+])
+
+dnl---------------------------------------------------------------------
+
+m4_include([build-aux/gatbps.ac])
+
+dnl---------------------------------------------------------------------
+dnl srcdir_q
+dnl---------------------------------------------------------------------
+
+srcdir_q=`gatbps_quote "${srcdir?}"` || exit $?
+
+dnl---------------------------------------------------------------------
 
 [
 
-]AC_INIT(
-  [[SST]],
-  m4_esyscmd_s([
-    sh build-aux/VERSION.sh
-  ])m4_if(m4_sysval, [0], [], [m4_fatal([VERSION.sh failed])]),
-  [[sst@stealthsoftwareinc.com]],
-  [[sst]])[
+x=build-aux/configure.started
+y=build-aux/configure.success
 
-]m4_include([build-aux/prelude.ac])[
+if test -f $x; then
+  if test -f $y; then
+    :
+  else
+    :
+    ]AC_MSG_ERROR([[Refusing to run because $x exists without $y.]])[
+  fi
+fi
+
+rm -f $y || exit $?
+mkdir -p build-aux || exit $?
+>$x || exit $?
+
+]
+
+dnl---------------------------------------------------------------------
+dnl Program checks
+dnl---------------------------------------------------------------------
+
+GATBPS_PROG_ASCIIDOCTOR
+GATBPS_PROG_AWK
+GATBPS_PROG_CURL
+GATBPS_PROG_DOCKER
+GATBPS_PROG_GIT
+GATBPS_PROG_GREP
+GATBPS_PROG_GUNZIP
+GATBPS_PROG_JAVA
+GATBPS_PROG_JAVAC
+GATBPS_PROG_JDEPS
+GATBPS_PROG_LN_S
+GATBPS_PROG_MKDIR_P
+GATBPS_PROG_OPENSSL
+GATBPS_PROG_SED
+GATBPS_PROG_TAR
+GATBPS_PROG_WGET
+GATBPS_PROG_XZ
+GATBPS_PROG_ZIP
+
+dnl---------------------------------------------------------------------
+
+[
 
 ]gatbps_check_macros[ || exit
 
@@ -25,8 +122,10 @@ dnl
   [AC_],
   [PACKAGE_DATE],
   m4_esyscmd_s([
-    sh build-aux/DATE.sh
-  ])m4_if(m4_sysval, [0], [], [m4_fatal([DATE.sh failed])]))[
+    sh build-aux/gatbps-gen-date.sh
+  ])m4_if(m4_sysval, 0, [], [
+    m4_fatal([gatbps-gen-date.sh failed])
+  ]))[
 
 ]AC_COPYRIGHT(
 [[Some parts of this file are from the SST package.
@@ -39,26 +138,58 @@ The full copyright information depends on the distribution
 of the package. For more information, see the COPYING file.
 However, depending on the context in which you are viewing
 this file, the COPYING file may not be available.
-]])[
+]])
 
-]AC_CONFIG_AUX_DIR([build-aux])[
-]AC_CONFIG_MACRO_DIR([m4])[
-]AC_CONFIG_MACRO_DIRS([m4])[
-]AC_CONFIG_SRCDIR([doc/sst.texi])[
+dnl---------------------------------------------------------------------
+dnl CPPFLAGS
+dnl---------------------------------------------------------------------
 
-]AM_INIT_AUTOMAKE([
-  -Wall
-  foreign
-  nostdinc
-  subdir-objects
-  tar-ustar
-])[
+x=
+x=${x?}" -I src/c-cpp/lib"
+x=${x?}" -I ${srcdir_q?}/src/c-cpp/lib"
+x=${x?}" -I src/c-cpp/include"
+x=${x?}" -I ${srcdir_q?}/src/c-cpp/include"
+x=${x?}" -I include"
+x=${x?}" -I ${srcdir_q?}/include"
 
-]m4_include([build-aux/autogen.ac])[
+CPPFLAGS="${x?} ${CPPFLAGS-}"
 
-]LT_INIT([
+unset x
+
+dnl---------------------------------------------------------------------
+
+m4_include([build-aux/autogen.ac])[
+
+]
+
+LT_INIT([
+  disable-static
+  shared
   win32-dll
-])[
+])
+
+dnl---------------------------------------------------------------------
+dnl SUBSET_LIBRARY
+dnl---------------------------------------------------------------------
+
+[
+  case $][{SUBSET_LIBRARY-0} in 1)
+    SUBSET_LIBRARY='*/1/*'
+  ;; 0)
+    SUBSET_LIBRARY='*/0/*'
+  ;; *)
+    ]GATBPS_BARF([
+      Invalid SUBSET_LIBRARY value.
+    ])[
+  esac
+  readonly SUBSET_LIBRARY
+]
+
+AC_SUBST([SUBSET_LIBRARY])
+
+dnl---------------------------------------------------------------------
+
+[
 
 ]
 AC_CHECK_HEADERS_ONCE([pthread.h])
@@ -70,182 +201,10 @@ AC_CHECK_HEADERS_ONCE([windows.h])
 
 ]m4_include([bin/sst_status_map_generator.ac])[
 ]m4_include([include/src/sst_status_map.inc.ac])[
-]m4_include([rpm/centos-7/x86_64/rpm.ac])[
-]m4_include([rpm/rhel-7/x86_64/rpm.ac])[
-]m4_include([src/com/stealthsoftwareinc/sst/BuildConfig.java.ac])[
-]m4_include([src/com/stealthsoftwareinc/sst/BuildConfig.java.im.ac])[
 
 ]dnl end_includes
 [
 ]
-
-GATBPS_CHECK_LINK(
-  [CONF_modules_free],
-  [HAVE_CONF_MODULES_FREE],
-  [[
-    #include <openssl/conf.h>
-  ]],
-  [[
-    CONF_modules_free();
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [CRYPTO_LOCK],
-  [HAVE_CRYPTO_LOCK],
-  [[
-    #include <openssl/crypto.h>
-  ]],
-  [[
-    int x1 = CRYPTO_LOCK;
-    (void)x1;
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [CRYPTO_set_add_lock_callback],
-  [HAVE_CRYPTO_SET_ADD_LOCK_CALLBACK],
-  [[
-    #include <openssl/crypto.h>
-  ]],
-  [[
-    CRYPTO_set_add_lock_callback(
-      (int (*)(
-        int *,
-        int,
-        int,
-        char const *,
-        int
-      ))0
-    );
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [CRYPTO_set_dynlock_create_callback],
-  [HAVE_CRYPTO_SET_DYNLOCK_CREATE_CALLBACK],
-  [[
-    #include <openssl/crypto.h>
-  ]],
-  [[
-    CRYPTO_set_dynlock_create_callback(
-      (struct CRYPTO_dynlock_value * (*)(
-        char const *,
-        int
-      ))0
-    );
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [CRYPTO_set_dynlock_destroy_callback],
-  [HAVE_CRYPTO_SET_DYNLOCK_DESTROY_CALLBACK],
-  [[
-    #include <openssl/crypto.h>
-  ]],
-  [[
-    CRYPTO_set_dynlock_destroy_callback(
-      (void (*)(
-        struct CRYPTO_dynlock_value *,
-        char const *,
-        int
-      ))0
-    );
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [CRYPTO_set_dynlock_lock_callback],
-  [HAVE_CRYPTO_SET_DYNLOCK_LOCK_CALLBACK],
-  [[
-    #include <openssl/crypto.h>
-  ]],
-  [[
-    CRYPTO_set_dynlock_lock_callback(
-      (void (*)(
-        int,
-        struct CRYPTO_dynlock_value *,
-        char const *,
-        int
-      ))0
-    );
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [CRYPTO_set_locking_callback],
-  [HAVE_CRYPTO_SET_LOCKING_CALLBACK],
-  [[
-    #include <openssl/crypto.h>
-  ]],
-  [[
-    CRYPTO_set_locking_callback(
-      (void (*)(
-        int,
-        int,
-        char const *,
-        int
-      ))0
-    );
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [ERR_free_strings],
-  [HAVE_ERR_FREE_STRINGS],
-  [[
-    #include <openssl/err.h>
-  ]],
-  [[
-    ERR_free_strings();
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [ERR_load_crypto_strings],
-  [HAVE_ERR_LOAD_CRYPTO_STRINGS],
-  [[
-    #include <openssl/err.h>
-  ]],
-  [[
-    ERR_load_crypto_strings();
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [EVP_cleanup],
-  [HAVE_EVP_CLEANUP],
-  [[
-    #include <openssl/evp.h>
-  ]],
-  [[
-    EVP_cleanup();
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [OPENSSL_config],
-  [HAVE_OPENSSL_CONFIG],
-  [[
-    #include <openssl/conf.h>
-  ]],
-  [[
-    OPENSSL_config(
-      (char const *)0
-    );
-  ]]
-)
-
-GATBPS_CHECK_LINK(
-  [OpenSSL_add_all_algorithms],
-  [HAVE_OPENSSL_ADD_ALL_ALGORITHMS],
-  [[
-    #include <openssl/evp.h>
-  ]],
-  [[
-    OpenSSL_add_all_algorithms();
-  ]]
-)
 
 AC_ARG_ENABLE(
   [mutex],
@@ -321,50 +280,50 @@ esac
 
 AC_SUBST([SST_MUTEX_IMP])
 
-GATBPS_CONFIG_FILE([build-aux/INPUT_FILTER.sh])
 GATBPS_CONFIG_FILE([build-aux/PACKAGE_STRING.df])
-GATBPS_CONFIG_FILE([doc/dox/dox.df])
-GATBPS_CONFIG_FILE([doc/texi/PACKAGEDATE.texi], [doc/texi/PACKAGEDATE.texi.in], [maintainer-clean])
-GATBPS_CONFIG_FILE([doc/texi/PACKAGEVERSION.texi], [doc/texi/PACKAGEVERSION.texi.in], [maintainer-clean])
 GATBPS_CONFIG_FILE([pom.xml])
 GATBPS_CONFIG_FILE([sst-java/pom.xml])
 GATBPS_CONFIG_FILE([sst-maven-parent/pom.xml])
+
+GATBPS_CP([artifacts/$(distdir).tar.gz], [$(artifacts_dist_archive_src)])
 
 [
 
 ]GATBPS_CONFIG_FILE_SUBST[
 ]GATBPS_CONFIG_LATER_SUBST[
 ]GATBPS_CP_SUBST[
-]GATBPS_DOCKER_BUILD_SUBST[
 ]GATBPS_GIT_ARCHIVE_SUBST[
 ]GATBPS_GIT_BUNDLE_SUBST[
 ]GATBPS_GIT_CLONE_SUBST[
-]GATBPS_JAVA_CLASS_SUBST[
-]GATBPS_JAVA_SUBST[
-]GATBPS_M4_SUBST[
-]GATBPS_TAR_SUBST[
 ]GATBPS_WGET_SUBST[
-]GATBPS_XZ_SUBST[
 
 ]AC_CONFIG_FILES([Makefile])[
-]AC_CONFIG_HEADERS([src/c_cpp/lib/sst/config_private_raw.h])[
+]AC_CONFIG_HEADERS([src/c-cpp/lib/sst/config_private_raw.h])[
 
 ]AC_CONFIG_SUBDIRS([
   gen
-])[
+])
+
+[
 
 #
 # Restore the normal Libtool behavior on systems that prefer to set
-# `link_all_deplibs=no`, as this generally causes problems with our
+# link_all_deplibs=no, as this generally causes problems with our
 # workflow. See <https://stackoverflow.com/q/11802727>.
 #
 
 link_all_deplibs=yes
 link_all_deplibs_CXX=yes
 
-#
-#
+]
 
-]AC_OUTPUT[
+dnl---------------------------------------------------------------------
+
+AC_OUTPUT
+
+dnl---------------------------------------------------------------------
+[
+
+>build-aux/configure.success || exit $?
 
 ]

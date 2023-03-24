@@ -1,0 +1,207 @@
+#
+# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
+#
+
+f() {
+
+  declare    bash_version
+  declare    bash_version_slug
+  declare -a bash_versions
+  declare    child
+  declare    d
+  declare    d_slug
+  declare    x
+  declare    x_slug
+  declare    y
+
+  bash_versions=(
+    4.1
+    4.2
+    4.3
+    4.4
+    5.0
+    5.1
+  )
+  readonly bash_versions
+
+  sst_expect_source_path "$BASH_SOURCE"
+  d=$(sst_get_prefix $BASH_SOURCE)
+  readonly d
+
+  if [[ ! "$d" ]]; then
+    sst_barf "File must live in a subdirectory: $BASH_SOURCE"
+  fi
+
+  if [[ $d == src/ ]]; then
+    sst_barf "File must not live directly under src/: $BASH_SOURCE"
+  fi
+
+  d_slug=$(sst_underscore_slug $d)
+  readonly d_slug
+
+  #---------------------------------------------------------------------
+
+  sst_am_distribute \
+    ${d}bin/sst-* \
+    ${d}include/**/*.bash \
+    ${d}sst.bash \
+    ${d}test/**/*.bash \
+    ${d}test/docker/Dockerfile \
+    ${d}test/docker/entrypoint.sh \
+    ${d}test/docker/recipe.sh \
+    ${d}test/docker/run.sh \
+  ;
+
+  #---------------------------------------------------------------------
+
+  if [[ -f build-aux/sst.srcdir ]]; then
+
+    sst_am_if WITH_BUILD_GROUP_BASH
+
+    sst_ag_process_leaf ${d_slug%_} ${d}bin/sst.bash.im.in child
+    sst_am_append <<<"bin_SCRIPTS += $child"
+
+  fi
+
+  #---------------------------------------------------------------------
+
+  for x in ${d}test/**/*.bash; do
+    sst_expect_source_path "$x"
+    sst_am_append <<<"TESTS += $x"
+  done
+
+  #---------------------------------------------------------------------
+
+  sst_am_if HAVE_DOCKER
+
+  sst_ihs <<<'
+
+    '$d'test/docker/exec.sh:
+    	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
+    	$(AM_V_GEN)$(GATBPS_V_NOP)
+    	$(AM_V_at)rm -f -r $@$(TSUF)* $@
+    	$(AM_V_at)$(MKDIR_P) $(@D)
+    	$(AM_V_at)sh - $(srcdir)/build-aux/gatbps-echo.sh \
+    	  -q \
+    	  -- \
+    	  $(DOCKER) \
+    	  exec \
+    	  >$@$(TSUF)1 \
+    	;
+    	$(AM_V_at)$(SED) '\''$$ s/$$/ "$$@"/'\'' <$@$(TSUF)1 >$@$(TSUF)2
+    	$(AM_V_at)mv -f $@$(TSUF)2 $@
+    	$(AM_V_at)-rm -f -r $@$(TSUF)*
+    	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+
+    GATBPS_CLEANFILES += '$d'test/docker/exec.sh/clean
+
+  ' | sst_am_append
+
+  for bash_version in "${bash_versions[@]}"; do
+
+    bash_version_slug=$(sst_underscore_slug $bash_version)
+
+    sst_ihs <<<'
+
+      SUFFIXES += .sst_test_bash_'$bash_version_slug'
+
+      .bash.sst_test_bash_'$bash_version_slug':
+      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
+      	$(AM_V_GEN)$(GATBPS_V_NOP)
+      	$(AM_V_at)rm -f -r $@$(TSUF)* $@
+      	$(AM_V_at)$(MKDIR_P) $(@D)
+      	$(AM_V_at)$(SED) \
+      	  '\''s|!wrapper!|$@|g'\'' \
+      	  <$(srcdir)/'$d'test/docker/run.sh \
+      	  >$@$(TSUF)1 \
+      	;
+      	$(AM_V_at)$(SED) \
+      	  '\''s|!prefix!|'$d'|g'\'' \
+      	  <$@$(TSUF)1 \
+      	  >$@$(TSUF)2 \
+      	;
+      	$(AM_V_at)$(SED) \
+      	  '\''s|!bash_version!|'$bash_version'|g'\'' \
+      	  <$@$(TSUF)2 \
+      	  >$@$(TSUF)1 \
+      	;
+      	$(AM_V_at)chmod +x $@$(TSUF)1
+      	$(AM_V_at)mv -f $@$(TSUF)1 $@
+      	$(AM_V_at)-rm -f -r $@$(TSUF)*
+      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+
+      '$d'test/bash-'$bash_version'/start-container: \
+        $(distdir).tar.gz \
+        '$d'test/docker/Dockerfile \
+        '$d'test/docker/entrypoint.sh \
+        '$d'test/docker/recipe.sh \
+        FORCE \
+      $(empty)
+      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
+      	$(AM_V_GEN)$(GATBPS_V_NOP)
+      	$(GATBPS_at){ \
+      	  x=DOCKER; set x $(DOCKER); $(GATBPS_EXPORT); \
+      	  x=abs_builddir_q; set x $(abs_builddir); $(GATBPS_EXPORT); \
+      	  x=abs_srcdir_q; set x $(abs_srcdir); $(GATBPS_EXPORT); \
+      	  x=bash_version_q; set x '$bash_version'; $(GATBPS_EXPORT); \
+      	  x=dist_archive_q; set x $(distdir).tar.gz; $(GATBPS_EXPORT); \
+      	  sh $(srcdir)/'$d'test/docker/recipe.sh || exit $$?; \
+      	}
+      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+
+    ' | sst_am_append
+
+    mkdir ${d}test/bash-$bash_version
+    for x in ${d}test/**/*.bash; do
+      y=${x%.bash}.sst_test_bash_$bash_version_slug
+      sst_ihs <<<'
+        '$y': \
+          '$d'test/bash-'$bash_version'/start-container \
+          '$d'test/docker/exec.sh \
+        $(empty)
+        TESTS += '$y'
+        GATBPS_MOSTLYCLEANFILES += '$y'/clean
+      ' | sst_am_append
+    done
+
+  done
+
+  sst_am_endif HAVE_DOCKER
+
+  #---------------------------------------------------------------------
+
+  sst_ag_install_bash_library ${d%/}
+
+  #---------------------------------------------------------------------
+
+  if [[ -f build-aux/sst.srcdir ]]; then
+
+    sst_am_endif WITH_BUILD_GROUP_BASH
+
+  fi
+
+}; f

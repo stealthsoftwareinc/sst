@@ -1,0 +1,18 @@
+{
+
+  "handler": "sst_ajh_download",
+
+  "hashes": {
+    "md5": "c4a88ec0cb998929a670c0c58d7dc526",
+    "sha1": "03135a88e8dbc36020dd453d1e7407ce9a3a2cc2",
+    "sha224": "ce0a2cdf111acfe814b3016dd54d2c664d3c22a4186a2be27d2322af",
+    "sha256": "44f8a56d427917b5fa0dd7933ba545679be5e6b3b93099e64a4e29c2159f57c0",
+    "sha384": "c5ec2bea44a4ab77416c4b41e99ff7a056669275a7ee71ea84b54bad883310545b53f0c74b15bb2b7078e3259437ad03",
+    "sha512": "fd0d6c06abcd661796db2bc071c2a2bbfc5cfe8d80b434b68cd068cc312a03ff0c93f21c1fce77c2bc03486a80765ee317239639c79f2edc03777918a36efa1f"
+  },
+
+  "urls": [
+    "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  ]
+
+}

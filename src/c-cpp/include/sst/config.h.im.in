@@ -1,0 +1,81 @@
+/*
+ * Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice (including
+ * the next paragraph) shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#ifndef SST_CONFIG_H
+#define SST_CONFIG_H
+
+#include <sst/catalog/SST_HAVE_CYGWIN.h>
+#include <sst/catalog/SST_HAVE_DEV_URANDOM.h>
+#include <sst/catalog/SST_WITH_CYGWIN.h>
+#include <sst/catalog/SST_WITH_DEV_URANDOM.h>
+#include <sst/catalog/SST_WITH_OPENSSL_CRYPTO.h>
+#include <sst/catalog/SST_WITH_OPENSSL_SSL.h>
+#include <sst/catalog/SST_WITH_POSIX.h>
+#include <sst/catalog/SST_WITH_WINDOWS.h>
+#include <sst/catalog/SST_WITH_WINDOWS_BCRYPT.h>
+#include <sst/catalog/SST_WITH_WINDOWS_KERNEL32.h>
+#include <sst/catalog/SST_WITH_WINDOWS_WS2_32.h>
+
+/*----------------------------------------------------------------------
+// Literal booleans
+//----------------------------------------------------------------------
+//
+// These macros are always set to literal 1 or 0.
+*/
+
+/* clang-format off */
+
+#define SST_HAVE_INT16_T @HAVE_INT16_T@
+#define SST_HAVE_INT32_T @HAVE_INT32_T@
+#define SST_HAVE_INT64_T @HAVE_INT64_T@
+#define SST_HAVE_INT8_T @HAVE_INT8_T@
+#define SST_HAVE_INTPTR_T @HAVE_INTPTR_T@
+#define SST_HAVE_MINGW @HAVE_MINGW@
+#define SST_HAVE_UINT16_T @HAVE_UINT16_T@
+#define SST_HAVE_UINT32_T @HAVE_UINT32_T@
+#define SST_HAVE_UINT64_T @HAVE_UINT64_T@
+#define SST_HAVE_UINT8_T @HAVE_UINT8_T@
+#define SST_HAVE_UINTPTR_T @HAVE_UINTPTR_T@
+#define SST_HAVE_X86_32 @HAVE_X86_32@
+#define SST_HAVE_X86_64 @HAVE_X86_64@
+#define SST_WITH_AES_NI @WITH_AES_NI@
+#define SST_WITH_BUILD_GROUP_CPP_AUTOTOOLS @WITH_BUILD_GROUP_CPP_AUTOTOOLS@
+#define SST_WITH_GMP @WITH_GMP@
+#define SST_WITH_JNI @WITH_JNI@
+#define SST_WITH_MINGW @WITH_MINGW@
+#define SST_WITH_NETTLE @WITH_NETTLE@
+#define SST_WITH_NTL @WITH_NTL@
+#define SST_WITH_X86 @WITH_X86@
+#define SST_WITH_X86_32 @WITH_X86_32@
+#define SST_WITH_X86_64 @WITH_X86_64@
+
+/* clang-format on */
+
+/*--------------------------------------------------------------------*/
+
+#endif // #ifndef SST_CONFIG_H

@@ -1,0 +1,108 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_BL_STANDARD_ENTITIES_ADOC[]
+:ATTRIBUTES_BL_STANDARD_ENTITIES_ADOC:
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+// : (colon)
+//----------------------------------------------------------------------
+
+:bl_4_1_colon_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1083.1-1083.4
+:bl_4_1_colon: link:{bl_4_1_colon_url}[:,window=_blank]
+
+:bl_colon_url: {bl_4_1_colon_url}
+:bl_colon: {bl_4_1_colon}
+
+//----------------------------------------------------------------------
+// echo
+//----------------------------------------------------------------------
+
+:bl_4_1_echo_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1095.25-1095.28
+:bl_4_1_echo: link:{bl_4_1_echo_url}[echo,window=_blank]
+
+:bl_echo_url: {bl_4_1_echo_url}
+:bl_echo: {bl_4_1_echo}
+
+//----------------------------------------------------------------------
+// errexit
+//----------------------------------------------------------------------
+
+:bl_4_1_errexit_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1117.3.8.9-1117.3.8.12+1117.3.8.35.3.13-1117.3.8.35.3.16
+:bl_4_1_errexit: link:{bl_4_1_errexit_url}[errexit,window=_blank]
+
+:bl_errexit_url: {bl_4_1_errexit_url}
+:bl_errexit: {bl_4_1_errexit}
+
+//----------------------------------------------------------------------
+// kill
+//----------------------------------------------------------------------
+
+:bl_4_1_kill_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1615.13-1615.16
+:bl_4_1_kill: link:{bl_4_1_kill_url}[kill,window=_blank]
+
+:bl_kill_url: {bl_4_1_kill_url}
+:bl_kill: {bl_4_1_kill}
+
+//----------------------------------------------------------------------
+// popd
+//----------------------------------------------------------------------
+
+:bl_4_1_popd_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1492.5-1492.8
+:bl_4_1_popd: link:{bl_4_1_popd_url}[popd,window=_blank]
+
+:bl_popd_url: {bl_4_1_popd_url}
+:bl_popd: {bl_4_1_popd}
+
+//----------------------------------------------------------------------
+// pushd
+//----------------------------------------------------------------------
+
+:bl_4_1_pushd_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1492.9-1492.12
+:bl_4_1_pushd: link:{bl_4_1_pushd_url}[pushd,window=_blank]
+
+:bl_pushd_url: {bl_4_1_pushd_url}
+:bl_pushd: {bl_4_1_pushd}
+
+//----------------------------------------------------------------------
+// readonly
+//----------------------------------------------------------------------
+
+:bl_4_1_readonly_url: https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1083.49-1083.52
+:bl_4_1_readonly: link:{bl_4_1_readonly_url}[readonly,window=_blank]
+
+:bl_readonly_url: {bl_4_1_readonly_url}
+:bl_readonly: {bl_4_1_readonly}
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

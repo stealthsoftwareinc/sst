@@ -1,0 +1,78 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_SQLITE_DATABASE_COPY_ASSIGNMENT_ADOC[]
+:SECTIONS_CL_SST_SQLITE_DATABASE_COPY_ASSIGNMENT_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_sqlite_database_copy_assignment_id: cl-sst-sqlite-database-copy-assignment
+:cl_sst_sqlite_database_copy_assignment_url: sections/cl_sst_sqlite_database/copy-assignment.adoc#{cl_sst_sqlite_database_copy_assignment_id}
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_sqlite_database_copy_assignment_id}]
+= Copy assignment
+
+:decl_indent:
+
+[source,subs="{sst_subs_source}"]
+----
+include::copy_assignment/decl.adoc[]
+----
+
+Copy assignment overwrites `*this` with `other` as follows:
+
+. {empty}
+For each database that exists in both `*this` and `other`, the database
+in `*this` is overwritten with the database from `other`.
+The `main` database always exists, so this step always occurs for the
+`main` database.
+No other databases always exist, not even the `temp` database, which
+only comes into existence upon first use.
+
+. {empty}
+For each database that exists only in `other`, a new `:memory:` database
+is attached to `*this` and overwritten with the database from `other`.
+However, if the database in question is the `temp` database, then it
+cannot be attached, so it will instead be brought into existence by
+executing a `CREATE TEMP TABLE` statement before being overwritten.
+
+. {empty}
+For each database that exists only in `*this`, the database is detached
+from `*this`.
+However, if the database in question is the `temp` database, then it
+cannot be detached, so it will instead have all of its entities dropped.
+
+//----------------------------------------------------------------------
+endif::[]

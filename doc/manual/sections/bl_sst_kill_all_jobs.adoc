@@ -1,0 +1,103 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_BL_SST_KILL_ALL_JOBS_ADOC[]
+:SECTIONS_BL_SST_KILL_ALL_JOBS_ADOC:
+//----------------------------------------------------------------------
+
+:bl_sst_kill_all_jobs_id: bl-sst-kill-all-jobs
+:bl_sst_kill_all_jobs_url: sections/bl_sst_kill_all_jobs.adoc#{bl_sst_kill_all_jobs_id}
+:bl_sst_kill_all_jobs: xref:{bl_sst_kill_all_jobs_url}[sst_kill_all_jobs]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{bl_sst_kill_all_jobs_id}]
+= The `sst_kill_all_jobs` function
+
+[source,subs="{sst_subs_source}"]
+----
+include::../partials/bl_include_prelude.adoc[]
+
+{bl_sst_kill_all_jobs} [<arg>...]
+----
+
+The `{bl_sst_kill_all_jobs}` function runs
+`{bl_kill} [<arg>pass:[...]] %__j__`
+for every currently existing background job `_j_`.
+
+If all of the `{bl_kill}` commands succeed, the function will return
+with {bl_exit_status} 0.
+Otherwise, the function will return with the {bl_exit_status} of the
+first failed `{bl_kill}` command.
+The rest of the `{bl_kill}` commands will still be run, but their
+{bl_exit_statuses} will be ignored.
+
+Other errors are possible but extremely rare, and will cause the
+function to immediately return with the offending {bl_exit_status}.
+This differs from the usual fail-fast convention of the library, as the
+main purpose of this function is for best-effort cleanup.
+Because subshells do not inherit background jobs, the usual error
+handling technique of using a subshell does not work, i.e.,
+`({bl_sst_kill_all_jobs} &>/dev/null) || {bl_colon}`
+will never find any background jobs to kill.
+
+Note that the `{bl_kill}` builtin may exit with {bl_exit_status} 0 in
+certain cases you may not expect it to.
+For example, on Bash 5.0,
+`({sh_sleep} 2 & {bl_kill} foo %1 || {bl_echo} bar)`
+will kill the `{sh_sleep}` command and print an error message about
+`foo` being unrecognized, but it will not print `bar`.
+
+.{empty}
+====
+.`sst-example-{example-number}.bash`
+[source,bash,subs="{sst_subs_source}"]
+----
+include::../partials/bl_include_prelude.adoc[]
+
+# Kill all background jobs when this script exits.
+sst_trap_append '{bl_sst_kill_all_jobs} &>/dev/null || :' EXIT
+
+# Start a background job that runs for 30 seconds.
+{sh_sleep} 30 &
+
+# After this script exits, you can run {sh_ps} to verify that the {sh_sleep}
+# command isn't running. Then you can edit this script to remove the
+# {bl_sst_kill_all_jobs} command and try running it again. This time, you
+# should see the {sh_sleep} command in {sh_ps}.
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]

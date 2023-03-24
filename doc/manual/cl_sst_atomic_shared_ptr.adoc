@@ -1,0 +1,69 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-atomic-shared-ptr]
+= The `sst::atomic_shared_ptr` class
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/atomic_shared_ptr.hpp[sst/catalog/atomic_shared_ptr.hpp,window=_blank]>
+namespace sst {
+
+template<class T>
+class atomic_shared_ptr final {
+public:
+  atomic_shared_ptr() = default;
+  ~atomic_shared_ptr() = default;
+
+  atomic_shared_ptr(atomic_shared_ptr const &) = delete;
+  atomic_shared_ptr(atomic_shared_ptr &&) = delete;
+  void operator=(atomic_shared_ptr const &) = delete;
+  void operator=(atomic_shared_ptr &&) = delete;
+
+  atomic_shared_ptr({cl_std_shared_ptr}<T> const & ptr);
+  void operator=({cl_std_shared_ptr}<T> const & ptr);
+  operator {cl_std_shared_ptr}<T>() const;
+
+  void store({cl_std_shared_ptr}<T> const & ptr,
+             {cl_std_memory_order} mo = {cl_std_memory_order_seq_cst});
+
+  {cl_std_shared_ptr}<T>
+  load({cl_std_memory_order} mo = {cl_std_memory_order_seq_cst}) const;
+};
+
+}
+----
+
+The `{cl_sst_atomic_shared_ptr}` class is an atomic wrapper for the
+`{cl_std_shared_ptr}` class.
+
+This class was added to the library because
+`{cl_std_atomic}<{cl_std_shared_ptr}>` is not available before {cpp}20.
+
+//

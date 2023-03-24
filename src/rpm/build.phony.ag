@@ -1,0 +1,354 @@
+#
+# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
+#
+
+unset -v children
+unset -v context
+unset -v d
+unset -v i
+unset -v image
+unset -v out
+unset -v out_slug
+unset -v system
+unset -v systems
+unset -v x
+
+declare -A systems
+
+sst_expect_source_path "$BASH_SOURCE"
+d=$(sst_get_prefix $BASH_SOURCE)
+
+sst_am_distribute ${d}build.bash
+
+systems=(
+
+  [centos-7]='
+    image=registry.stealthsoftwareinc.com/stealth/builder-images/centos:7
+  '
+
+  [rhel-7]='
+    image=registry.stealthsoftwareinc.com/stealth/builder-images/rhel:7
+  '
+
+)
+
+for system in "${!systems[@]}"; do
+
+  eval "${systems[$system]}"
+
+  mkdir -p ${d}$system
+
+  out=${d}$system/out
+  out_slug=$(sst_underscore_slug $out)
+
+  sst_ihs <<<"
+    #
+    # Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+    #
+    # Permission is hereby granted, free of charge, to any person
+    # obtaining a copy of this software and associated documentation
+    # files (the "Software"), to deal in the Software without
+    # restriction, including without limitation the rights to use,
+    # copy, modify, merge, publish, distribute, sublicense, and/or
+    # sell copies of the Software, and to permit persons to whom the
+    # Software is furnished to do so, subject to the following
+    # conditions:
+    #
+    # The above copyright notice and this permission notice (including
+    # the next paragraph) shall be included in all copies or
+    # substantial portions of the Software.
+    #
+    # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    # OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    # HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    # WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    # OTHER DEALINGS IN THE SOFTWARE.
+    #
+    # SPDX-License-Identifier: MIT
+    #
+
+    FROM $image
+
+    RUN yum -y install \\
+      centos-release-scl \\
+      epel-release \\
+    ;
+
+    RUN yum -y install \\
+      autoconf \\
+      automake \\
+      bc \\
+      coreutils \\
+      devtoolset-11 \\
+      gawk \\
+      gmp \\
+      gmp-devel \\
+      java-1.7.0-openjdk \\
+      java-1.7.0-openjdk-devel \\
+      libtool \\
+      m4 \\
+      nettle \\
+      nettle-devel \\
+      perl-devel \\
+      redhat-rpm-config \\
+      rpm-build \\
+      scl-utils \\
+      sed \\
+      tar \\
+    ;
+
+    COPY texinfo-6.3.tar.xz /x/
+
+    RUN : \\
+      && cd /x \\
+      && tar xf texinfo-6.3.tar.xz \\
+      && cd texinfo-6.3 \\
+      && ./configure \\
+      && make \\
+      && make install \\
+    ;
+
+    ARG ARG_PACKAGE_VERSION
+    ARG ARG_PACKAGE_VERSION_RPM_R
+    ARG ARG_PACKAGE_VERSION_RPM_V
+
+    COPY sst-*.tar.* /root/rpmbuild/SOURCES/
+    COPY sst.spec /root/rpmbuild/SPECS/
+
+    RUN . scl_source enable devtoolset-11 && rpmbuild -ba \\
+      -D \"PACKAGE_VERSION \$ARG_PACKAGE_VERSION\" \\
+      -D \"PACKAGE_VERSION_RPM_R \$ARG_PACKAGE_VERSION_RPM_R\" \\
+      -D \"PACKAGE_VERSION_RPM_V \$ARG_PACKAGE_VERSION_RPM_V\" \\
+      /root/rpmbuild/SPECS/sst.spec \\
+    ;
+
+    RUN : \\
+      && mkdir /x/out \\
+      && cp /root/rpmbuild/RPMS/*/*.rpm /x/out \\
+      && cp /root/rpmbuild/SRPMS/*.rpm /x/out \\
+    ;
+  " >${d}$system/Dockerfile
+
+  sst_ihs <<<"
+    #
+    # Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+    #
+    # Permission is hereby granted, free of charge, to any person
+    # obtaining a copy of this software and associated documentation
+    # files (the "Software"), to deal in the Software without
+    # restriction, including without limitation the rights to use,
+    # copy, modify, merge, publish, distribute, sublicense, and/or
+    # sell copies of the Software, and to permit persons to whom the
+    # Software is furnished to do so, subject to the following
+    # conditions:
+    #
+    # The above copyright notice and this permission notice (including
+    # the next paragraph) shall be included in all copies or
+    # substantial portions of the Software.
+    #
+    # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    # OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    # HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    # WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    # OTHER DEALINGS IN THE SOFTWARE.
+    #
+    # SPDX-License-Identifier: MIT
+    #
+
+    Name: sst-sst
+    Version: %{PACKAGE_VERSION_RPM_V}
+    Release: %{PACKAGE_VERSION_RPM_R}%{?dist}
+    Summary: Basic utilities
+    License: Proprietary
+    Source0: sst-%{PACKAGE_VERSION}.tar.gz
+
+    BuildRequires: autoconf
+    BuildRequires: automake
+    BuildRequires: bc
+    BuildRequires: coreutils
+    BuildRequires: devtoolset-11
+    BuildRequires: gawk
+    BuildRequires: gmp
+    BuildRequires: gmp-devel
+    BuildRequires: java-1.7.0-openjdk
+    BuildRequires: java-1.7.0-openjdk-devel
+    BuildRequires: libtool
+    BuildRequires: m4
+    BuildRequires: nettle
+    BuildRequires: nettle-devel
+    BuildRequires: sed
+    BuildRequires: tar
+
+    Requires(post): glibc
+    Requires(postun): glibc
+    Requires: gmp
+    Requires: nettle
+
+    %description
+    Basic utilities.
+
+    %prep
+    %setup -n sst-%{PACKAGE_VERSION}
+
+    %build
+    ./configure \\
+      --bindir='%{_bindir}' \\
+      --datadir='%{_datadir}' \\
+      --includedir='%{_includedir}' \\
+      --infodir='%{_infodir}' \\
+      --libdir='%{_libdir}' \\
+      --libexecdir='%{_libexecdir}' \\
+      --prefix='%{_prefix}' \\
+      --sbindir='%{_sbindir}' \\
+      CFLAGS='%{optflags}' \\
+      CPPFLAGS='-DNDEBUG' \\
+      LDFLAGS='%{__global_ldflags}' \\
+    ;
+    make
+
+    %install
+    make DESTDIR='%{buildroot}' install
+
+    %files
+    %defattr(-, root, root, -)
+    %{_bindir}/*
+    %{_datadir}/*
+    %{_includedir}/*
+    %{_libdir}/*
+
+    %post
+    /sbin/ldconfig
+
+    %postun
+    /sbin/ldconfig
+  " >${d}$system/sst.spec
+
+  sst_am_distribute ${d}$system/Dockerfile
+  sst_am_distribute ${d}$system/sst.spec
+
+  children=(
+    "\$(distdir).tar.gz"
+    "${d}$system/Dockerfile"
+    "${d}$system/sst.spec"
+    "build-aux/downloads/texinfo-6.3.tar.xz"
+  )
+
+  for ((i = 0; i != ${#children[@]}; ++i)); do
+    x="$out\$(TSUF).context/${children[i]##*/}"
+    sst_ihs <<<"
+      GATBPS_CP([$x], [${children[i]}])
+    " | sst_ac_append
+    sst_am_var_add_unique_word \
+      ${out_slug}_context \
+      "$x" \
+    ;
+    sst_am_var_add_unique_word \
+      ${out_slug}_children \
+      "${children[i]}" \
+    ;
+  done
+
+  # TODO: Should $out/clean have various foo/clean as prerequisites?
+
+  sst_ihs <<<"
+    $out: FORCE
+    $out: \$(${out_slug}_children)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
+    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(GATBPS_at)rm -f -r \$@ \$@\$(TSUF)*
+    	\$(GATBPS_V_MAKE)\$(MAKE) \$(AM_MAKEFLAGS) \\
+    	  \$(${out_slug}_context) \\
+    	;
+    	\$(GATBPS_at){ \\
+    	\\
+    	  iid_file='\$@\$(TSUF).iid'; \\
+    	  readonly iid_file; \\
+    	\\
+    	  \$(AM_V_P) && sh build-aux/gatbps-echo.sh -q -- \\
+    	    \$(DOCKER) build \\
+    	      --build-arg ARG_PACKAGE_VERSION='\$(PACKAGE_VERSION)' \\
+    	      --build-arg ARG_PACKAGE_VERSION_RPM_R='\$(PACKAGE_VERSION_RPM_R)' \\
+    	      --build-arg ARG_PACKAGE_VERSION_RPM_V='\$(PACKAGE_VERSION_RPM_V)' \\
+    	      --iidfile \"\$\$iid_file\" \\
+    	      \$@\$(TSUF).context \\
+    	  ; \\
+    	  \$(DOCKER) build \\
+    	    --build-arg ARG_PACKAGE_VERSION='\$(PACKAGE_VERSION)' \\
+    	    --build-arg ARG_PACKAGE_VERSION_RPM_R='\$(PACKAGE_VERSION_RPM_R)' \\
+    	    --build-arg ARG_PACKAGE_VERSION_RPM_V='\$(PACKAGE_VERSION_RPM_V)' \\
+    	    --iidfile \"\$\$iid_file\" \\
+    	    \$@\$(TSUF).context \\
+    	  || exit \$\$?; \\
+    	\\
+    	  iid=\`cat \"\$\$iid_file\"\` || exit \$\$?; \\
+    	  readonly iid; \\
+    	\\
+    	  cid_file='\$@\$(TSUF).cid'; \\
+    	  readonly cid_file; \\
+    	\\
+    	  \$(AM_V_P) && sh build-aux/gatbps-echo.sh -q -- \\
+    	    \$(DOCKER) create \\
+    	      --cidfile=\"\$\$cid_file\" \\
+    	      \"\$\$iid\" \\
+    	  ; \\
+    	  \$(DOCKER) create \\
+    	    --cidfile=\"\$\$cid_file\" \\
+    	    \"\$\$iid\" \\
+    	  || exit \$\$?; \\
+    	\\
+    	  cid=\`cat \"\$\$cid_file\"\` || exit \$\$?; \\
+    	  readonly cid; \\
+    	\\
+    	  \$(AM_V_P) && sh build-aux/gatbps-echo.sh -q -- \\
+    	    \$(DOCKER) cp \\
+    	      \"\$\$cid\":/x/out \\
+    	      \$@\$(TSUF) \\
+    	  ; \\
+    	  \$(DOCKER) cp \\
+    	    \"\$\$cid\":/x/out \\
+    	    \$@\$(TSUF) \\
+    	  || exit \$\$?; \\
+    	\\
+    	}
+    	\$(AM_V_at)mv -f \$@\$(TSUF) \$@
+    	\$(AM_V_at)touch \$@
+    	\$(GATBPS_at)-rm -f -r \$@\$(TSUF)*
+    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+
+    $out/clean: FORCE
+    	-rm -f -r \$(@D) \$(@D)\$(TSUF)*
+
+    mostlyclean-local: $out/clean
+  " | sst_am_append
+
+done

@@ -1,0 +1,96 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_CL_STANDARD_C_HEADERS_ADOC[]
+:ATTRIBUTES_CL_STANDARD_C_HEADERS_ADOC:
+//----------------------------------------------------------------------
+
+:cl_include_assert_h: assert.h
+
+:cl_include_complex_h: complex.h
+
+:cl_include_ctype_h: ctype.h
+
+:cl_include_errno_h: errno.h
+
+:cl_include_fenv_h: fenv.h
+
+:cl_include_float_h: float.h
+
+:cl_include_inttypes_h: inttypes.h
+
+:cl_include_iso646_h: iso646.h
+
+:cl_include_limits_h: limits.h
+
+:cl_include_locale_h: locale.h
+
+:cl_include_math_h: math.h
+
+:cl_include_setjmp_h: setjmp.h
+
+:cl_include_signal_h: signal.h
+
+:cl_include_stdalign_h: stdalign.h
+
+:cl_include_stdarg_h: stdarg.h
+
+:cl_include_stdatomic_h: stdatomic.h
+
+:cl_include_stdbool_h: stdbool.h
+
+:cl_include_stddef_h: stddef.h
+
+:cl_include_stdint_h: stdint.h
+
+:cl_include_stdio_h: stdio.h
+
+:cl_include_stdlib_h: stdlib.h
+
+:cl_include_stdnoreturn_h: stdnoreturn.h
+
+:cl_include_string_h: string.h
+
+:cl_include_tgmath_h: tgmath.h
+
+:cl_include_threads_h: threads.h
+
+:cl_include_time_h: time.h
+
+:cl_include_uchar_h: uchar.h
+
+:cl_include_wchar_h: wchar.h
+
+:cl_include_wctype_h: wctype.h
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

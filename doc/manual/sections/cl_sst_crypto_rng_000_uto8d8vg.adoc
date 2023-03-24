@@ -1,0 +1,100 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_CRYPTO_RNG_000_UTO8D8VG_ADOC[]
+:SECTIONS_CL_SST_CRYPTO_RNG_000_UTO8D8VG_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_crypto_rng_uto8d8vg_overload: {counter:cl_sst_crypto_rng_counter}
+:cl_sst_crypto_rng_uto8d8vg_id: cl-sst-crypto-rng-overload-{cl_sst_crypto_rng_uto8d8vg_overload}
+:cl_sst_crypto_rng_uto8d8vg_url: sections/cl_sst_crypto_rng_000_uto8d8vg.adoc#{cl_sst_crypto_rng_uto8d8vg_id}
+:cl_sst_crypto_rng_uto8d8vg: xref:{cl_sst_crypto_rng_uto8d8vg_url}[sst::crypto_rng]
+
+:cl_sst_crypto_rng_uto8d8vg_c1: xref:{cl_sst_crypto_rng_uto8d8vg_url}[crypto_rng]
+
+:cl_sst_crypto_rng_uto8d8vg_p1: pass:a,q[`{cl_sst_crypto_rng_uto8d8vg}` (overload {cl_sst_crypto_rng_uto8d8vg_overload})]
+:cl_sst_crypto_rng_uto8d8vg_p2: pass:a,q[`{cl_sst_crypto_rng_uto8d8vg}` function (overload {cl_sst_crypto_rng_uto8d8vg_overload})]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_crypto_rng_uto8d8vg_id}]
+= Overload {cl_sst_crypto_rng_uto8d8vg_overload}
+
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_crypto_rng_hpp}>
+namespace sst {
+
+{cl_sst_crypto_rng_t} & {cl_sst_crypto_rng_uto8d8vg_c1}();
+
+}
+----
+
+The {cl_sst_crypto_rng_uto8d8vg_p2} returns a reference to a
+{cryptographically_secure} random number generator `g` with
+{cl_thread_storage_duration}.
+
+Because the type of `g`, `{cl_sst_crypto_rng_t}`, satisfies the
+`{cl_sstCryptoRng}` requirement and the `{cl_sstCryptoRng}` requirement
+is a superset of the `{cl_UniformRandomBitGenerator}` requirement, `g`
+can be used in most situations where a standard random number generator,
+such as one of type `{cl_std_random_device}` or `{cl_std_mt19937}`, can
+be used.
+
+Because `g` has {cl_thread_storage_duration}, data races can be avoided
+regardless of multithreading by simply calling `{cl_sst_crypto_rng}()`
+in every situation where a random number generator is needed.
+
+.{empty}
+[example]
+====
+.`sst-example-{example-number}.cpp`
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <iostream>
+#include <random>
+
+#include <{cl_sst_catalog_crypto_rng_hpp}>
+
+int main() {
+  {cl_std_uniform_int_distribution}<int> d(1, 100);
+  {cl_std_cout} << "Here is a random integer between ";
+  {cl_std_cout} << d.{cl_std_uniform_int_distribution_min}() << " and " << d.{cl_std_uniform_int_distribution_max}() << ": ";
+  {cl_std_cout} << d({cl_sst_crypto_rng}()) << "\n";
+}
+----
+====
+
+//----------------------------------------------------------------------
+endif::[]
