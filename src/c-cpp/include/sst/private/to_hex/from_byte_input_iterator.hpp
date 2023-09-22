@@ -34,7 +34,8 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/char_bit_v.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
@@ -142,9 +143,14 @@ void process_byte(unsigned int & buf,
                   Dst & dst,
                   unsigned int x,
                   sst::to_hex_options const & options) {
+  SST_STATIC_ASSERT((BitsPerChar >= 1));
+  SST_STATIC_ASSERT((BitsPerChar <= 6));
+  SST_ASSERT((len >= 0));
+  SST_ASSERT((len < BitsPerChar));
+  SST_ASSERT(((buf >> len) == 0U));
   int n = sst::char_bit_v;
   while (n > 0) {
-    int const k = sst::unsigned_min(n, BitsPerChar);
+    int const k = sst::unsigned_min(n, BitsPerChar - len);
     buf <<= k;
     buf |= (x >> (n - k)) & sst::ones_mask<unsigned int>(k);
     len += k;
@@ -527,4 +533,4 @@ class to_hex_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_HEX_FROM_BYTE_INPUT_ITERATOR_HPP
+#endif // SST_PRIVATE_TO_HEX_FROM_BYTE_INPUT_ITERATOR_HPP

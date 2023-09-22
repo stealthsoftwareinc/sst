@@ -31,7 +31,7 @@
 
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/conditional_t.hpp>
 #include <sst/catalog/crypto_rng.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -185,4 +185,4 @@ R rand_range(Min const min, Max const max) noexcept(noexcept(SST_r)) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_RAND_RANGE_HPP
+#endif // SST_CATALOG_RAND_RANGE_HPP

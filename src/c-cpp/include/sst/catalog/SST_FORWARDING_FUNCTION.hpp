@@ -32,7 +32,6 @@
 #include <utility>
 
 #include <sst/catalog/SST_COMPILES.hpp>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 
 #define SST_FORWARDING_FUNCTION(f, g)                                  \
@@ -40,9 +39,9 @@
            ::sst::enable_if_t<SST_COMPILES(                            \
                g(::std::declval<SST_Args &&>()...))> = 0>              \
   auto f(SST_Args &&... SST_args) noexcept(                            \
-      SST_NOEXCEPT(g(::std::forward<SST_Args>(SST_args)...)))          \
+      noexcept(g(::std::forward<SST_Args>(SST_args)...)))              \
       ->decltype(g(::std::forward<SST_Args>(SST_args)...)) {           \
     return g(::std::forward<SST_Args>(SST_args)...);                   \
   }
 
-#endif // #ifndef SST_CATALOG_SST_FORWARDING_FUNCTION_HPP
+#endif // SST_CATALOG_SST_FORWARDING_FUNCTION_HPP

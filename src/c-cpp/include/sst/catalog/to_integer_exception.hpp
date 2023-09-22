@@ -54,4 +54,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TO_INTEGER_EXCEPTION_HPP
+#endif // SST_CATALOG_TO_INTEGER_EXCEPTION_HPP

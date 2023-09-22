@@ -114,4 +114,4 @@ struct functor<I,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_LAST_ARG_HPP
+#endif // SST_CATALOG_LAST_ARG_HPP

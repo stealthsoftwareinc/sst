@@ -47,4 +47,4 @@ bool windows_mkdir_p(Path const & path) {
 
 #endif // #if SST_WITH_WINDOWS
 
-#endif // #ifndef SST_CATALOG_WINDOWS_MKDIR_P_HPP
+#endif // SST_CATALOG_WINDOWS_MKDIR_P_HPP

@@ -46,4 +46,4 @@ std::string gle_error_string(sst_w32_DWORD code);
 
 #endif // #if SST_WITH_WINDOWS_KERNEL32
 
-#endif // #ifndef SST_CATALOG_GLE_ERROR_STRING_HPP
+#endif // SST_CATALOG_GLE_ERROR_STRING_HPP

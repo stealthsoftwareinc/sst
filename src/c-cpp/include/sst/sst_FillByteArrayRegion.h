@@ -47,4 +47,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_FillByteArrayRegion)(
 
 #endif
 
-#endif // #ifndef SST_SST_FILLBYTEARRAYREGION_H
+#endif // SST_SST_FILLBYTEARRAYREGION_H

@@ -49,15 +49,18 @@ sst_ihs <<<"
   ${d}diagrams:
   	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
   	\$(AM_V_GEN)\$(GATBPS_V_NOP)
-  	\$(GATBPS_at)rm -f -r \$@
-  	\$(GATBPS_at)\$(MKDIR_P) \$@
+  	\$(GATBPS_at)rm -f -r \$@\$(TSUF)* \$@
+  	\$(GATBPS_at)\$(MKDIR_P) \$@\$(TSUF)1
   	\$(GATBPS_at)rm -f README.html
   	\$(GATBPS_at)\$(MAKE) \$(AM_MAKEFLAGS) \\
   	  ASCIIDOCTOR_FLAGS='-a readme_diagrams=' \\
   	  README.html \\
   	;
   	\$(GATBPS_at)rm -f README.html
-  	\$(GATBPS_at)touch \$@
+  	\$(GATBPS_at)touch \$@\$(TSUF)1/.gitkeep
+  	\$(GATBPS_at)touch \$@\$(TSUF)1
+  	\$(GATBPS_at)mv -f \$@\$(TSUF)1 \$@
+  	\$(GATBPS_at)-rm -f -r \$@\$(TSUF)*
   	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
 
   EXTRA_DIST += ${d}diagrams

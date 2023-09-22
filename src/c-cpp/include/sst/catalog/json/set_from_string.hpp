@@ -30,11 +30,13 @@
 #define SST_CATALOG_JSON_SET_FROM_STRING_HPP
 
 #include <exception>
+#include <type_traits>
 #include <utility>
 
 #include <sst/catalog/cbegin.hpp>
 #include <sst/catalog/cend.hpp>
 #include <sst/catalog/enable_if_t.hpp>
+#include <sst/catalog/if_chain_t.hpp>
 #include <sst/catalog/is_byte_input_iterable.hpp>
 #include <sst/catalog/is_byte_input_iterator.hpp>
 #include <sst/catalog/is_char_input_iterable.hpp>
@@ -43,13 +45,14 @@
 #include <sst/catalog/json/exception.hpp>
 #include <sst/catalog/json/get_to.hpp>
 
-// TODO: Use SST_DEFINE_ALGORITHM
+// TODO: Use SST_DEFINE_ALGORITHM?
 
 namespace sst {
 namespace json {
 
-template<class T,
-         class Json = T,
+template<class Json_ = void,
+         class T,
+         class Json = sst::if_chain_t<std::is_void<Json_>, T, Json_>,
          class Src,
          class End,
          sst::enable_if_t<(sst::is_char_input_iterator<Src>::value
@@ -67,18 +70,19 @@ T & set_from_string(Src && src, End && end, T & dst) {
 }
 
 template<
+    class Json_ = void,
     class T,
-    class Json = T,
+    class Json = sst::if_chain_t<std::is_void<Json_>, T, Json_>,
     class Src,
     sst::enable_if_t<sst::is_char_input_iterable<Src>::value
                      || sst::is_byte_input_iterable<Src>::value> = 0>
 T & set_from_string(Src const & src, T & dst) {
-  return sst::json::set_from_string<T, Json>(sst::cbegin(src),
-                                             sst::cend(src),
-                                             dst);
+  return sst::json::set_from_string<Json>(sst::cbegin(src),
+                                          sst::cend(src),
+                                          dst);
 }
 
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_SET_FROM_STRING_HPP
+#endif // SST_CATALOG_JSON_SET_FROM_STRING_HPP

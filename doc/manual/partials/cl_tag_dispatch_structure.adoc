@@ -26,22 +26,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-[#{z3ng72ch_id}]
-= `{z3ng72ch}`
+[#{zpdhfpgbfk_id}]
+= The `{zpdhfpgbfk_name0}` tag dispatch structure
 
 [source,cpp,subs="{sst_subs_source}"]
 ----
-#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{z3ng72ch_path1}.hpp[sst/catalog/{z3ng72ch_path1}.hpp,window=_blank]>
+#include <{zpdhfpgbfk_hpp}>
 namespace sst {
 
-struct {z3ng72ch_chop1} {};
+struct {zpdhfpgbfk_chop1} {};
 
 }
 ----
 
-The `{z3ng72ch}` {cl_tag_dispatch_structure} indicates that a
-{cl_smart_pointer} should allocate and construct its object similarly to
-how the `{cl_std_make_unique}` function would allocate and construct the
-object.
-
-//
+The `{zpdhfpgbfk}` {cl_tag_dispatch_structure} is used to indicate that

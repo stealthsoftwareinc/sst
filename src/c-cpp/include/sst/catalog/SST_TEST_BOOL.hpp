@@ -51,4 +51,4 @@
 
 #define SST_TEST_BOOL(...) (SST_TEST_BOOL_2(__VA_ARGS__, 0))
 
-#endif // #ifndef SST_CATALOG_SST_TEST_BOOL_HPP
+#endif // SST_CATALOG_SST_TEST_BOOL_HPP

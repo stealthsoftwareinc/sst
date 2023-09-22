@@ -519,6 +519,8 @@ function main {
 # SPDX-License-Identifier: MIT
 #
 
+cmake_minimum_required(VERSION 3.10)
+
 project(
   $archive_name
   LANGUAGES C CXX
@@ -529,6 +531,17 @@ $xs)
 
 target_include_directories($archive_name PUBLIC include)
 EOF
+
+    if false \
+      || [[ -f include/sst/catalog/SST_WITH_OPENSSL_CRYPTO.h ]] \
+      || [[ -f include/sst/catalog/SST_WITH_OPENSSL_SSL.h ]] \
+    ; then
+      x=build-aux/cmake/with_openssl.cmake
+      sst_mkdir_p_only $x
+      cp "$sst_rundir"/$x $x
+      echo "include($x)" >>CMakeLists.txt
+    fi
+
   )
 
   #---------------------------------------------------------------------

@@ -40,4 +40,4 @@ SST_EXTERN_C SST_DLL_EXPORT unsigned char (sst_memclr01)(
   void
 );
 
-#endif // #ifndef SST_SST_MEMCLR01_H
+#endif // SST_SST_MEMCLR01_H

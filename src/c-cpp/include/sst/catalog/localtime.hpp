@@ -44,4 +44,4 @@ inline std::tm localtime() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_LOCALTIME_HPP
+#endif // SST_CATALOG_LOCALTIME_HPP

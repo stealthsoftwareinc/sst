@@ -60,4 +60,4 @@
 
 /* clang-format on */
 
-#endif // #ifndef SST_CATALOG_SST_DEBUG_H
+#endif // SST_CATALOG_SST_DEBUG_H

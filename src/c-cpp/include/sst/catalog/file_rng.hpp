@@ -38,4 +38,4 @@ using file_rng = sst::rng_shell<sst::file_rng_core>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FILE_RNG_HPP
+#endif // SST_CATALOG_FILE_RNG_HPP

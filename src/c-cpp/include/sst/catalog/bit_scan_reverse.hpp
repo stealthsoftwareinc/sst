@@ -32,7 +32,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
 #include <sst/catalog/SST_DEFINE_BOOLEAN_TRAIT_1.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -148,4 +148,4 @@ X bit_scan_reverse(X && x) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BIT_SCAN_REVERSE_HPP
+#endif // SST_CATALOG_BIT_SCAN_REVERSE_HPP

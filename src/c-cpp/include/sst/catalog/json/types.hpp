@@ -49,4 +49,4 @@ SST_BITMASK_CLASS(types, SST_JSON_TYPES_ITEMS, SST_JSON_TYPES_COMBOS)
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_TYPES_HPP
+#endif // SST_CATALOG_JSON_TYPES_HPP

@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_FROM_HEX_OPTIONS_HPP
 #define SST_CATALOG_FROM_HEX_OPTIONS_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 namespace sst {
 
@@ -131,4 +131,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FROM_HEX_OPTIONS_HPP
+#endif // SST_CATALOG_FROM_HEX_OPTIONS_HPP

@@ -34,7 +34,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/c_str.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -163,4 +163,4 @@ class write_whole_file_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_WRITE_WHOLE_FILE_KQ74CP3F_HPP
+#endif // SST_PRIVATE_WRITE_WHOLE_FILE_KQ74CP3F_HPP

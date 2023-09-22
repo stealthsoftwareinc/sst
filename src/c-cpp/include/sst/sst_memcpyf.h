@@ -45,4 +45,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_memcpyf)(
   size_t
 );
 
-#endif // #ifndef SST_SST_MEMCPYF_H
+#endif // SST_SST_MEMCPYF_H

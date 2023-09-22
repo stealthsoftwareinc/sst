@@ -48,4 +48,4 @@ constexpr auto checked_cast(Src && src) noexcept(noexcept(SST_dst))
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHECKED_CAST_HPP
+#endif // SST_CATALOG_CHECKED_CAST_HPP

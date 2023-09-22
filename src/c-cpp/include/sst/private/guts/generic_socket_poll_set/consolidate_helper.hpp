@@ -96,4 +96,4 @@ void generic_socket_poll_set<Socket, Entry>::consolidate_helper() {
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_CONSOLIDATE_HELPER_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_CONSOLIDATE_HELPER_HPP

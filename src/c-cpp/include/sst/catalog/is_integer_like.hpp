@@ -103,4 +103,4 @@ SST_N(int[1]);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IS_INTEGER_LIKE_HPP
+#endif // SST_CATALOG_IS_INTEGER_LIKE_HPP

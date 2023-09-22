@@ -38,4 +38,4 @@ using underlying_type_t = typename sst::underlying_type<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNDERLYING_TYPE_T_HPP
+#endif // SST_CATALOG_UNDERLYING_TYPE_T_HPP

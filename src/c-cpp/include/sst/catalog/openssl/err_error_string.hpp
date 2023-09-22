@@ -53,4 +53,4 @@ extern SST_DLL_EXPORT std::string err_error_string(unsigned long code);
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_ERR_ERROR_STRING_HPP
+#endif // SST_CATALOG_OPENSSL_ERR_ERROR_STRING_HPP

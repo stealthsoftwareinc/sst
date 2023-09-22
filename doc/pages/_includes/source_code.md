@@ -37,7 +37,7 @@
 
 ## Source code
 
-{% assign fp_artifact = "source" %}
+{% assign fp_artifact = "source code" %}
 {% assign fp_builtin_view_latest_url = "" %}
 {% assign fp_builtin_view_pinned_url = "" %}
 {% assign fp_builtin_download_latest_url = "" %}
@@ -55,7 +55,7 @@
 {% assign fp_devel_download_latest_url = "" %}
 {% assign fp_devel_download_pinned_url = "" %}
 {% unless in_source_repo %}
-{% assign fp_github_download_pinned_url = "https://github.com/stealthsoftwareinc/" | append: PACKAGE_TARNAME | append: "/archive/refs/tags/v" | append: PACKAGE_VERSION | append: ".tar.gz" %}
+{% assign fp_github_download_pinned_url = "https://github.com/stealthsoftwareinc/" | append: PACKAGE_TARNAME | append: "/raw/v" | append: PACKAGE_VERSION | append: "/" | append: PACKAGE_TARNAME | append: "-" | append: PACKAGE_VERSION | append: ".tar.gz" %}
 {% endunless %}
 
 {% include artifact_links_fragment.md %}

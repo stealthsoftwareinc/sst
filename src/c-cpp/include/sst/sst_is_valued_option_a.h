@@ -198,4 +198,4 @@ sst_bool sst_is_valued_option_a(
 
 #endif
 
-#endif // #ifndef SST_SST_IS_VALUED_OPTION_A_H
+#endif // SST_SST_IS_VALUED_OPTION_A_H

@@ -62,4 +62,4 @@
 
 #define SST_MISSING_CASE 11UL
 
-#endif // #ifndef SST_SST_MISSING_CASE_H
+#endif // SST_SST_MISSING_CASE_H

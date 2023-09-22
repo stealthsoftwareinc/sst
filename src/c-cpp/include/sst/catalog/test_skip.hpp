@@ -42,4 +42,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TEST_SKIP_HPP
+#endif // SST_CATALOG_TEST_SKIP_HPP

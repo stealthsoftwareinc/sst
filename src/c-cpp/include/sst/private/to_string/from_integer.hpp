@@ -32,7 +32,7 @@
 #include <iterator>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/integer_to_string_options.hpp>
 #include <sst/catalog/is_integer_ish.hpp>
@@ -213,4 +213,4 @@ class to_string_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_STRING_FROM_INTEGER_HPP
+#endif // SST_PRIVATE_TO_STRING_FROM_INTEGER_HPP

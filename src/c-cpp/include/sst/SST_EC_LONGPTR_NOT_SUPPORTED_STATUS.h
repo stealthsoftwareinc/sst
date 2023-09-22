@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "LongptrNotSupportedStatus"
 
-#endif // #ifndef SST_SST_EC_LONGPTR_NOT_SUPPORTED_STATUS_H
+#endif // SST_SST_EC_LONGPTR_NOT_SUPPORTED_STATUS_H

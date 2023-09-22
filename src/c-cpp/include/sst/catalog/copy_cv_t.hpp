@@ -38,4 +38,4 @@ using copy_cv_t = typename sst::copy_cv<Src, Dst>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COPY_CV_T_HPP
+#endif // SST_CATALOG_COPY_CV_T_HPP

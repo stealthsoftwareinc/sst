@@ -57,4 +57,4 @@
 
 #define SST_TEST_THROW(...) (SST_TEST_THROW_2(__VA_ARGS__, 0))
 
-#endif // #ifndef SST_CATALOG_SST_TEST_THROW_HPP
+#endif // SST_CATALOG_SST_TEST_THROW_HPP

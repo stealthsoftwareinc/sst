@@ -45,4 +45,4 @@ constexpr bool unsigned_eq(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_EQ_HPP
+#endif // SST_CATALOG_UNSIGNED_EQ_HPP

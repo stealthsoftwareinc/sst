@@ -32,4 +32,4 @@
 #include <sst/private/is_negative/arithmetic.hpp>
 #include <sst/private/is_negative/enum.hpp>
 
-#endif // #ifndef SST_CATALOG_IS_NEGATIVE_HPP
+#endif // SST_CATALOG_IS_NEGATIVE_HPP

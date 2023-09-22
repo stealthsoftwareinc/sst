@@ -31,4 +31,4 @@
 
 #include <sst/private/json/get_as_file/from_nlohmann.hpp>
 
-#endif // #ifndef SST_CATALOG_JSON_GET_AS_FILE_HPP
+#endif // SST_CATALOG_JSON_GET_AS_FILE_HPP

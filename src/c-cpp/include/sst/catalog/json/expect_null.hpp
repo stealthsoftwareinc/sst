@@ -32,7 +32,6 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/json/expect.hpp>
 #include <sst/catalog/json/types.hpp>
@@ -47,7 +46,7 @@ namespace json {
                      sst::json::types::null()))
 
 template<class Json>
-auto expect_null(Json && json) noexcept(SST_NOEXCEPT(SST_r))
+auto expect_null(Json && json) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -65,7 +64,7 @@ template<class Json,
          class Key,
          sst::enable_if_t<
              !std::is_convertible<Key, sst::json::types>::value> = 0>
-auto expect_null(Json && json, Key && key) noexcept(SST_NOEXCEPT(SST_r))
+auto expect_null(Json && json, Key && key) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -77,4 +76,4 @@ auto expect_null(Json && json, Key && key) noexcept(SST_NOEXCEPT(SST_r))
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_EXPECT_NULL_HPP
+#endif // SST_CATALOG_JSON_EXPECT_NULL_HPP

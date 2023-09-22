@@ -159,4 +159,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_EXCEPTION_HPP
+#endif // SST_CATALOG_JSON_EXCEPTION_HPP

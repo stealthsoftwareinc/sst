@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NonnullPointerStatus"
 
-#endif // #ifndef SST_SST_EC_NONNULL_POINTER_STATUS_H
+#endif // SST_SST_EC_NONNULL_POINTER_STATUS_H

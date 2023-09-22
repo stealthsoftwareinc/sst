@@ -40,4 +40,4 @@ sst::span_t<T, Size> span(T * const data, Size const size) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SPAN_HPP
+#endif // SST_CATALOG_SPAN_HPP

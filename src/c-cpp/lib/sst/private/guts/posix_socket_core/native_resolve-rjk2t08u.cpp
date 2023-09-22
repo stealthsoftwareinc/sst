@@ -43,7 +43,7 @@
 #include <netdb.h>
 #include <sys/socket.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/make_basic.hpp>
 #include <sst/catalog/posix_gai_exception.hpp>
 

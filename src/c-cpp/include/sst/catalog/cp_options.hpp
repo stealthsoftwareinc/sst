@@ -95,4 +95,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CP_OPTIONS_HPP
+#endif // SST_CATALOG_CP_OPTIONS_HPP

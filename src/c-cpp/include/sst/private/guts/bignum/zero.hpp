@@ -51,4 +51,4 @@ extern SST_DLL_EXPORT sst::bignum const zero;
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_PRIVATE_GUTS_BIGNUM_ZERO_HPP
+#endif // SST_PRIVATE_GUTS_BIGNUM_ZERO_HPP

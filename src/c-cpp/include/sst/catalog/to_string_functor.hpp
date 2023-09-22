@@ -31,4 +31,4 @@
 
 #include <sst/catalog/to_string.hpp>
 
-#endif // #ifndef SST_CATALOG_TO_STRING_FUNCTOR_HPP
+#endif // SST_CATALOG_TO_STRING_FUNCTOR_HPP

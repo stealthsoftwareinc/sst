@@ -56,4 +56,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_WITH_SST_BN_BIN2BN_STEP_H
+#endif // SST_SST_WITH_SST_BN_BIN2BN_STEP_H

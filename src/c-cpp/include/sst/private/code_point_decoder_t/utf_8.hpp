@@ -31,8 +31,8 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/code_point_decoder_t.hpp>
 #include <sst/catalog/malformed_code_point.hpp>
 #include <sst/catalog/malformed_code_point_action.hpp>
@@ -330,4 +330,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_CODE_POINT_DECODER_T_UTF_8_HPP
+#endif // SST_PRIVATE_CODE_POINT_DECODER_T_UTF_8_HPP

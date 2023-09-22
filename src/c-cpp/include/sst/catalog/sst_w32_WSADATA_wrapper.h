@@ -43,4 +43,4 @@ typedef struct sst_w32_WSADATA_wrapper {
   char szSystemStatus[SST_W32_WSASYS_STATUS_LEN + 1];
 } sst_w32_WSADATA_wrapper;
 
-#endif // #ifndef SST_CATALOG_SST_W32_WSADATA_WRAPPER_H
+#endif // SST_CATALOG_SST_W32_WSADATA_WRAPPER_H

@@ -40,7 +40,7 @@
 
 #include <netinet/in.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/socket_protocol.hpp>
 
 namespace sst {

@@ -48,4 +48,4 @@ auto code_point_decoder(Options const & options = Options()) noexcept(
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CODE_POINT_DECODER_HPP
+#endif // SST_CATALOG_CODE_POINT_DECODER_HPP

@@ -45,4 +45,4 @@ typedef char sst_w32_CHAR;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_CHAR_H
+#endif // SST_CATALOG_SST_W32_CHAR_H

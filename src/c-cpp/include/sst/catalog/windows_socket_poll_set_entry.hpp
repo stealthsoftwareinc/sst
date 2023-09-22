@@ -45,4 +45,4 @@ using windows_socket_poll_set_entry =
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WINDOWS_SOCKET_POLL_SET_ENTRY_HPP
+#endif // SST_CATALOG_WINDOWS_SOCKET_POLL_SET_ENTRY_HPP

@@ -40,4 +40,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_JLONG_MINVAL_H
+#endif // SST_SST_JLONG_MINVAL_H

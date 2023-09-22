@@ -45,4 +45,4 @@ constexpr bool unsigned_ge(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_GE_HPP
+#endif // SST_CATALOG_UNSIGNED_GE_HPP

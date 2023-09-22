@@ -32,7 +32,7 @@
 #include <sst/catalog/rm_f_r.hpp>
 //
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/errno_error_string.hpp>
 #include <sst/config.h>
 

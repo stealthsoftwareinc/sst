@@ -45,4 +45,4 @@ constexpr bool perfect_le(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PERFECT_LE_HPP
+#endif // SST_CATALOG_PERFECT_LE_HPP

@@ -126,4 +126,4 @@ double sst_wall_time_CLOCK_MONOTONIC_dist(
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_CLOCK_MONOTONIC_DIST_H
+#endif // SST_SST_WALL_TIME_CLOCK_MONOTONIC_DIST_H

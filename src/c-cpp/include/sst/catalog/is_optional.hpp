@@ -78,4 +78,4 @@ SST_N(int)
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IS_OPTIONAL_HPP
+#endif // SST_CATALOG_IS_OPTIONAL_HPP

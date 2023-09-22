@@ -129,4 +129,4 @@ to_bits(void * const x, R const r, Y const y, N const n) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TO_BITS_HPP
+#endif // SST_CATALOG_TO_BITS_HPP

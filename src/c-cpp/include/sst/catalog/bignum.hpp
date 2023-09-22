@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_BIGNUM_HPP
 #define SST_CATALOG_BIGNUM_HPP
 
-#include <sst/config.h>
+#include <sst/catalog/SST_WITH_OPENSSL_CRYPTO.h>
 
 #if SST_WITH_OPENSSL_CRYPTO
 
@@ -44,10 +44,11 @@
 #include <utility>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/SST_THROW_UNIMPLEMENTED.hpp>
+#include <sst/catalog/SST_WITH_NTL.h>
 #include <sst/catalog/bigint_marker.hpp>
 #include <sst/catalog/bignum_error.hpp>
 #include <sst/catalog/buffer_overrun.hpp>
@@ -1886,4 +1887,4 @@ numeric_limits<sst::bignum>::denorm_min() noexcept {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_BIGNUM_HPP
+#endif // SST_CATALOG_BIGNUM_HPP

@@ -46,4 +46,4 @@ using windows_socket_poll_set_iterator =
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WINDOWS_SOCKET_POLL_SET_ITERATOR_HPP
+#endif // SST_CATALOG_WINDOWS_SOCKET_POLL_SET_ITERATOR_HPP

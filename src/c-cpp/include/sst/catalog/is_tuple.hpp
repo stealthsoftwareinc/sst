@@ -42,4 +42,4 @@ struct is_tuple<std::tuple<Args...>> : std::true_type {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_TUPLE_HPP
+#endif // SST_CATALOG_IS_TUPLE_HPP

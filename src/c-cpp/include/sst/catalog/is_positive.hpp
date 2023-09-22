@@ -31,4 +31,4 @@
 
 #include <sst/private/is_positive/arithmetic.hpp>
 
-#endif // #ifndef SST_CATALOG_IS_POSITIVE_HPP
+#endif // SST_CATALOG_IS_POSITIVE_HPP

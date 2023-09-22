@@ -35,4 +35,4 @@
 #define SST_EXTERN_C extern
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_EXTERN_C_H
+#endif // SST_CATALOG_SST_EXTERN_C_H

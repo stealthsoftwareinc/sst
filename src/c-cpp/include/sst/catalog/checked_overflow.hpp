@@ -43,4 +43,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHECKED_OVERFLOW_HPP
+#endif // SST_CATALOG_CHECKED_OVERFLOW_HPP

@@ -35,4 +35,4 @@
 SST_EXTERN_C SST_DLL_EXPORT
 unsigned char sst_randhhu(void);
 
-#endif // #ifndef SST_SST_RANDHHU_H
+#endif // SST_SST_RANDHHU_H

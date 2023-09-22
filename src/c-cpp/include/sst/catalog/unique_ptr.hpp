@@ -34,34 +34,228 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_COMPILES.hpp>
+#include <sst/catalog/SST_DEFINE_BOOLEAN_TRAIT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NOEXCEPT_OR.hpp>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
-#include <sst/catalog/emplace.hpp>
-#include <sst/catalog/emplace_t.hpp>
+#include <sst/catalog/enable_if_t.hpp>
+#include <sst/catalog/in_place_t.hpp>
 
 namespace sst {
 
-// TODO: Don't derive from std::unique_ptr. We generally need more
-//       control over the pointer and how destruction happens for
-//       functions like emplace() etc.
-
 template<class T>
-class unique_ptr : std::unique_ptr<T> {
+class unique_ptr {
+
+  //--------------------------------------------------------------------
+  // Types
+  //--------------------------------------------------------------------
 
 public:
 
-  SST_STATIC_ASSERT(noexcept(std::declval<T>().~T()));
+  SST_STATIC_ASSERT((std::is_object<T>::value));
+  SST_STATIC_ASSERT((!std::is_const<T>::value));
+  SST_STATIC_ASSERT((!std::is_volatile<T>::value));
 
-  using deleter_type = typename std::unique_ptr<T>::deleter_type;
-  using element_type = typename std::unique_ptr<T>::element_type;
-  using pointer = typename std::unique_ptr<T>::pointer;
+  using element_type = T;
 
-  using std::unique_ptr<T>::get;
-  using std::unique_ptr<T>::operator->;
-  using std::unique_ptr<T>::release;
-  using std::unique_ptr<T>::reset;
+  using pointer = T *;
+
+  //--------------------------------------------------------------------
+  // Data
+  //--------------------------------------------------------------------
+
+private:
+
+  T * p_ = nullptr;
+
+  //--------------------------------------------------------------------
+  // copy
+  //--------------------------------------------------------------------
+
+private:
+
+  template<class PointerIsh>
+  SST_NODISCARD()
+  static T * copy(PointerIsh const & p) {
+    return p ? new T(*p) : nullptr;
+  }
+
+  //--------------------------------------------------------------------
+  // emplace
+  //--------------------------------------------------------------------
+  //
+  // If the pointer is null, allocates and constructs the object,
+  // forwarding the arguments to the constructor. Otherwise, if the
+  // arguments are valid for operator=, calls operator=, forwarding the
+  // arguments to the call. Otherwise, deconstructs and reconstructs the
+  // object in place, forwarding the arguments to the constructor. If
+  // any exception is thrown, destructs and deallocates the object
+  // before rethrowing. Returns a reference to the object.
+  //
+
+private:
+
+  SST_DEFINE_BOOLEAN_TRAIT(can_assign,
+                           (class(X), class(Args, ...)),
+                           (SST_COMPILES(std::declval<X &>().operator=(
+                               std::declval<Args>()...))));
+
+public:
+
+  template<class X = T,
+           class... Args,
+           sst::enable_if_t<can_assign<X, Args...>::value> = 0>
+  T & emplace(Args &&... args) {
+    if (p_ == nullptr) {
+      p_ = new T(std::forward<Args>(args)...);
+    } else {
+      try {
+        p_->operator=(std::forward<Args>(args)...);
+      } catch (...) {
+        try {
+          p_->~T();
+        } catch (...) {
+        }
+        ::operator delete(p_);
+        p_ = nullptr;
+        throw;
+      }
+    }
+    return *p_;
+  }
+
+  template<class X = T,
+           class... Args,
+           sst::enable_if_t<!can_assign<X, Args...>::value> = 0>
+  T & emplace(Args &&... args) {
+    if (p_ == nullptr) {
+      p_ = new T(std::forward<Args>(args)...);
+    } else {
+      try {
+        p_->~T();
+      } catch (...) {
+      }
+      try {
+        new (p_) T(std::forward<Args>(args)...);
+      } catch (...) {
+        ::operator delete(p_);
+        p_ = nullptr;
+        throw;
+      }
+    }
+    return *p_;
+  }
+
+  //--------------------------------------------------------------------
+  // ensure
+  //--------------------------------------------------------------------
+  //
+  // If the pointer is null, allocates and constructs the object,
+  // forwarding the arguments to the constructor. Otherwise, does
+  // nothing. Returns a reference to the object.
+  //
+
+public:
+
+  template<class... Args>
+  T & ensure(Args &&... args) {
+    if (p_ == nullptr) {
+      p_ = new T(std::forward<Args>(args)...);
+    }
+    return *p_;
+  }
+
+  //--------------------------------------------------------------------
+  // get
+  //--------------------------------------------------------------------
+  //
+  // Returns the pointer.
+  //
+
+public:
+
+  SST_NODISCARD() T * get() const SST_NOEXCEPT(true) {
+    return p_;
+  }
+
+  //--------------------------------------------------------------------
+  // operator->
+  //--------------------------------------------------------------------
+  //
+  // Returns the pointer. The pointer must not be null.
+  //
+
+public:
+
+  SST_NODISCARD() T * operator->() const SST_NOEXCEPT(true) {
+    SST_ASSERT((p_ != nullptr));
+    return p_;
+  }
+
+  //--------------------------------------------------------------------
+  // operator*
+  //--------------------------------------------------------------------
+  //
+  // Returns a reference to the object. The pointer must not be null.
+  //
+
+public:
+
+  SST_NODISCARD() T & operator*() const SST_NOEXCEPT(true) {
+    SST_ASSERT((p_ != nullptr));
+    return *p_;
+  }
+
+  //--------------------------------------------------------------------
+  // operator bool
+  //--------------------------------------------------------------------
+
+public:
+
+  SST_NODISCARD() explicit operator bool() const SST_NOEXCEPT(true) {
+    return p_ != nullptr;
+  }
+
+  //--------------------------------------------------------------------
+  // release
+  //--------------------------------------------------------------------
+
+public:
+
+  SST_NODISCARD() T * release() SST_NOEXCEPT(true) {
+    T * const p = p_;
+    p_ = nullptr;
+    return p;
+  }
+
+  //--------------------------------------------------------------------
+  // reset
+  //--------------------------------------------------------------------
+
+public:
+
+  void reset(T * const p = nullptr) SST_NOEXCEPT(true) {
+    try {
+      delete p_;
+    } catch (...) {
+    }
+    p_ = p;
+  }
+
+  //--------------------------------------------------------------------
+  // swap
+  //--------------------------------------------------------------------
+
+public:
+
+  void swap(unique_ptr & other) SST_NOEXCEPT(true) {
+    T * const p = p_;
+    p_ = other.p_;
+    other.p_ = p;
+  }
 
   //--------------------------------------------------------------------
   // Default operations
@@ -69,172 +263,109 @@ public:
 
 public:
 
-  unique_ptr() SST_DEFAULT_NOEXCEPT(true) = default;
+  unique_ptr() SST_NOEXCEPT(true) = default;
 
-  //--------------------------------------------------------------------
-  // Basic construction
-  //--------------------------------------------------------------------
-
-  unique_ptr(std::nullptr_t) noexcept {
+  ~unique_ptr() SST_NOEXCEPT(true) {
+    try {
+      delete p_;
+    } catch (...) {
+    }
   }
 
-  explicit unique_ptr(pointer p) noexcept
-      : std::unique_ptr<T>(std::move(p)) {
-  }
-
-  template<class... Args>
-  unique_ptr(sst::emplace_t, Args &&... args)
-      : unique_ptr(new T(std::forward<Args>(args)...)) {
-  }
-
-  //--------------------------------------------------------------------
-  // Copying
-  //--------------------------------------------------------------------
-  //
-  // Note that std::unique_ptr does not provide any copy semantics.
-  //
-
-  unique_ptr(unique_ptr const & other)
-      : unique_ptr(other.get() == nullptr ? nullptr : new T(*other)) {
-  }
-
-  unique_ptr(std::unique_ptr<T> const & other)
-      : unique_ptr(other.get() == nullptr ? nullptr : new T(*other)) {
+  unique_ptr(unique_ptr const & other) : p_(copy(other)) {
   }
 
   unique_ptr & operator=(unique_ptr const & other) {
-    if (this != &other) {
-      reset(other.get() == nullptr ? nullptr : new T(*other));
+    if (SST_NOEXCEPT_OR(false, *p_ = *other.p_) && p_ && other.p_) {
+      *p_ = *other.p_;
+    } else {
+      reset(copy(other));
     }
     return *this;
   }
 
-  unique_ptr & operator=(std::unique_ptr<T> const & other) {
-    if (this != &other) {
-      reset(other.get() == nullptr ? nullptr : new T(*other));
-    }
+  unique_ptr(unique_ptr && other) SST_NOEXCEPT(true)
+      : p_(other.release()) {
+  }
+
+  unique_ptr & operator=(unique_ptr && other) SST_NOEXCEPT(true) {
+    reset(other.release());
     return *this;
   }
 
   //--------------------------------------------------------------------
-  // Moving
+  // Other constructors
   //--------------------------------------------------------------------
 
-  unique_ptr(unique_ptr && other) noexcept
-      : std::unique_ptr<T>(std::move(other)) {
+public:
+
+  explicit unique_ptr(T * const p) SST_NOEXCEPT(true) : p_(p) {
   }
 
-  unique_ptr(std::unique_ptr<T> && other) noexcept
-      : std::unique_ptr<T>(std::move(other)) {
-  }
-
-  unique_ptr & operator=(unique_ptr && other) noexcept {
-    if (this != &other) {
-      reset(other.release());
-    }
-    return *this;
-  }
-
-  unique_ptr & operator=(std::unique_ptr<T> && other) noexcept {
-    if (this != &other) {
-      reset(other.release());
-    }
-    return *this;
+  template<class... Args>
+  explicit unique_ptr(sst::in_place_t, Args &&... args)
+      : p_(new T(std::forward<Args>(args)...)) {
   }
 
   //--------------------------------------------------------------------
-
-  ~unique_ptr() noexcept {
-  }
-
+  // Operations with std::nullptr_t
   //--------------------------------------------------------------------
 
-  unique_ptr & operator=(std::nullptr_t) noexcept {
+public:
+
+  unique_ptr(std::nullptr_t) SST_NOEXCEPT(true) {
+  }
+
+  unique_ptr & operator=(std::nullptr_t) SST_NOEXCEPT(true) {
     reset();
     return *this;
   }
 
-  //--------------------------------------------------------------------
-  // emplace
-  //--------------------------------------------------------------------
+  friend bool operator==(unique_ptr const & a, std::nullptr_t)
+      SST_NOEXCEPT(true) {
+    return a.p_ == nullptr;
+  }
 
-public:
+  friend bool operator==(std::nullptr_t, unique_ptr const & b)
+      SST_NOEXCEPT(true) {
+    return nullptr == b.p_;
+  }
 
-  // TODO: If *this != nullptr and T has move assignment, then we should
-  //       be able to use **this = T(std::forward<Args>(args)...).
-  //       However, the move assignment MUST BE NOEXCEPT, otherwise an
-  //       exception may corrupt **this, and this function should
-  //       provide strong exception safety.
-  // TODO: Should we provide behavior more like std::optional::emplace,
-  //       where we always begin by destructing (if possible), and if an
-  //       exception occurs (either from construction or allocation)
-  //       then we leave ourselves reset? Does "emplace" generally mean
-  //       "don't use any temporary storage, not even on the stack"? I
-  //       guess then the caller can get it the above way by writing
-  //       emplace(T(foo)) instead of emplace(foo). Yeah, I think
-  //       "emplace" should generally mean "construct in the existing
-  //       space".
-  template<class... Args>
-  T & emplace(Args &&... args) {
-    *this = unique_ptr(sst::emplace, std::forward<Args>(args)...);
-    return **this;
+  friend bool operator!=(unique_ptr const & a, std::nullptr_t)
+      SST_NOEXCEPT(true) {
+    return a.p_ != nullptr;
+  }
+
+  friend bool operator!=(std::nullptr_t, unique_ptr const & b)
+      SST_NOEXCEPT(true) {
+    return nullptr != b.p_;
   }
 
   //--------------------------------------------------------------------
-  // ensure
+  // Operations with std::unique_ptr
   //--------------------------------------------------------------------
 
 public:
 
-  template<class... Args>
-  T & ensure(Args &&... args) {
-    if (*this == nullptr) {
-      emplace(std::forward<Args>(args)...);
-    }
-    return **this;
+  template<class Deleter>
+  unique_ptr(std::unique_ptr<T, Deleter> const & other)
+      : p_(copy(other)) {
   }
 
-  //--------------------------------------------------------------------
-  //
-  // Note that std::unique_ptr did not provide a noexcept specifier for
-  // operator* until C++23.
-  //
-
-  SST_NODISCARD()
-  typename std::add_lvalue_reference<T>::type operator*() const
-      noexcept(noexcept(*std::declval<pointer>())) {
-    SST_ASSERT(get() != nullptr);
-    return *get();
+  template<class Deleter>
+  unique_ptr & operator=(std::unique_ptr<T, Deleter> const & other) {
+    reset(copy(other));
+    return *this;
   }
 
-  //--------------------------------------------------------------------
-  // Comparisons
-  //--------------------------------------------------------------------
-
-public:
-
-  explicit operator bool() const noexcept {
-    return get() != nullptr;
+  unique_ptr(std::unique_ptr<T> && other) SST_NOEXCEPT(true)
+      : p_(other.release()) {
   }
 
-  friend bool operator==(unique_ptr const & a,
-                         std::nullptr_t) noexcept {
-    return a.get() == nullptr;
-  }
-
-  friend bool operator==(std::nullptr_t,
-                         unique_ptr const & b) noexcept {
-    return nullptr == b.get();
-  }
-
-  friend bool operator!=(unique_ptr const & a,
-                         std::nullptr_t) noexcept {
-    return a.get() != nullptr;
-  }
-
-  friend bool operator!=(std::nullptr_t,
-                         unique_ptr const & b) noexcept {
-    return nullptr != b.get();
+  unique_ptr & operator=(std::unique_ptr<T> && other)
+      SST_NOEXCEPT(true) {
+    reset(other.release());
+    return *this;
   }
 
   //--------------------------------------------------------------------
@@ -242,4 +373,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNIQUE_PTR_HPP
+#endif // SST_CATALOG_UNIQUE_PTR_HPP

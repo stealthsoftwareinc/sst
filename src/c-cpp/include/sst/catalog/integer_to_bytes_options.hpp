@@ -57,4 +57,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INTEGER_TO_BYTES_OPTIONS_HPP
+#endif // SST_CATALOG_INTEGER_TO_BYTES_OPTIONS_HPP

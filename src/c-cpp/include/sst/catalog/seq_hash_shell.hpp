@@ -32,7 +32,6 @@
 #include <utility>
 
 #include <sst/catalog/SST_COMPILES.hpp>
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
 #include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/cbegin.hpp>
 #include <sst/catalog/cend.hpp>
@@ -55,22 +54,21 @@ class seq_hash_shell : public sst::remove_cvref_t<SeqHashCore> {
 
 public:
 
-  seq_hash_shell() SST_DEFAULT_NOEXCEPT(true) = default;
+  seq_hash_shell() SST_NOEXCEPT(true) = default;
 
-  seq_hash_shell(seq_hash_shell const &) SST_DEFAULT_NOEXCEPT(
+  seq_hash_shell(seq_hash_shell const &) SST_NOEXCEPT(
       noexcept(core(std::declval<core const &>()))) = default;
 
   seq_hash_shell &
-  operator=(seq_hash_shell const &) SST_DEFAULT_NOEXCEPT(noexcept(
+  operator=(seq_hash_shell const &) SST_NOEXCEPT(noexcept(
       std::declval<core &>() = std::declval<core const &>())) = default;
 
-  seq_hash_shell(seq_hash_shell &&)
-      SST_DEFAULT_NOEXCEPT(true) = default;
+  seq_hash_shell(seq_hash_shell &&) SST_NOEXCEPT(true) = default;
 
   seq_hash_shell & operator=(seq_hash_shell &&)
-      SST_DEFAULT_NOEXCEPT(true) = default;
+      SST_NOEXCEPT(true) = default;
 
-  ~seq_hash_shell() SST_DEFAULT_NOEXCEPT(true) = default;
+  ~seq_hash_shell() SST_NOEXCEPT(true) = default;
 
   template<class T>
   using is_input = typename core::template is_input<T>;
@@ -83,7 +81,7 @@ public:
   }
 
   seq_hash_shell &
-  init() noexcept(SST_NOEXCEPT(std::declval<core &>().init())) {
+  init() noexcept(noexcept(std::declval<core &>().init())) {
     core::init();
     return *this;
   }
@@ -95,7 +93,7 @@ public:
                && (sst::is_integer_ish<End>::value
                    || sst::is_sentinel<End, Src>::value
                    || sst::is_value_sentinel<End, Src>::value)> = 0>
-  seq_hash_shell & update(Src && src, End && end) noexcept(SST_NOEXCEPT(
+  seq_hash_shell & update(Src && src, End && end) noexcept(noexcept(
       std::declval<core &>().template update(std::forward<Src>(src),
                                              std::forward<End>(end)))) {
     core::template update(std::forward<Src>(src),
@@ -111,7 +109,7 @@ public:
                    || sst::is_sentinel<End, Src>::value
                    || sst::is_value_sentinel<End, Src>::value)> = 0>
   seq_hash_shell & update(Src && src, End && end) noexcept(
-      SST_NOEXCEPT(std::declval<core &>().template update(
+      noexcept(std::declval<core &>().template update(
           sst::cbegin(std::forward<Src>(src)),
           std::forward<End>(end)))) {
     core::template update(sst::cbegin(std::forward<Src>(src)),
@@ -120,7 +118,7 @@ public:
   }
 
   seq_hash_shell &
-  finish() noexcept(SST_NOEXCEPT(std::declval<core &>().finish())) {
+  finish() noexcept(noexcept(std::declval<core &>().finish())) {
     core::finish();
     return *this;
   }
@@ -131,7 +129,7 @@ public:
 
   template<class Src,
            sst::enable_if_t<sst::is_iterable<Src, is_input>::value> = 0>
-  seq_hash_shell & update(Src && src) noexcept(SST_NOEXCEPT(
+  seq_hash_shell & update(Src && src) noexcept(noexcept(
       std::declval<seq_hash_shell &>().update(sst::cbegin(src),
                                               sst::cend(src)))) {
     return update(sst::cbegin(src), sst::cend(src));
@@ -141,7 +139,7 @@ public:
            sst::enable_if_t<
                sst::is_input_iterator<Src, is_input>::value> = 0>
   seq_hash_shell & update(Src && src) noexcept(
-      SST_NOEXCEPT(std::declval<seq_hash_shell &>().update(
+      noexcept(std::declval<seq_hash_shell &>().update(
           std::forward<Src>(src),
           sst::value_sentinel(sst::value_type_t<Src>())))) {
     return update(std::forward<Src>(src),
@@ -171,4 +169,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SEQ_HASH_SHELL_HPP
+#endif // SST_CATALOG_SEQ_HASH_SHELL_HPP

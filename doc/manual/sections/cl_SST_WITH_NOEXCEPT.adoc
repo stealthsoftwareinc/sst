@@ -1,0 +1,76 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_WITH_NOEXCEPT_ADOC[]
+:SECTIONS_CL_SST_WITH_NOEXCEPT_ADOC:
+//----------------------------------------------------------------------
+
+:cl_SST_WITH_NOEXCEPT_name0: SST_WITH_NOEXCEPT
+
+:cl_SST_WITH_NOEXCEPT_id: cl_SST_WITH_NOEXCEPT
+:cl_SST_WITH_NOEXCEPT_url: sections/cl_SST_WITH_NOEXCEPT.adoc#{cl_SST_WITH_NOEXCEPT_id}
+
+:cl_SST_WITH_NOEXCEPT_chop0: xref:{cl_SST_WITH_NOEXCEPT_url}[{cl_SST_WITH_NOEXCEPT_name0}]
+
+:cl_SST_WITH_NOEXCEPT: {cl_SST_WITH_NOEXCEPT_chop0}
+
+:cl_sst_catalog_SST_WITH_NOEXCEPT_h_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/SST_WITH_NOEXCEPT.h
+:cl_sst_catalog_SST_WITH_NOEXCEPT_h: link:{cl_sst_catalog_SST_WITH_NOEXCEPT_h_url}[sst/catalog/SST_WITH_NOEXCEPT.h,window=_blank]
+
+:cl_sst_catalog_SST_WITH_NOEXCEPT_hpp_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/SST_WITH_NOEXCEPT.hpp
+:cl_sst_catalog_SST_WITH_NOEXCEPT_hpp: link:{cl_sst_catalog_SST_WITH_NOEXCEPT_hpp_url}[sst/catalog/SST_WITH_NOEXCEPT.hpp,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_SST_WITH_NOEXCEPT_id}]
+= The `{cl_SST_WITH_NOEXCEPT_name0}` feature test macro
+
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_SST_WITH_NOEXCEPT_h}>
+// or:   <{cl_sst_catalog_SST_WITH_NOEXCEPT_hpp}>
+
+#define {cl_SST_WITH_NOEXCEPT} pass:[/*...*/]
+----
+
+The `{cl_SST_WITH_NOEXCEPT}` feature test macro indicates whether the
+`{cl_noexcept_op}` operator and the `{cl_noexcept_spec}` specifier are
+safe to use.
+Some versions of some compilers have bugs with these constructs, in
+which case it is best not to use them.
+
+include::../partials/cl_feature_test_macro_expansion.adoc[]
+
+//----------------------------------------------------------------------
+endif::[]

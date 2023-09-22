@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidAliasingStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_ALIASING_STATUS_H
+#endif // SST_SST_EC_INVALID_ALIASING_STATUS_H

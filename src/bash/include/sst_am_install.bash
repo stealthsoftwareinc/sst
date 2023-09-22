@@ -133,6 +133,7 @@ sst_am_install() {
     fi
 
     if [[ -f $src ]]; then
+      # TODO: What to do about asdf here?
       sst_ag_process_leaf asdf $src src
     fi
 
@@ -148,7 +149,10 @@ sst_am_install() {
     if [[ ! "${sst_am_install_dirs[$dir]+x}" ]]; then
       if [[ "$dst_b" || "$suf" ]]; then
         sst_am_suspend_if
-        sst_am_append <<<"${dir_slug}dir = \$(${dst_a}dir)$dst_b$suf"
+        sst_am_append <<EOF
+${dir_slug}dir = \$(${dst_a}dir)$dst_b$suf
+GATBPS_UNINSTALL_MKDIRS += \$(${dir_slug}dir)/mkdir
+EOF
         sst_am_restore_if
       fi
       sst_am_install_dirs[$dir]=

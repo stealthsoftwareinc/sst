@@ -47,4 +47,4 @@ SST_EXTERN_C SST_DLL_EXPORT sst_bool (sst_ThrowNew)(
 
 #endif
 
-#endif // #ifndef SST_SST_THROWNEW_H
+#endif // SST_SST_THROWNEW_H

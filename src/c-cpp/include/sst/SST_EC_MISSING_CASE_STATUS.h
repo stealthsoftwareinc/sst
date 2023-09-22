@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "MissingCaseStatus"
 
-#endif // #ifndef SST_SST_EC_MISSING_CASE_STATUS_H
+#endif // SST_SST_EC_MISSING_CASE_STATUS_H

@@ -120,4 +120,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SOCKET_SHUTDOWN_HPP
+#endif // SST_CATALOG_SOCKET_SHUTDOWN_HPP

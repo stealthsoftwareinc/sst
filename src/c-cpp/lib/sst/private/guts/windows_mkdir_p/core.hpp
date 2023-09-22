@@ -33,7 +33,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_THROW_UNIMPLEMENTED.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/gle_exception.hpp>
@@ -188,4 +188,4 @@ bool core(CharT const * const path,
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_WINDOWS_MKDIR_P_CORE_HPP
+#endif // SST_PRIVATE_GUTS_WINDOWS_MKDIR_P_CORE_HPP

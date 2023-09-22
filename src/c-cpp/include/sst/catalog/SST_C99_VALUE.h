@@ -31,4 +31,4 @@
 
 #define SST_C99_VALUE (199901L)
 
-#endif // #ifndef SST_CATALOG_SST_C99_VALUE_H
+#endif // SST_CATALOG_SST_C99_VALUE_H

@@ -91,7 +91,7 @@ dnl---------------------------------------------------------------------
 
 GATBPS_PROG_ASCIIDOCTOR
 GATBPS_PROG_AWK
-GATBPS_PROG_CURL
+GATBPS_PROG_CURL_CLI
 GATBPS_PROG_DOCKER
 GATBPS_PROG_GIT
 GATBPS_PROG_GREP
@@ -168,27 +168,32 @@ LT_INIT([
   win32-dll
 ])
 
-dnl---------------------------------------------------------------------
-dnl SUBSET_LIBRARY
-dnl---------------------------------------------------------------------
-
+dnl|--------------------------------------------------------------------
+dnl| SUBSET_LIBRARY
+dnl|--------------------------------------------------------------------
+dnl|
+dnl| The commenting trick here lets a downstream project leave out this
+dnl| Autoconf code when they have no notion of library subsetting. They
+dnl| still need to copy the SST_SUBSET_LIBRARY.h.in file, but the macro
+dnl| will always be zero.
+dnl|
 [
-  case $][{SUBSET_LIBRARY-0} in 1)
-    SUBSET_LIBRARY='*/1/*'
-  ;; 0)
-    SUBSET_LIBRARY='*/0/*'
-  ;; *)
-    ]GATBPS_BARF([
-      Invalid SUBSET_LIBRARY value.
-    ])[
-  esac
-  readonly SUBSET_LIBRARY
+
+case $][{SUBSET_LIBRARY-0} in 1)
+  SUBSET_LIBRARY='*/+1/*'
+;; 0)
+  SUBSET_LIBRARY='+1'
+;; *)
+  ]GATBPS_BARF([
+    Invalid SUBSET_LIBRARY value.
+  ])[
+esac
+readonly SUBSET_LIBRARY
+
+]AC_SUBST([SUBSET_LIBRARY])[
+
 ]
-
-AC_SUBST([SUBSET_LIBRARY])
-
 dnl---------------------------------------------------------------------
-
 [
 
 ]

@@ -29,60 +29,15 @@
 #ifndef SST_CATALOG_ATOMIC_SHARED_PTR_HPP
 #define SST_CATALOG_ATOMIC_SHARED_PTR_HPP
 
-#include <atomic>
 #include <memory>
-#include <sst/catalog/SST_CPP20_OR_LATER.h>
+
+#include <sst/catalog/atomic.hpp>
 
 namespace sst {
 
 template<class T>
-class atomic_shared_ptr final {
-#if SST_CPP20_OR_LATER
-  std::atomic<std::shared_ptr<T>> ptr_;
-#else
-  std::shared_ptr<T> ptr_;
-#endif
-
-public:
-  atomic_shared_ptr() = default;
-  ~atomic_shared_ptr() = default;
-
-  atomic_shared_ptr(atomic_shared_ptr const &) = delete;
-  atomic_shared_ptr(atomic_shared_ptr &&) = delete;
-  void operator=(atomic_shared_ptr const &) = delete;
-  void operator=(atomic_shared_ptr &&) = delete;
-
-  void store(std::shared_ptr<T> const & ptr,
-             std::memory_order mo = std::memory_order_seq_cst) {
-#if SST_CPP20_OR_LATER
-    ptr_.store(ptr, mo);
-#else
-    std::atomic_store_explicit(&ptr_, ptr, mo);
-#endif
-  }
-
-  std::shared_ptr<T>
-  load(std::memory_order mo = std::memory_order_seq_cst) const {
-#if SST_CPP20_OR_LATER
-    return ptr_.load(mo);
-#else
-    return std::atomic_load_explicit(&ptr_, mo);
-#endif
-  }
-
-  atomic_shared_ptr(std::shared_ptr<T> const & ptr) {
-    store(ptr);
-  }
-
-  void operator=(std::shared_ptr<T> const & ptr) {
-    store(ptr);
-  }
-
-  operator std::shared_ptr<T>() const {
-    return load();
-  }
-};
+using atomic_shared_ptr = sst::atomic<std::shared_ptr<T>>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ATOMIC_SHARED_PTR_HPP
+#endif // SST_CATALOG_ATOMIC_SHARED_PTR_HPP

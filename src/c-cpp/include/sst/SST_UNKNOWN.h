@@ -65,4 +65,4 @@
 
 #define SST_UNKNOWN 1UL
 
-#endif // #ifndef SST_SST_UNKNOWN_H
+#endif // SST_SST_UNKNOWN_H

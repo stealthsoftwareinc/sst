@@ -61,4 +61,4 @@ void unknown_opt(StringList const & args) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNKNOWN_OPT_HPP
+#endif // SST_CATALOG_UNKNOWN_OPT_HPP

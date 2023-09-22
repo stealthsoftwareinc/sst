@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "ZeroListSizeStatus"
 
-#endif // #ifndef SST_SST_EC_ZERO_LIST_SIZE_STATUS_H
+#endif // SST_SST_EC_ZERO_LIST_SIZE_STATUS_H

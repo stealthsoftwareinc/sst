@@ -60,4 +60,4 @@
 
 #define SST_INVALID_LIST_SIZE 18UL
 
-#endif // #ifndef SST_SST_INVALID_LIST_SIZE_H
+#endif // SST_SST_INVALID_LIST_SIZE_H

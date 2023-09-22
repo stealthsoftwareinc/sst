@@ -92,4 +92,4 @@ sst_bool sst_InitCause(
 
 #endif
 
-#endif // #ifndef SST_SST_INITCAUSE_H
+#endif // SST_SST_INITCAUSE_H

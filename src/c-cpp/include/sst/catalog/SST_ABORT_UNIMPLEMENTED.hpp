@@ -31,9 +31,9 @@
 
 #include <cstdlib>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 #define SST_ABORT_UNIMPLEMENTED()                                      \
   (SST_ASSERT("Unimplemented code." && (false)), ::std::abort())
 
-#endif // #ifndef SST_CATALOG_SST_ABORT_UNIMPLEMENTED_HPP
+#endif // SST_CATALOG_SST_ABORT_UNIMPLEMENTED_HPP

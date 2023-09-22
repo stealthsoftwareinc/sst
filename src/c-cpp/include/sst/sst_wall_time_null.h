@@ -66,4 +66,4 @@ struct sst_wall_time_null_ut;
 
 typedef struct sst_wall_time_null_ut sst_wall_time_null;
 
-#endif // #ifndef SST_SST_WALL_TIME_NULL_H
+#endif // SST_SST_WALL_TIME_NULL_H

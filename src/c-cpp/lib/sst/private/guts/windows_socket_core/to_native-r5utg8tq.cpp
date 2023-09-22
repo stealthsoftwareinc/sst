@@ -38,7 +38,7 @@
 
 #include <cstdlib>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_SOCK_DGRAM.h>
 #include <sst/catalog/SST_W32_SOCK_STREAM.h>
 #include <sst/catalog/socket_type.hpp>

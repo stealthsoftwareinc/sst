@@ -58,4 +58,4 @@ sst_w32_inet_ntop(sst_w32_INT Family,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_INET_NTOP_H
+#endif // SST_CATALOG_SST_W32_INET_NTOP_H

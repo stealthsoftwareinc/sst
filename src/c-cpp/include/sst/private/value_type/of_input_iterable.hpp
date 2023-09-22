@@ -45,4 +45,4 @@ struct value_type<T, sst::enable_if_t<sst::is_iterable<T>::value>>
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_VALUE_TYPE_OF_INPUT_ITERABLE_HPP
+#endif // SST_PRIVATE_VALUE_TYPE_OF_INPUT_ITERABLE_HPP

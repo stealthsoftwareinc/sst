@@ -32,8 +32,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_NODISCARD.h>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
 #include <sst/catalog/value_sentinel_t.hpp>
@@ -50,7 +49,7 @@ template<
     sst::enable_if_t<std::is_rvalue_reference<Value &&>::value> = 0>
 SST_NODISCARD()
 constexpr SST_R
-    value_sentinel(Value && value) noexcept(SST_NOEXCEPT(SST_r)) {
+    value_sentinel(Value && value) noexcept(noexcept(SST_r)) {
   return SST_r;
 }
 
@@ -67,7 +66,7 @@ template<
     sst::enable_if_t<!std::is_rvalue_reference<Value &&>::value> = 0>
 SST_NODISCARD()
 constexpr SST_R
-    value_sentinel(Value && value) noexcept(SST_NOEXCEPT(SST_r)) {
+    value_sentinel(Value && value) noexcept(noexcept(SST_r)) {
   return SST_r;
 }
 
@@ -78,4 +77,4 @@ constexpr SST_R
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_VALUE_SENTINEL_HPP
+#endif // SST_CATALOG_VALUE_SENTINEL_HPP

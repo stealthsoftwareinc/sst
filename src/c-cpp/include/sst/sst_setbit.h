@@ -45,4 +45,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_setbit)(
   sst_bit
 );
 
-#endif // #ifndef SST_SST_SETBIT_H
+#endif // SST_SST_SETBIT_H

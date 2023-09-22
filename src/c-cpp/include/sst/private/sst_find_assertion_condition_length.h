@@ -37,4 +37,4 @@
 SST_EXTERN_C SST_DLL_EXPORT size_t
 sst_find_assertion_condition_length(char const * argstr);
 
-#endif // #ifndef SST_PRIVATE_SST_FIND_ASSERTION_CONDITION_LENGTH_H
+#endif // SST_PRIVATE_SST_FIND_ASSERTION_CONDITION_LENGTH_H

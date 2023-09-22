@@ -49,4 +49,4 @@ auto cp_L_R(Args &&... args) noexcept(noexcept(SST_r))
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CP_L_R_HPP
+#endif // SST_CATALOG_CP_L_R_HPP

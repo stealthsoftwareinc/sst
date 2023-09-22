@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "OutOfRangeStatus"
 
-#endif // #ifndef SST_SST_EC_OUT_OF_RANGE_STATUS_H
+#endif // SST_SST_EC_OUT_OF_RANGE_STATUS_H

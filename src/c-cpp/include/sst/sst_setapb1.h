@@ -45,4 +45,4 @@ SST_EXTERN_C SST_DLL_EXPORT unsigned char (sst_setapb1)(
   sst_bit
 );
 
-#endif // #ifndef SST_SST_SETAPB1_H
+#endif // SST_SST_SETAPB1_H

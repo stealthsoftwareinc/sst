@@ -31,7 +31,7 @@
 
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/conditional_t.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_integer.hpp>
@@ -106,4 +106,4 @@ bool overlap(T1 const * const p1, T2 const * const p2) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_OVERLAP_HPP
+#endif // SST_CATALOG_OVERLAP_HPP

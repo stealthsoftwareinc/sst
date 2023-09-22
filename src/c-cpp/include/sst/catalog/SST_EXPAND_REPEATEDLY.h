@@ -141,4 +141,4 @@
 #define SST_EXPAND_REPEATEDLY(N, ...)                                  \
   SST_EXPAND_REPEATEDLY_HELPER(N, __VA_ARGS__)
 
-#endif // #ifndef SST_CATALOG_SST_EXPAND_REPEATEDLY_H
+#endif // SST_CATALOG_SST_EXPAND_REPEATEDLY_H

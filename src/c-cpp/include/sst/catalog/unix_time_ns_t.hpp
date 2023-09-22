@@ -37,4 +37,4 @@ using unix_time_ns_t = std::chrono::nanoseconds::rep;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNIX_TIME_NS_T_HPP
+#endif // SST_CATALOG_UNIX_TIME_NS_T_HPP

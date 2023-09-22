@@ -56,7 +56,8 @@ undefined.
 :leveloffset: +1
 
 include::cl_sst_unsigned_ceil_div_synopsis.adoc[]
-include::cl_sst_unsigned_ceil_div_000_p7gqqhwq.adoc[]
+
+include::cl_sst_unsigned_ceil_div/000_p7gqqhwq.adoc[]
 
 :leveloffset: -1
 

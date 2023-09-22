@@ -44,4 +44,4 @@ using openssl_rand_bytes_rng =
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_RAND_BYTES_RNG_HPP
+#endif // SST_CATALOG_OPENSSL_RAND_BYTES_RNG_HPP

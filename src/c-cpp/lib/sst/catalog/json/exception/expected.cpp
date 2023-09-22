@@ -35,7 +35,7 @@
 #include <string>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/json/types.hpp>
 
 namespace sst {

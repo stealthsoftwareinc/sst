@@ -26,20 +26,20 @@
 // SPDX-License-Identifier: MIT
 //
 
-[#{xg5w2aq6_id}]
-= `{xg5w2aq6}`
+[#{xgwmucvcbw_id}]
+= The `{xgwmucvcbw_name0}` tag dispatch constant
 
 [source,cpp,subs="{sst_subs_source}"]
 ----
-#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/{xg5w2aq6_path1}.hpp[sst/catalog/{xg5w2aq6_path1}.hpp,window=_blank]>
+#include <{xgwmucvcbw_hpp}>
 namespace sst {
 
-{cl_SST_CPP17_INLINE} {cl_constexpr} {xg5w2aq6_type} {xg5w2aq6_chop1};
+{cl_SST_CPP17_INLINE} {cl_constexpr} {xgwmucvcbw_type} {xgwmucvcbw_chop1};
 
 }
 ----
 
-`{xg5w2aq6}` is the {cl_tag_dispatch_constant} for the `{xg5w2aq6_type}`
-{cl_tag_dispatch_structure}.
+The `{xgwmucvcbw}` {cl_tag_dispatch_constant} corresponds to the
+`{xgwmucvcbw_type}` {cl_tag_dispatch_structure}.
 
 //

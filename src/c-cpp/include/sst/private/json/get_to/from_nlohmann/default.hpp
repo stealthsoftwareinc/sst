@@ -80,4 +80,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_TO_FROM_NLOHMANN_DEFAULT_HPP
+#endif // SST_PRIVATE_JSON_GET_TO_FROM_NLOHMANN_DEFAULT_HPP

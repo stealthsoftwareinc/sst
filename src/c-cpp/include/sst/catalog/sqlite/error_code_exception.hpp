@@ -73,4 +73,4 @@ extern template class SST_DLL_EXPORT error_code_exception<
 
 #endif // #if SST_WITH_SQLITE
 
-#endif // #ifndef SST_CATALOG_SQLITE_ERROR_CODE_EXCEPTION_HPP
+#endif // SST_CATALOG_SQLITE_ERROR_CODE_EXCEPTION_HPP

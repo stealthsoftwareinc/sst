@@ -33,4 +33,4 @@
 #include <sst/private/json/quote/iterator-qa94410w.hpp>
 #include <sst/private/json/quote/single-k81tifua.hpp>
 
-#endif // #ifndef SST_CATALOG_JSON_QUOTE_HPP
+#endif // SST_CATALOG_JSON_QUOTE_HPP

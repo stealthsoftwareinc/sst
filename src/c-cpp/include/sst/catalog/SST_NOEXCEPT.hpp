@@ -32,9 +32,9 @@
 #include <sst/catalog/SST_WITH_NOEXCEPT.h>
 
 #if SST_WITH_NOEXCEPT
-#define SST_NOEXCEPT(...) (noexcept(__VA_ARGS__))
+#define SST_NOEXCEPT(...) noexcept(__VA_ARGS__)
 #else
-#define SST_NOEXCEPT(...) (false)
+#define SST_NOEXCEPT(...)
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_NOEXCEPT_HPP
+#endif // SST_CATALOG_SST_NOEXCEPT_HPP

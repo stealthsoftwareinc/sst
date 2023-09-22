@@ -54,4 +54,4 @@ public:
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_SHA224_T_HPP
+#endif // SST_CATALOG_OPENSSL_SHA224_T_HPP

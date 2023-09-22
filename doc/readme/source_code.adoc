@@ -36,7 +36,7 @@
 
 :fp_package_name: {PACKAGE_NAME}
 :fp_package_tarname: {PACKAGE_TARNAME}
-:fp_artifact: source
+:fp_artifact: source code
 :fp_builtin_view_latest_url:
 :fp_builtin_view_pinned_url:
 :fp_builtin_download_latest_url:
@@ -54,7 +54,7 @@
 :fp_devel_download_latest_url:
 :fp_devel_download_pinned_url:
 ifndef::in_source_repo[]
-:fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/archive/refs/tags/v{PACKAGE_VERSION}.tar.gz
+:fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/raw/v{PACKAGE_VERSION}/{PACKAGE_TARNAME}-{PACKAGE_VERSION}.tar.gz
 endif::[]
 
 include::artifact_links_fragment.adoc[]

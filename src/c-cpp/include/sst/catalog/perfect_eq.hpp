@@ -45,4 +45,4 @@ constexpr bool perfect_eq(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PERFECT_EQ_HPP
+#endif // SST_CATALOG_PERFECT_EQ_HPP

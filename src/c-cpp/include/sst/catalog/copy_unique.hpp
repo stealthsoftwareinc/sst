@@ -42,4 +42,4 @@ std::unique_ptr<T> copy_unique(std::unique_ptr<T> const & p) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COPY_UNIQUE_HPP
+#endif // SST_CATALOG_COPY_UNIQUE_HPP

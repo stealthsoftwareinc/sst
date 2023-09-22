@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NegativeListSizeStatus"
 
-#endif // #ifndef SST_SST_EC_NEGATIVE_LIST_SIZE_STATUS_H
+#endif // SST_SST_EC_NEGATIVE_LIST_SIZE_STATUS_H

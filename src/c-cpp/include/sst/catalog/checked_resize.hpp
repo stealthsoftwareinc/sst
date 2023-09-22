@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_CHECKED_RESIZE_HPP
 #define SST_CATALOG_CHECKED_RESIZE_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/is_negative.hpp>
 
@@ -45,4 +45,4 @@ Container & checked_resize(Container & container, Size const & size) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHECKED_RESIZE_HPP
+#endif // SST_CATALOG_CHECKED_RESIZE_HPP

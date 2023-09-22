@@ -182,4 +182,4 @@
 #define SST_BITMASK_CLASS(...)                                         \
   SST_BITMASK_CLASS_DISPATCH(__VA_ARGS__)(__VA_ARGS__)
 
-#endif // #ifndef SST_CATALOG_SST_BITMASK_CLASS_HPP
+#endif // SST_CATALOG_SST_BITMASK_CLASS_HPP

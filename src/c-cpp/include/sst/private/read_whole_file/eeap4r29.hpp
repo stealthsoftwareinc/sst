@@ -34,7 +34,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/c_str.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -105,4 +105,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_READ_WHOLE_FILE_EEAP4R29_HPP
+#endif // SST_PRIVATE_READ_WHOLE_FILE_EEAP4R29_HPP

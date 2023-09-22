@@ -79,4 +79,4 @@ T get_from_string(Src const & src) {
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_GET_FROM_STRING_HPP
+#endif // SST_CATALOG_JSON_GET_FROM_STRING_HPP

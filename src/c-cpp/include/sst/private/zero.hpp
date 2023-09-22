@@ -38,4 +38,4 @@ SST_DEFINE_ALGORITHM(zero, (class T), (sst::remove_cvref_t<T>))
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_ZERO_HPP
+#endif // SST_PRIVATE_ZERO_HPP

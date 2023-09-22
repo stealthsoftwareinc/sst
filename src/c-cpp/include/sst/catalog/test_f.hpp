@@ -29,38 +29,60 @@
 #ifndef SST_CATALOG_TEST_F_HPP
 #define SST_CATALOG_TEST_F_HPP
 
-#include <sst/catalog/SST_WITH_POSIX.h>
-#include <sst/catalog/posix_test_f.hpp>
+#undef SST_f
 
 //----------------------------------------------------------------------
 
-#undef SST_r
-
-#if 0
-
-#elif SST_WITH_POSIX
-#define SST_r (sst::posix_test_f(std::forward<Args>(args)...))
-
+#ifndef SST_f
+#include <sst/catalog/SST_WITH_POSIX.h>
+#if SST_WITH_POSIX
+#include <sst/catalog/posix_test_f.hpp>
+#define SST_f sst::posix_test_f
+#endif
 #endif
 
 //----------------------------------------------------------------------
 
-#ifdef SST_r
+#ifndef SST_f
+#include <sst/catalog/SST_WITH_WINDOWS_KERNEL32.h>
+#if SST_WITH_WINDOWS_KERNEL32
+#include <sst/catalog/windows_test_f.hpp>
+#define SST_f sst::windows_test_f
+#endif
+#endif
+
+//----------------------------------------------------------------------
+
+#ifdef SST_f
+
+#include <utility>
+
+#include <sst/catalog/SST_COMPILES.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/enable_if_t.hpp>
 
 namespace sst {
 
-template<class... Args>
-auto test_f(Args &&... args) noexcept(noexcept(SST_r))
+#define SST_r (SST_f(std::forward<Args>(args)...))
+
+template<class... Args,
+         sst::enable_if_t<
+             SST_COMPILES(SST_f(std::declval<Args &&>()...))> = 0>
+SST_NODISCARD()
+constexpr auto test_f(Args &&... args) SST_NOEXCEPT(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
 
+#undef SST_r
+
 } // namespace sst
 
-#undef SST_r
+#undef SST_f
 
 #endif
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_TEST_F_HPP
+#endif // SST_CATALOG_TEST_F_HPP

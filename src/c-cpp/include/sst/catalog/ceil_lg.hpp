@@ -32,7 +32,7 @@
 #include <cmath>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
 #include <sst/catalog/enable_if.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -84,4 +84,4 @@ T ceil_lg(T const x) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CEIL_LG_HPP
+#endif // SST_CATALOG_CEIL_LG_HPP

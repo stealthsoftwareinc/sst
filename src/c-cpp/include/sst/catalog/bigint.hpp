@@ -48,4 +48,4 @@ using bigint = bignum;
 
 #endif
 
-#endif // #ifndef SST_CATALOG_BIGINT_HPP
+#endif // SST_CATALOG_BIGINT_HPP

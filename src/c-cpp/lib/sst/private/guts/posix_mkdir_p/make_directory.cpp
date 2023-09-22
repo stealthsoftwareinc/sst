@@ -27,9 +27,9 @@
 //
 
 // Include first to test independence.
-#include <sst/private/guts/posix_mkdir_p/make_directory.hpp>
+#include <sst/private/guts/posix_mkdir_p.hpp>
 // Include twice to test idempotence.
-#include <sst/private/guts/posix_mkdir_p/make_directory.hpp>
+#include <sst/private/guts/posix_mkdir_p.hpp>
 //
 
 #include <sst/catalog/SST_WITH_POSIX.h>
@@ -44,7 +44,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/errno_exception.hpp>
 
@@ -79,7 +79,7 @@ bool make_directory(char const * const path) {
   }
   throw std::runtime_error(
       "Cannot create directory " + sst::c_quote(path)
-      + " because it already exists as a non-directory.");
+      + " because it already exists as a non-directory");
 }
 
 } // namespace posix_mkdir_p

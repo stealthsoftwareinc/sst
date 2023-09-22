@@ -30,7 +30,6 @@
 #define SST_CATALOG_UNSIGNED_LT_HPP
 
 #include <sst/catalog/SST_CONSTEVAL.hpp>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_integer.hpp>
 #include <sst/catalog/is_unscoped_enum.hpp>
@@ -48,8 +47,8 @@ template<class A,
                            || sst::is_unscoped_enum<A>::value)
                           && (sst::is_integer<B>::value
                               || sst::is_unscoped_enum<B>::value)> = 0>
-SST_CONSTEVAL bool
-unsigned_lt(A const a, B const b) noexcept(SST_NOEXCEPT(SST_r)) {
+SST_CONSTEVAL bool unsigned_lt(A const a,
+                               B const b) noexcept(noexcept(SST_r)) {
   return SST_r;
 }
 
@@ -66,7 +65,7 @@ template<class A,
                           || (!sst::is_integer<B>::value
                               && !sst::is_unscoped_enum<B>::value)> = 0>
 constexpr bool unsigned_lt(A const & a,
-                           B const & b) noexcept(SST_NOEXCEPT(SST_r)) {
+                           B const & b) noexcept(noexcept(SST_r)) {
   return SST_r;
 }
 
@@ -76,4 +75,4 @@ constexpr bool unsigned_lt(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_LT_HPP
+#endif // SST_CATALOG_UNSIGNED_LT_HPP

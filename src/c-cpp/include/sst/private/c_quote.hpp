@@ -42,4 +42,4 @@ SST_DEFINE_ALGORITHM(c_quote,
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_C_QUOTE_HPP
+#endif // SST_PRIVATE_C_QUOTE_HPP

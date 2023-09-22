@@ -42,4 +42,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(is_non_bool_integer,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_NON_BOOL_INTEGER_HPP
+#endif // SST_CATALOG_IS_NON_BOOL_INTEGER_HPP

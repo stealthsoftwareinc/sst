@@ -61,4 +61,4 @@
 
 typedef unsigned long int sst_wall_clock;
 
-#endif // #ifndef SST_SST_WALL_CLOCK_H
+#endif // SST_SST_WALL_CLOCK_H

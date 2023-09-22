@@ -93,4 +93,4 @@ SST_N(int[1]);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_HAS_NUMERIC_LIMITS_HPP
+#endif // SST_CATALOG_HAS_NUMERIC_LIMITS_HPP

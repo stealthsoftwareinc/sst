@@ -31,4 +31,4 @@
 
 #include <sst/catalog/ascii_lower.hpp>
 
-#endif // #ifndef SST_CATALOG_ASCII_LOWER_FUNCTOR_HPP
+#endif // SST_CATALOG_ASCII_LOWER_FUNCTOR_HPP

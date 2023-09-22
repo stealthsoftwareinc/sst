@@ -42,4 +42,4 @@ SST_EXTERN_C SST_DLL_EXPORT size_t (sst_bocsize)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BOCSIZE_H
+#endif // SST_SST_BOCSIZE_H

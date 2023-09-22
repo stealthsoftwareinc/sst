@@ -60,4 +60,4 @@ using sha224_t = SST_F;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SHA224_T_HPP
+#endif // SST_CATALOG_SHA224_T_HPP

@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_OPENSSL_RAND_BYTES_RNG_CORE_HPP
 #define SST_CATALOG_OPENSSL_RAND_BYTES_RNG_CORE_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 #include <sst/catalog/moved_from.hpp>
 #include <sst/catalog/size_max_v.hpp>
@@ -82,4 +82,4 @@ protected:
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_RAND_BYTES_RNG_CORE_HPP
+#endif // SST_CATALOG_OPENSSL_RAND_BYTES_RNG_CORE_HPP

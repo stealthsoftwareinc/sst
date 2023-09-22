@@ -38,7 +38,7 @@
 
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/windows_socket.hpp>
 #include <sst/catalog/windows_socket_poll_set_entry.hpp>
 #include <sst/private/guts/generic_socket_poll_set/pfd_t-windows.hpp>

@@ -52,4 +52,4 @@ S urbg_sample(G & g) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_URBG_SAMPLE_HPP
+#endif // SST_CATALOG_URBG_SAMPLE_HPP

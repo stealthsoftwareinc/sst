@@ -31,14 +31,13 @@
 
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_COMPILES.hpp>
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
 #include <sst/catalog/SST_DISPATCH.h>
 #include <sst/catalog/SST_EXPAND.h>
 #include <sst/catalog/SST_LISTIFY.h>
-#include <sst/catalog/SST_NODISCARD.h>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/monostate.hpp>
 
@@ -332,7 +331,7 @@
                ::sst::enable_if_t<SST_COMPILES(                        \
                    SST_Base(::std::declval<Args>()...))> = 0>          \
       explicit constexpr SST_options(Args &&... args) noexcept(        \
-          SST_NOEXCEPT(SST_Base(::std::forward<Args>(args)...)))       \
+          noexcept(SST_Base(::std::forward<Args>(args)...)))           \
           : SST_Base(::std::forward<Args>(args)...) {}                 \
                                                                        \
       SST_LISTIFY(SST_ALGORITHM_OPTIONS_DECL_, (), __VA_ARGS__)        \
@@ -352,4 +351,4 @@
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SST_ALGORITHM_OPTIONS_HPP
+#endif // SST_CATALOG_SST_ALGORITHM_OPTIONS_HPP

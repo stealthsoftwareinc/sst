@@ -31,4 +31,4 @@
 
 #include <sst/catalog/to_bytes.hpp>
 
-#endif // #ifndef SST_CATALOG_TO_BYTES_FUNCTOR_HPP
+#endif // SST_CATALOG_TO_BYTES_FUNCTOR_HPP

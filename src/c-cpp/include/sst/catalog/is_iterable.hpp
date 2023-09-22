@@ -78,4 +78,4 @@ using is_iterable =
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_ITERABLE_HPP
+#endif // SST_CATALOG_IS_ITERABLE_HPP

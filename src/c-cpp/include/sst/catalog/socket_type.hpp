@@ -57,4 +57,4 @@ enum class socket_type {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SOCKET_TYPE_HPP
+#endif // SST_CATALOG_SOCKET_TYPE_HPP

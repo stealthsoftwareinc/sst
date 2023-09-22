@@ -39,4 +39,4 @@ struct from_hex_exception : std::runtime_error {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FROM_HEX_EXCEPTION_HPP
+#endif // SST_CATALOG_FROM_HEX_EXCEPTION_HPP

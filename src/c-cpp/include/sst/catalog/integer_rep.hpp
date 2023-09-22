@@ -41,4 +41,4 @@ SST_STRONG_ENUM_CLASS(integer_rep,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INTEGER_REP_HPP
+#endif // SST_CATALOG_INTEGER_REP_HPP

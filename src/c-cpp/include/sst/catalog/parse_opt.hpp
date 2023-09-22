@@ -54,47 +54,47 @@ template<class StringList,
          class Matcher,
          typename sst::enable_if<SST_COMPILES(std::declval<Matcher>()(
              std::declval<StringList>().front()))>::type = 0>
-bool parse_opt(StringList & args,
+bool parse_opt(StringList & argv,
                Matcher const & matcher,
                opt_arg const style = opt_arg::required,
                bool * const has_arg = nullptr) {
   using String = typename StringList::value_type;
   using CharT = typename String::value_type;
-  SST_STATIC_ASSERT((std::is_same<decltype(matcher(args.front())),
+  SST_STATIC_ASSERT((std::is_same<decltype(matcher(argv.front())),
                                   typename String::size_type>::value));
-  assert(args.size() > 0);
-  auto const n = matcher(args.front());
+  assert(argv.size() > 0);
+  auto const n = matcher(argv.front());
   assert(n >= 0);
   if (n == 0) {
     return false;
   }
-  assert(sst::unsigned_le(n, args.front().size()));
-  assert(args.front()[0] == CharT('-'));
-  bool const is_long = n > 1 && args.front()[1] == CharT('-');
+  assert(sst::unsigned_le(n, argv.front().size()));
+  assert(argv.front()[0] == CharT('-'));
+  bool const is_long = n > 1 && argv.front()[1] == CharT('-');
   if (is_long) {
     for (decltype(+n) i = 0; i != n; ++i) {
-      assert(args.front()[i] != CharT('='));
+      assert(argv.front()[i] != CharT('='));
     }
   } else {
     assert(n == 2);
   }
 
-  if (args.front().size() == n) {
+  if (argv.front().size() == n) {
     if (style == opt_arg::required) {
-      if (args.size() < 2) {
+      if (argv.size() < 2) {
         throw opt_exception(
             "option requires an argument: "
             + sst::to_string(
-                args.front().substr(0, n),
+                argv.front().substr(0, n),
                 sst::string_to_string_options().replace_unrepresentable(
                     true)));
       }
-      args.pop_front();
+      argv.pop_front();
       if (has_arg != nullptr) {
         *has_arg = true;
       }
     } else {
-      args.front().clear();
+      argv.front().clear();
       if (has_arg != nullptr) {
         *has_arg = false;
       }
@@ -103,18 +103,18 @@ bool parse_opt(StringList & args,
   }
 
   if (is_long) {
-    if (args.front()[n] != CharT('=')) {
+    if (argv.front()[n] != CharT('=')) {
       return false;
     }
     if (style == opt_arg::forbidden) {
       throw opt_exception(
           "option forbids an argument: "
           + sst::to_string(
-              args.front().substr(0, n),
+              argv.front().substr(0, n),
               sst::string_to_string_options().replace_unrepresentable(
                   true)));
     }
-    args.front() = args.front().substr(n + 1);
+    argv.front() = argv.front().substr(n + 1);
     if (has_arg != nullptr) {
       *has_arg = true;
     }
@@ -122,13 +122,13 @@ bool parse_opt(StringList & args,
   }
 
   if (style == opt_arg::forbidden) {
-    args.front() = CharT('-') + args.front().substr(2);
-    args.emplace_front();
+    argv.front() = CharT('-') + argv.front().substr(2);
+    argv.emplace_front();
     if (has_arg != nullptr) {
       *has_arg = false;
     }
   } else {
-    args.front() = args.front().substr(2);
+    argv.front() = argv.front().substr(2);
     if (has_arg != nullptr) {
       *has_arg = true;
     }
@@ -140,7 +140,7 @@ template<class StringList,
          class String,
          typename sst::enable_if<
              SST_COMPILES(std::declval<String>().c_str())>::type = 0>
-bool parse_opt(StringList & args,
+bool parse_opt(StringList & argv,
                String const & opt,
                opt_arg const style = opt_arg::required,
                bool * const has_arg = nullptr) {
@@ -156,7 +156,7 @@ bool parse_opt(StringList & args,
     assert(opt.size() == 2);
   }
   return parse_opt(
-      args,
+      argv,
       [&](String const & arg) {
         if (arg.rfind(opt, 0) == 0) {
           return opt.size();
@@ -168,22 +168,22 @@ bool parse_opt(StringList & args,
 }
 
 template<class StringList, class CharT>
-bool parse_opt(StringList & args,
+bool parse_opt(StringList & argv,
                CharT const * const opt,
                opt_arg const style = opt_arg::required,
                bool * const has_arg = nullptr) {
   assert(opt != nullptr);
-  return parse_opt(args, std::basic_string<CharT>(opt), style, has_arg);
+  return parse_opt(argv, std::basic_string<CharT>(opt), style, has_arg);
 }
 
 template<class StringList, class String1, class String2>
-bool parse_opt(StringList & args,
+bool parse_opt(StringList & argv,
                std::initializer_list<String1> const opts,
                String2 * const parsed_opt = nullptr,
                opt_arg const style = opt_arg::required,
                bool * const has_arg = nullptr) {
   for (auto const & opt : opts) {
-    if (parse_opt(args, opt, style, has_arg)) {
+    if (parse_opt(argv, opt, style, has_arg)) {
       if (parsed_opt != nullptr) {
         *parsed_opt = opt;
       }
@@ -194,11 +194,11 @@ bool parse_opt(StringList & args,
 }
 
 template<class StringList, class String>
-bool parse_opt(StringList & args,
+bool parse_opt(StringList & argv,
                std::initializer_list<String> const opts,
                opt_arg const style = opt_arg::required,
                bool * const has_arg = nullptr) {
-  return parse_opt(args,
+  return parse_opt(argv,
                    opts,
                    static_cast<String *>(nullptr),
                    style,
@@ -207,4 +207,4 @@ bool parse_opt(StringList & args,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PARSE_OPT_HPP
+#endif // SST_CATALOG_PARSE_OPT_HPP

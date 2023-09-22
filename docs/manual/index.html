@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
-<title>SST 0.35.2</title>
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>SST 0.39.0</title>
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment the following line when using as a custom stylesheet */
@@ -207,13 +207,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -392,7 +389,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -617,7 +614,7 @@ body {
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>SST 0.35.2</h1>
+<h1>SST 0.39.0</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -989,9 +986,9 @@ body {
 </li>
 <li><a href="#cl-filesystem-tools">3.19. Filesystem tools</a>
 <ul class="sectlevel3">
-<li><a href="#cl-sst-directory-iterator">3.19.1. The <code>sst::directory_iterator</code> class</a>
+<li><a href="#cl-sst-directory-iterator">3.19.1. The <code>sst::dir_it</code> class</a>
 <ul class="sectlevel4">
-<li><a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">3.19.1.1. The <code>sst::directory_iterator</code> constructor (overload 1)</a></li>
+<li><a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">3.19.1.1. The <code>sst::dir_it</code> constructor (overload 1)</a></li>
 </ul>
 </li>
 <li><a href="#cl-sst-fs-mkdir">3.19.2. The <code>sst::mkdir</code> function</a></li>
@@ -1243,7 +1240,7 @@ body {
 <li><a href="#cl-sst-unsigned-ceil-div">3.26.46. The <code>sst::unsigned_ceil_div</code> function</a>
 <ul class="sectlevel4">
 <li><a href="#cl-sst-unsigned-ceil-div-synopsis">3.26.46.1. Synopsis</a></li>
-<li><a href="#cl-sst-unsigned-ceil-div-overload-1">3.26.46.2. The <code>sst::unsigned_ceil_div</code> function (overload 1)</a></li>
+<li><a href="#cl-sst-unsigned-ceil-div-p7gqqhwq">3.26.46.2. The <code>sst::unsigned_ceil_div</code> function (overload 1)</a></li>
 </ul>
 </li>
 <li><a href="#cl-sst-unsigned-max">3.26.47. The <code>sst::unsigned_max</code> function</a></li>
@@ -1252,8 +1249,8 @@ body {
 <li><a href="#cl-sst-numeric_limits">3.26.50. The <code>sst::numeric_limits</code> alias</a></li>
 <li><a href="#cl-sst-checked-overflow">3.26.51. <code>sst::checked_overflow</code></a></li>
 <li><a href="#cl-sst-zero">3.26.52. <code>sst::zero</code></a></li>
-<li><a href="#cl-sst-emplace-t">3.26.53. <code>sst::emplace_t</code></a></li>
-<li><a href="#cl-sst-emplace">3.26.54. <code>sst::emplace</code></a></li>
+<li><a href="#cl-sst-in-place-t">3.26.53. The <code>sst::in_place_t</code> tag dispatch structure</a></li>
+<li><a href="#cl-sst-in-place">3.26.54. The <code>sst::in_place</code> tag dispatch constant</a></li>
 <li><a href="#cl-SST-NARGS">3.26.55. <code>SST_NARGS</code></a></li>
 <li><a href="#cl-SST-DEFER">3.26.56. <code>SST_DEFER</code></a></li>
 <li><a href="#cl-SST-EXPAND">3.26.57. The <code>SST_EXPAND</code> macro</a></li>
@@ -1261,6 +1258,7 @@ body {
 <li><a href="#cl-sst-value-sentinel">3.26.59. <code>sst::value_sentinel</code></a></li>
 <li><a href="#cl-sst-value-sentinel-t">3.26.60. <code>sst::value_sentinel_t</code></a></li>
 <li><a href="#cl-SST-REVERSE">3.26.61. <code>SST_REVERSE</code></a></li>
+<li><a href="#cl_SST_WITH_NOEXCEPT">3.26.62. The <code>SST_WITH_NOEXCEPT</code> feature test macro</a></li>
 </ul>
 </li>
 <li><a href="#cl-hash-functions">3.27. Hash functions</a>
@@ -1274,9 +1272,10 @@ body {
 <ul class="sectlevel4">
 <li><a href="#cl-sst-sqlite-database-copy-assignment">3.28.1.1. Copy assignment</a></li>
 <li><a href="#cl-sst-sqlite-database-deserialize-fttcexwfwu">3.28.1.2. The <code>deserialize</code> function (overload 1)</a></li>
-<li><a href="#cl-sst-sqlite-database-deserialize-vxpizfwfzi">3.28.1.3. The <code>deserialize</code> function (overload 2)</a></li>
-<li><a href="#cl-sst-sqlite-database-deserialize-enxnulmzqp">3.28.1.4. The <code>deserialize</code> function (overload 3)</a></li>
-<li><a href="#cl-sst-sqlite-database-serialize-dwochwfnea">3.28.1.5. The <code>serialize</code> function (overload 1)</a></li>
+<li><a href="#cl-sst-sqlite-database-deserialize-wtnnoxrunm">3.28.1.3. The <code>deserialize</code> function (overload 2)</a></li>
+<li><a href="#cl-sst-sqlite-database-deserialize-vxpizfwfzi">3.28.1.4. The <code>deserialize</code> function (overload 3)</a></li>
+<li><a href="#cl-sst-sqlite-database-deserialize-enxnulmzqp">3.28.1.5. The <code>deserialize</code> function (overload 4)</a></li>
+<li><a href="#cl-sst-sqlite-database-serialize-dwochwfnea">3.28.1.6. The <code>serialize</code> function (overload 1)</a></li>
 </ul>
 </li>
 </ul>
@@ -1494,9 +1493,9 @@ syntax is as follows:</p>
 <div class="paragraph">
 <p>Each <code>&lt;group&gt;</code> in the comma-separated list specifies some part of the
 build system that should be enabled or disabled.
-The group will be enabled if the &#8216;<code>+</code>&#8217; prefix is given, or disabled
-if the &#8216;<code>-</code>&#8217; prefix is given.
-Omitting the prefix is the same as giving the &#8216;<code>+</code>&#8217; prefix.
+The group will be enabled if the &#8216;<code>```' prefix is given, or disabled
+if the '```-```' prefix is given.
+Omitting the prefix is the same as giving the '```</code>&#8217; prefix.
 All groups begin as disabled, and the entries of the list will be
 applied in order.
 If the <code>--with-build-groups</code> option is omitted, the behavior is as if it
@@ -1936,7 +1935,7 @@ world</pre>
 <h4 id="bl-do-not-make-ifs-readonly"><a class="link" href="#bl-do-not-make-ifs-readonly">2.5.2. Do not make <code>IFS</code> <code>readonly</code></a></h4>
 <div class="paragraph">
 <p>As an important special case of
-<a href="#bl-do-not-make-global-variables-readonly">Section 2.5.1, &#8220;Do not make global variables <code>readonly</code>&#8221;</a>, do not make <code>IFS</code>
+<a href="#bl-do-not-make-global-variables-readonly">Section 2.5.1</a>, do not make <code>IFS</code>
 <code><a href="https://manuals.quinngrier.com/bash/4.1/bashref.html?qref=1083.49-1083.52" target="_blank" rel="noopener">readonly</a></code>.</p>
 </div>
 </div>
@@ -9790,21 +9789,21 @@ int main() {
 <div class="sect2">
 <h3 id="cl-filesystem-tools"><a class="link" href="#cl-filesystem-tools">3.19. Filesystem tools</a></h3>
 <div class="sect3">
-<h4 id="cl-sst-directory-iterator"><a class="link" href="#cl-sst-directory-iterator">3.19.1. The <code>sst::directory_iterator</code> class</a></h4>
+<h4 id="cl-sst-directory-iterator"><a class="link" href="#cl-sst-directory-iterator">3.19.1. The <code>sst::dir_it</code> class</a></h4>
 <div class="paragraph">
-<p>The <code><a href="#cl-sst-directory-iterator">sst::directory_iterator</a></code> class iterates through the contents of
+<p>The <code><a href="#cl-sst-directory-iterator">sst::dir_it</a></code> class iterates through the contents of
 a directory.</p>
 </div>
 <div class="listingblock">
 <div class="title">C&#43;&#43;</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/directory_iterator.hpp" target="_blank" rel="noopener">sst/catalog/directory_iterator.hpp</a>&gt;
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/dir_it.hpp" target="_blank" rel="noopener">sst/catalog/dir_it.hpp</a>&gt;
 namespace sst {
 
-class <a href="#cl-sst-directory-iterator">directory_iterator</a> {
+class <a href="#cl-sst-directory-iterator">dir_it</a> {
 public:
 
-  <a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">directory_iterator</a>();
+  <a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">dir_it</a>();
 
 };
 
@@ -9812,14 +9811,14 @@ public:
 </div>
 </div>
 <div class="sect4">
-<h5 id="cl-sst-directory-iterator-ctor-h7jjz5ha"><a class="link" href="#cl-sst-directory-iterator-ctor-h7jjz5ha">3.19.1.1. The <code>sst::directory_iterator</code> constructor (overload 1)</a></h5>
+<h5 id="cl-sst-directory-iterator-ctor-h7jjz5ha"><a class="link" href="#cl-sst-directory-iterator-ctor-h7jjz5ha">3.19.1.1. The <code>sst::dir_it</code> constructor (overload 1)</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">directory_iterator</a>();</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">dir_it</a>();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">sst::directory_iterator</a></code> constructor (overload 1) creates a
+<p>The <code><a href="#cl-sst-directory-iterator-ctor-h7jjz5ha">sst::dir_it</a></code> constructor (overload 1) creates a
 one-past-the-end iterator.</p>
 </div>
 </div>
@@ -15413,35 +15412,45 @@ undefined.</p>
 <h5 id="cl-sst-unsigned-ceil-div-synopsis"><a class="link" href="#cl-sst-unsigned-ceil-div-synopsis">3.26.46.1. Synopsis</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/unsigned_ceil_div.hpp" target="_blank" rel="noopener">sst/catalog/unsigned_ceil_div.hpp</a>&gt;
+<pre class="highlight"><code>#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/unsigned_ceil_div.hpp" target="_blank" rel="noopener">sst/catalog/unsigned_ceil_div.hpp</a>&gt;
 namespace sst {
 
-// Overload 1
-template&lt;<a href="#cl-sst-is-integer">sst::is_integer</a> A, <a href="#cl-sst-is-integer">sst::is_integer</a> B&gt;
-constexpr <a href="#cl-sst-decay-t">sst::decay_t</a>&lt;A&gt; <a href="#cl-sst-unsigned-ceil-div-overload-1">unsigned_ceil_div</a>(A a, B b) noexcept;
+&#160;&#160;constexpr <em>R</em> <a href="sections/cl_sst_unsigned_ceil_div_000_p7gqqhwq.html#cl-sst-unsigned-ceil-div-p7gqqhwq">unsigned_ceil_div</a>(<a href="#cl-sst-is-integer">sst::is_integer</a> a,
+&#160;&#160;                              <a href="#cl-sst-is-integer">sst::is_integer</a> b) noexcept;
 
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="cl-sst-unsigned-ceil-div-overload-1"><a class="link" href="#cl-sst-unsigned-ceil-div-overload-1">3.26.46.2. The <code>sst::unsigned_ceil_div</code> function (overload 1)</a></h5>
+<h5 id="cl-sst-unsigned-ceil-div-p7gqqhwq"><a class="link" href="#cl-sst-unsigned-ceil-div-p7gqqhwq">3.26.46.2. The <code>sst::unsigned_ceil_div</code> function (overload 1)</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/unsigned_ceil_div.hpp" target="_blank" rel="noopener">sst/catalog/unsigned_ceil_div.hpp</a>&gt;
 namespace sst {
 
-template&lt;<a href="#cl-sst-is-integer">sst::is_integer</a> A, <a href="#cl-sst-is-integer">sst::is_integer</a> B&gt;
-constexpr <a href="#cl-sst-decay-t">sst::decay_t</a>&lt;A&gt; <a href="#cl-sst-unsigned-ceil-div-overload-1">unsigned_ceil_div</a>(A a, B b) noexcept;
+&#160;&#160;constexpr <em>R</em> <a href="sections/cl_sst_unsigned_ceil_div_000_p7gqqhwq.html#cl-sst-unsigned-ceil-div-p7gqqhwq">unsigned_ceil_div</a>(<a href="#cl-sst-is-integer">sst::is_integer</a> a,
+&#160;&#160;                              <a href="#cl-sst-is-integer">sst::is_integer</a> b) noexcept;
 
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="#cl-sst-unsigned-ceil-div-overload-1">sst::unsigned_ceil_div</a></code> function (overload 1) returns
-<code>\(\lceil \mathtt{a} / \mathtt{b} \rceil\)</code>.
-If <code>a</code> is negative, <code>b</code> is negative, or <code>b</code> is zero, the behavior is
-undefined.</p>
+<p>The <code><a href="sections/cl_sst_unsigned_ceil_div_000_p7gqqhwq.html#cl-sst-unsigned-ceil-div-p7gqqhwq">sst::unsigned_ceil_div</a></code> function (overload 1) returns
+<code>\(\lceil \mathtt{a} / \mathtt{b} \rceil\)</code>,
+where <code>a</code> and <code>b</code> are <a href="https://en.cppreference.com/w/cpp/language/types" target="_blank" rel="noopener">fundamental integers</a><sup class="footnoteref">[<a class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.
+If <code>a</code> is negative or <code>b</code> is not positive, the behavior is undefined.</p>
+</div>
+<div class="paragraph">
+<p>By default, the return type <code><em>R</em></code> is the same as the type of the
+expression <code>a/b</code>, but it can be overridden by providing a type as a
+template parameter, in which case the return value will be
+<a href="https://en.cppreference.com/w/cpp/language/explicit_cast" target="_blank" rel="noopener">explicitly converted</a> to that type.
+For example,
+<code><a href="sections/cl_sst_unsigned_ceil_div_000_p7gqqhwq.html#cl-sst-unsigned-ceil-div-p7gqqhwq">sst::unsigned_ceil_div</a>(9, 4L)</code>
+will return <code>3L</code>, while
+<code><a href="sections/cl_sst_unsigned_ceil_div_000_p7gqqhwq.html#cl-sst-unsigned-ceil-div-p7gqqhwq">sst::unsigned_ceil_div</a>&lt;int&gt;(9, 4L)</code>
+will return <code>3</code>.</p>
 </div>
 </div>
 </div>
@@ -15604,39 +15613,47 @@ constexpr <em>R</em> zero() noexcept(<em>B</em>);
 </div>
 </div>
 <div class="sect3">
-<h4 id="cl-sst-emplace-t"><a class="link" href="#cl-sst-emplace-t">3.26.53. <code><a href="#cl-sst-emplace-t">sst::emplace_t</a></code></a></h4>
+<h4 id="cl-sst-in-place-t"><a class="link" href="#cl-sst-in-place-t">3.26.53. The <code>sst::in_place_t</code> tag dispatch structure</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/emplace_t.hpp" target="_blank" rel="noopener">sst/catalog/emplace_t.hpp</a>&gt;
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/in_place_t.hpp" target="_blank" rel="noopener">sst/catalog/in_place_t.hpp</a>&gt;
 namespace sst {
 
-struct <a href="#cl-sst-emplace-t">emplace_t</a> {};
+struct <a href="#cl-sst-in-place-t">in_place_t</a> {};
 
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="#cl-sst-emplace-t">sst::emplace_t</a></code> tag dispatch structure indicates that a
-smart pointer should allocate and construct its object similarly to
-how the <code><a href="https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique" target="_blank" rel="noopener">std::make_unique</a></code> function would allocate and construct the
-object.</p>
+<p>The <code><a href="#cl-sst-in-place-t">sst::in_place_t</a></code> tag dispatch structure is used to indicate that
+an object should be constructed in-place.</p>
+</div>
+<div class="paragraph">
+<p>The
+<code><a href="#cl-sst-in-place-t">sst::in_place_t</a></code>
+tag dispatch structure
+was added to the library because the
+<code><a href="https://en.cppreference.com/w/cpp/utility/in_place" target="_blank" rel="noopener">std::in_place_t</a></code>
+tag dispatch structure
+is not available below
+C&#43;&#43;17.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cl-sst-emplace"><a class="link" href="#cl-sst-emplace">3.26.54. <code><a href="#cl-sst-emplace">sst::emplace</a></code></a></h4>
+<h4 id="cl-sst-in-place"><a class="link" href="#cl-sst-in-place">3.26.54. The <code>sst::in_place</code> tag dispatch constant</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/emplace.hpp" target="_blank" rel="noopener">sst/catalog/emplace.hpp</a>&gt;
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/in_place.hpp" target="_blank" rel="noopener">sst/catalog/in_place.hpp</a>&gt;
 namespace sst {
 
-<a href="cl_SST_CPP17_INLINE.html#cl-SST-CPP17-INLINE">SST_CPP17_INLINE</a> <a href="https://en.cppreference.com/w/cpp/language/constexpr" target="_blank" rel="noopener">constexpr</a> <a href="#cl-sst-emplace-t">sst::emplace_t</a> <a href="#cl-sst-emplace">emplace</a>;
+<a href="cl_SST_CPP17_INLINE.html#cl-SST-CPP17-INLINE">SST_CPP17_INLINE</a> <a href="https://en.cppreference.com/w/cpp/language/constexpr" target="_blank" rel="noopener">constexpr</a> <a href="#cl-sst-in-place-t">sst::in_place_t</a> <a href="#cl-sst-in-place">in_place</a>;
 
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="#cl-sst-emplace">sst::emplace</a></code> is the tag dispatch constant for the <code><a href="#cl-sst-emplace-t">sst::emplace_t</a></code>
-tag dispatch structure.</p>
+<p>The <code><a href="#cl-sst-in-place">sst::in_place</a></code> tag dispatch constant corresponds to the
+<code><a href="#cl-sst-in-place-t">sst::in_place_t</a></code> tag dispatch structure.</p>
 </div>
 </div>
 <div class="sect3">
@@ -15988,6 +16005,30 @@ written as <code>sst::sha256(p, sst::value_sentinel(5))</code>.</p>
 arguments in reverse order.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="cl_SST_WITH_NOEXCEPT"><a class="link" href="#cl_SST_WITH_NOEXCEPT">3.26.62. The <code>SST_WITH_NOEXCEPT</code> feature test macro</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/SST_WITH_NOEXCEPT.h" target="_blank" rel="noopener">sst/catalog/SST_WITH_NOEXCEPT.h</a>&gt;
+// or:   &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/SST_WITH_NOEXCEPT.hpp" target="_blank" rel="noopener">sst/catalog/SST_WITH_NOEXCEPT.hpp</a>&gt;
+
+#define <a href="#cl_SST_WITH_NOEXCEPT">SST_WITH_NOEXCEPT</a> /*...*/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><a href="#cl_SST_WITH_NOEXCEPT">SST_WITH_NOEXCEPT</a></code> feature test macro indicates whether the
+<code><a href="https://en.cppreference.com/w/cpp/language/noexcept" target="_blank" rel="noopener">noexcept</a></code> operator and the <code><a href="https://en.cppreference.com/w/cpp/language/noexcept_spec" target="_blank" rel="noopener">noexcept</a></code> specifier are
+safe to use.
+Some versions of some compilers have bugs with these constructs, in
+which case it is best not to use them.</p>
+</div>
+<div class="paragraph">
+<p>The macro expands to an <a href="https://en.cppreference.com/w/c/language/constant_expression#Integer_constant_expression" target="_blank" rel="noopener">integer constant expression</a> with type <code>int</code>
+whose value is <code>1</code> to mean true and <code>0</code> to mean false.
+The expression is either parenthesized or exactly <code>1</code> or <code>0</code>.
+The expression is also suitable for use in the preprocessor.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="cl-hash-functions"><a class="link" href="#cl-hash-functions">3.27. Hash functions</a></h3>
@@ -16143,9 +16184,25 @@ public:
 &#160;&#160;);
 
 &#160;&#160;<a href="#cl-sst-sqlite-database">database</a> &amp; <a href="#cl-sst-sqlite-database-deserialize-fttcexwfwu">deserialize</a>(
+&#160;&#160;  char const *    schema,
+&#160;&#160;  unsigned char * buffer,
+&#160;&#160;  sqlite3_int64   size,
+&#160;&#160;  bool            readonly = false,
+&#160;&#160;  bool            copy = true,
+&#160;&#160;  bool            resizable = true,
+&#160;&#160;  sqlite3_int64   capacity = 0,
+&#160;&#160;  bool            deallocate = false
+&#160;&#160;);
+
+&#160;&#160;<a href="#cl-sst-sqlite-database">database</a> &amp; <a href="#cl-sst-sqlite-database-deserialize-wtnnoxrunm">deserialize</a>(
 &#160;&#160;  char const *          schema,
 &#160;&#160;  unsigned char const * buffer,
-&#160;&#160;  sqlite3_int64         size
+&#160;&#160;  sqlite3_int64         size,
+&#160;&#160;  bool                  readonly = false,
+&#160;&#160;  bool                  copy = true,
+&#160;&#160;  bool                  resizable = true,
+&#160;&#160;  sqlite3_int64         capacity = 0,
+&#160;&#160;  bool                  deallocate = false
 &#160;&#160;);
 
 &#160;&#160;template&lt;
@@ -16225,37 +16282,97 @@ cannot be detached, so it will instead have all of its entities dropped.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp"><a href="#cl-sst-sqlite-database">database</a> &amp; <a href="#cl-sst-sqlite-database-deserialize-fttcexwfwu">deserialize</a>(
-  char const *          schema,
-  unsigned char const * buffer,
-  sqlite3_int64         size
+  char const *    schema,
+  unsigned char * buffer,
+  sqlite3_int64   size,
+  bool            readonly = false,
+  bool            copy = true,
+  bool            resizable = true,
+  sqlite3_int64   capacity = 0,
+  bool            deallocate = false
 );</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code><a href="#cl-sst-sqlite-database-deserialize-fttcexwfwu">deserialize</a></code> function (overload 1)
-attaches the <code>schema</code> database in <code>*this</code> to the serialized database
-that consists of the <code>size</code> bytes pointed to by <code>buffer</code>.
-The attached database will be read-only.</p>
+attaches the <code>schema</code> name to the database serialization that consists
+of the first <code>size</code> bytes in <code>buffer</code>.</p>
 </div>
 <div class="paragraph">
-<p>If the <code>schema</code> database is the <code>temp</code> database, then an exception will
-be thrown, as the <code>temp</code> database cannot be deserialized into.</p>
+<p>If <code>schema</code> is <code>"temp"</code>, then an exception will be thrown.</p>
 </div>
 <div class="paragraph">
-<p>If the <code>schema</code> database already exists, then it will be detached before
-attaching it to the serialized database.
-This will occur even if the <code>schema</code> database is the <code>main</code> database,
-which cannot normally be detached.</p>
+<p>If <code>schema</code> already names a database, then it will be closed before
+attaching it to the database serialization.
+This will occur even if <code>schema</code> is <code>"main"</code>, which cannot normally be
+closed.</p>
 </div>
 <div class="paragraph">
-<p>If the buffer is modified or the lifetime of the buffer ends before the
-lifetime of the attachment ends, then the behavior is undefined.
-In other words, the caller must ensure that the buffer continues to
-exist and is not modified while the attachment continues to exist.</p>
+<p>If <code>readonly</code> is <code>true</code>, then the database will be read-only.</p>
+</div>
+<div class="paragraph">
+<p>If <code>copy</code> is <code>true</code>, then a copy of <code>buffer</code> will be allocated to
+underpin the database, and the copy will be automatically deallocated
+when the database is closed.
+Otherwise, <code>buffer</code> itself will underpin the database.
+In this case, the caller must ensure that <code>buffer</code> continues to exist
+and is not externally modified until the database is closed.</p>
+</div>
+<div class="paragraph">
+<p>If <code>readonly</code> is <code>true</code>, then <code>resizable</code> is ignored.
+Otherwise, <code>resizable</code> specifies whether <code>buffer</code> will be automatically
+reallocated when more capacity is needed.
+In this case, either <code>copy</code> must be <code>true</code> or <code>buffer</code> must be allocated
+via SQLite.</p>
+</div>
+<div class="paragraph">
+<p>If <code>readonly</code> is <code>true</code>, then <code>capacity</code> is ignored.
+Otherwise, <code>capacity</code> must be either zero or at least as large as
+<code>size</code>, and zero will be automatically adjusted to <code>size</code>.
+In this case, if <code>copy</code> is <code>true</code>, then <code>capacity</code> specifies how large
+the copy of <code>buffer</code> should be, although only the first <code>size</code> bytes
+will actually be copied.
+Otherwise, if <code>copy</code> is <code>false</code>, then <code>capacity</code> specifies how many
+bytes are actually available for use in <code>buffer</code>, which may be more than
+<code>size</code>.</p>
+</div>
+<div class="paragraph">
+<p>If <code>copy</code> is <code>true</code>, then <code>deallocate</code> is ignored.
+Otherwise, <code>deallocate</code> specifies whether <code>buffer</code> will be automatically
+deallocated when the database is closed.
+If so, then <code>buffer</code> must be allocated via SQLite.
+When enabled, automatic deallocation will always occur, even if this
+function itself throws an exception.</p>
+</div>
+<div class="paragraph">
+<p>This function always returns <code>*this</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="cl-sst-sqlite-database-deserialize-vxpizfwfzi"><a class="link" href="#cl-sst-sqlite-database-deserialize-vxpizfwfzi">3.28.1.3. The <code>deserialize</code> function (overload 2)</a></h5>
+<h5 id="cl-sst-sqlite-database-deserialize-wtnnoxrunm"><a class="link" href="#cl-sst-sqlite-database-deserialize-wtnnoxrunm">3.28.1.3. The <code>deserialize</code> function (overload 2)</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><a href="#cl-sst-sqlite-database">database</a> &amp; <a href="#cl-sst-sqlite-database-deserialize-wtnnoxrunm">deserialize</a>(
+  char const *          schema,
+  unsigned char const * buffer,
+  sqlite3_int64         size,
+  bool                  readonly = false,
+  bool                  copy = true,
+  bool                  resizable = true,
+  sqlite3_int64         capacity = 0,
+  bool                  deallocate = false
+);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><a href="#cl-sst-sqlite-database-deserialize-wtnnoxrunm">deserialize</a></code> function (overload 2) is
+equivalent to the
+<code><a href="#cl-sst-sqlite-database-deserialize-fttcexwfwu">deserialize</a></code> function (overload 1) except at
+least one of <code>readonly</code> and <code>copy</code> must be <code>true</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cl-sst-sqlite-database-deserialize-vxpizfwfzi"><a class="link" href="#cl-sst-sqlite-database-deserialize-vxpizfwfzi">3.28.1.4. The <code>deserialize</code> function (overload 3)</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;
@@ -16271,14 +16388,14 @@ exist and is not modified while the attachment continues to exist.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="sections/cl_sst_sqlite_database/deserialize/001_vxpizfwfzi.html#cl-sst-sqlite-database-deserialize-vxpizfwfzi">deserialize</a></code> function (overload 2) is
+<p>The <code><a href="sections/cl_sst_sqlite_database/deserialize/001_vxpizfwfzi.html#cl-sst-sqlite-database-deserialize-vxpizfwfzi">deserialize</a></code> function (overload 3) is
 equivalent to the
 <code><a href="#cl-sst-sqlite-database-deserialize-fttcexwfwu">deserialize</a></code> function (overload 1) except the
 <code>size</code> parameter may be any <a href="#cl-sst-is-integer-ish">integer-ish type</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="cl-sst-sqlite-database-deserialize-enxnulmzqp"><a class="link" href="#cl-sst-sqlite-database-deserialize-enxnulmzqp">3.28.1.4. The <code>deserialize</code> function (overload 3)</a></h5>
+<h5 id="cl-sst-sqlite-database-deserialize-enxnulmzqp"><a class="link" href="#cl-sst-sqlite-database-deserialize-enxnulmzqp">3.28.1.5. The <code>deserialize</code> function (overload 4)</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">template&lt;
@@ -16295,7 +16412,7 @@ equivalent to the
 </div>
 </div>
 <div class="sect4">
-<h5 id="cl-sst-sqlite-database-serialize-dwochwfnea"><a class="link" href="#cl-sst-sqlite-database-serialize-dwochwfnea">3.28.1.5. The <code>serialize</code> function (overload 1)</a></h5>
+<h5 id="cl-sst-sqlite-database-serialize-dwochwfnea"><a class="link" href="#cl-sst-sqlite-database-serialize-dwochwfnea">3.28.1.6. The <code>serialize</code> function (overload 1)</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp"><a href="https://en.cppreference.com/w/cpp/container/vector" target="_blank" rel="noopener">std::vector</a>&lt;unsigned char&gt; <a href="#cl-sst-sqlite-database-serialize-dwochwfnea">serialize</a>(
@@ -16338,9 +16455,9 @@ equivalent to the
 <pre class="highlight"><code>#include &lt;<a href="https://en.cppreference.com/w/cpp/header/iostream" target="_blank" rel="noopener">iostream</a>&gt;
 #include &lt;<a href="https://en.cppreference.com/w/cpp/header/stdexcept" target="_blank" rel="noopener">stdexcept</a>&gt;
 
-#include &lt;sst/catalog/SST_TEV.hpp&gt;
 #include &lt;sst/catalog/SST_TEV_ARG.hpp&gt;
 #include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/SST_TEV_BOT.hpp" target="_blank" rel="noopener">sst/catalog/SST_TEV_BOT.hpp</a>&gt;
+#include &lt;sst/catalog/SST_TEV_DEF.hpp&gt;
 #include &lt;<a href="https://gitlab.stealthsoftwareinc.com/stealth/sst/-/blob/master/src/c-cpp/include/sst/catalog/SST_TEV_TOP.hpp" target="_blank" rel="noopener">sst/catalog/SST_TEV_TOP.hpp</a>&gt;
 #include &lt;sst/catalog/tracing_event.hpp&gt;
 #include &lt;sst/catalog/tracing_exception.hpp&gt;
@@ -16361,7 +16478,7 @@ void f(tev_t tev) {
 } // namespace
 
 int main() {
-  tev_t SST_TEV(tev);
+  tev_t SST_TEV_DEF(tev);
   try {
     f(SST_TEV_ARG(tev));
   } catch (tex_t const &amp; e) {

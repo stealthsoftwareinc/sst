@@ -61,4 +61,4 @@ SST_FORWARDING_FUNCTION(sha256, SST_F)
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SHA256_HPP
+#endif // SST_CATALOG_SHA256_HPP

@@ -31,7 +31,7 @@
 
 #include <atomic>
 #include <chrono>
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/enable_if_t.hpp>
@@ -139,4 +139,4 @@ extern template SST_DLL_EXPORT cooldown_mutex::cooldown_mutex(
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COOLDOWN_MUTEX_HPP
+#endif // SST_CATALOG_COOLDOWN_MUTEX_HPP

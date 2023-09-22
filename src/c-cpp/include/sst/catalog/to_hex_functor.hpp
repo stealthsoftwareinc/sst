@@ -31,4 +31,4 @@
 
 #include <sst/catalog/to_hex.hpp>
 
-#endif // #ifndef SST_CATALOG_TO_HEX_FUNCTOR_HPP
+#endif // SST_CATALOG_TO_HEX_FUNCTOR_HPP

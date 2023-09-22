@@ -38,4 +38,4 @@ using remove_pointer_t = typename std::remove_pointer<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_REMOVE_POINTER_T_HPP
+#endif // SST_CATALOG_REMOVE_POINTER_T_HPP

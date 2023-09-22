@@ -45,4 +45,4 @@ constexpr X varint_size(X const x) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_VARINT_SIZE_HPP
+#endif // SST_CATALOG_VARINT_SIZE_HPP

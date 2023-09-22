@@ -45,4 +45,4 @@ typedef unsigned short sst_w32_u_short;
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_U_SHORT_H
+#endif // SST_CATALOG_SST_W32_U_SHORT_H

@@ -40,4 +40,4 @@ SST_CPP17_INLINE constexpr std::size_t size_max_v =
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SIZE_MAX_V_HPP
+#endif // SST_CATALOG_SIZE_MAX_V_HPP

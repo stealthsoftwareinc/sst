@@ -57,4 +57,4 @@ class value_bits<T, sst::enable_if_t<sst::is_integer<T>::value>>
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_VALUE_BITS_HPP
+#endif // SST_CATALOG_VALUE_BITS_HPP

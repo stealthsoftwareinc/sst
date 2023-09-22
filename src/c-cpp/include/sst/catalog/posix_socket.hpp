@@ -51,4 +51,4 @@ extern template class SST_DLL_EXPORT socket_shell<posix_socket_core>;
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_SOCKET_HPP
+#endif // SST_CATALOG_POSIX_SOCKET_HPP

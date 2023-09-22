@@ -235,6 +235,9 @@ GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_CYGWIN.h])
 GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_DEV_URANDOM.h])
 [
 ]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_LIBCURL.h])
+[
+]
 GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_MACOS.h])
 [
 ]
@@ -242,6 +245,9 @@ GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_NLOHMANN_JSON.h])
 [
 ]
 GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_NOEXCEPT.h])
+[
+]
+GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_NTL.h])
 [
 ]
 GATBPS_CONFIG_FILE([src/c-cpp/include/sst/catalog/SST_WITH_OPENSSL_CRYPTO.h])

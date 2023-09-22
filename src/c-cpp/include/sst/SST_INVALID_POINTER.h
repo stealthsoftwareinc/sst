@@ -60,4 +60,4 @@
 
 #define SST_INVALID_POINTER 14UL
 
-#endif // #ifndef SST_SST_INVALID_POINTER_H
+#endif // SST_SST_INVALID_POINTER_H

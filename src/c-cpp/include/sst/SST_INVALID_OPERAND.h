@@ -63,4 +63,4 @@
 
 #define SST_INVALID_OPERAND 43UL
 
-#endif // #ifndef SST_SST_INVALID_OPERAND_H
+#endif // SST_SST_INVALID_OPERAND_H

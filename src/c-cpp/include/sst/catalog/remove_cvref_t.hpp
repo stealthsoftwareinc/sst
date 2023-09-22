@@ -38,4 +38,4 @@ using remove_cvref_t = typename sst::remove_cvref<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_REMOVE_CVREF_T_HPP
+#endif // SST_CATALOG_REMOVE_CVREF_T_HPP

@@ -60,4 +60,4 @@ auto constexpr invoke(Callable && func, Args &&... args) noexcept(
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INVOKE_HPP
+#endif // SST_CATALOG_INVOKE_HPP

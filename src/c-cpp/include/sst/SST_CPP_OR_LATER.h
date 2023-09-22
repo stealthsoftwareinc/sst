@@ -36,4 +36,4 @@
 #include <sst/catalog/SST_CPP20_OR_LATER.h>
 #include <sst/catalog/SST_CPP97_OR_LATER.h>
 
-#endif // #ifndef SST_SST_CPP_OR_LATER_H
+#endif // SST_SST_CPP_OR_LATER_H

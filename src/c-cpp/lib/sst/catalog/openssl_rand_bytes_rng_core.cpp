@@ -32,7 +32,7 @@
 #include <sst/catalog/openssl_rand_bytes_rng_core.hpp>
 //
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/config.h>
 
 #if SST_WITH_OPENSSL_CRYPTO

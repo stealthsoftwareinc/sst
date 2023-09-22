@@ -81,4 +81,4 @@ constexpr sst::text_encoding pick_utf_encoding() noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PICK_UTF_ENCODING_HPP
+#endif // SST_CATALOG_PICK_UTF_ENCODING_HPP

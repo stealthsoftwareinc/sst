@@ -35,8 +35,8 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/int_max_v.hpp>
 #include <sst/catalog/is_negative.hpp>
@@ -140,7 +140,7 @@ public:
 
   evp_cipher_ctx & operator=(evp_cipher_ctx && other) noexcept;
 
-  ~evp_cipher_ctx() SST_DEFAULT_NOEXCEPT(true) = default;
+  ~evp_cipher_ctx() SST_NOEXCEPT(true) = default;
 
   //--------------------------------------------------------------------
   // block_size-dgf9cx6r
@@ -239,4 +239,4 @@ public:
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_EVP_CIPHER_CTX_HPP
+#endif // SST_CATALOG_OPENSSL_EVP_CIPHER_CTX_HPP

@@ -60,4 +60,4 @@ using sha512_t = SST_F;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SHA512_T_HPP
+#endif // SST_CATALOG_SHA512_T_HPP

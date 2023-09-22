@@ -45,4 +45,4 @@ typedef void sst_w32_VOID;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_VOID_H
+#endif // SST_CATALOG_SST_W32_VOID_H

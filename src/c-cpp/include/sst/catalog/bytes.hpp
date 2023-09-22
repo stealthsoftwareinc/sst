@@ -11,7 +11,6 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/conditional_t.hpp>
 #include <sst/catalog/data.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -31,7 +30,7 @@ namespace sst {
 
 template<class... Args,
          sst::enable_if_t<sst::is_byte<decltype(*SST_a)>::value> = 0>
-auto bytes(Args &&... args) noexcept(SST_NOEXCEPT(SST_r))
+auto bytes(Args &&... args) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -43,4 +42,4 @@ auto bytes(Args &&... args) noexcept(SST_NOEXCEPT(SST_r))
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BYTES_HPP
+#endif // SST_CATALOG_BYTES_HPP

@@ -67,4 +67,4 @@ bool mkdir_p(Args &&... args) {
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_MKDIR_P_HPP
+#endif // SST_CATALOG_MKDIR_P_HPP

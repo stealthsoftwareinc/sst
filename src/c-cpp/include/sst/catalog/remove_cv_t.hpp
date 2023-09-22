@@ -38,4 +38,4 @@ using remove_cv_t = typename std::remove_cv<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_REMOVE_CV_T_HPP
+#endif // SST_CATALOG_REMOVE_CV_T_HPP

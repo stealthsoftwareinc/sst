@@ -31,7 +31,7 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_floating_ish.hpp>
@@ -142,4 +142,4 @@ SST_F((SST_pfbwxbmozvfyepgx), (unsigned int))
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_TO_UNSIGNED_HPP
+#endif // SST_CATALOG_TO_UNSIGNED_HPP

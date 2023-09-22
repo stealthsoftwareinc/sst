@@ -123,4 +123,4 @@ SST_N((long *), (std::vector<int *>::iterator));
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IS_VALUE_SENTINEL_HPP
+#endif // SST_CATALOG_IS_VALUE_SENTINEL_HPP

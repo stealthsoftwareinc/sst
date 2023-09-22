@@ -82,16 +82,16 @@ main() {
   sst_ubuntu_install_raw lsb-release
 
   v=$(lsb_release -r | sed 's/^[^0-9]*//')
-  case $v in
-    18.0[4-9]* | 18.[1-9]* | 19.* | 20.0[0-3]*)
-      v=18.04
-    ;;
-    20.0[4-9]* | 20.[1-9]* | 21.* | 22.0[0-3]*)
-      v=20.04
-    ;;
-    *)
-      sst_barf 'Unsupported Ubuntu version: %s' "$v"
-    ;;
+  case $v in (x)
+    sst_barf "Unsupported Ubuntu version: $v"
+  ;; (18.0[4-9]* | 18.[1-9]* | 19.* | 20.0[0-3]*)
+    v=18.04
+  ;; (20.0[4-9]* | 20.[1-9]* | 21.* | 22.0[0-3]*)
+    v=20.04
+  ;; (22.0[4-9]* | 22.[1-9]* | 23.* | 24.0[0-3]*)
+    v=22.04
+  ;; (*)
+    sst_barf "Unsupported Ubuntu version: $v"
   esac
   readonly v
 

@@ -38,4 +38,4 @@ using make_signed_t = typename sst::make_signed<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAKE_SIGNED_T_HPP
+#endif // SST_CATALOG_MAKE_SIGNED_T_HPP

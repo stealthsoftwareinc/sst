@@ -65,8 +65,8 @@ int main() {
     F(int, false);
     F(int *, true);
     F(void *, false);
-    F(decltype(main), false);
-    F(decltype(&main), false);
+    F2(decltype(main), false);
+    F2(decltype(&main), false);
     F(decltype(array), false);
     F(decltype(&array), true);
     F(std::vector<int>, false);

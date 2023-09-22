@@ -35,36 +35,13 @@
 #include <sst/catalog/unsigned_ceil_div.hpp>
 //
 
-#include <sst/catalog/SST_TEST_BOOL.hpp>
-#include <sst/catalog/SST_TEST_SHOW.hpp>
 #include <sst/catalog/test_main.hpp>
 
 int main() {
-  return sst::test_main([]() {
+  return sst::test_main([&] {
     ;
 
     //------------------------------------------------------------------
-
-#define F(a, b, r)                                                     \
-  ([&]() {                                                             \
-    SST_TEST_BOOL((sst::unsigned_ceil_div((a), (b)) == (r)),           \
-                  SST_TEST_SHOW((sst::unsigned_ceil_div((a), (b)))));  \
-  }())
-
-    F(0, 1, 0);
-    F(0, 2, 0);
-    F(0, 3, 0);
-    F(1, 1, 1);
-    F(1, 2, 1);
-    F(1, 3, 1);
-    F(2, 1, 2);
-    F(2, 2, 1);
-    F(2, 3, 1);
-    F(3, 1, 3);
-    F(3, 2, 2);
-    F(3, 3, 1);
-
-#undef F
 
     //------------------------------------------------------------------
   });

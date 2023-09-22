@@ -37,4 +37,4 @@ SST_ALGORITHM_OPTIONS(string_to_integer_options)
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_STRING_TO_INTEGER_OPTIONS_HPP
+#endif // SST_CATALOG_STRING_TO_INTEGER_OPTIONS_HPP

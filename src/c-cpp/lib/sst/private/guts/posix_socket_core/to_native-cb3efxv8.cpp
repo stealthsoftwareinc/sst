@@ -40,7 +40,7 @@
 
 #include <sys/socket.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/socket_family.hpp>
 
 namespace sst {

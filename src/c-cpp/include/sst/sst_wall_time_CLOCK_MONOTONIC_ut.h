@@ -173,4 +173,4 @@ typedef struct sst_wall_time_CLOCK_MONOTONIC_ut sst_wall_time_CLOCK_MONOTONIC_ut
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_CLOCK_MONOTONIC_UT_H
+#endif // SST_SST_WALL_TIME_CLOCK_MONOTONIC_UT_H

@@ -51,4 +51,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitnoty)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITNOTY_H
+#endif // SST_SST_BITNOTY_H

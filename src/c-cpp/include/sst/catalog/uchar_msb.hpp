@@ -37,4 +37,4 @@ using uchar_msb = sst::type_msb<unsigned char>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UCHAR_MSB_HPP
+#endif // SST_CATALOG_UCHAR_MSB_HPP

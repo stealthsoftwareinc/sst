@@ -91,4 +91,4 @@ sst_option_pair_a sst_forbid_option_value_a(
 
 #endif
 
-#endif // #ifndef SST_SST_FORBID_OPTION_VALUE_A_H
+#endif // SST_SST_FORBID_OPTION_VALUE_A_H

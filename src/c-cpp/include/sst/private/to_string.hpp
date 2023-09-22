@@ -42,4 +42,4 @@ SST_DEFINE_ALGORITHM(to_string,
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_STRING_HPP
+#endif // SST_PRIVATE_TO_STRING_HPP

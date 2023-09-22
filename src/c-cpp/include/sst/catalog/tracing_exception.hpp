@@ -139,4 +139,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TRACING_EXCEPTION_HPP
+#endif // SST_CATALOG_TRACING_EXCEPTION_HPP

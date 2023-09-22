@@ -49,4 +49,4 @@ std::string mktemp_d();
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MKTEMP_D_HPP
+#endif // SST_CATALOG_MKTEMP_D_HPP

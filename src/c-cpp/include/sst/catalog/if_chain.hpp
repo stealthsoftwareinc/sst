@@ -105,4 +105,4 @@ SST_F(void, sst::if_chain<F, char, F, long, void>);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IF_CHAIN_HPP
+#endif // SST_CATALOG_IF_CHAIN_HPP

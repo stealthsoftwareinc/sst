@@ -60,4 +60,4 @@ using sha256_t = SST_F;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SHA256_T_HPP
+#endif // SST_CATALOG_SHA256_T_HPP

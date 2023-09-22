@@ -49,4 +49,4 @@ SST_DLL_EXPORT void windows_mkdir(wchar_t const * path);
 
 #endif // #if SST_WITH_WINDOWS
 
-#endif // #ifndef SST_PRIVATE_GUTS_WINDOWS_MKDIR_HPP
+#endif // SST_PRIVATE_GUTS_WINDOWS_MKDIR_HPP

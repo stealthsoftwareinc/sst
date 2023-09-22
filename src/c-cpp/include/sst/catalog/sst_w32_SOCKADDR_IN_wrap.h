@@ -44,4 +44,4 @@ sst_w32_SOCKADDR_IN_wrap(sst_w32_SOCKADDR_IN const * src,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SOCKADDR_IN_WRAP_H
+#endif // SST_CATALOG_SST_W32_SOCKADDR_IN_WRAP_H

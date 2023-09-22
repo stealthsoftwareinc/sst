@@ -51,4 +51,4 @@ void const * get_builtin_evp_cipher(sst::openssl::evp_cipher_type type);
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_GET_BUILTIN_EVP_CIPHER_HPP
+#endif // SST_CATALOG_OPENSSL_GET_BUILTIN_EVP_CIPHER_HPP

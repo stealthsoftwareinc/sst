@@ -31,4 +31,4 @@
 
 #define SST_EXPAND(...) __VA_ARGS__
 
-#endif // #ifndef SST_CATALOG_SST_EXPAND_H
+#endif // SST_CATALOG_SST_EXPAND_H

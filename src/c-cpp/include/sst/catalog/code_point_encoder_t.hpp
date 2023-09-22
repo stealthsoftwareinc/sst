@@ -44,4 +44,4 @@ class code_point_encoder_t;
 #include <sst/private/code_point_encoder_t/utf_32.hpp>
 #include <sst/private/code_point_encoder_t/utf_8.hpp>
 
-#endif // #ifndef SST_CATALOG_CODE_POINT_ENCODER_T_HPP
+#endif // SST_CATALOG_CODE_POINT_ENCODER_T_HPP

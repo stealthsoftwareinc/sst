@@ -45,4 +45,4 @@ constexpr bool unsigned_le(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_LE_HPP
+#endif // SST_CATALOG_UNSIGNED_LE_HPP

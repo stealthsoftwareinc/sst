@@ -38,7 +38,7 @@
 
 #include <new>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/sst_w32_closesocket.h>
 
 namespace sst {

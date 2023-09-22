@@ -31,4 +31,4 @@
 
 #include <sst/private/bit_floor/of_fundamental_integer.hpp>
 
-#endif // #ifndef SST_CATALOG_BIT_FLOOR_HPP
+#endif // SST_CATALOG_BIT_FLOOR_HPP

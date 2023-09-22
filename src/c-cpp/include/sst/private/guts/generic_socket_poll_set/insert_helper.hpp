@@ -31,7 +31,7 @@
 
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/checked.hpp>
 #include <sst/catalog/to_unsigned.hpp>
@@ -94,4 +94,4 @@ void generic_socket_poll_set<Socket, Entry>::insert_helper(
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_INSERT_HELPER_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_INSERT_HELPER_HPP

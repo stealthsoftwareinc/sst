@@ -40,7 +40,7 @@
 
 #include <sys/socket.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/errno_exception.hpp>
 

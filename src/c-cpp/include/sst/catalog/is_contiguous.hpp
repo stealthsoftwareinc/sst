@@ -169,4 +169,4 @@ SST_N((int))
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IS_CONTIGUOUS_HPP
+#endif // SST_CATALOG_IS_CONTIGUOUS_HPP

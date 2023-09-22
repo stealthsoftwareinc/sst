@@ -33,4 +33,4 @@
 #include <sst/private/c_quote/iterator.hpp>
 #include <sst/private/c_quote/single.hpp>
 
-#endif // #ifndef SST_CATALOG_C_QUOTE_HPP
+#endif // SST_CATALOG_C_QUOTE_HPP

@@ -54,4 +54,4 @@ sst::openssl::sha512_t::output_t sha512(Args &&... args) {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_SHA512_HPP
+#endif // SST_CATALOG_OPENSSL_SHA512_HPP

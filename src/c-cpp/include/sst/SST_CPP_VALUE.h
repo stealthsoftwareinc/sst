@@ -36,4 +36,4 @@
 #include <sst/catalog/SST_CPP20_VALUE.h>
 #include <sst/catalog/SST_CPP97_VALUE.h>
 
-#endif // #ifndef SST_SST_CPP_VALUE_H
+#endif // SST_SST_CPP_VALUE_H

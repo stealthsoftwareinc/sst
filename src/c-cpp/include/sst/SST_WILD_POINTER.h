@@ -62,4 +62,4 @@
 
 #define SST_WILD_POINTER 8UL
 
-#endif // #ifndef SST_SST_WILD_POINTER_H
+#endif // SST_SST_WILD_POINTER_H

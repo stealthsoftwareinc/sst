@@ -109,4 +109,4 @@ SST_F1(int, long);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_COPY_CV_HPP
+#endif // SST_CATALOG_COPY_CV_HPP

@@ -47,4 +47,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_memxgeyf)(
   size_t
 );
 
-#endif // #ifndef SST_SST_MEMXGEYF_H
+#endif // SST_SST_MEMXGEYF_H

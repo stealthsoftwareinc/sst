@@ -45,4 +45,4 @@ struct promotes
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PROMOTES_HPP
+#endif // SST_CATALOG_PROMOTES_HPP

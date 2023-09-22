@@ -60,4 +60,4 @@
 
 #define SST_ZERO_ARRAY_SIZE 24UL
 
-#endif // #ifndef SST_SST_ZERO_ARRAY_SIZE_H
+#endif // SST_SST_ZERO_ARRAY_SIZE_H

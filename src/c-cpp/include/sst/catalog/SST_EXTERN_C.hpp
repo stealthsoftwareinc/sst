@@ -31,4 +31,4 @@
 
 #include <sst/catalog/SST_EXTERN_C.h>
 
-#endif // #ifndef SST_CATALOG_SST_EXTERN_C_HPP
+#endif // SST_CATALOG_SST_EXTERN_C_HPP

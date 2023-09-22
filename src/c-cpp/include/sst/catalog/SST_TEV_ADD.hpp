@@ -46,4 +46,4 @@
 #define SST_TEV_ADD(...)                                               \
   (SST_TEV_ADD_HELPER(__VA_ARGS__, ::sst::guts::tracing_event::dummy()))
 
-#endif // #ifndef SST_CATALOG_SST_TEV_ADD_HPP
+#endif // SST_CATALOG_SST_TEV_ADD_HPP

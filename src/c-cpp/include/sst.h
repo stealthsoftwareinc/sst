@@ -634,9 +634,11 @@
 #include <sst/catalog/SST_SUBSET_LIBRARY.h>
 #include <sst/catalog/SST_WITH_CYGWIN.h>
 #include <sst/catalog/SST_WITH_DEV_URANDOM.h>
+#include <sst/catalog/SST_WITH_LIBCURL.h>
 #include <sst/catalog/SST_WITH_MACOS.h>
 #include <sst/catalog/SST_WITH_NLOHMANN_JSON.h>
 #include <sst/catalog/SST_WITH_NOEXCEPT.h>
+#include <sst/catalog/SST_WITH_NTL.h>
 #include <sst/catalog/SST_WITH_OPENSSL_CRYPTO.h>
 #include <sst/catalog/SST_WITH_OPENSSL_SSL.h>
 #include <sst/catalog/SST_WITH_POSIX.h>

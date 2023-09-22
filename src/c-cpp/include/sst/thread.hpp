@@ -33,4 +33,4 @@
 
 #include <sst/pthread-option-check.h>
 
-#endif // #ifndef SST_THREAD_HPP
+#endif // SST_THREAD_HPP

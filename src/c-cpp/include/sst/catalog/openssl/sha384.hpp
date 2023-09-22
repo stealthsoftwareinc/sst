@@ -54,4 +54,4 @@ sst::openssl::sha384_t::output_t sha384(Args &&... args) {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_SHA384_HPP
+#endif // SST_CATALOG_OPENSSL_SHA384_HPP

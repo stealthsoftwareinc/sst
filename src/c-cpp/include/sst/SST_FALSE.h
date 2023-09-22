@@ -62,4 +62,4 @@
 
 #define SST_FALSE 0
 
-#endif // #ifndef SST_SST_FALSE_H
+#endif // SST_SST_FALSE_H

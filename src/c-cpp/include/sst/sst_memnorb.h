@@ -47,4 +47,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_memnorb)(
   size_t
 );
 
-#endif // #ifndef SST_SST_MEMNORB_H
+#endif // SST_SST_MEMNORB_H

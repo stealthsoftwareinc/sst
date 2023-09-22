@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "MissingOptionValueStatus"
 
-#endif // #ifndef SST_SST_EC_MISSING_OPTION_VALUE_STATUS_H
+#endif // SST_SST_EC_MISSING_OPTION_VALUE_STATUS_H

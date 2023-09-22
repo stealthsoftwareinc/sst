@@ -70,4 +70,4 @@ R unsigned_rand_range(G & g) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_RAND_RANGE_HPP
+#endif // SST_CATALOG_UNSIGNED_RAND_RANGE_HPP

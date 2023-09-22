@@ -50,4 +50,4 @@ SST_EXTERN_C SST_DLL_EXPORT size_t const sst_w32_sizeof_WSADATA;
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SIZEOF_WSADATA_H
+#endif // SST_CATALOG_SST_W32_SIZEOF_WSADATA_H

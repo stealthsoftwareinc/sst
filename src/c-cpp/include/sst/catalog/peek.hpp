@@ -31,8 +31,7 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_NODISCARD.h>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_input_iterator.hpp>
 #include <sst/catalog/is_integer_ish.hpp>
@@ -50,10 +49,9 @@ template<class Src,
 SST_NODISCARD()
 constexpr sst::peek_ptr<Src> peek(
     Src const & src,
-    End const & end) noexcept(SST_NOEXCEPT(src == end ?
-                                               sst::peek_ptr<Src>() :
-                                               sst::peek_ptr<Src>(
-                                                   src))) {
+    End const & end) noexcept(noexcept(src == end ?
+                                           sst::peek_ptr<Src>() :
+                                           sst::peek_ptr<Src>(src))) {
   return src == end ? sst::peek_ptr<Src>() : sst::peek_ptr<Src>(src);
 }
 
@@ -64,9 +62,9 @@ template<
                      && sst::is_value_sentinel<End, Src>::value> = 0>
 SST_NODISCARD()
 sst::peek_ptr<Src> peek(Src const & src, End const & end) noexcept(
-    SST_NOEXCEPT(*sst::peek_ptr<Src>(src) == end,
-                 sst::peek_ptr<Src>(),
-                 sst::peek_ptr<Src>(sst::peek_ptr<Src>(src)))) {
+    noexcept(*sst::peek_ptr<Src>(src) == end,
+             sst::peek_ptr<Src>(),
+             sst::peek_ptr<Src>(sst::peek_ptr<Src>(src)))) {
   sst::peek_ptr<Src> ptr(src);
   return *ptr == end ? sst::peek_ptr<Src>() : std::move(ptr);
 }
@@ -81,8 +79,7 @@ SST_NODISCARD()
 constexpr auto peek(
     Src const & src,
     End const & end,
-    sst::pos<Src, End> const &) noexcept(SST_NOEXCEPT(sst::peek(src,
-                                                                end)))
+    sst::pos<Src, End> const &) noexcept(noexcept(sst::peek(src, end)))
     -> decltype(sst::peek(src, end)) {
   return sst::peek(src, end);
 }
@@ -96,13 +93,13 @@ constexpr sst::peek_ptr<Src> peek(
     Src const & src,
     End const & end,
     sst::pos<Src, End> const &
-        pos) noexcept(SST_NOEXCEPT(pos.value == end ?
-                                       sst::peek_ptr<Src>() :
-                                       sst::peek_ptr<Src>(src))) {
+        pos) noexcept(noexcept(pos.value == end ?
+                                   sst::peek_ptr<Src>() :
+                                   sst::peek_ptr<Src>(src))) {
   return pos.value == end ? sst::peek_ptr<Src>() :
                             sst::peek_ptr<Src>(src);
 }
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PEEK_HPP
+#endif // SST_CATALOG_PEEK_HPP

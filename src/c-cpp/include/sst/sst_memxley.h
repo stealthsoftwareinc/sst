@@ -47,4 +47,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_memxley)(
   size_t
 );
 
-#endif // #ifndef SST_SST_MEMXLEY_H
+#endif // SST_SST_MEMXLEY_H

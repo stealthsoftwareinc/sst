@@ -46,4 +46,4 @@ SST_DEFINE_ALGORITHM(to_hex,
 #include <sst/private/to_hex/from_byte_input_iterable.hpp>
 #include <sst/private/to_hex/from_byte_input_iterator.hpp>
 
-#endif // #ifndef SST_CATALOG_TO_HEX_HPP
+#endif // SST_CATALOG_TO_HEX_HPP

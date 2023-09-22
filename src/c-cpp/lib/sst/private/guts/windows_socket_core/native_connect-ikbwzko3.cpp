@@ -38,7 +38,7 @@
 
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_WSAEALREADY.h>
 #include <sst/catalog/SST_W32_WSAEISCONN.h>
 #include <sst/catalog/SST_W32_WSAEWOULDBLOCK.h>

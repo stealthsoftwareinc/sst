@@ -38,4 +38,4 @@ struct undeduced : sst::type_identity<T> {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNDEDUCED_HPP
+#endif // SST_CATALOG_UNDEDUCED_HPP

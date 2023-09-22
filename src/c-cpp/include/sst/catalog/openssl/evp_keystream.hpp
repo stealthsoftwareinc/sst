@@ -38,7 +38,7 @@
 #include <utility>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/begin.hpp>
 #include <sst/catalog/checked_resize.hpp>
@@ -297,4 +297,4 @@ start:
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_EVP_KEYSTREAM_HPP
+#endif // SST_CATALOG_OPENSSL_EVP_KEYSTREAM_HPP

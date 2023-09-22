@@ -95,4 +95,4 @@ using err_exception = sst::error_code_exception<
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_ERR_EXCEPTION_HPP
+#endif // SST_CATALOG_OPENSSL_ERR_EXCEPTION_HPP

@@ -61,4 +61,4 @@
 
 typedef void sst_voidf(void);
 
-#endif // #ifndef SST_SST_VOIDF_H
+#endif // SST_SST_VOIDF_H

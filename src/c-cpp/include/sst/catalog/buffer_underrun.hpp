@@ -42,4 +42,4 @@ struct buffer_underrun : std::runtime_error {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BUFFER_UNDERRUN_HPP
+#endif // SST_CATALOG_BUFFER_UNDERRUN_HPP

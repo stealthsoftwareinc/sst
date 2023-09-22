@@ -38,4 +38,4 @@ struct type_identity {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TYPE_IDENTITY_HPP
+#endif // SST_CATALOG_TYPE_IDENTITY_HPP

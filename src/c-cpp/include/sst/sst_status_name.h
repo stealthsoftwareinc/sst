@@ -99,4 +99,4 @@ char const * sst_status_name(
 
 #endif
 
-#endif // #ifndef SST_SST_STATUS_NAME_H
+#endif // SST_SST_STATUS_NAME_H

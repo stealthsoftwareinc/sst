@@ -37,4 +37,4 @@
 #define SST_CPP03_OR_LATER (0)
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_CPP03_OR_LATER_H
+#endif // SST_CATALOG_SST_CPP03_OR_LATER_H

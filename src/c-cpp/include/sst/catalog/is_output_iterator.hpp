@@ -62,4 +62,4 @@ struct is_output_iterator<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_OUTPUT_ITERATOR_HPP
+#endif // SST_CATALOG_IS_OUTPUT_ITERATOR_HPP

@@ -41,4 +41,4 @@ SST_EXTERN_C SST_DLL_EXPORT unsigned char (sst_memnand1)(
   unsigned char
 );
 
-#endif // #ifndef SST_SST_MEMNAND1_H
+#endif // SST_SST_MEMNAND1_H

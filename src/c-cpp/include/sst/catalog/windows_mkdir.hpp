@@ -47,4 +47,4 @@ void windows_mkdir(Path const & path) {
 
 #endif // #if SST_WITH_WINDOWS
 
-#endif // #ifndef SST_CATALOG_WINDOWS_MKDIR_HPP
+#endif // SST_CATALOG_WINDOWS_MKDIR_HPP

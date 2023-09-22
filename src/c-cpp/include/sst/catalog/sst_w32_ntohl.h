@@ -50,4 +50,4 @@ sst_w32_ntohl(sst_w32_u_long netlong);
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_NTOHL_H
+#endif // SST_CATALOG_SST_W32_NTOHL_H

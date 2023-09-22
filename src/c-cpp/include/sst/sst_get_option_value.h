@@ -85,4 +85,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_GET_OPTION_VALUE_H
+#endif // SST_SST_GET_OPTION_VALUE_H

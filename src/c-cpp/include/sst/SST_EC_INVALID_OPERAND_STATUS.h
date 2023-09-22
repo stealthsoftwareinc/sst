@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidOperandStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_OPERAND_STATUS_H
+#endif // SST_SST_EC_INVALID_OPERAND_STATUS_H

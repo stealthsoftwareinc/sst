@@ -38,7 +38,7 @@
 
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_SOCKET_ERROR.h>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/sst_w32_INT.h>

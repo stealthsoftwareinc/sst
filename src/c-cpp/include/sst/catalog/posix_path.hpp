@@ -37,8 +37,10 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_DEFINE_BOOLEAN_TRAIT_1.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/cbegin.hpp>
 #include <sst/catalog/cend.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -46,157 +48,53 @@
 #include <sst/catalog/is_input_iterator.hpp>
 #include <sst/catalog/is_iterable.hpp>
 #include <sst/catalog/is_sentinel.hpp>
-#include <sst/catalog/moved_from.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
+#include <sst/private/guts/common_path.hpp>
 
 namespace sst {
 
-class posix_path {
+class posix_path : public guts::common_path<posix_path, char> {
+
+  using base = guts::common_path<posix_path, char>;
+
+  template<class, class>
+  friend class guts::common_path;
 
   //--------------------------------------------------------------------
-  // value_type
-  //--------------------------------------------------------------------
-
-public:
-
-  using value_type = char;
-
-  //--------------------------------------------------------------------
-  // value_type_ok
-  //--------------------------------------------------------------------
-  //
-  // Determines whether a type T is OK to convert to value_type.
-  //
-
-private:
-
-  SST_DEFINE_BOOLEAN_TRAIT_1(value_type_ok,
-                             T,
-                             (std::is_convertible<T, value_type>::value
-                              || (std::is_same<value_type, char>::value
-                                  && sst::is_byte<T>::value)))
-
-  //--------------------------------------------------------------------
-  // construct-from-iterable
+  // Types
   //--------------------------------------------------------------------
 
 public:
 
-  template<
-      class Src,
-      sst::enable_if_t<sst::is_iterable<Src, value_type_ok>::value> = 0>
-  posix_path(Src const & src, bool const follow_links = true)
-      : posix_path(sst::cbegin(src), sst::cend(src), follow_links) {
-  }
+  using char_t = typename base::char_t;
+  using string_t = typename base::string_t;
+  using value_type = typename base::value_type;
 
   //--------------------------------------------------------------------
-  // construct-from-iterator
+  // Default operations
   //--------------------------------------------------------------------
 
 public:
 
-  template<
-      class Src,
-      class End,
-      sst::enable_if_t<sst::is_input_iterator<Src, value_type_ok>::value
-                       && sst::is_sentinel<End, Src>::value> = 0>
-  posix_path(Src src, End const & end, bool const follow_links = true)
-      : follow_links_(follow_links) {
-    for (; !(src == end); ++src) {
-      value_type const c = static_cast<value_type>(*src);
-      if (c == 0) {
-        break;
-      }
-      str_ += c;
-    }
-  }
+  posix_path() SST_NOEXCEPT(true) = default;
+
+  ~posix_path() SST_NOEXCEPT(true) = default;
+
+  posix_path(posix_path const &) = default;
+
+  posix_path(posix_path &&) SST_NOEXCEPT(true) = default;
+
+  posix_path & operator=(posix_path const &) = default;
+
+  posix_path & operator=(posix_path &&) SST_NOEXCEPT(true) = default;
 
   //--------------------------------------------------------------------
-  // construct-from-pointer
+  // Construction
   //--------------------------------------------------------------------
 
 public:
 
-  template<class T, sst::enable_if_t<value_type_ok<T>::value> = 0>
-  posix_path(T const * const path, bool const follow_links = true)
-      : follow_links_(follow_links),
-        str_((SST_ASSERT((path != nullptr)),
-              reinterpret_cast<value_type const *>(path))) {
-  }
-
-  //--------------------------------------------------------------------
-  // construct-from-std-string-lvalue
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path(std::basic_string<value_type> const & path,
-             bool const follow_links = true)
-      : follow_links_(follow_links),
-        str_(path) {
-  }
-
-  //--------------------------------------------------------------------
-  // construct-from-std-string-rvalue
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path(std::basic_string<value_type> && path,
-             bool follow_links = true)
-      : follow_links_(follow_links),
-        str_(std::move(path)) {
-  }
-
-  //--------------------------------------------------------------------
-  // construct-moved-from
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path() : moved_from_(true) {
-  }
-
-  //--------------------------------------------------------------------
-  // copy-assign
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path & operator=(posix_path const & other) {
-    if (this != &other) {
-      *this = posix_path(other);
-    }
-    return *this;
-  }
-
-  //--------------------------------------------------------------------
-  // copy-construct
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path(posix_path const & other)
-      : follow_links_(other.follow_links_),
-        moved_from_(other.moved_from_),
-        str_(other.str_),
-        have_test_d_(other.have_test_d_),
-        test_d_(other.test_d_),
-        have_test_e_(other.have_test_e_),
-        test_e_(other.test_e_),
-        have_test_f_(other.have_test_f_),
-        test_f_(other.test_f_),
-        will_refresh_(other.will_refresh_) {
-  }
-
-  //--------------------------------------------------------------------
-  // destruct
-  //--------------------------------------------------------------------
-
-public:
-
-  ~posix_path() noexcept {
-  }
+  using base::base;
 
   //--------------------------------------------------------------------
   // directory_char
@@ -208,246 +106,67 @@ public:
     return value_type('/');
   }
 
-  //--------------------------------------------------------------------
-  // follow_links
-  //--------------------------------------------------------------------
-  //
-  // Indicates whether this path object will follow symbolic links when
-  // performing a refresh.
-  //
-
-private:
-
-  bool follow_links_ = true;
-
-public:
-
-  bool follow_links() const {
-    SST_ASSERT((!moved_from_));
-    return follow_links_;
-  }
-
-  posix_path & follow_links(bool const x) {
-    SST_ASSERT((!moved_from_));
-    if (x != follow_links_) {
-      follow_links_ = x;
-      will_refresh_ = true;
-    }
-    return *this;
-  }
-
-  //--------------------------------------------------------------------
-  // move-assign
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path & operator=(posix_path && other) noexcept {
-    if (this != &other) {
-      follow_links_ = std::move(other.follow_links_);
-      moved_from_ = std::move(other.moved_from_);
-      str_ = std::move(other.str_);
-      have_test_d_ = std::move(other.have_test_d_);
-      test_d_ = std::move(other.test_d_);
-      have_test_e_ = std::move(other.have_test_e_);
-      test_e_ = std::move(other.test_e_);
-      have_test_f_ = std::move(other.have_test_f_);
-      test_f_ = std::move(other.test_f_);
-      will_refresh_ = std::move(other.will_refresh_);
-    }
-    return *this;
-  }
-
-  //--------------------------------------------------------------------
-  // move-construct
-  //--------------------------------------------------------------------
-
-public:
-
-  posix_path(posix_path && other) noexcept
-      : follow_links_(std::move(other.follow_links_)),
-        moved_from_(std::move(other.moved_from_)),
-        str_(std::move(other.str_)),
-        have_test_d_(std::move(other.have_test_d_)),
-        test_d_(std::move(other.test_d_)),
-        have_test_e_(std::move(other.have_test_e_)),
-        test_e_(std::move(other.test_e_)),
-        have_test_f_(std::move(other.have_test_f_)),
-        test_f_(std::move(other.test_f_)),
-        will_refresh_(std::move(other.will_refresh_)) {
-  }
-
-  //--------------------------------------------------------------------
-  // moved_from_
-  //--------------------------------------------------------------------
-
-private:
-
-  sst::moved_from moved_from_;
-
-  //--------------------------------------------------------------------
-  // operator-std-string
-  //--------------------------------------------------------------------
-
-public:
-
-  operator std::basic_string<value_type> const &() const {
-    SST_ASSERT((!moved_from_));
-    return str_;
-  }
-
-  //--------------------------------------------------------------------
-  // path_list_char
-  //--------------------------------------------------------------------
-  //
-  // The character that is conventionally used to separate paths in a
-  // list of paths. This is ';' on Windows and ':' elsewhere.
-  //
-
   static constexpr value_type path_list_char() noexcept {
     return value_type(':');
   }
 
   //--------------------------------------------------------------------
-  // refresh
-  //--------------------------------------------------------------------
-
-private:
-
-  template<class GetFileAttributesExFunc,
-           class CreateFileFunc,
-           class GetFinalPathNameByHandleFunc>
-  posix_path & refresh_core(
-      GetFileAttributesExFunc && GetFileAttributesEx_func,
-      char const * const GetFileAttributesEx_name,
-      CreateFileFunc && CreateFile_func,
-      char const * const CreateFile_name,
-      GetFinalPathNameByHandleFunc && GetFinalPathNameByHandle_func,
-      char const * const GetFinalPathNameByHandle_name);
-
-public:
-
-  posix_path & refresh();
-
-  //--------------------------------------------------------------------
-  // refresh_from_dirent
+  // Attribute querying
   //--------------------------------------------------------------------
 
 public:
 
-  posix_path & refresh_from_dirent(void const * data);
+  posix_path const & query() const;
 
-  //--------------------------------------------------------------------
-  // refresh_from_stat
-  //--------------------------------------------------------------------
+  posix_path const & query_from_dirent(void const * data) const;
 
-public:
+  posix_path const & query_from_stat(void const * data) const;
 
-  posix_path & refresh_from_stat(void const * data);
-
-  //--------------------------------------------------------------------
-  // str
-  //--------------------------------------------------------------------
-  //
-  // TODO: Add a non-const variant so we can steal just the path?
-  //
-
-private:
-
-  std::basic_string<value_type> str_;
-
-public:
-
-  std::basic_string<value_type> const & str() const {
-    SST_ASSERT((!moved_from_));
-    return str_;
-  }
-
-  //--------------------------------------------------------------------
-  // test_d
-  //--------------------------------------------------------------------
-
-private:
-
-  bool have_test_d_ = false;
-  bool test_d_{};
-
-public:
-
-  bool test_d() {
-    SST_ASSERT((!moved_from_));
-    if (!have_test_d_ || will_refresh_) {
-      refresh();
-    }
-    SST_ASSERT((have_test_d_));
-    return test_d_;
-  }
-
-  //--------------------------------------------------------------------
-  // test_e
-  //--------------------------------------------------------------------
-
-private:
-
-  bool have_test_e_ = false;
-  bool test_e_{};
-
-public:
-
-  bool test_e() {
-    SST_ASSERT((!moved_from_));
-    if (!have_test_e_ || will_refresh_) {
-      refresh();
-    }
-    SST_ASSERT((have_test_e_));
-    return test_e_;
-  }
-
-  //--------------------------------------------------------------------
-  // test_f
-  //--------------------------------------------------------------------
-
-private:
-
-  bool have_test_f_ = false;
-  bool test_f_{};
-
-public:
-
-  bool test_f() {
-    SST_ASSERT((!moved_from_));
-    if (!have_test_f_ || will_refresh_) {
-      refresh();
-    }
-    SST_ASSERT((have_test_f_));
-    return test_f_;
-  }
-
-  //--------------------------------------------------------------------
-  // will_refresh
-  //--------------------------------------------------------------------
-
-private:
-
-  bool will_refresh_ = true;
-
-public:
-
-  bool will_refresh() const {
-    SST_ASSERT((!moved_from_));
-    return will_refresh_;
-  }
-
-  posix_path & will_refresh(bool const x) {
-    SST_ASSERT((!moved_from_));
-    will_refresh_ = x;
+  posix_path & query() {
+    static_cast<posix_path const &>(*this).query();
     return *this;
   }
 
-}; //
+  posix_path & query_from_dirent(void const * const data) {
+    static_cast<posix_path const &>(*this).query_from_dirent(data);
+    return *this;
+  }
+
+  posix_path & query_from_stat(void const * const data) {
+    static_cast<posix_path const &>(*this).query_from_stat(data);
+    return *this;
+  }
+
+  //--------------------------------------------------------------------
+  // mv_onto
+  //--------------------------------------------------------------------
+
+private:
+
+  void mv_onto(posix_path const & dst) const;
+
+  //--------------------------------------------------------------------
+
+public:
+
+  SST_NODISCARD()
+  static constexpr bool is_dir_char(char_t const c) noexcept {
+    return c == char_t('/');
+  }
+
+  SST_NODISCARD() static constexpr char_t dir_char() noexcept {
+    return char_t('/');
+  }
+
+  SST_NODISCARD() static constexpr char_t list_char() noexcept {
+    return char_t(':');
+  }
+
+  //--------------------------------------------------------------------
+};
 
 } // namespace sst
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_PATH_HPP
+#endif // SST_CATALOG_POSIX_PATH_HPP

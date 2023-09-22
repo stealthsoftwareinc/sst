@@ -72,4 +72,4 @@ int test_main(Callable && f) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TEST_MAIN_HPP
+#endif // SST_CATALOG_TEST_MAIN_HPP

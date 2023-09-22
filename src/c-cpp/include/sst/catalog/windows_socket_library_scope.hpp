@@ -62,4 +62,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_WINDOWS_SOCKET_LIBRARY_SCOPE_HPP
+#endif // SST_CATALOG_WINDOWS_SOCKET_LIBRARY_SCOPE_HPP

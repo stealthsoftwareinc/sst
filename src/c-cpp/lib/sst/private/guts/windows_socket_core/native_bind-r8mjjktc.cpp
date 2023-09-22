@@ -38,7 +38,7 @@
 
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/sst_w32_SOCKADDR.h>
 #include <sst/catalog/sst_w32_bind.h>

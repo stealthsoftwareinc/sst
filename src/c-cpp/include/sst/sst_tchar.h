@@ -90,4 +90,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_TCHAR_H
+#endif // SST_SST_TCHAR_H

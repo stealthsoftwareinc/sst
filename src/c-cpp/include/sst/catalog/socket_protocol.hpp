@@ -57,4 +57,4 @@ enum class socket_protocol {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SOCKET_PROTOCOL_HPP
+#endif // SST_CATALOG_SOCKET_PROTOCOL_HPP

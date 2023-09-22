@@ -42,4 +42,4 @@ SST_DEFINE_ALGORITHM(to_bytes,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TO_BYTES_HPP
+#endif // SST_CATALOG_TO_BYTES_HPP

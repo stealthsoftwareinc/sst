@@ -38,4 +38,4 @@ struct dependent_false : std::false_type {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_DEPENDENT_FALSE_HPP
+#endif // SST_CATALOG_DEPENDENT_FALSE_HPP

@@ -197,4 +197,4 @@ wchar_t * sst_get_long_option_value_w(
 
 #endif
 
-#endif // #ifndef SST_SST_GET_LONG_OPTION_VALUE_W_H
+#endif // SST_SST_GET_LONG_OPTION_VALUE_W_H

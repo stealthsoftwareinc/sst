@@ -61,4 +61,4 @@ using socket_library_scope = sst::windows_socket_library_scope;
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_SOCKET_LIBRARY_SCOPE_HPP
+#endif // SST_CATALOG_SOCKET_LIBRARY_SCOPE_HPP

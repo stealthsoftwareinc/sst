@@ -36,4 +36,4 @@ using first_t = T;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FIRST_T_HPP
+#endif // SST_CATALOG_FIRST_T_HPP

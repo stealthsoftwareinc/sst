@@ -51,4 +51,4 @@
 /*--------------------------------------------------------------------*/
 #endif
 
-#endif // #ifndef SST_REPRESENTATION_H
+#endif // SST_REPRESENTATION_H

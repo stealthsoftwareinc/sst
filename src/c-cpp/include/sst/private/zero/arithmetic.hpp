@@ -176,4 +176,4 @@ SST_F(wchar_t);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_PRIVATE_ZERO_ARITHMETIC_HPP
+#endif // SST_PRIVATE_ZERO_ARITHMETIC_HPP

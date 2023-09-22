@@ -33,7 +33,7 @@
 //
 
 #include <cstdio>
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <stdexcept>
 #include <string>
 #include <utility>

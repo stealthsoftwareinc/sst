@@ -30,7 +30,7 @@
 #define SST_CATALOG_FILE_RNG_CORE_HPP
 
 #include <cstdio>
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 #include <sst/catalog/moved_from.hpp>
 #include <sst/catalog/size_max_v.hpp>
@@ -86,4 +86,4 @@ protected:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FILE_RNG_CORE_HPP
+#endif // SST_CATALOG_FILE_RNG_CORE_HPP

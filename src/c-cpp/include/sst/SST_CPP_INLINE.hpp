@@ -31,4 +31,4 @@
 
 #include <sst/catalog/SST_CPP17_INLINE.hpp>
 
-#endif // #ifndef SST_SST_CPP_INLINE_HPP
+#endif // SST_SST_CPP_INLINE_HPP

@@ -88,4 +88,4 @@ SST_STATIC_ASSERT(noexcept(sst::is_positive(0U)));
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_PRIVATE_IS_POSITIVE_ARITHMETIC_HPP
+#endif // SST_PRIVATE_IS_POSITIVE_ARITHMETIC_HPP

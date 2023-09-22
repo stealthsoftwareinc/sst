@@ -74,4 +74,4 @@ using crypto_rng_t = sst::dev_urandom_rng;
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_CRYPTO_RNG_T_HPP
+#endif // SST_CATALOG_CRYPTO_RNG_T_HPP

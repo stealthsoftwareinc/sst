@@ -85,4 +85,4 @@ constexpr typename O::return_type min_rep_bits(X const x) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MIN_REP_BITS_HPP
+#endif // SST_CATALOG_MIN_REP_BITS_HPP

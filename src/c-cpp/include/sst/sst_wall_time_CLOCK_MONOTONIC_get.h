@@ -118,4 +118,4 @@ sst_status sst_wall_time_CLOCK_MONOTONIC_get(
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_CLOCK_MONOTONIC_GET_H
+#endif // SST_SST_WALL_TIME_CLOCK_MONOTONIC_GET_H

@@ -48,4 +48,4 @@ SST_EXTERN_C SST_DLL_EXPORT BIGNUM * (sst_BN_bin2bn_step)(
 
 #endif
 
-#endif // #ifndef SST_SST_BN_BIN2BN_STEP_H
+#endif // SST_SST_BN_BIN2BN_STEP_H

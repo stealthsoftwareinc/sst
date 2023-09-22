@@ -231,4 +231,4 @@ wchar_t * sst_get_option_value_w(
 
 #endif
 
-#endif // #ifndef SST_SST_GET_OPTION_VALUE_W_H
+#endif // SST_SST_GET_OPTION_VALUE_W_H

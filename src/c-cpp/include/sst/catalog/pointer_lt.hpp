@@ -32,15 +32,15 @@
 #include <functional>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 
 namespace sst {
 
 //
 // Note that C++ guarantees that std::less and friends define a total
-// order over all pointers, not just those that point into the same
-// object. See the following references:
+// order over all pointers of a given type, not just those that point
+// into the same object. See the following references:
 //
 //     * C++11 (N3337) 20.8.5p8
 //     * C++14 (N4140) 20.9.5p14
@@ -48,19 +48,24 @@ namespace sst {
 //     * C++20 (N4860) 20.14.7p2
 //
 
-template<
-    class T1,
-    class T2,
-    sst::enable_if_t<
-        (std::is_object<T1>::value || std::is_void<T1>::value)
-        && (std::is_object<T2>::value || std::is_void<T2>::value)> = 0>
-bool pointer_lt(T1 const * const p1, T2 const * const p2) {
-  SST_ASSERT((p1 != nullptr));
-  SST_ASSERT((p2 != nullptr));
-  return std::less<void const *>()(static_cast<void const *>(p1),
-                                   static_cast<void const *>(p2));
+template<class T1,
+         class T2,
+         sst::enable_if_t<!std::is_function<T1>::value
+                          && !std::is_function<T2>::value> = 0>
+constexpr bool pointer_lt(T1 const * const p1,
+                          T2 const * const p2) noexcept {
+  return std::less<void const *>()(p1, p2);
+}
+
+template<class T1,
+         class T2,
+         sst::enable_if_t<std::is_function<T1>::value
+                          && std::is_function<T2>::value
+                          && std::is_same<T1, T2>::value> = 0>
+constexpr bool pointer_lt(T1 * const p1, T2 * const p2) noexcept {
+  return std::less<T1 *>()(p1, p2);
 }
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_POINTER_LT_HPP
+#endif // SST_CATALOG_POINTER_LT_HPP

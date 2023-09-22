@@ -48,4 +48,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitoneb)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITONEB_H
+#endif // SST_SST_BITONEB_H

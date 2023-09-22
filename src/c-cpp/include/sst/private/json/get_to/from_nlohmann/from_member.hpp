@@ -271,4 +271,4 @@ class get_to_functor<
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_TO_FROM_NLOHMANN_FROM_MEMBER_HPP
+#endif // SST_PRIVATE_JSON_GET_TO_FROM_NLOHMANN_FROM_MEMBER_HPP

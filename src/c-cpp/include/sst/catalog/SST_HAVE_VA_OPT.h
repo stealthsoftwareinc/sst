@@ -35,4 +35,4 @@
 
 #define SST_HAVE_VA_OPT SST_HAVE_VA_OPT_1(, )
 
-#endif // #ifndef SST_CATALOG_SST_HAVE_VA_OPT_H
+#endif // SST_CATALOG_SST_HAVE_VA_OPT_H

@@ -40,4 +40,4 @@ struct make_unsigned : std::make_unsigned<sst::remove_cvref_t<T>> {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAKE_UNSIGNED_HPP
+#endif // SST_CATALOG_MAKE_UNSIGNED_HPP

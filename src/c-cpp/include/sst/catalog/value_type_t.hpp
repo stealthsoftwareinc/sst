@@ -38,4 +38,4 @@ using value_type_t = typename sst::value_type<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_VALUE_TYPE_T_HPP
+#endif // SST_CATALOG_VALUE_TYPE_T_HPP

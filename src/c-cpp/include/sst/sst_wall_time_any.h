@@ -66,4 +66,4 @@ struct sst_wall_time_any_ut;
 
 typedef struct sst_wall_time_any_ut sst_wall_time_any;
 
-#endif // #ifndef SST_SST_WALL_TIME_ANY_H
+#endif // SST_SST_WALL_TIME_ANY_H

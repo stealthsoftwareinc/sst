@@ -38,4 +38,4 @@ class checked_class;
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_CHECKED_CLASS_DECL_HPP
+#endif // SST_PRIVATE_CHECKED_CLASS_DECL_HPP

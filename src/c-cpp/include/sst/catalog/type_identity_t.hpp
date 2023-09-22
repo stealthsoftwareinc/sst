@@ -38,4 +38,4 @@ using type_identity_t = typename sst::type_identity<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TYPE_IDENTITY_T_HPP
+#endif // SST_CATALOG_TYPE_IDENTITY_T_HPP

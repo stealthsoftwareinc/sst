@@ -74,4 +74,4 @@ SST_F(std::vector<int>::iterator, int);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_VALUE_TYPE_HPP
+#endif // SST_CATALOG_VALUE_TYPE_HPP

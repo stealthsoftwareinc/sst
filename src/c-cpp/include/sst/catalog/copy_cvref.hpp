@@ -103,4 +103,4 @@ SST_F1(int, long)
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_COPY_CVREF_HPP
+#endif // SST_CATALOG_COPY_CVREF_HPP

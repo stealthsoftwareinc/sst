@@ -66,4 +66,4 @@ sst_status sst_mutex_unlock(
   struct sst_mutex *
 );
 
-#endif // #ifndef SST_SST_MUTEX_H
+#endif // SST_SST_MUTEX_H

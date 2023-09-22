@@ -66,4 +66,4 @@ struct sst_option_pair_w_ut;
 
 typedef struct sst_option_pair_w_ut sst_option_pair_w;
 
-#endif // #ifndef SST_SST_OPTION_PAIR_W_H
+#endif // SST_SST_OPTION_PAIR_W_H

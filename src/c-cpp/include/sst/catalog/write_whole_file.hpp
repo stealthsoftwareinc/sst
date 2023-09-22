@@ -42,4 +42,4 @@ SST_DEFINE_ALGORITHM(write_whole_file)
 #include <sst/private/write_whole_file/kq74cp3f.hpp>
 #include <sst/private/write_whole_file/tbxxr57t.hpp>
 
-#endif // #ifndef SST_CATALOG_WRITE_WHOLE_FILE_HPP
+#endif // SST_CATALOG_WRITE_WHOLE_FILE_HPP

@@ -67,7 +67,7 @@ std::string errno_error_string(int const code) {
   } else {
     s += "Unknown error";
   }
-  s += " (error code ";
+  s += " (errno error code ";
   s += sst::to_string(code);
   s += ")";
   return s;
@@ -116,7 +116,7 @@ std::string errno_error_string(int const code) {
   } else {
     s += "Unknown error";
   }
-  s += " (error code ";
+  s += " (errno error code ";
   s += sst::to_string(code);
   s += ")";
   return s;
@@ -136,7 +136,7 @@ std::string errno_error_string(int const code) {
   } else {
     s += "Unknown error";
   }
-  s += " (error code ";
+  s += " (errno error code ";
   s += sst::to_string(code);
   s += ")";
   return s;
@@ -165,7 +165,7 @@ std::string errno_error_string(int const code) {
   } else {
     s += "Unknown error";
   }
-  s += " (error code ";
+  s += " (errno error code ";
   s += sst::to_string(code);
   s += ")";
   return s;

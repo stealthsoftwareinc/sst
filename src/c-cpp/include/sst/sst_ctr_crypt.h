@@ -53,4 +53,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_ctr_crypt)(
 
 #endif
 
-#endif // #ifndef SST_SST_CTR_CRYPT_H
+#endif // SST_SST_CTR_CRYPT_H

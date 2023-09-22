@@ -51,4 +51,4 @@ typedef unsigned int sst_w32_UINT_PTR;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_UINT_PTR_H
+#endif // SST_CATALOG_SST_W32_UINT_PTR_H

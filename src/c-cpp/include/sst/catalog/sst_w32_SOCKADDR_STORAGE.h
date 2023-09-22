@@ -45,4 +45,4 @@ typedef struct sockaddr_storage sst_w32_SOCKADDR_STORAGE;
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SOCKADDR_STORAGE_H
+#endif // SST_CATALOG_SST_W32_SOCKADDR_STORAGE_H

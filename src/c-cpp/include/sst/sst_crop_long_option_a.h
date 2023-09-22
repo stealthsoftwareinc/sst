@@ -151,4 +151,4 @@ char * sst_crop_long_option_a(
 
 #endif
 
-#endif // #ifndef SST_SST_CROP_LONG_OPTION_A_H
+#endif // SST_SST_CROP_LONG_OPTION_A_H

@@ -35,4 +35,4 @@
 #include <sst/private/SST_STATIC_ASSERT.h>
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_STATIC_ASSERT_H
+#endif // SST_CATALOG_SST_STATIC_ASSERT_H

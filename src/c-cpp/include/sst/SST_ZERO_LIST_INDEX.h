@@ -60,4 +60,4 @@
 
 #define SST_ZERO_LIST_INDEX 31UL
 
-#endif // #ifndef SST_SST_ZERO_LIST_INDEX_H
+#endif // SST_SST_ZERO_LIST_INDEX_H

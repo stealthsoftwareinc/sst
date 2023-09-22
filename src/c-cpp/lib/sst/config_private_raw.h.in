@@ -13,7 +13,7 @@
 #undef CEXEEXT
 
 /* curl command */
-#undef CURL
+#undef CURL_CLI
 
 /* docker command */
 #undef DOCKER
@@ -43,7 +43,7 @@
 #undef HAVE_BIGNUM_ST_DEFINITION
 
 /* curl command availability */
-#undef HAVE_CURL
+#undef HAVE_CURL_CLI
 
 /* Result of checking whether Cygwin is present. */
 #undef HAVE_CYGWIN
@@ -114,9 +114,6 @@
 /* m4 command availability */
 #undef HAVE_M4
 
-/* Define to 1 if you have the <memory.h> header file. */
-#undef HAVE_MEMORY_H
-
 /* Result of checking for MinGW (all). */
 #undef HAVE_MINGW
 
@@ -143,6 +140,9 @@
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#undef HAVE_STDIO_H
 
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
@@ -544,7 +544,9 @@
 /* Result of checking sst_wall_time_CLOCK_MONOTONIC. */
 #undef SST_WITH_SST_WALL_CLOCK_CLOCK_MONOTONIC
 
-/* Define to 1 if you have the ANSI C header files. */
+/* Define to 1 if all of the C90 standard headers exist (not just the ones
+   required in a freestanding environment). This macro is provided for
+   backward compatibility; new code need not use it. */
 #undef STDC_HEADERS
 
 /* tar command */
@@ -774,6 +776,21 @@
 
 /* Result of checking for the Java Native Interface (C compile). */
 #undef WITH_JNI_C_COMPILE
+
+/* Result of checking whether to use libcurl. */
+#undef WITH_LIBCURL
+
+/* Result of checking for libcurl (C++ link). */
+#undef WITH_LIBCURL_CPP_LINK
+
+/* Result of checking for libcurl (C++ run). */
+#undef WITH_LIBCURL_CPP_RUN
+
+/* Result of checking for libcurl (C link). */
+#undef WITH_LIBCURL_C_LINK
+
+/* Result of checking for libcurl (C run). */
+#undef WITH_LIBCURL_C_RUN
 
 /* Result of checking for -ldl. */
 #undef WITH_LIBDL

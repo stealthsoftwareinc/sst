@@ -32,4 +32,4 @@
 #include <stdio.h>
 #define sst_ftprintf fprintf
 
-#endif // #ifndef SST_SST_FTPRINTF_H
+#endif // SST_SST_FTPRINTF_H

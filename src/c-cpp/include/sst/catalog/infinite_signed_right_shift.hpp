@@ -39,6 +39,11 @@
 
 namespace sst {
 
+//
+// Like sst::signed_right_shift except the behavior is well-defined for
+// arbitrarily large n.
+//
+
 template<class X,
          class N,
          sst::enable_if_t<sst::is_integer<X>::value
@@ -53,4 +58,4 @@ constexpr X infinite_signed_right_shift(X const x, N const n) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INFINITE_SIGNED_RIGHT_SHIFT_HPP
+#endif // SST_CATALOG_INFINITE_SIGNED_RIGHT_SHIFT_HPP

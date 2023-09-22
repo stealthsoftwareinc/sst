@@ -33,7 +33,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
 #include <sst/catalog/string_to_string_options.hpp>
@@ -400,4 +400,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TRACING_EVENT_HPP
+#endif // SST_CATALOG_TRACING_EVENT_HPP

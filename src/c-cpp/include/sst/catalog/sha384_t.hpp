@@ -60,4 +60,4 @@ using sha384_t = SST_F;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SHA384_T_HPP
+#endif // SST_CATALOG_SHA384_T_HPP

@@ -47,4 +47,4 @@ enum class evp_cipher_type {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_EVP_CIPHER_TYPE_HPP
+#endif // SST_CATALOG_OPENSSL_EVP_CIPHER_TYPE_HPP

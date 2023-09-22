@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NegativeArraySizeStatus"
 
-#endif // #ifndef SST_SST_EC_NEGATIVE_ARRAY_SIZE_STATUS_H
+#endif // SST_SST_EC_NEGATIVE_ARRAY_SIZE_STATUS_H

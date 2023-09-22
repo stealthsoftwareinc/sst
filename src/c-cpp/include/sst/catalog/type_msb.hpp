@@ -49,4 +49,4 @@ struct type_msb<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TYPE_MSB_HPP
+#endif // SST_CATALOG_TYPE_MSB_HPP

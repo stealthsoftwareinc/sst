@@ -31,4 +31,4 @@
 
 #include <sst/catalog/ascii_upper.hpp>
 
-#endif // #ifndef SST_CATALOG_ASCII_UPPER_FUNCTOR_HPP
+#endif // SST_CATALOG_ASCII_UPPER_FUNCTOR_HPP

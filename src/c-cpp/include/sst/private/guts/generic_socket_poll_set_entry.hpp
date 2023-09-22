@@ -31,7 +31,7 @@
 
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_WITH_POSIX.h>
 #include <sst/catalog/SST_WITH_WINDOWS_WS2_32.h>
 #include <sst/catalog/checked_cast.hpp>
@@ -265,4 +265,4 @@ bool generic_socket_poll_set_entry<sst::windows_socket>::can_send()
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ENTRY_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ENTRY_HPP

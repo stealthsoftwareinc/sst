@@ -38,7 +38,7 @@
 
 #include <list>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_SIZEOF_ADDRINFOA.h>
 #include <sst/catalog/make_basic.hpp>
 #include <sst/catalog/sst_w32_ADDRINFOA.h>

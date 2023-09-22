@@ -37,4 +37,4 @@
 
 #define sst_tcscmp strcmp
 
-#endif // #ifndef SST_SST_TCSCMP_H
+#endif // SST_SST_TCSCMP_H

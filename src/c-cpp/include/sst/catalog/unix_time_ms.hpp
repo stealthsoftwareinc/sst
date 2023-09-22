@@ -41,4 +41,4 @@ inline sst::unix_time_ms_t unix_time_ms() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNIX_TIME_MS_HPP
+#endif // SST_CATALOG_UNIX_TIME_MS_HPP

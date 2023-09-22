@@ -41,4 +41,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_JLONG_MAXVAL_H
+#endif // SST_SST_JLONG_MAXVAL_H

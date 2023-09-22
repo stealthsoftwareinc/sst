@@ -32,6 +32,7 @@
 #include <type_traits>
 #include <utility>
 
+#include <sst/catalog/SST_NOEXCEPT_OR.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_smart_pointer.hpp>
 #include <sst/catalog/json/get_as.hpp>
@@ -64,10 +65,11 @@ public:
   // Note that we need *dst = std::move(x) to be noexcept to achieve
   // strong exception safety. Otherwise, it could corrupt *dst.
   template<class DstValue = dst_value_t,
-           sst::enable_if_t<
-               std::is_move_assignable<DstValue>::value
-               && noexcept(std::declval<DstValue &>() =
-                               std::declval<DstValue &&>())> = 0>
+           sst::enable_if_t<std::is_move_assignable<DstValue>::value
+                            && SST_NOEXCEPT_OR(
+                                false,
+                                (std::declval<DstValue &>() =
+                                     std::declval<DstValue &&>()))> = 0>
   dst_t & operator()(src_t const & src, dst_t & dst) const {
     dst_value_t x = sst::json::get_as<dst_value_t>(src);
     if (dst == nullptr) {
@@ -92,4 +94,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_TO_FROM_NLOHMANN_TO_SMART_POINTER_HPP
+#endif // SST_PRIVATE_JSON_GET_TO_FROM_NLOHMANN_TO_SMART_POINTER_HPP

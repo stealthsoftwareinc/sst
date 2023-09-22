@@ -61,4 +61,4 @@
 
 #define SST_OUT_OF_MEMORY 7UL
 
-#endif // #ifndef SST_SST_OUT_OF_MEMORY_H
+#endif // SST_SST_OUT_OF_MEMORY_H

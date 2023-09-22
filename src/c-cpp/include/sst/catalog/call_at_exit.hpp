@@ -38,4 +38,4 @@ void call_at_exit(void (*func)());
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CALL_AT_EXIT_HPP
+#endif // SST_CATALOG_CALL_AT_EXIT_HPP

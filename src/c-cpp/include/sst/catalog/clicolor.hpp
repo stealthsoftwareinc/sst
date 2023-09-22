@@ -39,4 +39,4 @@ bool clicolor(std::nothrow_t, bool refresh = false) noexcept;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CLICOLOR_HPP
+#endif // SST_CATALOG_CLICOLOR_HPP

@@ -45,4 +45,4 @@ extern SST_DLL_EXPORT std::string posix_ai_flags_to_string(int flags);
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_AI_FLAGS_TO_STRING_HPP
+#endif // SST_CATALOG_POSIX_AI_FLAGS_TO_STRING_HPP

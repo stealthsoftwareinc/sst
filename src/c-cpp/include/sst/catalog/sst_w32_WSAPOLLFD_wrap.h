@@ -44,4 +44,4 @@ sst_w32_WSAPOLLFD_wrap(sst_w32_WSAPOLLFD const * src,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_WSAPOLLFD_WRAP_H
+#endif // SST_CATALOG_SST_W32_WSAPOLLFD_WRAP_H

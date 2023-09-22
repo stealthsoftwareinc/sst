@@ -68,4 +68,4 @@ auto mkdir(Args &&... args) noexcept(noexcept(SST_r))
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_MKDIR_HPP
+#endif // SST_CATALOG_MKDIR_HPP

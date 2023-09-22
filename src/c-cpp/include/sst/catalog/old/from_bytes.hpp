@@ -52,4 +52,4 @@ auto from_bytes(ByteIt && src, Args &&... args)
 } // namespace old
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_OLD_FROM_BYTES_HPP
+#endif // SST_CATALOG_OLD_FROM_BYTES_HPP

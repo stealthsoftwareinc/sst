@@ -33,7 +33,7 @@
 //
 
 #include <chrono>
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/mono_time_ns.hpp>
 
 namespace sst {

@@ -47,4 +47,4 @@ T remove_as(Json & src,
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_REMOVE_AS_HPP
+#endif // SST_CATALOG_JSON_REMOVE_AS_HPP

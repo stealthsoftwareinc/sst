@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_NULL_TERMINATOR_HPP
 #define SST_CATALOG_NULL_TERMINATOR_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 namespace sst {
 
@@ -69,4 +69,4 @@ struct null_terminator {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_NULL_TERMINATOR_HPP
+#endif // SST_CATALOG_NULL_TERMINATOR_HPP

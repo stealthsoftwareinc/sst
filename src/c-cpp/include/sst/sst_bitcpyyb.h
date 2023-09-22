@@ -51,4 +51,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitcpyyb)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITCPYYB_H
+#endif // SST_SST_BITCPYYB_H

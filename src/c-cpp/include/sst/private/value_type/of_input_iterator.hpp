@@ -45,4 +45,4 @@ struct value_type<T, sst::enable_if_t<sst::is_input_iterator<T>::value>>
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_VALUE_TYPE_OF_INPUT_ITERATOR_HPP
+#endif // SST_PRIVATE_VALUE_TYPE_OF_INPUT_ITERATOR_HPP

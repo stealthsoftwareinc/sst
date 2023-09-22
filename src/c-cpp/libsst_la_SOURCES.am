@@ -1389,52 +1389,52 @@ if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_cp.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/begin.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/begin.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/construct-from-byte-pointer.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/construct-from-byte-pointer.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/copy-assign.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/copy-assign.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/copy-construct.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/copy-construct.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/ctor-vaor3p41.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/ctor-vaor3p41.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/destruct.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/destruct.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/end.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/end.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/move-assign.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/move-assign.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/move-construct.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/move-construct.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/operator-arrow.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/operator-arrow.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/operator-deref.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/operator-deref.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/operator-eq.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/operator-eq.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/operator-ne.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/operator-ne.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/operator-post-inc.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/operator-post-inc.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/operator-pre-inc.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/operator-pre-inc.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_directory_iterator/prefix.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_dir_it/prefix.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_gai_error_string.cpp
@@ -1443,13 +1443,16 @@ if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_gai_exception.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/refresh.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/mv_onto.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/refresh_from_dirent.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/query.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/refresh_from_stat.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/query_from_dirent.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_path/query_from_stat.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/posix_readdir/construct.cpp
@@ -1644,22 +1647,28 @@ if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_gai_error_string.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh-char.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/mv_onto/char.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh-wchar_t.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/mv_onto/wchar_t.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_from_attr-char.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query/char.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_from_attr-wchar_t.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query/wchar_t.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_from_find-char.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_from_attr/char.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_from_find-wchar_t.cpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_from_attr/wchar_t.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_from_find/char.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_from_find/wchar_t.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_socket.cpp
@@ -1866,15 +1875,6 @@ if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/private/guts/posix_socket_core/to_socktype-iz6ukdpk.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/private/guts/posix_test_d.cpp
-endif
-if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/private/guts/posix_test_e.cpp
-endif
-if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/private/guts/posix_test_f.cpp
-endif
-if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/private/guts/windows_addrinfo/explicit-p54mmp9p.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
@@ -1995,13 +1995,16 @@ if WITH_BUILD_GROUP_C_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/config_private.h
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_core.hpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/mv_onto_core.hpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_from_attr.hpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_core.hpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
-src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/refresh_from_find_core.hpp
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_from_attr.hpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/windows_path/query_from_find_core.hpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/private/guts/windows_mkdir/core.hpp

@@ -45,4 +45,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_memnotb)(
   size_t
 );
 
-#endif // #ifndef SST_SST_MEMNOTB_H
+#endif // SST_SST_MEMNOTB_H

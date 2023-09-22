@@ -38,4 +38,4 @@ using size_max = sst::type_max<std::size_t>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SIZE_MAX_HPP
+#endif // SST_CATALOG_SIZE_MAX_HPP

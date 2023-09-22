@@ -103,4 +103,4 @@ void * sst_ensure(
 
 #endif
 
-#endif // #ifndef SST_SST_ENSURE_H
+#endif // SST_SST_ENSURE_H

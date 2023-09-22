@@ -63,4 +63,4 @@
 
 #define SST_INVALID_OPTION 36UL
 
-#endif // #ifndef SST_SST_INVALID_OPTION_H
+#endif // SST_SST_INVALID_OPTION_H

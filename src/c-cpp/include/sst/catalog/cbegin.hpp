@@ -44,4 +44,4 @@ auto cbegin(C const & c) noexcept(noexcept(SST_X)) -> decltype(SST_X) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CBEGIN_HPP
+#endif // SST_CATALOG_CBEGIN_HPP

@@ -35,4 +35,4 @@ struct indeterminate_t {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INDETERMINATE_T_HPP
+#endif // SST_CATALOG_INDETERMINATE_T_HPP

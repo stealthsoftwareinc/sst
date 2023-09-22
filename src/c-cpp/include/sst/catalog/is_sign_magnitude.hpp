@@ -66,4 +66,4 @@ struct is_sign_magnitude<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_SIGN_MAGNITUDE_HPP
+#endif // SST_CATALOG_IS_SIGN_MAGNITUDE_HPP

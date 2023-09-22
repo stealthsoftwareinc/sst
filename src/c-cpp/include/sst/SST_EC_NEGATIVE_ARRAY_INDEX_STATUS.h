@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NegativeArrayIndexStatus"
 
-#endif // #ifndef SST_SST_EC_NEGATIVE_ARRAY_INDEX_STATUS_H
+#endif // SST_SST_EC_NEGATIVE_ARRAY_INDEX_STATUS_H

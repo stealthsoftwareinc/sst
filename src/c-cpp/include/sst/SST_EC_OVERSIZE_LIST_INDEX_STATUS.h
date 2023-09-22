@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "OversizeListIndexStatus"
 
-#endif // #ifndef SST_SST_EC_OVERSIZE_LIST_INDEX_STATUS_H
+#endif // SST_SST_EC_OVERSIZE_LIST_INDEX_STATUS_H

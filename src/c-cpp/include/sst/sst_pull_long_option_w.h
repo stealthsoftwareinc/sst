@@ -88,4 +88,4 @@ sst_bool sst_pull_long_option_w(
 
 #endif
 
-#endif // #ifndef SST_SST_PULL_LONG_OPTION_W_H
+#endif // SST_SST_PULL_LONG_OPTION_W_H

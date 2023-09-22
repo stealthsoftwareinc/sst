@@ -87,4 +87,4 @@ extern template class SST_DLL_EXPORT
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_PRIVATE_GUTS_POSIX_ADDRINFO_HPP
+#endif // SST_PRIVATE_GUTS_POSIX_ADDRINFO_HPP

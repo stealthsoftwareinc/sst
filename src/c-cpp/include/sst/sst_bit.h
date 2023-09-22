@@ -31,4 +31,4 @@
 
 typedef int sst_bit;
 
-#endif // #ifndef SST_SST_BIT_H
+#endif // SST_SST_BIT_H

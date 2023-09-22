@@ -41,4 +41,4 @@ inline sst::mono_time_s_t mono_time_s() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MONO_TIME_S_HPP
+#endif // SST_CATALOG_MONO_TIME_S_HPP

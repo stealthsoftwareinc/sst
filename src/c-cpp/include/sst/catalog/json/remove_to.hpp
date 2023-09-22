@@ -49,4 +49,4 @@ T & remove_to(Json & src,
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_REMOVE_TO_HPP
+#endif // SST_CATALOG_JSON_REMOVE_TO_HPP

@@ -61,4 +61,4 @@
 
 typedef unsigned long int sst_status;
 
-#endif // #ifndef SST_SST_STATUS_H
+#endif // SST_SST_STATUS_H

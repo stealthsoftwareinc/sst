@@ -35,7 +35,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/char_bit_v.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
@@ -766,4 +766,4 @@ class from_hex_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_FROM_HEX_FROM_CHAR_INPUT_ITERATOR_HPP
+#endif // SST_PRIVATE_FROM_HEX_FROM_CHAR_INPUT_ITERATOR_HPP

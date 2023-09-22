@@ -79,4 +79,4 @@ struct is_exact_width_integer<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_EXACT_WIDTH_INTEGER_HPP
+#endif // SST_CATALOG_IS_EXACT_WIDTH_INTEGER_HPP

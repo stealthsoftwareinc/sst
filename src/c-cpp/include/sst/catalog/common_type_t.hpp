@@ -38,4 +38,4 @@ using common_type_t = typename std::common_type<T...>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COMMON_TYPE_T_HPP
+#endif // SST_CATALOG_COMMON_TYPE_T_HPP

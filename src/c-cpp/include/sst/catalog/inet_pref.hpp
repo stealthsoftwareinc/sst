@@ -61,4 +61,4 @@ enum class inet_pref {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INET_PREF_HPP
+#endif // SST_CATALOG_INET_PREF_HPP

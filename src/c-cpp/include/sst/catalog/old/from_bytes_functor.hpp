@@ -33,7 +33,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_THROW_UNIMPLEMENTED.hpp>
 #include <sst/catalog/buffer_underrun.hpp>
 #include <sst/catalog/char_bit_v.hpp>
@@ -265,4 +265,4 @@ public:
 } // namespace old
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_OLD_FROM_BYTES_FUNCTOR_HPP
+#endif // SST_CATALOG_OLD_FROM_BYTES_FUNCTOR_HPP

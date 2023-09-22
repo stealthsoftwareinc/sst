@@ -93,4 +93,4 @@ void sst_free(
 
 #endif
 
-#endif // #ifndef SST_SST_FREE_H
+#endif // SST_SST_FREE_H

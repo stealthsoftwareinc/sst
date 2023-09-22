@@ -45,4 +45,4 @@
 #define SST_DISPATCH_1(f, n) SST_DISPATCH_2(f, n)
 #define SST_DISPATCH(f, ...) SST_DISPATCH_1(f, SST_NARGS(__VA_ARGS__))
 
-#endif // #ifndef SST_CATALOG_SST_DISPATCH_H
+#endif // SST_CATALOG_SST_DISPATCH_H

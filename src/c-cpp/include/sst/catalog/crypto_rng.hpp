@@ -31,7 +31,6 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/crypto_rng_t.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
@@ -51,7 +50,7 @@ extern SST_DLL_EXPORT sst::crypto_rng_t & crypto_rng();
 #define SST_r (sst::crypto_rng()(std::forward<Args>(args)...))
 
 template<class... Args, sst::enable_if_t<(sizeof...(Args) > 0U)> = 0>
-auto crypto_rng(Args &&... args) noexcept(SST_NOEXCEPT(SST_r))
+auto crypto_rng(Args &&... args) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -62,4 +61,4 @@ auto crypto_rng(Args &&... args) noexcept(SST_NOEXCEPT(SST_r))
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CRYPTO_RNG_HPP
+#endif // SST_CATALOG_CRYPTO_RNG_HPP

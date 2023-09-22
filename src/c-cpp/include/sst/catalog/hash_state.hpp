@@ -41,4 +41,4 @@ SST_STRONG_ENUM_CLASS(hash_state,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_HASH_STATE_HPP
+#endif // SST_CATALOG_HASH_STATE_HPP

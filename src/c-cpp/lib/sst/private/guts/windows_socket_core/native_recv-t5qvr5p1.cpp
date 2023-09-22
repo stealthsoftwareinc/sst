@@ -39,7 +39,7 @@
 #include <cstddef>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_WSAEWOULDBLOCK.h>
 #include <sst/catalog/min.hpp>
 #include <sst/catalog/promote_t.hpp>

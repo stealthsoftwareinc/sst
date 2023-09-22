@@ -36,4 +36,4 @@
 #include <sst/private/json/get_from_file/nlohmann/char.hpp>
 #include <sst/private/json/get_from_file/string.hpp>
 
-#endif // #ifndef SST_CATALOG_JSON_GET_FROM_FILE_HPP
+#endif // SST_CATALOG_JSON_GET_FROM_FILE_HPP

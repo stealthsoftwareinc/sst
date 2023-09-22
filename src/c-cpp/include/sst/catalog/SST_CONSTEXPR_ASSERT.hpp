@@ -34,7 +34,7 @@
 // constexpr function until C++20.
 //
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_CPP14_OR_LATER.h>
 #include <sst/catalog/SST_CPP20_OR_LATER.h>
 
@@ -46,4 +46,4 @@
 #define SST_CONSTEXPR_ASSERT(...)
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_CONSTEXPR_ASSERT_HPP
+#endif // SST_CATALOG_SST_CONSTEXPR_ASSERT_HPP

@@ -34,13 +34,21 @@
 
 namespace sst {
 
+//----------------------------------------------------------------------
+//
+// Returns a sentinel iterator that will compare equal to i after i has
+// been incremented n times.
+//
+
 template<class Count,
          class Iterator,
          class T = sst::remove_cvref_t<Count>>
-guts::it_t<Iterator, T> count_it(Iterator const x, Count const n) {
-  return guts::it_t<Iterator, T>(nullptr, x, true, n, 0, false);
+guts::it_t<Iterator, T> count_it(Iterator const i, Count const n) {
+  return guts::it_t<Iterator, T>(nullptr, i, true, n, 0, false);
 }
+
+//----------------------------------------------------------------------
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COUNT_IT_HPP
+#endif // SST_CATALOG_COUNT_IT_HPP

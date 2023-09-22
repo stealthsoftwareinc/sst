@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidListSizeStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_LIST_SIZE_STATUS_H
+#endif // SST_SST_EC_INVALID_LIST_SIZE_STATUS_H

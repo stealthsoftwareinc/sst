@@ -90,4 +90,4 @@ char * sst_snip_short_option_a(
 
 #endif
 
-#endif // #ifndef SST_SST_SNIP_SHORT_OPTION_A_H
+#endif // SST_SST_SNIP_SHORT_OPTION_A_H

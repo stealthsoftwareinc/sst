@@ -62,4 +62,4 @@ constexpr std::size_t md_size(sst::openssl::md_type const type) {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_MD_SIZE_HPP
+#endif // SST_CATALOG_OPENSSL_MD_SIZE_HPP

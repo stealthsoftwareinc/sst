@@ -42,4 +42,4 @@ SST_EXTERN_C SST_DLL_EXPORT sst_bit (sst_bitnor1)(
   sst_bit
 );
 
-#endif // #ifndef SST_SST_BITNOR1_H
+#endif // SST_SST_BITNOR1_H

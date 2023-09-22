@@ -61,4 +61,4 @@
 
 typedef int sst_bool;
 
-#endif // #ifndef SST_SST_BOOL_H
+#endif // SST_SST_BOOL_H

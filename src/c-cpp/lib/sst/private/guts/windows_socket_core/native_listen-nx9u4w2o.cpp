@@ -36,7 +36,7 @@
 
 #if SST_WITH_WINDOWS_WS2_32
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_SOMAXCONN.h>
 #include <sst/catalog/sst_w32_listen.h>
 #include <sst/catalog/wsa_exception.hpp>

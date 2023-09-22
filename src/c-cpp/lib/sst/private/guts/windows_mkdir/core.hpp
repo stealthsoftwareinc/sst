@@ -31,7 +31,7 @@
 
 #include <string>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/gle_exception.hpp>
 
@@ -57,4 +57,4 @@ void core(CharT const * const path,
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_WINDOWS_MKDIR_CORE_HPP
+#endif // SST_PRIVATE_GUTS_WINDOWS_MKDIR_CORE_HPP

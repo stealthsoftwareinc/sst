@@ -126,4 +126,4 @@ Y from_bits(void const * const x, R const r, N const n) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FROM_BITS_HPP
+#endif // SST_CATALOG_FROM_BITS_HPP

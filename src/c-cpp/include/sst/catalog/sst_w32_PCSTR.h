@@ -47,4 +47,4 @@ typedef sst_w32_CHAR const * sst_w32_PCSTR;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_PCSTR_H
+#endif // SST_CATALOG_SST_W32_PCSTR_H

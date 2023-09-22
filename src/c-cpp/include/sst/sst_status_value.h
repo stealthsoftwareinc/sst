@@ -41,4 +41,4 @@ SST_EXTERN_C SST_DLL_EXPORT sst_status (sst_status_value)(
   char const *
 );
 
-#endif // #ifndef SST_SST_STATUS_VALUE_H
+#endif // SST_SST_STATUS_VALUE_H

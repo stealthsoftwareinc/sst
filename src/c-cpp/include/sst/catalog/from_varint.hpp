@@ -128,4 +128,4 @@ auto from_varint(Src const & src) noexcept(noexcept(SST_r))
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FROM_VARINT_HPP
+#endif // SST_CATALOG_FROM_VARINT_HPP

@@ -60,4 +60,4 @@ using md5_t = SST_F;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_MD5_T_HPP
+#endif // SST_CATALOG_MD5_T_HPP

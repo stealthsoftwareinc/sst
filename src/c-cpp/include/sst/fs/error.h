@@ -62,4 +62,4 @@ struct error : std::runtime_error {
 
 #endif // __cplusplus
 
-#endif // #ifndef SST_FS_ERROR_H
+#endif // SST_FS_ERROR_H

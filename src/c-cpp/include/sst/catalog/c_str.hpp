@@ -102,4 +102,4 @@ using namespace guts::c_str::no_adl;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_C_STR_HPP
+#endif // SST_CATALOG_C_STR_HPP

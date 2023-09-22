@@ -36,6 +36,7 @@
 //
 
 #include <cstddef>
+
 #include <sst/catalog/SST_CPP17_OR_LATER.h>
 #include <sst/catalog/SST_TEST_BOOL.hpp>
 #include <sst/catalog/SST_TEST_SHOW.hpp>
@@ -99,7 +100,8 @@ int main() {
 
     struct struct_foo;
     F(struct_foo, false);
-    F(decltype(main), false);
+
+    F3(decltype(main), false);
 
 #undef F
 #undef F2

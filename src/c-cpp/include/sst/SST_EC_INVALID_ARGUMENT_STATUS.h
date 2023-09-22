@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidArgumentStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_ARGUMENT_STATUS_H
+#endif // SST_SST_EC_INVALID_ARGUMENT_STATUS_H

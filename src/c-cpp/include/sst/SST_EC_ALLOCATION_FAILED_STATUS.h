@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "AllocationFailedStatus"
 
-#endif // #ifndef SST_SST_EC_ALLOCATION_FAILED_STATUS_H
+#endif // SST_SST_EC_ALLOCATION_FAILED_STATUS_H

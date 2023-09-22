@@ -230,4 +230,4 @@ char * sst_get_option_value_a(
 
 #endif
 
-#endif // #ifndef SST_SST_GET_OPTION_VALUE_A_H
+#endif // SST_SST_GET_OPTION_VALUE_A_H

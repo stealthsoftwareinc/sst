@@ -40,4 +40,4 @@ struct is_byte_input_iterator
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_BYTE_INPUT_ITERATOR_HPP
+#endif // SST_CATALOG_IS_BYTE_INPUT_ITERATOR_HPP

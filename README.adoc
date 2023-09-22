@@ -120,7 +120,7 @@ endif::[]
 
 :PACKAGE_NAME: SST
 :PACKAGE_TARNAME: sst
-:PACKAGE_VERSION: 0.35.2
+:PACKAGE_VERSION: 0.39.0
 
 //
 
@@ -204,7 +204,7 @@ Technologies,{nbsp}Inc.{nbsp}(Stealth).
 
 :fp_package_name: {PACKAGE_NAME}
 :fp_package_tarname: {PACKAGE_TARNAME}
-:fp_artifact: source
+:fp_artifact: source code
 :fp_builtin_view_latest_url:
 :fp_builtin_view_pinned_url:
 :fp_builtin_download_latest_url:
@@ -221,7 +221,7 @@ Technologies,{nbsp}Inc.{nbsp}(Stealth).
 :fp_devel_view_pinned_url:
 :fp_devel_download_latest_url:
 :fp_devel_download_pinned_url:
-:fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/archive/refs/tags/v{PACKAGE_VERSION}.tar.gz
+:fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/raw/v{PACKAGE_VERSION}/{PACKAGE_TARNAME}-{PACKAGE_VERSION}.tar.gz
 
 //
 // Copyright (C) 2012-2023 Stealth Software Technologies, Inc.

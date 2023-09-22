@@ -38,4 +38,4 @@ SST_CPP17_INLINE int constexpr int_max_v = sst::int_max::value;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INT_MAX_V_HPP
+#endif // SST_CATALOG_INT_MAX_V_HPP

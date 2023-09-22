@@ -97,6 +97,7 @@ main() {
     sshpass \
     texinfo \
     wget \
+    xz-utils \
   ;
 
   eval "$with_build_groups_values"

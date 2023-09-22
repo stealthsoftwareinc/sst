@@ -47,4 +47,4 @@ typedef sst_w32_UINT_PTR sst_w32_SOCKET;
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SOCKET_H
+#endif // SST_CATALOG_SST_W32_SOCKET_H

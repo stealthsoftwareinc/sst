@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "ZeroListIndexStatus"
 
-#endif // #ifndef SST_SST_EC_ZERO_LIST_INDEX_STATUS_H
+#endif // SST_SST_EC_ZERO_LIST_INDEX_STATUS_H

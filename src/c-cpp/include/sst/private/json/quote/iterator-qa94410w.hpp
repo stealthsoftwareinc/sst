@@ -34,7 +34,7 @@
 #include <stdexcept>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/code_point_decoder.hpp>
 #include <sst/catalog/code_point_encoder.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -598,4 +598,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_QUOTE_ITERATOR_QA94410W_HPP
+#endif // SST_PRIVATE_JSON_QUOTE_ITERATOR_QA94410W_HPP

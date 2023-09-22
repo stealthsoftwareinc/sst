@@ -69,4 +69,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ERRNO_EXCEPTION_HPP
+#endif // SST_CATALOG_ERRNO_EXCEPTION_HPP

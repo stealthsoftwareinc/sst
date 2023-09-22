@@ -106,4 +106,4 @@ class write_whole_file_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_WRITE_WHOLE_FILE_TBXXR57T_HPP
+#endif // SST_PRIVATE_WRITE_WHOLE_FILE_TBXXR57T_HPP

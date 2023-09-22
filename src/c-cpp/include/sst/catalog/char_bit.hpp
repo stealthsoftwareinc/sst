@@ -37,4 +37,4 @@ using char_bit = sst::width_bits<unsigned char>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHAR_BIT_HPP
+#endif // SST_CATALOG_CHAR_BIT_HPP

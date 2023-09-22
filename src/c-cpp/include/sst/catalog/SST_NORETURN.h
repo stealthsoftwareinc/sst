@@ -46,4 +46,4 @@
 
 // clang-format on
 
-#endif // #ifndef SST_CATALOG_SST_NORETURN_H
+#endif // SST_CATALOG_SST_NORETURN_H

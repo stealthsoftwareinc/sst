@@ -38,4 +38,4 @@ using copy_cvref_t = typename sst::copy_cvref<A, B>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COPY_CVREF_T_HPP
+#endif // SST_CATALOG_COPY_CVREF_T_HPP

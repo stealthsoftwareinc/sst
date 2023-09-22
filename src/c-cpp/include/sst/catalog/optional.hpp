@@ -34,8 +34,7 @@
 
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
 #include <sst/catalog/SST_CPP14_CONSTEXPR.hpp>
-#include <sst/catalog/SST_NODISCARD.h>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
 #include <sst/catalog/monostate.hpp>
@@ -113,82 +112,84 @@ struct add_reset : storage<T> {
 //----------------------------------------------------------------------
 
 template<class, class = sst::enable_t>
-struct copy_construct;
+struct add_copy_ctor;
 
 template<class T>
-struct copy_construct<
+struct add_copy_ctor<
     T,
     sst::enable_if_t<!std::is_copy_constructible<T>::value>>
     : add_reset<T> {
-  copy_construct() = default;
-  copy_construct(copy_construct const &) = delete;
-  copy_construct & operator=(copy_construct const &) = default;
-  copy_construct(copy_construct &&) = default;
-  copy_construct & operator=(copy_construct &&) = default;
-  ~copy_construct() = default;
+  add_copy_ctor() = default;
+  ~add_copy_ctor() = default;
+  add_copy_ctor(add_copy_ctor const &) = delete;
+  add_copy_ctor & operator=(add_copy_ctor const &) = default;
+  add_copy_ctor(add_copy_ctor &&) = default;
+  add_copy_ctor & operator=(add_copy_ctor &&) = default;
 };
 
 template<class T>
-struct copy_construct<
+struct add_copy_ctor<
     T,
     sst::enable_if_t<std::is_trivially_copy_constructible<T>::value>>
     : add_reset<T> {};
 
 template<class T>
-struct copy_construct<
+struct add_copy_ctor<
     T,
     sst::enable_if_t<
         std::is_copy_constructible<T>::value
         && !std::is_trivially_copy_constructible<T>::value>>
     : add_reset<T> {
-  copy_construct() = default;
-  copy_construct(copy_construct const & other) noexcept(
-      SST_NOEXCEPT(T(std::declval<T &>()))) {
+  add_copy_ctor() = default;
+  ~add_copy_ctor() = default;
+  add_copy_ctor(add_copy_ctor const & other) noexcept(
+      noexcept(T(std::declval<T &>()))) {
     if (other.has_value_) {
       new (&this->value_) T(other.value_);
       this->has_value_ = true;
     }
   }
-  copy_construct & operator=(copy_construct const &) = default;
-  copy_construct(copy_construct &&) = default;
-  copy_construct & operator=(copy_construct &&) = default;
-  ~copy_construct() = default;
+  add_copy_ctor & operator=(add_copy_ctor const &) = default;
+  add_copy_ctor(add_copy_ctor &&) = default;
+  add_copy_ctor & operator=(add_copy_ctor &&) = default;
 };
 
 //----------------------------------------------------------------------
 
 template<class, class = sst::enable_t>
-struct copy_assign;
+struct add_copy_assign;
 
 template<class T>
-struct copy_assign<T,
-                   sst::enable_if_t<!std::is_copy_assignable<T>::value>>
-    : copy_construct<T> {
-  copy_assign() = default;
-  copy_assign(copy_assign const &) = default;
-  copy_assign & operator=(copy_assign const &) = delete;
-  copy_assign(copy_assign &&) = default;
-  copy_assign & operator=(copy_assign &&) = default;
-  ~copy_assign() = default;
+struct add_copy_assign<
+    T,
+    sst::enable_if_t<!std::is_copy_assignable<T>::value>>
+    : add_copy_ctor<T> {
+  add_copy_assign() = default;
+  ~add_copy_assign() = default;
+  add_copy_assign(add_copy_assign const &) = default;
+  add_copy_assign & operator=(add_copy_assign const &) = delete;
+  add_copy_assign(add_copy_assign &&) = default;
+  add_copy_assign & operator=(add_copy_assign &&) = default;
 };
 
 template<class T>
-struct copy_assign<
+struct add_copy_assign<
     T,
     sst::enable_if_t<std::is_trivially_copy_assignable<T>::value>>
-    : copy_construct<T> {};
+    : add_copy_ctor<T> {};
 
 template<class T>
-struct copy_assign<
+struct add_copy_assign<
     T,
     sst::enable_if_t<std::is_copy_assignable<T>::value
                      && !std::is_trivially_copy_assignable<T>::value>>
-    : copy_construct<T> {
-  copy_assign() = default;
-  copy_assign(copy_assign const &) = default;
-  copy_assign & operator=(copy_assign const & other) noexcept(
-      SST_NOEXCEPT(std::declval<T &>() = std::declval<T &>(),
-                   T(std::declval<T &>()))) {
+    : add_copy_ctor<T> {
+  add_copy_assign() = default;
+  ~add_copy_assign() = default;
+  add_copy_assign(add_copy_assign const &) = default;
+  add_copy_assign & operator=(add_copy_assign const & other) noexcept(
+      noexcept(std::declval<T &>() = std::declval<T &>(),
+               T(std::declval<T &>()))) {
     if (this->has_value_) {
       if (other.has_value_) {
         this->value_ = other.value_;
@@ -200,93 +201,94 @@ struct copy_assign<
       this->has_value_ = true;
     }
   }
-  copy_assign(copy_assign &&) = default;
-  copy_assign & operator=(copy_assign &&) = default;
-  ~copy_assign() = default;
+  add_copy_assign(add_copy_assign &&) = default;
+  add_copy_assign & operator=(add_copy_assign &&) = default;
 };
 
 //----------------------------------------------------------------------
 
 template<class, class = sst::enable_t>
-struct move_construct;
+struct add_move_ctor;
 
 template<class T>
-struct move_construct<
+struct add_move_ctor<
     T,
     sst::enable_if_t<!std::is_move_constructible<T>::value>>
-    : copy_assign<T> {
-  move_construct() = default;
-  move_construct(move_construct const &) = default;
-  move_construct & operator=(move_construct const &) = default;
-  move_construct(move_construct &&) = delete;
-  move_construct & operator=(move_construct &&) = default;
-  ~move_construct() = default;
+    : add_copy_assign<T> {
+  add_move_ctor() = default;
+  ~add_move_ctor() = default;
+  add_move_ctor(add_move_ctor const &) = default;
+  add_move_ctor & operator=(add_move_ctor const &) = default;
+  add_move_ctor(add_move_ctor &&) = delete;
+  add_move_ctor & operator=(add_move_ctor &&) = default;
 };
 
 template<class T>
-struct move_construct<
+struct add_move_ctor<
     T,
     sst::enable_if_t<std::is_trivially_move_constructible<T>::value>>
-    : copy_assign<T> {};
+    : add_copy_assign<T> {};
 
 template<class T>
-struct move_construct<
+struct add_move_ctor<
     T,
     sst::enable_if_t<
         std::is_move_constructible<T>::value
         && !std::is_trivially_move_constructible<T>::value>>
-    : copy_assign<T> {
-  move_construct() = default;
-  move_construct(move_construct const &) = default;
-  move_construct & operator=(move_construct const &) = default;
-  move_construct(move_construct && other) noexcept(
-      SST_NOEXCEPT(T(std::declval<T &&>()))) {
+    : add_copy_assign<T> {
+  add_move_ctor() = default;
+  ~add_move_ctor() = default;
+  add_move_ctor(add_move_ctor const &) = default;
+  add_move_ctor & operator=(add_move_ctor const &) = default;
+  add_move_ctor(add_move_ctor && other) noexcept(
+      noexcept(T(std::declval<T &&>()))) {
     if (other.has_value_) {
       new (&this->value_) T(std::move(other.value_));
       this->has_value_ = true;
       other.reset();
     }
   }
-  move_construct & operator=(move_construct &&) = default;
-  ~move_construct() = default;
+  add_move_ctor & operator=(add_move_ctor &&) = default;
 };
 
 //----------------------------------------------------------------------
 
 template<class, class = sst::enable_t>
-struct move_assign;
+struct add_move_assign;
 
 template<class T>
-struct move_assign<T,
-                   sst::enable_if_t<!std::is_move_assignable<T>::value>>
-    : move_construct<T> {
-  move_assign() = default;
-  move_assign(move_assign const &) = default;
-  move_assign & operator=(move_assign const &) = default;
-  move_assign(move_assign &&) = default;
-  move_assign & operator=(move_assign &&) = delete;
-  ~move_assign() = default;
+struct add_move_assign<
+    T,
+    sst::enable_if_t<!std::is_move_assignable<T>::value>>
+    : add_move_ctor<T> {
+  add_move_assign() = default;
+  ~add_move_assign() = default;
+  add_move_assign(add_move_assign const &) = default;
+  add_move_assign & operator=(add_move_assign const &) = default;
+  add_move_assign(add_move_assign &&) = default;
+  add_move_assign & operator=(add_move_assign &&) = delete;
 };
 
 template<class T>
-struct move_assign<
+struct add_move_assign<
     T,
     sst::enable_if_t<std::is_trivially_move_assignable<T>::value>>
-    : move_construct<T> {};
+    : add_move_ctor<T> {};
 
 template<class T>
-struct move_assign<
+struct add_move_assign<
     T,
     sst::enable_if_t<std::is_move_assignable<T>::value
                      && !std::is_trivially_move_assignable<T>::value>>
-    : move_construct<T> {
-  move_assign() = default;
-  move_assign(move_assign const &) = default;
-  move_assign & operator=(move_assign const &) = default;
-  move_assign(move_assign &&) = default;
-  move_assign & operator=(move_assign && other) noexcept(
-      SST_NOEXCEPT(std::declval<T &>() = std::declval<T &&>(),
-                   T(std::declval<T &&>()))) {
+    : add_move_ctor<T> {
+  add_move_assign() = default;
+  ~add_move_assign() = default;
+  add_move_assign(add_move_assign const &) = default;
+  add_move_assign & operator=(add_move_assign const &) = default;
+  add_move_assign(add_move_assign &&) = default;
+  add_move_assign & operator=(add_move_assign && other) noexcept(
+      noexcept(std::declval<T &>() = std::declval<T &&>(),
+               T(std::declval<T &&>()))) {
     if (this->has_value_) {
       if (other.has_value_) {
         this->value_ = std::move(other.value_);
@@ -299,7 +301,6 @@ struct move_assign<
       other.reset();
     }
   }
-  ~move_assign() = default;
 };
 
 //----------------------------------------------------------------------
@@ -308,9 +309,9 @@ struct move_assign<
 } // namespace guts
 
 template<class T>
-class optional : sst::guts::optional::move_assign<T> {
+class optional : sst::guts::optional::add_move_assign<T> {
 
-  using base = sst::guts::optional::move_assign<T>;
+  using base = sst::guts::optional::add_move_assign<T>;
 
   //--------------------------------------------------------------------
 
@@ -333,11 +334,11 @@ public:
 public:
 
   optional() = default;
+  ~optional() = default;
   optional(optional const &) = default;
   optional & operator=(optional const &) = default;
   optional(optional &&) = default;
   optional & operator=(optional &&) = default;
-  ~optional() = default;
 
   //--------------------------------------------------------------------
   // Existence retrieval
@@ -404,8 +405,8 @@ public:
            sst::enable_if_t<
                std::is_convertible<U &&, T>::value
                && !is_optional<sst::remove_cvref_t<U>>::value> = 0>
-  SST_CPP14_CONSTEXPR optional(U && value) noexcept(
-      SST_NOEXCEPT(T(std::forward<U>(value)))) {
+  SST_CPP14_CONSTEXPR
+  optional(U && value) noexcept(noexcept(T(std::forward<U>(value)))) {
     new (&this->value_) T(std::forward<U>(value));
     this->has_value_ = true;
   }
@@ -416,7 +417,7 @@ public:
                && std::is_constructible<T, U &&>::value
                && !is_optional<sst::remove_cvref_t<U>>::value> = 0>
   SST_CPP14_CONSTEXPR explicit optional(U && value) noexcept(
-      SST_NOEXCEPT(T(std::forward<U>(value)))) {
+      noexcept(T(std::forward<U>(value)))) {
     new (&this->value_) T(std::forward<U>(value));
     this->has_value_ = true;
   }
@@ -528,4 +529,4 @@ SST_STATIC_ASSERT((!std::is_trivially_destructible<
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_OPTIONAL_HPP
+#endif // SST_CATALOG_OPTIONAL_HPP

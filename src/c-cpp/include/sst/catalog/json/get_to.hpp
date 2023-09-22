@@ -39,4 +39,4 @@
 #include <sst/private/json/get_to/from_nlohmann/to_sequence_or_set_container.hpp>
 #include <sst/private/json/get_to/from_nlohmann/to_smart_pointer.hpp>
 
-#endif // #ifndef SST_CATALOG_JSON_GET_TO_HPP
+#endif // SST_CATALOG_JSON_GET_TO_HPP

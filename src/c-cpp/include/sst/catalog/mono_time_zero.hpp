@@ -39,4 +39,4 @@ std::chrono::time_point<std::chrono::steady_clock> mono_time_zero();
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MONO_TIME_ZERO_HPP
+#endif // SST_CATALOG_MONO_TIME_ZERO_HPP

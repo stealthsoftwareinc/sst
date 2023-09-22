@@ -39,7 +39,7 @@
 #include <algorithm>
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_IPPROTO_TCP.h>
 #include <sst/catalog/SST_W32_IPPROTO_UDP.h>
 #include <sst/catalog/SST_W32_SIZEOF_ADDRINFOA.h>

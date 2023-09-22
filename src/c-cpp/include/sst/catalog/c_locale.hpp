@@ -50,4 +50,4 @@ extern SST_DLL_EXPORT locale_t c_locale();
 
 #endif
 
-#endif // #ifndef SST_CATALOG_C_LOCALE_HPP
+#endif // SST_CATALOG_C_LOCALE_HPP

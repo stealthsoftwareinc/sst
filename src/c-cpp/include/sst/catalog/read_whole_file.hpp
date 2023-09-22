@@ -45,4 +45,4 @@ SST_DEFINE_ALGORITHM(read_whole_file,
 #include <sst/private/read_whole_file/eeap4r29.hpp>
 #include <sst/private/read_whole_file/f4r6mxj3.hpp>
 
-#endif // #ifndef SST_CATALOG_READ_WHOLE_FILE_HPP
+#endif // SST_CATALOG_READ_WHOLE_FILE_HPP

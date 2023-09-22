@@ -74,4 +74,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_RESTRICT_H
+#endif // SST_SST_RESTRICT_H

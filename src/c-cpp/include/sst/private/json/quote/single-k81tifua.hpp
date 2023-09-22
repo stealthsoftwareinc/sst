@@ -152,4 +152,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_QUOTE_SINGLE_K81TIFUA_HPP
+#endif // SST_PRIVATE_JSON_QUOTE_SINGLE_K81TIFUA_HPP

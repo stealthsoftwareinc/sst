@@ -92,4 +92,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FIXED_FILE_RNG_HPP
+#endif // SST_CATALOG_FIXED_FILE_RNG_HPP

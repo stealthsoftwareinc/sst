@@ -123,4 +123,4 @@ struct functor<A, B, C...> {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_MAX_HPP
+#endif // SST_CATALOG_UNSIGNED_MAX_HPP

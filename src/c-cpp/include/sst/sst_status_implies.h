@@ -43,4 +43,4 @@ SST_EXTERN_C SST_DLL_EXPORT sst_bool (sst_status_implies)(
   sst_status
 );
 
-#endif // #ifndef SST_SST_STATUS_IMPLIES_H
+#endif // SST_SST_STATUS_IMPLIES_H

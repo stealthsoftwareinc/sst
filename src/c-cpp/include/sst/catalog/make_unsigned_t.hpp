@@ -38,4 +38,4 @@ using make_unsigned_t = typename sst::make_unsigned<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAKE_UNSIGNED_T_HPP
+#endif // SST_CATALOG_MAKE_UNSIGNED_T_HPP

@@ -38,7 +38,7 @@
 
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/hash_state.hpp>
 #include <sst/catalog/openssl/err_exception.hpp>
 

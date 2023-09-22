@@ -31,4 +31,4 @@
 
 #define SST_C11_VALUE (201112L)
 
-#endif // #ifndef SST_CATALOG_SST_C11_VALUE_H
+#endif // SST_CATALOG_SST_C11_VALUE_H

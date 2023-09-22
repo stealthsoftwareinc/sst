@@ -38,4 +38,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_JSIZE_MINVAL_H
+#endif // SST_SST_JSIZE_MINVAL_H

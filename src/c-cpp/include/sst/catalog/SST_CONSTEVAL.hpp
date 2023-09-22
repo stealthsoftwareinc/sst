@@ -40,4 +40,4 @@
 #define SST_CONSTEVAL
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_CONSTEVAL_HPP
+#endif // SST_CATALOG_SST_CONSTEVAL_HPP

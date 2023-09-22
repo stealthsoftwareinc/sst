@@ -45,4 +45,4 @@ constexpr bool unsigned_gt(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_GT_HPP
+#endif // SST_CATALOG_UNSIGNED_GT_HPP

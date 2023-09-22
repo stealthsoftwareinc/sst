@@ -61,4 +61,4 @@ SST_FORWARDING_FUNCTION(sha512, SST_F)
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SHA512_HPP
+#endif // SST_CATALOG_SHA512_HPP

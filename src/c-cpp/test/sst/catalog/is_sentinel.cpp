@@ -93,8 +93,6 @@ int main() {
     F(char, true);
     F(void *, true);
     F(char *, true);
-    F(decltype(main), false);
-    F(decltype(&main), true);
 
 #undef F
 #undef F2

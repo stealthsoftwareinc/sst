@@ -45,4 +45,4 @@ constexpr bool unsigned_ne(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNSIGNED_NE_HPP
+#endif // SST_CATALOG_UNSIGNED_NE_HPP

@@ -39,4 +39,4 @@
 #endif
 
 #endif // #ifndef __cplusplus
-#endif // #ifndef SST_PRIVATE_SST_STATIC_ASSERT_H
+#endif // SST_PRIVATE_SST_STATIC_ASSERT_H

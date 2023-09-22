@@ -182,4 +182,4 @@ sst_bool sst_is_option_a(
 
 #endif
 
-#endif // #ifndef SST_SST_IS_OPTION_A_H
+#endif // SST_SST_IS_OPTION_A_H

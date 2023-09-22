@@ -29,6 +29,8 @@
 #ifndef SST_CATALOG_SST_TEV_RETHROW_HPP
 #define SST_CATALOG_SST_TEV_RETHROW_HPP
 
+// TODO: This macro should be merged into SST_TEV_BOT and removed.
+
 #include <exception>
 #include <utility>
 
@@ -46,4 +48,4 @@
             ::sst::remove_cvref_t<decltype(tev)>>(::std::move(tev)));  \
   }
 
-#endif // #ifndef SST_CATALOG_SST_TEV_RETHROW_HPP
+#endif // SST_CATALOG_SST_TEV_RETHROW_HPP

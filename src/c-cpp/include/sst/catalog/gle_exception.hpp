@@ -76,4 +76,4 @@ public:
 
 #endif // #if SST_WITH_WINDOWS_KERNEL32
 
-#endif // #ifndef SST_CATALOG_GLE_EXCEPTION_HPP
+#endif // SST_CATALOG_GLE_EXCEPTION_HPP

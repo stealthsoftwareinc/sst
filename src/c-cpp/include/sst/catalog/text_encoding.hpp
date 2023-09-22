@@ -39,4 +39,4 @@ enum class text_encoding {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TEXT_ENCODING_HPP
+#endif // SST_CATALOG_TEXT_ENCODING_HPP

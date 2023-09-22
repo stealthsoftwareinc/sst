@@ -42,4 +42,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_NETTLE_CIPHER_CTX_H
+#endif // SST_SST_NETTLE_CIPHER_CTX_H

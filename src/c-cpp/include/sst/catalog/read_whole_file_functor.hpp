@@ -31,4 +31,4 @@
 
 #include <sst/catalog/read_whole_file.hpp>
 
-#endif // #ifndef SST_CATALOG_READ_WHOLE_FILE_FUNCTOR_HPP
+#endif // SST_CATALOG_READ_WHOLE_FILE_FUNCTOR_HPP

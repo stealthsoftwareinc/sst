@@ -50,4 +50,4 @@ void unknown_key(NlohmannJson const & src) {
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_UNKNOWN_KEY_K3W9KUN5_NLOHMANN_HPP
+#endif // SST_PRIVATE_JSON_UNKNOWN_KEY_K3W9KUN5_NLOHMANN_HPP

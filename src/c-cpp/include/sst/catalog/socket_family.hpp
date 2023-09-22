@@ -66,4 +66,4 @@ enum class socket_family {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SOCKET_FAMILY_HPP
+#endif // SST_CATALOG_SOCKET_FAMILY_HPP

@@ -101,4 +101,4 @@ bool get_bit(void const * const x, R const r) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_GET_BIT_HPP
+#endif // SST_CATALOG_GET_BIT_HPP

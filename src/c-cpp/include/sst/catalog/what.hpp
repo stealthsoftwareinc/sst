@@ -34,8 +34,8 @@
 #include <string>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 
 namespace sst {
@@ -119,12 +119,12 @@ public:
   what & operator=(what &&) = delete;
   ~what() noexcept = default;
 
-  operator char const *() const noexcept {
+  char const * c_str() const noexcept {
     SST_ASSERT((msg_ != nullptr));
     return msg_;
   }
 
-  operator std::string() const {
+  operator char const *() const noexcept {
     SST_ASSERT((msg_ != nullptr));
     return msg_;
   }
@@ -143,4 +143,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_WHAT_HPP
+#endif // SST_CATALOG_WHAT_HPP

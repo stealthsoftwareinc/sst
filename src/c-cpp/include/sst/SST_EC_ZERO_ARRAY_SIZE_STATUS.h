@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "ZeroArraySizeStatus"
 
-#endif // #ifndef SST_SST_EC_ZERO_ARRAY_SIZE_STATUS_H
+#endif // SST_SST_EC_ZERO_ARRAY_SIZE_STATUS_H

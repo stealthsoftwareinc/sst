@@ -31,7 +31,7 @@
 
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/private/guts/generic_socket_poll_set.hpp>
 
 namespace sst {
@@ -66,4 +66,4 @@ void generic_socket_poll_set<Socket, Entry>::erase_helper(
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ERASE_HELPER_SOCKET_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ERASE_HELPER_SOCKET_HPP

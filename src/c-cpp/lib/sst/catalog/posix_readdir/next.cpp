@@ -41,7 +41,7 @@
 #include <dirent.h>
 #include <sys/types.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/errno_exception.hpp>
 
 namespace sst {

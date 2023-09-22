@@ -37,4 +37,4 @@
 #define SST_CPP17_INLINE
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_CPP17_INLINE_HPP
+#endif // SST_CATALOG_SST_CPP17_INLINE_HPP

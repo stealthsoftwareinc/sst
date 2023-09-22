@@ -99,4 +99,4 @@ void * sst_realloc(
 
 #endif
 
-#endif // #ifndef SST_SST_REALLOC_H
+#endif // SST_SST_REALLOC_H

@@ -41,4 +41,4 @@ struct dummy {};
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_TRACING_EVENT_DUMMY_HPP
+#endif // SST_PRIVATE_GUTS_TRACING_EVENT_DUMMY_HPP

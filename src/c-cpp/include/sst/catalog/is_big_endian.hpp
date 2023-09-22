@@ -60,4 +60,4 @@ struct is_big_endian<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_BIG_ENDIAN_HPP
+#endif // SST_CATALOG_IS_BIG_ENDIAN_HPP

@@ -42,4 +42,4 @@
   template<class T1>                                                   \
   class NAME<T1, sst::enable_if_t<(EXPR)>> : public __VA_ARGS__ {};
 
-#endif // #ifndef SST_CATALOG_SST_DEFINE_FORWARD_TRAIT_1_HPP
+#endif // SST_CATALOG_SST_DEFINE_FORWARD_TRAIT_1_HPP

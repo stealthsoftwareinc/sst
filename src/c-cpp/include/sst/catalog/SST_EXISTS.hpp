@@ -33,4 +33,4 @@
 
 #define SST_EXISTS(...) (sst::dependent_true<__VA_ARGS__>::value)
 
-#endif // #ifndef SST_CATALOG_SST_EXISTS_HPP
+#endif // SST_CATALOG_SST_EXISTS_HPP

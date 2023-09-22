@@ -38,9 +38,9 @@
 #include <type_traits>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/SST_WITH_SQLITE_SERIALIZATION.h>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/cbegin.hpp>
@@ -135,12 +135,11 @@ public:
 
   database & operator=(database const & other);
 
-  database(database &&) SST_DEFAULT_NOEXCEPT(true) = default;
+  database(database &&) SST_NOEXCEPT(true) = default;
 
-  database & operator=(database &&)
-      SST_DEFAULT_NOEXCEPT(true) = default;
+  database & operator=(database &&) SST_NOEXCEPT(true) = default;
 
-  ~database() SST_DEFAULT_NOEXCEPT(true) = default;
+  ~database() SST_NOEXCEPT(true) = default;
 
   //--------------------------------------------------------------------
   // database_list
@@ -165,9 +164,34 @@ public:
 public:
 
   // ID: fttcexwfwu
-  database & deserialize(char const * const schema,
-                         unsigned char const * const buffer,
-                         sqlite3_int64 const size);
+  database & deserialize(char const * schema,
+                         unsigned char * buffer,
+                         sqlite3_int64 size,
+                         bool readonly = false,
+                         bool copy = true,
+                         bool resizable = true,
+                         sqlite3_int64 capacity = 0,
+                         bool deallocate = false);
+
+  // ID: wtnnoxrunm
+  database & deserialize(char const * schema,
+                         unsigned char const * buffer,
+                         sqlite3_int64 size,
+                         bool readonly = false,
+                         bool copy = true,
+                         bool resizable = true,
+                         sqlite3_int64 capacity = 0,
+                         bool deallocate = false) {
+    SST_ASSERT((readonly || copy));
+    return deserialize(schema,
+                       const_cast<unsigned char *>(buffer),
+                       size,
+                       readonly,
+                       copy,
+                       resizable,
+                       capacity,
+                       deallocate);
+  }
 
   // ID: vxpizfwfzi
   template<class Size,
@@ -286,4 +310,4 @@ public:
 
 #endif // #if SST_WITH_SQLITE
 
-#endif // #ifndef SST_CATALOG_SQLITE_DATABASE_HPP
+#endif // SST_CATALOG_SQLITE_DATABASE_HPP

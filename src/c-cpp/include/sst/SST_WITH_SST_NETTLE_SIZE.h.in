@@ -56,4 +56,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_WITH_SST_NETTLE_SIZE_H
+#endif // SST_SST_WITH_SST_NETTLE_SIZE_H

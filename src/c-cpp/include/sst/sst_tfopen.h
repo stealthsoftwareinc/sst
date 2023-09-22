@@ -32,4 +32,4 @@
 #include <stdio.h>
 #define sst_tfopen fopen
 
-#endif // #ifndef SST_SST_TFOPEN_H
+#endif // SST_SST_TFOPEN_H

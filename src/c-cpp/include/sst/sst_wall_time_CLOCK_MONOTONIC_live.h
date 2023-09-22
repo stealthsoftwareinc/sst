@@ -88,4 +88,4 @@ extern unsigned int const sst_wall_time_CLOCK_MONOTONIC_live;
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_CLOCK_MONOTONIC_LIVE_H
+#endif // SST_SST_WALL_TIME_CLOCK_MONOTONIC_LIVE_H

@@ -39,4 +39,4 @@ SST_DEFINE_ALGORITHM(get_to)
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_TO_HPP
+#endif // SST_PRIVATE_JSON_GET_TO_HPP

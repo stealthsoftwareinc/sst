@@ -60,4 +60,4 @@
 
 #define SST_STATUS_MAXVAL 43UL
 
-#endif // #ifndef SST_SST_STATUS_MAXVAL_H
+#endif // SST_SST_STATUS_MAXVAL_H

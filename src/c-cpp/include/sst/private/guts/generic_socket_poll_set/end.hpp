@@ -48,4 +48,4 @@ generic_socket_poll_set<Socket, Entry>::end() const {
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_END_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_END_HPP

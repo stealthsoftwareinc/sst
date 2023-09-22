@@ -54,4 +54,4 @@ sst::openssl::md5_t::output_t md5(Args &&... args) {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_MD5_HPP
+#endif // SST_CATALOG_OPENSSL_MD5_HPP

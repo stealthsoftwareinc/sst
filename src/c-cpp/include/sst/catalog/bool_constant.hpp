@@ -38,4 +38,4 @@ using bool_constant = std::integral_constant<bool, B>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BOOL_CONSTANT_HPP
+#endif // SST_CATALOG_BOOL_CONSTANT_HPP

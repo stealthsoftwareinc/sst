@@ -52,4 +52,4 @@ auto to_bytes(T && src, ByteIt && dst, Args &&... args) -> decltype(
 } // namespace old
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_OLD_TO_BYTES_HPP
+#endif // SST_CATALOG_OLD_TO_BYTES_HPP

@@ -31,7 +31,7 @@
 
 :leveloffset: +1
 
-include::sections/cl_sst_directory_iterator.adoc[]
+include::sections/cl_sst_dir_it.adoc[]
 include::sections/cl_sst_mkdir.adoc[]
 include::sections/cl_sst_mkdir_p.adoc[]
 include::sections/cl_sst_read_whole_file.adoc[]

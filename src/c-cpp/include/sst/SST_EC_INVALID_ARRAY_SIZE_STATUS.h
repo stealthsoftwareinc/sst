@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidArraySizeStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_ARRAY_SIZE_STATUS_H
+#endif // SST_SST_EC_INVALID_ARRAY_SIZE_STATUS_H

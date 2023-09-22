@@ -39,4 +39,4 @@ SST_CPP17_INLINE constexpr unsigned char uchar_msb_v =
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UCHAR_MSB_V_HPP
+#endif // SST_CATALOG_UCHAR_MSB_V_HPP

@@ -53,4 +53,4 @@
 /*--------------------------------------------------------------------*/
 #endif
 
-#endif // #ifndef SST_ALGORITHM_H
+#endif // SST_ALGORITHM_H

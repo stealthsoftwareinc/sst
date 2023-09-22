@@ -54,4 +54,4 @@ assertion_failed(char const * file,
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_ASSERTION_FAILED_HPP
+#endif // SST_PRIVATE_GUTS_ASSERTION_FAILED_HPP

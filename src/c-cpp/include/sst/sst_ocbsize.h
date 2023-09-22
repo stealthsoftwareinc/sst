@@ -42,4 +42,4 @@ SST_EXTERN_C SST_DLL_EXPORT size_t (sst_ocbsize)(
   size_t
 );
 
-#endif // #ifndef SST_SST_OCBSIZE_H
+#endif // SST_SST_OCBSIZE_H

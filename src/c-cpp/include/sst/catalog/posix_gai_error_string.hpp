@@ -46,4 +46,4 @@ std::string posix_gai_error_string(int e);
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_GAI_ERROR_STRING_HPP
+#endif // SST_CATALOG_POSIX_GAI_ERROR_STRING_HPP

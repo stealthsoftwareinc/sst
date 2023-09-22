@@ -68,4 +68,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_STRING_FROM_MEMBER_FUNCTION_HPP
+#endif // SST_PRIVATE_TO_STRING_FROM_MEMBER_FUNCTION_HPP

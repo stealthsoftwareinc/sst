@@ -40,7 +40,7 @@
 
 #include <poll.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/posix_socket.hpp>
 
 namespace sst {

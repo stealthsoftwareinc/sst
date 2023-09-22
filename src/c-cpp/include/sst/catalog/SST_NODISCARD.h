@@ -42,4 +42,4 @@
 
 // clang-format on
 
-#endif // #ifndef SST_CATALOG_SST_NODISCARD_H
+#endif // SST_CATALOG_SST_NODISCARD_H

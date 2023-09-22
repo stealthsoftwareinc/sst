@@ -46,4 +46,4 @@ std::string wsa_error_string(int code);
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WSA_ERROR_STRING_HPP
+#endif // SST_CATALOG_WSA_ERROR_STRING_HPP

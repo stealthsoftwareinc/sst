@@ -62,4 +62,4 @@ auto cp(Args &&... args) noexcept(noexcept(SST_r)) -> decltype(SST_r) {
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_CP_HPP
+#endif // SST_CATALOG_CP_HPP

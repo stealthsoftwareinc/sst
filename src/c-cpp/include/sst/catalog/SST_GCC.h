@@ -43,4 +43,4 @@
 
 #endif /* #ifndef SST_GCC */
 
-#endif // #ifndef SST_CATALOG_SST_GCC_H
+#endif // SST_CATALOG_SST_GCC_H

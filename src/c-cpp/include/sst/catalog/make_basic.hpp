@@ -31,7 +31,7 @@
 
 #include <cstddef>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/undeduced_t.hpp>
 
@@ -67,4 +67,4 @@ sst::basic_ptr<T> make_basic() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAKE_BASIC_HPP
+#endif // SST_CATALOG_MAKE_BASIC_HPP

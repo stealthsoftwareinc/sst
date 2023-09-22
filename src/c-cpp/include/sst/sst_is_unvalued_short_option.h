@@ -85,4 +85,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_IS_UNVALUED_SHORT_OPTION_H
+#endif // SST_SST_IS_UNVALUED_SHORT_OPTION_H

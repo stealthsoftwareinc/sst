@@ -150,4 +150,4 @@ SST_Y(unsigned long, unsigned short);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_CAN_REPRESENT_ALL_HPP
+#endif // SST_CATALOG_CAN_REPRESENT_ALL_HPP

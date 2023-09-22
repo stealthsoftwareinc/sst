@@ -42,4 +42,4 @@ SST_EXTERN_C SST_DLL_EXPORT void * (sst_jlongptr_to_ptr)(
 
 #endif
 
-#endif // #ifndef SST_SST_JLONGPTR_TO_PTR_H
+#endif // SST_SST_JLONGPTR_TO_PTR_H

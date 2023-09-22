@@ -70,9 +70,9 @@ ifndef::define_attributes[]
 #include <{cl_include_iostream}>
 #include <{cl_include_stdexcept}>
 
-#include <sst/catalog/SST_TEV.hpp>
 #include <sst/catalog/SST_TEV_ARG.hpp>
 #include <{cl_sst_catalog_SST_TEV_BOT_hpp}>
+#include <sst/catalog/SST_TEV_DEF.hpp>
 #include <{cl_sst_catalog_SST_TEV_TOP_hpp}>
 #include <sst/catalog/tracing_event.hpp>
 #include <sst/catalog/tracing_exception.hpp>
@@ -93,7 +93,7 @@ void f(tev_t tev) {
 } // namespace
 
 int main() {
-  tev_t SST_TEV(tev);
+  tev_t SST_TEV_DEF(tev);
   try {
     f(SST_TEV_ARG(tev));
   } catch (tex_t const & e) {

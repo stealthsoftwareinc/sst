@@ -33,7 +33,7 @@
 #include <utility>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/begin.hpp>
 #include <sst/catalog/checked_resize.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -209,4 +209,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_RNG_SHELL_HPP
+#endif // SST_CATALOG_RNG_SHELL_HPP

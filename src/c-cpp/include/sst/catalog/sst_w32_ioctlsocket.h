@@ -51,4 +51,4 @@ sst_w32_ioctlsocket(sst_w32_SOCKET s, long cmd, sst_w32_u_long * argp);
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_IOCTLSOCKET_H
+#endif // SST_CATALOG_SST_W32_IOCTLSOCKET_H

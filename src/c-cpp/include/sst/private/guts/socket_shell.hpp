@@ -37,8 +37,8 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/gai_flags.hpp>
 #include <sst/catalog/inet_pref.hpp>
@@ -1463,4 +1463,4 @@ private:
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_SOCKET_SHELL_HPP
+#endif // SST_PRIVATE_GUTS_SOCKET_SHELL_HPP

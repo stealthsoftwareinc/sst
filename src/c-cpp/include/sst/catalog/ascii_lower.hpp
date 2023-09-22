@@ -46,4 +46,4 @@ SST_DEFINE_ALGORITHM(ascii_lower,
 #include <sst/private/ascii_lower/from_char_input_iterable.hpp>
 #include <sst/private/ascii_lower/from_char_input_iterator.hpp>
 
-#endif // #ifndef SST_CATALOG_ASCII_LOWER_HPP
+#endif // SST_CATALOG_ASCII_LOWER_HPP

@@ -145,4 +145,4 @@
 
 /*--------------------------------------------------------------------*/
 
-#endif // #ifndef SST_CATALOG_SST_NARGS_H
+#endif // SST_CATALOG_SST_NARGS_H

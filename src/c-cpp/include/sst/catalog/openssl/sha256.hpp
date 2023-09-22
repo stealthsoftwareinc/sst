@@ -54,4 +54,4 @@ sst::openssl::sha256_t::output_t sha256(Args &&... args) {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_SHA256_HPP
+#endif // SST_CATALOG_OPENSSL_SHA256_HPP

@@ -50,4 +50,4 @@
 /*--------------------------------------------------------------------*/
 #endif
 
-#endif // #ifndef SST_FILESYSTEM_H
+#endif // SST_FILESYSTEM_H

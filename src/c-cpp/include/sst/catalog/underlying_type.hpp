@@ -50,4 +50,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNDERLYING_TYPE_HPP
+#endif // SST_CATALOG_UNDERLYING_TYPE_HPP

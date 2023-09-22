@@ -51,4 +51,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitxlty)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITXLTY_H
+#endif // SST_SST_BITXLTY_H

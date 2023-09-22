@@ -39,4 +39,4 @@ SST_NORETURN() void sst_assertion_failed(char const * file,
                                          char const * argstr,
                                          char const * message);
 
-#endif // #ifndef SST_PRIVATE_SST_ASSERTION_FAILED_H
+#endif // SST_PRIVATE_SST_ASSERTION_FAILED_H

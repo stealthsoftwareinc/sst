@@ -26,9 +26,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-var sst = sst || {};
+globalThis.sst = globalThis.sst || {};
 
-sst.sankey = function(edges, {
+globalThis.sst.sankey = function(edges, {
   showNodeWeights = false,
   getEdgeSource = (edge) => Array.isArray(edge) ? edge[0] : edge.source,
   getEdgeTarget = (edge) => Array.isArray(edge) ? edge[1] : edge.target,

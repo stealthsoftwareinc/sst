@@ -42,4 +42,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(is_char_input_it_ptr,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_CHAR_INPUT_IT_PTR_HPP
+#endif // SST_CATALOG_IS_CHAR_INPUT_IT_PTR_HPP

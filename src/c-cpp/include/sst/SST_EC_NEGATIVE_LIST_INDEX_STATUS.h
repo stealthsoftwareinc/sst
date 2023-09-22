@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NegativeListIndexStatus"
 
-#endif // #ifndef SST_SST_EC_NEGATIVE_LIST_INDEX_STATUS_H
+#endif // SST_SST_EC_NEGATIVE_LIST_INDEX_STATUS_H

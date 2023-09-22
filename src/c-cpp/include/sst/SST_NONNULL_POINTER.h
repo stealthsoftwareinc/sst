@@ -60,4 +60,4 @@
 
 #define SST_NONNULL_POINTER 15UL
 
-#endif // #ifndef SST_SST_NONNULL_POINTER_H
+#endif // SST_SST_NONNULL_POINTER_H

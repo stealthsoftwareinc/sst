@@ -67,4 +67,4 @@ struct SST_DLL_EXPORT posix_gai_exception
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_GAI_EXCEPTION_HPP
+#endif // SST_CATALOG_POSIX_GAI_EXCEPTION_HPP

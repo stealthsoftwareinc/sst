@@ -61,4 +61,4 @@ using socket = windows_socket;
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_SOCKET_HPP
+#endif // SST_CATALOG_SOCKET_HPP

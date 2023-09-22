@@ -35,4 +35,4 @@
   }                                                                    \
   SST_TEV_RETHROW(tev)
 
-#endif // #ifndef SST_CATALOG_SST_TEV_BOT_HPP
+#endif // SST_CATALOG_SST_TEV_BOT_HPP

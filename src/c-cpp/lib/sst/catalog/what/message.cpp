@@ -35,7 +35,7 @@
 #include <exception>
 #include <string>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/what_suffix.hpp>
 
 namespace sst {

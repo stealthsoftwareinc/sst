@@ -61,4 +61,4 @@
 
 typedef unsigned char sst_utf8;
 
-#endif // #ifndef SST_SST_UTF8_H
+#endif // SST_SST_UTF8_H

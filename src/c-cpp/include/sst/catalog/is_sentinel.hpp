@@ -66,4 +66,4 @@ struct is_sentinel<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_SENTINEL_HPP
+#endif // SST_CATALOG_IS_SENTINEL_HPP

@@ -45,4 +45,4 @@ inline std::string ctime() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CTIME_HPP
+#endif // SST_CATALOG_CTIME_HPP

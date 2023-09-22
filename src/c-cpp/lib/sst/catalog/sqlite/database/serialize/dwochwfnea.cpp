@@ -40,7 +40,7 @@
 #include <new>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/checked_resize.hpp>
 

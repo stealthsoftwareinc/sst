@@ -50,4 +50,4 @@ sst_w32_SOCKET sst_w32_socket_f(int af, int type, int protocol);
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SOCKET_F_H
+#endif // SST_CATALOG_SST_W32_SOCKET_F_H

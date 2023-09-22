@@ -38,7 +38,7 @@
 
 #include <cstdlib>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_AF_INET.h>
 #include <sst/catalog/SST_W32_AF_INET6.h>
 #include <sst/catalog/SST_W32_AF_UNSPEC.h>

@@ -38,7 +38,7 @@
 
 #include <cstdlib>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/openssl/err_exception.hpp>
 #include <sst/catalog/openssl/evp_cipher_type.hpp>
 

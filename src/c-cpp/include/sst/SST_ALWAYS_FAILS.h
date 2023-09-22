@@ -61,4 +61,4 @@
 
 #define SST_ALWAYS_FAILS 34UL
 
-#endif // #ifndef SST_SST_ALWAYS_FAILS_H
+#endif // SST_SST_ALWAYS_FAILS_H

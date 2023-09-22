@@ -38,4 +38,4 @@ using undeduced_t = typename sst::undeduced<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNDEDUCED_T_HPP
+#endif // SST_CATALOG_UNDEDUCED_T_HPP

@@ -30,7 +30,7 @@
 #define SST_CATALOG_CEIL_SQRT_HPP
 
 #include <cmath>
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_CPP14_CONSTEXPR.hpp>
 #include <sst/catalog/enable_if.hpp>
 #include <sst/catalog/perfect_ge.hpp>
@@ -94,4 +94,4 @@ T ceil_sqrt(T const x) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CEIL_SQRT_HPP
+#endif // SST_CATALOG_CEIL_SQRT_HPP

@@ -41,4 +41,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(is_urbg, T, (std::is_class<T>::value))
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_URBG_HPP
+#endif // SST_CATALOG_IS_URBG_HPP

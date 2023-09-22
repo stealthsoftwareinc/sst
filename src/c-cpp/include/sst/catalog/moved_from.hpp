@@ -32,7 +32,7 @@
 #include <atomic>
 #include <cstdlib>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_DEBUG.h>
 
 namespace sst {
@@ -148,4 +148,4 @@ using moved_from = sst::guts::ndebug_moved_from;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MOVED_FROM_HPP
+#endif // SST_CATALOG_MOVED_FROM_HPP

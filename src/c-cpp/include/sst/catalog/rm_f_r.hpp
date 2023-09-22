@@ -46,4 +46,4 @@ std::uintmax_t rm_f_r(std::string && path);
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_RM_F_R_HPP
+#endif // SST_CATALOG_RM_F_R_HPP

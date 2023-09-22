@@ -90,6 +90,13 @@ sst_ag_process_leaf_helper() {
       #       Not none, and not more than one. We'll still have "phony"
       #       .ag files, but they should always be above directories
       #       processed by this function.
+      # TODO: OK >1 child can be a problem because it makes it hard to
+      #       do stuff for the child, but why is 0 a problem? Can't the
+      #       caller just check for 0? Can we somehow return a list and
+      #       then any number of children is fine? Oh, if we do the
+      #       include right here, then that .ag file may do multiple
+      #       calls to this very function, then we're in trouble? Maybe
+      #       the right thing to do here is a noop? Error?
       child=
       sst_${leaf##*.}_include $leaf
     elif [[ $leaf == *.@(ag|ac|am) ]]; then

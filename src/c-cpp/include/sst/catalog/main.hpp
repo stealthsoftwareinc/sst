@@ -44,6 +44,11 @@ namespace sst {
 //       sst::what()? The user can still call them to set them
 //       themselves, so this shouldn't cause any problems?
 
+// TODO: Print out something nice for sst::tracing_exception? What even
+//       currently happens?
+
+// TODO: Support func returning int.
+
 template<class Func, class... Args>
 int main(int const argc,
          char * const * const argv,
@@ -94,4 +99,4 @@ int main(int const argc,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAIN_HPP
+#endif // SST_CATALOG_MAIN_HPP

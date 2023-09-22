@@ -35,4 +35,4 @@ struct monostate {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MONOSTATE_HPP
+#endif // SST_CATALOG_MONOSTATE_HPP

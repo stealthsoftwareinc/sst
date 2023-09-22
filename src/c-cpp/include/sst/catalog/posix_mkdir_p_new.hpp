@@ -35,8 +35,7 @@
 
 #include <utility>
 
-#include <sst/private/guts/posix_mkdir_p/helper.hpp>
-#include <sst/private/guts/posix_mkdir_p/style.hpp>
+#include <sst/private/guts/posix_mkdir_p.hpp>
 
 namespace sst {
 
@@ -44,11 +43,11 @@ template<class Path>
 void posix_mkdir_p_new(Path && path) {
   (void)sst::guts::posix_mkdir_p::helper(
       std::forward<Path>(path),
-      sst::guts::posix_mkdir_p::style::p_new);
+      sst::guts::posix_mkdir_p::style_t::p_new);
 }
 
 } // namespace sst
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_MKDIR_P_NEW_HPP
+#endif // SST_CATALOG_POSIX_MKDIR_P_NEW_HPP

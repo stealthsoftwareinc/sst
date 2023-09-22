@@ -39,4 +39,4 @@ SST_ALGORITHM_OPTIONS(c_quote_options,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_C_QUOTE_OPTIONS_HPP
+#endif // SST_CATALOG_C_QUOTE_OPTIONS_HPP

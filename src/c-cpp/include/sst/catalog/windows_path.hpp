@@ -33,288 +33,84 @@
 
 #if SST_WITH_WINDOWS_KERNEL32
 
+#include <cstdint>
 #include <string>
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_DEFINE_BOOLEAN_TRAIT_1.hpp>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/cbegin.hpp>
-#include <sst/catalog/cend.hpp>
 #include <sst/catalog/enable_if_t.hpp>
-#include <sst/catalog/is_byte.hpp>
 #include <sst/catalog/is_input_iterator.hpp>
+#include <sst/catalog/is_integer_ish.hpp>
 #include <sst/catalog/is_iterable.hpp>
 #include <sst/catalog/is_sentinel.hpp>
-#include <sst/catalog/moved_from.hpp>
+#include <sst/catalog/is_value_sentinel.hpp>
+#include <sst/catalog/optional.hpp>
+#include <sst/catalog/peek.hpp>
+#include <sst/catalog/pos.hpp>
+#include <sst/catalog/remove_cvref_t.hpp>
+#include <sst/catalog/size.hpp>
+#include <sst/catalog/step.hpp>
+#include <sst/catalog/value_sentinel.hpp>
+#include <sst/catalog/value_type_t.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
+#include <sst/private/guts/common_path.hpp>
 
 namespace sst {
 
 template<class CharT>
-class windows_path {
+class windows_path
+    : public guts::common_path<windows_path<CharT>, CharT> {
+
+  SST_STATIC_ASSERT((std::is_same<CharT, char>::value
+                     || std::is_same<CharT, wchar_t>::value));
+
+  using base = guts::common_path<windows_path<CharT>, CharT>;
+
+  template<class, class>
+  friend class guts::common_path;
 
   //--------------------------------------------------------------------
-  // value_type
-  //--------------------------------------------------------------------
-
-public:
-
-  using value_type = CharT;
-
-  SST_STATIC_ASSERT((std::is_same<value_type, char>::value
-                     || std::is_same<value_type, wchar_t>::value));
-
-  //--------------------------------------------------------------------
-  // value_type_ok
-  //--------------------------------------------------------------------
-  //
-  // Determines whether a type T is OK to convert to value_type.
-  //
-
-private:
-
-  SST_DEFINE_BOOLEAN_TRAIT_1(value_type_ok,
-                             T,
-                             (std::is_convertible<T, value_type>::value
-                              || (std::is_same<value_type, char>::value
-                                  && sst::is_byte<T>::value)))
-
-  //--------------------------------------------------------------------
-  // construct-from-iterable
+  // Types
   //--------------------------------------------------------------------
 
 public:
 
-  template<
-      class Src,
-      sst::enable_if_t<sst::is_iterable<Src, value_type_ok>::value> = 0>
-  windows_path(Src const & src, bool const follow_links = true)
-      : windows_path(sst::cbegin(src), sst::cend(src), follow_links) {
-  }
+  using char_t = typename base::char_t;
+  using string_t = typename base::string_t;
+  using value_type = typename base::value_type;
 
   //--------------------------------------------------------------------
-  // construct-from-iterator
+  // Default operations
   //--------------------------------------------------------------------
 
 public:
 
-  template<
-      class Src,
-      class End,
-      sst::enable_if_t<sst::is_input_iterator<Src, value_type_ok>::value
-                       && sst::is_sentinel<End, Src>::value> = 0>
-  windows_path(Src src, End const & end, bool const follow_links = true)
-      : follow_links_(follow_links) {
-    for (; !(src == end); ++src) {
-      value_type const c = static_cast<value_type>(*src);
-      if (c == 0) {
-        break;
-      }
-      str_ += c;
-    }
-  }
+  ~windows_path() SST_NOEXCEPT(true) = default;
+
+  windows_path(windows_path const &) = default;
+
+  windows_path(windows_path &&) SST_NOEXCEPT(true) = default;
+
+  windows_path & operator=(windows_path const &) = default;
+
+  windows_path & operator=(windows_path &&)
+      SST_NOEXCEPT(true) = default;
 
   //--------------------------------------------------------------------
-  // construct-from-pointer
+  // Construction
   //--------------------------------------------------------------------
 
 public:
 
-  template<class T, sst::enable_if_t<value_type_ok<T>::value> = 0>
-  windows_path(T const * const path, bool const follow_links = true)
-      : follow_links_(follow_links),
-        str_((SST_ASSERT((path != nullptr)),
-              reinterpret_cast<value_type const *>(path))) {
-  }
+  using base::base;
 
   //--------------------------------------------------------------------
-  // construct-from-std-string-lvalue
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path(std::basic_string<value_type> const & path,
-               bool const follow_links = true)
-      : follow_links_(follow_links),
-        str_(path) {
-  }
-
-  //--------------------------------------------------------------------
-  // construct-from-std-string-rvalue
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path(std::basic_string<value_type> && path,
-               bool follow_links = true)
-      : follow_links_(follow_links),
-        str_(std::move(path)) {
-  }
-
-  //--------------------------------------------------------------------
-  // construct-moved-from
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path() : moved_from_(true) {
-  }
-
-  //--------------------------------------------------------------------
-  // copy-assign
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path & operator=(windows_path const & other) {
-    if (this != &other) {
-      *this = windows_path(other);
-    }
-    return *this;
-  }
-
-  //--------------------------------------------------------------------
-  // copy-construct
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path(windows_path const & other)
-      : follow_links_(other.follow_links_),
-        moved_from_(other.moved_from_),
-        str_(other.str_),
-        have_test_d_(other.have_test_d_),
-        test_d_(other.test_d_),
-        have_test_e_(other.have_test_e_),
-        test_e_(other.test_e_),
-        have_test_f_(other.have_test_f_),
-        test_f_(other.test_f_),
-        will_refresh_(other.will_refresh_) {
-  }
-
-  //--------------------------------------------------------------------
-  // destruct
-  //--------------------------------------------------------------------
-
-public:
-
-  ~windows_path() noexcept {
-  }
-
-  //--------------------------------------------------------------------
-  // directory_char
-  //--------------------------------------------------------------------
-
-public:
-
-  static constexpr value_type directory_char() noexcept {
-    return value_type('\\');
-  }
-
-  //--------------------------------------------------------------------
-  // follow_links
-  //--------------------------------------------------------------------
-  //
-  // Indicates whether this path object will follow symbolic links when
-  // performing a refresh.
-  //
-
-private:
-
-  bool follow_links_ = true;
-
-public:
-
-  bool follow_links() const {
-    SST_ASSERT((!moved_from_));
-    return follow_links_;
-  }
-
-  windows_path & follow_links(bool const x) {
-    SST_ASSERT((!moved_from_));
-    if (x != follow_links_) {
-      follow_links_ = x;
-      will_refresh_ = true;
-    }
-    return *this;
-  }
-
-  //--------------------------------------------------------------------
-  // move-assign
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path & operator=(windows_path && other) noexcept {
-    if (this != &other) {
-      follow_links_ = std::move(other.follow_links_);
-      moved_from_ = std::move(other.moved_from_);
-      str_ = std::move(other.str_);
-      have_test_d_ = std::move(other.have_test_d_);
-      test_d_ = std::move(other.test_d_);
-      have_test_e_ = std::move(other.have_test_e_);
-      test_e_ = std::move(other.test_e_);
-      have_test_f_ = std::move(other.have_test_f_);
-      test_f_ = std::move(other.test_f_);
-      will_refresh_ = std::move(other.will_refresh_);
-    }
-    return *this;
-  }
-
-  //--------------------------------------------------------------------
-  // move-construct
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path(windows_path && other) noexcept
-      : follow_links_(std::move(other.follow_links_)),
-        moved_from_(std::move(other.moved_from_)),
-        str_(std::move(other.str_)),
-        have_test_d_(std::move(other.have_test_d_)),
-        test_d_(std::move(other.test_d_)),
-        have_test_e_(std::move(other.have_test_e_)),
-        test_e_(std::move(other.test_e_)),
-        have_test_f_(std::move(other.have_test_f_)),
-        test_f_(std::move(other.test_f_)),
-        will_refresh_(std::move(other.will_refresh_)) {
-  }
-
-  //--------------------------------------------------------------------
-  // moved_from_
-  //--------------------------------------------------------------------
-
-private:
-
-  sst::moved_from moved_from_;
-
-  //--------------------------------------------------------------------
-  // operator-std-string
-  //--------------------------------------------------------------------
-
-public:
-
-  operator std::basic_string<value_type> const &() const {
-    SST_ASSERT((!moved_from_));
-    return str_;
-  }
-
-  //--------------------------------------------------------------------
-  // path_list_char
-  //--------------------------------------------------------------------
-  //
-  // The character that is conventionally used to separate paths in a
-  // list of paths. This is ';' on Windows and ':' elsewhere.
-  //
-
-  static constexpr value_type path_list_char() noexcept {
-    return value_type(';');
-  }
-
-  //--------------------------------------------------------------------
-  // refresh
+  // Attribute querying
   //--------------------------------------------------------------------
 
 private:
@@ -322,164 +118,98 @@ private:
   template<class GetFileAttributesExFunc,
            class CreateFileFunc,
            class GetFinalPathNameByHandleFunc>
-  windows_path & refresh_core(
-      GetFileAttributesExFunc && GetFileAttributesEx_func,
-      char const * const GetFileAttributesEx_name,
-      CreateFileFunc && CreateFile_func,
-      char const * const CreateFile_name,
-      GetFinalPathNameByHandleFunc && GetFinalPathNameByHandle_func,
-      char const * const GetFinalPathNameByHandle_name);
-
-public:
-
-  windows_path & refresh();
-
-  //--------------------------------------------------------------------
-  // refresh_from_attr
-  //--------------------------------------------------------------------
-
-public:
-
-  windows_path & refresh_from_attr(void const * data);
-
-  //--------------------------------------------------------------------
-  // refresh_from_find
-  //--------------------------------------------------------------------
-
-private:
+  void query_core(
+      GetFileAttributesExFunc * GetFileAttributesEx_func,
+      char const * GetFileAttributesEx_name,
+      CreateFileFunc * CreateFile_func,
+      char const * CreateFile_name,
+      GetFinalPathNameByHandleFunc * GetFinalPathNameByHandle_func,
+      char const * GetFinalPathNameByHandle_name) const;
 
   template<class Win32FindData>
-  windows_path & refresh_from_find_core(void const * data);
+  void query_from_find_core(void const * data) const;
 
 public:
 
-  windows_path & refresh_from_find(void const * data);
+  windows_path const & query() const;
 
-  //--------------------------------------------------------------------
-  // str
-  //--------------------------------------------------------------------
+  windows_path const & query_from_attr(void const * data) const;
 
-private:
+  windows_path const & query_from_find(void const * data) const;
 
-  std::basic_string<value_type> str_;
-
-public:
-
-  std::basic_string<value_type> const & str() const {
-    SST_ASSERT((!moved_from_));
-    return str_;
-  }
-
-  //--------------------------------------------------------------------
-  // test_d
-  //--------------------------------------------------------------------
-
-private:
-
-  bool have_test_d_ = false;
-  bool test_d_{};
-
-public:
-
-  bool test_d() {
-    SST_ASSERT((!moved_from_));
-    if (!have_test_d_ || will_refresh_) {
-      refresh();
-    }
-    SST_ASSERT((have_test_d_));
-    return test_d_;
-  }
-
-  //--------------------------------------------------------------------
-  // test_e
-  //--------------------------------------------------------------------
-
-private:
-
-  bool have_test_e_ = false;
-  bool test_e_{};
-
-public:
-
-  bool test_e() {
-    SST_ASSERT((!moved_from_));
-    if (!have_test_e_ || will_refresh_) {
-      refresh();
-    }
-    SST_ASSERT((have_test_e_));
-    return test_e_;
-  }
-
-  //--------------------------------------------------------------------
-  // test_f
-  //--------------------------------------------------------------------
-
-private:
-
-  bool have_test_f_ = false;
-  bool test_f_{};
-
-public:
-
-  bool test_f() {
-    SST_ASSERT((!moved_from_));
-    if (!have_test_f_ || will_refresh_) {
-      refresh();
-    }
-    SST_ASSERT((have_test_f_));
-    return test_f_;
-  }
-
-  //--------------------------------------------------------------------
-  // will_refresh
-  //--------------------------------------------------------------------
-
-private:
-
-  bool will_refresh_ = true;
-
-public:
-
-  bool will_refresh() const {
-    SST_ASSERT((!moved_from_));
-    return will_refresh_;
-  }
-
-  windows_path & will_refresh(bool const x) {
-    SST_ASSERT((!moved_from_));
-    will_refresh_ = x;
+  windows_path & query() {
+    static_cast<windows_path const &>(*this).query();
     return *this;
   }
 
-}; //
+  windows_path & query_from_attr(void const * const data) {
+    static_cast<windows_path const &>(*this).query_from_attr(data);
+    return *this;
+  }
+
+  windows_path & query_from_find(void const * const data) {
+    static_cast<windows_path const &>(*this).query_from_find(data);
+    return *this;
+  }
+
+  //--------------------------------------------------------------------
+  // mv_onto
+  //--------------------------------------------------------------------
+
+private:
+
+  template<class MoveFileExFunc>
+  void mv_onto_core(MoveFileExFunc * MoveFileEx_func,
+                    char const * MoveFileEx_name,
+                    windows_path const & dst) const;
+
+  void mv_onto(windows_path const & dst) const;
+
+  //--------------------------------------------------------------------
+
+public:
+
+  SST_NODISCARD()
+  static constexpr bool is_dir_char(char_t const c) noexcept {
+    return c == char_t('\\') || c == char_t('/');
+  }
+
+  SST_NODISCARD() static constexpr char_t dir_char() noexcept {
+    return char_t('\\');
+  }
+
+  SST_NODISCARD() static constexpr char_t list_char() noexcept {
+    return char_t(';');
+  }
+
+  //--------------------------------------------------------------------
+};
 
 //----------------------------------------------------------------------
-// Forward declarations for char
+// Forward declarations
 //----------------------------------------------------------------------
 
-template<>
-SST_DLL_EXPORT windows_path<char> & windows_path<char>::refresh();
+#define SST_F(CharT)                                                   \
+                                                                       \
+  template<>                                                           \
+  SST_DLL_EXPORT windows_path<CharT> const &                           \
+  windows_path<CharT>::query() const;                                  \
+                                                                       \
+  extern template SST_DLL_EXPORT windows_path<CharT> const &           \
+  windows_path<CharT>::query_from_attr(void const * data) const;       \
+                                                                       \
+  template<>                                                           \
+  SST_DLL_EXPORT windows_path<CharT> const &                           \
+  windows_path<CharT>::query_from_find(void const * data) const;       \
+                                                                       \
+  template<>                                                           \
+  SST_DLL_EXPORT void windows_path<CharT>::mv_onto(                    \
+      windows_path<CharT> const & dst) const;
 
-extern template SST_DLL_EXPORT windows_path<char> &
-windows_path<char>::refresh_from_attr(void const * data);
+SST_F(char)
+SST_F(wchar_t)
 
-template<>
-SST_DLL_EXPORT windows_path<char> &
-windows_path<char>::refresh_from_find(void const * data);
-
-//----------------------------------------------------------------------
-// Forward declarations for wchar_t
-//----------------------------------------------------------------------
-
-template<>
-SST_DLL_EXPORT windows_path<wchar_t> & windows_path<wchar_t>::refresh();
-
-extern template SST_DLL_EXPORT windows_path<wchar_t> &
-windows_path<wchar_t>::refresh_from_attr(void const * data);
-
-template<>
-SST_DLL_EXPORT windows_path<wchar_t> &
-windows_path<wchar_t>::refresh_from_find(void const * data);
+#undef SST_F
 
 //----------------------------------------------------------------------
 
@@ -487,4 +217,4 @@ windows_path<wchar_t>::refresh_from_find(void const * data);
 
 #endif // #if SST_WITH_WINDOWS_KERNEL32
 
-#endif // #ifndef SST_CATALOG_WINDOWS_PATH_HPP
+#endif // SST_CATALOG_WINDOWS_PATH_HPP

@@ -60,4 +60,4 @@ struct is_little_endian<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_LITTLE_ENDIAN_HPP
+#endif // SST_CATALOG_IS_LITTLE_ENDIAN_HPP

@@ -49,4 +49,4 @@ generic_socket_poll_set<Socket, Entry>::poll(Duration const & timeout) {
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_POLL_WITH_TIMEOUT_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_POLL_WITH_TIMEOUT_HPP

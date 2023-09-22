@@ -41,4 +41,4 @@
 
 /* clang-format on */
 
-#endif // #ifndef SST_PRIVATE_SST_DEBUG_DEFAULT_H
+#endif // SST_PRIVATE_SST_DEBUG_DEFAULT_H

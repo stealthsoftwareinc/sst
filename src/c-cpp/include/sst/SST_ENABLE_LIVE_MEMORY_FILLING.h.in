@@ -61,4 +61,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_ENABLE_LIVE_MEMORY_FILLING_H
+#endif // SST_SST_ENABLE_LIVE_MEMORY_FILLING_H

@@ -147,20 +147,31 @@ artifacts/$(distdir).tar.gz/src: FORCE
 	@echo artifacts_dist_archive_src
 
 #-----------------------------------------------------------------------
+# Installation
+#-----------------------------------------------------------------------
+#
+# Extend "make install" to first run "make uninstall".
+#
+
+install-both-local: uninstall
+
+#-----------------------------------------------------------------------
 # Uninstallation
 #-----------------------------------------------------------------------
 #
-# "make uninstall" should uninstall any version of the package from the
-# current set of installation directories.
+# Extend "make uninstall" to delete any old installations.
 #
 
-$(PACKAGE_TARNAME)-uninstall-hook: FORCE
-	-rm -f -r $(DESTDIR)$(datadir)/$(PACKAGE_TARNAME)
-	-rm -f -r $(DESTDIR)$(datarootdir)/$(PACKAGE_TARNAME)
-	-rm -f -r $(DESTDIR)$(includedir)/$(PACKAGE_TARNAME)
-	-rm -f -r $(DESTDIR)$(libexecdir)/$(PACKAGE_TARNAME)
-
-uninstall-hook: $(PACKAGE_TARNAME)-uninstall-hook
+uninstall-hook:
+	-rm -f -r \
+	  $(DESTDIR)$(datadir)/$(PACKAGE_TARNAME) \
+	  $(DESTDIR)$(datarootdir)/$(PACKAGE_TARNAME) \
+	  $(DESTDIR)$(includedir)/$(PACKAGE_TARNAME) \
+	  $(DESTDIR)$(libdir)/lib$(PACKAGE_TARNAME).a \
+	  $(DESTDIR)$(libdir)/lib$(PACKAGE_TARNAME).la \
+	  $(DESTDIR)$(libdir)/lib$(PACKAGE_TARNAME).so \
+	  $(DESTDIR)$(libexecdir)/$(PACKAGE_TARNAME) \
+	;
 
 #-----------------------------------------------------------------------
 # Code generation

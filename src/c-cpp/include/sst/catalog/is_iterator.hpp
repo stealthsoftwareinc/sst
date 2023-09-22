@@ -127,6 +127,9 @@ SST_Y((std::vector<int>::iterator))
 SST_N((int))
 SST_N((void *))
 
+using SST_xuvmwnoguggfgvmu = int[1];
+SST_N((SST_xuvmwnoguggfgvmu))
+
 #undef SST_N
 #undef SST_Y
 #undef SST_F1
@@ -136,4 +139,4 @@ SST_N((void *))
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IS_ITERATOR_HPP
+#endif // SST_CATALOG_IS_ITERATOR_HPP

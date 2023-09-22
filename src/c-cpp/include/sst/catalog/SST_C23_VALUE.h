@@ -31,4 +31,4 @@
 
 #define SST_C23_VALUE (202311L)
 
-#endif // #ifndef SST_CATALOG_SST_C23_VALUE_H
+#endif // SST_CATALOG_SST_C23_VALUE_H

@@ -85,6 +85,7 @@ sst_ubuntu_install_raw \
   jq \
   libtool \
   m4 \
+  xz-utils \
 ;
 
 ASCIIDOCTOR=$PWD/build-aux/adock

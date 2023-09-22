@@ -44,4 +44,4 @@ using windows_bcrypt_rng = sst::rng_shell<sst::windows_bcrypt_rng_core>;
 
 #endif // #if SST_WITH_WINDOWS_BCRYPT
 
-#endif // #ifndef SST_CATALOG_WINDOWS_BCRYPT_RNG_HPP
+#endif // SST_CATALOG_WINDOWS_BCRYPT_RNG_HPP

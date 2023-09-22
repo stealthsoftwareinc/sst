@@ -48,4 +48,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_aes_encrypt_cf)(
 
 #endif
 
-#endif // #ifndef SST_SST_AES_ENCRYPT_CF_H
+#endif // SST_SST_AES_ENCRYPT_CF_H

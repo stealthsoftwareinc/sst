@@ -1,0 +1,125 @@
+//
+// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_SQLITE_DATABASE_DESERIALIZE_010_FTTCEXWFWU_ADOC[]
+:SECTIONS_CL_SST_SQLITE_DATABASE_DESERIALIZE_010_FTTCEXWFWU_ADOC:
+//----------------------------------------------------------------------
+
+:fttcexwfwu_overload: {counter:cl_sst_sqlite_database_deserialize_overload}
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_name0: sst::sqlite::database::deserialize
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_name1: sqlite::database::deserialize
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_name2: database::deserialize
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_name3: deserialize
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_id: cl-sst-sqlite-database-deserialize-fttcexwfwu
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_url: sections/cl_sst_sqlite_database/deserialize/010_fttcexwfwu.adoc#{cl_sst_sqlite_database_deserialize_fttcexwfwu_id}
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0: xref:{cl_sst_sqlite_database_deserialize_fttcexwfwu_url}[{cl_sst_sqlite_database_deserialize_fttcexwfwu_name0}]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0_prose1: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0}` (overload {fttcexwfwu_overload})]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0_prose2: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0}` function (overload {fttcexwfwu_overload})]
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop1: xref:{cl_sst_sqlite_database_deserialize_fttcexwfwu_url}[{cl_sst_sqlite_database_deserialize_fttcexwfwu_name1}]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop1_prose1: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop1}` (overload {fttcexwfwu_overload})]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop1_prose2: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop1}` function (overload {fttcexwfwu_overload})]
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop2: xref:{cl_sst_sqlite_database_deserialize_fttcexwfwu_url}[{cl_sst_sqlite_database_deserialize_fttcexwfwu_name2}]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop2_prose1: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop2}` (overload {fttcexwfwu_overload})]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop2_prose2: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop2}` function (overload {fttcexwfwu_overload})]
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop3: xref:{cl_sst_sqlite_database_deserialize_fttcexwfwu_url}[{cl_sst_sqlite_database_deserialize_fttcexwfwu_name3}]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop3_prose1: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop3}` (overload {fttcexwfwu_overload})]
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_chop3_prose2: pass:a,q[`{cl_sst_sqlite_database_deserialize_fttcexwfwu_chop3}` function (overload {fttcexwfwu_overload})]
+
+:cl_sst_sqlite_database_deserialize_fttcexwfwu: {cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0}
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_prose1: {cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0_prose1}
+:cl_sst_sqlite_database_deserialize_fttcexwfwu_prose2: {cl_sst_sqlite_database_deserialize_fttcexwfwu_chop0_prose2}
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_sqlite_database_deserialize_fttcexwfwu_id}]
+= The `{cl_sst_sqlite_database_deserialize_fttcexwfwu_name3}` function (overload {fttcexwfwu_overload})
+
+[source,cpp,subs="{sst_subs_source}"]
+----
+include::010_fttcexwfwu/decl.adoc[]
+----
+
+The {cl_sst_sqlite_database_deserialize_fttcexwfwu_chop3_prose2}
+attaches the `schema` name to the database serialization that consists
+of the first `size` bytes in `buffer`.
+
+If `schema` is `"temp"`, then an exception will be thrown.
+
+If `schema` already names a database, then it will be closed before
+attaching it to the database serialization.
+This will occur even if `schema` is `"main"`, which cannot normally be
+closed.
+
+If `readonly` is `true`, then the database will be read-only.
+
+If `copy` is `true`, then a copy of `buffer` will be allocated to
+underpin the database, and the copy will be automatically deallocated
+when the database is closed.
+Otherwise, `buffer` itself will underpin the database.
+In this case, the caller must ensure that `buffer` continues to exist
+and is not externally modified until the database is closed.
+
+If `readonly` is `true`, then `resizable` is ignored.
+Otherwise, `resizable` specifies whether `buffer` will be automatically
+reallocated when more capacity is needed.
+In this case, either `copy` must be `true` or `buffer` must be allocated
+via SQLite.
+
+If `readonly` is `true`, then `capacity` is ignored.
+Otherwise, `capacity` must be either zero or at least as large as
+`size`, and zero will be automatically adjusted to `size`.
+In this case, if `copy` is `true`, then `capacity` specifies how large
+the copy of `buffer` should be, although only the first `size` bytes
+will actually be copied.
+Otherwise, if `copy` is `false`, then `capacity` specifies how many
+bytes are actually available for use in `buffer`, which may be more than
+`size`.
+
+If `copy` is `true`, then `deallocate` is ignored.
+Otherwise, `deallocate` specifies whether `buffer` will be automatically
+deallocated when the database is closed.
+If so, then `buffer` must be allocated via SQLite.
+When enabled, automatic deallocation will always occur, even if this
+function itself throws an exception.
+
+This function always returns `*this`.
+
+//----------------------------------------------------------------------
+endif::[]

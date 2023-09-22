@@ -45,4 +45,4 @@ SST_DEFINE_ALGORITHM(from_hex,
 #include <sst/private/from_hex/from_char_input_iterable.hpp>
 #include <sst/private/from_hex/from_char_input_iterator.hpp>
 
-#endif // #ifndef SST_CATALOG_FROM_HEX_HPP
+#endif // SST_CATALOG_FROM_HEX_HPP

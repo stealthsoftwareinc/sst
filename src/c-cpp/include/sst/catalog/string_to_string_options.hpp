@@ -56,4 +56,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_STRING_TO_STRING_OPTIONS_HPP
+#endif // SST_CATALOG_STRING_TO_STRING_OPTIONS_HPP

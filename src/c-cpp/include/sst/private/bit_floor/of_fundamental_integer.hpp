@@ -55,4 +55,4 @@ constexpr X bit_floor(X const x) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_BIT_FLOOR_OF_FUNDAMENTAL_INTEGER_HPP
+#endif // SST_PRIVATE_BIT_FLOOR_OF_FUNDAMENTAL_INTEGER_HPP

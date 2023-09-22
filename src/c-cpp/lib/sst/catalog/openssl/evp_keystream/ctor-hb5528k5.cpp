@@ -38,7 +38,7 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/openssl/evp_cipher_ctx.hpp>
 
 namespace sst {

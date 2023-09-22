@@ -50,4 +50,4 @@ int sst_w32_closesocket(sst_w32_SOCKET s);
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_CLOSESOCKET_H
+#endif // SST_CATALOG_SST_W32_CLOSESOCKET_H

@@ -45,4 +45,4 @@ struct bignum_error : std::runtime_error {
 
 #endif // SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_BIGNUM_ERROR_HPP
+#endif // SST_CATALOG_BIGNUM_ERROR_HPP

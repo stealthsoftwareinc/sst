@@ -60,4 +60,4 @@
 
 #define SST_ZERO_LIST_SIZE 22UL
 
-#endif // #ifndef SST_SST_ZERO_LIST_SIZE_H
+#endif // SST_SST_ZERO_LIST_SIZE_H

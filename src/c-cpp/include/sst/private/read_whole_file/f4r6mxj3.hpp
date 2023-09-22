@@ -71,4 +71,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_READ_WHOLE_FILE_F4R6MXJ3_HPP
+#endif // SST_PRIVATE_READ_WHOLE_FILE_F4R6MXJ3_HPP

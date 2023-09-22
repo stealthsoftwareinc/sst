@@ -31,7 +31,7 @@
 
 #include <chrono>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/mono_time_zero.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 
@@ -47,10 +47,10 @@ Duration mono_time() {
   // the left operand could be evaluated before the right operand, which
   // would produce an incorrect result when the right operand happens to
   // be the first call to sst::mono_time_zero().
-  auto const zero = sst::mono_time_zero();
-  auto const now = std::chrono::steady_clock::now();
-  SST_ASSERT((now >= zero));
-  return std::chrono::duration_cast<Duration>(now - zero);
+  auto const a = sst::mono_time_zero();
+  auto const b = std::chrono::steady_clock::now();
+  SST_ASSERT((b >= a));
+  return std::chrono::duration_cast<Duration>(b - a);
 }
 
 //----------------------------------------------------------------------
@@ -77,4 +77,4 @@ mono_time<std::chrono::nanoseconds>();
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MONO_TIME_HPP
+#endif // SST_CATALOG_MONO_TIME_HPP

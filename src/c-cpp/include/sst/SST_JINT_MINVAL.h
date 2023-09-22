@@ -41,4 +41,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_JINT_MINVAL_H
+#endif // SST_SST_JINT_MINVAL_H

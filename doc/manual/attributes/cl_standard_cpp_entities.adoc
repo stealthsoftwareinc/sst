@@ -284,6 +284,17 @@ ifndef::ATTRIBUTES_CL_STANDARD_CPP_ENTITIES_ADOC[]
 :cl_std_forward: link:{cl_std_forward_url}[std::forward,window=_blank]
 
 //----------------------------------------------------------------------
+// std::in_place_t
+//----------------------------------------------------------------------
+
+:cl_std_in_place_t_url_20220730: https://manuals.quinngrier.com/cppreference/20220730/reference/en/cpp/utility/in_place.html
+:cl_std_in_place_t_url_live: https://en.cppreference.com/w/cpp/utility/in_place
+
+:cl_std_in_place_t_url: {cl_std_in_place_t_url_live}
+
+:cl_std_in_place_t: link:{cl_std_in_place_t_url}[std::in_place_t,window=_blank]
+
+//----------------------------------------------------------------------
 // std::integral_constant
 //----------------------------------------------------------------------
 

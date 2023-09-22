@@ -33,8 +33,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
@@ -69,10 +68,9 @@ class peek_ptr<
 
 public:
 
-  constexpr explicit peek_ptr() SST_DEFAULT_NOEXCEPT(true) = default;
+  constexpr explicit peek_ptr() SST_NOEXCEPT(true) = default;
 
-  constexpr explicit peek_ptr(Src const & src) noexcept(
-      SST_NOEXCEPT(&*src))
+  constexpr explicit peek_ptr(Src const & src) noexcept(noexcept(&*src))
       : p_(&*src) {
   }
 
@@ -145,10 +143,10 @@ class peek_ptr<
 
 public:
 
-  constexpr explicit peek_ptr() SST_DEFAULT_NOEXCEPT(true) = default;
+  constexpr explicit peek_ptr() SST_NOEXCEPT(true) = default;
 
   constexpr explicit peek_ptr(Src const & src) noexcept(
-      SST_NOEXCEPT(sst::optional<value_t>(*src)))
+      noexcept(sst::optional<value_t>(*src)))
       : p_(*src) {
   }
 
@@ -204,4 +202,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PEEK_PTR_HPP
+#endif // SST_CATALOG_PEEK_PTR_HPP

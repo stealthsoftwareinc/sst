@@ -61,4 +61,4 @@
 
 #define SST_SUCCESS 0UL
 
-#endif // #ifndef SST_SST_SUCCESS_H
+#endif // SST_SST_SUCCESS_H

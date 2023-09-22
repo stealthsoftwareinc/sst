@@ -83,8 +83,8 @@ include::sections/cl_sst_last_arg.adoc[]
 include::sections/cl_sst_numeric_limits.adoc[]
 include::sections/cl_sst_checked_overflow.adoc[]
 include::sections/cl_sst_zero.adoc[]
-include::sections/cl_sst_emplace_t.adoc[]
-include::sections/cl_sst_emplace.adoc[]
+include::sections/cl_sst_in_place_t.adoc[]
+include::sections/cl_sst_in_place.adoc[]
 include::sections/cl_SST_NARGS.adoc[]
 include::sections/cl_SST_DEFER.adoc[]
 include::sections/cl_SST_EXPAND.adoc[]
@@ -92,6 +92,7 @@ include::sections/cl_sstSeqHashCore.adoc[]
 include::sections/cl_sst_value_sentinel.adoc[]
 include::sections/cl_sst_value_sentinel_t.adoc[]
 include::sections/cl_SST_REVERSE.adoc[]
+include::sections/cl_SST_WITH_NOEXCEPT.adoc[]
 
 :leveloffset: -1
 

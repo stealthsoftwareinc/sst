@@ -44,14 +44,14 @@ ifndef::define_attributes[]
 [#{cl_sst_unsigned_ceil_div_synopsis_id}]
 = {cl_sst_unsigned_ceil_div_synopsis_title}
 
-[source,cpp,subs="{sst_subs_source}"]
+:decl_indent: {nbsp}{nbsp}
+
+[source,subs="{sst_subs_source}"]
 ----
 #include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/unsigned_ceil_div.hpp[sst/catalog/unsigned_ceil_div.hpp,window=_blank]>
 namespace sst {
 
-// Overload {cl_sst_unsigned_ceil_div_p7gqqhwq_overload}
-template<{cl_sst_is_integer} A, {cl_sst_is_integer} B>
-constexpr {cl_sst_decay_t}<A> {cl_sst_unsigned_ceil_div_p7gqqhwq_c1}(A a, B b) noexcept;
+include::cl_sst_unsigned_ceil_div/000_p7gqqhwq/decl.adoc[]
 
 }
 ----

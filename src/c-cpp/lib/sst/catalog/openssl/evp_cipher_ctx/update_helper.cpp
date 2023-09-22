@@ -36,7 +36,7 @@
 
 #if SST_WITH_OPENSSL_CRYPTO
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/openssl/err_exception.hpp>
 #include <sst/catalog/overlap.hpp>
 

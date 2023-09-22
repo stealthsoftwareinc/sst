@@ -236,4 +236,4 @@
 #define SST_REVERSE(...)                                               \
   SST_DISPATCH(SST_REVERSE_, __VA_ARGS__)(__VA_ARGS__)
 
-#endif // #ifndef SST_CATALOG_SST_REVERSE_H
+#endif // SST_CATALOG_SST_REVERSE_H

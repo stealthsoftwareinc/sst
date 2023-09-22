@@ -39,4 +39,4 @@ struct is_char_input_iterable : sst::is_iterable<I, sst::is_char> {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_CHAR_INPUT_ITERABLE_HPP
+#endif // SST_CATALOG_IS_CHAR_INPUT_ITERABLE_HPP

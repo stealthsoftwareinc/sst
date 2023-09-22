@@ -39,4 +39,4 @@ struct is_byte_input_iterable : sst::is_iterable<I, sst::is_byte> {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_BYTE_INPUT_ITERABLE_HPP
+#endif // SST_CATALOG_IS_BYTE_INPUT_ITERABLE_HPP

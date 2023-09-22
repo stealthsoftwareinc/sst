@@ -105,4 +105,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_GAI_FLAGS_HPP
+#endif // SST_CATALOG_GAI_FLAGS_HPP

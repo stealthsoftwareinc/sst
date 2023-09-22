@@ -38,4 +38,4 @@ typedef jlong sst_jlongptr;
 
 #endif
 
-#endif // #ifndef SST_SST_JLONGPTR_H
+#endif // SST_SST_JLONGPTR_H

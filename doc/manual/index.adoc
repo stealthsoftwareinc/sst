@@ -29,17 +29,7 @@
 include::config.adoc[]
 
 = {PACKAGE_NAME} {PACKAGE_VERSION}
-:attribute-missing: warn
-:docinfo: shared
-:experimental:
 :gindent: {nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}
-:nofooter:
-:sectlinks:
-:sectnumlevels: 5
-:sectnums:
-:stem: latexmath
-:toclevels: 5
-:xrefstyle: full
 include::sst-asciidoctor.adoc[]
 
 include::repo_browser_url.adoc[]

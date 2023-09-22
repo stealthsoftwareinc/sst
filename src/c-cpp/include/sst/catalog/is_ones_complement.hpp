@@ -66,4 +66,4 @@ struct is_ones_complement<
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_ONES_COMPLEMENT_HPP
+#endif // SST_CATALOG_IS_ONES_COMPLEMENT_HPP

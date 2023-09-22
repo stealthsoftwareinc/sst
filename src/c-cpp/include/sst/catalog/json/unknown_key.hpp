@@ -31,4 +31,4 @@
 
 #include <sst/private/json/unknown_key/k3w9kun5/nlohmann.hpp>
 
-#endif // #ifndef SST_CATALOG_JSON_UNKNOWN_KEY_HPP
+#endif // SST_CATALOG_JSON_UNKNOWN_KEY_HPP

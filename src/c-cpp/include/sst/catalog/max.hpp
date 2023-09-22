@@ -38,4 +38,4 @@ constexpr T const & max(T const & a, T const & b) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAX_HPP
+#endif // SST_CATALOG_MAX_HPP

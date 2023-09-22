@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_COPY_BYTES_FUNCTOR_HPP
 #define SST_CATALOG_COPY_BYTES_FUNCTOR_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_THROW_UNIMPLEMENTED.hpp>
 #include <sst/catalog/buffer_underrun.hpp>
 #include <sst/catalog/char_bit_v.hpp>
@@ -164,4 +164,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COPY_BYTES_FUNCTOR_HPP
+#endif // SST_CATALOG_COPY_BYTES_FUNCTOR_HPP

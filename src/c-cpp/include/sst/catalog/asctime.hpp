@@ -45,4 +45,4 @@ inline std::string asctime() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ASCTIME_HPP
+#endif // SST_CATALOG_ASCTIME_HPP

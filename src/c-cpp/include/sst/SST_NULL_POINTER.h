@@ -60,4 +60,4 @@
 
 #define SST_NULL_POINTER 9UL
 
-#endif // #ifndef SST_SST_NULL_POINTER_H
+#endif // SST_SST_NULL_POINTER_H

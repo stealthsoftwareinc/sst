@@ -36,4 +36,4 @@
 #include <sst/private/to_string/from_member_function.hpp>
 #include <sst/private/to_string/from_unscoped_enum.hpp>
 
-#endif // #ifndef SST_CATALOG_TO_STRING_HPP
+#endif // SST_CATALOG_TO_STRING_HPP

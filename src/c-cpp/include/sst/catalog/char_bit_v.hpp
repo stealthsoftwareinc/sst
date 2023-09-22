@@ -38,4 +38,4 @@ SST_CPP17_INLINE constexpr int char_bit_v = sst::char_bit::value;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHAR_BIT_V_HPP
+#endif // SST_CATALOG_CHAR_BIT_V_HPP

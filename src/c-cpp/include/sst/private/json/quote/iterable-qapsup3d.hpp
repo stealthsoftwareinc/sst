@@ -159,4 +159,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_QUOTE_ITERABLE_QAPSUP3D_HPP
+#endif // SST_PRIVATE_JSON_QUOTE_ITERABLE_QAPSUP3D_HPP

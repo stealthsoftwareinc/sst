@@ -62,4 +62,4 @@ bool mkdir_p_only(Args &&... args) {
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_MKDIR_P_ONLY_HPP
+#endif // SST_CATALOG_MKDIR_P_ONLY_HPP

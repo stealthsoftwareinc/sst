@@ -33,4 +33,4 @@
 
 #define SST_COMPILES(...) (SST_EXISTS(decltype((__VA_ARGS__))))
 
-#endif // #ifndef SST_CATALOG_SST_COMPILES_HPP
+#endif // SST_CATALOG_SST_COMPILES_HPP

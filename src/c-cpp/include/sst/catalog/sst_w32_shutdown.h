@@ -50,4 +50,4 @@ SST_EXTERN_C SST_DLL_EXPORT int sst_w32_shutdown(sst_w32_SOCKET s,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SHUTDOWN_H
+#endif // SST_CATALOG_SST_W32_SHUTDOWN_H

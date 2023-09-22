@@ -90,4 +90,4 @@ sst_status sst_wall_time_any_get(
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_ANY_GET_H
+#endif // SST_SST_WALL_TIME_ANY_GET_H

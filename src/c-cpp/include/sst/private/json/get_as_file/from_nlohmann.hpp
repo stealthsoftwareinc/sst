@@ -32,7 +32,7 @@
 #include <exception>
 #include <fstream>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_str.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
@@ -117,4 +117,4 @@ class get_as_file_functor<
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_AS_FILE_FROM_NLOHMANN_HPP
+#endif // SST_PRIVATE_JSON_GET_AS_FILE_FROM_NLOHMANN_HPP

@@ -36,7 +36,9 @@
 
 #if SST_WITH_SQLITE_SERIALIZATION
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <algorithm>
+
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/sqlite/error_code_exception.hpp>
 
 #include <sqlite3.h>
@@ -45,23 +47,64 @@ namespace sst {
 namespace sqlite {
 
 database & database::deserialize(char const * const schema,
-                                 unsigned char const * const buffer,
-                                 sqlite3_int64 const size) {
+                                 unsigned char * const buffer,
+                                 sqlite3_int64 const size,
+                                 bool const readonly,
+                                 bool const copy,
+                                 bool const resizable,
+                                 sqlite3_int64 capacity,
+                                 bool const deallocate) {
   SST_ASSERT((handle() != nullptr));
   SST_ASSERT((schema != nullptr));
   SST_ASSERT((buffer != nullptr || size == 0));
   SST_ASSERT((size >= 0));
-  unsigned char const dummy{};
-  unsigned char const * const p = buffer == nullptr ? &dummy : buffer;
+  SST_ASSERT((readonly || capacity == 0 || capacity >= size));
+
+  if (size == 0) {
+    throw sst::sqlite::error_code_exception("sqlite3_deserialize()",
+                                            SQLITE_ERROR);
+  }
+
+  if (capacity == 0) {
+    capacity = size;
+  }
+
+  unsigned char * p;
+  if (copy) {
+    p = static_cast<unsigned char *>(sqlite3_malloc64(
+        static_cast<sqlite3_uint64>(readonly ? size : capacity)));
+    if (p == nullptr) {
+      throw sst::sqlite::error_code_exception("sqlite3_deserialize()",
+                                              SQLITE_NOMEM);
+    }
+    std::copy_n(buffer, size, p);
+  } else {
+    p = buffer;
+  }
+
+  unsigned int flags = 0U;
+  if (readonly) {
+    flags |= static_cast<unsigned int>(SQLITE_DESERIALIZE_READONLY);
+  }
+  if (!readonly && resizable) {
+    flags |= static_cast<unsigned int>(SQLITE_DESERIALIZE_RESIZEABLE);
+  }
+  if (copy || deallocate) {
+    flags |= static_cast<unsigned int>(SQLITE_DESERIALIZE_FREEONCLOSE);
+  }
+
   int const e = sqlite3_deserialize(handle(),
                                     schema,
-                                    const_cast<unsigned char *>(p),
+                                    p,
                                     size,
-                                    size,
-                                    SQLITE_DESERIALIZE_READONLY);
+                                    readonly ? size : capacity,
+                                    flags);
   if (e != SQLITE_OK) {
+    // Note that sqlite3_deserialize() performs automatic deallocation
+    // even when it fails, so we don't need to worry about p here.
     throw sst::sqlite::error_code_exception("sqlite3_deserialize()", e);
   }
+
   return *this;
 }
 

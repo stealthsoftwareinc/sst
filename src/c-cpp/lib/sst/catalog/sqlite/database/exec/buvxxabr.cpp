@@ -38,7 +38,7 @@
 
 #include <exception>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/sqlite/error_code_exception.hpp>
 #include <sst/catalog/sqlite/exception.hpp>

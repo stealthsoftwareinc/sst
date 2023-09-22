@@ -36,7 +36,7 @@
 
 #if SST_WITH_WINDOWS_WS2_32
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/sst_w32_ADDRINFOA.h>
 #include <sst/catalog/sst_w32_ADDRINFOA_wrap.h>
 #include <sst/catalog/sst_w32_ADDRINFOA_wrapper.h>

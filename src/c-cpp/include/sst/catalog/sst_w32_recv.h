@@ -50,4 +50,4 @@ sst_w32_recv(sst_w32_SOCKET s, char * buf, int len, int flags);
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_RECV_H
+#endif // SST_CATALOG_SST_W32_RECV_H

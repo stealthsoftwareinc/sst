@@ -32,7 +32,7 @@
 #include <sst/catalog/require_opt.hpp>
 //
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <string>
 
 namespace sst {

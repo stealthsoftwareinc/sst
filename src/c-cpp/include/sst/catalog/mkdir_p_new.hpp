@@ -62,4 +62,4 @@ void mkdir_p_new(Args &&... args) {
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_MKDIR_P_NEW_HPP
+#endif // SST_CATALOG_MKDIR_P_NEW_HPP

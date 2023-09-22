@@ -92,4 +92,4 @@ sst_option_pair_w sst_forbid_option_value_w(
 
 #endif
 
-#endif // #ifndef SST_SST_FORBID_OPTION_VALUE_W_H
+#endif // SST_SST_FORBID_OPTION_VALUE_W_H

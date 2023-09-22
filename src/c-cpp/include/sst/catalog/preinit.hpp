@@ -39,4 +39,4 @@ struct preinit {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PREINIT_HPP
+#endif // SST_CATALOG_PREINIT_HPP

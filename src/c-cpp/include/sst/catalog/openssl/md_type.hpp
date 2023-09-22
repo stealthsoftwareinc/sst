@@ -47,4 +47,4 @@ enum class md_type {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_MD_TYPE_HPP
+#endif // SST_CATALOG_OPENSSL_MD_TYPE_HPP

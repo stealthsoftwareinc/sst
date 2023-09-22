@@ -84,4 +84,4 @@ extern unsigned int const sst_wall_time_null_live;
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_NULL_LIVE_H
+#endif // SST_SST_WALL_TIME_NULL_LIVE_H

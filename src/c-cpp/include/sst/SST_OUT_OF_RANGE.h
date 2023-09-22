@@ -62,4 +62,4 @@
 
 #define SST_OUT_OF_RANGE 13UL
 
-#endif // #ifndef SST_SST_OUT_OF_RANGE_H
+#endif // SST_SST_OUT_OF_RANGE_H

@@ -51,4 +51,4 @@ extern template class SST_DLL_EXPORT socket_shell<windows_socket_core>;
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WINDOWS_SOCKET_HPP
+#endif // SST_CATALOG_WINDOWS_SOCKET_HPP

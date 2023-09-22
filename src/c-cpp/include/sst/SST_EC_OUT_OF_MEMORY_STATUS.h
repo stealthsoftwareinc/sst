@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "OutOfMemoryStatus"
 
-#endif // #ifndef SST_SST_EC_OUT_OF_MEMORY_STATUS_H
+#endif // SST_SST_EC_OUT_OF_MEMORY_STATUS_H

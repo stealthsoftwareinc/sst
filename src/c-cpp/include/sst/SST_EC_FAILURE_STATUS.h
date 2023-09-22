@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "FailureStatus"
 
-#endif // #ifndef SST_SST_EC_FAILURE_STATUS_H
+#endif // SST_SST_EC_FAILURE_STATUS_H

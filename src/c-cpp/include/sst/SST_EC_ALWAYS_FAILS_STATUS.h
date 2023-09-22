@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "AlwaysFailsStatus"
 
-#endif // #ifndef SST_SST_EC_ALWAYS_FAILS_STATUS_H
+#endif // SST_SST_EC_ALWAYS_FAILS_STATUS_H

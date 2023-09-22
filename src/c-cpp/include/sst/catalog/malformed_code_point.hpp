@@ -43,4 +43,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MALFORMED_CODE_POINT_HPP
+#endif // SST_CATALOG_MALFORMED_CODE_POINT_HPP

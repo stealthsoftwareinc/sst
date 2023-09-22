@@ -31,4 +31,4 @@
 
 #define SST_TEXT(x) x
 
-#endif // #ifndef SST_SST_TEXT_H
+#endif // SST_SST_TEXT_H

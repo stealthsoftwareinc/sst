@@ -37,4 +37,4 @@ using uchar_max = sst::type_max<unsigned char>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UCHAR_MAX_HPP
+#endif // SST_CATALOG_UCHAR_MAX_HPP

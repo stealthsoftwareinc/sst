@@ -31,8 +31,8 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/code_point_decoder_t.hpp>
 #include <sst/catalog/perfect_ge.hpp>
 #include <sst/catalog/perfect_le.hpp>
@@ -268,4 +268,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_CODE_POINT_DECODER_T_UTF_32_HPP
+#endif // SST_PRIVATE_CODE_POINT_DECODER_T_UTF_32_HPP

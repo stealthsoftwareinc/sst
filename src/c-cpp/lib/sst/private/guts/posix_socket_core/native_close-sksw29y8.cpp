@@ -40,7 +40,7 @@
 
 #include <unistd.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 namespace sst {
 namespace guts {

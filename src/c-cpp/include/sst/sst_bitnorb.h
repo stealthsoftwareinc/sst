@@ -51,4 +51,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitnorb)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITNORB_H
+#endif // SST_SST_BITNORB_H

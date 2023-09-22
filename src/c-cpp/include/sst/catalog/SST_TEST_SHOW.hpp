@@ -34,4 +34,4 @@
 
 #define SST_TEST_SHOW(x) (std::make_pair(std::string(#x), (x)))
 
-#endif // #ifndef SST_CATALOG_SST_TEST_SHOW_HPP
+#endif // SST_CATALOG_SST_TEST_SHOW_HPP

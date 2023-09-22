@@ -38,4 +38,4 @@ struct dependent_true : std::true_type {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_DEPENDENT_TRUE_HPP
+#endif // SST_CATALOG_DEPENDENT_TRUE_HPP

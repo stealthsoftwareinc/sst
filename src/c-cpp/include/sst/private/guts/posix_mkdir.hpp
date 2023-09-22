@@ -47,4 +47,4 @@ SST_DLL_EXPORT void posix_mkdir(char const * path);
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_PRIVATE_GUTS_POSIX_MKDIR_HPP
+#endif // SST_PRIVATE_GUTS_POSIX_MKDIR_HPP

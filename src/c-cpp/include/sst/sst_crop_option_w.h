@@ -187,4 +187,4 @@ wchar_t * sst_crop_option_w(
 
 #endif
 
-#endif // #ifndef SST_SST_CROP_OPTION_W_H
+#endif // SST_SST_CROP_OPTION_W_H

@@ -26,10 +26,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-#ifndef SST_CATALOG_SST_WITH_NLOHMANN_JSON_H
-#define SST_CATALOG_SST_WITH_NLOHMANN_JSON_H
-
 // clang-format off
+
+#ifndef @PACKAGE_UPPER_C_PREFIX@_CATALOG_@PACKAGE_UPPER_C_PREFIX@_WITH_NLOHMANN_JSON_H // no_normalize
+#define @PACKAGE_UPPER_C_PREFIX@_CATALOG_@PACKAGE_UPPER_C_PREFIX@_WITH_NLOHMANN_JSON_H
+
+#include <@PACKAGE_LOWER_C_PREFIX@/catalog/@PACKAGE_UPPER_C_PREFIX@_SUBSET_LIBRARY.h>
 
 //----------------------------------------------------------------------
 // Build system config
@@ -58,9 +60,9 @@
 //----------------------------------------------------------------------
 
 #ifdef @PACKAGE_UPPER_C_PREFIX@_WITH_NLOHMANN_JSON
-  /* User override. */
-#elif (!(/*@SUBSET_LIBRARY@*/+0) && !defined(@PACKAGE_UPPER_C_PREFIX@_PREPROCESSOR_CONFIG)) \
-   || ( (/*@SUBSET_LIBRARY@*/+0) &&  defined(@PACKAGE_UPPER_C_PREFIX@_BUILD_SYSTEM_CONFIG))
+  // User override.
+#elif (!@PACKAGE_UPPER_C_PREFIX@_SUBSET_LIBRARY && !defined(@PACKAGE_UPPER_C_PREFIX@_PREPROCESSOR_CONFIG)) \
+   || ( @PACKAGE_UPPER_C_PREFIX@_SUBSET_LIBRARY &&  defined(@PACKAGE_UPPER_C_PREFIX@_BUILD_SYSTEM_CONFIG))
   #define @PACKAGE_UPPER_C_PREFIX@_WITH_NLOHMANN_JSON @PACKAGE_UPPER_C_PREFIX@_BSC_WITH_NLOHMANN_JSON
 #else
   #define @PACKAGE_UPPER_C_PREFIX@_WITH_NLOHMANN_JSON @PACKAGE_UPPER_C_PREFIX@_PPC_WITH_NLOHMANN_JSON
@@ -68,6 +70,4 @@
 
 //----------------------------------------------------------------------
 
-// clang-format on
-
-#endif // #ifndef SST_CATALOG_SST_WITH_NLOHMANN_JSON_H
+#endif // #ifndef @PACKAGE_UPPER_C_PREFIX@_CATALOG_@PACKAGE_UPPER_C_PREFIX@_WITH_NLOHMANN_JSON_H

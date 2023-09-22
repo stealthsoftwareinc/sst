@@ -108,4 +108,4 @@ sst_status sst_wall_time_null_get(
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_NULL_GET_H
+#endif // SST_SST_WALL_TIME_NULL_GET_H

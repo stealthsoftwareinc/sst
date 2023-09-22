@@ -31,4 +31,4 @@
 
 #include <sst/catalog/checked_class.hpp>
 
-#endif // #ifndef SST_CATALOG_IS_CHECKED_CLASS_HPP
+#endif // SST_CATALOG_IS_CHECKED_CLASS_HPP

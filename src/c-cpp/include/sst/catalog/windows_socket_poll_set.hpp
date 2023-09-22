@@ -47,4 +47,4 @@ using windows_socket_poll_set = sst::guts::generic_socket_poll_set<
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WINDOWS_SOCKET_POLL_SET_HPP
+#endif // SST_CATALOG_WINDOWS_SOCKET_POLL_SET_HPP

@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "MissingListSentinelStatus"
 
-#endif // #ifndef SST_SST_EC_MISSING_LIST_SENTINEL_STATUS_H
+#endif // SST_SST_EC_MISSING_LIST_SENTINEL_STATUS_H

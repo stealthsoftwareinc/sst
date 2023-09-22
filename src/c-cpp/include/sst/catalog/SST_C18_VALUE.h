@@ -33,4 +33,4 @@
 
 #define SST_C18_VALUE (SST_C17_VALUE)
 
-#endif // #ifndef SST_CATALOG_SST_C18_VALUE_H
+#endif // SST_CATALOG_SST_C18_VALUE_H

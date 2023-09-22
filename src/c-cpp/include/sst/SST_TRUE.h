@@ -62,4 +62,4 @@
 
 #define SST_TRUE 1
 
-#endif // #ifndef SST_SST_TRUE_H
+#endif // SST_SST_TRUE_H

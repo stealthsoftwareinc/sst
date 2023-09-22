@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NativeInterfaceException"
 
-#endif // #ifndef SST_SST_EC_NATIVE_INTERFACE_EXCEPTION_H
+#endif // SST_SST_EC_NATIVE_INTERFACE_EXCEPTION_H

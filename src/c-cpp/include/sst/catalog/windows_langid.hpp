@@ -39,4 +39,4 @@ enum class windows_langid : unsigned long {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_WINDOWS_LANGID_HPP
+#endif // SST_CATALOG_WINDOWS_LANGID_HPP

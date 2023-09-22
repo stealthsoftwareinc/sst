@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "ArrayAcquisitionException"
 
-#endif // #ifndef SST_SST_EC_ARRAY_ACQUISITION_EXCEPTION_H
+#endif // SST_SST_EC_ARRAY_ACQUISITION_EXCEPTION_H

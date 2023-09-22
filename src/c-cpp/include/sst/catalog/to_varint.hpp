@@ -148,4 +148,4 @@ Dst to_varint(Src && src) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TO_VARINT_HPP
+#endif // SST_CATALOG_TO_VARINT_HPP

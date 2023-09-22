@@ -31,4 +31,4 @@
 
 #include <sst/config_private_raw.h>
 
-#endif /* #ifndef SST_CONFIG_PRIVATE_H */
+#endif // SST_CONFIG_PRIVATE_H

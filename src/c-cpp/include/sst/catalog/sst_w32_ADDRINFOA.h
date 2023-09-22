@@ -45,4 +45,4 @@ typedef struct addrinfo sst_w32_ADDRINFOA;
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_ADDRINFOA_H
+#endif // SST_CATALOG_SST_W32_ADDRINFOA_H

@@ -61,4 +61,4 @@
 
 #define SST_FAILURE 2UL
 
-#endif // #ifndef SST_SST_FAILURE_H
+#endif // SST_SST_FAILURE_H

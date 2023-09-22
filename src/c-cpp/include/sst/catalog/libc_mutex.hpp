@@ -39,4 +39,4 @@ std::mutex & libc_mutex() noexcept;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_LIBC_MUTEX_HPP
+#endif // SST_CATALOG_LIBC_MUTEX_HPP

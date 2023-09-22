@@ -32,7 +32,7 @@
 #include <cstddef>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/is_negative.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
@@ -156,4 +156,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SPAN_T_HPP
+#endif // SST_CATALOG_SPAN_T_HPP

@@ -152,4 +152,4 @@ sst_bool sst_overlap(
 
 #endif
 
-#endif // #ifndef SST_SST_OVERLAP_H
+#endif // SST_SST_OVERLAP_H

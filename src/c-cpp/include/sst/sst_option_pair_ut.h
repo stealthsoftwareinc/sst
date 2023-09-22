@@ -85,4 +85,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_OPTION_PAIR_UT_H
+#endif // SST_SST_OPTION_PAIR_UT_H

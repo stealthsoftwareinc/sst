@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "OversizeArrayIndexStatus"
 
-#endif // #ifndef SST_SST_EC_OVERSIZE_ARRAY_INDEX_STATUS_H
+#endif // SST_SST_EC_OVERSIZE_ARRAY_INDEX_STATUS_H

@@ -43,7 +43,7 @@
 
 #include <sys/socket.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/errno_exception.hpp>
 #include <sst/catalog/min.hpp>
 #include <sst/catalog/promote_t.hpp>

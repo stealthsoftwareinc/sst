@@ -44,4 +44,4 @@ inline std::tm gmtime() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_GMTIME_HPP
+#endif // SST_CATALOG_GMTIME_HPP

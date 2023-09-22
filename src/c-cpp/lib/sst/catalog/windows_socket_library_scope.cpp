@@ -32,7 +32,7 @@
 #include <sst/catalog/windows_socket_library_scope.hpp>
 //
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/sst_w32_WSADATA_wrapper.h>
 #include <sst/config.h>
 

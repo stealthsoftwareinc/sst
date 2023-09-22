@@ -34,4 +34,4 @@
 #include <sst/catalog/checked_overflow.hpp>
 #include <sst/catalog/checked_t.hpp>
 
-#endif // #ifndef SST_CHECKED_HPP
+#endif // SST_CHECKED_HPP

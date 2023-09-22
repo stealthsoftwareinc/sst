@@ -37,4 +37,4 @@ SST_DEFINE_ALGORITHM(is_negative)
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_IS_NEGATIVE_HPP
+#endif // SST_PRIVATE_IS_NEGATIVE_HPP

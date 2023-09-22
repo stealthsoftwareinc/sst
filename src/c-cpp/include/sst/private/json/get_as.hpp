@@ -40,4 +40,4 @@ SST_DEFINE_ALGORITHM(get_as, (class Dst), (sst::remove_cvref_t<Dst>))
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_AS_HPP
+#endif // SST_PRIVATE_JSON_GET_AS_HPP

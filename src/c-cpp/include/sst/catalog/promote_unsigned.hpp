@@ -101,4 +101,4 @@ SST_F1(SST_zgebdnghvlzhsipa,
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_PROMOTE_UNSIGNED_HPP
+#endif // SST_CATALOG_PROMOTE_UNSIGNED_HPP

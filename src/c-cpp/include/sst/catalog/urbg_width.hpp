@@ -69,4 +69,4 @@ constexpr S urbg_width() noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_URBG_WIDTH_HPP
+#endif // SST_CATALOG_URBG_WIDTH_HPP

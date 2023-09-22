@@ -29,7 +29,6 @@
 #ifndef SST_CATALOG_STEP_HPP
 #define SST_CATALOG_STEP_HPP
 
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_input_iterator.hpp>
 #include <sst/catalog/is_integer_ish.hpp>
@@ -43,7 +42,7 @@ template<class Src,
          class End,
          sst::enable_if_t<sst::is_input_iterator<Src>::value
                           && sst::is_sentinel<End, Src>::value> = 0>
-void step(Src & src, End const &) noexcept(SST_NOEXCEPT(++src)) {
+void step(Src & src, End const &) noexcept(noexcept(++src)) {
   ++src;
 }
 
@@ -52,7 +51,7 @@ template<
     class End,
     sst::enable_if_t<sst::is_input_iterator<Src>::value
                      && sst::is_value_sentinel<End, Src>::value> = 0>
-void step(Src & src, End const &) noexcept(SST_NOEXCEPT(++src)) {
+void step(Src & src, End const &) noexcept(noexcept(++src)) {
   ++src;
 }
 
@@ -63,7 +62,7 @@ template<class Src,
              && (sst::is_sentinel<End, Src>::value
                  || sst::is_value_sentinel<End, Src>::value)> = 0>
 void step(Src & src, End const & end, sst::pos<Src, End> &) noexcept(
-    SST_NOEXCEPT(sst::step(src, end))) {
+    noexcept(sst::step(src, end))) {
   sst::step(src, end);
 }
 
@@ -72,11 +71,11 @@ template<class Src,
          sst::enable_if_t<sst::is_input_iterator<Src>::value
                           && sst::is_integer_ish<End>::value> = 0>
 void step(Src & src, End const &, sst::pos<Src, End> & pos) noexcept(
-    SST_NOEXCEPT(++src, ++pos)) {
+    noexcept((++src, ++pos.value))) {
   ++src;
   ++pos.value;
 }
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_STEP_HPP
+#endif // SST_CATALOG_STEP_HPP

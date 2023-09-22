@@ -109,4 +109,4 @@ SST_F(sst::checked_t<sst::checked_t<int> const volatile &>, sst::checked_t<int>)
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_CHECKED_T_HPP
+#endif // SST_CATALOG_CHECKED_T_HPP

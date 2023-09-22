@@ -43,4 +43,4 @@
   class NAME<T1, T2, sst::enable_if_t<(EXPR)>> : public __VA_ARGS__ {  \
   };
 
-#endif // #ifndef SST_CATALOG_SST_DEFINE_FORWARD_TRAIT_2_HPP
+#endif // SST_CATALOG_SST_DEFINE_FORWARD_TRAIT_2_HPP

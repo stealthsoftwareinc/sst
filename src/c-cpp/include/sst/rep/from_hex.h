@@ -111,4 +111,4 @@ Dst from_hex_exact(
 
 #endif // __cplusplus
 
-#endif // #ifndef SST_REP_FROM_HEX_H
+#endif // SST_REP_FROM_HEX_H

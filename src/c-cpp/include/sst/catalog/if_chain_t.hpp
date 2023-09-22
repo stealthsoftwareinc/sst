@@ -38,4 +38,4 @@ using if_chain_t = typename sst::if_chain<Args...>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IF_CHAIN_T_HPP
+#endif // SST_CATALOG_IF_CHAIN_T_HPP

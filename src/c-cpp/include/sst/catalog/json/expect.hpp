@@ -126,4 +126,4 @@ SST_F(nlohmann::json &&)
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_JSON_EXPECT_HPP
+#endif // SST_CATALOG_JSON_EXPECT_HPP

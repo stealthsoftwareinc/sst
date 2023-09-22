@@ -41,4 +41,4 @@ SST_EXTERN_C SST_DLL_EXPORT sst_bit (sst_bitclr01)(
   void
 );
 
-#endif // #ifndef SST_SST_BITCLR01_H
+#endif // SST_SST_BITCLR01_H

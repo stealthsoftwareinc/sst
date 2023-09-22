@@ -56,4 +56,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_WITH_NETTLE_CRYPT_FUNC_SIZE_T_H
+#endif // SST_SST_WITH_NETTLE_CRYPT_FUNC_SIZE_T_H

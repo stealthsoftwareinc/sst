@@ -40,4 +40,4 @@ using numeric_limits = std::numeric_limits<sst::remove_cvref_t<T>>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_NUMERIC_LIMITS_HPP
+#endif // SST_CATALOG_NUMERIC_LIMITS_HPP

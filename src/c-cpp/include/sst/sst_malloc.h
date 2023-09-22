@@ -103,4 +103,4 @@ void * sst_malloc(
 
 #endif
 
-#endif // #ifndef SST_SST_MALLOC_H
+#endif // SST_SST_MALLOC_H

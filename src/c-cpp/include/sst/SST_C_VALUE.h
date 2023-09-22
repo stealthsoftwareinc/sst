@@ -34,4 +34,4 @@
 #include <sst/catalog/SST_C18_VALUE.h>
 #include <sst/catalog/SST_C99_VALUE.h>
 
-#endif // #ifndef SST_SST_C_VALUE_H
+#endif // SST_SST_C_VALUE_H

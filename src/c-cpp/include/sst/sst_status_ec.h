@@ -113,4 +113,4 @@ char const * sst_status_ec(
 
 #endif
 
-#endif // #ifndef SST_SST_STATUS_EC_H
+#endif // SST_SST_STATUS_EC_H

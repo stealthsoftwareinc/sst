@@ -130,4 +130,4 @@ auto posix_cp(String const & src, Rest const &... rest)
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_CP_HPP
+#endif // SST_CATALOG_POSIX_CP_HPP

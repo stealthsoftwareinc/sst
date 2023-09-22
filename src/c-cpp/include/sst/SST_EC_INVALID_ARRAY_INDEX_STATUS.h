@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidArrayIndexStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_ARRAY_INDEX_STATUS_H
+#endif // SST_SST_EC_INVALID_ARRAY_INDEX_STATUS_H

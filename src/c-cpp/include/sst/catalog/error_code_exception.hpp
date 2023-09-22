@@ -33,7 +33,7 @@
 #include <string>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
@@ -58,7 +58,7 @@ private:
       sst::enable_if_t<std::is_void<CodeToString>::value, Enable> = 0>
   static void add_code_string(std::string & message,
                               code_t const & code) {
-    message += "Unknown error (error code ";
+    message += "Unknown error (errno error code ";
     message += sst::to_string(code);
     message += ")";
   }
@@ -140,4 +140,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ERROR_CODE_EXCEPTION_HPP
+#endif // SST_CATALOG_ERROR_CODE_EXCEPTION_HPP

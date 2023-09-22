@@ -45,4 +45,4 @@ constexpr bool perfect_gt(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PERFECT_GT_HPP
+#endif // SST_CATALOG_PERFECT_GT_HPP

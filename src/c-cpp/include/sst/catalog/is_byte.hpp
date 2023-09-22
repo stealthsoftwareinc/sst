@@ -73,4 +73,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(is_byte,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_BYTE_HPP
+#endif // SST_CATALOG_IS_BYTE_HPP

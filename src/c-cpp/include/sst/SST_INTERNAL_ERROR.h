@@ -61,4 +61,4 @@
 
 #define SST_INTERNAL_ERROR 10UL
 
-#endif // #ifndef SST_SST_INTERNAL_ERROR_H
+#endif // SST_SST_INTERNAL_ERROR_H

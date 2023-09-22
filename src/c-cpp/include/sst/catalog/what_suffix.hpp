@@ -46,4 +46,4 @@ char const * what_suffix(std::exception const & exception,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_WHAT_SUFFIX_HPP
+#endif // SST_CATALOG_WHAT_SUFFIX_HPP

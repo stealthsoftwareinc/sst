@@ -56,4 +56,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_WITH_SST_JLONGPTR_TO_PTR_H
+#endif // SST_SST_WITH_SST_JLONGPTR_TO_PTR_H

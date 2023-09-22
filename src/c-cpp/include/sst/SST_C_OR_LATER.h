@@ -34,4 +34,4 @@
 #include <sst/catalog/SST_C18_OR_LATER.h>
 #include <sst/catalog/SST_C99_OR_LATER.h>
 
-#endif // #ifndef SST_SST_C_OR_LATER_H
+#endif // SST_SST_C_OR_LATER_H

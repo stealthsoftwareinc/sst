@@ -35,7 +35,7 @@
 
 #include <string>
 
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NODISCARD.hpp>
 
 #include <sqlite3.h>
 
@@ -118,4 +118,4 @@ public:
 
 #endif // #if SST_WITH_SQLITE
 
-#endif // #ifndef SST_CATALOG_SQLITE_STATEMENT_HPP
+#endif // SST_CATALOG_SQLITE_STATEMENT_HPP

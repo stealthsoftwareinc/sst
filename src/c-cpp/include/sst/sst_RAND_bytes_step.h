@@ -45,4 +45,4 @@ SST_EXTERN_C SST_DLL_EXPORT int (sst_RAND_bytes_step)(
 
 #endif
 
-#endif // #ifndef SST_SST_RAND_BYTES_STEP_H
+#endif // SST_SST_RAND_BYTES_STEP_H

@@ -99,4 +99,4 @@ SST_F1(SST_swoyexsuwurjbvxn,
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_PROMOTE_HPP
+#endif // SST_CATALOG_PROMOTE_HPP

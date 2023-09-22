@@ -39,4 +39,4 @@ enum class malformed_code_point_action {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MALFORMED_CODE_POINT_ACTION_HPP
+#endif // SST_CATALOG_MALFORMED_CODE_POINT_ACTION_HPP

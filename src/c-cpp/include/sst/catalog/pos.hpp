@@ -64,4 +64,4 @@ struct pos<Src,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_POS_HPP
+#endif // SST_CATALOG_POS_HPP

@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "ParseFailureStatus"
 
-#endif // #ifndef SST_SST_EC_PARSE_FAILURE_STATUS_H
+#endif // SST_SST_EC_PARSE_FAILURE_STATUS_H

@@ -197,4 +197,4 @@ class ascii_lower_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_ASCII_LOWER_FROM_CHAR_INPUT_ITERATOR_HPP
+#endif // SST_PRIVATE_ASCII_LOWER_FROM_CHAR_INPUT_ITERATOR_HPP

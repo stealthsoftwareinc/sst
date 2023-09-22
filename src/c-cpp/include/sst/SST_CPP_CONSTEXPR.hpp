@@ -33,4 +33,4 @@
 #include <sst/catalog/SST_CPP17_CONSTEXPR.hpp>
 #include <sst/catalog/SST_CPP20_CONSTEXPR.hpp>
 
-#endif // #ifndef SST_SST_CPP_CONSTEXPR_HPP
+#endif // SST_SST_CPP_CONSTEXPR_HPP

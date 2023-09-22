@@ -36,7 +36,7 @@
 
 #if SST_WITH_SQLITE
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/sqlite/error_code_exception.hpp>
 

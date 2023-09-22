@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "WildPointerStatus"
 
-#endif // #ifndef SST_SST_EC_WILD_POINTER_STATUS_H
+#endif // SST_SST_EC_WILD_POINTER_STATUS_H

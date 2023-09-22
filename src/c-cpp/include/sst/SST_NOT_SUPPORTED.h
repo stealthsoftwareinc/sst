@@ -62,4 +62,4 @@
 
 #define SST_NOT_SUPPORTED 6UL
 
-#endif // #ifndef SST_SST_NOT_SUPPORTED_H
+#endif // SST_SST_NOT_SUPPORTED_H

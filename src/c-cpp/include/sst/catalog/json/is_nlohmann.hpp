@@ -44,4 +44,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_IS_NLOHMANN_HPP
+#endif // SST_CATALOG_JSON_IS_NLOHMANN_HPP

@@ -60,4 +60,4 @@
 /*--------------------------------------------------------------------*/
 #endif
 
-#endif // #ifndef SST_LANGUAGE_H
+#endif // SST_LANGUAGE_H

@@ -75,4 +75,4 @@
 
 #define SST_STATUS_NAME_MAXSTR "[-------------------SST_STATUS_NAME_MAXSTR--------------------]"
 
-#endif // #ifndef SST_SST_STATUS_NAME_MAXSTR_H
+#endif // SST_SST_STATUS_NAME_MAXSTR_H

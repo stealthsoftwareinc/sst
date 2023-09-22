@@ -33,6 +33,7 @@
 #include <sst/catalog/SST_HAVE_DEV_URANDOM.h>
 #include <sst/catalog/SST_WITH_CYGWIN.h>
 #include <sst/catalog/SST_WITH_DEV_URANDOM.h>
+#include <sst/catalog/SST_WITH_NTL.h>
 #include <sst/catalog/SST_WITH_OPENSSL_CRYPTO.h>
 #include <sst/catalog/SST_WITH_OPENSSL_SSL.h>
 #include <sst/catalog/SST_WITH_POSIX.h>
@@ -69,7 +70,6 @@
 #define SST_WITH_JNI @WITH_JNI@
 #define SST_WITH_MINGW @WITH_MINGW@
 #define SST_WITH_NETTLE @WITH_NETTLE@
-#define SST_WITH_NTL @WITH_NTL@
 #define SST_WITH_X86 @WITH_X86@
 #define SST_WITH_X86_32 @WITH_X86_32@
 #define SST_WITH_X86_64 @WITH_X86_64@
@@ -78,4 +78,4 @@
 
 /*--------------------------------------------------------------------*/
 
-#endif // #ifndef SST_CONFIG_H
+#endif // SST_CONFIG_H

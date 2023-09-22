@@ -56,4 +56,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_WITH_SST_INITCAUSE_H
+#endif // SST_SST_WITH_SST_INITCAUSE_H

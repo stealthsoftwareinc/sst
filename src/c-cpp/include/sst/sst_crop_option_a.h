@@ -186,4 +186,4 @@ char * sst_crop_option_a(
 
 #endif
 
-#endif // #ifndef SST_SST_CROP_OPTION_A_H
+#endif // SST_SST_CROP_OPTION_A_H

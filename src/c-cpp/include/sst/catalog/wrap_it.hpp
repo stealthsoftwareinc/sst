@@ -31,7 +31,7 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_integer.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
@@ -89,4 +89,4 @@ W wrap_it(Iterator i, Count * const n) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_WRAP_IT_HPP
+#endif // SST_CATALOG_WRAP_IT_HPP

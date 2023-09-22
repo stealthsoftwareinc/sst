@@ -38,7 +38,7 @@
 
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_W32_POLLWRNORM.h>
 #include <sst/catalog/sst_w32_WSAPOLLFD.h>
 #include <sst/catalog/sst_w32_WSAPOLLFD_wrap.h>

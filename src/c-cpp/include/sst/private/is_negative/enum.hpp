@@ -81,4 +81,4 @@ SST_STATIC_ASSERT((!sst::is_negative(SST_W34Y4Q3LH4NQ6465_B)));
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_PRIVATE_IS_NEGATIVE_ENUM_HPP
+#endif // SST_PRIVATE_IS_NEGATIVE_ENUM_HPP

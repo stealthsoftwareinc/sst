@@ -46,4 +46,4 @@ using posix_socket_poll_set_iterator =
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_SOCKET_POLL_SET_ITERATOR_HPP
+#endif // SST_CATALOG_POSIX_SOCKET_POLL_SET_ITERATOR_HPP

@@ -29,9 +29,9 @@
 #ifndef SST_CATALOG_TRACK_IT_HPP
 #define SST_CATALOG_TRACK_IT_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
-#include <sst/catalog/is_integer.hpp>
+#include <sst/catalog/is_integer_ish.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
 #include <sst/private/guts/it_t.hpp>
 
@@ -44,7 +44,7 @@ namespace sst {
 
 template<class Count = int,
          class Iterator,
-         sst::enable_if_t<sst::is_integer<Count>::value> = 0,
+         sst::enable_if_t<sst::is_integer_ish<Count>::value> = 0,
          class W = guts::it_t<Iterator, sst::remove_cvref_t<Count>>>
 W track_it(Iterator & i) {
   using Tag = typename W::track_it_tag;
@@ -60,9 +60,9 @@ W track_it(Iterator & i) {
 
 template<class Count,
          class Iterator,
-         sst::enable_if_t<sst::is_integer<Count>::value> = 0,
+         sst::enable_if_t<sst::is_integer_ish<Count>::value> = 0,
          class W = guts::it_t<Iterator, sst::remove_cvref_t<Count>>>
-W track_it(Iterator & i, Count const n) {
+W track_it(Iterator & i, Count const & n) {
   using Tag = typename W::track_it_tag;
   return W(Tag(), i, n);
 }
@@ -76,7 +76,7 @@ W track_it(Iterator & i, Count const n) {
 
 template<class Count,
          class Iterator,
-         sst::enable_if_t<sst::is_integer<Count>::value> = 0,
+         sst::enable_if_t<sst::is_integer_ish<Count>::value> = 0,
          class W = guts::it_t<Iterator, sst::remove_cvref_t<Count>>>
 W track_it(Iterator & i, Count * const n) {
   SST_ASSERT((n != nullptr));
@@ -88,4 +88,4 @@ W track_it(Iterator & i, Count * const n) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TRACK_IT_HPP
+#endif // SST_CATALOG_TRACK_IT_HPP

@@ -42,6 +42,7 @@
 #include <sst/catalog/SST_TEST_SHOW.hpp>
 #include <sst/catalog/char_bit_v.hpp>
 #include <sst/catalog/test_main.hpp>
+#include <sst/catalog/to_hex_options.hpp>
 
 int main() {
   return sst::test_main([]() {
@@ -81,6 +82,24 @@ int main() {
                      dst = sst::to_hex(src),
                      dst == ""),
                     SST_TEST_SHOW((dst)));
+    }
+
+    if (sst::char_bit_v == 8) {
+      std::string dst;
+      SST_TEST_BOOL(
+          (dst = sst::to_hex("hello",
+                             sst::to_hex_options().base(64).pad(true)),
+           dst == "aGVsbG8="),
+          SST_TEST_SHOW((dst)));
+    }
+
+    if (sst::char_bit_v == 8) {
+      std::string dst;
+      SST_TEST_BOOL(
+          (dst = sst::to_hex(std::vector<unsigned char>{0, 0, 0},
+                             sst::to_hex_options().base(64).pad(true)),
+           dst == "AAAA"),
+          SST_TEST_SHOW((dst)));
     }
 
     //------------------------------------------------------------------

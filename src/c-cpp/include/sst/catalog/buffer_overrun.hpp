@@ -42,4 +42,4 @@ struct buffer_overrun : std::runtime_error {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BUFFER_OVERRUN_HPP
+#endif // SST_CATALOG_BUFFER_OVERRUN_HPP

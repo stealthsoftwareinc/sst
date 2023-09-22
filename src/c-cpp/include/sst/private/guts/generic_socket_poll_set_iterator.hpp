@@ -34,7 +34,7 @@
 #include <utility>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 namespace sst {
 namespace guts {
@@ -290,4 +290,4 @@ private:
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ITERATOR_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ITERATOR_HPP

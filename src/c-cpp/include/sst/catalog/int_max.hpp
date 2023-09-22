@@ -37,4 +37,4 @@ using int_max = sst::type_max<int>;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INT_MAX_HPP
+#endif // SST_CATALOG_INT_MAX_HPP

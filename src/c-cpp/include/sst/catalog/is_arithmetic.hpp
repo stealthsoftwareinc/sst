@@ -42,4 +42,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(is_arithmetic,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_ARITHMETIC_HPP
+#endif // SST_CATALOG_IS_ARITHMETIC_HPP

@@ -131,4 +131,4 @@ class to_hex_functor<sst::enable_if_t<sst::is_byte<Src>::value>, X, Src>
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_HEX_FROM_BYTE_HPP
+#endif // SST_PRIVATE_TO_HEX_FROM_BYTE_HPP

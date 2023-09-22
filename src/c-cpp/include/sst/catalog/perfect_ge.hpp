@@ -45,4 +45,4 @@ constexpr bool perfect_ge(A const & a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PERFECT_GE_HPP
+#endif // SST_CATALOG_PERFECT_GE_HPP

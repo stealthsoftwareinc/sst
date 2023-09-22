@@ -50,4 +50,4 @@ SST_DLL_EXPORT std::vector<bignum_ptr_t> & bignum_pool();
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_PRIVATE_GUTS_BIGNUM_BIGNUM_POOL_HPP
+#endif // SST_PRIVATE_GUTS_BIGNUM_BIGNUM_POOL_HPP

@@ -38,4 +38,4 @@ SST_CPP17_INLINE constexpr indeterminate_t indeterminate;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_INDETERMINATE_HPP
+#endif // SST_CATALOG_INDETERMINATE_HPP

@@ -85,4 +85,4 @@
 
 #endif
 
-#endif // #ifndef SST_SST_PULL_OPTION_H
+#endif // SST_SST_PULL_OPTION_H

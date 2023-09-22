@@ -35,7 +35,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/json/exception.hpp>
 #include <sst/catalog/json/is_nlohmann.hpp>
@@ -91,4 +91,4 @@ public:
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_FROM_FILE_NLOHMANN_CHAR_HPP
+#endif // SST_PRIVATE_JSON_GET_FROM_FILE_NLOHMANN_CHAR_HPP

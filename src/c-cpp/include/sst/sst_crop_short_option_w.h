@@ -149,4 +149,4 @@ wchar_t * sst_crop_short_option_w(
 
 #endif
 
-#endif // #ifndef SST_SST_CROP_SHORT_OPTION_W_H
+#endif // SST_SST_CROP_SHORT_OPTION_W_H

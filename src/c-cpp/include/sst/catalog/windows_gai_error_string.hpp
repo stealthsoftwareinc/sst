@@ -47,4 +47,4 @@ std::string windows_gai_error_string(sst_w32_INT code);
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WINDOWS_GAI_ERROR_STRING_HPP
+#endif // SST_CATALOG_WINDOWS_GAI_ERROR_STRING_HPP

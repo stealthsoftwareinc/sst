@@ -45,4 +45,4 @@ constexpr bool is_zero(X const x) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_ZERO_HPP
+#endif // SST_CATALOG_IS_ZERO_HPP

@@ -38,4 +38,4 @@ using promote_t = typename sst::promote<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PROMOTE_T_HPP
+#endif // SST_CATALOG_PROMOTE_T_HPP

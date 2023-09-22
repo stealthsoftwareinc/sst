@@ -61,4 +61,4 @@ using socket_poll_set_entry = sst::windows_socket_poll_set_entry;
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_SOCKET_POLL_SET_ENTRY_HPP
+#endif // SST_CATALOG_SOCKET_POLL_SET_ENTRY_HPP

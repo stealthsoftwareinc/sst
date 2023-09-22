@@ -41,4 +41,4 @@ using is_same_mod_cvref =
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_SAME_MOD_CVREF_HPP
+#endif // SST_CATALOG_IS_SAME_MOD_CVREF_HPP

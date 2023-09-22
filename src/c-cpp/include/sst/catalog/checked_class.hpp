@@ -35,10 +35,9 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_CPP14_CONSTEXPR.hpp>
 #include <sst/catalog/SST_DEBUG.h>
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
 #include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/can_represent_all.hpp>
@@ -293,24 +292,23 @@ public:
   //--------------------------------------------------------------------
 
   constexpr checked_class()
-      SST_DEFAULT_NOEXCEPT(noexcept(value_type())) = default;
+      SST_NOEXCEPT(noexcept(value_type())) = default;
 
-  constexpr checked_class(checked_class const &)
-      SST_DEFAULT_NOEXCEPT(noexcept(
-          value_type(std::declval<value_type const &>()))) = default;
+  constexpr checked_class(checked_class const &) SST_NOEXCEPT(noexcept(
+      value_type(std::declval<value_type const &>()))) = default;
 
   SST_CPP14_CONSTEXPR checked_class & operator=(checked_class const &)
-      SST_DEFAULT_NOEXCEPT(
-          noexcept(std::declval<value_type &>() =
-                       std::declval<value_type const &>())) = default;
+      SST_NOEXCEPT(noexcept(std::declval<value_type &>() =
+                                std::declval<value_type const &>())) =
+          default;
 
-  constexpr checked_class(checked_class &&) SST_DEFAULT_NOEXCEPT(
+  constexpr checked_class(checked_class &&) SST_NOEXCEPT(
       noexcept(value_type(std::declval<value_type &&>()))) = default;
 
   SST_CPP14_CONSTEXPR checked_class & operator=(checked_class &&)
-      SST_DEFAULT_NOEXCEPT(
-          noexcept(std::declval<value_type &>() =
-                       std::declval<value_type &&>())) = default;
+      SST_NOEXCEPT(noexcept(std::declval<value_type &>() =
+                                std::declval<value_type &&>())) =
+          default;
 
   ~checked_class() noexcept = default;
 
@@ -333,9 +331,8 @@ private:
   template<class R = value_type,
            class A,
            sst::enable_if_t<sst::can_represent_all<R, A>::value> = 0>
-  constexpr checked_class(
-      converting_constructor_tag,
-      A const & a) noexcept(SST_NOEXCEPT(R(static_cast<R>(a))))
+  constexpr checked_class(converting_constructor_tag, A const & a)
+      SST_NOEXCEPT(noexcept(R(static_cast<R>(a))))
       : value_(static_cast<R>(a)) {
   }
 
@@ -353,16 +350,18 @@ public:
 
   template<class A,
            sst::enable_if_t<sst::is_checked_class<A>::value> = 0>
-  constexpr checked_class(A const & a) noexcept(SST_NOEXCEPT(
-      checked_class(converting_constructor_tag{}, a.value())))
+  constexpr checked_class(A const & a)
+      SST_NOEXCEPT(noexcept(checked_class(converting_constructor_tag{},
+                                          a.value())))
       : checked_class(converting_constructor_tag{}, a.value()) {
   }
 
   template<class A,
            sst::enable_if_t<!sst::is_checked_class<A>::value
                             && sst::is_integer_ish<A>::value> = 0>
-  constexpr checked_class(A const & a) noexcept(
-      SST_NOEXCEPT(checked_class(converting_constructor_tag{}, a)))
+  constexpr checked_class(A const & a)
+      SST_NOEXCEPT(noexcept(checked_class(converting_constructor_tag{},
+                                          a)))
       : checked_class(converting_constructor_tag{}, a) {
   }
 
@@ -373,7 +372,7 @@ public:
   template<class R,
            sst::enable_if_t<sst::is_checked_class<R>::value> = 0>
   explicit constexpr operator R() const
-      noexcept(SST_NOEXCEPT(R(value_type()))) {
+      SST_NOEXCEPT(noexcept(R(value_type()))) {
     return R(value());
   }
 
@@ -381,7 +380,7 @@ public:
            sst::enable_if_t<!sst::is_checked_class<R>::value
                             && sst::is_integer_ish<R>::value> = 0>
   explicit constexpr operator R() const
-      noexcept(SST_NOEXCEPT(checked_class<R>(value_type()).value())) {
+      SST_NOEXCEPT(noexcept(checked_class<R>(value_type()).value())) {
     return checked_class<R>(value()).value();
   }
 
@@ -492,8 +491,8 @@ private:
            class,
            class R,
            sst::enable_if_t<!std::numeric_limits<R>::is_bounded> = 0>
-  static constexpr R mul(R const & a,
-                         R const & b) noexcept(SST_NOEXCEPT(a * b)) {
+  static constexpr R mul(R const & a, R const & b)
+      SST_NOEXCEPT(noexcept(a * b)) {
     return a * b;
   }
 
@@ -523,8 +522,8 @@ private:
            class B,
            class R,
            sst::enable_if_t<!std::numeric_limits<R>::is_bounded> = 0>
-  static constexpr R div(R const & a,
-                         R const & b) noexcept(SST_NOEXCEPT(a / b)) {
+  static constexpr R div(R const & a, R const & b)
+      SST_NOEXCEPT(noexcept(a / b)) {
     return
 #if SST_DEBUG
         b == static_cast<R>(0) ? SST_CHECKED_BARF(
@@ -557,8 +556,8 @@ private:
            class B,
            class R,
            sst::enable_if_t<!std::numeric_limits<R>::is_bounded> = 0>
-  static constexpr R mod(R const & a,
-                         R const & b) noexcept(SST_NOEXCEPT(a % b)) {
+  static constexpr R mod(R const & a, R const & b)
+      SST_NOEXCEPT(noexcept(a % b)) {
     return
 #if SST_DEBUG
         b == static_cast<R>(0) ? SST_CHECKED_BARF(
@@ -591,8 +590,8 @@ private:
            class,
            class R,
            sst::enable_if_t<!std::numeric_limits<R>::is_bounded> = 0>
-  static constexpr R add(R const & a,
-                         R const & b) noexcept(SST_NOEXCEPT(a + b)) {
+  static constexpr R add(R const & a, R const & b)
+      SST_NOEXCEPT(noexcept(a + b)) {
     return a + b;
   }
 
@@ -626,8 +625,8 @@ private:
            class,
            class R,
            sst::enable_if_t<!std::numeric_limits<R>::is_bounded> = 0>
-  static constexpr R sub(R const & a,
-                         R const & b) noexcept(SST_NOEXCEPT(a - b)) {
+  static constexpr R sub(R const & a, R const & b)
+      SST_NOEXCEPT(noexcept(a - b)) {
     return a - b;
   }
 
@@ -644,7 +643,7 @@ public:
            class R = decltype(AV() OP BV())>                           \
   friend constexpr checked_class<R> operator OP(                       \
       checked_class const & a,                                         \
-      checked_class<B> const & b) noexcept(SST_NOEXCEPT(SST_r(FN))) {  \
+      checked_class<B> const & b) SST_NOEXCEPT(noexcept(SST_r(FN))) {  \
     return SST_r(FN);                                                  \
   }
 
@@ -836,36 +835,37 @@ public:
   template<class B,                                                    \
            sst::enable_if_t<sst::is_integer_ish<B>::value              \
                             && !sst::is_checked_class<B>::value> = 0>  \
-  friend constexpr auto operator op(                                   \
-      checked_class const & a,                                         \
-      B const & b) noexcept(SST_NOEXCEPT(a op checked_class<B>(b)))    \
-      ->decltype(a op checked_class<B>(b)) {                           \
+  friend constexpr auto operator op(checked_class const & a,           \
+                                    B const & b)                       \
+      SST_NOEXCEPT(noexcept(a op checked_class<B>(b)))                 \
+          ->decltype(a op checked_class<B>(b)) {                       \
     return a op checked_class<B>(b);                                   \
   }                                                                    \
                                                                        \
   template<class A,                                                    \
            sst::enable_if_t<sst::is_integer_ish<A>::value              \
                             && !sst::is_checked_class<A>::value> = 0>  \
-  friend constexpr auto                                                \
-  operator op(A const & a, checked_class const & b) noexcept(          \
-      SST_NOEXCEPT(checked_class<A>(a) op b))                          \
-      ->decltype(checked_class<A>(a) op b) {                           \
+  friend constexpr auto operator op(A const & a,                       \
+                                    checked_class const & b)           \
+      SST_NOEXCEPT(noexcept(checked_class<A>(a) op b))                 \
+          ->decltype(checked_class<A>(a) op b) {                       \
     return checked_class<A>(a) op b;                                   \
   }                                                                    \
                                                                        \
   template<class B>                                                    \
-  SST_CPP14_CONSTEXPR checked_class &                                  \
-  operator op##=(checked_class<B> const & b) noexcept(SST_NOEXCEPT(    \
-      std::declval<checked_class &>() = checked_class() op b)) {       \
+  SST_CPP14_CONSTEXPR checked_class & operator op##=(                  \
+      checked_class<B> const & b)                                      \
+      SST_NOEXCEPT(noexcept(std::declval<checked_class &>() =          \
+                                checked_class() op b)) {               \
     return *this = *this op b;                                         \
   }                                                                    \
                                                                        \
   template<class B,                                                    \
            sst::enable_if_t<sst::is_integer_ish<B>::value              \
                             && !sst::is_checked_class<B>::value> = 0>  \
-  SST_CPP14_CONSTEXPR checked_class &                                  \
-  operator op##=(B const & b) noexcept(SST_NOEXCEPT(                   \
-      std::declval<checked_class &>() op## = checked_class<B>(b))) {   \
+  SST_CPP14_CONSTEXPR checked_class & operator op##=(B const & b)      \
+      SST_NOEXCEPT(noexcept(std::declval<checked_class &>() op## =     \
+                                checked_class<B>(b))) {                \
     return *this op## = checked_class<B>(b);                           \
   }
 
@@ -893,8 +893,9 @@ public:
            class R =                                                   \
                decltype(value_type() +                                 \
                         typename checked_class<B>::value_type())>      \
-  constexpr bool operator op(checked_class<B> const b) const noexcept( \
-      SST_NOEXCEPT(checked_class<R>(value_type())                      \
+  constexpr bool operator op(checked_class<B> const b)                 \
+      const SST_NOEXCEPT(                                              \
+          noexcept(checked_class<R>(value_type())                      \
                        .value() op checked_class<R>(b.value())         \
                        .value())) {                                    \
     return checked_class<R>(value())                                   \
@@ -905,16 +906,14 @@ public:
   template<class A = T,                                                \
            class B,                                                    \
            sst::enable_if_t<sst::is_integer<B>::value> = 0>            \
-  constexpr bool operator op(B const b) const noexcept(                \
-      SST_NOEXCEPT(checked_class<A>() op checked_class<B>(b))) {       \
+  constexpr bool operator op(B const b) const SST_NOEXCEPT(            \
+      noexcept(checked_class<A>() op checked_class<B>(b))) {           \
     return *this op checked_class<B>(b);                               \
   }                                                                    \
                                                                        \
   template<class A, sst::enable_if_t<sst::is_integer<A>::value> = 0>   \
-  friend constexpr bool operator op(                                   \
-      A const a,                                                       \
-      checked_class const b) noexcept(SST_NOEXCEPT(checked_class<A>(a) \
-                                                       op b)) {        \
+  friend constexpr bool operator op(A const a, checked_class const b)  \
+      SST_NOEXCEPT(noexcept(checked_class<A>(a) op b)) {               \
     return checked_class<A>(a) op b;                                   \
   }
 
@@ -1132,4 +1131,4 @@ SST_STATIC_ASSERT(sst::is_integer_like<sst::checked_class<int>>::value);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_CHECKED_CLASS_HPP
+#endif // SST_CATALOG_CHECKED_CLASS_HPP

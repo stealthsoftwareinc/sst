@@ -32,8 +32,10 @@
 #include <exception>
 #include <fstream>
 #include <string>
+#include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/if_chain_t.hpp>
 #include <sst/catalog/json/exception.hpp>
 #include <sst/catalog/json/get_to.hpp>
 
@@ -79,7 +81,10 @@ T & helper(Src const & src, T & dst) {
 
 //----------------------------------------------------------------------
 
-template<class T, class Json = T, class CharT = char>
+template<class Json_ = void,
+         class T,
+         class Json = sst::if_chain_t<std::is_void<Json_>, T, Json_>,
+         class CharT = char>
 T & set_from_file(std::string const & src, T & dst) {
   return sst::json::guts::set_from_file::helper<T, Json, CharT>(src,
                                                                 dst);
@@ -87,7 +92,10 @@ T & set_from_file(std::string const & src, T & dst) {
 
 //----------------------------------------------------------------------
 
-template<class T, class Json = T, class CharT = char>
+template<class Json_ = void,
+         class T,
+         class Json = sst::if_chain_t<std::is_void<Json_>, T, Json_>,
+         class CharT = char>
 T & set_from_file(char const * const src, T & dst) {
   SST_ASSERT((src != nullptr));
   return sst::json::guts::set_from_file::helper<T, Json, CharT>(src,
@@ -99,4 +107,4 @@ T & set_from_file(char const * const src, T & dst) {
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_SET_FROM_FILE_HPP
+#endif // SST_CATALOG_JSON_SET_FROM_FILE_HPP

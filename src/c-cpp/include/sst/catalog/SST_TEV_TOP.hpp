@@ -35,4 +35,4 @@
   SST_TEV_ADD(tev);                                                    \
   try {
 
-#endif // #ifndef SST_CATALOG_SST_TEV_TOP_HPP
+#endif // SST_CATALOG_SST_TEV_TOP_HPP

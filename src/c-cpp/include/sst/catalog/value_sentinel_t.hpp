@@ -29,8 +29,7 @@
 #ifndef SST_CATALOG_VALUE_SENTINEL_T_HPP
 #define SST_CATALOG_VALUE_SENTINEL_T_HPP
 
-#include <sst/catalog/SST_NODISCARD.h>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 
 namespace sst {
 
@@ -47,28 +46,28 @@ struct value_sentinel_t;
     SST_NODISCARD()                                                    \
     constexpr friend bool                                              \
     operator==(value_sentinel_t const & a,                             \
-               Value const & b) noexcept(SST_NOEXCEPT(a.value == b)) { \
+               Value const & b) noexcept(noexcept(a.value == b)) {     \
       return a.value == b;                                             \
     }                                                                  \
                                                                        \
     SST_NODISCARD()                                                    \
     constexpr friend bool operator==(                                  \
         Value const & a,                                               \
-        value_sentinel_t const & b) noexcept(SST_NOEXCEPT(b == a)) {   \
+        value_sentinel_t const & b) noexcept(noexcept(b == a)) {       \
       return b == a;                                                   \
     }                                                                  \
                                                                        \
     SST_NODISCARD()                                                    \
     constexpr friend bool                                              \
     operator!=(value_sentinel_t const & a,                             \
-               Value const & b) noexcept(SST_NOEXCEPT(!(a == b))) {    \
+               Value const & b) noexcept(noexcept(!(a == b))) {        \
       return !(a == b);                                                \
     }                                                                  \
                                                                        \
     SST_NODISCARD()                                                    \
-    constexpr friend bool                                              \
-    operator!=(Value const & a, value_sentinel_t const & b) noexcept(  \
-        SST_NOEXCEPT(!(b == a))) {                                     \
+    constexpr friend bool operator!=(                                  \
+        Value const & a,                                               \
+        value_sentinel_t const & b) noexcept(noexcept(!(b == a))) {    \
       return !(b == a);                                                \
     }                                                                  \
                                                                        \
@@ -81,4 +80,4 @@ SST_F(Value const &)
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_VALUE_SENTINEL_T_HPP
+#endif // SST_CATALOG_VALUE_SENTINEL_T_HPP

@@ -91,7 +91,7 @@ int main() {
       F(struct_foo, false);
     }
 
-    F(decltype(main), false);
+    F2(decltype(main), false);
 
 #undef F
 #undef F2

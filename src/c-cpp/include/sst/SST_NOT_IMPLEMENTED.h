@@ -61,4 +61,4 @@
 
 #define SST_NOT_IMPLEMENTED 5UL
 
-#endif // #ifndef SST_SST_NOT_IMPLEMENTED_H
+#endif // SST_SST_NOT_IMPLEMENTED_H

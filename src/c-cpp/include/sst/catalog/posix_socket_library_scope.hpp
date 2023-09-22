@@ -43,4 +43,4 @@ using posix_socket_library_scope = sst::monostate;
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_SOCKET_LIBRARY_SCOPE_HPP
+#endif // SST_CATALOG_POSIX_SOCKET_LIBRARY_SCOPE_HPP

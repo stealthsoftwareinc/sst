@@ -50,4 +50,4 @@ sst_w32_ntohs(sst_w32_u_short netshort);
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_NTOHS_H
+#endif // SST_CATALOG_SST_W32_NTOHS_H

@@ -44,4 +44,4 @@
 
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_GCC_EQ_H
+#endif // SST_CATALOG_SST_GCC_EQ_H

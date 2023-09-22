@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "IntegerOverflowStatus"
 
-#endif // #ifndef SST_SST_EC_INTEGER_OVERFLOW_STATUS_H
+#endif // SST_SST_EC_INTEGER_OVERFLOW_STATUS_H

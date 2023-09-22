@@ -38,4 +38,4 @@ constexpr T const & min(T const & a, T const & b) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MIN_HPP
+#endif // SST_CATALOG_MIN_HPP

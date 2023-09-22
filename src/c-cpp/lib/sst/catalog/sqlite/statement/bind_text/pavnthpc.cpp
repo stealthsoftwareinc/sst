@@ -38,7 +38,7 @@
 
 #include <string>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/sqlite/error_code_exception.hpp>
 #include <sst/catalog/type_max.hpp>
 

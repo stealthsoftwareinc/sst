@@ -56,4 +56,4 @@ constexpr T && forward(sst::remove_reference_t<T> && t) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_FORWARD_HPP
+#endif // SST_CATALOG_FORWARD_HPP

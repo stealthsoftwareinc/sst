@@ -42,7 +42,7 @@
 
 #include <poll.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/errno_exception.hpp>
 #include <sst/catalog/posix_socket.hpp>

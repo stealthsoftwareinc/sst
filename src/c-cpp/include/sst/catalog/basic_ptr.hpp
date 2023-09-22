@@ -35,7 +35,7 @@
 #include <new>
 #include <type_traits>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/conditional_t.hpp>
 #include <sst/catalog/enable_if_t.hpp>
@@ -325,4 +325,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BASIC_PTR_HPP
+#endif // SST_CATALOG_BASIC_PTR_HPP

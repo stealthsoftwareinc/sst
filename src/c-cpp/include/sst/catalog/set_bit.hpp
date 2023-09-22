@@ -118,4 +118,4 @@ void * set_bit(void * const x, R const r, bool const b) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SET_BIT_HPP
+#endif // SST_CATALOG_SET_BIT_HPP

@@ -38,4 +38,4 @@ typedef jlongArray sst_jlongptrArray;
 
 #endif
 
-#endif // #ifndef SST_SST_JLONGPTRARRAY_H
+#endif // SST_SST_JLONGPTRARRAY_H

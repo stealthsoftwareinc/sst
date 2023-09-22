@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidOptionNameStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_OPTION_NAME_STATUS_H
+#endif // SST_SST_EC_INVALID_OPTION_NAME_STATUS_H

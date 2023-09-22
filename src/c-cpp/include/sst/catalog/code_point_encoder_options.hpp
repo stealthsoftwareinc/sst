@@ -68,4 +68,4 @@ using code_point_encoder_options =
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CODE_POINT_ENCODER_OPTIONS_HPP
+#endif // SST_CATALOG_CODE_POINT_ENCODER_OPTIONS_HPP

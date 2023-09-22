@@ -42,4 +42,4 @@ struct enable_if<true, T> : sst::type_identity<T> {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ENABLE_IF_HPP
+#endif // SST_CATALOG_ENABLE_IF_HPP

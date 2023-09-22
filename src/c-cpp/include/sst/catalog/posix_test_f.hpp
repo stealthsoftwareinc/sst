@@ -36,22 +36,38 @@
 #include <type_traits>
 #include <utility>
 
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/c_str.hpp>
 #include <sst/catalog/enable_if_t.hpp>
-#include <sst/private/guts/posix_test_f.hpp>
+#include <sst/catalog/posix_path.hpp>
+#include <sst/catalog/remove_cvref_t.hpp>
 
 namespace sst {
 
-template<class T,
-         sst::enable_if_t<std::is_convertible<
-             decltype(sst::c_str(std::declval<T const &>())),
-             char const *>::value> = 0>
-bool posix_test_f(T const & path, bool const follow_links = true) {
-  return guts::posix_test_f(sst::c_str(path), follow_links);
+template<class Path,
+         class P = decltype(sst::c_str(std::declval<Path &&>())),
+         sst::enable_if_t<
+             !std::is_same<sst::remove_cvref_t<Path &&>,
+                           sst::posix_path>::value
+             && std::is_convertible<P, char const *>::value> = 0>
+SST_NODISCARD()
+bool posix_test_f(Path && path, bool const follow_links = true) {
+  char const * const p = sst::c_str(std::forward<Path>(path));
+  SST_ASSERT((p != nullptr));
+  return sst::posix_path::wrap(p, follow_links).test_f();
+}
+
+SST_NODISCARD()
+inline bool posix_test_f(sst::posix_path const & path,
+                         bool const follow_links = true) {
+  return follow_links == path.follow_links() ?
+             path.test_f() :
+             sst::posix_test_f(path.c_str(), follow_links);
 }
 
 } // namespace sst
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_TEST_F_HPP
+#endif // SST_CATALOG_POSIX_TEST_F_HPP

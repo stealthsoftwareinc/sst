@@ -41,7 +41,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/c_quote.hpp>
 #include <sst/catalog/errno_exception.hpp>
 

@@ -42,4 +42,4 @@ SST_EXTERN_C SST_DLL_EXPORT struct bignum_st const sst_bignum_zero_data;
 
 #endif /* #if SST_WITH_OPENSSL_CRYPTO */
 
-#endif // #ifndef SST_PRIVATE_SST_BIGNUM_ZERO_DATA_H
+#endif // SST_PRIVATE_SST_BIGNUM_ZERO_DATA_H

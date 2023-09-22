@@ -130,4 +130,4 @@ SST_F(wchar_t);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_TYPE_MAX_HPP
+#endif // SST_CATALOG_TYPE_MAX_HPP

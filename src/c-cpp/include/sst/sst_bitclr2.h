@@ -51,4 +51,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitclr2)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITCLR2_H
+#endif // SST_SST_BITCLR2_H

@@ -97,4 +97,4 @@ extern template class addrinfo_common<guts::windows_sockaddr>;
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_PRIVATE_GUTS_WINDOWS_ADDRINFO_HPP
+#endif // SST_PRIVATE_GUTS_WINDOWS_ADDRINFO_HPP

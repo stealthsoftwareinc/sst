@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NullPointerStatus"
 
-#endif // #ifndef SST_SST_EC_NULL_POINTER_STATUS_H
+#endif // SST_SST_EC_NULL_POINTER_STATUS_H

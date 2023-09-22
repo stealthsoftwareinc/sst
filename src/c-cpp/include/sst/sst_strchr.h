@@ -152,4 +152,4 @@ char * sst_strchr(
 
 #endif
 
-#endif // #ifndef SST_SST_STRCHR_H
+#endif // SST_SST_STRCHR_H

@@ -37,4 +37,4 @@ std::time_t time();
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_TIME_HPP
+#endif // SST_CATALOG_TIME_HPP

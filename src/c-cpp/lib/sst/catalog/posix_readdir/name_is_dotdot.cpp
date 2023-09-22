@@ -36,7 +36,7 @@
 
 #if SST_WITH_POSIX
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 namespace sst {
 

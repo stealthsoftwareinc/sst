@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NotImplementedStatus"
 
-#endif // #ifndef SST_SST_EC_NOT_IMPLEMENTED_STATUS_H
+#endif // SST_SST_EC_NOT_IMPLEMENTED_STATUS_H

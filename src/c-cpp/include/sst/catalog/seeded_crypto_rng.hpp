@@ -67,4 +67,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SEEDED_CRYPTO_RNG_HPP
+#endif // SST_CATALOG_SEEDED_CRYPTO_RNG_HPP

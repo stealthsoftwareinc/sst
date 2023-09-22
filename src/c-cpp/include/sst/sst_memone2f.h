@@ -47,4 +47,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_memone2f)(
   size_t
 );
 
-#endif // #ifndef SST_SST_MEMONE2F_H
+#endif // SST_SST_MEMONE2F_H

@@ -95,4 +95,4 @@ inline const Value* FindOrNull(const Key& key, const std::map<Key, const Value>&
 }  // namespace map_utils
 
 #endif /* ifndef SST_MAP_UTILS_H */
-#endif // #ifndef SST_MAP_UTILS_MAP_UTILS_H
+#endif // SST_MAP_UTILS_MAP_UTILS_H

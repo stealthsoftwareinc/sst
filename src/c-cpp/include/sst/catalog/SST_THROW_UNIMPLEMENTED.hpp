@@ -33,8 +33,12 @@
 
 #include <sst/catalog/to_string.hpp>
 
+// TODO: We should replace this with just SST_UNIMPLEMENTED() that
+//       constructs the exception object. Then it can be composed with
+//       things like SST_TEV_THROW(tev, SST_UNIMPLEMENTED()).
+
 #define SST_THROW_UNIMPLEMENTED()                                      \
   (throw std::runtime_error("Unimplemented code at " __FILE__ ":"      \
                             + sst::to_string(__LINE__) + "."))
 
-#endif // #ifndef SST_CATALOG_SST_THROW_UNIMPLEMENTED_HPP
+#endif // SST_CATALOG_SST_THROW_UNIMPLEMENTED_HPP

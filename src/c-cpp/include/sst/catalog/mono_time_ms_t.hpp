@@ -37,4 +37,4 @@ using mono_time_ms_t = std::chrono::milliseconds::rep;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MONO_TIME_MS_T_HPP
+#endif // SST_CATALOG_MONO_TIME_MS_T_HPP

@@ -66,4 +66,4 @@ iv_size(sst::openssl::evp_cipher_type const type) noexcept {
 
 #endif // #if SST_WITH_OPENSSL_CRYPTO
 
-#endif // #ifndef SST_CATALOG_OPENSSL_IV_SIZE_HPP
+#endif // SST_CATALOG_OPENSSL_IV_SIZE_HPP

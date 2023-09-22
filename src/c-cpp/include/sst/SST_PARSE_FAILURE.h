@@ -61,4 +61,4 @@
 
 #define SST_PARSE_FAILURE 33UL
 
-#endif // #ifndef SST_SST_PARSE_FAILURE_H
+#endif // SST_SST_PARSE_FAILURE_H

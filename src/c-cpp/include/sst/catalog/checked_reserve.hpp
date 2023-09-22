@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_CHECKED_RESERVE_HPP
 #define SST_CATALOG_CHECKED_RESERVE_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_integer.hpp>
@@ -48,4 +48,4 @@ void checked_reserve(Container & container, Size const size) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHECKED_RESERVE_HPP
+#endif // SST_CATALOG_CHECKED_RESERVE_HPP

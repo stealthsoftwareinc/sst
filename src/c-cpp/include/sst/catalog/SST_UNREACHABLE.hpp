@@ -37,7 +37,7 @@
 
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 #define SST_UNREACHABLE()                                              \
   (SST_ASSERT(false, "Unreachable code reached"), ::std::unreachable())
@@ -48,7 +48,7 @@
 
 #include <cstdlib>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 #define SST_UNREACHABLE()                                              \
   (SST_ASSERT(false, "Unreachable code reached"), ::std::abort())
@@ -56,4 +56,4 @@
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_SST_UNREACHABLE_HPP
+#endif // SST_CATALOG_SST_UNREACHABLE_HPP

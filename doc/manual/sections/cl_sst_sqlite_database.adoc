@@ -71,11 +71,13 @@ public:
 
 include::cl_sst_sqlite_database/copy_assignment/decl.adoc[]
 
-include::cl_sst_sqlite_database/deserialize/001_fttcexwfwu/decl.adoc[]
+include::cl_sst_sqlite_database/deserialize/010_fttcexwfwu/decl.adoc[]
 
-include::cl_sst_sqlite_database/deserialize/002_vxpizfwfzi/decl.adoc[]
+include::cl_sst_sqlite_database/deserialize/015_wtnnoxrunm/decl.adoc[]
 
-include::cl_sst_sqlite_database/deserialize/003_enxnulmzqp/decl.adoc[]
+include::cl_sst_sqlite_database/deserialize/020_vxpizfwfzi/decl.adoc[]
+
+include::cl_sst_sqlite_database/deserialize/030_enxnulmzqp/decl.adoc[]
 
 include::cl_sst_sqlite_database/serialize/001_dwochwfnea/decl.adoc[]
 
@@ -87,9 +89,10 @@ include::cl_sst_sqlite_database/serialize/001_dwochwfnea/decl.adoc[]
 :leveloffset: +1
 
 include::cl_sst_sqlite_database/copy_assignment.adoc[]
-include::cl_sst_sqlite_database/deserialize/001_fttcexwfwu.adoc[]
-include::cl_sst_sqlite_database/deserialize/002_vxpizfwfzi.adoc[]
-include::cl_sst_sqlite_database/deserialize/003_enxnulmzqp.adoc[]
+include::cl_sst_sqlite_database/deserialize/010_fttcexwfwu.adoc[]
+include::cl_sst_sqlite_database/deserialize/015_wtnnoxrunm.adoc[]
+include::cl_sst_sqlite_database/deserialize/020_vxpizfwfzi.adoc[]
+include::cl_sst_sqlite_database/deserialize/030_enxnulmzqp.adoc[]
 include::cl_sst_sqlite_database/serialize/001_dwochwfnea.adoc[]
 
 :leveloffset: -1

@@ -35,4 +35,4 @@ struct bigint_marker {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BIGINT_MARKER_HPP
+#endif // SST_CATALOG_BIGINT_MARKER_HPP

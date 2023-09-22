@@ -47,4 +47,4 @@ constexpr bool is_representable_as(B const b) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_REPRESENTABLE_AS_HPP
+#endif // SST_CATALOG_IS_REPRESENTABLE_AS_HPP

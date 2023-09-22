@@ -31,4 +31,4 @@
 
 #define SST_C17_VALUE (201710L)
 
-#endif // #ifndef SST_CATALOG_SST_C17_VALUE_H
+#endif // SST_CATALOG_SST_C17_VALUE_H

@@ -26,9 +26,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-var sst = sst || {};
+globalThis.sst = globalThis.sst || {};
 
-sst.fetchSlurp = function(url, init) {
+globalThis.sst.fetchSlurp = function(url, init) {
   return (function f(url, init, transform, results) {
     return fetch(url, init).then(response => {
       if (!response.ok) {

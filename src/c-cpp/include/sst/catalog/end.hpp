@@ -71,4 +71,4 @@ using namespace guts::end;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_END_HPP
+#endif // SST_CATALOG_END_HPP

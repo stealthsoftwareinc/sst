@@ -33,7 +33,6 @@
 
 #include <sst/SST_CPP_CONSTEXPR.hpp>
 #include <sst/catalog/SST_COMPILES.hpp>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/remove_cvref_t.hpp>
 
@@ -67,7 +66,7 @@ public:
            sst::enable_if_t<
                SST_COMPILES(value_type(std::declval<Args>()...))> = 0>
   explicit constexpr boxed(Args &&... args) noexcept(
-      SST_NOEXCEPT(value_type(std::forward<Args>(args)...)))
+      noexcept(value_type(std::forward<Args>(args)...)))
       : value_(std::forward<Args>(args)...) {
   }
 
@@ -162,4 +161,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BOXED_HPP
+#endif // SST_CATALOG_BOXED_HPP

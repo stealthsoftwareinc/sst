@@ -98,4 +98,4 @@
 #define SST_DEFINE_ALGORITHM(...)                                      \
   SST_DEFINE_ALGORITHM_PICK(__VA_ARGS__)(__VA_ARGS__)
 
-#endif // #ifndef SST_CATALOG_SST_DEFINE_ALGORITHM_HPP
+#endif // SST_CATALOG_SST_DEFINE_ALGORITHM_HPP

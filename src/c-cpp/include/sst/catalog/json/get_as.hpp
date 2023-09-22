@@ -207,4 +207,4 @@ public:
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_JSON_GET_AS_HPP
+#endif // SST_CATALOG_JSON_GET_AS_HPP

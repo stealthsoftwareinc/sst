@@ -60,4 +60,4 @@
 
 #define SST_WALL_CLOCK_NULL 1UL
 
-#endif // #ifndef SST_SST_WALL_CLOCK_NULL_H
+#endif // SST_SST_WALL_CLOCK_NULL_H

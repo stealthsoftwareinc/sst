@@ -71,4 +71,4 @@ using namespace guts::begin;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_BEGIN_HPP
+#endif // SST_CATALOG_BEGIN_HPP

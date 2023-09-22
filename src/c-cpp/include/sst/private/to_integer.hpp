@@ -42,4 +42,4 @@ SST_DEFINE_ALGORITHM(to_integer,
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_INTEGER_HPP
+#endif // SST_PRIVATE_TO_INTEGER_HPP

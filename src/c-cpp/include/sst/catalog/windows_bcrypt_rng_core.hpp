@@ -29,7 +29,7 @@
 #ifndef SST_CATALOG_WINDOWS_BCRYPT_RNG_CORE_HPP
 #define SST_CATALOG_WINDOWS_BCRYPT_RNG_CORE_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 #include <sst/catalog/moved_from.hpp>
 #include <sst/catalog/size_max_v.hpp>
@@ -81,4 +81,4 @@ protected:
 
 #endif // #if SST_WITH_WINDOWS_BCRYPT
 
-#endif // #ifndef SST_CATALOG_WINDOWS_BCRYPT_RNG_CORE_HPP
+#endif // SST_CATALOG_WINDOWS_BCRYPT_RNG_CORE_HPP

@@ -1536,4 +1536,4 @@ private:
 
 #endif // __cplusplus
 
-#endif // #ifndef SST_BN_CTX_H
+#endif // SST_BN_CTX_H

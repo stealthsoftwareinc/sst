@@ -45,4 +45,4 @@
   #include <gmp.h>
 #endif
 
-#endif // #ifndef SST_SST_GMP_H
+#endif // SST_SST_GMP_H

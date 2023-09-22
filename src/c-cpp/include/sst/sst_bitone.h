@@ -48,4 +48,4 @@ SST_EXTERN_C SST_DLL_EXPORT void (sst_bitone)(
   size_t
 );
 
-#endif // #ifndef SST_SST_BITONE_H
+#endif // SST_SST_BITONE_H

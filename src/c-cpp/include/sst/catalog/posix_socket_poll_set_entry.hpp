@@ -45,4 +45,4 @@ using posix_socket_poll_set_entry =
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_SOCKET_POLL_SET_ENTRY_HPP
+#endif // SST_CATALOG_POSIX_SOCKET_POLL_SET_ENTRY_HPP

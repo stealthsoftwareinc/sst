@@ -40,4 +40,4 @@ struct make_signed : std::make_signed<sst::remove_cvref_t<T>> {};
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAKE_SIGNED_HPP
+#endif // SST_CATALOG_MAKE_SIGNED_HPP

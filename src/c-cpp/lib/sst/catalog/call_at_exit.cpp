@@ -37,7 +37,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 namespace {
 

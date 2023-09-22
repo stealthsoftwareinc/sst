@@ -44,4 +44,4 @@ void generic_socket_poll_set<Socket, Entry>::erase(iterator const it) {
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ERASE_ITERATOR_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ERASE_ITERATOR_HPP

@@ -192,4 +192,4 @@ char * sst_get_short_option_value_a(
 
 #endif
 
-#endif // #ifndef SST_SST_GET_SHORT_OPTION_VALUE_A_H
+#endif // SST_SST_GET_SHORT_OPTION_VALUE_A_H

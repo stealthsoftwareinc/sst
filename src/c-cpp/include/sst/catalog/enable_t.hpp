@@ -35,4 +35,4 @@ using enable_t = int;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ENABLE_T_HPP
+#endif // SST_CATALOG_ENABLE_T_HPP

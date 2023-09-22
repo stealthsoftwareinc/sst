@@ -62,4 +62,4 @@ SST_DEFINE_BOOLEAN_TRAIT_1(is_char,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_IS_CHAR_HPP
+#endif // SST_CATALOG_IS_CHAR_HPP

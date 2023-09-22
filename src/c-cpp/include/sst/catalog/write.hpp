@@ -31,4 +31,4 @@
 
 #include <sst/private/write/to_ostream.hpp>
 
-#endif // #ifndef SST_CATALOG_WRITE_HPP
+#endif // SST_CATALOG_WRITE_HPP

@@ -61,4 +61,4 @@ using path = sst::windows_path<wchar_t>;
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_PATH_HPP
+#endif // SST_CATALOG_PATH_HPP

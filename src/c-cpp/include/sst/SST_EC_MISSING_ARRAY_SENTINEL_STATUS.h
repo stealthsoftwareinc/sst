@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "MissingArraySentinelStatus"
 
-#endif // #ifndef SST_SST_EC_MISSING_ARRAY_SENTINEL_STATUS_H
+#endif // SST_SST_EC_MISSING_ARRAY_SENTINEL_STATUS_H

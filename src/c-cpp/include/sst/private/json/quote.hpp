@@ -44,4 +44,4 @@ SST_DEFINE_ALGORITHM(quote,
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_QUOTE_HPP
+#endif // SST_PRIVATE_JSON_QUOTE_HPP

@@ -29,17 +29,23 @@
 #ifndef SST_CATALOG_CHECKED_HPP
 #define SST_CATALOG_CHECKED_HPP
 
+#include <type_traits>
 #include <utility>
 
 #include <sst/catalog/checked_t.hpp>
+#include <sst/catalog/if_chain_t.hpp>
+#include <sst/catalog/remove_cvref_t.hpp>
 
 namespace sst {
 
-template<class T>
-sst::checked_t<T> checked(T && x) {
-  return std::forward<T>(x);
+template<class T_ = void,
+         class X,
+         class T = sst::remove_cvref_t<
+             sst::if_chain_t<std::is_same<T_, void>, X, T_>>>
+sst::checked_t<T> checked(X && x) {
+  return std::forward<X>(x);
 }
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CHECKED_HPP
+#endif // SST_CATALOG_CHECKED_HPP

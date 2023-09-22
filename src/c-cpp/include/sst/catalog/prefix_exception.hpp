@@ -58,4 +58,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_PREFIX_EXCEPTION_HPP
+#endif // SST_CATALOG_PREFIX_EXCEPTION_HPP

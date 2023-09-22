@@ -37,4 +37,4 @@ struct with_what_suffix {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_WITH_WHAT_SUFFIX_HPP
+#endif // SST_CATALOG_WITH_WHAT_SUFFIX_HPP

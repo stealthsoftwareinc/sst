@@ -55,4 +55,4 @@ struct error : std::runtime_error {
 
 #endif // __cplusplus
 
-#endif // #ifndef SST_REP_ERROR_H
+#endif // SST_REP_ERROR_H

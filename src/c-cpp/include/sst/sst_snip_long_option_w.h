@@ -91,4 +91,4 @@ wchar_t * sst_snip_long_option_w(
 
 #endif
 
-#endif // #ifndef SST_SST_SNIP_LONG_OPTION_W_H
+#endif // SST_SST_SNIP_LONG_OPTION_W_H

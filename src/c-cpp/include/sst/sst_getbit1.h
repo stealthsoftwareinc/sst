@@ -43,4 +43,4 @@ SST_EXTERN_C SST_DLL_EXPORT sst_bit (sst_getbit1)(
   size_t
 );
 
-#endif // #ifndef SST_SST_GETBIT1_H
+#endif // SST_SST_GETBIT1_H

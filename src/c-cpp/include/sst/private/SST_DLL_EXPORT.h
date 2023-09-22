@@ -41,4 +41,4 @@
 
 #endif /* #ifndef SST_DLL_EXPORT */
 
-#endif // #ifndef SST_PRIVATE_SST_DLL_EXPORT_H
+#endif // SST_PRIVATE_SST_DLL_EXPORT_H

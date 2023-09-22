@@ -33,7 +33,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/SST_DEBUG.h>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
 #include <sst/catalog/checked_t.hpp>
@@ -767,4 +767,4 @@ public:
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_IT_T_HPP
+#endif // SST_PRIVATE_GUTS_IT_T_HPP

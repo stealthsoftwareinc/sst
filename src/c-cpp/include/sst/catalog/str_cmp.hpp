@@ -49,4 +49,4 @@ constexpr int str_cmp(IteratorA a,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_STR_CMP_HPP
+#endif // SST_CATALOG_STR_CMP_HPP

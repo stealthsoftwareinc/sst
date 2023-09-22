@@ -35,12 +35,10 @@
 
 namespace sst {
 
-extern SST_DLL_EXPORT
-std::string errno_error_string(int e);
+extern SST_DLL_EXPORT std::string errno_error_string(int e);
 
-extern SST_DLL_EXPORT
-std::string errno_error_string();
+extern SST_DLL_EXPORT std::string errno_error_string();
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ERRNO_ERROR_STRING_HPP
+#endif // SST_CATALOG_ERRNO_ERROR_STRING_HPP

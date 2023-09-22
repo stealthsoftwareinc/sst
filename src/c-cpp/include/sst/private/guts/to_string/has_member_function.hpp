@@ -62,4 +62,4 @@ using has_member_function =
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_TO_STRING_HAS_MEMBER_FUNCTION_HPP
+#endif // SST_PRIVATE_GUTS_TO_STRING_HAS_MEMBER_FUNCTION_HPP

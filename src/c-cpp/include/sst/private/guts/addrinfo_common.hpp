@@ -32,7 +32,7 @@
 #include <cstddef>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/moved_from.hpp>
 #include <sst/catalog/preinit.hpp>
@@ -258,4 +258,4 @@ protected:
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_ADDRINFO_COMMON_HPP
+#endif // SST_PRIVATE_GUTS_ADDRINFO_COMMON_HPP

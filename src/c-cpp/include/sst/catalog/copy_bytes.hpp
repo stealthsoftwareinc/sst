@@ -46,4 +46,4 @@ auto copy_bytes(Args &&... args) -> decltype(
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_COPY_BYTES_HPP
+#endif // SST_CATALOG_COPY_BYTES_HPP

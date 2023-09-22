@@ -167,4 +167,4 @@ sst_bool sst_is_unvalued_short_option_a(
 
 #endif
 
-#endif // #ifndef SST_SST_IS_UNVALUED_SHORT_OPTION_A_H
+#endif // SST_SST_IS_UNVALUED_SHORT_OPTION_A_H

@@ -26,7 +26,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-var sst = sst || {};
+globalThis.sst = globalThis.sst || {};
 
 const body_style = window.getComputedStyle(document.body);
 
@@ -833,7 +833,7 @@ for (const f of [
 // sst.iframeExampleOutput
 //----------------------------------------------------------------------
 
-sst.iframeExampleOutput = function(script, html, {
+globalThis.sst.iframeExampleOutput = function(script, html, {
   height,
 } = {}) {
   const showText = "Show output";

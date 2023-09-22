@@ -56,4 +56,4 @@ extern template class SST_DLL_EXPORT
 
 #endif // #if SST_WITH_DEV_URANDOM
 
-#endif // #ifndef SST_CATALOG_DEV_URANDOM_RNG_HPP
+#endif // SST_CATALOG_DEV_URANDOM_RNG_HPP

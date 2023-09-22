@@ -47,4 +47,4 @@ void posix_mkdir(Path const & path) {
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_MKDIR_HPP
+#endif // SST_CATALOG_POSIX_MKDIR_HPP

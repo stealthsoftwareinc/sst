@@ -60,4 +60,4 @@
 
 #define SST_WALL_CLOCK_MAXVAL 3UL
 
-#endif // #ifndef SST_SST_WALL_CLOCK_MAXVAL_H
+#endif // SST_SST_WALL_CLOCK_MAXVAL_H

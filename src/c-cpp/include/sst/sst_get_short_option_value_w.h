@@ -193,4 +193,4 @@ wchar_t * sst_get_short_option_value_w(
 
 #endif
 
-#endif // #ifndef SST_SST_GET_SHORT_OPTION_VALUE_W_H
+#endif // SST_SST_GET_SHORT_OPTION_VALUE_W_H

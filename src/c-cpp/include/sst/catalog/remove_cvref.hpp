@@ -58,4 +58,4 @@ struct remove_cvref
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_REMOVE_CVREF_HPP
+#endif // SST_CATALOG_REMOVE_CVREF_HPP

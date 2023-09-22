@@ -37,4 +37,4 @@ using unix_time_s_t = std::chrono::seconds::rep;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNIX_TIME_S_T_HPP
+#endif // SST_CATALOG_UNIX_TIME_S_T_HPP

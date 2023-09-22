@@ -138,4 +138,4 @@ class from_hex_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_FROM_HEX_FROM_CHAR_INPUT_ITERABLE_HPP
+#endif // SST_PRIVATE_FROM_HEX_FROM_CHAR_INPUT_ITERABLE_HPP

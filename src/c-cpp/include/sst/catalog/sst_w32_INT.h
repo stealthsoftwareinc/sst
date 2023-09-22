@@ -45,4 +45,4 @@ typedef int sst_w32_INT;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_INT_H
+#endif // SST_CATALOG_SST_W32_INT_H

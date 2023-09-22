@@ -137,4 +137,4 @@ class to_string_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_STRING_FROM_UNSCOPED_ENUM_HPP
+#endif // SST_PRIVATE_TO_STRING_FROM_UNSCOPED_ENUM_HPP

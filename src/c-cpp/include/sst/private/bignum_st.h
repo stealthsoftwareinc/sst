@@ -51,4 +51,4 @@ struct bignum_st {
 
 #endif /* #if SST_WITH_OPENSSL_CRYPTO */
 
-#endif // #ifndef SST_PRIVATE_BIGNUM_ST_H
+#endif // SST_PRIVATE_BIGNUM_ST_H

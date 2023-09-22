@@ -29,7 +29,7 @@
 #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ENTRY_SOCKET_HPP
 #define SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ENTRY_SOCKET_HPP
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/private/guts/generic_socket_poll_set_entry.hpp>
 
 namespace sst {
@@ -45,4 +45,4 @@ generic_socket_poll_set_entry<Socket>::socket() const noexcept {
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ENTRY_SOCKET_HPP
+#endif // SST_PRIVATE_GUTS_GENERIC_SOCKET_POLL_SET_ENTRY_SOCKET_HPP

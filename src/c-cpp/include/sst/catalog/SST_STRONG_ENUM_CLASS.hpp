@@ -29,6 +29,14 @@
 #ifndef SST_CATALOG_SST_STRONG_ENUM_CLASS_HPP
 #define SST_CATALOG_SST_STRONG_ENUM_CLASS_HPP
 
+//
+// TODO: Support serialize() and deserialize() via friend function ADL.
+//       (What about non ADL? Haven't thought much about interface
+//       conventions for that yet.)
+//
+
+#include <stdexcept>
+
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
 #include <sst/catalog/SST_CPP14_CONSTEXPR.hpp>
 #include <sst/catalog/SST_DISPATCH.h>
@@ -123,6 +131,22 @@
 
 //----------------------------------------------------------------------
 
+#define SST_STRONG_ENUM_CLASS_VALUE_CTOR_member_1(name)                \
+  case static_cast<value_type>(SST_enum::name):                        \
+    SST_value_ = SST_enum::name;                                       \
+    break;
+
+#define SST_STRONG_ENUM_CLASS_VALUE_CTOR_member_2(name, value)         \
+  SST_STRONG_ENUM_CLASS_VALUE_CTOR_member_1(name)
+
+#define SST_STRONG_ENUM_CLASS_VALUE_CTOR_member(...)                   \
+  SST_DISPATCH(SST_STRONG_ENUM_CLASS_VALUE_CTOR_member_, __VA_ARGS__)  \
+  (__VA_ARGS__)
+
+#define SST_STRONG_ENUM_CLASS_VALUE_CTOR_type(...)
+
+//----------------------------------------------------------------------
+
 #define SST_STRONG_ENUM_CLASS(NAME, ...)                               \
                                                                        \
   class NAME {                                                         \
@@ -162,15 +186,29 @@
     SST_LISTIFY(SST_STRONG_ENUM_CLASS_B_, (), __VA_ARGS__);            \
                                                                        \
     /*--------------------------------------------------------------*/ \
-    /* Underlying value access                                      */ \
+    /* Underlying value conversions                                 */ \
     /*--------------------------------------------------------------*/ \
                                                                        \
   public:                                                              \
                                                                        \
     using value_type = ::sst::underlying_type_t<SST_enum>;             \
                                                                        \
+    explicit constexpr NAME(value_type const SST_value) : NAME() {     \
+      switch (SST_value) {                                             \
+        SST_LISTIFY(SST_STRONG_ENUM_CLASS_VALUE_CTOR_,                 \
+                    (),                                                \
+                    __VA_ARGS__)                                       \
+        default:                                                       \
+          throw ::std::runtime_error("Invalid underlying enum value"); \
+      }                                                                \
+    }                                                                  \
+                                                                       \
     constexpr value_type value() const noexcept {                      \
       return static_cast<value_type>(SST_value_);                      \
+    }                                                                  \
+                                                                       \
+    explicit constexpr operator value_type() const noexcept {          \
+      return value();                                                  \
     }                                                                  \
                                                                        \
     /*--------------------------------------------------------------*/ \
@@ -302,4 +340,4 @@ SST_STATIC_ASSERT((std::is_same<test2::value_type, long long>::value));
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_SST_STRONG_ENUM_CLASS_HPP
+#endif // SST_CATALOG_SST_STRONG_ENUM_CLASS_HPP

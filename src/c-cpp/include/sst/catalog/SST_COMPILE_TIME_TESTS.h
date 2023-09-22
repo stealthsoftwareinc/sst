@@ -49,4 +49,4 @@
 
 /* clang-format on */
 
-#endif // #ifndef SST_CATALOG_SST_COMPILE_TIME_TESTS_H
+#endif // SST_CATALOG_SST_COMPILE_TIME_TESTS_H

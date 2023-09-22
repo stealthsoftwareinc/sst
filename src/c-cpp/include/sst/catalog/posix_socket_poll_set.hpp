@@ -47,4 +47,4 @@ using posix_socket_poll_set = sst::guts::generic_socket_poll_set<
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_CATALOG_POSIX_SOCKET_POLL_SET_HPP
+#endif // SST_CATALOG_POSIX_SOCKET_POLL_SET_HPP

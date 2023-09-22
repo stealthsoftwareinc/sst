@@ -76,4 +76,4 @@ std::unique_ptr<T> make_unique(Args &&...) {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MAKE_UNIQUE_HPP
+#endif // SST_CATALOG_MAKE_UNIQUE_HPP

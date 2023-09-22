@@ -32,8 +32,8 @@
 #include <cstdint>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/is_negative.hpp>
 #include <sst/catalog/promote_unsigned_t.hpp>
 #include <sst/catalog/text_encoding.hpp>
@@ -238,4 +238,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_CODE_POINT_ENCODER_T_UTF_32_HPP
+#endif // SST_PRIVATE_CODE_POINT_ENCODER_T_UTF_32_HPP

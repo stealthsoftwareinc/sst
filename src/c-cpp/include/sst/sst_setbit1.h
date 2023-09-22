@@ -44,4 +44,4 @@ SST_EXTERN_C SST_DLL_EXPORT unsigned char (sst_setbit1)(
   sst_bit
 );
 
-#endif // #ifndef SST_SST_SETBIT1_H
+#endif // SST_SST_SETBIT1_H

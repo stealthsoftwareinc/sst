@@ -62,4 +62,4 @@
 
 #define SST_LIMIT_EXCEEDED 42UL
 
-#endif // #ifndef SST_SST_LIMIT_EXCEEDED_H
+#endif // SST_SST_LIMIT_EXCEEDED_H

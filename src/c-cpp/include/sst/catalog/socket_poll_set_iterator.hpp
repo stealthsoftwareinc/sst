@@ -61,4 +61,4 @@ using socket_poll_set_iterator = sst::windows_socket_poll_set_iterator;
 //----------------------------------------------------------------------
 #endif
 
-#endif // #ifndef SST_CATALOG_SOCKET_POLL_SET_ITERATOR_HPP
+#endif // SST_CATALOG_SOCKET_POLL_SET_ITERATOR_HPP

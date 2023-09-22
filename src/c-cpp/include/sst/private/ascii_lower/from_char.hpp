@@ -97,4 +97,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_ASCII_LOWER_FROM_CHAR_HPP
+#endif // SST_PRIVATE_ASCII_LOWER_FROM_CHAR_HPP

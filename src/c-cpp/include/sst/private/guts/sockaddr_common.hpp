@@ -34,8 +34,8 @@
 #include <string>
 #include <utility>
 
-#include <sst/catalog/SST_ASSERT.h>
-#include <sst/catalog/SST_DEFAULT_NOEXCEPT.hpp>
+#include <sst/catalog/SST_ASSERT.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/basic_ptr.hpp>
 #include <sst/catalog/moved_from.hpp>
 #include <sst/catalog/preinit.hpp>
@@ -93,13 +93,12 @@ protected:
 
   //--------------------------------------------------------------------
 
-  sockaddr_common(sockaddr_common &&)
-      SST_DEFAULT_NOEXCEPT(true) = default;
+  sockaddr_common(sockaddr_common &&) SST_NOEXCEPT(true) = default;
 
   sockaddr_common & operator=(sockaddr_common &&)
-      SST_DEFAULT_NOEXCEPT(true) = default;
+      SST_NOEXCEPT(true) = default;
 
-  ~sockaddr_common() SST_DEFAULT_NOEXCEPT(true) = default;
+  ~sockaddr_common() SST_NOEXCEPT(true) = default;
 
   //--------------------------------------------------------------------
   // family
@@ -217,4 +216,4 @@ protected:
 } // namespace guts
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_GUTS_SOCKADDR_COMMON_HPP
+#endif // SST_PRIVATE_GUTS_SOCKADDR_COMMON_HPP

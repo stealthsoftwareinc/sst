@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "LimitExceededStatus"
 
-#endif // #ifndef SST_SST_EC_LIMIT_EXCEEDED_STATUS_H
+#endif // SST_SST_EC_LIMIT_EXCEEDED_STATUS_H

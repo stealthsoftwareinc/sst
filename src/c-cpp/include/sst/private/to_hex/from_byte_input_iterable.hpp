@@ -137,4 +137,4 @@ class to_hex_functor<
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_TO_HEX_FROM_BYTE_INPUT_ITERABLE_HPP
+#endif // SST_PRIVATE_TO_HEX_FROM_BYTE_INPUT_ITERABLE_HPP

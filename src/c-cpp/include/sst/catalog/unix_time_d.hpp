@@ -39,4 +39,4 @@ inline double unix_time_d() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNIX_TIME_D_HPP
+#endif // SST_CATALOG_UNIX_TIME_D_HPP

@@ -63,4 +63,4 @@ write(CharT const * src,
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_WRITE_TO_OSTREAM_HPP
+#endif // SST_PRIVATE_WRITE_TO_OSTREAM_HPP

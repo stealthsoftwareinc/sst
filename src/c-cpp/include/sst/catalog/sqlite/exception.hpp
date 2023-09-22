@@ -51,4 +51,4 @@ public:
 
 #endif // #if SST_WITH_SQLITE
 
-#endif // #ifndef SST_CATALOG_SQLITE_EXCEPTION_HPP
+#endif // SST_CATALOG_SQLITE_EXCEPTION_HPP

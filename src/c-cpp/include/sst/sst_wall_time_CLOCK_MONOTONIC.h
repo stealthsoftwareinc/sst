@@ -75,4 +75,4 @@ typedef struct sst_wall_time_CLOCK_MONOTONIC_ut sst_wall_time_CLOCK_MONOTONIC;
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_CLOCK_MONOTONIC_H
+#endif // SST_SST_WALL_TIME_CLOCK_MONOTONIC_H

@@ -29,6 +29,29 @@
 #ifndef SST_CATALOG_SST_LISTIFY_H
 #define SST_CATALOG_SST_LISTIFY_H
 
+//
+// SST_LISTIFY(P, S, ...) expands to the variable argument list, except
+// separated by S instead of comma, and with P token-pasted onto the
+// front of every item. S must always be parenthesized.
+//
+// Here are some examples:
+//
+//       SST_LISTIFY(x_, (;))
+//    ->
+//
+//       SST_LISTIFY(x_, (;), a)
+//    -> x_a
+//
+//       SST_LISTIFY(x_, (;), a, b)
+//    -> x_a ; x_b
+//
+//       SST_LISTIFY(x_, (,), a, b, c)
+//    -> x_a , x_b , x_c
+//
+//       SST_LISTIFY(x_, (), a, b, c)
+//    -> x_a x_b x_c
+//
+
 #include <sst/catalog/SST_DISPATCH.h>
 #include <sst/catalog/SST_EXPAND.h>
 
@@ -330,4 +353,4 @@
 #define SST_LISTIFY(...)                                               \
   SST_DISPATCH(SST_LISTIFY_, __VA_ARGS__)(__VA_ARGS__)
 
-#endif // #ifndef SST_CATALOG_SST_LISTIFY_H
+#endif // SST_CATALOG_SST_LISTIFY_H

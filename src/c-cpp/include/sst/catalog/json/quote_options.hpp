@@ -48,4 +48,4 @@ SST_ALGORITHM_OPTIONS(
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_JSON_QUOTE_OPTIONS_HPP
+#endif // SST_CATALOG_JSON_QUOTE_OPTIONS_HPP

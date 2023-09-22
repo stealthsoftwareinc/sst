@@ -35,4 +35,4 @@ enum class opt_arg { required, permitted, forbidden };
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_OPT_ARG_HPP
+#endif // SST_CATALOG_OPT_ARG_HPP

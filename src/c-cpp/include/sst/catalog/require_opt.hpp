@@ -57,4 +57,4 @@ extern SST_DLL_EXPORT void require_opt(char const * opt, bool have);
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_REQUIRE_OPT_HPP
+#endif // SST_CATALOG_REQUIRE_OPT_HPP

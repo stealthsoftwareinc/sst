@@ -37,7 +37,7 @@
 #include <list>
 #include <new>
 
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/catalog/gai_flags.hpp>
 #include <sst/catalog/socket_family.hpp>
 #include <sst/catalog/socket_protocol.hpp>
@@ -284,4 +284,4 @@ protected:
 
 #endif // #if SST_WITH_POSIX
 
-#endif // #ifndef SST_PRIVATE_GUTS_POSIX_SOCKET_CORE_HPP
+#endif // SST_PRIVATE_GUTS_POSIX_SOCKET_CORE_HPP

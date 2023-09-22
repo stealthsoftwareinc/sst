@@ -54,4 +54,4 @@ sst_w32_WSAPoll(sst_w32_WSAPOLLFD * fdArray,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_WSAPOLL_H
+#endif // SST_CATALOG_SST_W32_WSAPOLL_H

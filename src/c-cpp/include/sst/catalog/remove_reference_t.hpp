@@ -38,4 +38,4 @@ using remove_reference_t = typename std::remove_reference<T>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_REMOVE_REFERENCE_T_HPP
+#endif // SST_CATALOG_REMOVE_REFERENCE_T_HPP

@@ -52,4 +52,4 @@ int sst_w32_WSAStartup(sst_w32_WORD wVersionRequired,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_WSASTARTUP_H
+#endif // SST_CATALOG_SST_W32_WSASTARTUP_H

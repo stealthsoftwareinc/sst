@@ -91,4 +91,4 @@ constexpr X signed_right_shift(X const x, N const n) noexcept {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_SIGNED_RIGHT_SHIFT_HPP
+#endif // SST_CATALOG_SIGNED_RIGHT_SHIFT_HPP

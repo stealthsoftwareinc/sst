@@ -39,4 +39,4 @@
 
 typedef unsigned short sst_w32_WORD;
 
-#endif // #ifndef SST_CATALOG_SST_W32_WORD_H
+#endif // SST_CATALOG_SST_W32_WORD_H

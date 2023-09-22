@@ -31,7 +31,7 @@
 
 #include <chrono>
 
-#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NODISCARD.hpp>
 #include <sst/private/SST_DLL_EXPORT.h>
 
 namespace sst {
@@ -57,4 +57,4 @@ unix_time<std::chrono::nanoseconds>();
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_UNIX_TIME_HPP
+#endif // SST_CATALOG_UNIX_TIME_HPP

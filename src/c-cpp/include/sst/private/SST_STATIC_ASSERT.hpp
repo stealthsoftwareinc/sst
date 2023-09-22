@@ -43,4 +43,4 @@
   (#__VA_ARGS__, __VA_ARGS__)
 
 #endif // #ifdef __cplusplus
-#endif // #ifndef SST_PRIVATE_SST_STATIC_ASSERT_HPP
+#endif // SST_PRIVATE_SST_STATIC_ASSERT_HPP

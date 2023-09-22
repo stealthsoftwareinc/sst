@@ -75,4 +75,4 @@ public:
 
 #endif // #if SST_WITH_WINDOWS_WS2_32
 
-#endif // #ifndef SST_CATALOG_WSA_EXCEPTION_HPP
+#endif // SST_CATALOG_WSA_EXCEPTION_HPP

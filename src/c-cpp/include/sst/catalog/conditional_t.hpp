@@ -38,4 +38,4 @@ using conditional_t = typename std::conditional<B, T, F>::type;
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_CONDITIONAL_T_HPP
+#endif // SST_CATALOG_CONDITIONAL_T_HPP

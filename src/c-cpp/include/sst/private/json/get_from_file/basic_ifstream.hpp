@@ -69,4 +69,4 @@ class get_from_file_functor<sst::enable_t,
 } // namespace json
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_JSON_GET_FROM_FILE_BASIC_IFSTREAM_HPP
+#endif // SST_PRIVATE_JSON_GET_FROM_FILE_BASIC_IFSTREAM_HPP

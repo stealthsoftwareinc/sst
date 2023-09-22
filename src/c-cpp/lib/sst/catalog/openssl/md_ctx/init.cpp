@@ -41,8 +41,8 @@
 
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/checked_resize.hpp>
-#include <sst/catalog/emplace.hpp>
 #include <sst/catalog/hash_state.hpp>
+#include <sst/catalog/in_place.hpp>
 #include <sst/catalog/openssl/err_exception.hpp>
 #include <sst/catalog/unique_ptr.hpp>
 
@@ -82,7 +82,7 @@ md_ctx & md_ctx::init() {
         throw sst::openssl::err_exception("EVP_MD_size()");
       }
       (void)sst::checked_cast<output_t::size_type>(n);
-      sst::unique_ptr<std::vector<unsigned char>> p{sst::emplace};
+      sst::unique_ptr<std::vector<unsigned char>> p{sst::in_place};
       sst::checked_resize(*p, n);
       out_ = std::move(p);
     }

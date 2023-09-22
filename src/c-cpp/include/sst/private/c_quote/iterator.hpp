@@ -367,4 +367,4 @@ public:
 
 } // namespace sst
 
-#endif // #ifndef SST_PRIVATE_C_QUOTE_ITERATOR_HPP
+#endif // SST_PRIVATE_C_QUOTE_ITERATOR_HPP

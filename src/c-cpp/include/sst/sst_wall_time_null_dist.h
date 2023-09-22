@@ -112,4 +112,4 @@ double sst_wall_time_null_dist(
 
 #endif
 
-#endif // #ifndef SST_SST_WALL_TIME_NULL_DIST_H
+#endif // SST_SST_WALL_TIME_NULL_DIST_H

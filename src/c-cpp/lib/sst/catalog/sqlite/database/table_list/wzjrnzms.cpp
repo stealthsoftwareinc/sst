@@ -40,7 +40,7 @@
 #include <string>
 #include <vector>
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 
 #include <sqlite3.h>
 

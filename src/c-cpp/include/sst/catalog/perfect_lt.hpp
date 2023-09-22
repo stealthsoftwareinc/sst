@@ -30,7 +30,6 @@
 #define SST_CATALOG_PERFECT_LT_HPP
 
 #include <sst/catalog/SST_CONSTEVAL.hpp>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_integer.hpp>
 #include <sst/catalog/is_negative.hpp>
@@ -58,7 +57,7 @@ template<class A,
                           && (sst::is_integer<B>::value
                               || sst::is_unscoped_enum<B>::value)> = 0>
 SST_CONSTEVAL bool perfect_lt(A const a,
-                              B const b) noexcept(SST_NOEXCEPT(SST_r)) {
+                              B const b) noexcept(noexcept(SST_r)) {
   return SST_r;
 }
 
@@ -78,7 +77,7 @@ template<class A,
                           || (!sst::is_integer<B>::value
                               && !sst::is_unscoped_enum<B>::value)> = 0>
 constexpr bool perfect_lt(A const & a,
-                          B const & b) noexcept(SST_NOEXCEPT(SST_r)) {
+                          B const & b) noexcept(noexcept(SST_r)) {
   return SST_r;
 }
 
@@ -114,4 +113,4 @@ SST_STATIC_ASSERT((sst::perfect_lt(SST_grwvygxkcqvhhscs_a, 0U)));
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_PERFECT_LT_HPP
+#endif // SST_CATALOG_PERFECT_LT_HPP

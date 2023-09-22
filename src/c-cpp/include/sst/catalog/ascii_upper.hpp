@@ -46,4 +46,4 @@ SST_DEFINE_ALGORITHM(ascii_upper,
 #include <sst/private/ascii_upper/from_char_input_iterable.hpp>
 #include <sst/private/ascii_upper/from_char_input_iterator.hpp>
 
-#endif // #ifndef SST_CATALOG_ASCII_UPPER_HPP
+#endif // SST_CATALOG_ASCII_UPPER_HPP

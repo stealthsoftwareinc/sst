@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "NativeExceptionException"
 
-#endif // #ifndef SST_SST_EC_NATIVE_EXCEPTION_EXCEPTION_H
+#endif // SST_SST_EC_NATIVE_EXCEPTION_EXCEPTION_H

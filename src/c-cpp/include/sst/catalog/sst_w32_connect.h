@@ -53,4 +53,4 @@ sst_w32_connect(sst_w32_SOCKET s,
 
 #endif /* #if SST_WITH_WINDOWS_WS2_32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_CONNECT_H
+#endif // SST_CATALOG_SST_W32_CONNECT_H

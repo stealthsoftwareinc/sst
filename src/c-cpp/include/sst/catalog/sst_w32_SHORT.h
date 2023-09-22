@@ -45,4 +45,4 @@ typedef short sst_w32_SHORT;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_SHORT_H
+#endif // SST_CATALOG_SST_W32_SHORT_H

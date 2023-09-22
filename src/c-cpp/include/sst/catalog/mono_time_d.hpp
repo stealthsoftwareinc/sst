@@ -39,4 +39,4 @@ inline double mono_time_d() {
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_MONO_TIME_D_HPP
+#endif // SST_CATALOG_MONO_TIME_D_HPP

@@ -41,4 +41,4 @@
 
 #endif
 
-#endif // #ifndef SST_PTHREAD_OPTION_CHECK_H
+#endif // SST_PTHREAD_OPTION_CHECK_H

@@ -49,4 +49,4 @@ typedef unsigned long sst_w32_ULONG;
 
 #endif /* #if SST_WITH_WINDOWS_KERNEL32 */
 
-#endif // #ifndef SST_CATALOG_SST_W32_ULONG_H
+#endif // SST_CATALOG_SST_W32_ULONG_H

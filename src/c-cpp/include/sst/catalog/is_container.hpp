@@ -103,4 +103,4 @@ SST_N(std::stack<int>);
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_IS_CONTAINER_HPP
+#endif // SST_CATALOG_IS_CONTAINER_HPP

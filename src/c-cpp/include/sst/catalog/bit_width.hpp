@@ -31,4 +31,4 @@
 
 #include <sst/private/bit_width/fundamental_integer.hpp>
 
-#endif // #ifndef SST_CATALOG_BIT_WIDTH_HPP
+#endif // SST_CATALOG_BIT_WIDTH_HPP

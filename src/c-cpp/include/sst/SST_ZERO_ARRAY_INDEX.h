@@ -60,4 +60,4 @@
 
 #define SST_ZERO_ARRAY_INDEX 32UL
 
-#endif // #ifndef SST_SST_ZERO_ARRAY_INDEX_H
+#endif // SST_SST_ZERO_ARRAY_INDEX_H

@@ -75,4 +75,4 @@ constexpr IntType1 ones_mask(IntType2 const n,
 
 } // namespace sst
 
-#endif // #ifndef SST_CATALOG_ONES_MASK_HPP
+#endif // SST_CATALOG_ONES_MASK_HPP

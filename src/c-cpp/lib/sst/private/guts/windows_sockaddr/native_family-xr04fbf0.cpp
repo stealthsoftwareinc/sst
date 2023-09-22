@@ -36,7 +36,7 @@
 
 #if SST_WITH_WINDOWS_WS2_32
 
-#include <sst/catalog/SST_ASSERT.h>
+#include <sst/catalog/SST_ASSERT.hpp>
 #include <sst/catalog/checked_cast.hpp>
 #include <sst/catalog/sst_w32_ADDRESS_FAMILY.h>
 #include <sst/catalog/sst_w32_offsetof_SOCKADDR_STORAGE_ss_family.h>

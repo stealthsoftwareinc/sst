@@ -66,4 +66,4 @@
   "com/stealthsoftwareinc/sst/" \
   "InvalidListIndexStatus"
 
-#endif // #ifndef SST_SST_EC_INVALID_LIST_INDEX_STATUS_H
+#endif // SST_SST_EC_INVALID_LIST_INDEX_STATUS_H

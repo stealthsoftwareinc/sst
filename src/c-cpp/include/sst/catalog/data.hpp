@@ -14,7 +14,6 @@
 #include <utility>
 
 #include <sst/catalog/SST_CPP17_OR_LATER.h>
-#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_contiguous.hpp>
 #include <sst/catalog/is_input_iterator.hpp>
@@ -35,7 +34,7 @@ using std::data;
 #define SST_r (x.data())
 
 template<class T>
-constexpr auto data(T && x) noexcept(SST_NOEXCEPT(SST_r))
+constexpr auto data(T && x) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -63,7 +62,7 @@ template<class X,
          sst::enable_if_t<sst::is_input_iterator<X>::value
                           && sst::is_contiguous<X>::value
                           && sst::is_integer_ish<N>::value> = 0>
-constexpr auto data(X && x, N && n) noexcept(SST_NOEXCEPT(SST_r))
+constexpr auto data(X && x, N && n) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -75,7 +74,7 @@ constexpr auto data(X && x, N && n) noexcept(SST_NOEXCEPT(SST_r))
 #define SST_r (data(std::forward<Args>(args)...))
 
 template<class... Args>
-constexpr auto f(Args &&... args) noexcept(SST_NOEXCEPT(SST_r))
+constexpr auto f(Args &&... args) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -96,7 +95,7 @@ namespace adl_barrier {
 #define SST_r (SST_GUTS::data::f(std::forward<Args>(args)...))
 
 template<class... Args>
-constexpr auto data(Args &&... args) noexcept(SST_NOEXCEPT(SST_r))
+constexpr auto data(Args &&... args) noexcept(noexcept(SST_r))
     -> decltype(SST_r) {
   return SST_r;
 }
@@ -125,4 +124,4 @@ using namespace sst::guts::data::adl_barrier;
 
 //----------------------------------------------------------------------
 
-#endif // #ifndef SST_CATALOG_DATA_HPP
+#endif // SST_CATALOG_DATA_HPP
