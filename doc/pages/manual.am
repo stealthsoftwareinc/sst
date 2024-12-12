@@ -1,5 +1,5 @@
 ##
-## Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+## Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 ##
 ## Permission is hereby granted, free of charge, to any person
 ## obtaining a copy of this software and associated documentation
@@ -26,19 +26,16 @@
 ## SPDX-License-Identifier: MIT
 ##
 
-doc_pages_manual_leaves = $(manual_dst).tar.xz
-
-doc/pages/manual: $(manual_dst).tar.xz
-	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
-	$(AM_V_GEN)$(GATBPS_V_NOP)
+doc/pages/manual: $(manual_dst).tar
+	$(AM_V_at)$(GATBPS_RECIPE_STARTING)
+	$(AM_V_GEN)$(GATBPS_RECIPE_NOOP)
 	$(AM_V_at)rm -f -r $@ $@$(TSUF)*
-	$(AM_V_at)$(XZ) -d <$(manual_dst).tar.xz >$@$(TSUF)1
 	$(AM_V_at)$(MKDIR_P) $@$(TSUF)2
-	$(AM_V_at)(cd $@$(TSUF)2 && $(TAR) x) <$@$(TSUF)1
+	$(AM_V_at)(cd $@$(TSUF)2 && $(TAR) x) <$(manual_dst).tar
 	$(AM_V_at)cp -R $@$(TSUF)2/* $@$(TSUF)3
 	$(AM_V_at)touch $@$(TSUF)3
 	$(AM_V_at)mv -f $@$(TSUF)3 $@
 	$(AM_V_at)rm -f -r $@$(TSUF)*
-	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+	$(AM_V_at)$(GATBPS_RECIPE_FINISHED)
 
 GATBPS_MOSTLYCLEANFILES += doc/pages/manual/clean

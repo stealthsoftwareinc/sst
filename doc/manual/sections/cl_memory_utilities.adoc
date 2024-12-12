@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,10 +32,10 @@ ifndef::SECTIONS_CL_MEMORY_UTILITIES_ADOC[]
 :SECTIONS_CL_MEMORY_UTILITIES_ADOC:
 //----------------------------------------------------------------------
 
-:cl_memory_utilities_id: cl-memory-utilities
+:cl_memory_utilities_id: cl_memory_utilities
 :cl_memory_utilities_url: sections/cl_memory_utilities.adoc#{cl_memory_utilities_id}
 :cl_memory_utilities_title: Memory utilities
-:cl_memory_utilities: xref:{cl_memory_utilities_url}[{cl_memory_utilities_title}]
+:cl_memory_utilities: xref:{cl_memory_utilities_url}[]
 
 //----------------------------------------------------------------------
 endif::[]

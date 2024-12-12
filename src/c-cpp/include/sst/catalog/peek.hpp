@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,6 +32,7 @@
 #include <utility>
 
 #include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/is_input_iterator.hpp>
 #include <sst/catalog/is_integer_ish.hpp>
@@ -47,11 +48,9 @@ template<class Src,
          sst::enable_if_t<sst::is_input_iterator<Src>::value
                           && sst::is_sentinel<End, Src>::value> = 0>
 SST_NODISCARD()
-constexpr sst::peek_ptr<Src> peek(
-    Src const & src,
-    End const & end) noexcept(noexcept(src == end ?
-                                           sst::peek_ptr<Src>() :
-                                           sst::peek_ptr<Src>(src))) {
+constexpr sst::peek_ptr<Src> peek(Src const & src, End const & end)
+    SST_NOEXCEPT(noexcept(src == end ? sst::peek_ptr<Src>() :
+                                       sst::peek_ptr<Src>(src))) {
   return src == end ? sst::peek_ptr<Src>() : sst::peek_ptr<Src>(src);
 }
 
@@ -61,10 +60,10 @@ template<
     sst::enable_if_t<sst::is_input_iterator<Src>::value
                      && sst::is_value_sentinel<End, Src>::value> = 0>
 SST_NODISCARD()
-sst::peek_ptr<Src> peek(Src const & src, End const & end) noexcept(
-    noexcept(*sst::peek_ptr<Src>(src) == end,
-             sst::peek_ptr<Src>(),
-             sst::peek_ptr<Src>(sst::peek_ptr<Src>(src)))) {
+sst::peek_ptr<Src> peek(Src const & src, End const & end)
+    SST_NOEXCEPT(noexcept(*sst::peek_ptr<Src>(src) == end ?
+                              sst::peek_ptr<Src>() :
+                              sst::peek_ptr<Src>(src))) {
   sst::peek_ptr<Src> ptr(src);
   return *ptr == end ? sst::peek_ptr<Src>() : std::move(ptr);
 }
@@ -76,11 +75,11 @@ template<class Src,
              && (sst::is_sentinel<End, Src>::value
                  || sst::is_value_sentinel<End, Src>::value)> = 0>
 SST_NODISCARD()
-constexpr auto peek(
-    Src const & src,
-    End const & end,
-    sst::pos<Src, End> const &) noexcept(noexcept(sst::peek(src, end)))
-    -> decltype(sst::peek(src, end)) {
+constexpr auto peek(Src const & src,
+                    End const & end,
+                    sst::pos<Src, End> const &)
+    SST_NOEXCEPT(noexcept(sst::peek(src, end)))
+        -> decltype(sst::peek(src, end)) {
   return sst::peek(src, end);
 }
 
@@ -89,13 +88,11 @@ template<class Src,
          sst::enable_if_t<sst::is_input_iterator<Src>::value
                           && sst::is_integer_ish<End>::value> = 0>
 SST_NODISCARD()
-constexpr sst::peek_ptr<Src> peek(
-    Src const & src,
-    End const & end,
-    sst::pos<Src, End> const &
-        pos) noexcept(noexcept(pos.value == end ?
-                                   sst::peek_ptr<Src>() :
-                                   sst::peek_ptr<Src>(src))) {
+constexpr sst::peek_ptr<Src> peek(Src const & src,
+                                  End const & end,
+                                  sst::pos<Src, End> const & pos)
+    SST_NOEXCEPT(noexcept(pos.value == end ? sst::peek_ptr<Src>() :
+                                             sst::peek_ptr<Src>(src))) {
   return pos.value == end ? sst::peek_ptr<Src>() :
                             sst::peek_ptr<Src>(src);
 }

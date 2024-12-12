@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -33,12 +33,12 @@ public final class Assert {
   }
 
   public static final boolean SST_NDEBUG = false;
-  public static final boolean SST_ASSERT_THROWS = false;
+  public static final boolean SST_USE_ASSERTION_EXCEPTION = false;
 
   public static final void SST_ASSERT(final Throwable e,
                                       final CharSequence message) {
     if (!SST_NDEBUG) {
-      if (SST_ASSERT_THROWS) {
+      if (SST_USE_ASSERTION_EXCEPTION) {
         throw new AssertionError(
             "assertion failed: "
                 + (message != null ? message.toString() + ": " : ""),

@@ -1,0 +1,75 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_UNSIGNED_RAND_RANGE_OC_ADOC[]
+:SECTIONS_CL_SST_UNSIGNED_RAND_RANGE_OC_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_unsigned_rand_range_oc_name0: sst::unsigned_rand_range_oc
+:cl_sst_unsigned_rand_range_oc_name1: unsigned_rand_range_oc
+
+:cl_sst_unsigned_rand_range_oc_id: cl_sst_unsigned_rand_range_oc
+:cl_sst_unsigned_rand_range_oc_url: sections/cl_sst_unsigned_rand_range_oc.adoc#{cl_sst_unsigned_rand_range_oc_id}
+
+:cl_sst_unsigned_rand_range_oc_chop0: xref:{cl_sst_unsigned_rand_range_oc_url}[{cl_sst_unsigned_rand_range_oc_name0}]
+:cl_sst_unsigned_rand_range_oc_chop0_prose1: pass:a,q[`{cl_sst_unsigned_rand_range_oc_chop0}`]
+:cl_sst_unsigned_rand_range_oc_chop0_prose2: pass:a,q[`{cl_sst_unsigned_rand_range_oc_chop0}` function]
+
+:cl_sst_unsigned_rand_range_oc_chop1: xref:{cl_sst_unsigned_rand_range_oc_url}[{cl_sst_unsigned_rand_range_oc_name1}]
+:cl_sst_unsigned_rand_range_oc_chop1_prose1: pass:a,q[`{cl_sst_unsigned_rand_range_oc_chop1}`]
+:cl_sst_unsigned_rand_range_oc_chop1_prose2: pass:a,q[`{cl_sst_unsigned_rand_range_oc_chop1}` function]
+
+:cl_sst_unsigned_rand_range_oc: {cl_sst_unsigned_rand_range_oc_chop0}
+:cl_sst_unsigned_rand_range_oc_prose1: {cl_sst_unsigned_rand_range_oc_chop0_prose1}
+:cl_sst_unsigned_rand_range_oc_prose2: {cl_sst_unsigned_rand_range_oc_chop0_prose2}
+
+:cl_sst_catalog_unsigned_rand_range_oc_hpp_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/unsigned_rand_range_oc.hpp
+:cl_sst_catalog_unsigned_rand_range_oc_hpp: link:{cl_sst_catalog_unsigned_rand_range_oc_hpp_url}[sst/catalog/unsigned_rand_range_oc.hpp,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_unsigned_rand_range_oc_id}]
+= `{cl_sst_unsigned_rand_range_oc_name0}`
+
+The {cl_sst_unsigned_rand_range_oc_prose2} returns a uniform random
+value from a left-open, right-closed range of nonnegative integers.
+
+:leveloffset: +1
+
+include::cl_sst_unsigned_rand_range_oc/synopsis.adoc[]
+
+:leveloffset: -1
+
+//----------------------------------------------------------------------
+endif::[]

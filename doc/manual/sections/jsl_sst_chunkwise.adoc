@@ -1,0 +1,146 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_CHUNKWISE_ADOC[]
+:SECTIONS_JSL_SST_CHUNKWISE_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_chunkwise_name0: sst.chunkwise
+:jsl_sst_chunkwise_name1: chunkwise
+
+:jsl_sst_chunkwise_id: jsl_sst_chunkwise
+:jsl_sst_chunkwise_url: sections/jsl_sst_chunkwise.adoc#{jsl_sst_chunkwise_id}
+
+:jsl_sst_chunkwise_chop0: xref:{jsl_sst_chunkwise_url}[{jsl_sst_chunkwise_name0}]
+:jsl_sst_chunkwise_chop0_prose1: pass:a,q[`{jsl_sst_chunkwise_chop0}`]
+:jsl_sst_chunkwise_chop0_prose2: pass:a,q[`{jsl_sst_chunkwise_chop0}` function]
+
+:jsl_sst_chunkwise_chop1: xref:{jsl_sst_chunkwise_url}[{jsl_sst_chunkwise_name1}]
+:jsl_sst_chunkwise_chop1_prose1: pass:a,q[`{jsl_sst_chunkwise_chop1}`]
+:jsl_sst_chunkwise_chop1_prose2: pass:a,q[`{jsl_sst_chunkwise_chop1}` function]
+
+:jsl_sst_chunkwise: {jsl_sst_chunkwise_chop0}
+:jsl_sst_chunkwise_prose1: {jsl_sst_chunkwise_chop0_prose1}
+:jsl_sst_chunkwise_prose2: {jsl_sst_chunkwise_chop0_prose2}
+
+:jsl_sst_catalog_chunkwise_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/chunkwise.mjs
+:jsl_sst_catalog_chunkwise_mjs: link:{jsl_sst_catalog_chunkwise_mjs_url}[sst/catalog/chunkwise.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_chunkwise_id}]
+= `{jsl_sst_chunkwise_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+import {} from "./{jsl_sst_catalog_chunkwise_mjs}";
+
+{jsl_async} {jsl_sst_chunkwise}(src, f, [options={}])
+----
+
+The {jsl_sst_chunkwise_prose2} reads a stream of chunks from `src`,
+calling the `f` callback on each chunk.
+The return value is a `{jsl_Promise}` that resolves to
+`{jsl_undefined}`.
+
+The `f` callback will be called as `f(chunk)` for each `chunk`.
+If `f` returns a `{jsl_Promise}`, it will be ``{jsl_await}``ed.
+
+The following types are supported for `src`:
+
+`{jsl_Blob}`:: {empty}
+The blob will be read as a stream of `{jsl_Uint8Array}` chunks.
++
+Note that `{jsl_Blob}` is a superclass of `{jsl_File}`.
+When `src` is a `{jsl_File}`, it will be handled as a `{jsl_File}`, not
+a `{jsl_Blob}`.
+
+`{jsl_File}` (browser only):: {empty}
+The file will be read as a stream of `{jsl_Uint8Array}` chunks.
++
+If an exception `e` is thrown or a `{jsl_Promise}` is rejected with
+reason `e`, `{jsl_sst_chunkwise}` will reject its `{jsl_Promise}` with
+an `{jsl_Error}` reason whose `{jsl_Error_message_chop1}` includes the
+file's `{jsl_File_name_chop1}` and whose `{jsl_Error_cause_chop1}` is
+`e`.
++
+Note that `{jsl_File}` is a subclass of `{jsl_Blob}`.
+When `src` is a `{jsl_File}`, it will be handled as a `{jsl_File}`, not
+a `{jsl_Blob}`.
+
+`{jsl_fsp_FileHandle}` (Node.js only):: {empty}
+The file will be read as a stream of `{jsl_Uint8Array}` chunks.
+
+`{jsl_fsp_ReadStream}` (Node.js only):: {empty}
+The file will be read as a stream of `{jsl_Uint8Array}` chunks.
+
+`{jsl_ReadableStream}`:: {empty}
+The stream of chunks will be read by calling
+`src.{jsl_ReadableStream_getReader_chop1}()` to get a
+`link:{jsl_ReadableStreamDefaultReader_url}[reader]`, then calling
+`link:{jsl_ReadableStreamDefaultReader_url}[reader].{jsl_ReadableStreamDefaultReader_read_chop1}()`
+repeatedly.
+Each `chunk` with type `{jsl_ArrayBuffer}` will be adjusted to a
+`{jsl_Uint8Array_constructor}(chunk)` view.
+
+string (Node.js only):: {empty}
+`src` will be opened as a file via `{jsl_fsp_open}(src, "r")`, and the
+file will be read as a stream of `{jsl_Uint8Array}` chunks.
++
+If an exception `e` is thrown or a `{jsl_Promise}` is rejected with
+reason `e`, `{jsl_sst_chunkwise}` will reject its `{jsl_Promise}` with
+an `{jsl_Error}` reason whose `{jsl_Error_message_chop1}` includes `src`
+(the file's name) and whose `{jsl_Error_cause_chop1}` is `e`.
+
+Any other type:: {empty}
+`src` itself will be considered to be the only chunk in the stream.
+If `src` has type `{jsl_ArrayBuffer}`, it will be adjusted to a
+`{jsl_Uint8Array_constructor}(src)` view.
+
+The following `options` are supported:
+
+`fetch` (optional):: {empty}
+Options to pass to the `{jsl_sst_fetch}` function.
+The presence of this option changes the behavior of the
+`{jsl_sst_chunkwise}` function as follows:
++
+--
+. `src` must be a string.
+. `{jsl_sst_fetch}(src, options.fetch)` will be called, and the response
+  body will be read as a stream of `{jsl_Uint8Array}` chunks.
+--
+
+//----------------------------------------------------------------------
+endif::[]

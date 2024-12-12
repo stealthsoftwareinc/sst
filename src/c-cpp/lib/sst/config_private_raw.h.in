@@ -12,6 +12,9 @@
    */
 #undef CEXEEXT
 
+/* cmp command */
+#undef CMP
+
 /* curl command */
 #undef CURL_CLI
 
@@ -41,6 +44,9 @@
 
 /* Result of checking whether bignum_st is fully defined. */
 #undef HAVE_BIGNUM_ST_DEFINITION
+
+/* cmp command availability */
+#undef HAVE_CMP
 
 /* curl command availability */
 #undef HAVE_CURL_CLI
@@ -337,7 +343,9 @@
    PACKAGE_VERSION with the "-" character replaced with a "~" character. For
    example, if PACKAGE_VERSION were "0.1.0", then this should be "0.1.0", and
    if PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this should be
-   "0.1.0~4927+g88a52bb". */
+   "0.1.0~4927+g88a52bb", and if PACKAGE_VERSION were
+   "0.1.0-alpha.4927+g88a52bb", then this should be
+   "0.1.0~alpha.4927+g88a52bb". */
 #undef PACKAGE_VERSION_DEB
 
 /* Define to the same character string literal as PACKAGE_VERSION_DEB but with
@@ -351,7 +359,8 @@
    the text up to but not including the "+" character. For example, if
    PACKAGE_VERSION were "0.1.0", then this should be "0.1.0", and if
    PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this should be
-   "0.1.0-4927". */
+   "0.1.0-4927", and if PACKAGE_VERSION were "0.1.0-alpha.4927+g88a52bb", then
+   this should be "0.1.0-alpha.4927". */
 #undef PACKAGE_VERSION_DOCKER
 
 /* Define to the same character string literal as PACKAGE_VERSION_DOCKER but
@@ -364,11 +373,11 @@
 /* Define to a character string literal that contains the Git description of
    PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-" character, then
    this should be a "v" character followed by PACKAGE_VERSION. Otherwise, this
-   should be a "u" character followed by PACKAGE_VERSION, and the "+"
-   character should be replaced with a "-" character. For example, if
-   PACKAGE_VERSION were "0.1.0", then this should be "v0.1.0", and if
-   PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this should be
-   "u0.1.0-4927-g88a52bb". */
+   should be a "u" character followed by PACKAGE_VERSION with any "alpha."
+   part deleted and any "+" character replaced with a "-" character. For
+   example, if PACKAGE_VERSION were "0.1.0", then this should be "v0.1.0", and
+   if PACKAGE_VERSION were "0.1.0-4927+g88a52bb" or
+   "0.1.0-alpha.4927+g88a52bb", then this should be "u0.1.0-4927-g88a52bb". */
 #undef PACKAGE_VERSION_GIT
 
 /* Define to the same character string literal as PACKAGE_VERSION_GIT but with
@@ -402,7 +411,9 @@
    text after the "-" character, and the "+" character should be replaced with
    a "." character. For example, if PACKAGE_VERSION were "0.1.0", then this
    should be "1", and if PACKAGE_VERSION were "0.1.0-4927+g88a52bb", then this
-   should be "0.4927.g88a52bb". */
+   should be "0.4927.g88a52bb", and if PACKAGE_VERSION were
+   "0.1.0-alpha.4927+g88a52bb", then this should be "0.alpha.4927.g88a52bb".
+   */
 #undef PACKAGE_VERSION_RPM_R
 
 /* Define to the same character string literal as PACKAGE_VERSION_RPM_R but
@@ -416,7 +427,8 @@
    of PACKAGE_VERSION. If PACKAGE_VERSION does not contain a "-" character,
    then this should be PACKAGE_VERSION. Otherwise, this should be the text up
    to but not including the "-" character. For example, if PACKAGE_VERSION
-   were "0.1.0" or "0.1.0-4927+g88a52bb", then this should be "0.1.0". */
+   were "0.1.0" or "0.1.0-4927+g88a52bb" or "0.1.0-alpha.4927+g88a52bb", then
+   this should be "0.1.0". */
 #undef PACKAGE_VERSION_RPM_V
 
 /* Define to a character string literal that contains PACKAGE_VERSION_RPM_V
@@ -777,6 +789,9 @@
 /* Result of checking for the Java Native Interface (C compile). */
 #undef WITH_JNI_C_COMPILE
 
+/* Result of checking for -latomic. */
+#undef WITH_LIBATOMIC
+
 /* Result of checking whether to use libcurl. */
 #undef WITH_LIBCURL
 
@@ -933,9 +948,6 @@
 /* Result of checking for the POSIX API (C run). */
 #undef WITH_POSIX_C_RUN
 
-/* Result of checking whether to use POSIX threads. */
-#undef WITH_PTHREADS
-
 /* Result of checking for POSIX threads (C++ link). */
 #undef WITH_PTHREADS_CPP_LINK
 
@@ -1019,6 +1031,9 @@
 
 /* Result of checking struct timespec in time.h. */
 #undef WITH_STRUCT_TIMESPEC_IN_TIME_H
+
+/* Result of checking whether to use threads. */
+#undef WITH_THREADS
 
 /* Result of checking uint8_t in nettle/nettle-types.h. */
 #undef WITH_UINT8_T_IN_NETTLE_NETTLE_TYPES_H

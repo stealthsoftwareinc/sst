@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -55,10 +55,12 @@ include::cl_sst_unsigned_le.adoc[]
 include::cl_sst_unsigned_ge.adoc[]
 include::cl_sst_unsigned_eq.adoc[]
 include::cl_sst_unsigned_ne.adoc[]
+include::sections/cl_sst_strict_eq.adoc[]
 include::cl_sst_ones_mask.adoc[]
 include::cl_sst_uchar_msb.adoc[]
 include::cl_sst_boxed.adoc[]
 include::cl_sst_bignum.adoc[]
+include::cl_sst_elgamal_cipher.adoc[]
 include::cl_sst_str_cmp.adoc[]
 include::cl_sst_opt_arg.adoc[]
 include::cl_sst_opt_exception.adoc[]
@@ -79,6 +81,10 @@ include::sections/cl_sst_to_hex_options.adoc[]
 include::sections/cl_sst_unsigned_ceil_div.adoc[]
 include::sections/cl_sst_unsigned_max.adoc[]
 include::sections/cl_sst_unsigned_min.adoc[]
+include::sections/cl_sst_unsigned_rand_range_cc.adoc[]
+include::sections/cl_sst_unsigned_rand_range_co.adoc[]
+include::sections/cl_sst_unsigned_rand_range_oc.adoc[]
+include::sections/cl_sst_unsigned_rand_range_oo.adoc[]
 include::sections/cl_sst_last_arg.adoc[]
 include::sections/cl_sst_numeric_limits.adoc[]
 include::sections/cl_sst_checked_overflow.adoc[]
@@ -93,6 +99,8 @@ include::sections/cl_sst_value_sentinel.adoc[]
 include::sections/cl_sst_value_sentinel_t.adoc[]
 include::sections/cl_SST_REVERSE.adoc[]
 include::sections/cl_SST_WITH_NOEXCEPT.adoc[]
+include::sections/cl_sst_unsigned_mod.adoc[]
+include::sections/cl_sst_mod.adoc[]
 
 :leveloffset: -1
 

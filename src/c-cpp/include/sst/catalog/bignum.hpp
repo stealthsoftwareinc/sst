@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -359,6 +359,29 @@ public:
   explicit bignum(sst::indeterminate_t)
       : bignum(sst::indeterminate, true) {
   }
+
+  //--------------------------------------------------------------------
+  //
+  // Constructs a copy of an existing BIGNUM.
+  //
+
+public:
+
+  bignum(BIGNUM const * const x);
+
+  //--------------------------------------------------------------------
+  //
+  // Constructs a copy of an existing BIGNUM.
+  //
+
+public:
+
+  bignum(BIGNUM const & x) : bignum(&x) {
+  }
+
+  //--------------------------------------------------------------------
+
+public:
 
   struct static_data {};
   explicit constexpr bignum(BIGNUM const & a, static_data)

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,12 +32,13 @@
 #include <sst/catalog/crypto_rng.hpp>
 //
 
+#include <sst/catalog/SST_THREAD_LOCAL.hpp>
 #include <sst/catalog/crypto_rng_t.hpp>
 
 namespace sst {
 
 sst::crypto_rng_t & crypto_rng() {
-  static thread_local sst::crypto_rng_t rng;
+  static SST_THREAD_LOCAL sst::crypto_rng_t rng;
   return rng;
 }
 

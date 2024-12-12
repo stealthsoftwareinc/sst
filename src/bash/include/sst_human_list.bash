@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -28,13 +28,13 @@
 
 sst_human_list() {
 
-  # Bash >=4.2: declare -g    SST_NDEBUG
+  # Bash >=4.2: declare -g    SST_DEBUG
 
   declare -a adjust
   declare    output
   declare    x
 
-  if ((!SST_NDEBUG)); then
+  if ((SST_DEBUG)); then
     if (($# == 0)); then
       sst_expect_argument_count $# 1-
     fi
@@ -47,7 +47,7 @@ sst_human_list() {
   done
   readonly adjust
 
-  if ((!SST_NDEBUG)); then
+  if ((SST_DEBUG)); then
     if (($# == 0)); then
       sst_barf "The : argument must always be given."
     fi

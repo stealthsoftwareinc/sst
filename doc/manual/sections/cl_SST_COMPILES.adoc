@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_CL_SST_COMPILES_ADOC[]
 
 :cl_SST_COMPILES_n0: SST_COMPILES
 
-:cl_SST_COMPILES_id: cl-SST-COMPILES
+:cl_SST_COMPILES_id: cl_SST_COMPILES
 :cl_SST_COMPILES_url: sections/cl_SST_COMPILES.adoc#{cl_SST_COMPILES_id}
 
 :cl_SST_COMPILES: xref:{cl_SST_COMPILES_url}[{cl_SST_COMPILES_n0}]

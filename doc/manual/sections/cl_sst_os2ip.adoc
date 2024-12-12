@@ -1,0 +1,91 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_OS2IP_ADOC[]
+:SECTIONS_CL_SST_OS2IP_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_os2ip_name1: os2ip
+:cl_sst_os2ip_name0: sst::os2ip
+:cl_sst_os2ip_id: cl_sst_os2ip
+:cl_sst_os2ip_url: sections/cl_sst_os2ip.adoc#{cl_sst_os2ip_id}
+:cl_sst_os2ip_chop1: xref:{cl_sst_os2ip_url}[{cl_sst_os2ip_name1}]
+:cl_sst_os2ip_chop1_prose1: pass:a,q[`{cl_sst_os2ip_chop1}`]
+:cl_sst_os2ip_chop1_prose2: pass:a,q[`{cl_sst_os2ip_chop1}` function]
+:cl_sst_os2ip_chop0: xref:{cl_sst_os2ip_url}[{cl_sst_os2ip_name0}]
+:cl_sst_os2ip_chop0_prose1: pass:a,q[`{cl_sst_os2ip_chop0}`]
+:cl_sst_os2ip_chop0_prose2: pass:a,q[`{cl_sst_os2ip_chop0}` function]
+:cl_sst_os2ip: {cl_sst_os2ip_chop0}
+:cl_sst_os2ip_prose1: {cl_sst_os2ip_chop0_prose1}
+:cl_sst_os2ip_prose2: {cl_sst_os2ip_chop0_prose2}
+:cl_sst_catalog_os2ip_hpp_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/os2ip.hpp
+:cl_sst_catalog_os2ip_hpp: link:{cl_sst_catalog_os2ip_hpp_url}[sst/catalog/os2ip.hpp,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_os2ip_id}]
+= `{cl_sst_os2ip_name0}`
+
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_os2ip_hpp}>
+
+{cl_sst_os2ip}<Dst>(src, [end])
+----
+
+The {cl_sst_os2ip_prose2} converts a big endian octet string `src` to a
+nonnegative integer.
+This is an implementation of the OS2IP (octet string to integer
+primitive) function from {ietf_rfc_8017}.
+
+`Dst` may be any integer-ish type.
+
+`src` may be a byte input iterator or an iterable byte container.
+An iterable byte container will be implicitly adjusted to a byte input
+iterator starting at the first byte.
+
+`end` may be a sentinel for `src`, a value sentinel for `src`, or an
+integer-ish count of the number of octets to read.
+
+`end` may only be omitted if `src` is an iterable byte container, in
+which case `end` will be implicitly taken to be one past the end of the
+container.
+
+The function returns the nonnegative integer value with type `Dst`.
+
+If `Dst` does not have enough range to represent the integer value, an
+exception will be thrown.
+
+//----------------------------------------------------------------------
+endif::[]

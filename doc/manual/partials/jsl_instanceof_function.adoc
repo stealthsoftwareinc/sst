@@ -1,0 +1,67 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#{dpwrzgbkdw_id}]
+= `{dpwrzgbkdw_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+import {} from "./{jsl_sst_catalog_is_stream_writable_mjs}";
+
+{dpwrzgbkdw}(x)
+----
+
+The {dpwrzgbkdw_prose2} returns `{jsl_true}` if `x`
+ifeval::["{dpwrzgbkdw_type}" == "class"]
+is an instance of the `{dpwrzgbkdw_class}` class,
+endif::[]
+ifeval::["{dpwrzgbkdw_type}" == "interface"]
+implements the `{dpwrzgbkdw_class}` interface,
+endif::[]
+or `{jsl_false}` if not.
+
+This function has the following advantages over trying to write
+`x {jsl_instanceof} {dpwrzgbkdw_class}`:
+
+ifeval::["{dpwrzgbkdw_portable}" == ""]
+* {empty}
+This function works in any runtime environment.
+endif::[]
+
+ifeval::["{dpwrzgbkdw_package}" != ""]
+* {empty}
+This function does not require the `{dpwrzgbkdw_package}` package to be
+`{jsl_static_import}ed`.
+endif::[]
+
+ifeval::["{dpwrzgbkdw_type}" == "interface"]
+* {empty}
+This function works if the class of `x` is not a subclass of
+`{dpwrzgbkdw_class}`.
+endif::[]

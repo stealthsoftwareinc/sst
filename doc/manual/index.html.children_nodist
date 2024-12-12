@@ -1,8 +1,15 @@
 doc/manual/config.adoc
+doc/manual/bootstrap-5.3.3.min.css
 doc/manual/d3-sankey.js
 doc/manual/d3.js
+doc/manual/docinfo-footer.html
+doc/manual/docinfo.html
 doc/manual/fonts
 doc/manual/jquery-ui-base.css
 doc/manual/jquery-ui.js
 doc/manual/jquery.js
 doc/manual/katex
+doc/manual/sst.adoc
+doc/manual/sst.css
+doc/manual/sst.js
+doc/manual/sst.yml

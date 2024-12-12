@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -28,7 +28,7 @@
 
 sst_include() {
 
-  # Bash >=4.2: declare -g    SST_NDEBUG
+  # Bash >=4.2: declare -g    SST_DEBUG
 
   declare    array_flag
   declare    declarations
@@ -52,7 +52,7 @@ sst_include() {
       else
         array_flag=
       fi
-      if ((!SST_NDEBUG)); then
+      if ((SST_DEBUG)); then
         sst_expect_basic_identifier "$variable"
       fi
       declarations+=" declare$array_flag $variable;"

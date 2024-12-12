@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -37,6 +37,7 @@ sst_ajh_c_cpp_test() {
   local x1
   local x2
   local x3
+  local x4
 
   sst_expect_argument_count $# 2-
 
@@ -56,12 +57,22 @@ sst_ajh_c_cpp_test() {
 
     expect_safe_path "$x1"
 
-    x2=$(echo $x1 | sed 's/\.[^.]*$//')
-    x3=$(echo $x2 | sed 's/[^A-Za-z0-9_]/_/g')
+    x2=${x1%.*}
+    x3=${x2//[!0-9A-Z_a-z]/_}
+    x4=${x2##*/}
+
+    case ${x4,,} in ('' \
+      | cipher \
+    )
+      sst_barf \
+        "The name of the file \"$x1\" may contribute" \
+        "to antivirus false positives. Please rename it" \
+      ;
+    esac
 
     cat >$x2.gitignorable.am <<EOF
 ##
-## Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+## Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 ##
 ## Permission is hereby granted, free of charge, to any person
 ## obtaining a copy of this software and associated documentation

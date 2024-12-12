@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_IS_INPUT_ITERATOR_ADOC[]
 :SECTIONS_CL_SST_IS_INPUT_ITERATOR_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_is_input_iterator_id: cl-sst-is-input-iterator
+:cl_sst_is_input_iterator_id: cl_sst_is_input_iterator
 :cl_sst_is_input_iterator_url: sections/cl_sst_is_input_iterator.adoc#{cl_sst_is_input_iterator_id}
 :cl_sst_is_input_iterator: xref:{cl_sst_is_input_iterator_url}[sst::is_input_iterator]
 
@@ -45,7 +45,7 @@ ifndef::define_attributes[]
 :d4xj4scf_id: {cl_sst_is_input_iterator_id}
 :d4xj4scf_name: is_input_iterator
 :d4xj4scf_params: pass:a[class I,]
-:d4xj4scf_params2: pass:a[template<class...> class T = {cl_sst_dependent_true},]
+:d4xj4scf_params2: pass:n[template<class{sst_ellipsis}> class heheT = {cl_sst_dependent_true},]
 :d4xj4scf_params3: pass:a[class... Args]
 :d4xj4scf_params4:
 :d4xj4scf_url: {cl_sst_is_input_iterator_url}

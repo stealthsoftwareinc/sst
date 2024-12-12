@@ -1,0 +1,78 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_REDUCE_MOTION_ADOC[]
+:SECTIONS_JSL_SST_REDUCE_MOTION_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_reduce_motion_name1: reduce_motion
+:jsl_sst_reduce_motion_name0: sst.reduce_motion
+:jsl_sst_reduce_motion_id: jsl_sst_reduce_motion
+:jsl_sst_reduce_motion_url: sections/jsl_sst_reduce_motion.adoc#{jsl_sst_reduce_motion_id}
+:jsl_sst_reduce_motion_chop0: xref:{jsl_sst_reduce_motion_url}[{jsl_sst_reduce_motion_name0}]
+:jsl_sst_reduce_motion_chop0_prose1: pass:a,q[`{jsl_sst_reduce_motion_chop0}`]
+:jsl_sst_reduce_motion_chop0_prose2: pass:a,q[`{jsl_sst_reduce_motion_chop0}` function]
+:jsl_sst_reduce_motion_chop1: xref:{jsl_sst_reduce_motion_url}[{jsl_sst_reduce_motion_name1}]
+:jsl_sst_reduce_motion_chop1_prose1: pass:a,q[`{jsl_sst_reduce_motion_chop1}`]
+:jsl_sst_reduce_motion_chop1_prose2: pass:a,q[`{jsl_sst_reduce_motion_chop1}` function]
+:jsl_sst_reduce_motion: {jsl_sst_reduce_motion_chop0}
+:jsl_sst_reduce_motion_prose1: {jsl_sst_reduce_motion_chop0_prose1}
+:jsl_sst_reduce_motion_prose2: {jsl_sst_reduce_motion_chop0_prose2}
+:jsl_sst_catalog_reduce_motion_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/reduce_motion.mjs
+:jsl_sst_catalog_reduce_motion_mjs: link:{jsl_sst_catalog_reduce_motion_mjs_url}[sst/catalog/reduce_motion.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_reduce_motion_id}]
+= `{jsl_sst_reduce_motion_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+import {} from "./{jsl_sst_catalog_reduce_motion_mjs}";
+
+{jsl_sst_reduce_motion}()
+----
+
+The `{jsl_sst_reduce_motion}` function returns `{jsl_true}` if motion
+should be reduced in the user interface, or `{jsl_false}` if not.
+
+This value may change over time.
+
+In a browser, this function returns `{jsl_true}` if the current value of
+the `{css_prefers_reduced_motion}` {css_media_feature} is `reduce`, or
+`{jsl_false}` if not.
+
+//----------------------------------------------------------------------
+endif::[]

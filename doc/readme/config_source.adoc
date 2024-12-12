@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -24,6 +24,14 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 //
 // SPDX-License-Identifier: MIT
+//
+
+//
+// This file defines the same attributes as config.adoc(.in), but
+// hardcoded for use in the source repository. The source repository
+// cannot use config.adoc(.in) because that means running ./configure,
+// but the source repository always exists in the initial state where
+// not even ./autogen has been run yet.
 //
 
 :PACKAGE_NAME: SST

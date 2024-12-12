@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,8 +32,8 @@
 #include <sst/catalog/errno_error_string.hpp>
 //
 
+#include <sst/catalog/SST_MAYBE_UNUSED.h>
 #include <sst/catalog/c_locale.hpp>
-#include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/to_string.hpp>
 #include <sst/config.h>
 
@@ -81,26 +81,21 @@ namespace {
 
 //
 // Macro checks recommended by various strerror_r man pages tend to be
-// insufficient to portably determine whether we have the POSIX variant
-// or the GNU variant of strerror_r. Instead, we use SFINAE to inspect
-// the return type. If we were writing this in C instead of C++, a
-// ./configure check might be the right approach.
+// unreliable for determining whether we have the POSIX variant or the
+// GNU variant of strerror_r. To resolve this, we simply use function
+// overloading to distinguish the return type and convert the return
+// value to the GNU variant. If we were writing this in C instead of
+// C++, a ./configure check would probably be the best approach.
 //
 
-// POSIX variant
-template<class T = decltype(strerror_r(0, 0, 0)),
-         sst::enable_if_t<std::is_same<T, int>::value> = 0>
-char const *
-my_strerror_r(int const code, char * const buf, size_t const n) {
-  return static_cast<T>(strerror_r(code, buf, n)) == 0 ? buf : nullptr;
+SST_MAYBE_UNUSED()
+char const * to_gnu(int const r, char const * const buf) {
+  return r == 0 ? buf : nullptr;
 }
 
-// GNU variant
-template<class T = decltype(strerror_r(0, 0, 0)),
-         sst::enable_if_t<std::is_same<T, char *>::value> = 0>
-char const *
-my_strerror_r(int const code, char * const buf, size_t const n) {
-  return static_cast<T>(strerror_r(code, buf, n));
+SST_MAYBE_UNUSED()
+char const * to_gnu(char const * const r, char const *) {
+  return r;
 }
 
 } // namespace
@@ -110,7 +105,8 @@ namespace sst {
 std::string errno_error_string(int const code) {
   std::string s;
   char buf[1024];
-  char const * const p = my_strerror_r(code, buf, sizeof(buf));
+  auto const r = strerror_r(code, buf, sizeof(buf));
+  char const * const p = to_gnu(r, buf);
   if (p != nullptr) {
     s += p;
   } else {

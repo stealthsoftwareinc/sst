@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_READ_WHOLE_FILE_ADOC[]
 :SECTIONS_CL_SST_READ_WHOLE_FILE_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_read_whole_file_id: cl-sst-read-whole-file
+:cl_sst_read_whole_file_id: cl_sst_read_whole_file
 :cl_sst_read_whole_file_url: sections/cl_sst_read_whole_file.adoc#{cl_sst_read_whole_file_id}
 :cl_sst_read_whole_file: xref:{cl_sst_read_whole_file_url}[sst::read_whole_file]
 

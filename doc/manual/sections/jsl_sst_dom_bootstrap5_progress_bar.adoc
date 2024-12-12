@@ -1,0 +1,198 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_DOM_BOOTSTRAP5_PROGRESS_BAR_ADOC[]
+:SECTIONS_JSL_SST_DOM_BOOTSTRAP5_PROGRESS_BAR_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_dom_bootstrap5_progress_bar_name3: progress_bar
+:jsl_sst_dom_bootstrap5_progress_bar_name2: bootstrap5.progress_bar
+:jsl_sst_dom_bootstrap5_progress_bar_name1: dom.bootstrap5.progress_bar
+:jsl_sst_dom_bootstrap5_progress_bar_name0: sst.dom.bootstrap5.progress_bar
+:jsl_sst_dom_bootstrap5_progress_bar_id: jsl_sst_dom_bootstrap5_progress_bar
+:jsl_sst_dom_bootstrap5_progress_bar_url: sections/jsl_sst_dom_bootstrap5_progress_bar.adoc#{jsl_sst_dom_bootstrap5_progress_bar_id}
+:jsl_sst_dom_bootstrap5_progress_bar_chop3: xref:{jsl_sst_dom_bootstrap5_progress_bar_url}[{jsl_sst_dom_bootstrap5_progress_bar_name3}]
+:jsl_sst_dom_bootstrap5_progress_bar_chop3_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop3}`]
+:jsl_sst_dom_bootstrap5_progress_bar_chop3_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop3}` function]
+:jsl_sst_dom_bootstrap5_progress_bar_chop2: xref:{jsl_sst_dom_bootstrap5_progress_bar_url}[{jsl_sst_dom_bootstrap5_progress_bar_name2}]
+:jsl_sst_dom_bootstrap5_progress_bar_chop2_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop2}`]
+:jsl_sst_dom_bootstrap5_progress_bar_chop2_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop2}` function]
+:jsl_sst_dom_bootstrap5_progress_bar_chop1: xref:{jsl_sst_dom_bootstrap5_progress_bar_url}[{jsl_sst_dom_bootstrap5_progress_bar_name1}]
+:jsl_sst_dom_bootstrap5_progress_bar_chop1_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop1}`]
+:jsl_sst_dom_bootstrap5_progress_bar_chop1_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop1}` function]
+:jsl_sst_dom_bootstrap5_progress_bar_chop0: xref:{jsl_sst_dom_bootstrap5_progress_bar_url}[{jsl_sst_dom_bootstrap5_progress_bar_name0}]
+:jsl_sst_dom_bootstrap5_progress_bar_chop0_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop0}`]
+:jsl_sst_dom_bootstrap5_progress_bar_chop0_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_progress_bar_chop0}` function]
+:jsl_sst_dom_bootstrap5_progress_bar: {jsl_sst_dom_bootstrap5_progress_bar_chop0}
+:jsl_sst_dom_bootstrap5_progress_bar_prose1: {jsl_sst_dom_bootstrap5_progress_bar_chop0_prose1}
+:jsl_sst_dom_bootstrap5_progress_bar_prose2: {jsl_sst_dom_bootstrap5_progress_bar_chop0_prose2}
+:jsl_sst_catalog_gui_bootstrap5_progress_bar_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/dom/bootstrap5/progress_bar.mjs
+:jsl_sst_catalog_gui_bootstrap5_progress_bar_mjs: link:{jsl_sst_catalog_gui_bootstrap5_progress_bar_mjs_url}[sst/catalog/dom/bootstrap5/progress_bar.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_dom_bootstrap5_progress_bar_id}]
+= `{jsl_sst_dom_bootstrap5_progress_bar_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+{jsl_static_import} {} from "./{jsl_sst_catalog_gui_bootstrap5_progress_bar_mjs}";
+
+{jsl_class} {jsl_sst_dom_bootstrap5_progress_bar}
+----
+
+.{empty}
+====
+[source,subs="{sst_subs_source}"]
+----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap-5.3.3.min.css">
+    <link rel="stylesheet" href="sst/catalog/dom/bootstrap5/progress_bar.css">
+  </head>
+  <body>
+    <script type="module">
+
+      {jsl_static_import} {} from "./{jsl_sst_catalog_gui_bootstrap5_progress_bar_mjs}";
+
+      const v = 25;
+
+      const progress_bar = new {jsl_sst_dom_bootstrap5_progress_bar}({
+        max: 100,
+        value: v,
+      });
+      document.body.appendChild(progress_bar.container());
+      progress_bar.container().classList.add("m-2");
+
+      const label_1 = "Set to 100%";
+      const label_2 = "Set to " + v + "%";
+      const full_button = document.createElement("button");
+      full_button.type = "button";
+      full_button.classList.add("btn", "btn-primary");
+      full_button.innerText = label_1;
+      full_button.addEventListener("click", () => {
+        if (progress_bar.percent() < 100) {
+          progress_bar.percent(100);
+          full_button.innerText = label_2;
+        } else {
+          progress_bar.percent(v);
+          full_button.innerText = label_1;
+        }
+      });
+      document.body.appendChild(full_button);
+
+      const spinning_button = document.createElement("button");
+      spinning_button.type = "button";
+      spinning_button.classList.add("btn", "btn-primary");
+      spinning_button.innerText = "Toggle spinning";
+      spinning_button.addEventListener("click", () => {
+        const x = progress_bar.spinning();
+        progress_bar.spinning(!x);
+      });
+      document.body.appendChild(spinning_button);
+
+    </script>
+  </body>
+</html>
+----
+
+ifdef::backend-html5[]
+++++
+<script>{
+  const currentScript = document.currentScript;
+  window.addEventListener("DOMContentLoaded", function() {
+    sst.iframeExampleOutput(currentScript, `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="bootstrap-5.3.3.min.css">
+          <link rel="stylesheet" href="sst/catalog/dom/bootstrap5/progress_bar.css">
+        <`+`/head>
+        <body>
+          <script type="module">
+
+            import {} from "./sst/catalog/dom/bootstrap5/progress_bar.mjs";
+
+            const v = 25;
+
+            const progress_bar = new sst.dom.bootstrap5.progress_bar({
+              max: 100,
+              value: v,
+            });
+            document.body.appendChild(progress_bar.container());
+            progress_bar.container().classList.add("m-2");
+
+            const label_1 = "Set to 100%";
+            const label_2 = "Set to " + v + "%";
+            const full_button = document.createElement("button");
+            full_button.type = "button";
+            full_button.classList.add("btn", "btn-primary");
+            full_button.innerText = label_1;
+            full_button.addEventListener("click", () => {
+              if (progress_bar.percent() < 100) {
+                progress_bar.percent(100);
+                full_button.innerText = label_2;
+              } else {
+                progress_bar.percent(v);
+                full_button.innerText = label_1;
+              }
+            });
+            document.body.appendChild(full_button);
+
+            const spinning_button = document.createElement("button");
+            spinning_button.type = "button";
+            spinning_button.classList.add("btn", "btn-primary");
+            spinning_button.innerText = "Toggle spinning";
+            spinning_button.addEventListener("click", () => {
+              const x = progress_bar.spinning();
+              progress_bar.spinning(!x);
+            });
+            document.body.appendChild(spinning_button);
+
+          <`+`/script>
+        <`+`/body>
+      <`+`/html>
+    `);
+  });
+}</script>
+++++
+endif::[]
+====
+
+//----------------------------------------------------------------------
+endif::[]

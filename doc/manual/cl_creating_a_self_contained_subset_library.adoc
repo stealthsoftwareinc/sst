@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -116,7 +116,7 @@ int main() {
 }
 EOF
 
-**$ g++ -Isst/include -Isst/lib a.cpp $(find sst/lib -name '*.cpp') -lcrypto**
+**$ g++ -Isst/include -Isst/lib a.cpp $(find sst/lib -name '*.c*') -lcrypto**
 
 **$ ./a.out**
 340282366920938463463374607431768211456

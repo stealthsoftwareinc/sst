@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_POINTER_LE_ADOC[]
 :SECTIONS_CL_SST_POINTER_LE_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_pointer_le_id: cl-sst-pointer-le
+:cl_sst_pointer_le_id: cl_sst_pointer_le
 :cl_sst_pointer_le_url: sections/cl_sst_pointer_le.adoc#{cl_sst_pointer_le_id}
 :cl_sst_pointer_le: xref:{cl_sst_pointer_le_url}[sst::pointer_le]
 

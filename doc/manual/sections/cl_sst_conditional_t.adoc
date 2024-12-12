@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -35,7 +35,7 @@ ifndef::SECTIONS_CL_SST_CONDITIONAL_T_ADOC[]
 :cl_sst_conditional_t_n0: sst::conditional_t
 :cl_sst_conditional_t_n1: conditional_t
 
-:cl_sst_conditional_t_id: cl-sst-conditional-t
+:cl_sst_conditional_t_id: cl_sst_conditional_t
 :cl_sst_conditional_t_url: sections/cl_sst_conditional_t.adoc#{cl_sst_conditional_t_id}
 
 :cl_sst_conditional_t: xref:{cl_sst_conditional_t_url}[{cl_sst_conditional_t_n0}]

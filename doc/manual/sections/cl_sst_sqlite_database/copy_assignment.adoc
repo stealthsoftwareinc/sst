@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_SQLITE_DATABASE_COPY_ASSIGNMENT_ADOC[]
 :SECTIONS_CL_SST_SQLITE_DATABASE_COPY_ASSIGNMENT_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_sqlite_database_copy_assignment_id: cl-sst-sqlite-database-copy-assignment
+:cl_sst_sqlite_database_copy_assignment_id: cl_sst_sqlite_database_copy_assignment
 :cl_sst_sqlite_database_copy_assignment_url: sections/cl_sst_sqlite_database/copy-assignment.adoc#{cl_sst_sqlite_database_copy_assignment_id}
 
 //----------------------------------------------------------------------

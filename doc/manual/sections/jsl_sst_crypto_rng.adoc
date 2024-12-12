@@ -1,0 +1,155 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_CRYPTO_RNG_ADOC[]
+:SECTIONS_JSL_SST_CRYPTO_RNG_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_crypto_rng_name1: crypto_rng
+:jsl_sst_crypto_rng_name0: sst.crypto_rng
+:jsl_sst_crypto_rng_id: jsl_sst_crypto_rng
+:jsl_sst_crypto_rng_url: sections/jsl_sst_crypto_rng.adoc#{jsl_sst_crypto_rng_id}
+:jsl_sst_crypto_rng_chop0: xref:{jsl_sst_crypto_rng_url}[{jsl_sst_crypto_rng_name0}]
+:jsl_sst_crypto_rng_chop0_prose1: pass:a,q[`{jsl_sst_crypto_rng_chop0}`]
+:jsl_sst_crypto_rng_chop0_prose2: pass:a,q[`{jsl_sst_crypto_rng_chop0}` function]
+:jsl_sst_crypto_rng_chop1: xref:{jsl_sst_crypto_rng_url}[{jsl_sst_crypto_rng_name1}]
+:jsl_sst_crypto_rng_chop1_prose1: pass:a,q[`{jsl_sst_crypto_rng_chop1}`]
+:jsl_sst_crypto_rng_chop1_prose2: pass:a,q[`{jsl_sst_crypto_rng_chop1}` function]
+:jsl_sst_crypto_rng: {jsl_sst_crypto_rng_chop0}
+:jsl_sst_crypto_rng_prose1: {jsl_sst_crypto_rng_chop0_prose1}
+:jsl_sst_crypto_rng_prose2: {jsl_sst_crypto_rng_chop0_prose2}
+
+:jsl_sst_catalog_crypto_rng_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/crypto_rng.mjs
+:jsl_sst_catalog_crypto_rng_mjs: link:{jsl_sst_catalog_crypto_rng_mjs_url}[sst/catalog/crypto_rng.mjs,window=_blank]
+
+:jsl_sst_crypto_rng_options_name0: options
+:jsl_sst_crypto_rng_options_id: jsl_sst_crypto_rng_options
+:jsl_sst_crypto_rng_options_url: sections/jsl_sst_crypto_rng.adoc#{jsl_sst_crypto_rng_options_id}
+:jsl_sst_crypto_rng_options_chop0: xref:{jsl_sst_crypto_rng_options_url}[{jsl_sst_crypto_rng_options_name0}]
+:jsl_sst_crypto_rng_options: {jsl_sst_crypto_rng_options_chop0}
+
+:jsl_sst_crypto_rng_options_async_name1: async
+:jsl_sst_crypto_rng_options_async_name0: options.async
+:jsl_sst_crypto_rng_options_async_id: jsl_sst_crypto_rng_options_async
+:jsl_sst_crypto_rng_options_async_url: sections/jsl_sst_crypto_rng.adoc#{jsl_sst_crypto_rng_options_async_id}
+:jsl_sst_crypto_rng_options_async_chop1: xref:{jsl_sst_crypto_rng_options_async_url}[{jsl_sst_crypto_rng_options_async_name1}]
+:jsl_sst_crypto_rng_options_async_chop0: {jsl_sst_crypto_rng_options}.{jsl_sst_crypto_rng_options_async_chop1}
+:jsl_sst_crypto_rng_options_async: {jsl_sst_crypto_rng_options_async_chop0}
+
+:jsl_sst_crypto_rng_options_crypto_name1: crypto
+:jsl_sst_crypto_rng_options_crypto_name0: options.crypto
+:jsl_sst_crypto_rng_options_crypto_id: jsl_sst_crypto_rng_options_crypto
+:jsl_sst_crypto_rng_options_crypto_url: sections/jsl_sst_crypto_rng.adoc#{jsl_sst_crypto_rng_options_crypto_id}
+:jsl_sst_crypto_rng_options_crypto_chop1: xref:{jsl_sst_crypto_rng_options_crypto_url}[{jsl_sst_crypto_rng_options_crypto_name1}]
+:jsl_sst_crypto_rng_options_crypto_chop0: {jsl_sst_crypto_rng_options}.{jsl_sst_crypto_rng_options_crypto_chop1}
+:jsl_sst_crypto_rng_options_crypto: {jsl_sst_crypto_rng_options_crypto_chop0}
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_crypto_rng_id}]
+= `{jsl_sst_crypto_rng_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+import {} from "./{jsl_sst_catalog_crypto_rng_mjs}";
+
+{jsl_sst_crypto_rng}(dst, [{jsl_sst_crypto_rng_options} = {}])
+----
+
+The {jsl_sst_crypto_rng_prose2} generates cryptographically secure
+random bytes.
+
+`dst` may be any of the following:
+
+. {empty}
+A nonnegative {jsl_primitive} {jsl_safe_integer} `{jsl_Number}`.
++
+The function will create a new `{jsl_Uint8Array}` with length `dst` and
+fill it with random bytes.
++
+The return value will be the new `{jsl_Uint8Array}`.
+
+. {empty}
+A nonnegative {jsl_primitive} `{jsl_BigInt}`.
++
+The function will create a new `{jsl_Uint8Array}` with length `dst` and
+fill it with random bytes.
++
+The return value will be the new `{jsl_Uint8Array}`.
+
+. {empty}
+A `{jsl_TypedArray}`.
++
+The function will fill the array with random bytes.
++
+The return value will be `dst`.
+
+. {empty}
+An array `[x, i, n]` where `x` is a {jsl_typed_array} and `i` and `n`
+are (big) integers.
++
+The function will fill the `n` elements of `x` beginning with `x[i]`
+with random bytes.
+If `n` is zero, no random bytes will be generated, but `i` must still be
+valid.
++
+The return value will be `x`.
+
+[#{jsl_sst_crypto_rng_options_id}]`{jsl_sst_crypto_rng_options}` may
+contain the following members:
+
+[#{jsl_sst_crypto_rng_options_async_id}]`{jsl_sst_crypto_rng_options_async_chop1}` (optional):: {empty}
+A boolean that indicates whether the function should perform its work
+{jsl_asynchronously}.
++
+If this is `{jsl_false}`, the function will perform its work
+{jsl_synchronously}.
++
+If this is `{jsl_true}`, the function will perform its work
+{jsl_asynchronously} and return a `{jsl_Promise}` that resolves to the
+{jsl_synchronous} return value instead of returning the
+{jsl_synchronous} return value directly.
++
+By default, this is `{jsl_false}`.
+
+[#{jsl_sst_crypto_rng_options_crypto_id}]`{jsl_sst_crypto_rng_options_crypto_chop1}` (optional):: {empty}
+The instance of the Web Cryptography API to use.
++
+By default, this is `window.crypto` in a browser, or
+`({jsl_await} {jsl_dynamic_import}("node:crypto")).webcrypto`
+in Node.js.
+
+//----------------------------------------------------------------------
+endif::[]

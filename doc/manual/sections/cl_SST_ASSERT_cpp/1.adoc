@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_CL_SST_ASSERT_CPP_1_ADOC[]
 
 :rd3x53jn_overload: {counter:cl_SST_ASSERT_cpp_overload}
 
-:cl_SST_ASSERT_cpp_1_id: cl-SST-ASSERT-cpp-1
+:cl_SST_ASSERT_cpp_1_id: cl_SST_ASSERT_cpp_1
 :cl_SST_ASSERT_cpp_1_url: sections/cl_SST_ASSERT_cpp/1.adoc#{cl_SST_ASSERT_cpp_1_id}
 
 :cl_SST_ASSERT_cpp_1: xref:{cl_SST_ASSERT_cpp_1_url}[SST_ASSERT]
@@ -52,7 +52,7 @@ ifndef::define_attributes[]
 
 [source,cpp,subs="{sst_subs_source}"]
 ----
-#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_ASSERT.h[sst/catalog/SST_ASSERT.h,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/SST_ASSERT.hpp[sst/catalog/SST_ASSERT.hpp,window=_blank]>
 
 #define {cl_SST_ASSERT_cpp_1}(CONDITION) (x)
 ----

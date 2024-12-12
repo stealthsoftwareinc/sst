@@ -1,0 +1,169 @@
+#
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
+#
+
+extends:
+  - /adock-theme.yml
+
+sst:
+  text_color: #000000
+  link_color: #0000EE
+  base_font_size: 11pt
+  base_line_height: 1.00
+  base_line_size: $sst_base_font_size * $sst_base_line_height
+  code_font_size: $sst_base_font_size * 1.00
+  code_line_height: 1.00
+  rule_width: 0.25pt
+  hindent: $sst_base_font_size * 2.00
+  hspacer: $sst_hindent * 0.50
+  header_border_color: $sst_text_color
+  header_border_width: $sst_rule_width
+  header_font_size: $sst_base_font_size * 0.80
+  header_height: 0.75in
+  header_padding: 0.05in
+  title_page_font_size_small: $sst_base_font_size * 1.50
+  title_page_font_size_title: $sst_base_font_size * 2.50
+  title_page_gap_page_top_to_logo: 10vh
+  title_page_gap_page_top_to_title: 45vh
+  title_page_gap_title_to_version: $sst_title_page_font_size_small * 0.00
+  title_page_gap_version_to_authors: $sst_title_page_font_size_small * 7.00
+
+admonition:
+  label:
+    padding: [0, $sst_hspacer, 0, 0]
+    text_transform: uppercase
+    vertical_align: top
+
+base:
+  font_family: KaTeX_Main
+  font_size: $sst_base_font_size
+  line_height: $sst_base_line_height
+  text_align: justify
+
+block:
+  margin_bottom: $sst_base_line_size
+
+code:
+  font_family: KaTeX_Typewriter
+  font_size: $sst_code_font_size
+  line_gap: 0
+  line_height: $sst_code_line_height
+  padding: [0, 0, 0, $sst_hindent]
+
+codespan:
+  font_family: KaTeX_Typewriter
+
+description_list:
+  description_indent: $sst_hindent
+  term_spacing: $sst_base_line_size
+
+example:
+  padding: [0, 0, 0, $sst_hindent]
+
+footer:
+  border_color: $sst_header_border_color
+  border_width: $sst_header_border_width
+  font_size: $sst_header_font_size
+  height: $sst_header_height
+  padding: [$sst_header_padding, 0, 0, 0]
+  recto: &footer_recto
+    center:
+      content: "(C) {author}"
+    left:
+      content: |
+        {version-label} {revnumber} +
+        Date: {revdate}
+    right:
+      content: "{page-number}"
+  verso: *footer_recto
+  vertical_align: top
+
+header:
+  border_color: $sst_header_border_color
+  border_width: $sst_header_border_width
+  columns: <35% =0% >65%
+  font_size: $sst_header_font_size
+  height: $sst_header_height
+  padding: [0, 0, $sst_header_padding, 0]
+  recto: &header_recto
+    left:
+      content: "image:images/page_header_logo.png[pdfwidth=1.80in]"
+    right:
+      content: "{doctitle}"
+  verso: *header_recto
+  vertical_align: bottom
+
+heading:
+  h1:
+    font_size: 22
+  h2:
+    font_size: 20
+  h3:
+    font_size: 18
+  h4:
+    font_size: 16
+  h5:
+    font_size: 14
+  h6:
+    font_size: 12
+  margin_bottom: 12
+  margin_top: 12
+
+link:
+  font_color: $sst_link_color
+
+list:
+  indent: $sst_hindent
+  item_spacing: $sst_base_line_size
+
+page:
+  margin: [1.00in, 1.00in, 1.00in, 1.00in]
+  size: letter
+
+prose:
+  margin_bottom: 12
+  margin_inner: 12
+
+running-content:
+  start-at: toc
+
+title_page:
+  authors:
+    font_size: $sst_title_page_font_size_small
+    margin_top: $sst_title_page_gap_title_to_version + $sst_title_page_font_size_small + $sst_title_page_gap_version_to_authors
+  logo:
+    image: "image:images/title_page_logo.png[pdfwidth=3.00in]"
+    top: $sst_title_page_gap_page_top_to_logo
+  revision:
+    delimiter: "\n\nDate: "
+    font_size: $sst_title_page_font_size_small
+    margin_top: 0 - $sst_title_page_gap_version_to_authors - $sst_title_page_font_size_small
+  subtitle:
+    display: none
+  title:
+    font_size: $sst_title_page_font_size_title
+    top: $sst_title_page_gap_page_top_to_title

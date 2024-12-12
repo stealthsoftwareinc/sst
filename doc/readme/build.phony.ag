@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -44,11 +44,19 @@ done
 
 sst_am_distribute ${d}config.adoc
 
+#
+# Note that we don't pass "-a imagesdir=doc/readme/diagrams" to
+# asciidoctor, as this directory is conventionally hardcoded for every
+# diagram block in README.adoc. The reason for doing this is because the
+# directory must always be hardcoded for image:: directives anyway, so
+# hardcoding it everywhere in README.adoc is more consistent.
+#
+
 sst_ihs <<<"
 
   ${d}diagrams:
-  	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
-  	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+  	\$(AM_V_at)\$(GATBPS_RECIPE_STARTING)
+  	\$(AM_V_GEN)\$(GATBPS_RECIPE_NOOP)
   	\$(GATBPS_at)rm -f -r \$@\$(TSUF)* \$@
   	\$(GATBPS_at)\$(MKDIR_P) \$@\$(TSUF)1
   	\$(GATBPS_at)rm -f README.html
@@ -61,7 +69,7 @@ sst_ihs <<<"
   	\$(GATBPS_at)touch \$@\$(TSUF)1
   	\$(GATBPS_at)mv -f \$@\$(TSUF)1 \$@
   	\$(GATBPS_at)-rm -f -r \$@\$(TSUF)*
-  	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+  	\$(AM_V_at)\$(GATBPS_RECIPE_FINISHED)
 
   EXTRA_DIST += ${d}diagrams
 

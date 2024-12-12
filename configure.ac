@@ -1,32 +1,32 @@
-dnl
-dnl Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
-dnl
-dnl Permission is hereby granted, free of charge, to any person
-dnl obtaining a copy of this software and associated documentation
-dnl files (the "Software"), to deal in the Software without
-dnl restriction, including without limitation the rights to use,
-dnl copy, modify, merge, publish, distribute, sublicense, and/or
-dnl sell copies of the Software, and to permit persons to whom the
-dnl Software is furnished to do so, subject to the following
-dnl conditions:
-dnl
-dnl The above copyright notice and this permission notice (including
-dnl the next paragraph) shall be included in all copies or
-dnl substantial portions of the Software.
-dnl
-dnl THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-dnl EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-dnl OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-dnl NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-dnl HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-dnl WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-dnl FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-dnl OTHER DEALINGS IN THE SOFTWARE.
-dnl
-dnl SPDX-License-Identifier: MIT
-dnl
+dnl#
+dnl# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+dnl#
+dnl# Permission is hereby granted, free of charge, to any person
+dnl# obtaining a copy of this software and associated documentation
+dnl# files (the "Software"), to deal in the Software without
+dnl# restriction, including without limitation the rights to use,
+dnl# copy, modify, merge, publish, distribute, sublicense, and/or
+dnl# sell copies of the Software, and to permit persons to whom the
+dnl# Software is furnished to do so, subject to the following
+dnl# conditions:
+dnl#
+dnl# The above copyright notice and this permission notice (including
+dnl# the next paragraph) shall be included in all copies or
+dnl# substantial portions of the Software.
+dnl#
+dnl# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+dnl# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+dnl# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+dnl# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+dnl# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+dnl# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+dnl# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+dnl# OTHER DEALINGS IN THE SOFTWARE.
+dnl#
+dnl# SPDX-License-Identifier: MIT
+dnl#
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 
 AC_INIT(
   [[SST]],
@@ -38,7 +38,43 @@ AC_INIT(
   [[sst@stealthsoftwareinc.com]],
   [[sst]])
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
+dnl# Add a copyright notice to the configure script
+dnl#--------------------------------------------------------------------
+[
+
+]AC_COPYRIGHT([[
+
+Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice (including
+the next paragraph) shall be included in all copies or
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+SPDX-License-Identifier: MIT
+
+]])[
+
+]
+dnl#--------------------------------------------------------------------
 
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
@@ -53,17 +89,17 @@ AM_INIT_AUTOMAKE([
   tar-ustar
 ])
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 
 m4_include([build-aux/gatbps.ac])
 
-dnl---------------------------------------------------------------------
-dnl srcdir_q
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
+dnl# srcdir_q
+dnl#--------------------------------------------------------------------
 
 srcdir_q=`gatbps_quote "${srcdir?}"` || exit $?
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 
 [
 
@@ -85,9 +121,9 @@ mkdir -p build-aux || exit $?
 
 ]
 
-dnl---------------------------------------------------------------------
-dnl Program checks
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
+dnl# Program checks
+dnl#--------------------------------------------------------------------
 
 GATBPS_PROG_ASCIIDOCTOR
 GATBPS_PROG_AWK
@@ -108,7 +144,7 @@ GATBPS_PROG_WGET
 GATBPS_PROG_XZ
 GATBPS_PROG_ZIP
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 
 [
 
@@ -127,22 +163,11 @@ dnl---------------------------------------------------------------------
     m4_fatal([gatbps-gen-date.sh failed])
   ]))[
 
-]AC_COPYRIGHT(
-[[Some parts of this file are from the SST package.
+]
 
-The following copyright notice is generally applicable:
-
-     Copyright (C) Stealth Software Technologies, Inc.
-
-The full copyright information depends on the distribution
-of the package. For more information, see the COPYING file.
-However, depending on the context in which you are viewing
-this file, the COPYING file may not be available.
-]])
-
-dnl---------------------------------------------------------------------
-dnl CPPFLAGS
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
+dnl# CPPFLAGS
+dnl#--------------------------------------------------------------------
 
 x=
 x=${x?}" -I src/c-cpp/lib"
@@ -156,7 +181,7 @@ CPPFLAGS="${x?} ${CPPFLAGS-}"
 
 unset x
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 
 m4_include([build-aux/autogen.ac])[
 
@@ -168,15 +193,15 @@ LT_INIT([
   win32-dll
 ])
 
-dnl|--------------------------------------------------------------------
-dnl| SUBSET_LIBRARY
-dnl|--------------------------------------------------------------------
-dnl|
-dnl| The commenting trick here lets a downstream project leave out this
-dnl| Autoconf code when they have no notion of library subsetting. They
-dnl| still need to copy the SST_SUBSET_LIBRARY.h.in file, but the macro
-dnl| will always be zero.
-dnl|
+dnl#--------------------------------------------------------------------
+dnl# SUBSET_LIBRARY
+dnl#--------------------------------------------------------------------
+dnl#
+dnl# The commenting trick here lets a downstream project leave out this
+dnl# Autoconf code when they have no notion of library subsetting. They
+dnl# still need to copy the SST_SUBSET_LIBRARY.h.in file, but the macro
+dnl# will always be zero.
+dnl#
 [
 
 case $][{SUBSET_LIBRARY-0} in 1)
@@ -193,7 +218,7 @@ readonly SUBSET_LIBRARY
 ]AC_SUBST([SUBSET_LIBRARY])[
 
 ]
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 [
 
 ]
@@ -294,8 +319,6 @@ GATBPS_CP([artifacts/$(distdir).tar.gz], [$(artifacts_dist_archive_src)])
 
 [
 
-]GATBPS_CONFIG_FILE_SUBST[
-]GATBPS_CONFIG_LATER_SUBST[
 ]GATBPS_CP_SUBST[
 ]GATBPS_GIT_ARCHIVE_SUBST[
 ]GATBPS_GIT_BUNDLE_SUBST[
@@ -322,11 +345,11 @@ link_all_deplibs_CXX=yes
 
 ]
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 
 AC_OUTPUT
 
-dnl---------------------------------------------------------------------
+dnl#--------------------------------------------------------------------
 [
 
 >build-aux/configure.success || exit $?

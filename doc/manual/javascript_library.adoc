@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -31,8 +31,24 @@
 
 :leveloffset: +1
 
-include::jsl_sst_fetchSlurp.adoc[]
+include::sections/jsl_feature_testing_utilities.adoc[]
+include::sections/jsl_type_traits.adoc[]
+include::sections/jsl_sst_barf.adoc[]
+include::sections/jsl_sst_chunkwise.adoc[]
+include::sections/jsl_sst_crypto_rng.adoc[]
+include::sections/jsl_sst_debounce.adoc[]
+include::sections/jsl_sst_fetch.adoc[]
+include::jsl_sst_fetch_slurp.adoc[]
+include::sections/jsl_sst_in_browser.adoc[]
+include::sections/jsl_sst_is_stream_writable.adoc[]
+include::sections/jsl_sst_post_json.adoc[]
 include::jsl_sst_sankey.adoc[]
+include::sections/jsl_sst_dom_bootstrap5_progress_bar.adoc[]
+include::sections/jsl_sst_dom_bootstrap5_text_input.adoc[]
+include::sections/jsl_sst_dom_sidebar.adoc[]
+include::sections/jsl_sst_dom_list.adoc[]
+include::sections/jsl_sst_dom_hideable.adoc[]
+include::sections/jsl_sst_reduce_motion.adoc[]
 
 :leveloffset: -1
 

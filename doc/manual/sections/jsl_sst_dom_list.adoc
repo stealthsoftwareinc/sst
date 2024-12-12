@@ -1,0 +1,230 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_DOM_LIST_ADOC[]
+:SECTIONS_JSL_SST_DOM_LIST_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_dom_list_name2: list
+:jsl_sst_dom_list_name1: dom.list
+:jsl_sst_dom_list_name0: sst.dom.list
+:jsl_sst_dom_list_id: jsl_sst_dom_list
+:jsl_sst_dom_list_url: sections/jsl_sst_dom_list.adoc#{jsl_sst_dom_list_id}
+:jsl_sst_dom_list_chop2: xref:{jsl_sst_dom_list_url}[{jsl_sst_dom_list_name2}]
+:jsl_sst_dom_list_chop2_prose1: pass:a,q[`{jsl_sst_dom_list_chop2}`]
+:jsl_sst_dom_list_chop2_prose2: pass:a,q[`{jsl_sst_dom_list_chop2}` function]
+:jsl_sst_dom_list_chop1: xref:{jsl_sst_dom_list_url}[{jsl_sst_dom_list_name1}]
+:jsl_sst_dom_list_chop1_prose1: pass:a,q[`{jsl_sst_dom_list_chop1}`]
+:jsl_sst_dom_list_chop1_prose2: pass:a,q[`{jsl_sst_dom_list_chop1}` function]
+:jsl_sst_dom_list_chop0: xref:{jsl_sst_dom_list_url}[{jsl_sst_dom_list_name0}]
+:jsl_sst_dom_list_chop0_prose1: pass:a,q[`{jsl_sst_dom_list_chop0}`]
+:jsl_sst_dom_list_chop0_prose2: pass:a,q[`{jsl_sst_dom_list_chop0}` function]
+:jsl_sst_dom_list: {jsl_sst_dom_list_chop0}
+:jsl_sst_dom_list_prose1: {jsl_sst_dom_list_chop0_prose1}
+:jsl_sst_dom_list_prose2: {jsl_sst_dom_list_chop0_prose2}
+:jsl_sst_catalog_gui_list_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/dom/list.mjs
+:jsl_sst_catalog_gui_list_mjs: link:{jsl_sst_catalog_gui_list_mjs_url}[sst/catalog/dom/list.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_dom_list_id}]
+= `{jsl_sst_dom_list_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+{jsl_static_import} {} from "./{jsl_sst_catalog_gui_list_mjs}";
+
+{jsl_class} {jsl_sst_dom_list}
+----
+
+// TODO: Use sst.rand_range_* instead of Math.random() in this example.
+
+.{empty}
+====
+[source,subs="{sst_subs_source}"]
+----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sst/catalog/dom/list.css">
+  </head>
+  <body>
+    <script type="module">
+
+      import {} from "./sst/catalog/dom/list.mjs";
+
+      const container = document.createElement("div");
+      document.body.appendChild(container);
+
+      const list = new sst.dom.list();
+
+      let count = 0;
+
+      for (; count < 5; ++count) {
+        list.add().content().innerText = "Item " + count;
+      }
+
+      const add_button_div = document.createElement("div");
+      container.appendChild(add_button_div);
+      const add_button = document.createElement("button");
+      add_button_div.appendChild(add_button);
+      add_button.innerText = "Add item";
+      add_button.addEventListener("click", () => {
+        const n = list.size();
+        const i = Math.round(Math.random() * n);
+        list.add(i).content().innerText = "Item " + count++;
+      });
+
+      const remove_button_div = document.createElement("div");
+      container.appendChild(remove_button_div);
+      const remove_button = document.createElement("button");
+      remove_button_div.appendChild(remove_button);
+      remove_button.innerText = "Remove item";
+      remove_button.addEventListener("click", () => {
+        const n = list.size();
+        if (n > 0) {
+          const i = Math.floor(Math.random() * n);
+          list.remove(i);
+        }
+      });
+
+      const move_button_div = document.createElement("div");
+      container.appendChild(move_button_div);
+      const move_button = document.createElement("button");
+      move_button_div.appendChild(move_button);
+      move_button.innerText = "Move item";
+      move_button.addEventListener("click", () => {
+        const n = list.size();
+        if (n > 1) {
+          const i = Math.floor(Math.random() * n);
+          let j;
+          do {
+            j = Math.round(Math.random() * n);
+          } while (i === j || i === j - 1);
+          list.move(i, j);
+        }
+      });
+
+      container.appendChild(list.container());
+
+    </script>
+  </body>
+</html>
+----
+
+ifdef::backend-html5[]
+++++
+<script>{
+  const currentScript = document.currentScript;
+  window.addEventListener("DOMContentLoaded", function() {
+    sst.iframeExampleOutput(currentScript, `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="sst/catalog/dom/list.css">
+        <`+`/head>
+        <body>
+          <script type="module">
+
+            import {} from "./sst/catalog/dom/list.mjs";
+
+            const container = document.createElement("div");
+            document.body.appendChild(container);
+
+            const list = new sst.dom.list();
+
+            let count = 0;
+
+            for (; count < 5; ++count) {
+              list.add().content().innerText = "Item " + count;
+            }
+
+            const add_button_div = document.createElement("div");
+            container.appendChild(add_button_div);
+            const add_button = document.createElement("button");
+            add_button_div.appendChild(add_button);
+            add_button.innerText = "Add item";
+            add_button.addEventListener("click", () => {
+              const n = list.size();
+              const i = Math.round(Math.random() * n);
+              list.add(i).content().innerText = "Item " + count++;
+            });
+
+            const remove_button_div = document.createElement("div");
+            container.appendChild(remove_button_div);
+            const remove_button = document.createElement("button");
+            remove_button_div.appendChild(remove_button);
+            remove_button.innerText = "Remove item";
+            remove_button.addEventListener("click", () => {
+              const n = list.size();
+              if (n > 0) {
+                const i = Math.floor(Math.random() * n);
+                list.remove(i);
+              }
+            });
+
+            const move_button_div = document.createElement("div");
+            container.appendChild(move_button_div);
+            const move_button = document.createElement("button");
+            move_button_div.appendChild(move_button);
+            move_button.innerText = "Move item";
+            move_button.addEventListener("click", () => {
+              const n = list.size();
+              if (n > 1) {
+                const i = Math.floor(Math.random() * n);
+                let j;
+                do {
+                  j = Math.round(Math.random() * n);
+                } while (i === j || i === j - 1);
+                list.move(i, j);
+              }
+            });
+
+            container.appendChild(list.container());
+
+          <`+`/script>
+        <`+`/body>
+      <`+`/html>
+    `);
+  });
+}</script>
+++++
+endif::[]
+====
+
+//----------------------------------------------------------------------
+endif::[]

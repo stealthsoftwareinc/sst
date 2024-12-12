@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -39,15 +39,27 @@
 
 sst_warn() {
 
-  # Bash >=4.2: declare -g    CLICOLOR
   # Bash >=4.2: declare -g    CLICOLOR_FORCE
+  # Bash >=4.2: declare -g    NO_COLOR
 
-  declare    buffer
-  declare    color_start
-  declare    color_stop
+  local    color_start
+  local    color_stop
+  local    message
 
-  if [[ "${CLICOLOR_FORCE-0}" != 0 || \
-        ( "${CLICOLOR-1}" != 0 && -t 2 ) ]]; then
+  #
+  # See [1], [2], and [3] for the basics of color control environment
+  # variables. Note that the approach in FreeBSD [3] defaults to color
+  # disabled and always requires CLICOLOR to be set to enable color, but
+  # the approach in [1] defaults to color enabled in a terminal and does
+  # not use CLICOLOR. We use the approach in [1] since we generally want
+  # color enabled by default in a terminal.
+  #
+  # [1] https://bixense.com/clicolors/
+  # [2] https://no-color.org/
+  # [3] https://stackoverflow.com/q/75625246
+  #
+
+  if [[ ! "${NO_COLOR+x}" && ( "${CLICOLOR_FORCE+x}" || -t 2 ) ]]; then
     color_start=$'\x1B[33m'
     color_stop=$'\x1B[0m'
   else
@@ -57,9 +69,9 @@ sst_warn() {
   readonly color_start
   readonly color_stop
 
-  buffer="$color_start$0: Warning: $@$color_stop"
-  readonly buffer
+  message="$color_start$0: Warning: $@$color_stop"
+  readonly message
 
-  printf '%s\n' "$buffer" >&2 || :
+  printf '%s\n' "$message" >&2 || :
 
 }; readonly -f sst_warn

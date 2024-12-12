@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -29,16 +29,18 @@
 #ifndef SST_CATALOG_SIGNED_RIGHT_SHIFT_HPP
 #define SST_CATALOG_SIGNED_RIGHT_SHIFT_HPP
 
-#include <type_traits>
-
+#include <sst/catalog/SST_ASSERT.h>
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
-#include <sst/catalog/SST_STATIC_ASSERT.h>
+#include <sst/catalog/SST_NODISCARD.h>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
 #include <sst/catalog/enable_if_t.hpp>
-#include <sst/catalog/is_integer.hpp>
+#include <sst/catalog/is_integer_ish.hpp>
+#include <sst/catalog/is_integer_like.hpp>
 #include <sst/catalog/is_negative.hpp>
-#include <sst/catalog/perfect_ge.hpp>
 #include <sst/catalog/perfect_lt.hpp>
+#include <sst/catalog/remove_cvref_t.hpp>
 #include <sst/catalog/value_bits.hpp>
+#include <sst/catalog/zero.hpp>
 
 namespace sst {
 
@@ -77,15 +79,44 @@ namespace sst {
 // type of x, the behavior is undefined.
 //
 
-template<class X,
-         class N,
-         sst::enable_if_t<sst::is_integer<X>::value
-                          && sst::is_integer<N>::value> = 0>
-constexpr X signed_right_shift(X const x, N const n) noexcept {
+// TODO: Change static_cast<X>(1) to sst::one<X>() once it's
+//       implemented.
+
+template<class X_,
+         class N_,
+         sst::enable_if_t<sst::is_integer_like<X_>::value
+                          && sst::is_integer_ish<N_>::value> = 0,
+         class X = sst::remove_cvref_t<X_>,
+         class N = sst::remove_cvref_t<N_>>
+SST_NODISCARD()
+constexpr X signed_right_shift(X_ const & x, N_ const & n)
+    SST_NOEXCEPT(noexcept(static_cast<void>(sst::is_negative(n)),
+                          static_cast<void>(sst::perfect_lt(n, 0)),
+                          static_cast<void>(static_cast<int>(n)))) {
   SST_CONSTEXPR_ASSERT((!sst::is_negative(n)));
   SST_CONSTEXPR_ASSERT((sst::perfect_lt(n, sst::value_bits<X>::value)));
   return sst::is_negative(x) ?
-             x / (X(1) << n) - (x % (X(1) << n) != X(0) ? X(1) : X(0)) :
+             x / (static_cast<X>(1) << static_cast<int>(n))
+                 - (x % (static_cast<X>(1) << static_cast<int>(n)) ?
+                        static_cast<X>(1) :
+                        sst::zero<X>()) :
+             x >> static_cast<int>(n);
+}
+
+template<class X_,
+         class N_,
+         sst::enable_if_t<sst::is_integer_ish<X_>::value
+                          && !sst::is_integer_like<X_>::value
+                          && sst::is_integer_ish<N_>::value> = 0,
+         class X = sst::remove_cvref_t<X_>,
+         class N = sst::remove_cvref_t<N_>>
+SST_NODISCARD()
+X signed_right_shift(X_ const & x, N_ const & n) {
+  SST_ASSERT((!sst::is_negative(n)));
+  return sst::is_negative(x) ?
+             x / (static_cast<X>(1) << n)
+                 - (x % (static_cast<X>(1) << n) ? static_cast<X>(1) :
+                                                   sst::zero<X>()) :
              x >> n;
 }
 

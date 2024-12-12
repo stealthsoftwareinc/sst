@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -37,7 +37,7 @@ include::bl_sst_underscore_slug.adoc[]
 include::bl_sst_extract_archive.adoc[]
 include::bl_sst_get_distro.adoc[]
 include::bl_sst_get_distro_version.adoc[]
-include::bl_prepare_dist_repo_bash.adoc[]
+include::sections/bl_prepare_dist_repo_bash.adoc[]
 include::bl_publish_dist_repo_bash.adoc[]
 include::bl_sst_find_dist_archive.adoc[]
 include::bl_sst_find_dist_date.adoc[]

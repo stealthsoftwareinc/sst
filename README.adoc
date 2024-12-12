@@ -1,5 +1,34 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +61,7 @@
 //
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -81,11 +110,19 @@ ifdef::readme_diagrams[]
 ifeval::["{readme_diagrams}" != ""]
 endif::[]
 endif::[]
+
 ifndef::readme_diagrams[]
 endif::[]
 
+//----------------------------------------------------------------------
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// This section includes config_source.adoc or config.adoc depending on
+// whether we're in the source repository.
+//
+
+
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -120,16 +157,16 @@ endif::[]
 
 :PACKAGE_NAME: SST
 :PACKAGE_TARNAME: sst
-:PACKAGE_VERSION: 0.39.0
+:PACKAGE_VERSION: 0.40.1
 
 //
 
-//
+//----------------------------------------------------------------------
 
 = {PACKAGE_NAME} {PACKAGE_VERSION}
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -167,7 +204,7 @@ Technologies,{nbsp}Inc.{nbsp}(Stealth).
 //
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -224,7 +261,7 @@ Technologies,{nbsp}Inc.{nbsp}(Stealth).
 :fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/raw/v{PACKAGE_VERSION}/{PACKAGE_TARNAME}-{PACKAGE_VERSION}.tar.gz
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -394,7 +431,7 @@ endif::[]
 //
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -451,7 +488,7 @@ endif::[]
 :fp_github_download_pinned_url: https://github.com/stealthsoftwareinc/{PACKAGE_TARNAME}/raw/v{PACKAGE_VERSION}/doc/{PACKAGE_TARNAME}-{PACKAGE_VERSION}-manual.tar.xz
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -631,5 +668,7 @@ to previous versions of {PACKAGE_NAME}.
 SST is developed by Stealth Software Technologies, Inc. as part of our
 independent development efforts.
 See the link:LICENSE[`LICENSE`] file for license information.
+
+//
 
 //

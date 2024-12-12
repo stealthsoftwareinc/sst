@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -33,7 +33,7 @@ ifndef::SECTIONS_CL_SST_CRYPTO_RNG_001_MC29WUDN_ADOC[]
 //----------------------------------------------------------------------
 
 :cl_sst_crypto_rng_mc29wudn_overload: {counter:cl_sst_crypto_rng_counter}
-:cl_sst_crypto_rng_mc29wudn_id: cl-sst-crypto-rng-overload-{cl_sst_crypto_rng_mc29wudn_overload}
+:cl_sst_crypto_rng_mc29wudn_id: cl_sst_crypto_rng_overload_{cl_sst_crypto_rng_mc29wudn_overload}
 :cl_sst_crypto_rng_mc29wudn_url: sections/cl_sst_crypto_rng_001_mc29wudn.adoc#{cl_sst_crypto_rng_mc29wudn_id}
 :cl_sst_crypto_rng_mc29wudn: xref:{cl_sst_crypto_rng_mc29wudn_url}[sst::crypto_rng]
 

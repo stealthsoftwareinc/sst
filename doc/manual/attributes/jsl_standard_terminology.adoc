@@ -1,0 +1,235 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_JSL_STANDARD_TERMINOLOGY_ADOC[]
+:ATTRIBUTES_JSL_STANDARD_TERMINOLOGY_ADOC:
+//----------------------------------------------------------------------
+
+include::jsl_standard_entities.adoc[]
+
+//----------------------------------------------------------------------
+// asynchronous
+// asynchronously
+//----------------------------------------------------------------------
+
+:jsl_asynchronous_latest_url: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
+:jsl_asynchronous_latest: link:{jsl_asynchronous_latest_url}[asynchronous,window=_blank]
+
+:jsl_asynchronous_url: {jsl_asynchronous_latest_url}
+:jsl_asynchronous: {jsl_asynchronous_latest}
+
+:jsl_Asynchronous_sc_latest_url: {jsl_asynchronous_latest_url}
+:jsl_Asynchronous_sc_latest: link:{jsl_Asynchronous_sc_latest_url}[Asynchronous,window=_blank]
+
+:jsl_Asynchronous_sc_url: {jsl_Asynchronous_sc_latest_url}
+:jsl_Asynchronous_sc: {jsl_Asynchronous_sc_latest}
+
+:jsl_asynchronously_latest_url: {jsl_asynchronous_latest_url}
+:jsl_asynchronously_latest: link:{jsl_asynchronously_latest_url}[asynchronously,window=_blank]
+
+:jsl_asynchronously_url: {jsl_asynchronously_latest_url}
+:jsl_asynchronously: {jsl_asynchronously_latest}
+
+:jsl_Asynchronously_sc_latest_url: {jsl_asynchronous_latest_url}
+:jsl_Asynchronously_sc_latest: link:{jsl_Asynchronously_sc_latest_url}[Asynchronously,window=_blank]
+
+:jsl_Asynchronously_sc_url: {jsl_Asynchronously_sc_latest_url}
+:jsl_Asynchronously_sc: {jsl_Asynchronously_sc_latest}
+
+//----------------------------------------------------------------------
+// falsy
+//----------------------------------------------------------------------
+
+:jsl_falsy_latest_url: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+:jsl_falsy_latest: link:{jsl_falsy_latest_url}[falsy,window=_blank]
+
+:jsl_falsy_url: {jsl_falsy_latest_url}
+:jsl_falsy: {jsl_falsy_latest}
+
+:jsl_Falsy_sc_latest_url: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+:jsl_Falsy_sc_latest: link:{jsl_Falsy_sc_latest_url}[Falsy,window=_blank]
+
+:jsl_Falsy_sc_url: {jsl_Falsy_sc_latest_url}
+:jsl_Falsy_sc: {jsl_Falsy_sc_latest}
+
+//----------------------------------------------------------------------
+// finite Number
+//----------------------------------------------------------------------
+
+:jsl_finite_Number_latest_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite
+:jsl_finite_Number_latest: pass:a,q[link:{jsl_finite_Number_latest_url}[finite,window=_blank] `{jsl_Number}`]
+:jsl_finite_Number_url: {jsl_finite_Number_latest_url}
+:jsl_finite_Number: {jsl_finite_Number_latest}
+
+:jsl_Finite_Number_sc_latest_url: {jsl_finite_Number_latest_url}
+:jsl_Finite_Number_sc_latest: pass:a,q[link:{jsl_Finite_Number_sc_latest_url}[Finite,window=_blank] `{jsl_Number}`]
+:jsl_Finite_Number_sc_url: {jsl_Finite_Number_sc_latest_url}
+:jsl_Finite_Number_sc: {jsl_Finite_Number_sc_latest}
+
+//----------------------------------------------------------------------
+// plain array
+//----------------------------------------------------------------------
+
+:jsl_plain_array_latest_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+:jsl_plain_array_latest: link:{jsl_plain_array_latest_url}[plain array,window=_blank]
+:jsl_plain_array_url: {jsl_plain_array_latest_url}
+:jsl_plain_array: {jsl_plain_array_latest}
+
+:jsl_Plain_array_sc_latest_url: {jsl_plain_array_latest_url}
+:jsl_Plain_array_sc_latest: link:{jsl_Plain_array_sc_latest_url}[Plain array,window=_blank]
+:jsl_Plain_array_sc_url: {jsl_Plain_array_sc_latest_url}
+:jsl_Plain_array_sc: {jsl_Plain_array_sc_latest}
+
+//----------------------------------------------------------------------
+// plain object
+//----------------------------------------------------------------------
+
+// TODO: Point this at sst.is_plain_object()
+
+:jsl_plain_object_latest_url: TODO.adoc#TODO
+:jsl_plain_object_latest: xref:{jsl_plain_object_latest_url}[plain object,window=_blank]
+:jsl_plain_object_url: {jsl_plain_object_latest_url}
+:jsl_plain_object: {jsl_plain_object_latest}
+
+:jsl_Plain_object_sc_latest_url: {jsl_plain_object_latest_url}
+:jsl_Plain_object_sc_latest: link:{jsl_Plain_object_sc_latest_url}[Plain object,window=_blank]
+:jsl_Plain_object_sc_url: {jsl_Plain_object_sc_latest_url}
+:jsl_Plain_object_sc: {jsl_Plain_object_sc_latest}
+
+//----------------------------------------------------------------------
+// primitive
+//----------------------------------------------------------------------
+
+:jsl_primitive_latest_url: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+:jsl_primitive_latest: link:{jsl_primitive_latest_url}[primitive,window=_blank]
+
+:jsl_primitive_url: {jsl_primitive_latest_url}
+:jsl_primitive: {jsl_primitive_latest}
+
+:jsl_Primitive_sc_latest_url: {jsl_primitive_latest_url}
+:jsl_Primitive_sc_latest: link:{jsl_Primitive_sc_latest_url}[Primitive,window=_blank]
+
+:jsl_Primitive_sc_url: {jsl_Primitive_sc_latest_url}
+:jsl_Primitive_sc: {jsl_Primitive_sc_latest}
+
+//----------------------------------------------------------------------
+// safe integer
+//----------------------------------------------------------------------
+
+:jsl_safe_integer_latest_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
+:jsl_safe_integer_latest: link:{jsl_safe_integer_latest_url}[safe integer,window=_blank]
+
+:jsl_safe_integer_url: {jsl_safe_integer_latest_url}
+:jsl_safe_integer: {jsl_safe_integer_latest}
+
+:jsl_Safe_integer_sc_latest_url: {jsl_safe_integer_latest_url}
+:jsl_Safe_integer_sc_latest: link:{jsl_Safe_integer_sc_latest_url}[Safe integer,window=_blank]
+
+:jsl_Safe_integer_sc_url: {jsl_Safe_integer_sc_latest_url}
+:jsl_Safe_integer_sc: {jsl_Safe_integer_sc_latest}
+
+//----------------------------------------------------------------------
+// synchronous
+// synchronously
+//----------------------------------------------------------------------
+
+:jsl_synchronous_latest_url: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
+:jsl_synchronous_latest: link:{jsl_synchronous_latest_url}[synchronous,window=_blank]
+
+:jsl_synchronous_url: {jsl_synchronous_latest_url}
+:jsl_synchronous: {jsl_synchronous_latest}
+
+:jsl_Synchronous_sc_latest_url: {jsl_synchronous_latest_url}
+:jsl_Synchronous_sc_latest: link:{jsl_Synchronous_sc_latest_url}[Synchronous,window=_blank]
+
+:jsl_Synchronous_sc_url: {jsl_Synchronous_sc_latest_url}
+:jsl_Synchronous_sc: {jsl_Synchronous_sc_latest}
+
+:jsl_synchronously_latest_url: {jsl_synchronous_latest_url}
+:jsl_synchronously_latest: link:{jsl_synchronously_latest_url}[synchronously,window=_blank]
+
+:jsl_synchronously_url: {jsl_synchronously_latest_url}
+:jsl_synchronously: {jsl_synchronously_latest}
+
+:jsl_Synchronously_sc_latest_url: {jsl_synchronous_latest_url}
+:jsl_Synchronously_sc_latest: link:{jsl_Synchronously_sc_latest_url}[Synchronously,window=_blank]
+
+:jsl_Synchronously_sc_url: {jsl_Synchronously_sc_latest_url}
+:jsl_Synchronously_sc: {jsl_Synchronously_sc_latest}
+
+//----------------------------------------------------------------------
+// truthy
+//----------------------------------------------------------------------
+
+:jsl_truthy_latest_url: https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+:jsl_truthy_latest: link:{jsl_truthy_latest_url}[truthy,window=_blank]
+
+:jsl_truthy_url: {jsl_truthy_latest_url}
+:jsl_truthy: {jsl_truthy_latest}
+
+:jsl_Truthy_sc_latest_url: https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+:jsl_Truthy_sc_latest: link:{jsl_Truthy_sc_latest_url}[Truthy,window=_blank]
+
+:jsl_Truthy_sc_url: {jsl_Truthy_sc_latest_url}
+:jsl_Truthy_sc: {jsl_Truthy_sc_latest}
+
+//----------------------------------------------------------------------
+// typed array
+// typed arrays
+//----------------------------------------------------------------------
+
+:jsl_typed_array_latest_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+:jsl_typed_array_latest: link:{jsl_typed_array_latest_url}[typed array,window=_blank]
+
+:jsl_typed_array_url: {jsl_typed_array_latest_url}
+:jsl_typed_array: {jsl_typed_array_latest}
+
+:jsl_Typed_array_sc_latest_url: {jsl_typed_array_latest_url}
+:jsl_Typed_array_sc_latest: link:{jsl_Typed_array_sc_latest_url}[Typed array,window=_blank]
+
+:jsl_Typed_array_sc_url: {jsl_Typed_array_sc_latest_url}
+:jsl_Typed_array_sc: {jsl_Typed_array_sc_latest}
+
+:jsl_typed_arrays_latest_url: {jsl_typed_array_latest_url}
+:jsl_typed_arrays_latest: link:{jsl_typed_arrays_latest_url}[typed arrays,window=_blank]
+
+:jsl_typed_arrays_url: {jsl_typed_arrays_latest_url}
+:jsl_typed_arrays: {jsl_typed_arrays_latest}
+
+:jsl_Typed_arrays_sc_latest_url: {jsl_typed_array_latest_url}
+:jsl_Typed_arrays_sc_latest: link:{jsl_Typed_arrays_sc_latest_url}[Typed arrays,window=_blank]
+
+:jsl_Typed_arrays_sc_url: {jsl_Typed_arrays_sc_latest_url}
+:jsl_Typed_arrays_sc: {jsl_Typed_arrays_sc_latest}
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

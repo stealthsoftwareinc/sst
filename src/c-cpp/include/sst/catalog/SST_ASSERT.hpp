@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -33,6 +33,10 @@
 #include <sst/catalog/SST_DEBUG.h>
 #include <sst/catalog/SST_DISPATCH.h>
 #include <sst/private/guts/assertion_failed.hpp>
+
+// TODO: If we support assertions throwing exceptions, it will generally
+//       violate noexcept functions and cause std::terminate() calls. Is
+//       that even bad?
 
 //----------------------------------------------------------------------
 // SST_DEBUG_ASSERT

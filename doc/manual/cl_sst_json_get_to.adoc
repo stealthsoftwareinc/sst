@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -87,57 +87,57 @@ is defined by the following grammar:
 +
 ====
 _value_: +
-{gindent} _sign_~_opt_~ _magnitude_ +
-{gindent} _boolean_
+{sst_hindent} _sign_~_opt_~ _magnitude_ +
+{sst_hindent} _boolean_
 
 _sign_: one of +
-{gindent} `+` `-`
+{sst_hindent} `+` `-`
 
 _magnitude_: +
-{gindent} `0` +
-{gindent} _binary-magnitude_ +
-{gindent} _octal-magnitude_ +
-{gindent} _decimal-magnitude_ +
-{gindent} _hexadecimal-magnitude_
+{sst_hindent} `0` +
+{sst_hindent} _binary-magnitude_ +
+{sst_hindent} _octal-magnitude_ +
+{sst_hindent} _decimal-magnitude_ +
+{sst_hindent} _hexadecimal-magnitude_
 
 _binary-magnitude_: +
-{gindent} `0b` _binary-digit_ +
-{gindent} `0B` _binary-digit_ +
-{gindent} _binary-magnitude_ `'`~_opt_~ _binary-digit_
+{sst_hindent} `0b` _binary-digit_ +
+{sst_hindent} `0B` _binary-digit_ +
+{sst_hindent} _binary-magnitude_ `'`~_opt_~ _binary-digit_
 
 _octal-magnitude_: +
-{gindent} `0o` _octal-digit_ +
-{gindent} `0O` _octal-digit_ +
-{gindent} _octal-magnitude_ `'`~_opt_~ _octal-digit_
+{sst_hindent} `0o` _octal-digit_ +
+{sst_hindent} `0O` _octal-digit_ +
+{sst_hindent} _octal-magnitude_ `'`~_opt_~ _octal-digit_
 
 _decimal-magnitude_: +
-{gindent} _nonzero-decimal-digit_ +
-{gindent} _decimal-magnitude_ `'`~_opt_~ _decimal-digit_
+{sst_hindent} _nonzero-decimal-digit_ +
+{sst_hindent} _decimal-magnitude_ `'`~_opt_~ _decimal-digit_
 
 _hexadecimal-magnitude_: +
-{gindent} `0x` _hexadecimal-digit_ +
-{gindent} `0X` _hexadecimal-digit_ +
-{gindent} _hexadecimal-magnitude_ `'`~_opt_~ _hexadecimal-digit_
+{sst_hindent} `0x` _hexadecimal-digit_ +
+{sst_hindent} `0X` _hexadecimal-digit_ +
+{sst_hindent} _hexadecimal-magnitude_ `'`~_opt_~ _hexadecimal-digit_
 
 _binary-digit_: one of +
-{gindent} `0` `1`
+{sst_hindent} `0` `1`
 
 _octal-digit_: one of +
-{gindent} `0` `1` `2` `3` `4` `5` `6` `7`
+{sst_hindent} `0` `1` `2` `3` `4` `5` `6` `7`
 
 _nonzero-decimal-digit_: one of +
-{gindent} `1` `2` `3` `4` `5` `6` `7` `8` `9`
+{sst_hindent} `1` `2` `3` `4` `5` `6` `7` `8` `9`
 
 _decimal-digit_: one of +
-{gindent} `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`
+{sst_hindent} `0` `1` `2` `3` `4` `5` `6` `7` `8` `9`
 
 _hexadecimal-digit_: one of +
-{gindent} `0` `1` `2` `3` `4` `5` `6` `7` `8` `9` +
-{gindent} `a` `b` `c` `d` `e` `f` +
-{gindent} `A` `B` `C` `D` `E` `F`
+{sst_hindent} `0` `1` `2` `3` `4` `5` `6` `7` `8` `9` +
+{sst_hindent} `a` `b` `c` `d` `e` `f` +
+{sst_hindent} `A` `B` `C` `D` `E` `F`
 
 _boolean_: one of +
-{gindent} `true` `false`
+{sst_hindent} `true` `false`
 ====
 +
 If the parsed value cannot be represented by `ValueType`, an

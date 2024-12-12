@@ -150,6 +150,7 @@
 #include <sst/catalog/SST_DEBUG.h>
 #include <sst/catalog/SST_DEBUG_ABI.h>
 #include <sst/catalog/SST_DEFER.h>
+#include <sst/catalog/SST_DEPRECATED.h>
 #include <sst/catalog/SST_DISPATCH.h>
 #include <sst/catalog/SST_EXPAND.h>
 #include <sst/catalog/SST_EXPAND_REPEATEDLY.h>
@@ -169,6 +170,7 @@
 #include <sst/catalog/SST_NORETURN.h>
 #include <sst/catalog/SST_REVERSE.h>
 #include <sst/catalog/SST_STATIC_ASSERT.h>
+#include <sst/catalog/SST_THREAD_LOCAL.h>
 #include <sst/catalog/SST_W32_AF_INET.h>
 #include <sst/catalog/SST_W32_AF_INET6.h>
 #include <sst/catalog/SST_W32_AF_UNSPEC.h>
@@ -645,6 +647,7 @@
 #include <sst/catalog/SST_WITH_RABBITMQ_C.h>
 #include <sst/catalog/SST_WITH_SQLITE.h>
 #include <sst/catalog/SST_WITH_SQLITE_SERIALIZATION.h>
+#include <sst/catalog/SST_WITH_THREADS.h>
 #include <sst/catalog/SST_WITH_WINDOWS.h>
 #include <sst/catalog/SST_WITH_WINDOWS_BCRYPT.h>
 #include <sst/catalog/SST_WITH_WINDOWS_KERNEL32.h>

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_WRAP_IT_030_DWNEU3Q3_ADOC[]
 :SECTIONS_CL_SST_WRAP_IT_030_DWNEU3Q3_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_wrap_it_dwneu3q3_id: cl-sst-wrap-it-dwneu3q3
+:cl_sst_wrap_it_dwneu3q3_id: cl_sst_wrap_it_dwneu3q3
 :cl_sst_wrap_it_dwneu3q3_url: sections/cl_sst_wrap_it_dwneu3q3.adoc#{cl_sst_wrap_it_dwneu3q3_id}
 :cl_sst_wrap_it_dwneu3q3: xref:{cl_sst_wrap_it_dwneu3q3_url}[sst::wrap_it]
 
@@ -63,7 +63,7 @@ template<
   {cl_sst_enable_if_t}<
     {cl_sst_is_integer}<Count>::value
   > = 0>
-_W_ wrap_it(Iterator i, Count * n);
+__W__ wrap_it(Iterator i, Count * n);
 
 }
 ----

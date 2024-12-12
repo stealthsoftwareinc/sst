@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -34,17 +34,14 @@ f() {
   d=$(sst_get_prefix $BASH_SOURCE)
 
   if [[ "$d" != manual/ && "$d" != */manual/ ]]; then
-    sst_barf $(
-      )'file must live in a directory named "manual": %s'$(
-      ) \
-      $BASH_SOURCE \
+    sst_barf \
+      "File must live in a subdirectory" \
+      "named \"manual\": \"$BASH_SOURCE\"" \
     ;
   fi
 
   dd=$(sst_get_prefix ${d%/})
   dd_slug=$(sst_underscore_slug "$dd")
-
-  sst_ajh_asciidoctor_document ${d}*.html.ag.json
 
   sst_ihs <<<"
 
@@ -53,13 +50,12 @@ f() {
       [\$(manual_dst)])
 
     GATBPS_XZ(
-      [\$(manual_dst).tar.xz],
+      [\$(manual_dst).tar.xz\$(DISTCUT)],
       [\$(manual_dst).tar],
-      [maintainer-clean],
-      [\$(manual_dst_leaves)])
+      [maintainer-clean])
 
     GATBPS_CP(
-      [${dd}\$(PACKAGE_TARNAME)-manual.tar.xz],
+      [${dd}\$(PACKAGE_TARNAME)-manual.tar.xz\$(DISTCUT)],
       [\$(manual_dst).tar.xz],
       [file],
       [maintainer-clean])
@@ -71,14 +67,14 @@ f() {
     manual_dst = ${dd}\$(PACKAGE_TARNAME)-\$(PACKAGE_VERSION)-manual
 
     \$(manual_dst): ${dd}manual.tar
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
-    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_STARTING)
+    	\$(AM_V_GEN)\$(GATBPS_RECIPE_NOOP)
     	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
     	\$(AM_V_at)\$(MKDIR_P) \$@\$(TSUF)
     	\$(AM_V_at)(cd \$@\$(TSUF) && \$(TAR) x) <${dd}manual.tar
     	\$(AM_V_at)touch \$@\$(TSUF)/*
     	\$(AM_V_at)mv -f \$@\$(TSUF)/* \$@
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_FINISHED)
 
     manual_dst_leaves = \$(${dd_slug}manual_tar_leaves)
 
@@ -88,24 +84,24 @@ f() {
     EXTRA_DIST += \$(manual_dst).tar.xz
     EXTRA_DIST += ${dd}\$(PACKAGE_TARNAME)-manual.tar.xz
 
-    manual: FORCE
-    manual: \$(manual_dst)
+    manual-xz: FORCE
+    manual-xz: \$(manual_dst).tar.xz
 
-    clean-manual: FORCE
-    clean-manual: \$(manual_dst)/clean
+    manual: FORCE
+    manual: manual-xz
 
   " | sst_am_append
 
   #---------------------------------------------------------------------
-  # Construct define_attributes.adoc
+  # Construct attributes.adoc
   #---------------------------------------------------------------------
 
-  >${d}define_attributes.adoc
+  >${d}attributes.adoc
 
   sst_ihs <<<'
     :define_attributes:
 
-  ' >>${d}define_attributes.adoc
+  ' >>${d}attributes.adoc
 
   for x in ${d}**/*.adoc; do
     sst_expect_source_path "$x"
@@ -118,16 +114,18 @@ f() {
     if [[ "$y" ]]; then
       sst_ihs <<<'
         include::'${x#$d}'[]
-      ' >>${d}define_attributes.adoc
+      ' >>${d}attributes.adoc
     fi
   done
 
   sst_ihs <<<'
 
     :!define_attributes:
-  ' >>${d}define_attributes.adoc
+  ' >>${d}attributes.adoc
 
   #---------------------------------------------------------------------
+
+  sst_ajh_dispatch ${d}index.html.ag.json
 
 }
 

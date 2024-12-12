@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_TO_HEX_001_NZ4C3ARU_ADOC[]
 :SECTIONS_CL_SST_TO_HEX_001_NZ4C3ARU_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_to_hex_nz4c3aru_id: cl-sst-to-hex-nz4c3aru
+:cl_sst_to_hex_nz4c3aru_id: cl_sst_to_hex_nz4c3aru
 :cl_sst_to_hex_nz4c3aru_url: sections/cl_sst_to_hex_nz4c3aru.adoc#{cl_sst_to_hex_nz4c3aru_id}
 :cl_sst_to_hex_nz4c3aru: xref:{cl_sst_to_hex_nz4c3aru_url}[sst::to_hex]
 :cl_sst_to_hex_nz4c3aru_c1: xref:{cl_sst_to_hex_nz4c3aru_url}[to_hex]

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -24,6 +24,12 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # SPDX-License-Identifier: MIT
+#
+
+#
+# When discussing a makefile target, a "child" of the target is any
+# direct prerequisite, and a "leaf" of the target is any direct or
+# indirect prerequisite that has no further prerequisites.
 #
 
 # TODO: The first parameter should eventually be removed. Our "target"
@@ -106,6 +112,13 @@ sst_ag_process_leaf_helper() {
       sst_am_var_add_unique_word $children_nodist $child
       sst_am_var_add_unique_word $leaves "\$(${child_slug}_leaves)"
       # TODO: sst_am_var_add_unique_word $target/clean $child/clean
+    elif [[ $leaf == *.ag.json ]]; then
+      child=${leaf%%.ag.json}
+      child_slug=$(sst_underscore_slug $child)
+      sst_am_distribute $leaf
+      sst_ajh_dispatch $leaf
+      sst_am_var_add_unique_word $children_nodist $child
+      sst_am_var_add_unique_word $leaves "\$(${child_slug}_leaves)"
     elif [[ $leaf == *.@(im.in|in|im) ]]; then
       child=${leaf%%.@(im.in|in|im)}
       child_slug=$(sst_underscore_slug $child)

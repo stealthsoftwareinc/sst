@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -37,21 +37,21 @@ ifndef::ATTRIBUTES_CL_C_STANDARDS_ADOC[]
 //----------------------------------------------------------------------
 
 :c99url: http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf
-:c99sec: link:{c99url}[C99 (N1256),window=_blank] &sect;
+:c99sec: link:{c99url}[C99 (N1256),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 // C11
 //----------------------------------------------------------------------
 
 :c11url: http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1570.pdf
-:c11sec: link:{c11url}[C11 (N1570),window=_blank] &sect;
+:c11sec: link:{c11url}[C11 (N1570),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 // C18
 //----------------------------------------------------------------------
 
 :c18url: https://web.archive.org/web/20181230041359/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf
-:c18sec: link:{c18url}[C18 (N2176),window=_blank] &sect;
+:c18sec: link:{c18url}[C18 (N2176),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 endif::[]

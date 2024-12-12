@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -35,7 +35,7 @@ ifndef::SECTIONS_CL_SST_IS_FLOATING_LIKE_ADOC[]
 :cl_sst_is_floating_like_n0: sst::is_floating_like
 :cl_sst_is_floating_like_n1: is_floating_like
 
-:cl_sst_is_floating_like_id: cl-sst-is-floating-like
+:cl_sst_is_floating_like_id: cl_sst_is_floating_like
 :cl_sst_is_floating_like_url: sections/cl_sst_is_floating_like.adoc#{cl_sst_is_floating_like_id}
 
 :cl_sst_is_floating_like: xref:{cl_sst_is_floating_like_url}[{cl_sst_is_floating_like_n0}]

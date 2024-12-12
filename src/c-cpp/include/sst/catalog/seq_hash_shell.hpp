@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -93,11 +93,10 @@ public:
                && (sst::is_integer_ish<End>::value
                    || sst::is_sentinel<End, Src>::value
                    || sst::is_value_sentinel<End, Src>::value)> = 0>
-  seq_hash_shell & update(Src && src, End && end) noexcept(noexcept(
-      std::declval<core &>().template update(std::forward<Src>(src),
+  seq_hash_shell & update(Src && src, End && end) noexcept(
+      noexcept(std::declval<core &>().update(std::forward<Src>(src),
                                              std::forward<End>(end)))) {
-    core::template update(std::forward<Src>(src),
-                          std::forward<End>(end));
+    core::update(std::forward<Src>(src), std::forward<End>(end));
     return *this;
   }
 
@@ -108,12 +107,11 @@ public:
                && (sst::is_integer_ish<End>::value
                    || sst::is_sentinel<End, Src>::value
                    || sst::is_value_sentinel<End, Src>::value)> = 0>
-  seq_hash_shell & update(Src && src, End && end) noexcept(
-      noexcept(std::declval<core &>().template update(
-          sst::cbegin(std::forward<Src>(src)),
-          std::forward<End>(end)))) {
-    core::template update(sst::cbegin(std::forward<Src>(src)),
-                          std::forward<End>(end));
+  seq_hash_shell & update(Src && src, End && end) noexcept(noexcept(
+      std::declval<core &>().update(sst::cbegin(std::forward<Src>(src)),
+                                    std::forward<End>(end)))) {
+    core::update(sst::cbegin(std::forward<Src>(src)),
+                 std::forward<End>(end));
     return *this;
   }
 

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,10 +32,10 @@ ifndef::SECTIONS_CL_TEXT_ENCODING_UTILITIES_ADOC[]
 :SECTIONS_CL_TEXT_ENCODING_UTILITIES_ADOC:
 //----------------------------------------------------------------------
 
-:cl_text_encoding_utilities_id: cl-text-encoding-utilities
+:cl_text_encoding_utilities_id: cl_text_encoding_utilities
 :cl_text_encoding_utilities_url: sections/cl_text_encoding_utilities.adoc#{cl_text_encoding_utilities_id}
 :cl_text_encoding_utilities_title: Text encoding utilities
-:cl_text_encoding_utilities: xref:{cl_text_encoding_utilities_url}[{cl_text_encoding_utilities_title}]
+:cl_text_encoding_utilities: xref:{cl_text_encoding_utilities_url}[]
 
 //----------------------------------------------------------------------
 endif::[]

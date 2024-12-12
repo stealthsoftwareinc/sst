@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -45,9 +45,9 @@ f() {
   sst_ihs <<<'
 
     '"$dst"': '"$src"'
-    	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
-    	$(AM_V_GEN)$(GATBPS_V_NOP)
-    	$(AM_V_at)rm -f -r $@ $@$(TSUF)*
+    	$(AM_V_at)$(GATBPS_RECIPE_STARTING)
+    	$(AM_V_GEN)$(GATBPS_RECIPE_NOOP)
+    	$(AM_V_at)rm -f -r $@$(TSUF)* $@
     	$(AM_V_at)$(GUNZIP) <'"$src"' >$@$(TSUF)1
     	$(AM_V_at)$(MKDIR_P) $@$(TSUF)2
     	$(AM_V_at)(cd $@$(TSUF)2 && $(TAR) x) <$@$(TSUF)1
@@ -64,13 +64,14 @@ f() {
     	;
     	$(AM_V_at)$(MKDIR_P) $@$(TSUF)3/fonts
     	$(AM_V_at)cp -R -L \
+    	  $@$(TSUF)2/*/fonts/*.ttf \
     	  $@$(TSUF)2/*/fonts/*.woff2 \
     	  $@$(TSUF)3/fonts \
     	;
     	$(AM_V_at)touch $@$(TSUF)3
     	$(AM_V_at)mv -f $@$(TSUF)3 $@
     	$(AM_V_at)rm -f -r $@$(TSUF)*
-    	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+    	$(AM_V_at)$(GATBPS_RECIPE_FINISHED)
 
     GATBPS_MOSTLYCLEANFILES += '"$dst"'/clean
 

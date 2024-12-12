@@ -1,0 +1,117 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+[#cl-sst-elgamal-cipher]
+= The `sst::elgamal::cipher` class
+
+.{cpp}
+[source,cpp,subs="{sst_subs_source}"]
+----
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/elgamal.hpp[sst/catalog/elgamal.hpp,window=_blank]>
+#include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/bignum.hpp[sst/catalog/bignum.hpp,window=_blank]>
+
+#include <openssl/ec.h>
+
+namespace sst {
+namespace elgamal {
+class cipher {
+
+  cipher(EC_GROUP const * const group,
+         sst::bignum const & skey,
+         EC_POINT const * const pkey);
+
+  cipher(EC_GROUP const * const group,
+         EC_POINT const * const pkey);
+
+  cipher(EC_GROUP const * const group);
+
+  cipher(int const curve_nid);
+
+  sst::elgamal::ciphertext
+  encrypt_small_domain(std::vector<unsigned char> const & message) const;
+
+  sst::elgamal::ciphertext
+  encrypt_small_domain(std::size_t const & message) const;
+
+  unsigned char
+  decrypt_small_domain(sst::elgamal::ciphertext const & message_enc) const;
+
+  std::vector<unsigned char> serialize_secret_key() const;
+
+  std::vector<unsigned char> serialize_public_key() const;
+
+  void deserialize_skey(std::vector<unsigned char> const & src);
+
+  void deserialize_pkey(std::vector<unsigned char> const & src,
+                        std::vector<unsigned char>::size_type & idx);
+
+  void keygen();
+};
+
+}
+}
+----
+
+The class `sst::elgamal::cipher` is meant to store the relevant
+information needed to perform Elgamal encryption, as well as some
+helper methods. The underlying elliptic curve `EC_GROUP` will be set
+at initialization, but both the `EC_POINT` public key and
+`sst::bignum` secret key can be set after initialization. The method
+`keygen` can be called to generate such a key pair.
+
+
+The method `encrypt_small_domain` takes a message (as either a
+`std::size_t` number `m` or a `std::vector<unsigned char>` buffer
+which is encoded as a number `m`) and computes
+latexmath:[\mathrm{message}:= g^m], where latexmath:[g] is the
+generator of the elliptic curve group . Finally, Elgamal encryption
+(using the public key latexmath:[\mathrm{pkey}]) is performed on
+latexmath:[\mathrm{message}] to produce the corresponding ciphertext:
+
+[stem]
+++++
+x \overset{{\scriptscriptstyle \mathrm{R}}}{\leftarrow}  [0,\
+\mathrm{ord}(\mathbb{G})-1]
+\newline
+(g_1, g_2) = (x \cdot g, x \cdot \mathrm{pkey} + \mathrm{message})
+++++
+
+The method `decrypt_small_domain` uses the secret key
+latexmath:[\mathrm{skey}] to convert the ciphertext to an `EC_POINT`,
+which is then decoded (one byte at a time) to recover the original
+message.
+
+[stem]
+++++
+(g_1, g_2) \mapsto g_2 - \mathrm{skey} \cdot g_1
+++++
+
+There are also methods for serializing and deserializing both public
+and secret keys.
+
+//

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -29,6 +29,10 @@
 #ifndef SST_CATALOG_PRECISE_SLEEP_UNTIL_MONO_TIME_NS_HPP
 #define SST_CATALOG_PRECISE_SLEEP_UNTIL_MONO_TIME_NS_HPP
 
+#include <sst/catalog/SST_WITH_THREADS.h>
+
+#if SST_WITH_THREADS
+
 #include <chrono>
 #include <thread>
 
@@ -44,10 +48,12 @@ sst::mono_time_ns_t precise_sleep_until_mono_time_ns(Time const & t) {
   sst::mono_time_ns_t const b =
       sst::checked_cast<sst::mono_time_ns_t>(t);
   sst::mono_time_ns_t a = sst::mono_time_ns();
-  while (b - a > sst::sleep_slop()) {
-    std::this_thread::sleep_for(
-        std::chrono::nanoseconds(b - a - sst::sleep_slop()));
-    a = sst::mono_time_ns();
+  if (b > sst::sleep_slop()) {
+    while (b - sst::sleep_slop() > a) {
+      std::this_thread::sleep_for(
+          std::chrono::nanoseconds(b - sst::sleep_slop() - a));
+      a = sst::mono_time_ns();
+    }
   }
   while (b > a) {
     a = sst::mono_time_ns();
@@ -56,5 +62,17 @@ sst::mono_time_ns_t precise_sleep_until_mono_time_ns(Time const & t) {
 }
 
 } // namespace sst
+
+#else // !SST_WITH_THREADS
+
+#include <sst/catalog/SST_THROW_UNIMPLEMENTED.h>
+#include <sst/catalog/mono_time_ns_t.hpp>
+
+template<class Time>
+sst::mono_time_ns_t precise_sleep_until_mono_time_ns(Time const &) {
+  SST_THROW_UNIMPLEMENTED();
+}
+
+#endif // !SST_WITH_THREADS
 
 #endif // SST_CATALOG_PRECISE_SLEEP_UNTIL_MONO_TIME_NS_HPP

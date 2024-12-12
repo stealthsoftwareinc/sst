@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -29,14 +29,24 @@
 #ifndef SST_CATALOG_TEST_FAIL_HPP
 #define SST_CATALOG_TEST_FAIL_HPP
 
-#include <sst/catalog/to_string.hpp>
 #include <stdexcept>
 #include <string>
 #include <utility>
 
+#include <sst/catalog/to_string.hpp>
+
 namespace sst {
 
 class test_fail final : public std::runtime_error {
+
+  // This allows default construction (e.g., sst::test_fail()).
+  static std::string build() {
+    return "";
+  }
+
+  // This allows a dummy int parameter to also be used for default
+  // construction (e.g., sst::test_fail(0)). This is needed by the
+  // SST_TEST_BOOL and SST_TEST_THROW macros.
   static std::string build(int) {
     return "";
   }
@@ -49,11 +59,13 @@ class test_fail final : public std::runtime_error {
   }
 
 public:
+
   template<class... Args>
   test_fail(Args &&... args)
       : std::runtime_error(build(std::forward<Args>(args)...)) {
   }
-};
+
+}; //
 
 } // namespace sst
 

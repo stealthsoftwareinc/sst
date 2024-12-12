@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -28,6 +28,27 @@
 
 #ifndef SST_CATALOG_SST_NOEXCEPT_HPP
 #define SST_CATALOG_SST_NOEXCEPT_HPP
+
+//
+// TODO: Move this documentation into the manual.
+//
+// SST_NOEXCEPT is a wrapper for the noexcept specifier that can be
+// enabled or disabled at configure time using --with-noexcept or
+// --without-noexcept.
+//
+// SST_NOEXCEPT is useful because it's not uncommon for compilers to
+// have bugs related to the noexcept specifier, and simply removing all
+// noexcept specifiers generally lets the code compile without affecting
+// correctness.
+//
+// By default, if neither --with-noexcept nor --without-noexcept is
+// specified at configure time, SST_NOEXCEPT is enabled except for
+// specific compiler versions that have been observed to be buggy.
+//
+// Note that SST_NOEXCEPT should only be used to replace the noexcept
+// specifier, not the noexcept operator. For replacing the noexcept
+// operator, see SST_NOEXCEPT_OR.
+//
 
 #include <sst/catalog/SST_WITH_NOEXCEPT.h>
 

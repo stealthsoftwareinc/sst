@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -66,7 +66,6 @@ std::string what::message(std::exception const & exception,
   } catch (std::exception const & e) {
     chain(s, e, separator, sst::what_suffix(exception, separator));
   }
-  s += '.';
   return s;
 }
 

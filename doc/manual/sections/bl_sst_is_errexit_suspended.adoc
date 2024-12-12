@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_BL_SST_IS_ERREXIT_SUSPENDED_ADOC[]
 
 :bl_sst_is_errexit_suspended_name0: sst_is_errexit_suspended
 
-:bl_sst_is_errexit_suspended_id: bl-sst-is-errexit-suspended
+:bl_sst_is_errexit_suspended_id: bl_sst_is_errexit_suspended
 :bl_sst_is_errexit_suspended_url: sections/bl_sst_is_errexit_suspended.adoc#{bl_sst_is_errexit_suspended_id}
 
 :bl_sst_is_errexit_suspended: xref:{bl_sst_is_errexit_suspended_url}[{bl_sst_is_errexit_suspended_name0}]

@@ -1,5 +1,5 @@
 ##
-## Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+## Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 ##
 ## Permission is hereby granted, free of charge, to any person
 ## obtaining a copy of this software and associated documentation
@@ -26,19 +26,44 @@
 ## SPDX-License-Identifier: MIT
 ##
 
+##----------------------------------------------------------------------
+## Add a copyright notice to Makefile.in and Makefile
+##----------------------------------------------------------------------
+##
+## Note that in Automake, # comments are passed through to Makefile.in,
+## but ## comments are not.
+##
+
 #
-# Some parts of this file are from the SST package.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
-# The following copyright notice is generally applicable:
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
 #
-#      Copyright (C) Stealth Software Technologies, Inc.
+# The above copyright notice and this permission notice (including
+# the next paragraph) shall be included in all copies or
+# substantial portions of the Software.
 #
-# The full copyright information depends on the distribution
-# of the package. For more information, see the COPYING file.
-# However, depending on the context in which you are viewing
-# this file, the COPYING file may not be available.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# SPDX-License-Identifier: MIT
 #
 
+##----------------------------------------------------------------------
+## Include gatbps.am
 ##----------------------------------------------------------------------
 
 include $(srcdir)/build-aux/gatbps.am
@@ -147,33 +172,6 @@ artifacts/$(distdir).tar.gz/src: FORCE
 	@echo artifacts_dist_archive_src
 
 #-----------------------------------------------------------------------
-# Installation
-#-----------------------------------------------------------------------
-#
-# Extend "make install" to first run "make uninstall".
-#
-
-install-both-local: uninstall
-
-#-----------------------------------------------------------------------
-# Uninstallation
-#-----------------------------------------------------------------------
-#
-# Extend "make uninstall" to delete any old installations.
-#
-
-uninstall-hook:
-	-rm -f -r \
-	  $(DESTDIR)$(datadir)/$(PACKAGE_TARNAME) \
-	  $(DESTDIR)$(datarootdir)/$(PACKAGE_TARNAME) \
-	  $(DESTDIR)$(includedir)/$(PACKAGE_TARNAME) \
-	  $(DESTDIR)$(libdir)/lib$(PACKAGE_TARNAME).a \
-	  $(DESTDIR)$(libdir)/lib$(PACKAGE_TARNAME).la \
-	  $(DESTDIR)$(libdir)/lib$(PACKAGE_TARNAME).so \
-	  $(DESTDIR)$(libexecdir)/$(PACKAGE_TARNAME) \
-	;
-
-#-----------------------------------------------------------------------
 # Code generation
 #-----------------------------------------------------------------------
 
@@ -229,8 +227,6 @@ endif
 include $(srcdir)/bin/sst_status_map_generator.am
 include $(srcdir)/include/src/sst_status_map.inc.am
 
-include $(srcdir)/build-aux/GATBPS_CONFIG_FILE_RULES.am
-include $(srcdir)/build-aux/GATBPS_CONFIG_LATER_RULES.am
 include $(srcdir)/build-aux/GATBPS_CP_RULES.am
 include $(srcdir)/build-aux/GATBPS_GIT_ARCHIVE_RULES.am
 include $(srcdir)/build-aux/GATBPS_GIT_BUNDLE_RULES.am
@@ -243,6 +239,7 @@ include $(srcdir)/build-aux/docker.am
 include $(srcdir)/build-aux/git.am
 include $(srcdir)/build-aux/javadoc-dist.am
 include $(srcdir)/build-aux/javadoc.am
+include $(srcdir)/build-aux/sst.am
 include $(srcdir)/build-aux/wget.am
 
 include $(srcdir)/build-aux/autogen.am

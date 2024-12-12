@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -28,7 +28,6 @@
 
 #ifndef SST_PRIVATE_SST_STATIC_ASSERT_HPP
 #define SST_PRIVATE_SST_STATIC_ASSERT_HPP
-#ifdef __cplusplus
 
 #include <sst/catalog/SST_DISPATCH.h>
 
@@ -42,5 +41,4 @@
   SST_DISPATCH(SST_STATIC_ASSERT_, #__VA_ARGS__, __VA_ARGS__)          \
   (#__VA_ARGS__, __VA_ARGS__)
 
-#endif // #ifdef __cplusplus
 #endif // SST_PRIVATE_SST_STATIC_ASSERT_HPP

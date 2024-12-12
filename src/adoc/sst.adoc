@@ -1,0 +1,82 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+//----------------------------------------------------------------------
+//
+// This file should be included in the document header [1] after any
+// title, author, and revision lines. This also means that this file
+// must not contain any blank lines.
+//
+// [1] https://docs.asciidoctor.org/asciidoc/latest/document/header/
+//
+//----------------------------------------------------------------------
+:attribute-missing: warn
+:docinfo: shared
+:experimental:
+:last-update-label!:
+:linkcss:
+:mathematical-format: svg
+ifdef::backend-html5[]
+:nofooter:
+endif::[]
+:pdf-fontsdir: {docdir}/katex/fonts
+:pdf-theme: sst.yml
+:pdf-themesdir: {docdir}
+:sectlinks:
+:sectnumlevels: 5
+:sectnums:
+:stem: latexmath
+:stylesheet: sst.css
+:title-page:
+:toc: left
+:toclevels: 5
+:version-label: Version:
+:xrefstyle: short
+//----------------------------------------------------------------------
+:sst_subs_normal: specialchars,attributes,quotes,replacements,macros,post_replacements
+:sst_subs_source: specialchars,attributes,quotes,macros
+//----------------------------------------------------------------------
+:sst_hindent: {nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}
+//----------------------------------------------------------------------
+// Special characters
+//----------------------------------------------------------------------
+ifdef::backend-html5[]
+:sst_empty_tag: pass:[<i></i>]
+endif::[]
+ifndef::backend-html5[]
+:sst_empty_tag:
+endif::[]
+:sst_asterisk: pass:[&#42;]
+:sst_backslash: pass:[&#92;]
+:sst_backtick: pass:[&#96;]
+:sst_ellipsis: pass:[&#46;&#46;&#46;]
+:sst_gt: pass:[&#62;]
+:sst_lbrace: pass:[&#123;]
+:sst_lt: pass:[&#60;]
+:sst_rbrace: pass:[&#125;]
+:sst_underscore: pass:[&#95;]
+//----------------------------------------------------------------------

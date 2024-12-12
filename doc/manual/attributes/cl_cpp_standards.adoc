@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -37,28 +37,28 @@ ifndef::ATTRIBUTES_CL_CPP_STANDARDS_ADOC[]
 //----------------------------------------------------------------------
 
 :cpp11url: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf
-:cpp11sec: link:{cpp11url}[{cpp}11 (N3337),window=_blank] &sect;
+:cpp11sec: link:{cpp11url}[{cpp}11 (N3337),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 // C++14
 //----------------------------------------------------------------------
 
 :cpp14url: https://github.com/cplusplus/draft/blob/master/papers/n4140.pdf?raw=true
-:cpp14sec: link:{cpp14url}[{cpp}14 (N4140),window=_blank] &sect;
+:cpp14sec: link:{cpp14url}[{cpp}14 (N4140),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 // C++17
 //----------------------------------------------------------------------
 
 :cpp17url: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf
-:cpp17sec: link:{cpp17url}[{cpp}17 (N4659),window=_blank] &sect;
+:cpp17sec: link:{cpp17url}[{cpp}17 (N4659),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 // C++20
 //----------------------------------------------------------------------
 
 :cpp20url: https://isocpp.org/files/papers/N4860.pdf
-:cpp20sec: link:{cpp20url}[{cpp}20 (N4860),window=_blank] &sect;
+:cpp20sec: link:{cpp20url}[{cpp}20 (N4860),window=_blank] &#167;
 
 //----------------------------------------------------------------------
 endif::[]

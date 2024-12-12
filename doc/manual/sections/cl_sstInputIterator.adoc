@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SSTINPUTITERATOR_ADOC[]
 :SECTIONS_CL_SSTINPUTITERATOR_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sstInputIterator_id: cl-sstInputIterator
+:cl_sstInputIterator_id: cl_sstInputIterator
 :cl_sstInputIterator_url: sections/cl_sstInputIterator.adoc#{cl_sstInputIterator_id}
 :cl_sstInputIterator: xref:{cl_sstInputIterator_url}[sstInputIterator]
 

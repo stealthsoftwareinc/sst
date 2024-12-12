@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -61,10 +61,10 @@ This is primarily useful for running code at the beginning of a
 #include <link:{repo_browser_url}/src/c-cpp/include/sst/catalog/preinit.hpp[sst/catalog/preinit.hpp,window=_blank]>
 
 class foo {
-  {cl_sst_preinit} preinit_;
-  int x_;
+  {cl_sst_preinit} preinit{sst_underscore};
+  int x{sst_underscore};
 public:
-  foo(int const x) : preinit_++((++{cl_SST_ASSERT_cpp_1}++((++x > 0)), 0)), x_(x) {
+  foo(int const x) : preinit{sst_underscore}++((++{cl_SST_ASSERT_cpp_1}++((++x {sst_gt} 0)), 0)), x{sst_underscore}(x) {
   }
 };
 

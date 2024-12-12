@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_PICK_UTF_ENCODING_ADOC[]
 :SECTIONS_CL_SST_PICK_UTF_ENCODING_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_pick_utf_encoding_id: cl-sst-pick-utf-encoding
+:cl_sst_pick_utf_encoding_id: cl_sst_pick_utf_encoding
 :cl_sst_pick_utf_encoding_url: sections/cl_sst_pick_utf_encoding.adoc#{cl_sst_pick_utf_encoding_id}
 :cl_sst_pick_utf_encoding: xref:{cl_sst_pick_utf_encoding_url}[sst::pick_utf_encoding]
 :cl_sst_pick_utf_encoding_c1: xref:{cl_sst_pick_utf_encoding_url}[pick_utf_encoding]

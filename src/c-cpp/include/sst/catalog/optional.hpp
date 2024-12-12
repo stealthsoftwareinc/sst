@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -35,6 +35,8 @@
 #include <sst/catalog/SST_CONSTEXPR_ASSERT.hpp>
 #include <sst/catalog/SST_CPP14_CONSTEXPR.hpp>
 #include <sst/catalog/SST_NODISCARD.hpp>
+#include <sst/catalog/SST_NOEXCEPT.hpp>
+#include <sst/catalog/SST_NOEXCEPT_OR.hpp>
 #include <sst/catalog/enable_if_t.hpp>
 #include <sst/catalog/enable_t.hpp>
 #include <sst/catalog/monostate.hpp>
@@ -55,15 +57,14 @@ struct storage<
     T,
     sst::enable_if_t<std::is_trivially_destructible<T>::value>> {
   union {
+    sst::monostate dummy_{};
     T value_;
-    sst::monostate dummy_;
   };
   bool has_value_ = false;
-  constexpr storage() noexcept : dummy_() {
+  constexpr storage() SST_NOEXCEPT(true) {
   }
 protected:
-  void destruct_value() noexcept {
-    // A trivial destructor never needs to be called.
+  void destruct_value() SST_NOEXCEPT(true) {
   }
 };
 
@@ -72,25 +73,24 @@ struct storage<
     T,
     sst::enable_if_t<!std::is_trivially_destructible<T>::value>> {
   union {
+    sst::monostate dummy_{};
     T value_;
-    sst::monostate dummy_;
   };
   bool has_value_ = false;
-  constexpr storage() noexcept : dummy_() {
+  constexpr storage() SST_NOEXCEPT(true) {
   }
-  ~storage() noexcept {
-    if (has_value_) {
-      destruct_value();
+  ~storage() SST_NOEXCEPT(true) {
+    if (this->has_value_) {
+      this->destruct_value();
     }
   }
 protected:
-  void destruct_value() noexcept {
-    // Avoid a try block when the destructor is noexcept.
-    if (noexcept(value_.~T())) {
-      value_.~T();
+  void destruct_value() SST_NOEXCEPT(true) {
+    if (SST_NOEXCEPT_OR(false, this->value_.~T())) {
+      this->value_.~T();
     } else {
       try {
-        value_.~T();
+        this->value_.~T();
       } catch (...) {
       }
     }
@@ -101,7 +101,7 @@ protected:
 
 template<class T>
 struct add_reset : storage<T> {
-  void reset() noexcept {
+  void reset() SST_NOEXCEPT(true) {
     if (this->has_value_) {
       this->destruct_value();
       this->has_value_ = false;
@@ -142,8 +142,8 @@ struct add_copy_ctor<
     : add_reset<T> {
   add_copy_ctor() = default;
   ~add_copy_ctor() = default;
-  add_copy_ctor(add_copy_ctor const & other) noexcept(
-      noexcept(T(std::declval<T &>()))) {
+  add_copy_ctor(add_copy_ctor const & other)
+      SST_NOEXCEPT(noexcept(T(std::declval<T &>()))) {
     if (other.has_value_) {
       new (&this->value_) T(other.value_);
       this->has_value_ = true;
@@ -187,9 +187,9 @@ struct add_copy_assign<
   add_copy_assign() = default;
   ~add_copy_assign() = default;
   add_copy_assign(add_copy_assign const &) = default;
-  add_copy_assign & operator=(add_copy_assign const & other) noexcept(
-      noexcept(std::declval<T &>() = std::declval<T &>(),
-               T(std::declval<T &>()))) {
+  add_copy_assign & operator=(add_copy_assign const & other)
+      SST_NOEXCEPT(noexcept(std::declval<T &>() = std::declval<T &>(),
+                            T(std::declval<T &>()))) {
     if (this->has_value_) {
       if (other.has_value_) {
         this->value_ = other.value_;
@@ -240,8 +240,8 @@ struct add_move_ctor<
   ~add_move_ctor() = default;
   add_move_ctor(add_move_ctor const &) = default;
   add_move_ctor & operator=(add_move_ctor const &) = default;
-  add_move_ctor(add_move_ctor && other) noexcept(
-      noexcept(T(std::declval<T &&>()))) {
+  add_move_ctor(add_move_ctor && other)
+      SST_NOEXCEPT(noexcept(T(std::declval<T &&>()))) {
     if (other.has_value_) {
       new (&this->value_) T(std::move(other.value_));
       this->has_value_ = true;
@@ -286,9 +286,9 @@ struct add_move_assign<
   add_move_assign(add_move_assign const &) = default;
   add_move_assign & operator=(add_move_assign const &) = default;
   add_move_assign(add_move_assign &&) = default;
-  add_move_assign & operator=(add_move_assign && other) noexcept(
-      noexcept(std::declval<T &>() = std::declval<T &&>(),
-               T(std::declval<T &&>()))) {
+  add_move_assign & operator=(add_move_assign && other)
+      SST_NOEXCEPT(noexcept(std::declval<T &>() = std::declval<T &&>(),
+                            T(std::declval<T &&>()))) {
     if (this->has_value_) {
       if (other.has_value_) {
         this->value_ = std::move(other.value_);
@@ -346,11 +346,12 @@ public:
 
 public:
 
-  SST_NODISCARD() constexpr bool has_value() const noexcept {
+  SST_NODISCARD() constexpr bool has_value() const SST_NOEXCEPT(true) {
     return this->has_value_;
   }
 
-  SST_NODISCARD() constexpr explicit operator bool() const noexcept {
+  SST_NODISCARD()
+  constexpr explicit operator bool() const SST_NOEXCEPT(true) {
     return this->has_value_;
   }
 
@@ -361,36 +362,38 @@ public:
 public:
 
   SST_CPP14_CONSTEXPR
-  T & value() noexcept {
+  T & value() SST_NOEXCEPT(true) {
     SST_CONSTEXPR_ASSERT((this->has_value_));
     return this->value_;
   }
 
-  constexpr T const & value() const noexcept {
-    SST_CONSTEXPR_ASSERT((this->has_value_));
-    return this->value_;
-  }
-
-  SST_NODISCARD()
-  SST_CPP14_CONSTEXPR
-  T & operator*() noexcept {
-    SST_CONSTEXPR_ASSERT((this->has_value_));
-    return this->value_;
-  }
-
-  SST_NODISCARD() constexpr T const & operator*() const noexcept {
+  constexpr T const & value() const SST_NOEXCEPT(true) {
     SST_CONSTEXPR_ASSERT((this->has_value_));
     return this->value_;
   }
 
   SST_NODISCARD()
   SST_CPP14_CONSTEXPR
-  T * operator->() noexcept {
+  T & operator*() SST_NOEXCEPT(true) {
+    SST_CONSTEXPR_ASSERT((this->has_value_));
+    return this->value_;
+  }
+
+  SST_NODISCARD()
+  constexpr T const & operator*() const SST_NOEXCEPT(true) {
+    SST_CONSTEXPR_ASSERT((this->has_value_));
+    return this->value_;
+  }
+
+  SST_NODISCARD()
+  SST_CPP14_CONSTEXPR
+  T * operator->() SST_NOEXCEPT(true) {
     SST_CONSTEXPR_ASSERT((this->has_value_));
     return &this->value_;
   }
 
-  SST_NODISCARD() constexpr T const * operator->() const noexcept {
+  SST_NODISCARD()
+  constexpr T const * operator->() const SST_NOEXCEPT(true) {
     SST_CONSTEXPR_ASSERT((this->has_value_));
     return &this->value_;
   }
@@ -405,8 +408,8 @@ public:
            sst::enable_if_t<
                std::is_convertible<U &&, T>::value
                && !is_optional<sst::remove_cvref_t<U>>::value> = 0>
-  SST_CPP14_CONSTEXPR
-  optional(U && value) noexcept(noexcept(T(std::forward<U>(value)))) {
+  SST_CPP14_CONSTEXPR optional(U && value)
+      SST_NOEXCEPT(noexcept(T(std::forward<U>(value)))) {
     new (&this->value_) T(std::forward<U>(value));
     this->has_value_ = true;
   }
@@ -416,8 +419,8 @@ public:
                !std::is_convertible<U &&, T>::value
                && std::is_constructible<T, U &&>::value
                && !is_optional<sst::remove_cvref_t<U>>::value> = 0>
-  SST_CPP14_CONSTEXPR explicit optional(U && value) noexcept(
-      noexcept(T(std::forward<U>(value)))) {
+  SST_CPP14_CONSTEXPR explicit optional(U && value)
+      SST_NOEXCEPT(noexcept(T(std::forward<U>(value)))) {
     new (&this->value_) T(std::forward<U>(value));
     this->has_value_ = true;
   }

@@ -1,5 +1,5 @@
 ##
-## Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+## Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 ##
 ## Permission is hereby granted, free of charge, to any person
 ## obtaining a copy of this software and associated documentation
@@ -1200,6 +1200,9 @@ if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/bignum.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/bignum/construct_from_BIGNUM.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/bignum/numeric_limits.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
@@ -1225,6 +1228,12 @@ src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/ctime.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/dev_urandom_rng.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/elgamal/cipher.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/elgamal/ciphertext.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/errno_error_string.cpp
@@ -1270,6 +1279,27 @@ src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/mono_time/us.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/mono_time_zero.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_group/construct-from-group.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_group/default-constructor.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_group/wrap.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_point/construct-from-group.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_point/construct-from-point.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_point/default-constructor.cpp
+endif
+if WITH_BUILD_GROUP_CPP_AUTOTOOLS
+src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/ec_point/wrap.cpp
 endif
 if WITH_BUILD_GROUP_CPP_AUTOTOOLS
 src_c_cpp_libsst_la_SOURCES += src/c-cpp/lib/sst/catalog/openssl/err_error_string/c8zbypw7.cpp

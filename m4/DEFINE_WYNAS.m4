@@ -1,5 +1,5 @@
 dnl
-dnl Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+dnl Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 dnl
 dnl Permission is hereby granted, free of charge, to any person
 dnl obtaining a copy of this software and associated documentation
@@ -49,11 +49,11 @@ GATBPS_CALL_COMMENT([$0]m4_if(m4_eval([$# > 0]), [1], [, $@]))
   GATBPS_REQUIRE([DEFINE_WYNA_OPENSSL_CRYPTO])
   GATBPS_REQUIRE([DEFINE_WYNA_OPENSSL_SSL])
   GATBPS_REQUIRE([DEFINE_WYNA_POSIX])
-  GATBPS_REQUIRE([DEFINE_WYNA_PTHREADS])
   GATBPS_REQUIRE([DEFINE_WYNA_RABBITMQ_C])
   GATBPS_REQUIRE([DEFINE_WYNA_SQLITE])
   GATBPS_REQUIRE([DEFINE_WYNA_SSE])
   GATBPS_REQUIRE([DEFINE_WYNA_SSE2])
+  GATBPS_REQUIRE([DEFINE_WYNA_THREADS])
   GATBPS_REQUIRE([DEFINE_WYNA_WINDOWS])
   GATBPS_REQUIRE([DEFINE_WYNA_WINDOWS_BCRYPT])
   GATBPS_REQUIRE([DEFINE_WYNA_WINDOWS_KERNEL32])

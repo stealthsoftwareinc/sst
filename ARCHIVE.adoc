@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -27,7 +27,7 @@
 //
 
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -76,11 +76,19 @@ ifdef::readme_diagrams[]
 ifeval::["{readme_diagrams}" != ""]
 endif::[]
 endif::[]
+
 ifndef::readme_diagrams[]
 endif::[]
 
+//----------------------------------------------------------------------
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// This section includes config_source.adoc or config.adoc depending on
+// whether we're in the source repository.
+//
+
+
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -115,11 +123,11 @@ endif::[]
 
 :PACKAGE_NAME: SST
 :PACKAGE_TARNAME: sst
-:PACKAGE_VERSION: 0.39.0
+:PACKAGE_VERSION: 0.40.1
 
 //
 
-//
+//----------------------------------------------------------------------
 
 = {PACKAGE_NAME} {PACKAGE_VERSION} archive
 
@@ -136,7 +144,7 @@ endif::[]
 :fp_gitlab_view_manual_url:
 :fp_gitlab_download_manual_url:
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation

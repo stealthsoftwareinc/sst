@@ -1,7 +1,7 @@
 #! /bin/sh -
 
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -83,28 +83,32 @@ unset SST_SEARCH_UP_X
 
 #-----------------------------------------------------------------------
 
-function main {
+main() {
 
-  local archive_file
-  local archive_name
-  local archive_tmpdir
-  local base
-  local compiler
-  local compilers
-  local -a entities
-  local entity_regex
-  local file_regex
-  local ident
-  local namespace
-  local namespace_regex
-  local parse_options
-  local -a seen_array
-  local seen_list
-  local suffix
-  local x
-  local y
-  local ys
-  local z
+  declare    archive_file
+  declare    archive_name
+  declare    archive_tmpdir
+  declare    base
+  declare    c_prefix
+  declare    compiler
+  declare    compilers
+  declare    dirs
+  declare -a entities
+  declare    entity_regex
+  declare    file_regex
+  declare    ident
+  declare    include_regex
+  declare    m_prefix
+  declare    namespace
+  declare    namespace_regex
+  declare    parse_options
+  declare -a seen_array
+  declare    seen_list
+  declare    suffix
+  declare    x
+  declare    y
+  declare    ys
+  declare    z
 
   #---------------------------------------------------------------------
 
@@ -120,6 +124,9 @@ function main {
 
   entity_regex="^(sst(::$ident)+(\\.cpp)?|(sst|SST)_$ident(\\.c(pp)?)?)\$"
   readonly entity_regex
+
+  include_regex="^sst(/$ident)+\\.(h|hpp)\$"
+  readonly include_regex
 
   file_regex="^$base(include|lib)/sst(/$ident(-$ident)*)+\\.([ch](pp)?|c\\.c)\$"
   readonly file_regex
@@ -202,6 +209,15 @@ function main {
   archive_tmpdir=$sst_tmpdir/$archive_name
   readonly archive_tmpdir
 
+  c_prefix=${namespace//::/_}_
+  readonly c_prefix
+
+  dirs=${namespace//::/\/}
+  readonly dirs
+
+  m_prefix=$(tr a-z A-Z <<<$c_prefix)
+  readonly m_prefix
+
   y=build-aux/autogen.started
   z=build-aux/autogen.success
   if [[ ! -f $y ]]; then
@@ -282,6 +298,20 @@ function main {
     fi
 
     #-------------------------------------------------------------------
+    # Include file operands
+    #-------------------------------------------------------------------
+    #
+    # Example:
+    #
+    #       src/c-cpp/subset.bash sst/limits.h
+    #
+
+    if [[ "$x" =~ $include_regex ]]; then
+      set -- "${base}include/$x" "$@"
+      continue
+    fi
+
+    #-------------------------------------------------------------------
     # Source file operands
     #-------------------------------------------------------------------
     #
@@ -354,15 +384,6 @@ function main {
     tar x
 
     if [[ $namespace != sst ]]; then
-
-      c_prefix=${namespace//::/_}_
-      readonly c_prefix
-
-      m_prefix=$(tr a-z A-Z <<<$c_prefix)
-      readonly m_prefix
-
-      dirs=${namespace//::/\/}
-      readonly dirs
 
       ns_open="namespace ${namespace//::/ \{ namespace } {"
       readonly ns_open
@@ -490,9 +511,10 @@ function main {
     for x in **/*.@(c|cpp); do
       xs+='  '$x$'\n'
     done
+
     cat >CMakeLists.txt <<EOF
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -519,7 +541,7 @@ function main {
 # SPDX-License-Identifier: MIT
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 
 project(
   $archive_name
@@ -530,17 +552,39 @@ add_library($archive_name STATIC
 $xs)
 
 target_include_directories($archive_name PUBLIC include)
+target_include_directories($archive_name PRIVATE lib)
+
+set(m_prefix $m_prefix)
+
+set(libs "")
+
 EOF
 
     if false \
-      || [[ -f include/sst/catalog/SST_WITH_OPENSSL_CRYPTO.h ]] \
-      || [[ -f include/sst/catalog/SST_WITH_OPENSSL_SSL.h ]] \
+      || [[ -f include/$dirs/catalog/${m_prefix}WITH_OPENSSL_CRYPTO.h ]] \
+      || [[ -f include/$dirs/catalog/${m_prefix}WITH_OPENSSL_SSL.h ]] \
     ; then
       x=build-aux/cmake/with_openssl.cmake
       sst_mkdir_p_only $x
       cp "$sst_rundir"/$x $x
       echo "include($x)" >>CMakeLists.txt
     fi
+
+    if false \
+      || [[ -f include/$dirs/catalog/${m_prefix}WITH_THREADS.h ]] \
+    ; then
+      x=build-aux/cmake/with_threads.cmake
+      sst_mkdir_p_only $x
+      cp "$sst_rundir"/$x $x
+      echo "include($x)" >>CMakeLists.txt
+    fi
+
+    cat >>CMakeLists.txt <<EOF
+
+if(libs)
+  target_link_libraries($archive_name \${libs})
+endif()
+EOF
 
   )
 
@@ -556,6 +600,8 @@ EOF
     sst_barf "Unknown output file type: $x."
   esac
 
-}
+}; readonly -f main
+
+#-----------------------------------------------------------------------
 
 main "$@"

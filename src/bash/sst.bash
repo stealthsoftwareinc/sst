@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -128,6 +128,7 @@ esac
 
 declare -A sst_ac_config_file_srcs
 declare -A sst_ag_process_leaf_seen
+declare -A sst_ajh_dispatch_seen
 declare -A sst_am_distribute_seen
 declare -A sst_am_install_dirs
 declare -A sst_am_targets
@@ -241,10 +242,6 @@ if [[ "${SST_DEBUG=1}" != [01] ]]; then
   sst_barf "Invalid SST_DEBUG value: $sst_x."
 fi
 readonly SST_DEBUG
-
-# Deprecated.
-SST_NDEBUG=$((!SST_DEBUG))
-readonly SST_NDEBUG
 
 #-----------------------------------------------------------------------
 # Print the Docker version in CI jobs that have Docker

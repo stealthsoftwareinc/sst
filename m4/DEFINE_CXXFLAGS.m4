@@ -1,5 +1,5 @@
 dnl
-dnl Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+dnl Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 dnl
 dnl Permission is hereby granted, free of charge, to any person
 dnl obtaining a copy of this software and associated documentation
@@ -32,5 +32,5 @@ GATBPS_CALL_COMMENT([$0]m4_if(m4_eval([$# > 0]), [1], [, $@]))
   GATBPS_REQUIRE([DEFINE_WITH_CXXFLAG_CPP11])
   GATBPS_REQUIRE([DEFINE_WITH_CXXFLAG_WALL])
   GATBPS_REQUIRE([DEFINE_WITH_CXXFLAG_WEXTRA])
-  GATBPS_REQUIRE([DEFINE_WITH_PTHREADS])
+  GATBPS_REQUIRE([DEFINE_WITH_THREADS])
 }])

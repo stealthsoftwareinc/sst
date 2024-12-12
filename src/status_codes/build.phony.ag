@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -50,8 +50,8 @@ f() {
     ${d}graph.txt.no_loops: ${d}graph.awk
     ${d}graph.txt.no_loops: ${d}graph.txt
     ${d}graph.txt.no_loops: ${d}graph_edges.awk
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
-    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_STARTING)
+    	\$(AM_V_GEN)\$(GATBPS_RECIPE_NOOP)
     	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
     	\$(AM_V_at)( \\
     	  for ab in \\
@@ -76,7 +76,7 @@ f() {
     	\$(AM_V_at)tsort \$@\$(TSUF) >/dev/null
     	\$(AM_V_at)touch \$@
     	\$(AM_V_at)-rm -f -r \$@\$(TSUF)*
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_FINISHED)
 
     ${d}graph_tred.txt: ${d}dot_to_graph_edges.awk
     ${d}graph_tred.txt: ${d}graph.awk
@@ -84,8 +84,8 @@ f() {
     ${d}graph_tred.txt: ${d}graph.txt.no_loops
     ${d}graph_tred.txt: ${d}graph_nodes.awk
     ${d}graph_tred.txt: ${d}graph_to_dot.awk
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
-    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_STARTING)
+    	\$(AM_V_GEN)\$(GATBPS_RECIPE_NOOP)
     	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
     	\$(AM_V_at)( \\
     	  for ab in \\
@@ -127,13 +127,13 @@ f() {
     	)
     	\$(AM_V_at)mv -f \$@\$(TSUF).1 \$@
     	\$(AM_V_at)-rm -f -r \$@\$(TSUF)*
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_FINISHED)
 
     ${d}graph_tred.dot: ${d}graph.awk
     ${d}graph_tred.dot: ${d}graph_to_dot.awk
     ${d}graph_tred.dot: ${d}graph_tred.txt
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
-    	\$(GATBPS_V_AWK)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_STARTING)
+    	\$(GATBPS_V_AWK)\$(GATBPS_RECIPE_NOOP)
     	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
     	\$(AM_V_at)( \\
     	  for ab in \\
@@ -157,7 +157,7 @@ f() {
     	)
     	\$(AM_V_at)mv -f \$@\$(TSUF) \$@
     	\$(AM_V_at)-rm -f -r \$@\$(TSUF)*
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_FINISHED)
 
     ${d}graph.txt.no_loops/clean: FORCE
     	-rm -f -r \$(@D) \$(@D)\$(TSUF)*

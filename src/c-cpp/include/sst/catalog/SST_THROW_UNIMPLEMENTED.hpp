@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -35,7 +35,10 @@
 
 // TODO: We should replace this with just SST_UNIMPLEMENTED() that
 //       constructs the exception object. Then it can be composed with
-//       things like SST_TEV_THROW(tev, SST_UNIMPLEMENTED()).
+//       things like SST_TEV_THROW(tev, SST_UNIMPLEMENTED()) or just
+//       throw SST_UNIMPLEMENTED(). First implement SST_UNIMPLEMENTED,
+//       then deprecate SST_THROW_UNIMPLEMENTED. Or just leave it
+//       around forever, that's fine too.
 
 #define SST_THROW_UNIMPLEMENTED()                                      \
   (throw std::runtime_error("Unimplemented code at " __FILE__ ":"      \

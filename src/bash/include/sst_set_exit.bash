@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -42,9 +42,9 @@ sst_set_exit() {
   declare entry_status=$?
   readonly entry_status
 
-  # Bash >=4.2: declare -g SST_NDEBUG
+  # Bash >=4.2: declare -g SST_DEBUG
 
-  if ((!SST_NDEBUG)); then
+  if ((SST_DEBUG)); then
     sst_expect_argument_count $# 0-1 || sst_err_trap "$sst_last_command"
     if (($# > 0)); then
       sst_expect_exit_status "$1" || sst_err_trap "$sst_last_command"

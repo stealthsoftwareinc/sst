@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -67,7 +67,7 @@ for system in "${!systems[@]}"; do
 
   sst_ihs <<<"
     #
-    # Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+    # Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
     #
     # Permission is hereby granted, free of charge, to any person
     # obtaining a copy of this software and associated documentation
@@ -158,7 +158,7 @@ for system in "${!systems[@]}"; do
 
   sst_ihs <<<"
     #
-    # Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+    # Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
     #
     # Permission is hereby granted, free of charge, to any person
     # obtaining a copy of this software and associated documentation
@@ -283,8 +283,8 @@ for system in "${!systems[@]}"; do
   sst_ihs <<<"
     $out: FORCE
     $out: \$(${out_slug}_children)
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_TOP)
-    	\$(AM_V_GEN)\$(GATBPS_V_NOP)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_STARTING)
+    	\$(AM_V_GEN)\$(GATBPS_RECIPE_NOOP)
     	\$(GATBPS_at)rm -f -r \$@ \$@\$(TSUF)*
     	\$(GATBPS_V_MAKE)\$(MAKE) \$(AM_MAKEFLAGS) \\
     	  \$(${out_slug}_context) \\
@@ -343,7 +343,7 @@ for system in "${!systems[@]}"; do
     	\$(AM_V_at)mv -f \$@\$(TSUF) \$@
     	\$(AM_V_at)touch \$@
     	\$(GATBPS_at)-rm -f -r \$@\$(TSUF)*
-    	\$(AM_V_at)\$(GATBPS_RECIPE_MARKER_BOT)
+    	\$(AM_V_at)\$(GATBPS_RECIPE_FINISHED)
 
     $out/clean: FORCE
     	-rm -f -r \$(@D) \$(@D)\$(TSUF)*

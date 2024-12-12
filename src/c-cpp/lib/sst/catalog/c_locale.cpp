@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -42,6 +42,7 @@
 #include <stdexcept>
 #include <vector>
 
+#include <sst/catalog/SST_THREAD_LOCAL.hpp>
 #include <sst/catalog/SST_WITH_MACOS.h>
 #include <sst/catalog/call_at_exit.hpp>
 #include <sst/catalog/to_string.hpp>
@@ -58,7 +59,7 @@ namespace {
 
 std::once_flag flag1_;
 std::once_flag flag2_;
-thread_local locale_t locale_ = (locale_t)0;
+SST_THREAD_LOCAL locale_t locale_ = (locale_t)0;
 std::vector<locale_t> * locales_ = nullptr;
 std::mutex mutex_;
 

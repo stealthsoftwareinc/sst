@@ -1,0 +1,123 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_DEBOUNCE_ADOC[]
+:SECTIONS_JSL_SST_DEBOUNCE_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_debounce_name0: sst.debounce
+:jsl_sst_debounce_name1: debounce
+
+:jsl_sst_debounce_id: jsl_sst_debounce
+:jsl_sst_debounce_url: sections/jsl_sst_debounce.adoc#{jsl_sst_debounce_id}
+
+:jsl_sst_debounce_chop0: xref:{jsl_sst_debounce_url}[{jsl_sst_debounce_name0}]
+:jsl_sst_debounce_chop0_prose1: pass:a,q[`{jsl_sst_debounce_chop0}`]
+:jsl_sst_debounce_chop0_prose2: pass:a,q[`{jsl_sst_debounce_chop0}` function]
+
+:jsl_sst_debounce_chop1: xref:{jsl_sst_debounce_url}[{jsl_sst_debounce_name1}]
+:jsl_sst_debounce_chop1_prose1: pass:a,q[`{jsl_sst_debounce_chop1}`]
+:jsl_sst_debounce_chop1_prose2: pass:a,q[`{jsl_sst_debounce_chop1}` function]
+
+:jsl_sst_debounce: {jsl_sst_debounce_chop0}
+:jsl_sst_debounce_prose1: {jsl_sst_debounce_chop0_prose1}
+:jsl_sst_debounce_prose2: {jsl_sst_debounce_chop0_prose2}
+
+:jsl_sst_catalog_debounce_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/debounce.mjs
+:jsl_sst_catalog_debounce_mjs: link:{jsl_sst_catalog_debounce_mjs_url}[sst/catalog/debounce.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_debounce_id}]
+= `{jsl_sst_debounce_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+import {} from "./{jsl_sst_catalog_debounce_mjs}";
+
+{jsl_sst_debounce}([init], proc, [delay=1000])
+----
+
+The {jsl_sst_debounce_prose2} returns an `async` function `f` that can
+be used as a debounced handler for an event.
+
+The `proc` callback should perform the debounced work.
+Instead of being called once for each call to `f`, it will only be
+called after the most recent call to `f` becomes `delay` milliseconds
+old.
+
+The `init` callback, if given, will be called by `f` each time `f` is
+called.
+It can be used to perform any non-debounced work.
+
+No calls to `init` or `proc` will ever overlap, even if they use
+`{jsl_await}`.
+In other words, at any given moment, at most one execution context will
+exist for `init` and `proc`, even if that execution context is currently
+suspended by an `{jsl_await}`.
+
+Conceptually, each call to `f` causes a direct call to `init` and
+possibly a delayed call to `proc`.
+If the `proc` call occurs, it is guaranteed to occur after the `init`
+call for the same call to `f`.
+`proc` will never be called directly by `f`, even if `delay` is 0.
+In other words, `proc` will only be called after `f` returns.
+
+`init` and `proc` will be passed an initial parameter named `canceler`.
+In `init`, `canceler` will be `undefined`, as it is only passed to be
+consistent with `proc`.
+In `proc`, you can check `canceler.cancel` for truthiness after any use
+of `{jsl_await}`.
+If `canceler.cancel` is truthy, it is guaranteed that a future call to
+`proc` will occur, giving you a chance to return early from this call.
+If `canceler.cancel` is falsy, it is guaranteed that any future call to
+`proc` will be preceded by a future call to `init`, and this guarantee
+lasts until the next `{jsl_await}` or until this call returns.
+`canceler.cancel` always starts off falsy, and if you never use
+`{jsl_await}`, it will stay falsy, so you can ignore it entirely.
+
+`f` will forward its parameters to both `init` and `proc` as the second
+and subsequent parameters, after the initial `canceler` parameter.
+
+Any exceptions thrown by `init` or `proc` will be ignored.
+Any ``Promise``s returned by `init` or `proc` will be ``{jsl_await}``ed,
+and any rejections will be ignored.
+
+`f` will never throw any exceptions.
+The `Promise` returned by `f` will always resolve to `undefined` and
+never be rejected.
+
+//----------------------------------------------------------------------
+endif::[]

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -36,6 +36,7 @@ sst_ajh_asciidoctor_document() {
   declare html
   declare html_recipe_sh
   declare imagesdir
+  declare pdf
   declare prefix
   declare s
   declare slug
@@ -58,7 +59,7 @@ sst_ajh_asciidoctor_document() {
       sst_ihd <<'EOF' >$html_recipe_sh
         #! /bin/sh -
         #
-        # Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+        # Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
         #
         # Permission is hereby granted, free of charge, to any person
         # obtaining a copy of this software and associated documentation
@@ -89,8 +90,10 @@ sst_ajh_asciidoctor_document() {
         eval MAKE='${MAKE:?}'
         eval SED='${SED:?}'
         eval TSUF=${TSUF:?}
+        eval adoc=${adoc:?}
         eval dst=${dst:?}
         eval imagesdir=${imagesdir:?}
+        eval pdf=${pdf:?}
         eval prefix=${prefix:?}
         eval slug=${slug:?}
         eval srcdir=${srcdir:?}
@@ -99,19 +102,31 @@ sst_ajh_asciidoctor_document() {
         readonly MAKE
         readonly SED
         readonly TSUF
+        readonly adoc
         readonly dst
         readonly imagesdir
+        readonly pdf
         readonly prefix
         readonly slug
         readonly srcdir
 
-        x=
-        x="${x?} -a imagesdir=${imagesdir?}"
-        x="${x?} ${ASCIIDOCTOR_FLAGS?}"
+        tmp=${dst?}${TSUF?}999
+        readonly tmp
+
+        if test -f ${adoc?}; then
+          cp ${adoc?} ${tmp?}.adoc || exit $?
+        else
+          cp ${srcdir?}/${adoc?} ${tmp?}.adoc || exit $?
+        fi
+
+        af=
+        af="${af?} -a imagesdir=${imagesdir?}"
+        af="${af?} ${ASCIIDOCTOR_FLAGS?}"
+        readonly af
+
         eval " ${MAKE?}"' \
-          ${slug?}_disable_wrapper_recipe=/x \
-          ASCIIDOCTOR_FLAGS="${x?}" \
-          ${dst?} \
+          ASCIIDOCTOR_FLAGS="${af?}" \
+          ${tmp?}.html \
         ' || exit $?
 
         #---------------------------------------------------------------
@@ -120,7 +135,7 @@ sst_ajh_asciidoctor_document() {
 
         if test -d ${prefix?}katex; then
 
-          mv -f ${dst?} ${dst?}${TSUF?}1 || exit $?
+          mv -f ${tmp?}.html ${dst?}${TSUF?}1 || exit $?
 
           x='
             /<script.*[Mm]ath[Jj]ax.*\.js/ d
@@ -131,17 +146,26 @@ sst_ajh_asciidoctor_document() {
             >${dst?}${TSUF?}2 \
           ' || exit $?
 
-          mv -f ${dst?}${TSUF?}2 ${dst?} || exit $?
+          mv -f ${dst?}${TSUF?}2 ${tmp?}.html || exit $?
 
         fi
 
         #---------------------------------------------------------------
         # Fonts installation
         #---------------------------------------------------------------
+        #
+        # TODO: This used to have some code to download Google fonts
+        #       locally, but it was removed because it was too brittle
+        #       (??). The code here now seems silly because all it does
+        #       is remove any <link>'d Google fonts (??). Maybe we
+        #       should revisit the downloading idea, but with a soft
+        #       failure approach, so that if downloading fails for
+        #       whatever reason then the fonts are just skipped.
+        #
 
         if test -d ${prefix?}fonts; then
 
-          mv -f ${dst?} ${dst?}${TSUF?}1 || exit $?
+          mv -f ${tmp?}.html ${dst?}${TSUF?}1 || exit $?
 
           x='
             /<link.*fonts\.googleapis\.com/ d
@@ -152,9 +176,21 @@ sst_ajh_asciidoctor_document() {
             >${dst?}${TSUF?}2 \
           ' || exit $?
 
-          mv -f ${dst?}${TSUF?}2 ${dst?} || exit $?
+          mv -f ${dst?}${TSUF?}2 ${tmp?}.html || exit $?
 
         fi
+
+        #---------------------------------------------------------------
+
+        eval " ${MAKE?}"' \
+          ASCIIDOCTOR_FLAGS="${af?}" \
+          ${tmp?}.pdf \
+        ' || exit $?
+
+        #---------------------------------------------------------------
+
+        mv -f ${tmp?}.html ${dst?} || exit $?
+        mv -f ${tmp?}.pdf ${pdf?} || exit $?
 
         #---------------------------------------------------------------
 EOF
@@ -164,6 +200,8 @@ EOF
 
     sst_expect_ag_json html "$ag_json"
     sst_expect_extension $ag_json .html.ag.json
+
+    pdf=${html/%.html/.pdf}
 
     slug=$(sst_underscore_slug $html)
 
@@ -243,49 +281,33 @@ EOF
       sst_ag_process_leaf $html $x child
     done
 
-    if ((distribute)); then
-      sst_ihs <<<"
-        $html\$(${slug}_disable_wrapper_recipe): \\
-          $html_recipe_sh \\
-          \$(${slug}_leaves) \\
-        \$(empty)
-        	\$(GATBPS_at)\$(MAKE) \\
-        	  \$(${slug}_children) \\
-        	  \$(${slug}_children_nodist) \\
-        	;
-      " | sst_am_append
-    else
-      sst_ihs <<<"
-        $html\$(${slug}_disable_wrapper_recipe): \\
-          $html_recipe_sh \\
-          \$(${slug}_children) \\
-          \$(${slug}_children_nodist) \\
-        \$(empty)
-      " | sst_am_append
+    #
+    # If we were to inline the list of children into a makefile recipe
+    # using the makefile variables, we'd eventually run into execve()
+    # limits once the list becomes large enough, as that tends to be
+    # how make executes recipe lines. Writing the list out to files
+    # and reading them in during the recipe prevents this problem,
+    # instead leveraging the shell to handle the large list.
+    #
 
-      #
-      # If we were to inline the list of children into a makefile recipe
-      # using the makefile variables, we'd eventually run into execve()
-      # limits once the list becomes large enough, as that tends to be
-      # how make executes recipe lines. Writing the list out to files
-      # and reading them in during the recipe prevents this problem,
-      # instead leveraging the shell to handle the large list.
-      #
+    x=${sst_am_var_value[${slug}_children]-}
+    printf '%s\n' "${x// /$'\n'}" >$html.children
+    sst_am_distribute $html.children
 
-      x=${sst_am_var_value[${slug}_children]-}
-      printf '%s\n' "${x// /$'\n'}" >$html.children
-      sst_am_distribute $html.children
-
-      x=${sst_am_var_value[${slug}_children_nodist]-}
-      printf '%s\n' "${x// /$'\n'}" >$html.children_nodist
-      sst_am_distribute $html.children_nodist
-
-    fi
+    x=${sst_am_var_value[${slug}_children_nodist]-}
+    printf '%s\n' "${x// /$'\n'}" >$html.children_nodist
+    sst_am_distribute $html.children_nodist
 
     sst_am_append <<EOF
+
+$html: \\
+  $html_recipe_sh \\
+  \$(${slug}_children) \\
+  \$(${slug}_children_nodist) \\
+\$(empty)
 	\$(AM_V_at)rm -f -r \\
-	  \$@ \\
 	  \$@\$(TSUF)* \\
+	  $pdf\$(TSUF)* \\
 	  $prefix$imagesdir/diag-* \\
 	;
 	\$(AM_V_at)( \\
@@ -293,18 +315,24 @@ EOF
 	  x=MAKE; set x \$(MAKE); \$(GATBPS_EXPORT); \\
 	  x=SED; set x \$(SED); \$(GATBPS_EXPORT); \\
 	  x=TSUF; set x \$(TSUF); \$(GATBPS_EXPORT); \\
+	  x=adoc; set x $adoc; \$(GATBPS_EXPORT); \\
 	  x=dst; set x \$@; \$(GATBPS_EXPORT); \\
 	  x=imagesdir; set x $imagesdir; \$(GATBPS_EXPORT); \\
+	  x=pdf; set x $pdf; \$(GATBPS_EXPORT); \\
 	  x=prefix; set x $prefix; \$(GATBPS_EXPORT); \\
 	  x=slug; set x $slug; \$(GATBPS_EXPORT); \\
 	  x=srcdir; set x \$(srcdir); \$(GATBPS_EXPORT); \\
 	  sh \$(srcdir)/$html_recipe_sh || exit \$\$?; \\
 	)
 
+$pdf: $html
+
 $html/clean: FORCE
 	-rm -f -r \\
 	  \$(@D) \\
 	  \$(@D)\$(TSUF)* \\
+	  $pdf \\
+	  $pdf\$(TSUF)* \\
 	  $prefix$imagesdir/diag-* \\
 	;
 
@@ -314,6 +342,7 @@ $tar_file: $html
 	\$(AM_V_at)rm -f -r \$@ \$@\$(TSUF)*
 	\$(AM_V_at)\$(MKDIR_P) \$@\$(TSUF)1/$tarname
 	\$(AM_V_at)cp $html \$@\$(TSUF)1/$tarname
+	\$(AM_V_at)cp $pdf \$@\$(TSUF)1/$tarname
 	\$(GATBPS_at)( \\
 	\\
 	  xs=; \\
@@ -341,6 +370,7 @@ $tar_file: $html
 	    gif \\
 	    jpg \\
 	    js \\
+	    mjs \\
 	    png \\
 	    svg \\
 	    woff \\

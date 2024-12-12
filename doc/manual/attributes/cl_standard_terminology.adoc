@@ -1,0 +1,450 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_CL_STANDARD_TERMINOLOGY_ADOC[]
+:ATTRIBUTES_CL_STANDARD_TERMINOLOGY_ADOC:
+//----------------------------------------------------------------------
+
+include::../sections/cl_sst_is_integer_ish.adoc[]
+include::../sections/cl_sst_is_integer_like.adoc[]
+include::cl_c_standards.adoc[]
+include::cl_cpp_standards.adoc[]
+include::cl_prose_sections.adoc[]
+include::cl_standard_c_entities.adoc[]
+include::cl_standard_cpp_entities.adoc[]
+
+//----------------------------------------------------------------------
+// class
+//----------------------------------------------------------------------
+
+:cl_class_url: https://en.cppreference.com/w/cpp/language/class
+:cl_class: link:{cl_class_url}[class,window=_blank]
+
+//----------------------------------------------------------------------
+// compiles (SFINAE)
+//----------------------------------------------------------------------
+
+:cl_compiles_sfinae: compiles
+
+//----------------------------------------------------------------------
+// constant expression (C++)
+//----------------------------------------------------------------------
+
+:cl_constant_expression_cpp_url: https://en.cppreference.com/w/cpp/language/constant_expression
+:cl_constant_expression_cpp: link:{cl_constant_expression_cpp_url}[constant expression,window=_blank]
+
+//----------------------------------------------------------------------
+// constructor
+// constructors
+//----------------------------------------------------------------------
+
+:cl_constructor_url: https://en.cppreference.com/w/cpp/language/constructor
+:cl_constructor: link:{cl_constructor_url}[constructor,window=_blank]
+
+:cl_constructors: link:{cl_constructor_url}[constructors,window=_blank]
+
+//----------------------------------------------------------------------
+// contextual conversion
+//----------------------------------------------------------------------
+
+:cl_contextual_conversion_url: https://en.cppreference.com/w/cpp/language/implicit_conversion#Contextual_conversions
+:cl_contextual_conversion: link:{cl_contextual_conversion_url}[contextual conversion,window=_blank]
+
+:cl_contextual_conversions: link:{cl_contextual_conversion_url}[contextual conversions,window=_blank]
+:cl_contextually_convert: link:{cl_contextual_conversion_url}[contextually convert,window=_blank]
+:cl_contextually_converted: link:{cl_contextual_conversion_url}[contextually converted,window=_blank]
+:cl_contextually_converts: link:{cl_contextual_conversion_url}[contextually converts,window=_blank]
+
+//----------------------------------------------------------------------
+// copy assignment operator
+// copy assignment
+// copy assignment operators
+//----------------------------------------------------------------------
+
+:cl_copy_assignment_operator_url: https://en.cppreference.com/w/cpp/language/copy_assignment
+:cl_copy_assignment_operator: link:{cl_copy_assignment_operator_url}[copy assignment operator,window=_blank]
+
+:cl_copy_assignment: link:{cl_copy_assignment_operator_url}[copy assignment,window=_blank]
+
+:cl_copy_assignment_operators: link:{cl_copy_assignment_operator_url}[copy assignment operators,window=_blank]
+
+//----------------------------------------------------------------------
+// copy constructor
+// copy constructors
+//----------------------------------------------------------------------
+
+:cl_copy_constructor_url: https://en.cppreference.com/w/cpp/language/copy_constructor
+:cl_copy_constructor: link:{cl_copy_constructor_url}[copy constructor,window=_blank]
+
+:cl_copy_constructors: link:{cl_copy_constructor_url}[copy constructors,window=_blank]
+
+//----------------------------------------------------------------------
+// cv-ignored
+//----------------------------------------------------------------------
+
+:cl_cv_ignored: cv-ignored
+
+//----------------------------------------------------------------------
+// cv-qualifiers
+//----------------------------------------------------------------------
+
+:cl_cv_qualifiers_url: https://en.cppreference.com/w/cpp/language/cv
+:cl_cv_qualifiers: link:{cl_cv_qualifiers_url}[cv-qualifiers,window=_blank]
+
+//----------------------------------------------------------------------
+// cvref-ignored
+//----------------------------------------------------------------------
+
+:cl_cvref_ignored: cvref-ignored
+
+//----------------------------------------------------------------------
+// cvref-qualifiers
+//----------------------------------------------------------------------
+
+:cl_cvref_qualifiers: cvref-qualifiers
+
+//----------------------------------------------------------------------
+// default constructor
+//----------------------------------------------------------------------
+
+:cl_default_constructor_url: https://en.cppreference.com/w/cpp/language/default_constructor
+:cl_default_constructor: link:{cl_default_constructor_url}[default constructor,window=_blank]
+
+//----------------------------------------------------------------------
+// default operations
+// default operation
+//----------------------------------------------------------------------
+
+:cl_default_operations_url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#cctor-constructors-assignments-and-destructors
+:cl_default_operations: link:{cl_default_operations_url}[default operations,window=_blank]
+:cl_Default_operations_sc: link:{cl_default_operations_url}[Default operations,window=_blank]
+
+:cl_default_operation: link:{cl_default_operations_url}[default operation,window=_blank]
+
+//----------------------------------------------------------------------
+// destructor
+// destructors
+//----------------------------------------------------------------------
+
+:cl_destructor_url: https://en.cppreference.com/w/cpp/language/destructor
+:cl_destructor: link:{cl_destructor_url}[destructor,window=_blank]
+
+:cl_destructors: link:{cl_destructor_url}[destructors,window=_blank]
+
+//----------------------------------------------------------------------
+// explicit conversion (C++)
+//----------------------------------------------------------------------
+
+:cl_explicit_conversion_cpp_url: https://en.cppreference.com/w/cpp/language/explicit_cast
+:cl_explicit_conversion_cpp: link:{cl_explicit_conversion_cpp_url}[explicit conversion,window=_blank]
+
+:cl_explicit_conversions_cpp: link:{cl_explicit_conversion_cpp_url}[explicit conversions,window=_blank]
+:cl_explicitly_convert_cpp: link:{cl_explicit_conversion_cpp_url}[explicitly convert,window=_blank]
+:cl_explicitly_converted_cpp: link:{cl_explicit_conversion_cpp_url}[explicitly converted,window=_blank]
+:cl_explicitly_convertible_cpp: link:{cl_explicit_conversion_cpp_url}[explicitly convertible,window=_blank]
+:cl_explicitly_converts_cpp: link:{cl_explicit_conversion_cpp_url}[explicitly converts,window=_blank]
+
+//----------------------------------------------------------------------
+// fundamental integer type
+// fundamental integer
+// fundamental integer types
+// fundamental integers
+//----------------------------------------------------------------------
+
+:cl_fundamental_integer_type_url: https://en.cppreference.com/w/cpp/language/types
+:cl_fundamental_integer_type_fno: footnote:cl_fundamental_integer_type_fno_id[For \
+more information about fundamental integer types in C/{cpp}, see \
+{c99sec}6.2.5, \
+{c11sec}6.2.5, \
+{c18sec}6.2.5, \
+{cpp11sec}3.9.1, \
+{cpp14sec}3.9.1, \
+{cpp17sec}6.9.1, and \
+{cpp20sec}6.8.1.]
+:cl_fundamental_integer_type: link:{cl_fundamental_integer_type_url}[fundamental integer type,window=_blank]{cl_fundamental_integer_type_fno}
+
+:cl_fundamental_integer_url: {cl_fundamental_integer_type_url}
+:cl_fundamental_integer_fno: {cl_fundamental_integer_type_fno}
+:cl_fundamental_integer: link:{cl_fundamental_integer_url}[fundamental integer,window=_blank]{cl_fundamental_integer_fno}
+
+:cl_fundamental_integer_types_url: {cl_fundamental_integer_type_url}
+:cl_fundamental_integer_types_fno: {cl_fundamental_integer_type_fno}
+:cl_fundamental_integer_types: link:{cl_fundamental_integer_types_url}[fundamental integer types,window=_blank]{cl_fundamental_integer_types_fno}
+
+:cl_fundamental_integers_url: {cl_fundamental_integer_type_url}
+:cl_fundamental_integers_fno: {cl_fundamental_integer_type_fno}
+:cl_fundamental_integers: link:{cl_fundamental_integers_url}[fundamental integers,window=_blank]{cl_fundamental_integers_fno}
+
+//----------------------------------------------------------------------
+// ignoring any reference and cv-qualifiers
+//----------------------------------------------------------------------
+
+:cl_ignoring_any_reference_and_cv_qualifiers: ignoring any reference and {cl_cv_qualifiers}
+
+//----------------------------------------------------------------------
+// implementation-defined strict total order over pointers
+//----------------------------------------------------------------------
+
+:cl_implementation_defined_strict_total_order_over_pointers_url: https://en.cppreference.com/w/cpp/utility/functional/less#Implementation-defined_strict_total_order_over_pointers
+:cl_implementation_defined_strict_total_order_over_pointers: link:{cl_implementation_defined_strict_total_order_over_pointers_url}[implementation-defined strict total order over pointers,window=_blank]
+
+//----------------------------------------------------------------------
+// implicit conversion (C)
+//----------------------------------------------------------------------
+
+:cl_implicit_conversion_c_url: https://en.cppreference.com/w/c/language/conversion
+:cl_implicit_conversion_c: link:{cl_implicit_conversion_c_url}[implicit conversion,window=_blank]
+
+:cl_implicit_conversions_c: link:{cl_implicit_conversion_c_url}[implicit conversions,window=_blank]
+:cl_implicitly_convert_c: link:{cl_implicit_conversion_c_url}[implicitly convert,window=_blank]
+:cl_implicitly_converted_c: link:{cl_implicit_conversion_c_url}[implicitly converted,window=_blank]
+:cl_implicitly_convertible_c: link:{cl_implicit_conversion_c_url}[implicitly convertible,window=_blank]
+:cl_implicitly_converts_c: link:{cl_implicit_conversion_c_url}[implicitly converts,window=_blank]
+
+//----------------------------------------------------------------------
+// implicit conversion (C++)
+//----------------------------------------------------------------------
+
+:cl_implicit_conversion_cpp_url: https://en.cppreference.com/w/cpp/language/implicit_conversion
+:cl_implicit_conversion_cpp: link:{cl_implicit_conversion_cpp_url}[implicit conversion,window=_blank]
+
+:cl_implicit_conversions_cpp: link:{cl_implicit_conversion_cpp_url}[implicit conversions,window=_blank]
+:cl_implicitly_convert_cpp: link:{cl_implicit_conversion_cpp_url}[implicitly convert,window=_blank]
+:cl_implicitly_converted_cpp: link:{cl_implicit_conversion_cpp_url}[implicitly converted,window=_blank]
+:cl_implicitly_convertible_cpp: link:{cl_implicit_conversion_cpp_url}[implicitly convertible,window=_blank]
+:cl_implicitly_converts_cpp: link:{cl_implicit_conversion_cpp_url}[implicitly converts,window=_blank]
+
+//----------------------------------------------------------------------
+// integer constant
+//----------------------------------------------------------------------
+
+:cl_integer_constant_url: https://en.cppreference.com/w/c/language/integer_constant
+:cl_integer_constant: link:{cl_integer_constant_url}[integer constant,window=_blank]
+
+//----------------------------------------------------------------------
+// integer constant expression
+//----------------------------------------------------------------------
+
+:cl_integer_constant_expression_url: https://en.cppreference.com/w/c/language/constant_expression#Integer_constant_expression
+:cl_integer_constant_expression: link:{cl_integer_constant_expression_url}[integer constant expression,window=_blank]
+
+//----------------------------------------------------------------------
+// integer-ish type
+// integer-ish
+// integer-ish types
+//----------------------------------------------------------------------
+//
+// TODO: This belongs in cl_sst_terminology.adoc
+//
+
+:cl_integer_ish_type_url: {cl_sst_is_integer_ish_url}
+:cl_integer_ish_type: xref:{cl_integer_ish_type_url}[integer-ish type]
+
+:cl_integer_ish_url: {cl_integer_ish_type_url}
+:cl_integer_ish: xref:{cl_integer_ish_url}[integer-ish]
+
+:cl_integer_ish_types_url: {cl_integer_ish_type_url}
+:cl_integer_ish_types: xref:{cl_integer_ish_types_url}[integer-ish types]
+
+//----------------------------------------------------------------------
+// integer-like
+// integer-like type
+// integer-like types
+//----------------------------------------------------------------------
+
+:cl_integer_like_url: {cl_sst_is_integer_like_url}
+:cl_integer_like: xref:{cl_integer_like_url}[integer-like]
+
+:cl_integer_like_type_url: {cl_integer_like_url}
+:cl_integer_like_type: xref:{cl_integer_like_type_url}[integer-like type]
+
+:cl_integer_like_types_url: {cl_integer_like_url}
+:cl_integer_like_types: xref:{cl_integer_like_types_url}[integer-like types]
+
+//----------------------------------------------------------------------
+// lvalue reference type
+// lvalue reference
+//----------------------------------------------------------------------
+
+:cl_lvalue_reference_type_url: https://en.cppreference.com/w/cpp/language/reference
+:cl_lvalue_reference_type: link:{cl_lvalue_reference_type_url}[lvalue reference type,window=_blank]
+
+:cl_lvalue_reference: link:{cl_lvalue_reference_type_url}[lvalue reference,window=_blank]
+
+//----------------------------------------------------------------------
+// move assignment operator
+// move assignment
+// move assignment operators
+//----------------------------------------------------------------------
+
+:cl_move_assignment_operator_url: https://en.cppreference.com/w/cpp/language/move_assignment
+:cl_move_assignment_operator: link:{cl_move_assignment_operator_url}[move assignment operator,window=_blank]
+
+:cl_move_assignment: link:{cl_move_assignment_operator_url}[move assignment,window=_blank]
+
+:cl_move_assignment_operators: link:{cl_move_assignment_operator_url}[move assignment operators,window=_blank]
+
+//----------------------------------------------------------------------
+// move constructor
+// move constructors
+//----------------------------------------------------------------------
+
+:cl_move_constructor_url: https://en.cppreference.com/w/cpp/language/move_constructor
+:cl_move_constructor: link:{cl_move_constructor_url}[move constructor,window=_blank]
+
+:cl_move_constructors: link:{cl_move_constructor_url}[move constructors,window=_blank]
+
+//----------------------------------------------------------------------
+// object type (C++)
+//----------------------------------------------------------------------
+
+:cl_object_type_cpp_url: https://en.cppreference.com/w/cpp/language/type
+:cl_object_type_cpp: link:{cl_object_type_cpp_url}[object type,window=_blank]
+
+//----------------------------------------------------------------------
+// sequence point
+//----------------------------------------------------------------------
+
+:cl_sequence_point: sequence point
+:cl_sequence_points: sequence points
+
+//----------------------------------------------------------------------
+// sequenced before
+//----------------------------------------------------------------------
+
+:cl_sequenced_before: sequenced before
+
+//----------------------------------------------------------------------
+// smart pointer
+//----------------------------------------------------------------------
+
+:cl_smart_pointer: smart pointer
+
+//----------------------------------------------------------------------
+// standard error (C)
+//----------------------------------------------------------------------
+
+:cl_standard_error_c_url: https://en.cppreference.com/w/c/io/std_streams
+:cl_standard_error_c: link:{cl_standard_error_c_url}[standard error,window=_blank]
+
+//----------------------------------------------------------------------
+// standard error (C++)
+//----------------------------------------------------------------------
+
+:cl_standard_error_cpp_url: https://en.cppreference.com/w/cpp/io/c/std_streams
+:cl_standard_error_cpp: link:{cl_standard_error_cpp_url}[standard error,window=_blank]
+
+//----------------------------------------------------------------------
+// standard input (C)
+//----------------------------------------------------------------------
+
+:cl_standard_input_c_url: https://en.cppreference.com/w/c/io/std_streams
+:cl_standard_input_c: link:{cl_standard_input_c_url}[standard input,window=_blank]
+
+//----------------------------------------------------------------------
+// standard input (C++)
+//----------------------------------------------------------------------
+
+:cl_standard_input_cpp_url: https://en.cppreference.com/w/cpp/io/c/std_streams
+:cl_standard_input_cpp: link:{cl_standard_input_cpp_url}[standard input,window=_blank]
+
+//----------------------------------------------------------------------
+// standard output (C)
+//----------------------------------------------------------------------
+
+:cl_standard_output_c_url: https://en.cppreference.com/w/c/io/std_streams
+:cl_standard_output_c: link:{cl_standard_output_c_url}[standard output,window=_blank]
+
+//----------------------------------------------------------------------
+// standard output (C++)
+//----------------------------------------------------------------------
+
+:cl_standard_output_cpp_url: https://en.cppreference.com/w/cpp/io/c/std_streams
+:cl_standard_output_cpp: link:{cl_standard_output_cpp_url}[standard output,window=_blank]
+
+//----------------------------------------------------------------------
+// stringify (C)
+//----------------------------------------------------------------------
+
+:cl_stringify_c_url: https://en.cppreference.com/w/c/preprocessor/replace#.23_and_.23.23_operators
+:cl_stringify_c: link:{cl_stringify_c_url}[stringify,window=_blank]
+
+:cl_stringification_c: link:{cl_stringify_c_url}[stringification,window=_blank]
+:cl_stringifications_c: link:{cl_stringify_c_url}[stringifications,window=_blank]
+:cl_stringifies_c: link:{cl_stringify_c_url}[stringifies,window=_blank]
+
+//----------------------------------------------------------------------
+// stringify (C++)
+//----------------------------------------------------------------------
+
+:cl_stringify_cpp_url: https://en.cppreference.com/w/cpp/preprocessor/replace#.23_and_.23.23_operators
+:cl_stringify_cpp: link:{cl_stringify_cpp_url}[stringify,window=_blank]
+
+:cl_stringification_cpp: link:{cl_stringify_cpp_url}[stringification,window=_blank]
+:cl_stringifications_cpp: link:{cl_stringify_cpp_url}[stringifications,window=_blank]
+:cl_stringifies_cpp: link:{cl_stringify_cpp_url}[stringifies,window=_blank]
+
+//----------------------------------------------------------------------
+// tag dispatch constant
+//----------------------------------------------------------------------
+
+:cl_tag_dispatch_constant: tag dispatch constant
+
+//----------------------------------------------------------------------
+// tag dispatch structure
+//----------------------------------------------------------------------
+
+:cl_tag_dispatch_structure: tag dispatch structure
+
+//----------------------------------------------------------------------
+// unevaluated operand (C++)
+//----------------------------------------------------------------------
+
+:cl_unevaluated_operand_cpp_url: https://en.cppreference.com/w/cpp/language/expressions#Unevaluated_expressions
+:cl_unevaluated_operand_cpp: link:{cl_unevaluated_operand_cpp_url}[unevaluated operand,window=_blank]
+
+//----------------------------------------------------------------------
+// unique-pass
+//----------------------------------------------------------------------
+
+:cl_unique_pass_url: {cl_unique_pass_algorithms_file}#{cl_unique_pass_algorithms_id}
+:cl_unique_pass: xref:{cl_unique_pass_url}[unique-pass]
+
+//----------------------------------------------------------------------
+// variable length array
+//----------------------------------------------------------------------
+
+:cl_variable_length_array_url: https://en.cppreference.com/w/c/language/array#Variable-length_arrays
+:cl_variable_length_array: link:{cl_variable_length_array_url}[variable length array,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

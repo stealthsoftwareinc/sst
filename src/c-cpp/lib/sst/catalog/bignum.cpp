@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,19 +34,21 @@
 #include <utility>
 #include <vector>
 
+#include <sst/catalog/SST_THREAD_LOCAL.hpp>
+
 namespace sst {
 
 namespace guts {
 namespace bignum {
 
 bignum_bn_ctx_t & bignum_bn_ctx() {
-  static thread_local bignum_bn_ctx_t x;
+  static SST_THREAD_LOCAL bignum_bn_ctx_t x;
   return x;
 }
 
 namespace {
 
-thread_local std::vector<std::vector<unsigned char>> buffer_pool;
+SST_THREAD_LOCAL std::vector<std::vector<unsigned char>> buffer_pool;
 
 std::vector<unsigned char> acquire_buffer() {
   if (buffer_pool.empty()) {

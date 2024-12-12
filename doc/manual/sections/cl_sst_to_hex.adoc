@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_CL_SST_TO_HEX_ADOC[]
 :SECTIONS_CL_SST_TO_HEX_ADOC:
 //----------------------------------------------------------------------
 
-:cl_sst_to_hex_id: cl-sst-to-hex
+:cl_sst_to_hex_id: cl_sst_to_hex
 :cl_sst_to_hex_url: sections/cl_sst_to_hex.adoc#{cl_sst_to_hex_id}
 :cl_sst_to_hex: xref:{cl_sst_to_hex_url}[sst::to_hex]
 

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -167,13 +167,15 @@
     SST_enum SST_value_;                                               \
                                                                        \
     explicit constexpr NAME(SST_enum const SST_value) noexcept         \
-        : SST_value_(SST_value) {}                                     \
+        : SST_value_(SST_value) {                                      \
+    }                                                                  \
                                                                        \
     template<class... SST_Args>                                        \
     explicit constexpr NAME(::sst::monostate,                          \
                             SST_enum const SST_value,                  \
                             SST_Args &&...) noexcept                   \
-        : NAME(SST_value) {}                                           \
+        : NAME(SST_value) {                                            \
+    }                                                                  \
                                                                        \
   public:                                                              \
                                                                        \
@@ -181,7 +183,8 @@
         : NAME(::sst::monostate()                                      \
                    SST_LISTIFY(SST_STRONG_ENUM_CLASS_D_,               \
                                (),                                     \
-                               __VA_ARGS__)) {}                        \
+                               __VA_ARGS__)) {                         \
+    }                                                                  \
                                                                        \
     SST_LISTIFY(SST_STRONG_ENUM_CLASS_B_, (), __VA_ARGS__);            \
                                                                        \
@@ -323,6 +326,13 @@ namespace guts {
 namespace SST_STRONG_ENUM_CLASS {
 
 SST_STRONG_ENUM_CLASS(test1, member(x), member(y, 3), member(z))
+
+SST_STATIC_ASSERT((std::is_trivially_copy_constructible<test1>::value));
+SST_STATIC_ASSERT((std::is_trivially_copy_assignable<test1>::value));
+SST_STATIC_ASSERT((std::is_trivially_move_constructible<test1>::value));
+SST_STATIC_ASSERT((std::is_trivially_move_assignable<test1>::value));
+SST_STATIC_ASSERT((std::is_trivially_destructible<test1>::value));
+
 SST_STATIC_ASSERT((std::is_same<test1::value_type, int>::value));
 SST_STATIC_ASSERT((test1() == test1::x()));
 SST_STATIC_ASSERT((test1::x().value() == 0));

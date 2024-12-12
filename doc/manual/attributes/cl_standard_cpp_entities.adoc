@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -73,6 +73,16 @@ ifndef::ATTRIBUTES_CL_STANDARD_CPP_ENTITIES_ADOC[]
 
 :cl_cpp_enum_url: https://en.cppreference.com/w/cpp/language/enum
 :cl_cpp_enum: link:{cl_cpp_enum_url}[enum,window=_blank]
+
+//----------------------------------------------------------------------
+// false
+//----------------------------------------------------------------------
+
+:cl_cpp_latest_false_url: https://en.cppreference.com/w/cpp/language/bool_literal
+:cl_cpp_latest_false: link:{cl_cpp_latest_false_url}[false,window=_blank]
+
+:cl_cpp_false_url: {cl_cpp_latest_false_url}
+:cl_cpp_false: {cl_cpp_latest_false}
 
 //----------------------------------------------------------------------
 // int
@@ -495,6 +505,16 @@ ifndef::ATTRIBUTES_CL_STANDARD_CPP_ENTITIES_ADOC[]
 :cl_std_vector_size: link:{cl_std_vector_size_url}[std::vector::size,window=_blank]
 :cl_std_vector_size_chop1: link:{cl_std_vector_size_url}[vector::size,window=_blank]
 :cl_std_vector_size_chop2: link:{cl_std_vector_size_url}[size,window=_blank]
+
+//----------------------------------------------------------------------
+// true
+//----------------------------------------------------------------------
+
+:cl_cpp_latest_true_url: https://en.cppreference.com/w/cpp/language/bool_literal
+:cl_cpp_latest_true: link:{cl_cpp_latest_true_url}[true,window=_blank]
+
+:cl_cpp_true_url: {cl_cpp_latest_true_url}
+:cl_cpp_true: {cl_cpp_latest_true}
 
 //----------------------------------------------------------------------
 // U suffix

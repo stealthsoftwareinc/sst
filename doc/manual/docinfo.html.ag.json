@@ -1,0 +1,7 @@
+{
+
+  "handler": "sst_ajh_copy",
+
+  "src": "${SST_DOWNSTREAM_PREFIX-}src/adoc/docinfo.html"
+
+}

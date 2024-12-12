@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -55,68 +55,68 @@ fi
 +
 [source,sh,subs="{sst_subs_source}"]
 ----
-pass:[#! /bin/sh -]
-pass:[case $0 in /*)]
-pass:[  x=$0]
-pass:[;; *)]
-pass:[  x=./$0]
-pass:[esac]
-pass:[r='\(.*/\)']
-pass:[x=`expr "x$x" : "x$r"`. || exit $?]
-pass:[set -e || exit $?]
-pass:[. "$x/sst/sst.bash"]
+#! /bin/sh -
+case $0 in /{sst_asterisk})
+  x=$0
+;; {sst_asterisk})
+  x=./$0
+esac
+r='{sst_backslash}{sst_empty_tag}(.{sst_asterisk}/{sst_backslash}{sst_empty_tag})'
+x={sst_backtick}expr "x$x" : "x$r"{sst_backtick}. || exit $?
+set -e || exit $?
+. "$x/sst/sst.bash"
 ----
 
 For repository scripts:
 
 [source,sh,subs="{sst_subs_source}"]
 ----
-pass:[#-----------------------------------------------------------------------]
-pass:[# Include the SST Bash library]
-pass:[#-----------------------------------------------------------------------]
-pass:[#]
-pass:[# Include the first sst.bash file found by searching up the directory]
-pass:[# tree starting from the location of this script file. If no such file]
-pass:[# is found, fall back to including plain sst.bash with PATH resolution.]
-pass:[#]
-pass:[# This section is written in portable shell to ensure it works properly]
-pass:[# in any shell.]
-pass:[#]
-pass:[]
-pass:[case ${SST_SEARCH_UP_X-} in '')]
-pass:[  case $0 in /*)]
-pass:[    SST_SEARCH_UP_X=$0]
-pass:[  ;; *)]
-pass:[    SST_SEARCH_UP_X=./$0]
-pass:[  esac]
-pass:[  SST_SEARCH_UP_R='\<b></b>(.*/\<b></b>)']
-pass:[  SST_SEARCH_UP_X=`]
-pass:[    expr "x${SST_SEARCH_UP_X?}" : "x${SST_SEARCH_UP_R?}"]
-pass:[  `. || exit $?]
-pass:[  unset SST_SEARCH_UP_R]
-pass:[  SST_SEARCH_UP_X=`]
-pass:[    cd "${SST_SEARCH_UP_X?}" || exit $?]
-pass:[    while :; do]
-pass:[      if test -f sst.bash; then]
-pass:[        case ${PWD?} in *[!/\]*)]
-pass:[          printf '%s\n' "${PWD?}"/ || exit $?]
-pass:[        ;; *)]
-pass:[          printf '%s\n' "${PWD?}" || exit $?]
-pass:[        esac]
-pass:[        exit]
-pass:[      fi]
-pass:[      case ${PWD?} in *[!/\]*)]
-pass:[        cd ..]
-pass:[      ;; *)]
-pass:[        exit]
-pass:[      esac]
-pass:[    done]
-pass:[  ` || exit $?]
-pass:[  export SST_SEARCH_UP_X]
-pass:[esac]
-pass:[set -e || exit $?]
-pass:[. "${SST_SEARCH_UP_X?}"sst.bash]
-pass:[unset SST_SEARCH_UP_X]
+#-----------------------------------------------------------------------
+# Include the SST Bash library
+#-----------------------------------------------------------------------
+#
+# Include the first sst.bash file found by searching up the directory
+# tree starting from the location of this script file. If no such file
+# is found, fall back to including plain sst.bash with PATH resolution.
+#
+# This section is written in portable shell to ensure it works properly
+# in any shell.
+#
+
+case ${sst_lbrace}SST_SEARCH_UP_X-{sst_rbrace} in '')
+  case $0 in /{sst_asterisk})
+    SST_SEARCH_UP_X=$0
+  ;; {sst_asterisk})
+    SST_SEARCH_UP_X=./$0
+  esac
+  SST_SEARCH_UP_R='{sst_backslash}{sst_empty_tag}(.{sst_asterisk}/{sst_backslash}{sst_empty_tag})'
+  SST_SEARCH_UP_X={sst_backtick}
+    expr "x${sst_lbrace}SST_SEARCH_UP_X?{sst_rbrace}" : "x${sst_lbrace}SST_SEARCH_UP_R?{sst_rbrace}"
+  {sst_backtick}. || exit $?
+  unset SST_SEARCH_UP_R
+  SST_SEARCH_UP_X={sst_backtick}
+    cd "${sst_lbrace}SST_SEARCH_UP_X?{sst_rbrace}" || exit $?
+    while :; do
+      if test -f sst.bash; then
+        case ${sst_lbrace}PWD?{sst_rbrace} in {sst_asterisk}[!/{sst_backslash}]{sst_asterisk})
+          printf '%s{sst_backslash}n' "${sst_lbrace}PWD?{sst_rbrace}"/ || exit $?
+        ;; {sst_asterisk})
+          printf '%s{sst_backslash}n' "${sst_lbrace}PWD?{sst_rbrace}" || exit $?
+        esac
+        exit
+      fi
+      case ${sst_lbrace}PWD?{sst_rbrace} in {sst_asterisk}[!/{sst_backslash}]{sst_asterisk})
+        cd ..
+      ;; {sst_asterisk})
+        exit
+      esac
+    done
+  {sst_backtick} || exit $?
+  export SST_SEARCH_UP_X
+esac
+set -e || exit $?
+. "${sst_lbrace}SST_SEARCH_UP_X?{sst_rbrace}"sst.bash
+unset SST_SEARCH_UP_X
 ----
 
 //

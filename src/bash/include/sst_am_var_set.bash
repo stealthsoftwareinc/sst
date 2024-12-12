@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -28,7 +28,7 @@
 
 sst_am_var_set() {
 
-  # Bash >=4.2: declare -g    SST_NDEBUG
+  # Bash >=4.2: declare -g    SST_DEBUG
   # Bash >=4.2: declare -g -A sst_am_var_const
   # Bash >=4.2: declare -g -A sst_am_var_value
 
@@ -37,7 +37,7 @@ sst_am_var_set() {
   declare    value
   declare    var
 
-  if ((!SST_NDEBUG)); then
+  if ((SST_DEBUG)); then
     sst_expect_not_subshell
     if (($# == 0)); then
       sst_expect_argument_count $# 1-
@@ -47,7 +47,7 @@ sst_am_var_set() {
   var=$1
   readonly var
 
-  if ((!SST_NDEBUG)); then
+  if ((SST_DEBUG)); then
     sst_expect_basic_identifier "$var"
   fi
 

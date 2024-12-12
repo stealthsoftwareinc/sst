@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -28,6 +28,15 @@
 
 #ifndef SST_CATALOG_SST_NOEXCEPT_OR_HPP
 #define SST_CATALOG_SST_NOEXCEPT_OR_HPP
+
+//
+// Why have SST_NOEXCEPT_OR()? Because it's not uncommon for compilers
+// to have noexcept operator bugs. By using this macro instead of using
+// the noexcept operator directly, we always have the option of omitting
+// all noexcept operators.
+//
+// For the noexcept specifier, see SST_NOEXCEPT().
+//
 
 #include <sst/catalog/SST_WITH_NOEXCEPT.h>
 

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_CL_SST_ASSERT_C_2_ADOC[]
 
 :bwn2hvbs_overload: {counter:cl_SST_ASSERT_c_overload}
 
-:cl_SST_ASSERT_c_2_id: cl-SST-ASSERT-c-2
+:cl_SST_ASSERT_c_2_id: cl_SST_ASSERT_c_2
 :cl_SST_ASSERT_c_2_url: sections/cl_SST_ASSERT_c/2.adoc#{cl_SST_ASSERT_c_2_id}
 
 :cl_SST_ASSERT_c_2: xref:{cl_SST_ASSERT_c_2_url}[SST_ASSERT]

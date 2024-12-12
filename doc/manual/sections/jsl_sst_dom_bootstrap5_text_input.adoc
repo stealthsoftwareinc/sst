@@ -1,0 +1,216 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_DOM_BOOTSTRAP5_TEXT_INPUT_ADOC[]
+:SECTIONS_JSL_SST_DOM_BOOTSTRAP5_TEXT_INPUT_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_dom_bootstrap5_text_input_name3: text_input
+:jsl_sst_dom_bootstrap5_text_input_name2: bootstrap5.text_input
+:jsl_sst_dom_bootstrap5_text_input_name1: dom.bootstrap5.text_input
+:jsl_sst_dom_bootstrap5_text_input_name0: sst.dom.bootstrap5.text_input
+:jsl_sst_dom_bootstrap5_text_input_id: jsl_sst_dom_bootstrap5_text_input
+:jsl_sst_dom_bootstrap5_text_input_url: sections/jsl_sst_dom_bootstrap5_text_input.adoc#{jsl_sst_dom_bootstrap5_text_input_id}
+:jsl_sst_dom_bootstrap5_text_input_chop3: xref:{jsl_sst_dom_bootstrap5_text_input_url}[{jsl_sst_dom_bootstrap5_text_input_name3}]
+:jsl_sst_dom_bootstrap5_text_input_chop3_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop3}`]
+:jsl_sst_dom_bootstrap5_text_input_chop3_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop3}` function]
+:jsl_sst_dom_bootstrap5_text_input_chop2: xref:{jsl_sst_dom_bootstrap5_text_input_url}[{jsl_sst_dom_bootstrap5_text_input_name2}]
+:jsl_sst_dom_bootstrap5_text_input_chop2_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop2}`]
+:jsl_sst_dom_bootstrap5_text_input_chop2_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop2}` function]
+:jsl_sst_dom_bootstrap5_text_input_chop1: xref:{jsl_sst_dom_bootstrap5_text_input_url}[{jsl_sst_dom_bootstrap5_text_input_name1}]
+:jsl_sst_dom_bootstrap5_text_input_chop1_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop1}`]
+:jsl_sst_dom_bootstrap5_text_input_chop1_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop1}` function]
+:jsl_sst_dom_bootstrap5_text_input_chop0: xref:{jsl_sst_dom_bootstrap5_text_input_url}[{jsl_sst_dom_bootstrap5_text_input_name0}]
+:jsl_sst_dom_bootstrap5_text_input_chop0_prose1: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop0}`]
+:jsl_sst_dom_bootstrap5_text_input_chop0_prose2: pass:a,q[`{jsl_sst_dom_bootstrap5_text_input_chop0}` function]
+:jsl_sst_dom_bootstrap5_text_input: {jsl_sst_dom_bootstrap5_text_input_chop0}
+:jsl_sst_dom_bootstrap5_text_input_prose1: {jsl_sst_dom_bootstrap5_text_input_chop0_prose1}
+:jsl_sst_dom_bootstrap5_text_input_prose2: {jsl_sst_dom_bootstrap5_text_input_chop0_prose2}
+:jsl_sst_catalog_gui_bootstrap5_text_input_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/dom/bootstrap5/text_input.mjs
+:jsl_sst_catalog_gui_bootstrap5_text_input_mjs: link:{jsl_sst_catalog_gui_bootstrap5_text_input_mjs_url}[sst/catalog/dom/bootstrap5/text_input.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_dom_bootstrap5_text_input_id}]
+= `{jsl_sst_dom_bootstrap5_text_input_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+{jsl_static_import} {} from "./{jsl_sst_catalog_gui_bootstrap5_text_input_mjs}";
+
+{jsl_class} {jsl_sst_dom_bootstrap5_text_input}
+----
+
+.{empty}
+====
+[source,subs="{sst_subs_source}"]
+----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap-5.3.3.min.css">
+    <link rel="stylesheet" href="sst/catalog/dom/bootstrap5/text_input.css">
+  </head>
+  <body>
+    <script type="module">
+
+      {jsl_static_import} {} from "./{jsl_sst_catalog_gui_bootstrap5_text_input_mjs}";
+
+      function create_button(text, callback) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.classList.add("btn", "btn-primary", "mt-2", "me-1");
+        button.innerText = text;
+        button.addEventListener("click", callback);
+        return button;
+      }
+
+      function create_demo(overlay) {
+        let options = {
+          label: "Value",
+          validator: value => {
+            if (value === "") {
+              return "Value must not be empty";
+            }
+          },
+        };
+        options = Object.assign(options, overlay);
+        const container = document.createElement("div");
+        container.classList.add("m-2", "mb-4");
+        const input = new {jsl_sst_dom_bootstrap5_text_input}(options);
+        container.appendChild(input.container());
+        container.appendChild(create_button("Disable", event => {
+          const b = !input.disabled();
+          input.disabled(b);
+          event.target.innerText = b ? "Enable" : "Disable";
+        }));
+        container.appendChild(create_button("Commit", event => {
+          const b = !input.committed();
+          input.committed(b);
+          event.target.innerText = b ? "Decommit" : "Commit";
+        }));
+        container.lastChild.classList.remove("me-1");
+        document.body.appendChild(container);
+      }
+
+      create_demo({});
+
+      create_demo({
+        multiline: true,
+      });
+
+      document.body.lastChild.classList.remove("mb-4");
+
+    </script>
+  </body>
+</html>
+----
+
+ifdef::backend-html5[]
+++++
+<script>{
+  const currentScript = document.currentScript;
+  window.addEventListener("DOMContentLoaded", function() {
+    sst.iframeExampleOutput(currentScript, `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="bootstrap-5.3.3.min.css">
+          <link rel="stylesheet" href="sst/catalog/dom/bootstrap5/text_input.css">
+        <`+`/head>
+        <body>
+          <script type="module">
+
+            import {} from "./sst/catalog/dom/bootstrap5/text_input.mjs";
+
+            function create_button(text, callback) {
+              const button = document.createElement("button");
+              button.type = "button";
+              button.classList.add("btn", "btn-primary", "mt-2", "me-1");
+              button.innerText = text;
+              button.addEventListener("click", callback);
+              return button;
+            }
+
+            function create_demo(overlay) {
+              let options = {
+                label: "Value",
+                validator: value => {
+                  if (value === "") {
+                    return "Value must not be empty";
+                  }
+                },
+              };
+              options = Object.assign(options, overlay);
+              const container = document.createElement("div");
+              container.classList.add("m-2", "mb-4");
+              const input = new sst.dom.bootstrap5.text_input(options);
+              container.appendChild(input.container());
+              container.appendChild(create_button("Disable", event => {
+                const b = !input.disabled();
+                input.disabled(b);
+                event.target.innerText = b ? "Enable" : "Disable";
+              }));
+              container.appendChild(create_button("Commit", event => {
+                const b = !input.committed();
+                input.committed(b);
+                event.target.innerText = b ? "Decommit" : "Commit";
+              }));
+              container.lastChild.classList.remove("me-1");
+              document.body.appendChild(container);
+            }
+
+            create_demo({});
+
+            create_demo({
+              multiline: true,
+            });
+
+            document.body.lastChild.classList.remove("mb-4");
+
+          <`+`/script>
+        <`+`/body>
+      <`+`/html>
+    `);
+  });
+}</script>
+++++
+endif::[]
+====
+
+//----------------------------------------------------------------------
+endif::[]

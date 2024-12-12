@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -45,6 +45,11 @@
 
 namespace sst {
 namespace json {
+
+// TODO: indent should default to -1
+
+// TODO: Support an "atomic" option like in sst.json.get_as_file in our
+//       JavaScript library.
 
 //----------------------------------------------------------------------
 // src, dst, indent

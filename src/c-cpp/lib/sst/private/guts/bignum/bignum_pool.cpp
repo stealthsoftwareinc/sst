@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -38,6 +38,7 @@
 
 #include <vector>
 
+#include <sst/catalog/SST_THREAD_LOCAL.hpp>
 #include <sst/private/guts/bignum/bignum_ptr_t.hpp>
 
 namespace sst {
@@ -45,7 +46,7 @@ namespace guts {
 namespace bignum {
 
 std::vector<bignum_ptr_t> & bignum_pool() {
-  static thread_local std::vector<bignum_ptr_t> x;
+  static SST_THREAD_LOCAL std::vector<bignum_ptr_t> x;
   return x;
 }
 

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -49,15 +49,23 @@ ifeval::["{readme_diagrams}" != ""]
 :in_source_repo:
 endif::[]
 endif::[]
+
 ifndef::readme_diagrams[]
 :in_source_repo:
 endif::[]
 
+//----------------------------------------------------------------------
+//
+// This section includes config_source.adoc or config.adoc depending on
+// whether we're in the source repository.
+//
+
 ifdef::in_source_repo[]
 include::config_source.adoc[]
 endif::[]
+
 ifndef::in_source_repo[]
 include::config.adoc[]
 endif::[]
 
-//
+//----------------------------------------------------------------------

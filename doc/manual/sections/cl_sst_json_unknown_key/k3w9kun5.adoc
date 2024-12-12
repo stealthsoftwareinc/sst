@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_CL_SST_JSON_UNKNOWN_KEY_K3W9KUN5_ADOC[]
 
 :k3w9kun5_overload: {counter:cl_sst_json_unknown_key_overload}
 
-:cl_sst_json_unknown_key_k3w9kun5_id: cl-sst-json-unknown-key-k3w9kun5
+:cl_sst_json_unknown_key_k3w9kun5_id: cl_sst_json_unknown_key_k3w9kun5
 :cl_sst_json_unknown_key_k3w9kun5_url: sections/cl_sst_json_unknown_key/k3w9kun5.adoc#{cl_sst_json_unknown_key_k3w9kun5_id}
 :cl_sst_json_unknown_key_k3w9kun5: xref:{cl_sst_json_unknown_key_k3w9kun5_url}[sst::json::unknown_key]
 

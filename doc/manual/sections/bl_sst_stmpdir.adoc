@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_BL_SST_STMPDIR_ADOC[]
 
 :bl_sst_stmpdir_n0: sst_stmpdir
 
-:bl_sst_stmpdir_id: bl-sst-stmpdir
+:bl_sst_stmpdir_id: bl_sst_stmpdir
 :bl_sst_stmpdir_url: sections/bl_sst_stmpdir.adoc#{bl_sst_stmpdir_id}
 :bl_sst_stmpdir: xref:{bl_sst_stmpdir_url}[{bl_sst_stmpdir_n0}]
 

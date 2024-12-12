@@ -1,0 +1,303 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_JSL_SST_DOM_SIDEBAR_ADOC[]
+:SECTIONS_JSL_SST_DOM_SIDEBAR_ADOC:
+//----------------------------------------------------------------------
+
+:jsl_sst_dom_sidebar_name2: sidebar
+:jsl_sst_dom_sidebar_name1: dom.sidebar
+:jsl_sst_dom_sidebar_name0: sst.dom.sidebar
+:jsl_sst_dom_sidebar_id: jsl_sst_dom_sidebar
+:jsl_sst_dom_sidebar_url: sections/jsl_sst_dom_sidebar.adoc#{jsl_sst_dom_sidebar_id}
+:jsl_sst_dom_sidebar_chop2: xref:{jsl_sst_dom_sidebar_url}[{jsl_sst_dom_sidebar_name2}]
+:jsl_sst_dom_sidebar_chop2_prose1: pass:a,q[`{jsl_sst_dom_sidebar_chop2}`]
+:jsl_sst_dom_sidebar_chop2_prose2: pass:a,q[`{jsl_sst_dom_sidebar_chop2}` function]
+:jsl_sst_dom_sidebar_chop1: xref:{jsl_sst_dom_sidebar_url}[{jsl_sst_dom_sidebar_name1}]
+:jsl_sst_dom_sidebar_chop1_prose1: pass:a,q[`{jsl_sst_dom_sidebar_chop1}`]
+:jsl_sst_dom_sidebar_chop1_prose2: pass:a,q[`{jsl_sst_dom_sidebar_chop1}` function]
+:jsl_sst_dom_sidebar_chop0: xref:{jsl_sst_dom_sidebar_url}[{jsl_sst_dom_sidebar_name0}]
+:jsl_sst_dom_sidebar_chop0_prose1: pass:a,q[`{jsl_sst_dom_sidebar_chop0}`]
+:jsl_sst_dom_sidebar_chop0_prose2: pass:a,q[`{jsl_sst_dom_sidebar_chop0}` function]
+:jsl_sst_dom_sidebar: {jsl_sst_dom_sidebar_chop0}
+:jsl_sst_dom_sidebar_prose1: {jsl_sst_dom_sidebar_chop0_prose1}
+:jsl_sst_dom_sidebar_prose2: {jsl_sst_dom_sidebar_chop0_prose2}
+:jsl_sst_catalog_gui_sidebar_mjs_url: {repo_browser_url}/src/js/include/sst/catalog/dom/sidebar.mjs
+:jsl_sst_catalog_gui_sidebar_mjs: link:{jsl_sst_catalog_gui_sidebar_mjs_url}[sst/catalog/dom/sidebar.mjs,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{jsl_sst_dom_sidebar_id}]
+= `{jsl_sst_dom_sidebar_name0}`
+
+.JavaScript
+[source,subs="{sst_subs_source}"]
+----
+{jsl_static_import} {} from "./{jsl_sst_catalog_gui_sidebar_mjs}";
+
+{jsl_class} {jsl_sst_dom_sidebar}
+----
+
+.{empty}
+====
+[source,subs="{sst_subs_source}"]
+----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sst/catalog/dom/sidebar.css">
+  </head>
+  <body>
+    <script type="module">
+
+      {jsl_static_import} {} from "./{jsl_sst_catalog_gui_sidebar_mjs}";
+
+      const container = document.createElement("div");
+      document.body.appendChild(container);
+      container.style.setProperty("display", "flex");
+
+      const sidebar = new {jsl_sst_dom_sidebar}();
+      container.appendChild(sidebar.container());
+      sidebar.container().style.setProperty("flex-basis", "15em");
+      sidebar.container().style.setProperty("flex-shrink", "0");
+      sidebar.content().innerText = "Sidebar";
+
+      const content = document.createElement("div");
+      container.appendChild(content);
+      content.innerText = "Content ".repeat(2000);
+
+    </script>
+  </body>
+</html>
+----
+
+ifdef::backend-html5[]
+++++
+<script>{
+  const currentScript = document.currentScript;
+  window.addEventListener("DOMContentLoaded", function() {
+    sst.iframeExampleOutput(currentScript, `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="sst/catalog/dom/sidebar.css">
+        <`+`/head>
+        <body>
+          <script type="module">
+
+            import {} from "./sst/catalog/dom/sidebar.mjs";
+
+            const container = document.createElement("div");
+            document.body.appendChild(container);
+            container.style.setProperty("display", "flex");
+
+            const sidebar = new sst.dom.sidebar();
+            container.appendChild(sidebar.container());
+            sidebar.container().style.setProperty("flex-basis", "15em");
+            sidebar.container().style.setProperty("flex-shrink", "0");
+            sidebar.content().innerText = "Sidebar";
+
+            const content = document.createElement("div");
+            container.appendChild(content);
+            content.innerText = "Content ".repeat(2000);
+
+          <`+`/script>
+        <`+`/body>
+      <`+`/html>
+    `);
+  });
+}</script>
+++++
+endif::[]
+====
+
+.{empty}
+====
+[source,subs="{sst_subs_source}"]
+----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sst/catalog/dom/sidebar.css">
+  </head>
+  <body>
+    <script type="module">
+
+      {jsl_static_import} {} from "./sst/catalog/dom/scrollspy.mjs";
+      {jsl_static_import} {} from "./{jsl_sst_catalog_gui_sidebar_mjs}";
+
+      const container = document.createElement("div");
+      document.body.appendChild(container);
+      container.style.setProperty("display", "flex");
+
+      const sidebar = new {jsl_sst_dom_sidebar}();
+      container.appendChild(sidebar.container());
+      sidebar.container().style.setProperty("flex-basis", "15em");
+      sidebar.container().style.setProperty("flex-shrink", "0");
+
+      const ul = document.createElement("ul");
+      sidebar.content().appendChild(ul);
+
+      const sections = document.createElement("div");
+      container.appendChild(sections);
+
+      const items = [];
+
+      for (let i = 0; i < 10; ++i) {
+
+        const section = document.createElement("div");
+        sections.appendChild(section);
+        section.style.setProperty("flex-grow", "1");
+
+        const title = document.createElement("h2");
+        section.appendChild(title);
+        title.innerText = "Section " + (i + 1);
+
+        const content = document.createElement("div");
+        section.appendChild(content);
+        content.innerText = "Content ".repeat(200);
+
+        const li = document.createElement("li");
+        ul.appendChild(li);
+        li.innerText = title.innerText;
+
+        items.push({
+          getBoundingClientRect: function() {
+            return section.getBoundingClientRect();
+          },
+          li: li,
+        });
+
+      }
+
+      sst.dom.scrollspy(items, (active, inactive) => {
+        for (const item of active) {
+          item.li.style.setProperty("font-weight", "bold");
+        }
+        for (const item of inactive) {
+          item.li.style.removeProperty("font-weight");
+        }
+      });
+
+    </script>
+  </body>
+</html>
+----
+
+ifdef::backend-html5[]
+++++
+<script>{
+  const currentScript = document.currentScript;
+  window.addEventListener("DOMContentLoaded", function() {
+    sst.iframeExampleOutput(currentScript, `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="sst/catalog/dom/sidebar.css">
+        <`+`/head>
+        <body>
+          <script type="module">
+
+            import {} from "./sst/catalog/dom/scrollspy.mjs";
+            import {} from "./sst/catalog/dom/sidebar.mjs";
+
+            const container = document.createElement("div");
+            document.body.appendChild(container);
+            container.style.setProperty("display", "flex");
+
+            const sidebar = new sst.dom.sidebar();
+            container.appendChild(sidebar.container());
+            sidebar.container().style.setProperty("flex-basis", "15em");
+            sidebar.container().style.setProperty("flex-shrink", "0");
+
+            const ul = document.createElement("ul");
+            sidebar.content().appendChild(ul);
+
+            const sections = document.createElement("div");
+            container.appendChild(sections);
+
+            const items = [];
+
+            for (let i = 0; i < 10; ++i) {
+
+              const section = document.createElement("div");
+              sections.appendChild(section);
+              section.style.setProperty("flex-grow", "1");
+
+              const title = document.createElement("h2");
+              section.appendChild(title);
+              title.innerText = "Section " + (i + 1);
+
+              const content = document.createElement("div");
+              section.appendChild(content);
+              content.innerText = "Content ".repeat(200);
+
+              const li = document.createElement("li");
+              ul.appendChild(li);
+              li.innerText = title.innerText;
+
+              items.push({
+                getBoundingClientRect: function() {
+                  return section.getBoundingClientRect();
+                },
+                li: li,
+              });
+
+            }
+
+            sst.dom.scrollspy(items, (active, inactive) => {
+              for (const item of active) {
+                item.li.style.setProperty("font-weight", "bold");
+              }
+              for (const item of inactive) {
+                item.li.style.removeProperty("font-weight");
+              }
+            });
+
+          <`+`/script>
+        <`+`/body>
+      <`+`/html>
+    `);
+  });
+}</script>
+++++
+endif::[]
+====
+
+//----------------------------------------------------------------------
+endif::[]

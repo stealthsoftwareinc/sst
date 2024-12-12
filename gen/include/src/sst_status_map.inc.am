@@ -1,5 +1,5 @@
 ##
-## Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+## Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 ##
 ## Permission is hereby granted, free of charge, to any person
 ## obtaining a copy of this software and associated documentation
@@ -38,7 +38,7 @@ all-local: include/src/sst_status_map.inc
 
 include/src/sst_status_map.inc: ../include/src/sst_status_map.inc.ac
 include/src/sst_status_map.inc: ../include/src/sst_status_map.inc.am
-	$(AM_V_GEN)$(GATBPS_RECIPE_MARKER_TOP)
+	$(AM_V_GEN)$(GATBPS_RECIPE_STARTING)
 	$(AM_V_at)'rm' \
   '-f' \
   'include/src/sst_status_map.inc' \
@@ -80,7 +80,7 @@ include/src/sst_status_map.inc: ../include/src/sst_status_map.inc.am
   esac; \
   'exit' "$${s}"; \
 :;}
-	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+	$(AM_V_at)$(GATBPS_RECIPE_FINISHED)
 
 ## end_rules
 

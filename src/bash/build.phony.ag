@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -28,15 +28,18 @@
 
 f() {
 
-  declare    bash_version
-  declare    bash_version_slug
-  declare -a bash_versions
-  declare    child
-  declare    d
-  declare    d_slug
-  declare    x
-  declare    x_slug
-  declare    y
+  # Bash >=4.2: declare -g    SST_DEBUG
+  # Bash >=4.2: declare -g -f sst_expect_source_path
+
+  local    bash_version
+  local    bash_version_slug
+  local -a bash_versions
+  local    child
+  local    dp
+  local    dp_slug
+  local    x
+  local    x_slug
+  local    y
 
   bash_versions=(
     4.1
@@ -48,32 +51,36 @@ f() {
   )
   readonly bash_versions
 
-  sst_expect_source_path "$BASH_SOURCE"
-  d=$(sst_get_prefix $BASH_SOURCE)
-  readonly d
+  # Set dp to the directory prefix of this file. E.g., if this file is
+  # "x/y.ag" then dp="x/", or if this file is "x.ag" then dp="".
+  if ((SST_DEBUG)); then
+    sst_expect_source_path "$BASH_SOURCE"
+  fi
+  dp=${BASH_SOURCE/%+([!\/])}
+  readonly dp
 
-  if [[ ! "$d" ]]; then
+  if [[ ! "$dp" ]]; then
     sst_barf "File must live in a subdirectory: $BASH_SOURCE"
   fi
 
-  if [[ $d == src/ ]]; then
+  if [[ $dp == src/ ]]; then
     sst_barf "File must not live directly under src/: $BASH_SOURCE"
   fi
 
-  d_slug=$(sst_underscore_slug $d)
-  readonly d_slug
+  dp_slug=$(sst_underscore_slug $dp)
+  readonly dp_slug
 
   #---------------------------------------------------------------------
 
   sst_am_distribute \
-    ${d}bin/sst-* \
-    ${d}include/**/*.bash \
-    ${d}sst.bash \
-    ${d}test/**/*.bash \
-    ${d}test/docker/Dockerfile \
-    ${d}test/docker/entrypoint.sh \
-    ${d}test/docker/recipe.sh \
-    ${d}test/docker/run.sh \
+    ${dp}bin/sst-* \
+    ${dp}include/**/*.bash \
+    ${dp}sst.bash \
+    ${dp}test/**/*.bash \
+    ${dp}test/docker/Dockerfile \
+    ${dp}test/docker/entrypoint.sh \
+    ${dp}test/docker/recipe.sh \
+    ${dp}test/docker/run.sh \
   ;
 
   #---------------------------------------------------------------------
@@ -82,14 +89,14 @@ f() {
 
     sst_am_if WITH_BUILD_GROUP_BASH
 
-    sst_ag_process_leaf ${d_slug%_} ${d}bin/sst.bash.im.in child
+    sst_ag_process_leaf ${dp_slug%_} ${dp}bin/sst.bash.im.in child
     sst_am_append <<<"bin_SCRIPTS += $child"
 
   fi
 
   #---------------------------------------------------------------------
 
-  for x in ${d}test/**/*.bash; do
+  for x in ${dp}test/**/*.bash; do
     sst_expect_source_path "$x"
     sst_am_append <<<"TESTS += $x"
   done
@@ -100,9 +107,9 @@ f() {
 
   sst_ihs <<<'
 
-    '$d'test/docker/exec.sh:
-    	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
-    	$(AM_V_GEN)$(GATBPS_V_NOP)
+    '$dp'test/docker/exec.sh:
+    	$(AM_V_at)$(GATBPS_RECIPE_STARTING)
+    	$(AM_V_GEN)$(GATBPS_RECIPE_NOOP)
     	$(AM_V_at)rm -f -r $@$(TSUF)* $@
     	$(AM_V_at)$(MKDIR_P) $(@D)
     	$(AM_V_at)sh - $(srcdir)/build-aux/gatbps-echo.sh \
@@ -115,9 +122,9 @@ f() {
     	$(AM_V_at)$(SED) '\''$$ s/$$/ "$$@"/'\'' <$@$(TSUF)1 >$@$(TSUF)2
     	$(AM_V_at)mv -f $@$(TSUF)2 $@
     	$(AM_V_at)-rm -f -r $@$(TSUF)*
-    	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+    	$(AM_V_at)$(GATBPS_RECIPE_FINISHED)
 
-    GATBPS_CLEANFILES += '$d'test/docker/exec.sh/clean
+    GATBPS_CLEANFILES += '$dp'test/docker/exec.sh/clean
 
   ' | sst_am_append
 
@@ -130,17 +137,17 @@ f() {
       SUFFIXES += .sst_test_bash_'$bash_version_slug'
 
       .bash.sst_test_bash_'$bash_version_slug':
-      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
-      	$(AM_V_GEN)$(GATBPS_V_NOP)
+      	$(AM_V_at)$(GATBPS_RECIPE_STARTING)
+      	$(AM_V_GEN)$(GATBPS_RECIPE_NOOP)
       	$(AM_V_at)rm -f -r $@$(TSUF)* $@
       	$(AM_V_at)$(MKDIR_P) $(@D)
       	$(AM_V_at)$(SED) \
       	  '\''s|!wrapper!|$@|g'\'' \
-      	  <$(srcdir)/'$d'test/docker/run.sh \
+      	  <$(srcdir)/'$dp'test/docker/run.sh \
       	  >$@$(TSUF)1 \
       	;
       	$(AM_V_at)$(SED) \
-      	  '\''s|!prefix!|'$d'|g'\'' \
+      	  '\''s|!prefix!|'$dp'|g'\'' \
       	  <$@$(TSUF)1 \
       	  >$@$(TSUF)2 \
       	;
@@ -152,36 +159,36 @@ f() {
       	$(AM_V_at)chmod +x $@$(TSUF)1
       	$(AM_V_at)mv -f $@$(TSUF)1 $@
       	$(AM_V_at)-rm -f -r $@$(TSUF)*
-      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+      	$(AM_V_at)$(GATBPS_RECIPE_FINISHED)
 
-      '$d'test/bash-'$bash_version'/start-container: \
+      '$dp'test/bash-'$bash_version'/start-container: \
         $(distdir).tar.gz \
-        '$d'test/docker/Dockerfile \
-        '$d'test/docker/entrypoint.sh \
-        '$d'test/docker/recipe.sh \
+        '$dp'test/docker/Dockerfile \
+        '$dp'test/docker/entrypoint.sh \
+        '$dp'test/docker/recipe.sh \
         FORCE \
       $(empty)
-      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_TOP)
-      	$(AM_V_GEN)$(GATBPS_V_NOP)
+      	$(AM_V_at)$(GATBPS_RECIPE_STARTING)
+      	$(AM_V_GEN)$(GATBPS_RECIPE_NOOP)
       	$(GATBPS_at){ \
       	  x=DOCKER; set x $(DOCKER); $(GATBPS_EXPORT); \
       	  x=abs_builddir_q; set x $(abs_builddir); $(GATBPS_EXPORT); \
       	  x=abs_srcdir_q; set x $(abs_srcdir); $(GATBPS_EXPORT); \
       	  x=bash_version_q; set x '$bash_version'; $(GATBPS_EXPORT); \
       	  x=dist_archive_q; set x $(distdir).tar.gz; $(GATBPS_EXPORT); \
-      	  sh $(srcdir)/'$d'test/docker/recipe.sh || exit $$?; \
+      	  sh $(srcdir)/'$dp'test/docker/recipe.sh || exit $$?; \
       	}
-      	$(AM_V_at)$(GATBPS_RECIPE_MARKER_BOT)
+      	$(AM_V_at)$(GATBPS_RECIPE_FINISHED)
 
     ' | sst_am_append
 
-    mkdir ${d}test/bash-$bash_version
-    for x in ${d}test/**/*.bash; do
+    mkdir ${dp}test/bash-$bash_version
+    for x in ${dp}test/**/*.bash; do
       y=${x%.bash}.sst_test_bash_$bash_version_slug
       sst_ihs <<<'
         '$y': \
-          '$d'test/bash-'$bash_version'/start-container \
-          '$d'test/docker/exec.sh \
+          '$dp'test/bash-'$bash_version'/start-container \
+          '$dp'test/docker/exec.sh \
         $(empty)
         TESTS += '$y'
         GATBPS_MOSTLYCLEANFILES += '$y'/clean
@@ -194,7 +201,7 @@ f() {
 
   #---------------------------------------------------------------------
 
-  sst_ag_install_bash_library ${d%/}
+  sst_ag_install_bash_library ${dp%/}
 
   #---------------------------------------------------------------------
 

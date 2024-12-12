@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@ ifndef::SECTIONS_BL_SST_ABS_FILE_ADOC[]
 :SECTIONS_BL_SST_ABS_FILE_ADOC:
 //----------------------------------------------------------------------
 
-:bl_sst_abs_file_id: bl-sst-abs-file
+:bl_sst_abs_file_id: bl_sst_abs_file
 :bl_sst_abs_file_url: sections/bl_sst_abs_file.adoc#{bl_sst_abs_file_id}
 :bl_sst_abs_file: xref:{bl_sst_abs_file_url}[sst_abs_file]
 

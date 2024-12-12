@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -43,7 +43,7 @@
 #include <sst/catalog/remove_cvref_t.hpp>
 #include <sst/catalog/type_max.hpp>
 #include <sst/catalog/undeduced_t.hpp>
-#include <sst/catalog/unsigned_rand_range.hpp>
+#include <sst/catalog/unsigned_rand_range_cc.hpp>
 
 namespace sst {
 
@@ -57,7 +57,7 @@ template<class T,
          class S = typename G::result_type>
 R rand_range(G & g) {
 retry:
-  R r = sst::unsigned_rand_range<R>(g);
+  R r = sst::unsigned_rand_range_cc<R>(g);
   if (std::is_signed<R>::value && (g() & static_cast<S>(1))) {
     if (!sst::is_twos_complement<R>::value
         && r == sst::type_max<R>::value) {
@@ -85,12 +85,12 @@ R rand_range(Max const max, G & g) {
   SST_ASSERT((sst::is_representable_as<R>(max)));
   R const b = static_cast<R>(max);
   if (b == sst::type_max<R>::value) {
-    return sst::unsigned_rand_range<R>(g);
+    return sst::unsigned_rand_range_cc<R>(g);
   }
   R const m = static_cast<R>(b + static_cast<R>(1));
   R r;
   do {
-    r = sst::unsigned_rand_range<R>(g);
+    r = sst::unsigned_rand_range_cc<R>(g);
   } while (r >= sst::type_max<R>::value / m * m);
   return static_cast<R>(r % m);
 }

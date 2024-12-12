@@ -1,0 +1,638 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::ATTRIBUTES_JSL_STANDARD_ENTITIES_ADOC[]
+:ATTRIBUTES_JSL_STANDARD_ENTITIES_ADOC:
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+// ArrayBuffer
+//----------------------------------------------------------------------
+
+:jsl_latest_ArrayBuffer_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+:jsl_latest_ArrayBuffer: link:{jsl_latest_ArrayBuffer_url}[ArrayBuffer,window=_blank]
+:jsl_latest_ArrayBuffer_prose1: pass:a,q[`{jsl_latest_ArrayBuffer}`]
+:jsl_latest_ArrayBuffer_prose2: pass:a,q[`{jsl_latest_ArrayBuffer}` class]
+
+:jsl_ArrayBuffer_url: {jsl_latest_ArrayBuffer_url}
+:jsl_ArrayBuffer: {jsl_latest_ArrayBuffer}
+:jsl_ArrayBuffer_prose1: {jsl_latest_ArrayBuffer_prose1}
+:jsl_ArrayBuffer_prose2: {jsl_latest_ArrayBuffer_prose2}
+
+//----------------------------------------------------------------------
+// async
+//----------------------------------------------------------------------
+
+:jsl_latest_async_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+:jsl_latest_async: link:{jsl_latest_async_url}[async,window=_blank]
+
+:jsl_async_url: {jsl_latest_async_url}
+:jsl_async: {jsl_latest_async}
+
+//----------------------------------------------------------------------
+// await
+//----------------------------------------------------------------------
+
+:jsl_latest_await_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
+:jsl_latest_await: link:{jsl_latest_await_url}[await,window=_blank]
+
+:jsl_await_url: {jsl_latest_await_url}
+:jsl_await: {jsl_latest_await}
+
+//----------------------------------------------------------------------
+// BigInt
+//----------------------------------------------------------------------
+
+:jsl_latest_BigInt_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+:jsl_latest_BigInt: link:{jsl_latest_BigInt_url}[BigInt,window=_blank]
+:jsl_latest_BigInt_prose1: pass:a,q[`{jsl_latest_BigInt}`]
+:jsl_latest_BigInt_prose2: pass:a,q[`{jsl_latest_BigInt}` class]
+
+:jsl_BigInt_url: {jsl_latest_BigInt_url}
+:jsl_BigInt: {jsl_latest_BigInt}
+:jsl_BigInt_prose1: {jsl_latest_BigInt_prose1}
+:jsl_BigInt_prose2: {jsl_latest_BigInt_prose2}
+
+//----------------------------------------------------------------------
+// Blob
+//----------------------------------------------------------------------
+
+:jsl_latest_Blob_url: https://developer.mozilla.org/en-US/docs/Web/API/Blob
+:jsl_latest_Blob: link:{jsl_latest_Blob_url}[Blob,window=_blank]
+:jsl_latest_Blob_prose1: pass:a,q[`{jsl_latest_Blob}`]
+:jsl_latest_Blob_prose2: pass:a,q[`{jsl_latest_Blob}` class]
+
+:jsl_Blob_url: {jsl_latest_Blob_url}
+:jsl_Blob: {jsl_latest_Blob}
+:jsl_Blob_prose1: {jsl_latest_Blob_prose1}
+:jsl_Blob_prose2: {jsl_latest_Blob_prose2}
+
+//----------------------------------------------------------------------
+// Boolean
+//----------------------------------------------------------------------
+
+:jsl_latest_Boolean_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+:jsl_latest_Boolean: link:{jsl_latest_Boolean_url}[Boolean,window=_blank]
+:jsl_latest_Boolean_prose1: pass:a,q[`{jsl_latest_Boolean}`]
+:jsl_latest_Boolean_prose2: pass:a,q[`{jsl_latest_Boolean}` class]
+
+:jsl_Boolean_url: {jsl_latest_Boolean_url}
+:jsl_Boolean: {jsl_latest_Boolean}
+:jsl_Boolean_prose1: {jsl_latest_Boolean_prose1}
+:jsl_Boolean_prose2: {jsl_latest_Boolean_prose2}
+
+//----------------------------------------------------------------------
+// class
+//----------------------------------------------------------------------
+
+:jsl_latest_class_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+:jsl_latest_class: link:{jsl_latest_class_url}[class,window=_blank]
+
+:jsl_class_url: {jsl_latest_class_url}
+:jsl_class: {jsl_latest_class}
+
+//----------------------------------------------------------------------
+// Error
+//----------------------------------------------------------------------
+
+:jsl_latest_Error_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/Error
+:jsl_latest_Error: link:{jsl_latest_Error_url}[Error,window=_blank]
+:jsl_latest_Error_prose1: pass:a,q[`{jsl_latest_Error}`]
+:jsl_latest_Error_prose2: pass:a,q[`{jsl_latest_Error}` class]
+
+:jsl_Error_url: {jsl_latest_Error_url}
+:jsl_Error: {jsl_latest_Error}
+:jsl_Error_prose1: {jsl_latest_Error_prose1}
+:jsl_Error_prose2: {jsl_latest_Error_prose2}
+
+//----------------------------------------------------------------------
+// Error.cause
+//----------------------------------------------------------------------
+
+:jsl_latest_Error_cause_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
+:jsl_latest_Error_cause_chop0: {jsl_latest_Error}.link:{jsl_latest_Error_cause_url}[cause,window=_blank]
+:jsl_latest_Error_cause_chop0_prose1: pass:a,q[`{jsl_latest_Error_cause_chop0}`]
+:jsl_latest_Error_cause_chop0_prose2: pass:a,q[`{jsl_latest_Error_cause_chop0}` property]
+:jsl_latest_Error_cause_chop1: link:{jsl_latest_Error_cause_url}[cause,window=_blank]
+:jsl_latest_Error_cause_chop1_prose1: pass:a,q[`{jsl_latest_Error_cause_chop1}`]
+:jsl_latest_Error_cause_chop1_prose2: pass:a,q[`{jsl_latest_Error_cause_chop1}` property]
+:jsl_latest_Error_cause: {jsl_latest_Error_cause_chop0}
+:jsl_latest_Error_cause_prose1: {jsl_latest_Error_cause_chop0_prose1}
+:jsl_latest_Error_cause_prose2: {jsl_latest_Error_cause_chop0_prose2}
+
+:jsl_Error_cause_url: {jsl_latest_Error_cause_url}
+:jsl_Error_cause_chop0: {jsl_latest_Error_cause_chop0}
+:jsl_Error_cause_chop0_prose1: {jsl_latest_Error_cause_chop0_prose1}
+:jsl_Error_cause_chop0_prose2: {jsl_latest_Error_cause_chop0_prose2}
+:jsl_Error_cause_chop1: {jsl_latest_Error_cause_chop1}
+:jsl_Error_cause_chop1_prose1: {jsl_latest_Error_cause_chop1_prose1}
+:jsl_Error_cause_chop1_prose2: {jsl_latest_Error_cause_chop1_prose2}
+:jsl_Error_cause: {jsl_latest_Error_cause}
+:jsl_Error_cause_prose1: {jsl_latest_Error_cause_prose1}
+:jsl_Error_cause_prose2: {jsl_latest_Error_cause_prose2}
+
+//----------------------------------------------------------------------
+// Error.message
+//----------------------------------------------------------------------
+
+:jsl_latest_Error_message_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/message
+:jsl_latest_Error_message_chop0: {jsl_latest_Error}.link:{jsl_latest_Error_message_url}[message,window=_blank]
+:jsl_latest_Error_message_chop0_prose1: pass:a,q[`{jsl_latest_Error_message_chop0}`]
+:jsl_latest_Error_message_chop0_prose2: pass:a,q[`{jsl_latest_Error_message_chop0}` property]
+:jsl_latest_Error_message_chop1: link:{jsl_latest_Error_message_url}[message,window=_blank]
+:jsl_latest_Error_message_chop1_prose1: pass:a,q[`{jsl_latest_Error_message_chop1}`]
+:jsl_latest_Error_message_chop1_prose2: pass:a,q[`{jsl_latest_Error_message_chop1}` property]
+:jsl_latest_Error_message: {jsl_latest_Error_message_chop0}
+:jsl_latest_Error_message_prose1: {jsl_latest_Error_message_chop0_prose1}
+:jsl_latest_Error_message_prose2: {jsl_latest_Error_message_chop0_prose2}
+
+:jsl_Error_message_url: {jsl_latest_Error_message_url}
+:jsl_Error_message_chop0: {jsl_latest_Error_message_chop0}
+:jsl_Error_message_chop0_prose1: {jsl_latest_Error_message_chop0_prose1}
+:jsl_Error_message_chop0_prose2: {jsl_latest_Error_message_chop0_prose2}
+:jsl_Error_message_chop1: {jsl_latest_Error_message_chop1}
+:jsl_Error_message_chop1_prose1: {jsl_latest_Error_message_chop1_prose1}
+:jsl_Error_message_chop1_prose2: {jsl_latest_Error_message_chop1_prose2}
+:jsl_Error_message: {jsl_latest_Error_message}
+:jsl_Error_message_prose1: {jsl_latest_Error_message_prose1}
+:jsl_Error_message_prose2: {jsl_latest_Error_message_prose2}
+
+//----------------------------------------------------------------------
+// false
+//----------------------------------------------------------------------
+
+:jsl_latest_false_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+:jsl_latest_false: link:{jsl_latest_false_url}[false,window=_blank]
+
+:jsl_false_url: {jsl_latest_false_url}
+:jsl_false: {jsl_latest_false}
+
+//----------------------------------------------------------------------
+// fetch
+//----------------------------------------------------------------------
+
+:jsl_latest_fetch_url: https://developer.mozilla.org/en-US/docs/Web/API/fetch
+:jsl_latest_fetch: link:{jsl_latest_fetch_url}[fetch,window=_blank]
+
+:jsl_fetch_url: {jsl_latest_fetch_url}
+:jsl_fetch: {jsl_latest_fetch}
+
+//----------------------------------------------------------------------
+// File
+//----------------------------------------------------------------------
+
+:jsl_latest_File_url: https://developer.mozilla.org/en-US/docs/Web/API/File
+:jsl_latest_File: link:{jsl_latest_File_url}[File,window=_blank]
+:jsl_latest_File_prose1: pass:a,q[`{jsl_latest_File}`]
+:jsl_latest_File_prose2: pass:a,q[`{jsl_latest_File}` class]
+
+:jsl_File_url: {jsl_latest_File_url}
+:jsl_File: {jsl_latest_File}
+:jsl_File_prose1: {jsl_latest_File_prose1}
+:jsl_File_prose2: {jsl_latest_File_prose2}
+
+//----------------------------------------------------------------------
+// File.name
+//----------------------------------------------------------------------
+
+:jsl_latest_File_name_url: https://developer.mozilla.org/en-US/docs/Web/API/File/name
+:jsl_latest_File_name_chop0: {jsl_latest_File}.link:{jsl_latest_File_name_url}[name,window=_blank]
+:jsl_latest_File_name_chop0_prose1: pass:a,q[`{jsl_latest_File_name_chop0}`]
+:jsl_latest_File_name_chop0_prose2: pass:a,q[`{jsl_latest_File_name_chop0}` property]
+:jsl_latest_File_name_chop1: link:{jsl_latest_File_name_url}[name,window=_blank]
+:jsl_latest_File_name_chop1_prose1: pass:a,q[`{jsl_latest_File_name_chop1}`]
+:jsl_latest_File_name_chop1_prose2: pass:a,q[`{jsl_latest_File_name_chop1}` property]
+:jsl_latest_File_name: {jsl_latest_File_name_chop0}
+:jsl_latest_File_name_prose1: {jsl_latest_File_name_chop0_prose1}
+:jsl_latest_File_name_prose2: {jsl_latest_File_name_chop0_prose2}
+
+:jsl_File_name_url: {jsl_latest_File_name_url}
+:jsl_File_name_chop0: {jsl_latest_File_name_chop0}
+:jsl_File_name_chop0_prose1: {jsl_latest_File_name_chop0_prose1}
+:jsl_File_name_chop0_prose2: {jsl_latest_File_name_chop0_prose2}
+:jsl_File_name_chop1: {jsl_latest_File_name_chop1}
+:jsl_File_name_chop1_prose1: {jsl_latest_File_name_chop1_prose1}
+:jsl_File_name_chop1_prose2: {jsl_latest_File_name_chop1_prose2}
+:jsl_File_name: {jsl_latest_File_name}
+:jsl_File_name_prose1: {jsl_latest_File_name_prose1}
+:jsl_File_name_prose2: {jsl_latest_File_name_prose2}
+
+//----------------------------------------------------------------------
+// fsp
+//----------------------------------------------------------------------
+
+:jsl_latest_fsp_url: https://nodejs.org/api/fs.html#promises-api
+:jsl_latest_fsp: link:{jsl_latest_fsp_url}[fsp,window=_blank]
+
+:jsl_fsp_url: {jsl_latest_fsp_url}
+:jsl_fsp: {jsl_latest_fsp}
+
+//----------------------------------------------------------------------
+// fsp.FileHandle
+//----------------------------------------------------------------------
+
+:jsl_latest_fsp_FileHandle_url: https://nodejs.org/api/fs.html#class-filehandle
+:jsl_latest_fsp_FileHandle_chop0: {jsl_latest_fsp}.link:{jsl_latest_fsp_FileHandle_url}[FileHandle,window=_blank]
+:jsl_latest_fsp_FileHandle_chop0_prose1: pass:a,q[`{jsl_latest_fsp_FileHandle_chop0}`]
+:jsl_latest_fsp_FileHandle_chop0_prose2: pass:a,q[`{jsl_latest_fsp_FileHandle_chop0}` class]
+:jsl_latest_fsp_FileHandle_chop1: link:{jsl_latest_fsp_FileHandle_url}[FileHandle,window=_blank]
+:jsl_latest_fsp_FileHandle_chop1_prose1: pass:a,q[`{jsl_latest_fsp_FileHandle_chop1}`]
+:jsl_latest_fsp_FileHandle_chop1_prose2: pass:a,q[`{jsl_latest_fsp_FileHandle_chop1}` class]
+:jsl_latest_fsp_FileHandle: {jsl_latest_fsp_FileHandle_chop0}
+:jsl_latest_fsp_FileHandle_prose1: {jsl_latest_fsp_FileHandle_chop0_prose1}
+:jsl_latest_fsp_FileHandle_prose2: {jsl_latest_fsp_FileHandle_chop0_prose2}
+
+:jsl_fsp_FileHandle_url: {jsl_latest_fsp_FileHandle_url}
+:jsl_fsp_FileHandle_chop0: {jsl_latest_fsp_FileHandle_chop0}
+:jsl_fsp_FileHandle_chop0_prose1: {jsl_latest_fsp_FileHandle_chop0_prose1}
+:jsl_fsp_FileHandle_chop0_prose2: {jsl_latest_fsp_FileHandle_chop0_prose2}
+:jsl_fsp_FileHandle_chop1: {jsl_latest_fsp_FileHandle_chop1}
+:jsl_fsp_FileHandle_chop1_prose1: {jsl_latest_fsp_FileHandle_chop1_prose1}
+:jsl_fsp_FileHandle_chop1_prose2: {jsl_latest_fsp_FileHandle_chop1_prose2}
+:jsl_fsp_FileHandle: {jsl_latest_fsp_FileHandle}
+:jsl_fsp_FileHandle_prose1: {jsl_latest_fsp_FileHandle_prose1}
+:jsl_fsp_FileHandle_prose2: {jsl_latest_fsp_FileHandle_prose2}
+
+//----------------------------------------------------------------------
+// fsp.open
+//----------------------------------------------------------------------
+
+:jsl_latest_fsp_open_url: https://nodejs.org/api/fs.html#fspromisesopenpath-flags-mode
+:jsl_latest_fsp_open_chop0: {jsl_latest_fsp}.link:{jsl_latest_fsp_open_url}[open,window=_blank]
+:jsl_latest_fsp_open_chop0_prose1: pass:a,q[`{jsl_latest_fsp_open_chop0}`]
+:jsl_latest_fsp_open_chop0_prose2: pass:a,q[`{jsl_latest_fsp_open_chop0}` function]
+:jsl_latest_fsp_open_chop1: link:{jsl_latest_fsp_open_url}[open,window=_blank]
+:jsl_latest_fsp_open_chop1_prose1: pass:a,q[`{jsl_latest_fsp_open_chop1}`]
+:jsl_latest_fsp_open_chop1_prose2: pass:a,q[`{jsl_latest_fsp_open_chop1}` function]
+:jsl_latest_fsp_open: {jsl_latest_fsp_open_chop0}
+:jsl_latest_fsp_open_prose1: {jsl_latest_fsp_open_chop0_prose1}
+:jsl_latest_fsp_open_prose2: {jsl_latest_fsp_open_chop0_prose2}
+
+:jsl_fsp_open_url: {jsl_latest_fsp_open_url}
+:jsl_fsp_open_chop0: {jsl_latest_fsp_open_chop0}
+:jsl_fsp_open_chop0_prose1: {jsl_latest_fsp_open_chop0_prose1}
+:jsl_fsp_open_chop0_prose2: {jsl_latest_fsp_open_chop0_prose2}
+:jsl_fsp_open_chop1: {jsl_latest_fsp_open_chop1}
+:jsl_fsp_open_chop1_prose1: {jsl_latest_fsp_open_chop1_prose1}
+:jsl_fsp_open_chop1_prose2: {jsl_latest_fsp_open_chop1_prose2}
+:jsl_fsp_open: {jsl_latest_fsp_open}
+:jsl_fsp_open_prose1: {jsl_latest_fsp_open_prose1}
+:jsl_fsp_open_prose2: {jsl_latest_fsp_open_prose2}
+
+//----------------------------------------------------------------------
+// fsp.ReadStream
+//----------------------------------------------------------------------
+
+:jsl_latest_fsp_ReadStream_url: https://nodejs.org/api/fs.html#class-fsreadstream
+:jsl_latest_fsp_ReadStream_chop0: {jsl_latest_fsp}.link:{jsl_latest_fsp_ReadStream_url}[ReadStream,window=_blank]
+:jsl_latest_fsp_ReadStream_chop0_prose1: pass:a,q[`{jsl_latest_fsp_ReadStream_chop0}`]
+:jsl_latest_fsp_ReadStream_chop0_prose2: pass:a,q[`{jsl_latest_fsp_ReadStream_chop0}` class]
+:jsl_latest_fsp_ReadStream_chop1: link:{jsl_latest_fsp_ReadStream_url}[ReadStream,window=_blank]
+:jsl_latest_fsp_ReadStream_chop1_prose1: pass:a,q[`{jsl_latest_fsp_ReadStream_chop1}`]
+:jsl_latest_fsp_ReadStream_chop1_prose2: pass:a,q[`{jsl_latest_fsp_ReadStream_chop1}` class]
+:jsl_latest_fsp_ReadStream: {jsl_latest_fsp_ReadStream_chop0}
+:jsl_latest_fsp_ReadStream_prose1: {jsl_latest_fsp_ReadStream_chop0_prose1}
+:jsl_latest_fsp_ReadStream_prose2: {jsl_latest_fsp_ReadStream_chop0_prose2}
+
+:jsl_fsp_ReadStream_url: {jsl_latest_fsp_ReadStream_url}
+:jsl_fsp_ReadStream_chop0: {jsl_latest_fsp_ReadStream_chop0}
+:jsl_fsp_ReadStream_chop0_prose1: {jsl_latest_fsp_ReadStream_chop0_prose1}
+:jsl_fsp_ReadStream_chop0_prose2: {jsl_latest_fsp_ReadStream_chop0_prose2}
+:jsl_fsp_ReadStream_chop1: {jsl_latest_fsp_ReadStream_chop1}
+:jsl_fsp_ReadStream_chop1_prose1: {jsl_latest_fsp_ReadStream_chop1_prose1}
+:jsl_fsp_ReadStream_chop1_prose2: {jsl_latest_fsp_ReadStream_chop1_prose2}
+:jsl_fsp_ReadStream: {jsl_latest_fsp_ReadStream}
+:jsl_fsp_ReadStream_prose1: {jsl_latest_fsp_ReadStream_prose1}
+:jsl_fsp_ReadStream_prose2: {jsl_latest_fsp_ReadStream_prose2}
+
+//----------------------------------------------------------------------
+// import (static)
+//----------------------------------------------------------------------
+
+:jsl_latest_static_import_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+:jsl_latest_static_import: link:{jsl_latest_static_import_url}[import,window=_blank]
+
+:jsl_static_import_url: {jsl_latest_static_import_url}
+:jsl_static_import: {jsl_latest_static_import}
+
+//----------------------------------------------------------------------
+// import (dynamic)
+//----------------------------------------------------------------------
+
+:jsl_latest_dynamic_import_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+:jsl_latest_dynamic_import: link:{jsl_latest_dynamic_import_url}[import,window=_blank]
+
+:jsl_dynamic_import_url: {jsl_latest_dynamic_import_url}
+:jsl_dynamic_import: {jsl_latest_dynamic_import}
+
+//----------------------------------------------------------------------
+// instanceof
+//----------------------------------------------------------------------
+
+:jsl_latest_instanceof_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof
+:jsl_latest_instanceof: link:{jsl_latest_instanceof_url}[instanceof,window=_blank]
+
+:jsl_instanceof_url: {jsl_latest_instanceof_url}
+:jsl_instanceof: {jsl_latest_instanceof}
+
+//----------------------------------------------------------------------
+// null
+//----------------------------------------------------------------------
+
+:jsl_latest_null_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null
+:jsl_latest_null: link:{jsl_latest_null_url}[null,window=_blank]
+
+:jsl_null_url: {jsl_latest_null_url}
+:jsl_null: {jsl_latest_null}
+
+//----------------------------------------------------------------------
+// Number
+//----------------------------------------------------------------------
+
+:jsl_latest_Number_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+:jsl_latest_Number: link:{jsl_latest_Number_url}[Number,window=_blank]
+:jsl_latest_Number_prose1: pass:a,q[`{jsl_latest_Number}`]
+:jsl_latest_Number_prose2: pass:a,q[`{jsl_latest_Number}` class]
+
+:jsl_Number_url: {jsl_latest_Number_url}
+:jsl_Number: {jsl_latest_Number}
+:jsl_Number_prose1: {jsl_latest_Number_prose1}
+:jsl_Number_prose2: {jsl_latest_Number_prose2}
+
+//----------------------------------------------------------------------
+// Promise
+//----------------------------------------------------------------------
+
+:jsl_latest_Promise_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+:jsl_latest_Promise: link:{jsl_latest_Promise_url}[Promise,window=_blank]
+:jsl_latest_Promise_prose1: pass:a,q[`{jsl_latest_Promise}`]
+:jsl_latest_Promise_prose2: pass:a,q[`{jsl_latest_Promise}` class]
+
+:jsl_Promise_url: {jsl_latest_Promise_url}
+:jsl_Promise: {jsl_latest_Promise}
+:jsl_Promise_prose1: {jsl_latest_Promise_prose1}
+:jsl_Promise_prose2: {jsl_latest_Promise_prose2}
+
+//----------------------------------------------------------------------
+// ReadableStream
+//----------------------------------------------------------------------
+
+:jsl_latest_ReadableStream_url: https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream
+:jsl_latest_ReadableStream: link:{jsl_latest_ReadableStream_url}[ReadableStream,window=_blank]
+:jsl_latest_ReadableStream_prose1: pass:a,q[`{jsl_latest_ReadableStream}`]
+:jsl_latest_ReadableStream_prose2: pass:a,q[`{jsl_latest_ReadableStream}` class]
+
+:jsl_ReadableStream_url: {jsl_latest_ReadableStream_url}
+:jsl_ReadableStream: {jsl_latest_ReadableStream}
+:jsl_ReadableStream_prose1: {jsl_latest_ReadableStream_prose1}
+:jsl_ReadableStream_prose2: {jsl_latest_ReadableStream_prose2}
+
+//----------------------------------------------------------------------
+// ReadableStream.getReader
+//----------------------------------------------------------------------
+
+:jsl_latest_ReadableStream_getReader_url: https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader
+:jsl_latest_ReadableStream_getReader_chop0: {jsl_latest_ReadableStream}.link:{jsl_latest_ReadableStream_getReader_url}[getReader,window=_blank]
+:jsl_latest_ReadableStream_getReader_chop0_prose1: pass:a,q[`{jsl_latest_ReadableStream_getReader_chop0}`]
+:jsl_latest_ReadableStream_getReader_chop0_prose2: pass:a,q[`{jsl_latest_ReadableStream_getReader_chop0}` function]
+:jsl_latest_ReadableStream_getReader_chop1: link:{jsl_latest_ReadableStream_getReader_url}[getReader,window=_blank]
+:jsl_latest_ReadableStream_getReader_chop1_prose1: pass:a,q[`{jsl_latest_ReadableStream_getReader_chop1}`]
+:jsl_latest_ReadableStream_getReader_chop1_prose2: pass:a,q[`{jsl_latest_ReadableStream_getReader_chop1}` function]
+:jsl_latest_ReadableStream_getReader: {jsl_latest_ReadableStream_getReader_chop0}
+:jsl_latest_ReadableStream_getReader_prose1: {jsl_latest_ReadableStream_getReader_chop0_prose1}
+:jsl_latest_ReadableStream_getReader_prose2: {jsl_latest_ReadableStream_getReader_chop0_prose2}
+
+:jsl_ReadableStream_getReader_url: {jsl_latest_ReadableStream_getReader_url}
+:jsl_ReadableStream_getReader_chop0: {jsl_latest_ReadableStream_getReader_chop0}
+:jsl_ReadableStream_getReader_chop0_prose1: {jsl_latest_ReadableStream_getReader_chop0_prose1}
+:jsl_ReadableStream_getReader_chop0_prose2: {jsl_latest_ReadableStream_getReader_chop0_prose2}
+:jsl_ReadableStream_getReader_chop1: {jsl_latest_ReadableStream_getReader_chop1}
+:jsl_ReadableStream_getReader_chop1_prose1: {jsl_latest_ReadableStream_getReader_chop1_prose1}
+:jsl_ReadableStream_getReader_chop1_prose2: {jsl_latest_ReadableStream_getReader_chop1_prose2}
+:jsl_ReadableStream_getReader: {jsl_latest_ReadableStream_getReader}
+:jsl_ReadableStream_getReader_prose1: {jsl_latest_ReadableStream_getReader_prose1}
+:jsl_ReadableStream_getReader_prose2: {jsl_latest_ReadableStream_getReader_prose2}
+
+//----------------------------------------------------------------------
+// ReadableStreamDefaultReader
+//----------------------------------------------------------------------
+
+:jsl_latest_ReadableStreamDefaultReader_url: https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader
+:jsl_latest_ReadableStreamDefaultReader: link:{jsl_latest_ReadableStreamDefaultReader_url}[ReadableStreamDefaultReader,window=_blank]
+:jsl_latest_ReadableStreamDefaultReader_prose1: pass:a,q[`{jsl_latest_ReadableStreamDefaultReader}`]
+:jsl_latest_ReadableStreamDefaultReader_prose2: pass:a,q[`{jsl_latest_ReadableStreamDefaultReader}` class]
+
+:jsl_ReadableStreamDefaultReader_url: {jsl_latest_ReadableStreamDefaultReader_url}
+:jsl_ReadableStreamDefaultReader: {jsl_latest_ReadableStreamDefaultReader}
+:jsl_ReadableStreamDefaultReader_prose1: {jsl_latest_ReadableStreamDefaultReader_prose1}
+:jsl_ReadableStreamDefaultReader_prose2: {jsl_latest_ReadableStreamDefaultReader_prose2}
+
+//----------------------------------------------------------------------
+// ReadableStreamDefaultReader.read
+//----------------------------------------------------------------------
+
+:jsl_latest_ReadableStreamDefaultReader_read_url: https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/read
+:jsl_latest_ReadableStreamDefaultReader_read_chop0: {jsl_latest_ReadableStreamDefaultReader}.link:{jsl_latest_ReadableStreamDefaultReader_read_url}[read,window=_blank]
+:jsl_latest_ReadableStreamDefaultReader_read_chop0_prose1: pass:a,q[`{jsl_latest_ReadableStreamDefaultReader_read_chop0}`]
+:jsl_latest_ReadableStreamDefaultReader_read_chop0_prose2: pass:a,q[`{jsl_latest_ReadableStreamDefaultReader_read_chop0}` function]
+:jsl_latest_ReadableStreamDefaultReader_read_chop1: link:{jsl_latest_ReadableStreamDefaultReader_read_url}[read,window=_blank]
+:jsl_latest_ReadableStreamDefaultReader_read_chop1_prose1: pass:a,q[`{jsl_latest_ReadableStreamDefaultReader_read_chop1}`]
+:jsl_latest_ReadableStreamDefaultReader_read_chop1_prose2: pass:a,q[`{jsl_latest_ReadableStreamDefaultReader_read_chop1}` function]
+:jsl_latest_ReadableStreamDefaultReader_read: {jsl_latest_ReadableStreamDefaultReader_read_chop0}
+:jsl_latest_ReadableStreamDefaultReader_read_prose1: {jsl_latest_ReadableStreamDefaultReader_read_chop0_prose1}
+:jsl_latest_ReadableStreamDefaultReader_read_prose2: {jsl_latest_ReadableStreamDefaultReader_read_chop0_prose2}
+
+:jsl_ReadableStreamDefaultReader_read_url: {jsl_latest_ReadableStreamDefaultReader_read_url}
+:jsl_ReadableStreamDefaultReader_read_chop0: {jsl_latest_ReadableStreamDefaultReader_read_chop0}
+:jsl_ReadableStreamDefaultReader_read_chop0_prose1: {jsl_latest_ReadableStreamDefaultReader_read_chop0_prose1}
+:jsl_ReadableStreamDefaultReader_read_chop0_prose2: {jsl_latest_ReadableStreamDefaultReader_read_chop0_prose2}
+:jsl_ReadableStreamDefaultReader_read_chop1: {jsl_latest_ReadableStreamDefaultReader_read_chop1}
+:jsl_ReadableStreamDefaultReader_read_chop1_prose1: {jsl_latest_ReadableStreamDefaultReader_read_chop1_prose1}
+:jsl_ReadableStreamDefaultReader_read_chop1_prose2: {jsl_latest_ReadableStreamDefaultReader_read_chop1_prose2}
+:jsl_ReadableStreamDefaultReader_read: {jsl_latest_ReadableStreamDefaultReader_read}
+:jsl_ReadableStreamDefaultReader_read_prose1: {jsl_latest_ReadableStreamDefaultReader_read_prose1}
+:jsl_ReadableStreamDefaultReader_read_prose2: {jsl_latest_ReadableStreamDefaultReader_read_prose2}
+
+//----------------------------------------------------------------------
+// Response
+//----------------------------------------------------------------------
+
+:jsl_latest_Response_url: https://developer.mozilla.org/en-US/docs/Web/API/Response
+:jsl_latest_Response: link:{jsl_latest_Response_url}[Response,window=_blank]
+:jsl_latest_Response_prose1: pass:a,q[`{jsl_latest_Response}`]
+:jsl_latest_Response_prose2: pass:a,q[`{jsl_latest_Response}` class]
+
+:jsl_Response_url: {jsl_latest_Response_url}
+:jsl_Response: {jsl_latest_Response}
+:jsl_Response_prose1: {jsl_latest_Response_prose1}
+:jsl_Response_prose2: {jsl_latest_Response_prose2}
+
+//----------------------------------------------------------------------
+// stream
+//----------------------------------------------------------------------
+
+:jsl_latest_stream_url: https://nodejs.org/api/stream.html
+:jsl_latest_stream: link:{jsl_latest_stream_url}[stream,window=_blank]
+
+:jsl_stream_url: {jsl_latest_stream_url}
+:jsl_stream: {jsl_latest_stream}
+
+//----------------------------------------------------------------------
+// stream.Readable
+//----------------------------------------------------------------------
+
+:jsl_latest_stream_Readable_url: https://nodejs.org/api/stream.html#class-streamreadable
+:jsl_latest_stream_Readable_chop0: {jsl_latest_stream}.link:{jsl_latest_stream_Readable_url}[Readable,window=_blank]
+:jsl_latest_stream_Readable_chop0_prose1: pass:a,q[`{jsl_latest_stream_Readable_chop0}`]
+:jsl_latest_stream_Readable_chop0_prose2: pass:a,q[`{jsl_latest_stream_Readable_chop0}` class]
+:jsl_latest_stream_Readable_chop1: link:{jsl_latest_stream_Readable_url}[Readable,window=_blank]
+:jsl_latest_stream_Readable_chop1_prose1: pass:a,q[`{jsl_latest_stream_Readable_chop1}`]
+:jsl_latest_stream_Readable_chop1_prose2: pass:a,q[`{jsl_latest_stream_Readable_chop1}` class]
+:jsl_latest_stream_Readable: {jsl_latest_stream_Readable_chop0}
+:jsl_latest_stream_Readable_prose1: {jsl_latest_stream_Readable_chop0_prose1}
+:jsl_latest_stream_Readable_prose2: {jsl_latest_stream_Readable_chop0_prose2}
+
+:jsl_stream_Readable_url: {jsl_latest_stream_Readable_url}
+:jsl_stream_Readable_chop0: {jsl_latest_stream_Readable_chop0}
+:jsl_stream_Readable_chop0_prose1: {jsl_latest_stream_Readable_chop0_prose1}
+:jsl_stream_Readable_chop0_prose2: {jsl_latest_stream_Readable_chop0_prose2}
+:jsl_stream_Readable_chop1: {jsl_latest_stream_Readable_chop1}
+:jsl_stream_Readable_chop1_prose1: {jsl_latest_stream_Readable_chop1_prose1}
+:jsl_stream_Readable_chop1_prose2: {jsl_latest_stream_Readable_chop1_prose2}
+:jsl_stream_Readable: {jsl_latest_stream_Readable}
+:jsl_stream_Readable_prose1: {jsl_latest_stream_Readable_prose1}
+:jsl_stream_Readable_prose2: {jsl_latest_stream_Readable_prose2}
+
+//----------------------------------------------------------------------
+// stream.Writable
+//----------------------------------------------------------------------
+
+:jsl_latest_stream_Writable_url: https://nodejs.org/api/stream.html#class-streamwritable
+:jsl_latest_stream_Writable_chop0: {jsl_latest_stream}.link:{jsl_latest_stream_Writable_url}[Writable,window=_blank]
+:jsl_latest_stream_Writable_chop0_prose1: pass:a,q[`{jsl_latest_stream_Writable_chop0}`]
+:jsl_latest_stream_Writable_chop0_prose2: pass:a,q[`{jsl_latest_stream_Writable_chop0}` class]
+:jsl_latest_stream_Writable_chop1: link:{jsl_latest_stream_Writable_url}[Writable,window=_blank]
+:jsl_latest_stream_Writable_chop1_prose1: pass:a,q[`{jsl_latest_stream_Writable_chop1}`]
+:jsl_latest_stream_Writable_chop1_prose2: pass:a,q[`{jsl_latest_stream_Writable_chop1}` class]
+:jsl_latest_stream_Writable: {jsl_latest_stream_Writable_chop0}
+:jsl_latest_stream_Writable_prose1: {jsl_latest_stream_Writable_chop0_prose1}
+:jsl_latest_stream_Writable_prose2: {jsl_latest_stream_Writable_chop0_prose2}
+
+:jsl_stream_Writable_url: {jsl_latest_stream_Writable_url}
+:jsl_stream_Writable_chop0: {jsl_latest_stream_Writable_chop0}
+:jsl_stream_Writable_chop0_prose1: {jsl_latest_stream_Writable_chop0_prose1}
+:jsl_stream_Writable_chop0_prose2: {jsl_latest_stream_Writable_chop0_prose2}
+:jsl_stream_Writable_chop1: {jsl_latest_stream_Writable_chop1}
+:jsl_stream_Writable_chop1_prose1: {jsl_latest_stream_Writable_chop1_prose1}
+:jsl_stream_Writable_chop1_prose2: {jsl_latest_stream_Writable_chop1_prose2}
+:jsl_stream_Writable: {jsl_latest_stream_Writable}
+:jsl_stream_Writable_prose1: {jsl_latest_stream_Writable_prose1}
+:jsl_stream_Writable_prose2: {jsl_latest_stream_Writable_prose2}
+
+//----------------------------------------------------------------------
+// String
+//----------------------------------------------------------------------
+
+:jsl_latest_String_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+:jsl_latest_String: link:{jsl_latest_String_url}[String,window=_blank]
+:jsl_latest_String_prose1: pass:a,q[`{jsl_latest_String}`]
+:jsl_latest_String_prose2: pass:a,q[`{jsl_latest_String}` class]
+
+:jsl_String_url: {jsl_latest_String_url}
+:jsl_String: {jsl_latest_String}
+:jsl_String_prose1: {jsl_latest_String_prose1}
+:jsl_String_prose2: {jsl_latest_String_prose2}
+
+//----------------------------------------------------------------------
+// true
+//----------------------------------------------------------------------
+
+:jsl_latest_true_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+:jsl_latest_true: link:{jsl_latest_true_url}[true,window=_blank]
+
+:jsl_true_url: {jsl_latest_true_url}
+:jsl_true: {jsl_latest_true}
+
+//----------------------------------------------------------------------
+// TypedArray
+//----------------------------------------------------------------------
+
+:jsl_latest_TypedArray_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+:jsl_latest_TypedArray: link:{jsl_latest_TypedArray_url}[TypedArray,window=_blank]
+:jsl_latest_TypedArray_prose1: pass:a,q[`{jsl_latest_TypedArray}`]
+:jsl_latest_TypedArray_prose2: pass:a,q[`{jsl_latest_TypedArray}` class template]
+
+:jsl_TypedArray_url: {jsl_latest_TypedArray_url}
+:jsl_TypedArray: {jsl_latest_TypedArray}
+:jsl_TypedArray_prose1: {jsl_latest_TypedArray_prose1}
+:jsl_TypedArray_prose2: {jsl_latest_TypedArray_prose2}
+
+//----------------------------------------------------------------------
+// Uint8Array
+//----------------------------------------------------------------------
+
+:jsl_latest_Uint8Array_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+:jsl_latest_Uint8Array: link:{jsl_latest_Uint8Array_url}[Uint8Array,window=_blank]
+:jsl_latest_Uint8Array_prose1: pass:a,q[`{jsl_latest_Uint8Array}`]
+:jsl_latest_Uint8Array_prose2: pass:a,q[`{jsl_latest_Uint8Array}` class]
+
+:jsl_Uint8Array_url: {jsl_latest_Uint8Array_url}
+:jsl_Uint8Array: {jsl_latest_Uint8Array}
+:jsl_Uint8Array_prose1: {jsl_latest_Uint8Array_prose1}
+:jsl_Uint8Array_prose2: {jsl_latest_Uint8Array_prose2}
+
+//----------------------------------------------------------------------
+// Uint8Array.constructor
+//----------------------------------------------------------------------
+
+:jsl_latest_Uint8Array_constructor_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/Uint8Array
+:jsl_latest_Uint8Array_constructor: link:{jsl_latest_Uint8Array_constructor_url}[Uint8Array,window=_blank]
+:jsl_latest_Uint8Array_constructor_prose1: pass:a,q[`{jsl_latest_Uint8Array_constructor}`]
+:jsl_latest_Uint8Array_constructor_prose2: pass:a,q[`{jsl_latest_Uint8Array_constructor}` constructor]
+
+:jsl_Uint8Array_constructor_url: {jsl_latest_Uint8Array_constructor_url}
+:jsl_Uint8Array_constructor: {jsl_latest_Uint8Array_constructor}
+:jsl_Uint8Array_constructor_prose1: {jsl_latest_Uint8Array_constructor_prose1}
+:jsl_Uint8Array_constructor_prose2: {jsl_latest_Uint8Array_constructor_prose2}
+
+//----------------------------------------------------------------------
+// undefined
+//----------------------------------------------------------------------
+
+:jsl_latest_undefined_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
+:jsl_latest_undefined: link:{jsl_latest_undefined_url}[undefined,window=_blank]
+
+:jsl_undefined_url: {jsl_latest_undefined_url}
+:jsl_undefined: {jsl_latest_undefined}
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+//----------------------------------------------------------------------

@@ -1,0 +1,93 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_SST_MOD_ADOC[]
+:SECTIONS_CL_SST_MOD_ADOC:
+//----------------------------------------------------------------------
+
+:cl_sst_mod_name1: mod
+:cl_sst_mod_name0: sst::mod
+:cl_sst_mod_id: cl_sst_mod
+:cl_sst_mod_url: sections/cl_sst_mod.adoc#{cl_sst_mod_id}
+:cl_sst_mod_chop1: xref:{cl_sst_mod_url}[{cl_sst_mod_name1}]
+:cl_sst_mod_chop1_prose1: pass:a,q[`{cl_sst_mod_chop1}`]
+:cl_sst_mod_chop1_prose2: pass:a,q[`{cl_sst_mod_chop1}` function]
+:cl_sst_mod_chop0: xref:{cl_sst_mod_url}[{cl_sst_mod_name0}]
+:cl_sst_mod_chop0_prose1: pass:a,q[`{cl_sst_mod_chop0}`]
+:cl_sst_mod_chop0_prose2: pass:a,q[`{cl_sst_mod_chop0}` function]
+:cl_sst_mod: {cl_sst_mod_chop0}
+:cl_sst_mod_prose1: {cl_sst_mod_chop0_prose1}
+:cl_sst_mod_prose2: {cl_sst_mod_chop0_prose2}
+:cl_sst_catalog_mod_hpp_url: {repo_browser_url}/src/c-cpp/include/sst/catalog/mod.hpp
+:cl_sst_catalog_mod_hpp: link:{cl_sst_catalog_mod_hpp_url}[sst/catalog/mod.hpp,window=_blank]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_sst_mod_id}]
+= `{cl_sst_mod_name0}`
+
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_sst_catalog_mod_hpp}>
+
+{cl_sst_mod}(x, m)
+----
+
+The {cl_sst_mod_prose2} returns the least nonnegative residue of `x`
+modulo `m`.
+
+`x` may have any {cl_integer_ish} type `X`.
+
+`m` may have any {cl_integer_ish} type `M`.
+
+`m` must be positive.
+
+If your `x` is always nonnegative, you may want to use
+`{cl_sst_unsigned_mod}` instead of this function, as it may give better
+performance.
+
+If `X` and `M` are not just {cl_integer_ish} but in fact
+{cl_integer_like}, then the function will be `{cl_constexpr}` and
+`{cl_noexcept_spec}`.
+
+The return value will have type `M`.
+Alternatively, you can specify a single template parameter to convert
+the return value to a specific type.
+For example, `{cl_sst_mod}<int>(-8L, 5L)` will return `2` instead of
+`2L`.
+If the conversion is not `{cl_noexcept_oper}`, it will remove any
+`{cl_noexcept_spec}` from the function.
+
+//----------------------------------------------------------------------
+endif::[]

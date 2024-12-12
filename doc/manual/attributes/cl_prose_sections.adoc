@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -32,12 +32,12 @@ ifndef::ATTRIBUTES_CL_PROSE_SECTIONS_ADOC[]
 :ATTRIBUTES_CL_PROSE_SECTIONS_ADOC:
 //----------------------------------------------------------------------
 
-:cl_reserved_identifiers_id: cl-reserved-identifiers
+:cl_reserved_identifiers_id: cl_reserved_identifiers
 :cl_reserved_identifiers_title: Reserved identifiers
 :cl_reserved_identifiers: <<{cl_reserved_identifiers_id}>>
 
 :cl_unique_pass_algorithms_file: cl_unique_pass_algorithms.adoc
-:cl_unique_pass_algorithms_id: cl-unique-pass-algorithms
+:cl_unique_pass_algorithms_id: cl_unique_pass_algorithms
 :cl_unique_pass_algorithms_title: Unique-pass algorithms
 :cl_unique_pass_algorithms_section: <<{cl_unique_pass_algorithms_id}>>
 

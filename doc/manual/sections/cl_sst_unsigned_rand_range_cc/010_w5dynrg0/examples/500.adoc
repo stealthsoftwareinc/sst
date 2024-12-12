@@ -1,0 +1,70 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+.{empty}
+[example]
+====
+.`sst-example-{example-number}.cpp`
+[source,subs="{sst_subs_source}"]
+----
+#include <{cl_include_iomanip}>
+#include <{cl_include_iostream}>
+
+#include <{cl_sst_catalog_unsigned_rand_range_cc_hpp}>
+
+int main() {
+  for (int i = 0; i < 10; pass:[++i]) {
+    for (int j = 0; j < 10; pass:[++j]) {
+      if (j > 0) {
+        {cl_std_cout} << " ";
+      }
+      auto const x = {cl_sst_unsigned_rand_range_cc_w5dynrg0}<unsigned char>();
+      auto const y = static_cast<unsigned int>(x);
+      {cl_std_cout} << std::setw(3) << y;
+    }
+    {cl_std_cout} << "\n";
+  }
+  return 0;
+}
+----
+
+.Possible output
+[listing,subs="{sst_subs_source}"]
+----
+136 147 227 221  40 234 203 127  49 188
+110 192 192 116  29  62  27 132  75 140
+ 80  46 226 179  53 106  43  69 218  51
+100 224 225 101 108 242  81 123 182  99
+ 90 194  62  87  84 193 130  20 144  24
+ 49  49   0 228  46 168  61 155  32  16
+ 42 158 107  69 247 212 229 154  36 237
+ 60 109 146 129 180 188 152 255  49  66
+192 213 182 209 120  24  44 113 246 151
+248 133 150 187  47 245 228 242  53 119
+----
+====

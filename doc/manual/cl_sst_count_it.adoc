@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -36,7 +36,7 @@
 namespace sst {
 
 template<{cl_req_Iterator} T, {cl_std_integral} N>
-_R_ count_it(T x, N n);
+__R__ count_it(T x, N n);
 
 }
 ----
@@ -44,7 +44,7 @@ _R_ count_it(T x, N n);
 The `{cl_sst_count_it}` function returns an iterator that compares equal
 to the iterator that would be produced by `{cl_std_advance}(x, n)`.
 
-The type `_R_` of the returned iterator is unspecified.
+The type `__R__` of the returned iterator is unspecified.
 However, the following guarantees are made:
 
 . {empty}

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -34,7 +34,7 @@ ifndef::SECTIONS_CL_SST_DEFER_ADOC[]
 
 :cl_SST_DEFER_name0: SST_DEFER
 
-:cl_SST_DEFER_id: cl-SST-DEFER
+:cl_SST_DEFER_id: cl_SST_DEFER
 :cl_SST_DEFER_url: sections/cl_SST_DEFER.adoc#{cl_SST_DEFER_id}
 
 :cl_SST_DEFER: xref:{cl_SST_DEFER_url}[{cl_SST_DEFER_name0}]

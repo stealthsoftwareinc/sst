@@ -1,0 +1,92 @@
+//
+// Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation
+// files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use,
+// copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following
+// conditions:
+//
+// The above copyright notice and this permission notice (including
+// the next paragraph) shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+//
+// SPDX-License-Identifier: MIT
+//
+
+//----------------------------------------------------------------------
+ifdef::define_attributes[]
+ifndef::SECTIONS_CL_INTERNAL_HEADER_FILE_EXTENSIONS_ADOC[]
+:SECTIONS_CL_INTERNAL_HEADER_FILE_EXTENSIONS_ADOC:
+//----------------------------------------------------------------------
+
+:cl_internal_header_file_extensions_id: cl_internal_header_file_extensions
+:cl_internal_header_file_extensions_url: sections/cl_internal_header_file_extensions.adoc#{cl_internal_header_file_extensions_id}
+:cl_internal_header_file_extensions_title: Header file extensions
+:cl_internal_header_file_extensions: xref:{cl_internal_header_file_extensions_url}[]
+
+//----------------------------------------------------------------------
+endif::[]
+endif::[]
+ifndef::define_attributes[]
+//----------------------------------------------------------------------
+
+[#{cl_internal_header_file_extensions_id}]
+= {cl_internal_header_file_extensions_title}
+
+The
+indexterm:["public header files of the SST C/{cpp} library"]
+__public__ header files of the SST C/{cpp} library are those that live
+below the `src/c-cpp/include/sst` directory in the SST Git repository,
+but excluding those that live below the `src/c-cpp/include/sst/private`
+directory.
+
+All public SST header files use the `.h` file extension except for those
+that are intended to be used in {cpp} only, which use the `.hpp` file
+extension instead.
+
+Sometimes you might find two copies of the same public SST header file
+alongside each other: one with the `.h` file extension, and one with the
+`.hpp` file extension.
+In this case, including the `.hpp` header file in {cpp} is equivalent to
+including the `.h` header file, but the `.hpp` header file is deprecated
+and will eventually be removed.
+
+If a header file is intended to be used in {cpp} only, it should include
+the following code after its include guard:
+
+.{cpp} only
+[source,subs="{sst_subs_source}"]
+----
+#ifndef {cl___cplusplus}
+#error "This header file cannot be used in C"
+#include "This header file cannot be used in C"
+#endif
+----
+
+If a header file is intended to be used in C only, it should include the
+following code after its include guard:
+
+.C only
+[source,subs="{sst_subs_source}"]
+----
+#ifdef {cl___cplusplus}
+#error "This header file cannot be used in {cpp}"
+#include "This header file cannot be used in {cpp}"
+#endif
+----
+
+//----------------------------------------------------------------------
+endif::[]

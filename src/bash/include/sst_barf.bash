@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2023 Stealth Software Technologies, Inc.
+# Copyright (C) 2012-2024 Stealth Software Technologies, Inc.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -50,24 +50,36 @@
 
 sst_barf() {
 
-  # Bash >=4.2: declare -g    CLICOLOR
   # Bash >=4.2: declare -g    CLICOLOR_FORCE
+  # Bash >=4.2: declare -g    NO_COLOR
   # Bash >=4.2: declare -g    SST_BARF_STATUS
   # Bash >=4.2: declare -g    sst_err_trap_status
 
-  declare    buffer
-  declare    color_start
-  declare    color_stop
-  declare    file
-  declare    func
-  declare    i
-  declare    line
-  declare    status
-  declare    x
-  declare    y
+  local    color_start
+  local    color_stop
+  local    file
+  local    func
+  local    i
+  local    line
+  local    message
+  local    status
+  local    x
+  local    y
 
-  if [[ "${CLICOLOR_FORCE-0}" != 0 || \
-        ( "${CLICOLOR-1}" != 0 && -t 2 ) ]]; then
+  #
+  # See [1], [2], and [3] for the basics of color control environment
+  # variables. Note that the approach in FreeBSD [3] defaults to color
+  # disabled and always requires CLICOLOR to be set to enable color, but
+  # the approach in [1] defaults to color enabled in a terminal and does
+  # not use CLICOLOR. We use the approach in [1] since we generally want
+  # color enabled by default in a terminal.
+  #
+  # [1] https://bixense.com/clicolors/
+  # [2] https://no-color.org/
+  # [3] https://stackoverflow.com/q/75625246
+  #
+
+  if [[ ! "${NO_COLOR+x}" && ( "${CLICOLOR_FORCE+x}" || -t 2 ) ]]; then
     color_start=$'\x1B[31m'
     color_stop=$'\x1B[0m'
   else
@@ -95,7 +107,7 @@ sst_barf() {
         x+=$y
       done
       x+=\"
-      sst_warn "Ignoring invalid SST_BARF_STATUS: $x."
+      sst_warn "Ignoring invalid SST_BARF_STATUS: $x"
     fi
   elif [[ "${sst_err_trap_status+x}" ]]; then
     status=$sst_err_trap_status
@@ -103,10 +115,10 @@ sst_barf() {
   readonly status
 
   if (($# == 0)); then
-    set 'Unknown error.'
+    set "Unknown error"
   fi
 
-  buffer="$color_start$0: Error: $@$color_stop"
+  message="$color_start$0: Error: $@.$color_stop"
 
   i=0
   while x=$(caller $i); do
@@ -137,16 +149,16 @@ sst_barf() {
     fi
 
     if ((i == ${#FUNCNAME[@]} - 1)); then
-      buffer+=$'\n'"$color_start    at $file:$line$color_stop"
+      message+=$'\n'"$color_start    at $file:$line$color_stop"
     else
-      buffer+=$'\n'"$color_start    at $func($file:$line)$color_stop"
+      message+=$'\n'"$color_start    at $func($file:$line)$color_stop"
     fi
 
   done
 
-  readonly buffer
+  readonly message
 
-  printf '%s\n' "$buffer" >&2 || :
+  printf '%s\n' "$message" >&2 || :
 
   exit $status
 
