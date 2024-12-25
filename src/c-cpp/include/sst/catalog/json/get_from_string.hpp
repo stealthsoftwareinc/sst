@@ -43,7 +43,14 @@
 #include <sst/catalog/json/exception.hpp>
 #include <sst/catalog/json/get_as.hpp>
 
-// TODO: Use SST_DEFINE_ALGORITHM
+// TODO: Use SST_DEFINE_ALGORITHM? Or is that basically deprecated in
+//       favor of this simpler approach?
+//       Digression: Wasn't the whole point of SST_DEFINE_ALGORITHM just
+//       to allow for partial specialization in some respect? But can't
+//       we handle that with type traits, letting us define algorithms
+//       with this much simpler "functional" approach? E.g., instead of
+//       specializing for vector<T>, can't we just write a type trait
+//       that identifies vector<T> and then SFINAE/concept against it?
 
 namespace sst {
 namespace json {

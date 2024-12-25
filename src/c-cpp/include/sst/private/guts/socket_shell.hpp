@@ -1046,6 +1046,40 @@ public:
   }
 
   //--------------------------------------------------------------------
+  // resolve
+  //--------------------------------------------------------------------
+  //
+  // TODO: This first resolve() overload is the easiest to understand
+  //       and use. All callers should basically always be calling it.
+  //       The other overloads should be considered deprecated.
+  //
+
+  static std::list<address_info_t>
+  resolve(std::string const & host,
+          std::string const & port,
+          sst::socket_protocol proto = sst::socket_protocol::tcp,
+          sst::gai_flags flags = sst::gai_flags::none(),
+          sst::inet_pref const pref = sst::inet_pref::prefer_inet) {
+    SST_ASSERT((!host.empty() || !port.empty()));
+    return inet_filter(
+        native_resolve(host.empty() ? nullptr : host.c_str(),
+                       port.empty() ? nullptr : port.c_str(),
+                       flags,
+                       (pref == sst::inet_pref::require_inet ?
+                            sst::socket_family::inet :
+                        pref == sst::inet_pref::require_inet6 ?
+                            sst::socket_family::inet6 :
+                            sst::socket_family::unspec),
+                       (proto == sst::socket_protocol::tcp ?
+                            sst::socket_type::stream :
+                        proto == sst::socket_protocol::udp ?
+                            sst::socket_type::dgram :
+                            sst::socket_type::unspec),
+                       proto),
+        pref);
+  }
+
+  //--------------------------------------------------------------------
   // resolve-xt248uxj
   //--------------------------------------------------------------------
 
@@ -1398,8 +1432,8 @@ private:
   inet_filter(std::list<address_info_t> infos,
               sst::inet_pref const pref) {
     using info = address_info_t;
-    sst::socket_family constexpr inet = sst::socket_family::inet;
-    sst::socket_family constexpr inet6 = sst::socket_family::inet6;
+    constexpr sst::socket_family inet = sst::socket_family::inet;
+    constexpr sst::socket_family inet6 = sst::socket_family::inet6;
     if (pref == sst::inet_pref::require_inet) {
       std::remove_if(infos.begin(), infos.end(), [](info const & a) {
         return a.family() != inet;

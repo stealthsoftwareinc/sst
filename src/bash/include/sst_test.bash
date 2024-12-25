@@ -34,6 +34,7 @@ sst_test() {
   declare     expected_output_op
   declare     expected_status
   declare     output
+  declare     output_file
   declare     pass
   declare     prelude
   declare     regex
@@ -126,10 +127,16 @@ sst_test() {
   readonly script_file
 
   cat <<<"$script" >"$script_file"
-  status=0
-  output=$(sh "$script_file" 2>&1 | sst_csf) || status=$?
-  sst_csf output
+
+  output_file=$sst_root_tmpdir/$FUNCNAME.$BASHPID.output
+  readonly output_file
+
+  sh "$script_file" >"$output_file" 2>&1 && :
+  status=$?
   readonly status
+
+  output=$(sst_csf <"$output_file")
+  sst_csf output
   readonly output
 
   pass=

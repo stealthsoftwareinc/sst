@@ -70,14 +70,14 @@ public:
       if (src.is_boolean()) {
         dst =
             !!src.template get_ref<typename src_t::boolean_t const &>();
-      } else if (src.is_number_integer()) {
-        dst = sst::checked_cast<dst_t>(
-            src.template get_ref<
-                typename src_t::number_integer_t const &>());
       } else if (src.is_number_unsigned()) {
         dst = sst::checked_cast<dst_t>(
             src.template get_ref<
                 typename src_t::number_unsigned_t const &>());
+      } else if (src.is_number_integer()) {
+        dst = sst::checked_cast<dst_t>(
+            src.template get_ref<
+                typename src_t::number_integer_t const &>());
       } else if (src.is_number()) {
         throw sst::json::exception::invalid_value(src);
       } else if (src.is_string()) {

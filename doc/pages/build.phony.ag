@@ -234,7 +234,7 @@ f() {
 
     pages_preview_host = 0.0.0.0
     pages_preview_port = 4000
-    pages_preview_name = $$d-pages-preview
+    pages_preview_name = $${d?}-pages-preview
 
     pages_livereload = 1
     pages_livereload_port = 35729
@@ -255,6 +255,10 @@ f() {
     	    pwd_native=$${pwd?}; \
     	  fi; \
     	  readonly pwd_native; \
+    	\
+    	  d=`basename "$${pwd?}"` || exit $$?; \
+    	  readonly d; \
+    	\
     	  case $${CI_DISPOSABLE_ENVIRONMENT+x} in x) \
     	    chmod -R a+rw doc/pages || exit $$?; \
     	  esac; \

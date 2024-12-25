@@ -38,6 +38,10 @@
 
 namespace sst {
 
+// TODO: Can we define promote<A, B, ...> to do
+//       promote<std::common_type_t<A, B, ...>>?
+//       This is a common use case and it would be convenient.
+
 // TODO: Maybe we want to define this for floating types too?
 
 template<class T, class = sst::enable_t>

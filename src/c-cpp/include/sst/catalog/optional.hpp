@@ -48,6 +48,11 @@ namespace guts {
 namespace optional {
 
 //----------------------------------------------------------------------
+//
+// TODO: We should be able to omit the constructors here, but some old
+//       versions of GCC and Clang don't like it. It should be fine to
+//       remove them around the year 2030 or so.
+//
 
 template<class, class = sst::enable_t>
 struct storage;
@@ -200,6 +205,7 @@ struct add_copy_assign<
       new (&this->value_) T(other.value_);
       this->has_value_ = true;
     }
+    return *this;
   }
   add_copy_assign(add_copy_assign &&) = default;
   add_copy_assign & operator=(add_copy_assign &&) = default;
@@ -292,6 +298,7 @@ struct add_move_assign<
     if (this->has_value_) {
       if (other.has_value_) {
         this->value_ = std::move(other.value_);
+        other.reset();
       } else {
         this->reset();
       }
@@ -300,6 +307,7 @@ struct add_move_assign<
       this->has_value_ = true;
       other.reset();
     }
+    return *this;
   }
 };
 
